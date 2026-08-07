@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS } from '../data/initialData';
 import { ProductCard } from './ProductCard';
+import { Address } from '../types';
 import {
   X,
   User as UserIcon,
@@ -13,6 +14,8 @@ import {
   Package,
   Clock,
   ShieldCheck,
+  Plus,
+  Trash2,
 } from 'lucide-react';
 
 export const UserProfileModal: React.FC = () => {
@@ -24,14 +27,43 @@ export const UserProfileModal: React.FC = () => {
     wishlist,
     savedRecipes,
     addCustomMasalaToCart,
+    saveAddress,
+    deleteAddress,
     logout,
   } = useApp();
 
   const [activeTab, setActiveTab] = useState<'orders' | 'wishlist' | 'recipes' | 'addresses'>('orders');
+  const [isAddingAddress, setIsAddingAddress] = useState(false);
+  const [newAddrForm, setNewAddrForm] = useState<Address>({
+    id: '',
+    fullName: user?.name || '',
+    mobile: user?.mobile || '',
+    street: '',
+    city: 'Mumbai',
+    state: 'Maharashtra',
+    pincode: '400001',
+    isDefault: false,
+  });
 
   if (!isProfileOpen || !user) return null;
 
   const wishlistedProducts = PRODUCTS.filter((p) => wishlist.includes(p.id));
+
+  const handleSaveAddress = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await saveAddress(newAddrForm);
+    setIsAddingAddress(false);
+    setNewAddrForm({
+      id: '',
+      fullName: user.name,
+      mobile: user.mobile,
+      street: '',
+      city: 'Mumbai',
+      state: 'Maharashtra',
+      pincode: '400001',
+      isDefault: false,
+    });
+  };
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
@@ -242,26 +274,123 @@ export const UserProfileModal: React.FC = () => {
 
           {/* ADDRESSES TAB */}
           {activeTab === 'addresses' && (
-            <div className="space-y-3">
-              {user.addresses.map((addr) => (
-                <div
-                  key={addr.id}
-                  className="bg-cream p-4 rounded-2xl border border-soft flex items-start justify-between text-xs"
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold text-stone-600">Saved Delivery Addresses</span>
+                <button
+                  onClick={() => setIsAddingAddress(!isAddingAddress)}
+                  className="bg-olive hover:bg-[#4a4a34] text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 transition shadow-sm"
                 >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <strong className="text-earth text-sm">{addr.fullName}</strong>
-                      {addr.isDefault && (
-                        <span className="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold border border-emerald-300">
-                          DEFAULT
-                        </span>
-                      )}
+                  <Plus className="w-3.5 h-3.5" /> Add New Address
+                </button>
+              </div>
+
+              {isAddingAddress && (
+                <form onSubmit={handleSaveAddress} className="bg-cream p-4 rounded-2xl border border-olive/30 space-y-3">
+                  <h4 className="text-xs font-bold text-olive">Add Delivery Address</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div>
+                      <label className="block text-[10px] font-bold text-stone-600">Full Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={newAddrForm.fullName}
+                        onChange={(e) => setNewAddrForm({ ...newAddrForm, fullName: e.target.value })}
+                        className="w-full bg-white border border-stone-200 rounded-lg p-2 text-xs"
+                      />
                     </div>
-                    <p className="text-stone-600">{addr.street}, {addr.city}, {addr.state} - {addr.pincode}</p>
-                    <p className="text-stone-500">Mobile: {addr.mobile}</p>
+                    <div>
+                      <label className="block text-[10px] font-bold text-stone-600">Mobile</label>
+                      <input
+                        type="tel"
+                        required
+                        value={newAddrForm.mobile}
+                        onChange={(e) => setNewAddrForm({ ...newAddrForm, mobile: e.target.value })}
+                        className="w-full bg-white border border-stone-200 rounded-lg p-2 text-xs"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-[10px] font-bold text-stone-600">Street / Flat / Area</label>
+                      <input
+                        type="text"
+                        required
+                        value={newAddrForm.street}
+                        onChange={(e) => setNewAddrForm({ ...newAddrForm, street: e.target.value })}
+                        className="w-full bg-white border border-stone-200 rounded-lg p-2 text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-stone-600">City</label>
+                      <input
+                        type="text"
+                        required
+                        value={newAddrForm.city}
+                        onChange={(e) => setNewAddrForm({ ...newAddrForm, city: e.target.value })}
+                        className="w-full bg-white border border-stone-200 rounded-lg p-2 text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-stone-600">Pincode</label>
+                      <input
+                        type="text"
+                        required
+                        value={newAddrForm.pincode}
+                        onChange={(e) => setNewAddrForm({ ...newAddrForm, pincode: e.target.value })}
+                        className="w-full bg-white border border-stone-200 rounded-lg p-2 text-xs"
+                      />
+                    </div>
                   </div>
+                  <div className="flex justify-end gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsAddingAddress(false)}
+                      className="px-3 py-1.5 text-xs text-stone-500 hover:text-earth font-semibold"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-olive hover:bg-[#4a4a34] text-white text-xs font-bold px-4 py-1.5 rounded-xl transition"
+                    >
+                      Save to Database
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              {user.addresses.length === 0 ? (
+                <div className="text-center py-8 text-stone-500 text-xs">
+                  No saved addresses found. Add an address above!
                 </div>
-              ))}
+              ) : (
+                user.addresses.map((addr) => (
+                  <div
+                    key={addr.id}
+                    className="bg-cream p-4 rounded-2xl border border-soft flex items-start justify-between text-xs"
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <strong className="text-earth text-sm">{addr.fullName}</strong>
+                        {addr.isDefault && (
+                          <span className="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold border border-emerald-300">
+                            DEFAULT
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-stone-600">{addr.street}, {addr.city}, {addr.state} - {addr.pincode}</p>
+                      <p className="text-stone-500">Mobile: {addr.mobile}</p>
+                    </div>
+
+                    <button
+                      onClick={() => deleteAddress(addr.id)}
+                      className="text-stone-400 hover:text-rose-600 p-1.5 transition"
+                      title="Delete Address"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))
+              )}
             </div>
           )}
         </div>

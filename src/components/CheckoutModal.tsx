@@ -89,6 +89,29 @@ export const CheckoutModal: React.FC = () => {
                 <MapPin className="w-4 h-4" /> 1. Delivery Address
               </h4>
 
+              {user && user.addresses.length > 0 && (
+                <div className="space-y-2 mb-3">
+                  <span className="text-[11px] font-bold text-stone-500 block">Select Saved Address:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {user.addresses.map((savedAddr) => (
+                      <button
+                        type="button"
+                        key={savedAddr.id}
+                        onClick={() => setAddress(savedAddr)}
+                        className={`text-xs px-3 py-2 rounded-xl border text-left font-medium transition ${
+                          address.id === savedAddr.id
+                            ? 'bg-cream border-olive text-olive font-bold'
+                            : 'bg-white border-soft text-stone-600 hover:border-stone-300'
+                        }`}
+                      >
+                        <div>{savedAddr.fullName}</div>
+                        <div className="text-[10px] opacity-75 truncate max-w-[200px]">{savedAddr.street}, {savedAddr.city}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-stone-600 mb-1">Full Name</label>

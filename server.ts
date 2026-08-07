@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import dns from 'dns';
 import { createServer as createViteServer } from 'vite';
 import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS, COUPONS } from './src/data/initialData';
-import { Product, Order, CustomRecipe } from './src/types';
+import { Product, Order, CustomRecipe, Address } from './src/types';
 
 // Use Google/Cloudflare DNS resolvers for Node.js SRV record lookups on Windows
 try {
@@ -88,9 +88,50 @@ const CustomRecipeSchema = new mongoose.Schema({
   createdAt: { type: String, default: () => new Date().toISOString() },
 });
 
+const AddressSchema = new mongoose.Schema(
+  {
+    id: { type: String, required: true, unique: true },
+    userId: { type: String, default: 'usr-101' },
+    fullName: { type: String, required: true },
+    mobile: { type: String, required: true },
+    street: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, default: 'Maharashtra' },
+    pincode: { type: String, required: true },
+    isDefault: { type: Boolean, default: false },
+  },
+  { timestamps: true }
+);
+
 const ProductModel = mongoose.model('Product', ProductSchema);
 const OrderModel = mongoose.model('Order', OrderSchema);
 const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
+const AddressModel = mongoose.model('Address', AddressSchema);
+
+let liveAddresses: (Address & { userId?: string })[] = [
+  {
+    id: 'addr-1',
+    userId: 'usr-101',
+    fullName: 'Priya Sharma',
+    mobile: '+91 98765 43210',
+    street: 'Flat 402, Green View Apartments, Bandra West',
+    city: 'Mumbai',
+    state: 'Maharashtra',
+    pincode: '400050',
+    isDefault: true,
+  },
+  {
+    id: 'addr-2',
+    userId: 'usr-1',
+    fullName: 'Anita Kulkarni',
+    mobile: '+91 98765 43210',
+    street: '402 Sunrise Heights, MG Road',
+    city: 'Mumbai',
+    state: 'Maharashtra',
+    pincode: '400001',
+    isDefault: false,
+  },
+];
 
 // In-memory fallback stores
 let liveProducts: Product[] = [...PRODUCTS];
@@ -175,6 +216,15 @@ async function initDatabase() {
       console.log('✅ Initial order seeded into MongoDB database "ecomm"!');
     } else {
       console.log(`✅ ${orderCount} orders verified in MongoDB Atlas "ecomm" database!`);
+    }
+
+    // Seed initial addresses if collection is empty
+    const addressCount = await AddressModel.countDocuments();
+    if (addressCount === 0) {
+      await AddressModel.insertMany(liveAddresses);
+      console.log('✅ Initial addresses seeded into MongoDB database "ecomm"!');
+    } else {
+      console.log(`✅ ${addressCount} addresses verified in MongoDB Atlas "ecomm" database!`);
     }
   } catch (err: any) {
     isDbConnected = false;
@@ -451,40 +501,89 @@ app.post('/api/coupons/validate', (req, res) => {
 
 // Orders API
 app.post('/api/orders', async (req, res) => {
-  const { items, shippingAddress, deliverySlot, paymentMethod, subtotal, discount, tax, shippingFee, total } =
-    req.body;
+  try {
+    const { items, shippingAddress, deliverySlot, paymentMethod, subtotal, discount, tax, shippingFee, total, userId } =
+      req.body;
 
-  if (!items || items.length === 0) {
-    return res.status(400).json({ success: false, message: 'Cart is empty' });
-  }
-
-  const newOrder: Order = {
-    id: `ORD-${Math.floor(10000 + Math.random() * 90000)}`,
-    items,
-    shippingAddress,
-    deliverySlot: deliverySlot || 'Standard Delivery',
-    paymentMethod: paymentMethod || 'COD',
-    subtotal: subtotal || 0,
-    discount: discount || 0,
-    tax: tax || 0,
-    shippingFee: shippingFee || 0,
-    total: total || 0,
-    status: 'Processing',
-    createdAt: new Date().toISOString(),
-    estimatedDelivery: 'Within 2-3 Days',
-    trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
-  };
-
-  if (isDbConnected) {
-    try {
-      await OrderModel.create(newOrder);
-    } catch (e) {
-      console.error('Error saving order to MongoDB:', e);
+    if (!items || items.length === 0) {
+      return res.status(400).json({ success: false, message: 'Cart is empty' });
     }
-  }
 
-  liveOrders.unshift(newOrder);
-  res.json({ success: true, message: 'Order placed successfully and stored in database!', data: newOrder });
+    const newOrder: Order = {
+      id: `ORD-${Math.floor(10000 + Math.random() * 90000)}`,
+      userId: userId || 'usr-101',
+      items,
+      shippingAddress,
+      deliverySlot: deliverySlot || 'Standard Delivery',
+      paymentMethod: paymentMethod || 'COD',
+      subtotal: subtotal || 0,
+      discount: discount || 0,
+      tax: tax || 0,
+      shippingFee: shippingFee || 0,
+      total: total || 0,
+      status: 'Processing',
+      createdAt: new Date().toISOString(),
+      estimatedDelivery: 'Within 2-3 Days',
+      trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
+    };
+
+    if (isDbConnected) {
+      try {
+        await OrderModel.create(newOrder);
+      } catch (e) {
+        console.error('Error saving order to MongoDB:', e);
+      }
+
+      if (shippingAddress) {
+        try {
+          const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
+            ? shippingAddress.id
+            : `addr-${Date.now()}`;
+
+          await AddressModel.updateOne(
+            { id: addrId },
+            {
+              $set: {
+                id: addrId,
+                userId: userId || 'usr-101',
+                fullName: shippingAddress.fullName,
+                mobile: shippingAddress.mobile,
+                street: shippingAddress.street,
+                city: shippingAddress.city,
+                state: shippingAddress.state || 'Maharashtra',
+                pincode: shippingAddress.pincode,
+                isDefault: shippingAddress.isDefault ?? true,
+              },
+            },
+            { upsert: true }
+          );
+        } catch (e) {
+          console.error('Error saving address to MongoDB:', e);
+        }
+      }
+    }
+
+    if (shippingAddress) {
+      const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new' ? shippingAddress.id : `addr-${Date.now()}`;
+      const addrObj = {
+        ...shippingAddress,
+        id: addrId,
+        userId: userId || 'usr-101',
+      };
+      const existingIdx = liveAddresses.findIndex((a) => a.id === addrId);
+      if (existingIdx > -1) {
+        liveAddresses[existingIdx] = addrObj;
+      } else {
+        liveAddresses.push(addrObj);
+      }
+    }
+
+    liveOrders.unshift(newOrder);
+    res.json({ success: true, message: 'Order placed successfully and stored in database!', data: newOrder });
+  } catch (err: any) {
+    console.error('Error in /api/orders POST:', err);
+    res.status(500).json({ success: false, message: err.message || 'Server error placing order' });
+  }
 });
 
 app.get('/api/orders', async (req, res) => {
@@ -496,6 +595,69 @@ app.get('/api/orders', async (req, res) => {
     res.json({ success: true, data: liveOrders });
   } catch (err: any) {
     res.json({ success: true, data: liveOrders });
+  }
+});
+
+// Addresses API
+app.get('/api/addresses', async (req, res) => {
+  try {
+    const { userId } = req.query;
+    if (isDbConnected) {
+      const query = userId ? { userId: String(userId) } : {};
+      const addresses = await AddressModel.find(query).sort({ createdAt: -1 }).lean();
+      return res.json({ success: true, data: addresses });
+    }
+    const filtered = userId ? liveAddresses.filter((a) => a.userId === String(userId)) : liveAddresses;
+    res.json({ success: true, data: filtered });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message, data: liveAddresses });
+  }
+});
+
+app.post('/api/addresses', async (req, res) => {
+  try {
+    const { id, userId, fullName, mobile, street, city, state, pincode, isDefault } = req.body;
+    const addressId = id && id !== 'addr-new' ? id : `addr-${Date.now()}`;
+    const addressData = {
+      id: addressId,
+      userId: userId || 'usr-101',
+      fullName: fullName || 'Valued Customer',
+      mobile: mobile || '+91 98765 00000',
+      street: street || '',
+      city: city || '',
+      state: state || 'Maharashtra',
+      pincode: pincode || '',
+      isDefault: !!isDefault,
+    };
+
+    if (isDbConnected) {
+      await AddressModel.updateOne({ id: addressId }, { $set: addressData }, { upsert: true });
+    }
+
+    const existingIdx = liveAddresses.findIndex((a) => a.id === addressId);
+    if (existingIdx > -1) {
+      liveAddresses[existingIdx] = addressData;
+    } else {
+      liveAddresses.push(addressData);
+    }
+
+    res.json({ success: true, message: 'Address saved to database successfully!', data: addressData });
+  } catch (err: any) {
+    console.error('Error saving address:', err);
+    res.status(500).json({ success: false, message: err.message || 'Failed to save address' });
+  }
+});
+
+app.delete('/api/addresses/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (isDbConnected) {
+      await AddressModel.deleteOne({ id });
+    }
+    liveAddresses = liveAddresses.filter((a) => a.id !== id);
+    res.json({ success: true, message: 'Address deleted from database' });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
