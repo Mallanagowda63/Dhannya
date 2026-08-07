@@ -1,0 +1,6 @@
+{
+  "name": "Dhaanya - Organic & Custom Masala Store",
+  "description": "Complete organic food eCommerce store featuring custom masala recipe builder, wood pressed oils, dry fruits, spices, health foods, user profile, and admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
