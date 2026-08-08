@@ -40,14 +40,30 @@ try {
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const MONGO_URI =
   process.env.MONGODB_URI ||
   'mongodb+srv://vivobookausu15_db_user:Gjy9zkagsMnaoQSI@ecomm.zmiyefn.mongodb.net/?appName=ecomm';
 
+// CORS Middleware for production & local development cross-origin deployment
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 app.use(express.json());
 app.use('/images', express.static(path.join(process.cwd(), 'images')));
+
+// API Health Check Endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ success: true, status: 'online', time: new Date().toISOString() });
+});
 
 
 // MongoDB Schemas
@@ -293,7 +309,7 @@ let liveOrders: Order[] = [
 let isDbConnected = false;
 
 // Connect to MongoDB and seed initial data if empty
-async function initDatabase() {
+export async function initDatabase() {
   try {
     console.log('Connecting to MongoDB Atlas cluster "ecomm"...');
     await mongoose.connect(MONGO_URI, {
@@ -1920,7 +1936,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Dhaanya Full Stack App with MongoDB running on http://0.0.0.0:${PORT}`);
+    console.log(`Dhaanya Full Stack App running on http://0.0.0.0:${PORT}`);
   });
 }
 

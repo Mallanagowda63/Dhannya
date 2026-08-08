@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
+import { getApiUrl } from '../utils/apiConfig';
 import { Product, Order, ProductCategory } from '../types';
 import { CATEGORIES } from '../data/initialData';
 import {
@@ -157,14 +158,14 @@ export const AdminPanel: React.FC = () => {
         reviewsRes,
         customMasalasRes,
       ] = await Promise.all([
-        fetch(`/api/admin/analytics?range=${dateRange}`),
-        fetch('/api/products'),
-        fetch('/api/orders'),
-        fetch('/api/coupons'),
-        fetch('/api/categories'),
-        fetch('/api/admin/customers'),
-        fetch('/api/reviews'),
-        fetch('/api/admin/custom-masalas'),
+        fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`)),
+        fetch(getApiUrl('/api/products')),
+        fetch(getApiUrl('/api/orders')),
+        fetch(getApiUrl('/api/coupons')),
+        fetch(getApiUrl('/api/categories')),
+        fetch(getApiUrl('/api/admin/customers')),
+        fetch(getApiUrl('/api/reviews')),
+        fetch(getApiUrl('/api/admin/custom-masalas')),
       ]);
 
       const analyticsJson = await analyticsRes.json();
@@ -200,7 +201,7 @@ export const AdminPanel: React.FC = () => {
     e.preventDefault();
     if (!newProdName.trim()) return;
     try {
-      const res = await fetch('/api/admin/products', {
+      const res = await fetch(getApiUrl('/api/admin/products'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -232,7 +233,7 @@ export const AdminPanel: React.FC = () => {
     e.preventDefault();
     if (!newCouponCode.trim()) return;
     try {
-      const res = await fetch('/api/admin/coupons', {
+      const res = await fetch(getApiUrl('/api/admin/coupons'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -263,7 +264,7 @@ export const AdminPanel: React.FC = () => {
   const handleDeleteCoupon = async (code: string) => {
     if (!confirm(`Delete coupon code ${code}?`)) return;
     try {
-      const res = await fetch(`/api/admin/coupons/${code}`, { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/coupons/${code}`), { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
         setCouponsList((prev) => prev.filter((c) => c.code !== code));
@@ -278,7 +279,7 @@ export const AdminPanel: React.FC = () => {
     e.preventDefault();
     if (!newCatName.trim()) return;
     try {
-      const res = await fetch('/api/admin/categories', {
+      const res = await fetch(getApiUrl('/api/admin/categories'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newCatName, description: newCatDesc }),
@@ -299,7 +300,7 @@ export const AdminPanel: React.FC = () => {
   const handleDeleteCategory = async (slug: string) => {
     if (!confirm(`Delete category ${slug}?`)) return;
     try {
-      const res = await fetch(`/api/admin/categories/${slug}`, { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/categories/${slug}`), { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
         setCategoriesList((prev) => prev.filter((c) => c.slug !== slug));
@@ -313,7 +314,7 @@ export const AdminPanel: React.FC = () => {
   const handleDeleteCustomer = async (id: string) => {
     if (!confirm('Delete customer record?')) return;
     try {
-      const res = await fetch(`/api/admin/customers/${id}`, { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/customers/${id}`), { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
         setCustomersList((prev) => prev.filter((c) => c.id !== id));
@@ -327,7 +328,7 @@ export const AdminPanel: React.FC = () => {
   const handleDeleteReview = async (id: string) => {
     if (!confirm('Delete product review?')) return;
     try {
-      const res = await fetch(`/api/admin/reviews/${id}`, { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/reviews/${id}`), { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
         setReviewsList((prev) => prev.filter((r) => r.id !== id));
@@ -341,7 +342,7 @@ export const AdminPanel: React.FC = () => {
   const handleDeleteCustomMasala = async (id: string) => {
     if (!confirm('Delete custom recipe record?')) return;
     try {
-      const res = await fetch(`/api/admin/custom-masalas/${id}`, { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/custom-masalas/${id}`), { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
         setCustomMasalasList((prev) => prev.filter((m) => m.id !== id));
@@ -354,7 +355,7 @@ export const AdminPanel: React.FC = () => {
 
   const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
     try {
-      const res = await fetch(`/api/admin/orders/${orderId}/status`, {
+      const res = await fetch(getApiUrl(`/api/admin/orders/${orderId}/status`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -383,7 +384,7 @@ export const AdminPanel: React.FC = () => {
 
   const handleUpdateStock = async (prodId: string, newStock: number) => {
     try {
-      const res = await fetch(`/api/admin/inventory/${prodId}`, {
+      const res = await fetch(getApiUrl(`/api/admin/inventory/${prodId}`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ stock: newStock }),
@@ -401,13 +402,12 @@ export const AdminPanel: React.FC = () => {
     }
   };
 
-
   const handleCreateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProdName.trim()) return;
 
     try {
-      const res = await fetch('/api/admin/products', {
+      const res = await fetch(getApiUrl('/api/admin/products'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -433,7 +433,7 @@ export const AdminPanel: React.FC = () => {
 
   const handleDeleteProduct = async (id: string) => {
     try {
-      const res = await fetch(`/api/admin/products/${id}`, { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/products/${id}`), { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
         setProductsList((prev) => prev.filter((p) => p.id !== id));

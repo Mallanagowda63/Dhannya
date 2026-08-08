@@ -93,7 +93,6 @@ const MainAppContent: React.FC = () => {
       {/* Global Overlays */}
       <CartDrawer />
       <CheckoutModal />
-      <AuthModal />
       <UserProfileModal />
       <ProductQuickView />
       <ToastContainer />

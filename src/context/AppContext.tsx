@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { getApiUrl } from '../utils/apiConfig';
 import {
   Product,
   ProductCategory,
@@ -134,7 +135,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Load orders from server on mount
   useEffect(() => {
-    fetch('/api/orders')
+    fetch(getApiUrl('/api/orders'))
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setOrders(data.data);
@@ -144,7 +145,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Load user addresses from server on mount
   useEffect(() => {
-    fetch('/api/addresses?userId=usr-101')
+    fetch(getApiUrl('/api/addresses?userId=usr-101'))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data && data.data.length > 0) {
@@ -267,7 +268,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const applyCouponCode = async (code: string) => {
     try {
-      const res = await fetch('/api/coupons/validate', {
+      const res = await fetch(getApiUrl('/api/coupons/validate'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code, cartSubtotal }),
@@ -324,7 +325,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     try {
-      const res = await fetch('/api/orders', {
+      const res = await fetch(getApiUrl('/api/orders'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -385,7 +386,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     clearCart();
     showToast('🎉 Order placed successfully! Order ID: ' + localOrder.id, 'success');
     return localOrder;
-
   };
 
   const saveAddress = async (addressData: Address): Promise<Address> => {
@@ -395,7 +395,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     try {
-      await fetch('/api/addresses', {
+      await fetch(getApiUrl('/api/addresses'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -424,7 +424,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const deleteAddress = async (addressId: string): Promise<boolean> => {
     try {
-      await fetch(`/api/addresses/${addressId}`, { method: 'DELETE' });
+      await fetch(getApiUrl(`/api/addresses/${addressId}`), { method: 'DELETE' });
     } catch (err) {
       console.warn('API error deleting address:', err);
     }

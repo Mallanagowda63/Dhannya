@@ -164,17 +164,19 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden xl:inline">{isAdminMode ? 'Admin Portal' : 'Admin Mode'}</span>
           </button>
 
-          {/* User Profile / Auth */}
-          <button
-            onClick={() => (user ? setIsProfileOpen(true) : setIsAuthModalOpen(true))}
-            className="flex items-center gap-2 text-stone-700 hover:text-olive p-2 rounded-full hover:bg-cream transition"
-            title={user ? `Profile: ${user.name}` : 'Login / Signup'}
-          >
-            <div className="w-7 h-7 rounded-full bg-cream border border-stone-200 flex items-center justify-center text-olive text-xs font-bold">
-              {user ? user.name.charAt(0).toUpperCase() : <UserIcon className="w-4 h-4" />}
-            </div>
-            {user && <span className="hidden lg:inline text-xs font-medium max-w-[100px] truncate">{user.name}</span>}
-          </button>
+          {/* User Profile (If logged in) */}
+          {user && (
+            <button
+              onClick={() => setIsProfileOpen(true)}
+              className="flex items-center gap-2 text-stone-700 hover:text-olive p-2 rounded-full hover:bg-cream transition"
+              title={`Profile: ${user.name}`}
+            >
+              <div className="w-7 h-7 rounded-full bg-cream border border-stone-200 flex items-center justify-center text-olive text-xs font-bold">
+                {user.name.charAt(0).toUpperCase()}
+              </div>
+              <span className="hidden lg:inline text-xs font-medium max-w-[100px] truncate">{user.name}</span>
+            </button>
+          )}
 
           {/* Cart Icon */}
           <button

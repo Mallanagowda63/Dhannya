@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { getApiUrl } from '../utils/apiConfig';
 import { X, Lock, Mail, User, ShieldCheck, Key, RefreshCw, AlertCircle, CheckCircle2, Sparkles, MailCheck } from 'lucide-react';
 
 export const AuthModal: React.FC = () => {
@@ -40,7 +41,7 @@ export const AuthModal: React.FC = () => {
     let isServerSuccess = false;
 
     try {
-      const res = await fetch('/api/auth/send-otp', {
+      const res = await fetch(getApiUrl('/api/auth/send-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), name: name.trim() }),
@@ -85,7 +86,7 @@ export const AuthModal: React.FC = () => {
     let userNameToUse = name.trim();
 
     try {
-      const res = await fetch('/api/auth/verify-otp', {
+      const res = await fetch(getApiUrl('/api/auth/verify-otp'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
