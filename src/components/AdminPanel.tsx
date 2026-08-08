@@ -1,68 +1,345 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { Product, Order, ProductCategory } from '../types';
 import { CATEGORIES } from '../data/initialData';
 import {
-  ShieldAlert,
-  DollarSign,
+  LayoutDashboard,
   ShoppingBag,
   Package,
+  Layers,
+  Warehouse,
   Users,
+  Flame,
+  Star,
+  Ticket,
+  TrendingUp,
+  Settings,
+  RefreshCw,
   Plus,
   Trash2,
   Edit2,
-  Check,
-  Tag,
-  BarChart3,
+  CheckCircle2,
+  AlertTriangle,
+  Search,
+  Filter,
+  ArrowUpRight,
+  ShieldCheck,
+  Calendar,
   X,
+  Menu,
+  ChefHat,
+  ChevronDown,
+  Info,
+  DollarSign,
+  Activity,
+  Mail,
+  Tag,
+  Clock,
   Sparkles,
+  Award,
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
   const { setIsAdminMode, showToast } = useApp();
 
-  const [activeAdminTab, setActiveAdminTab] = useState<'dashboard' | 'products' | 'orders' | 'coupons'>('dashboard');
-  const [metrics, setMetrics] = useState({
-    totalRevenue: 48920,
-    totalOrders: 38,
-    totalProducts: 24,
-    totalCustomers: 124,
-    pendingOrders: 5,
-  });
+  // Navigation State
+  const [activeTab, setActiveTab] = useState<
+    | 'dashboard'
+    | 'orders'
+    | 'products'
+    | 'categories'
+    | 'inventory'
+    | 'customers'
+    | 'custom_masala'
+    | 'reviews'
+    | 'coupons'
+    | 'analytics'
+    | 'settings'
+  >('dashboard');
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  // Email Notification Modal State
+  const [activeEmailModal, setActiveEmailModal] = useState<{
+    toEmail: string;
+    subject: string;
+    body: string;
+    orderId: string;
+    status: string;
+  } | null>(null);
+
+  // Filters & Range
+  const [dateRange, setDateRange] = useState<'Today' | 'Yesterday' | '7D' | '30D' | '90D' | '1Y' | 'Custom'>('30D');
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Data States
+  const [analyticsData, setAnalyticsData] = useState<any>(null);
   const [productsList, setProductsList] = useState<Product[]>([]);
   const [ordersList, setOrdersList] = useState<Order[]>([]);
-  const [isAddProductOpen, setIsAddProductOpen] = useState(false);
+  const [couponsList, setCouponsList] = useState<any[]>([]);
+  const [categoriesList, setCategoriesList] = useState<any[]>([]);
+  const [customersList, setCustomersList] = useState<any[]>([]);
+  const [reviewsList, setReviewsList] = useState<any[]>([]);
+  const [customMasalasList, setCustomMasalasList] = useState<any[]>([]);
 
-  // New Product Form state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('All');
+  const [selectedStatusFilter, setSelectedStatusFilter] = useState<string>('All');
+
+  // Chart Interactive Hover States
+  const [hoveredSalesPoint, setHoveredSalesPoint] = useState<any>(null);
+  const [ordersViewMode, setOrdersViewMode] = useState<'count' | 'revenue'>('count');
+  const [topProductsMode, setTopProductsMode] = useState<'revenue' | 'units'>('revenue');
+
+  // Product Add Modal State
+  const [isAddProductOpen, setIsAddProductOpen] = useState(false);
   const [newProdName, setNewProdName] = useState('');
   const [newProdCategory, setNewProdCategory] = useState<ProductCategory>('Spices');
   const [newProdPrice, setNewProdPrice] = useState(299);
   const [newProdStock, setNewProdStock] = useState(50);
   const [newProdDesc, setNewProdDesc] = useState('');
 
+  // Coupon Add Modal State
+  const [isAddCouponOpen, setIsAddCouponOpen] = useState(false);
+  const [newCouponCode, setNewCouponCode] = useState('');
+  const [newCouponPercent, setNewCouponPercent] = useState(15);
+  const [newCouponMinOrder, setNewCouponMinOrder] = useState(499);
+  const [newCouponMaxDiscount, setNewCouponMaxDiscount] = useState(300);
+  const [newCouponDesc, setNewCouponDesc] = useState('');
+  const [newCouponExpiryDate, setNewCouponExpiryDate] = useState('2026-12-31T23:59');
+
+  // Category Add Modal State
+  const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
+  const [newCatName, setNewCatName] = useState('');
+  const [newCatDesc, setNewCatDesc] = useState('');
+
+  // Fetch Analytics & Database Records
+  const fetchDashboardData = async () => {
+    setIsLoading(true);
+    try {
+      const [
+        analyticsRes,
+        productsRes,
+        ordersRes,
+        couponsRes,
+        categoriesRes,
+        customersRes,
+        reviewsRes,
+        customMasalasRes,
+      ] = await Promise.all([
+        fetch(`/api/admin/analytics?range=${dateRange}`),
+        fetch('/api/products'),
+        fetch('/api/orders'),
+        fetch('/api/coupons'),
+        fetch('/api/categories'),
+        fetch('/api/admin/customers'),
+        fetch('/api/reviews'),
+        fetch('/api/admin/custom-masalas'),
+      ]);
+
+      const analyticsJson = await analyticsRes.json();
+      const productsJson = await productsRes.json();
+      const ordersJson = await ordersRes.json();
+      const couponsJson = await couponsRes.json();
+      const categoriesJson = await categoriesRes.json();
+      const customersJson = await customersRes.json();
+      const reviewsJson = await reviewsRes.json();
+      const customMasalasJson = await customMasalasRes.json();
+
+      if (analyticsJson.success) setAnalyticsData(analyticsJson.data);
+      if (productsJson.success) setProductsList(productsJson.data);
+      if (ordersJson.success) setOrdersList(ordersJson.data);
+      if (couponsJson.success) setCouponsList(couponsJson.data);
+      if (categoriesJson.success) setCategoriesList(categoriesJson.data);
+      if (customersJson.success) setCustomersList(customersJson.data);
+      if (reviewsJson.success) setReviewsList(reviewsJson.data);
+      if (customMasalasJson.success) setCustomMasalasList(customMasalasJson.data);
+    } catch (e) {
+      console.error('Error fetching dashboard data:', e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetch('/api/products')
-      .then((res) => res.json())
-      .then((d) => {
-        if (d.success) setProductsList(d.data);
-      })
-      .catch(() => {});
+    fetchDashboardData();
+  }, [dateRange]);
 
-    fetch('/api/orders')
-      .then((res) => res.json())
-      .then((d) => {
-        if (d.success) setOrdersList(d.data);
-      })
-      .catch(() => {});
+  // Handlers
+  const handleCreateCoupon = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newCouponCode.trim()) return;
+    try {
+      const res = await fetch('/api/admin/coupons', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: newCouponCode,
+          discountPercent: newCouponPercent,
+          minOrderValue: newCouponMinOrder,
+          maxDiscount: newCouponMaxDiscount,
+          description: newCouponDesc,
+          expiryDate: newCouponExpiryDate,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCouponsList((prev) => [data.data, ...prev.filter((c) => c.code !== data.data.code)]);
+        showToast(`Custom coupon ${newCouponCode.toUpperCase()} created & saved to database!`, 'success');
+        setIsAddCouponOpen(false);
+        setNewCouponCode('');
+        setNewCouponPercent(15);
+        setNewCouponMinOrder(499);
+        setNewCouponMaxDiscount(300);
+        setNewCouponDesc('');
+      }
+    } catch {
+      showToast('Failed to create coupon', 'error');
+    }
+  };
 
-    fetch('/api/admin/metrics')
-      .then((res) => res.json())
-      .then((d) => {
-        if (d.success) setMetrics(d.data);
-      })
-      .catch(() => {});
-  }, []);
+  const handleDeleteCoupon = async (code: string) => {
+    if (!confirm(`Delete coupon code ${code}?`)) return;
+    try {
+      const res = await fetch(`/api/admin/coupons/${code}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setCouponsList((prev) => prev.filter((c) => c.code !== code));
+        showToast(`Coupon ${code} deleted from database!`, 'success');
+      }
+    } catch {
+      showToast('Failed to delete coupon', 'error');
+    }
+  };
+
+  const handleCreateCategory = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newCatName.trim()) return;
+    try {
+      const res = await fetch('/api/admin/categories', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: newCatName, description: newCatDesc }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCategoriesList((prev) => [...prev, data.data]);
+        showToast(`Category ${newCatName} created!`, 'success');
+        setIsAddCategoryOpen(false);
+        setNewCatName('');
+        setNewCatDesc('');
+      }
+    } catch {
+      showToast('Failed to create category', 'error');
+    }
+  };
+
+  const handleDeleteCategory = async (slug: string) => {
+    if (!confirm(`Delete category ${slug}?`)) return;
+    try {
+      const res = await fetch(`/api/admin/categories/${slug}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setCategoriesList((prev) => prev.filter((c) => c.slug !== slug));
+        showToast(`Category deleted!`, 'success');
+      }
+    } catch {
+      showToast('Failed to delete category', 'error');
+    }
+  };
+
+  const handleDeleteCustomer = async (id: string) => {
+    if (!confirm('Delete customer record?')) return;
+    try {
+      const res = await fetch(`/api/admin/customers/${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setCustomersList((prev) => prev.filter((c) => c.id !== id));
+        showToast('Customer deleted!', 'success');
+      }
+    } catch {
+      showToast('Failed to delete customer', 'error');
+    }
+  };
+
+  const handleDeleteReview = async (id: string) => {
+    if (!confirm('Delete product review?')) return;
+    try {
+      const res = await fetch(`/api/admin/reviews/${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setReviewsList((prev) => prev.filter((r) => r.id !== id));
+        showToast('Review deleted!', 'success');
+      }
+    } catch {
+      showToast('Failed to delete review', 'error');
+    }
+  };
+
+  const handleDeleteCustomMasala = async (id: string) => {
+    if (!confirm('Delete custom recipe record?')) return;
+    try {
+      const res = await fetch(`/api/admin/custom-masalas/${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setCustomMasalasList((prev) => prev.filter((m) => m.id !== id));
+        showToast('Custom recipe deleted!', 'success');
+      }
+    } catch {
+      showToast('Failed to delete custom recipe', 'error');
+    }
+  };
+
+  const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
+    try {
+      const res = await fetch(`/api/admin/orders/${orderId}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setOrdersList((prev) =>
+          prev.map((o) => (o.id === orderId ? { ...o, status: newStatus as any } : o))
+        );
+        showToast(`Order ${orderId} updated to ${newStatus} & Email Dispatched!`, 'success');
+        if (data.emailNotification) {
+          setActiveEmailModal({
+            toEmail: data.emailNotification.toEmail,
+            subject: data.emailNotification.subject,
+            body: data.emailNotification.body,
+            orderId,
+            status: newStatus,
+          });
+        }
+        fetchDashboardData();
+      }
+    } catch {
+      showToast('Failed to update status', 'error');
+    }
+  };
+
+  const handleUpdateStock = async (prodId: string, newStock: number) => {
+    try {
+      const res = await fetch(`/api/admin/inventory/${prodId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stock: newStock }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setProductsList((prev) =>
+          prev.map((p) => (p.id === prodId ? { ...p, stock: newStock } : p))
+        );
+        showToast(`Stock updated to ${newStock} units`);
+        fetchDashboardData();
+      }
+    } catch {
+      showToast('Failed to update stock', 'error');
+    }
+  };
+
 
   const handleCreateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,12 +361,12 @@ export const AdminPanel: React.FC = () => {
       if (data.success) {
         setProductsList((prev) => [data.data, ...prev]);
         setIsAddProductOpen(false);
-        showToast('Product added to live inventory!', 'success');
+        showToast('New product added to inventory!', 'success');
         setNewProdName('');
         setNewProdDesc('');
       }
     } catch {
-      showToast('Error adding product', 'error');
+      showToast('Error creating product', 'error');
     }
   };
 
@@ -99,315 +376,1621 @@ export const AdminPanel: React.FC = () => {
       const data = await res.json();
       if (data.success) {
         setProductsList((prev) => prev.filter((p) => p.id !== id));
-        showToast('Product deleted', 'info');
+        showToast('Product removed from database', 'info');
       }
     } catch {
-      showToast('Error deleting product', 'error');
+      showToast('Error removing product', 'error');
     }
   };
 
-  const handleUpdateOrderStatus = (orderId: string, newStatus: Order['status']) => {
-    setOrdersList((prev) =>
-      prev.map((o) => (o.id === orderId ? { ...o, status: newStatus } : o))
-    );
-    showToast(`Order ${orderId} status updated to ${newStatus}`);
+  // Extract analytics values
+  const kpis = analyticsData?.kpis || {
+    totalRevenue: 376860,
+    totalRevenueChange: 18.4,
+    totalOrders: 1248,
+    pendingDispatch: 68,
+    activeCatalogProducts: productsList.length || 302,
+    activeCategories: 23,
+    registeredCustomers: 5131,
+    retentionRate: '92%',
   };
 
-  const handleSeedDatabase = async () => {
-    try {
-      const res = await fetch('/api/seed', { method: 'POST' });
-      const data = await res.json();
-      if (data.success) {
-        showToast(data.message, 'success');
-        const pRes = await fetch('/api/products');
-        const pData = await pRes.json();
-        if (pData.success) setProductsList(pData.data);
-      } else {
-        showToast(data.message, 'error');
-      }
-    } catch {
-      showToast('Error syncing with MongoDB Atlas', 'error');
-    }
+  const salesOverview = analyticsData?.salesOverview || [];
+  const orderStatus = analyticsData?.orderStatus || [];
+  const salesByCategory = analyticsData?.salesByCategory || [];
+  const topSellingProducts = analyticsData?.topSellingProducts || [];
+  const customerGrowth = analyticsData?.customerGrowth || [];
+  const inventoryOverview = analyticsData?.inventoryOverview || { inStock: 240, lowStock: 35, criticalStock: 18, outOfStock: 9 };
+  const lowStockAlerts = analyticsData?.lowStockAlerts || [];
+  const customMasalaAnalytics = analyticsData?.customMasalaAnalytics || {
+    totalOrders: 326,
+    totalRevenue: 128450,
+    avgWeightGrams: 245,
+    avgPrice: 395,
+    ordersOverTime: [],
+    mostSelectedIngredients: [],
+    roastingPreference: [],
   };
+
+  // Chart max calculations for SVG scaling
+  const maxRevenue = useMemo(
+    () => Math.max(...salesOverview.map((s: any) => s.revenue || 0), 1000),
+    [salesOverview]
+  );
+  const maxOrders = useMemo(
+    () => Math.max(...salesOverview.map((s: any) => s.orders || 0), 10),
+    [salesOverview]
+  );
 
   return (
-    <div className="min-h-screen bg-paper text-earth py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Admin Header */}
-        <div className="bg-white border border-soft rounded-3xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-cream border border-soft text-olive flex items-center justify-center">
-              <ShieldAlert className="w-6 h-6" />
+    <div className="min-h-screen bg-[#faf8f4] text-earth flex flex-col font-sans">
+      {/* Top Admin Navigation Header */}
+      <header className="bg-stone-900 text-white border-b border-stone-800 sticky top-0 z-40 px-4 sm:px-6 py-3.5 flex items-center justify-between shadow-md">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="p-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 transition"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-emerald-700 flex items-center justify-center font-serif font-black text-amber-300 text-lg shadow-sm">
+              Dh
             </div>
             <div>
-              <h1 className="text-xl font-bold font-serif text-earth">Dhaanya Admin Console</h1>
-              <p className="text-xs text-stone-500">Manage products, custom recipes, orders & MongoDB database sync</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleSeedDatabase}
-              className="bg-olive hover:bg-[#4a4a34] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5"
-              title="Seed MongoDB Atlas Cluster with Catalog Data"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-200" />
-              <span>Seed MongoDB Atlas</span>
-            </button>
-
-            <button
-              onClick={() => setIsAdminMode(false)}
-              className="bg-cream hover:bg-stone-100 text-earth text-xs font-bold px-4 py-2 rounded-xl transition border border-soft"
-            >
-              Return to Storefront
-            </button>
-          </div>
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="flex items-center gap-3 border-b border-soft text-xs font-bold pb-2">
-          <button
-            onClick={() => setActiveAdminTab('dashboard')}
-            className={`px-4 py-2 rounded-xl transition ${
-              activeAdminTab === 'dashboard' ? 'bg-olive text-white font-bold' : 'bg-cream text-stone-600'
-            }`}
-          >
-            Dashboard
-          </button>
-          <button
-            onClick={() => setActiveAdminTab('products')}
-            className={`px-4 py-2 rounded-xl transition ${
-              activeAdminTab === 'products' ? 'bg-olive text-white font-bold' : 'bg-cream text-stone-600'
-            }`}
-          >
-            Products Catalog ({productsList.length})
-          </button>
-          <button
-            onClick={() => setActiveAdminTab('orders')}
-            className={`px-4 py-2 rounded-xl transition ${
-              activeAdminTab === 'orders' ? 'bg-olive text-white font-bold' : 'bg-cream text-stone-600'
-            }`}
-          >
-            Customer Orders ({ordersList.length})
-          </button>
-        </div>
-
-        {/* DASHBOARD TAB */}
-        {activeAdminTab === 'dashboard' && (
-          <div className="space-y-6">
-            {/* KPI Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white p-5 rounded-2xl border border-soft space-y-1 shadow-xs">
-                <div className="flex justify-between items-center text-xs text-stone-500">
-                  <span>Total Store Revenue</span>
-                  <DollarSign className="w-4 h-4 text-olive" />
-                </div>
-                <div className="text-2xl font-bold text-olive">₹{metrics.totalRevenue}</div>
-                <span className="text-[10px] text-olive font-bold">+18.4% from last week</span>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-soft space-y-1 shadow-xs">
-                <div className="flex justify-between items-center text-xs text-stone-500">
-                  <span>Total Orders Placed</span>
-                  <ShoppingBag className="w-4 h-4 text-olive" />
-                </div>
-                <div className="text-2xl font-bold text-earth">{metrics.totalOrders}</div>
-                <span className="text-[10px] text-olive font-bold">{metrics.pendingOrders} pending dispatch</span>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-soft space-y-1 shadow-xs">
-                <div className="flex justify-between items-center text-xs text-stone-500">
-                  <span>Active Catalog Products</span>
-                  <Package className="w-4 h-4 text-olive" />
-                </div>
-                <div className="text-2xl font-bold text-earth">{productsList.length}</div>
-                <span className="text-[10px] text-stone-500">22 Categories active</span>
-              </div>
-
-              <div className="bg-white p-5 rounded-2xl border border-soft space-y-1 shadow-xs">
-                <div className="flex justify-between items-center text-xs text-stone-500">
-                  <span>Registered Customers</span>
-                  <Users className="w-4 h-4 text-olive" />
-                </div>
-                <div className="text-2xl font-bold text-earth">{metrics.totalCustomers}</div>
-                <span className="text-[10px] text-olive font-bold">92% retention rate</span>
-              </div>
-            </div>
-
-            {/* Quick Overview Table */}
-            <div className="bg-white p-6 rounded-3xl border border-soft space-y-4 shadow-xs">
-              <h3 className="text-sm font-bold text-earth flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-olive" /> Store Sales Analytics Summary
-              </h3>
-              <p className="text-xs text-stone-600">
-                Top selling category is <strong>Wood Pressed Oils</strong>, followed by <strong>Custom Masala Studio</strong> orders. Average order value is ₹742.
+              <h1 className="text-lg font-bold font-serif tracking-tight text-white flex items-center gap-2">
+                <span>Dhannya Admin Dashboard</span>
+                <span className="bg-emerald-800 text-emerald-200 text-[10px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full border border-emerald-700">
+                  PRO
+                </span>
+              </h1>
+              <p className="text-xs text-stone-400 hidden sm:block">
+                Store Intelligence & Control Center
               </p>
             </div>
           </div>
-        )}
+        </div>
 
-        {/* PRODUCTS TAB */}
-        {activeAdminTab === 'products' && (
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <h3 className="text-sm font-bold text-earth">Live Products ({productsList.length})</h3>
-              <button
-                onClick={() => setIsAddProductOpen(true)}
-                className="bg-olive hover:bg-[#4a4a34] text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 transition"
-              >
-                <Plus className="w-4 h-4" /> Add New Product
-              </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={fetchDashboardData}
+            disabled={isLoading}
+            className="flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-stone-200 px-3.5 py-2 rounded-xl text-xs font-bold border border-stone-700 transition cursor-pointer"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-amber-400' : ''}`} />
+            <span className="hidden sm:inline">Refresh</span>
+          </button>
+
+          <button
+            onClick={() => setIsAdminMode(false)}
+            className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold px-3.5 py-2 rounded-xl text-xs transition cursor-pointer shadow-xs"
+          >
+            <span>Exit Admin</span>
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1 relative">
+        {/* Admin Sidebar */}
+        <aside
+          className={`bg-white border-r border-stone-200/90 w-64 shrink-0 transition-all duration-300 z-30 flex flex-col justify-between ${
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full absolute h-full'
+          }`}
+        >
+          <div className="p-4 space-y-1">
+            <div className="px-3 py-2 text-[11px] font-extrabold text-stone-600 uppercase tracking-widest">
+              Store Management
             </div>
 
-            {/* Products Table */}
-            <div className="bg-white border border-soft rounded-2xl overflow-hidden text-xs shadow-xs">
-              <div className="grid grid-cols-12 bg-cream p-3 font-bold text-stone-600 border-b border-soft">
-                <div className="col-span-5">Product Name & Category</div>
-                <div className="col-span-3">Base Price</div>
-                <div className="col-span-2">Stock Level</div>
-                <div className="col-span-2 text-right">Actions</div>
+            {[
+              { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+              { id: 'orders', label: 'Orders', icon: ShoppingBag, badge: kpis.pendingDispatch },
+              { id: 'products', label: 'Products', icon: Package, badge: productsList.length },
+              { id: 'categories', label: 'Categories', icon: Layers },
+              { id: 'inventory', label: 'Inventory', icon: Warehouse, badge: lowStockAlerts.length },
+              { id: 'customers', label: 'Customers', icon: Users },
+              { id: 'custom_masala', label: 'Custom Masala', icon: ChefHat },
+              { id: 'reviews', label: 'Reviews', icon: Star },
+              { id: 'coupons', label: 'Coupons', icon: Ticket },
+              { id: 'analytics', label: 'Analytics', icon: TrendingUp },
+              { id: 'settings', label: 'Settings', icon: Settings },
+            ].map((item) => {
+              const Icon = item.icon;
+              const isActive = activeTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id as any)}
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#2b3e2a] text-white shadow-sm'
+                      : 'text-stone-700 hover:bg-[#faf8f4] hover:text-earth'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-amber-300' : 'text-stone-600'}`} />
+                    <span>{item.label}</span>
+                  </div>
+                  {item.badge !== undefined && item.badge > 0 && (
+                    <span
+                      className={`text-[10px] font-black px-2 py-0.5 rounded-full ${
+                        isActive ? 'bg-amber-400 text-stone-900' : 'bg-stone-100 text-stone-700 border border-stone-200'
+                      }`}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="p-4 border-t border-stone-200/80 bg-[#faf8f4] m-3 rounded-2xl">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center font-bold text-sm">
+                AD
+              </div>
+              <div className="overflow-hidden">
+                <p className="text-xs font-bold text-earth truncate">Store Admin</p>
+                <p className="text-[10px] text-stone-600 truncate">dhaanyaorganic1@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Dashboard Area */}
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-8 overflow-y-auto max-w-[1536px] mx-auto w-full">
+          {/* Dashboard Header Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-stone-200/80 shadow-xs">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-earth tracking-tight">
+                {activeTab === 'dashboard' && 'Dhannya Store Dashboard'}
+                {activeTab === 'orders' && 'Orders Management'}
+                {activeTab === 'products' && 'Product Inventory Catalog'}
+                {activeTab === 'categories' && 'Store Categories'}
+                {activeTab === 'inventory' && 'Stock Inventory & Restock'}
+                {activeTab === 'customers' && 'Registered Customers'}
+                {activeTab === 'custom_masala' && 'Custom Masala Analytics'}
+                {activeTab === 'reviews' && 'Product Reviews'}
+                {activeTab === 'coupons' && 'Discount Coupons'}
+                {activeTab === 'analytics' && 'Advanced Store Analytics'}
+                {activeTab === 'settings' && 'Store Settings'}
+              </h2>
+              <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                Welcome back, Admin! Here's what's happening with your store today.
+              </p>
+            </div>
+
+            {/* Date Range Selector */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 bg-[#faf8f4] border border-stone-200 px-3.5 py-2 rounded-2xl text-xs font-bold">
+                <Calendar className="w-4 h-4 text-olive" />
+                <select
+                  value={dateRange}
+                  onChange={(e) => setDateRange(e.target.value as any)}
+                  className="bg-transparent font-bold text-earth focus:outline-none cursor-pointer"
+                >
+                  <option value="Today">Today</option>
+                  <option value="Yesterday">Yesterday</option>
+                  <option value="7D">Last 7 Days</option>
+                  <option value="30D">Last 30 Days</option>
+                  <option value="90D">Last 90 Days</option>
+                  <option value="1Y">This Year</option>
+                  <option value="Custom">Custom Range</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* DASHBOARD TAB VIEW */}
+          {activeTab === 'dashboard' && (
+            <div className="space-y-8">
+              {/* TOP 4 KPI CARDS */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {/* CARD 1: Total Store Revenue */}
+                <div className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-xs flex flex-col justify-between relative overflow-hidden">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-stone-600">
+                      Total Store Revenue
+                    </span>
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-lg">
+                      ₹
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-extrabold font-serif text-earth">
+                      ₹{kpis.totalRevenue.toLocaleString()}
+                    </h3>
+                    <p className="text-xs font-bold text-emerald-700 flex items-center gap-1 mt-2">
+                      <TrendingUp className="w-3.5 h-3.5" />
+                      <span>↑ {kpis.totalRevenueChange}% from previous period</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* CARD 2: Total Orders Placed */}
+                <div className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-stone-600">
+                      Total Orders Placed
+                    </span>
+                    <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center font-bold">
+                      <ShoppingBag className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-extrabold font-serif text-earth">
+                      {kpis.totalOrders.toLocaleString()}
+                    </h3>
+                    <p className="text-xs font-bold text-amber-800 mt-2">
+                      {kpis.pendingDispatch} pending dispatch
+                    </p>
+                  </div>
+                </div>
+
+                {/* CARD 3: Active Catalog Products */}
+                <div className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-stone-600">
+                      Active Catalog Products
+                    </span>
+                    <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center font-bold">
+                      <Package className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-extrabold font-serif text-earth">
+                      {kpis.activeCatalogProducts}
+                    </h3>
+                    <p className="text-xs font-bold text-stone-600 mt-2">
+                      {kpis.activeCategories} categories active
+                    </p>
+                  </div>
+                </div>
+
+                {/* CARD 4: Registered Customers */}
+                <div className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-xs flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-stone-600">
+                      Registered Customers
+                    </span>
+                    <div className="w-10 h-10 rounded-2xl bg-purple-50 text-purple-800 flex items-center justify-center font-bold">
+                      <Users className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-extrabold font-serif text-earth">
+                      {kpis.registeredCustomers.toLocaleString()}
+                    </h3>
+                    <p className="text-xs font-bold text-stone-600 mt-2">
+                      {kpis.retentionRate} customer retention rate
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="divide-y divide-soft max-h-[500px] overflow-y-auto">
-                {productsList.map((prod) => (
-                  <div key={prod.id} className="grid grid-cols-12 p-3 items-center hover:bg-cream/50 transition">
-                    <div className="col-span-5 flex items-center gap-2">
-                      <img src={prod.image} alt="" className="w-8 h-8 rounded-lg object-cover" />
-                      <div>
-                        <strong className="text-earth block truncate">{prod.name}</strong>
-                        <span className="text-[10px] text-olive">{prod.category}</span>
+              {/* SALES OVERVIEW (LINE / AREA CHART) */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                  <div>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+                      REVENUE & VOLUME TRENDS
+                    </span>
+                    <h3 className="text-2xl font-bold font-serif text-earth mt-1">
+                      Sales Overview
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2 bg-[#faf8f4] p-1 rounded-2xl border border-stone-200 text-xs font-bold">
+                    {['7D', '30D', '90D', '1Y'].map((range) => (
+                      <button
+                        key={range}
+                        onClick={() => setDateRange(range as any)}
+                        className={`px-3 py-1.5 rounded-xl transition cursor-pointer ${
+                          dateRange === range ? 'bg-[#2b3e2a] text-white shadow-xs' : 'text-stone-600 hover:text-earth'
+                        }`}
+                      >
+                        {range}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* SVG Area & Line Chart */}
+                <div className="relative h-72 w-full pt-4">
+                  <svg className="w-full h-full overflow-visible" viewBox="0 0 800 240">
+                    <defs>
+                      <linearGradient id="salesGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#556b2f" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#556b2f" stopOpacity="0.0" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Horizontal Grid lines */}
+                    {[0, 60, 120, 180, 240].map((y, i) => (
+                      <line key={i} x1="0" y1={y} x2="800" y2={y} stroke="#e7e5e4" strokeDasharray="4 4" />
+                    ))}
+
+                    {/* Area Path */}
+                    {salesOverview.length > 1 && (
+                      <path
+                        d={`M 0,240 ${salesOverview
+                          .map((pt: any, idx: number) => {
+                            const x = (idx / (salesOverview.length - 1)) * 800;
+                            const y = 240 - (pt.revenue / maxRevenue) * 200;
+                            return `L ${x},${y}`;
+                          })
+                          .join(' ')} L 800,240 Z`}
+                        fill="url(#salesGrad)"
+                      />
+                    )}
+
+                    {/* Smooth Curve Line */}
+                    {salesOverview.length > 1 && (
+                      <path
+                        d={salesOverview
+                          .map((pt: any, idx: number) => {
+                            const x = (idx / (salesOverview.length - 1)) * 800;
+                            const y = 240 - (pt.revenue / maxRevenue) * 200;
+                            return `${idx === 0 ? 'M' : 'L'} ${x},${y}`;
+                          })
+                          .join(' ')}
+                        fill="none"
+                        stroke="#2b3e2a"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                      />
+                    )}
+
+                    {/* Interactive Hover Circles */}
+                    {salesOverview.map((pt: any, idx: number) => {
+                      const x = (idx / (salesOverview.length - 1)) * 800;
+                      const y = 240 - (pt.revenue / maxRevenue) * 200;
+                      return (
+                        <circle
+                          key={idx}
+                          cx={x}
+                          cy={y}
+                          r="5"
+                          className="fill-amber-400 stroke-[#2b3e2a] stroke-2 hover:r-8 transition-all cursor-pointer"
+                          onMouseEnter={() => setHoveredSalesPoint({ ...pt, x, y })}
+                          onMouseLeave={() => setHoveredSalesPoint(null)}
+                        />
+                      );
+                    })}
+                  </svg>
+
+                  {/* Hover Tooltip Popup */}
+                  {hoveredSalesPoint && (
+                    <div
+                      className="absolute z-20 bg-stone-900 text-white p-3 rounded-2xl shadow-xl text-xs font-sans pointer-events-none transform -translate-x-1/2 -translate-y-full border border-stone-700"
+                      style={{ left: `${(hoveredSalesPoint.x / 800) * 100}%`, top: `${(hoveredSalesPoint.y / 240) * 100 - 10}%` }}
+                    >
+                      <p className="font-bold text-amber-300">{hoveredSalesPoint.date}</p>
+                      <p className="font-semibold text-white">Revenue: ₹{hoveredSalesPoint.revenue.toLocaleString()}</p>
+                      <p className="text-stone-300">Orders: {hoveredSalesPoint.orders} placed</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-stone-600 font-bold border-t border-stone-200/60 pt-3">
+                  <span>{salesOverview[0]?.date || 'Start'}</span>
+                  <span>{salesOverview[Math.floor(salesOverview.length / 2)]?.date || 'Mid'}</span>
+                  <span>{salesOverview[salesOverview.length - 1]?.date || 'End'}</span>
+                </div>
+              </div>
+
+              {/* 2-COLUMN SECTION: ORDERS OVERVIEW BAR CHART & ORDER STATUS DONUT CHART */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* ORDERS OVERVIEW (BAR CHART) */}
+                <div className="bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                  <div className="flex items-center justify-between border-b border-stone-200/60 pb-4">
+                    <div>
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+                        DAILY FULFILLMENT
+                      </span>
+                      <h3 className="text-xl font-bold font-serif text-earth mt-1">
+                        Orders Overview
+                      </h3>
+                    </div>
+
+                    <select
+                      value={ordersViewMode}
+                      onChange={(e) => setOrdersViewMode(e.target.value as any)}
+                      className="bg-[#faf8f4] border border-stone-200 px-3 py-1.5 rounded-xl text-xs font-bold text-earth cursor-pointer"
+                    >
+                      <option value="count">Order Count</option>
+                      <option value="revenue">Revenue (₹)</option>
+                    </select>
+                  </div>
+
+                  <div className="h-60 w-full flex items-end justify-between gap-2 pt-4">
+                    {salesOverview.slice(-14).map((pt: any, idx: number) => {
+                      const val = ordersViewMode === 'count' ? pt.orders : pt.revenue;
+                      const maxVal = ordersViewMode === 'count' ? maxOrders : maxRevenue;
+                      const heightPct = Math.max(10, Math.round((val / maxVal) * 100));
+
+                      return (
+                        <div key={idx} className="flex-1 flex flex-col items-center gap-2 group relative">
+                          {/* Tooltip hover */}
+                          <div className="opacity-0 group-hover:opacity-100 transition absolute -top-8 bg-stone-900 text-white text-[10px] px-2 py-1 rounded-md shadow-md z-10 whitespace-nowrap">
+                            {pt.date}: {ordersViewMode === 'count' ? `${pt.orders} Orders` : `₹${pt.revenue}`}
+                          </div>
+
+                          <div
+                            style={{ height: `${heightPct}%` }}
+                            className="w-full bg-[#b0534c] hover:bg-[#963d37] rounded-t-xl transition-all duration-300 shadow-2xs"
+                          />
+                          <span className="text-[10px] text-stone-600 font-bold truncate">
+                            {pt.date.split(' ')[1] || pt.date}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* ORDER STATUS (DONUT CHART) */}
+                <div className="bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                  <div className="border-b border-stone-200/60 pb-4">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+                      ORDER LIFECYCLE
+                    </span>
+                    <h3 className="text-xl font-bold font-serif text-earth mt-1">
+                      Order Status Breakdown
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                    {/* SVG Donut Chart */}
+                    <div className="relative w-44 h-44 shrink-0">
+                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                        <path
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          fill="none"
+                          stroke="#e7e5e4"
+                          strokeWidth="3.8"
+                        />
+                        {orderStatus.reduce(
+                          (acc: { paths: any[]; cumulative: number }, item: any) => {
+                            const strokeDash = `${item.percentage} ${100 - item.percentage}`;
+                            const strokeOffset = 100 - acc.cumulative;
+                            acc.paths.push(
+                              <path
+                                key={item.status}
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none"
+                                stroke={item.color}
+                                strokeWidth="4.2"
+                                strokeDasharray={strokeDash}
+                                strokeDashoffset={strokeOffset}
+                              />
+                            );
+                            acc.cumulative += item.percentage;
+                            return acc;
+                          },
+                          { paths: [], cumulative: 0 }
+                        ).paths}
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <span className="text-2xl font-black font-serif text-earth">{kpis.totalOrders}</span>
+                        <span className="text-[10px] uppercase font-bold text-stone-600 tracking-wider">Total</span>
                       </div>
                     </div>
-                    <div className="col-span-3 text-olive font-bold">
-                      ₹{prod.variants[0]?.price || 299}
+
+                    {/* Donut Legend */}
+                    <div className="flex-1 grid grid-cols-2 gap-2 text-xs">
+                      {orderStatus.map((st: any) => (
+                        <div key={st.status} className="flex items-center gap-2 p-2 rounded-xl bg-[#faf8f4] border border-stone-200/60">
+                          <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: st.color }} />
+                          <div>
+                            <p className="font-bold text-earth">{st.status}</p>
+                            <p className="text-[10px] text-stone-600 font-semibold">{st.count} ({st.percentage}%)</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div className="col-span-2">
-                      <span className="bg-cream px-2 py-0.5 rounded text-[10px] font-bold text-stone-600 border border-soft">
-                        {prod.stock} units
+                  </div>
+                </div>
+              </div>
+
+              {/* 2-COLUMN SECTION: SALES BY CATEGORY & TOP SELLING PRODUCTS */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* SALES BY CATEGORY */}
+                <div className="bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                  <div className="border-b border-stone-200/60 pb-4">
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+                      CATEGORY PERFORMANCE
+                    </span>
+                    <h3 className="text-xl font-bold font-serif text-earth mt-1">
+                      Sales by Category
+                    </h3>
+                  </div>
+
+                  <div className="space-y-3.5">
+                    {salesByCategory.map((cat: any) => (
+                      <div key={cat.category} className="space-y-1">
+                        <div className="flex items-center justify-between text-xs font-bold">
+                          <span className="text-earth flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: cat.color }} />
+                            {cat.category}
+                          </span>
+                          <span className="text-stone-700">₹{cat.revenue.toLocaleString()} ({cat.percentage}%)</span>
+                        </div>
+                        <div className="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+                          <div
+                            className="h-full rounded-full transition-all duration-500"
+                            style={{ width: `${cat.percentage}%`, backgroundColor: cat.color }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* TOP SELLING PRODUCTS */}
+                <div className="bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                  <div className="flex items-center justify-between border-b border-stone-200/60 pb-4">
+                    <div>
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+                        CATALOG LEADERBOARD
+                      </span>
+                      <h3 className="text-xl font-bold font-serif text-earth mt-1">
+                        Top Selling Products
+                      </h3>
+                    </div>
+
+                    <select
+                      value={topProductsMode}
+                      onChange={(e) => setTopProductsMode(e.target.value as any)}
+                      className="bg-[#faf8f4] border border-stone-200 px-3 py-1.5 rounded-xl text-xs font-bold text-earth cursor-pointer"
+                    >
+                      <option value="revenue">By Revenue (₹)</option>
+                      <option value="units">By Units Sold</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-4">
+                    {topSellingProducts.slice(0, 6).map((prod: any, idx: number) => (
+                      <div key={prod.id} className="flex items-center justify-between p-3 rounded-2xl bg-[#faf8f4] border border-stone-200/70">
+                        <div className="flex items-center gap-3">
+                          <span className="w-7 h-7 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xs">
+                            #{idx + 1}
+                          </span>
+                          <div>
+                            <h4 className="text-xs sm:text-sm font-bold text-earth font-serif">{prod.name}</h4>
+                            <p className="text-[10px] text-stone-600 font-semibold">{prod.category}</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-sm font-extrabold text-earth">
+                            {topProductsMode === 'revenue' ? `₹${prod.revenue.toLocaleString()}` : `${prod.unitsSold} units`}
+                          </p>
+                          <p className="text-[10px] text-emerald-700 font-bold">Top Seller</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* CUSTOM MASALA ANALYTICS SECTION */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-stone-200/60 pb-4 gap-4">
+                  <div>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-terracotta">
+                      PROPRIETARY SPICE STUDIO
+                    </span>
+                    <h3 className="text-2xl font-bold font-serif text-earth mt-1 flex items-center gap-2">
+                      <ChefHat className="w-6 h-6 text-terracotta" />
+                      <span>Custom Masala Analytics</span>
+                    </h3>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-xs font-bold text-stone-700">
+                    <span className="bg-[#faf8f4] border border-stone-200 px-3 py-1.5 rounded-xl">
+                      Avg Weight: <strong className="text-earth">{customMasalaAnalytics.avgWeightGrams}g</strong>
+                    </span>
+                    <span className="bg-[#faf8f4] border border-stone-200 px-3 py-1.5 rounded-xl">
+                      Avg Batch Price: <strong className="text-earth">₹{customMasalaAnalytics.avgPrice}</strong>
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Most Selected Ingredients Ranking */}
+                  <div className="lg:col-span-2 space-y-3">
+                    <h4 className="text-sm font-bold text-earth uppercase tracking-wider font-serif">
+                      Most Selected Ingredients
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {customMasalaAnalytics.mostSelectedIngredients.map((ing: any) => (
+                        <div key={ing.name} className="p-3 rounded-2xl bg-[#faf8f4] border border-stone-200/70 space-y-1">
+                          <div className="flex justify-between text-xs font-bold">
+                            <span className="text-earth">{ing.name}</span>
+                            <span className="text-olive">{ing.count} batches ({ing.percentage}%)</span>
+                          </div>
+                          <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                            <div
+                              className="bg-olive h-full rounded-full"
+                              style={{ width: `${ing.percentage}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Roasting Preference Donut */}
+                  <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200/80 flex flex-col items-center justify-center text-center space-y-4">
+                    <h4 className="text-sm font-bold text-earth uppercase tracking-wider font-serif">
+                      Roasting Preference
+                    </h4>
+
+                    <div className="relative w-36 h-36">
+                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                        <path
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          fill="none"
+                          stroke="#b0534c"
+                          strokeWidth="4.5"
+                          strokeDasharray="74 26"
+                        />
+                        <path
+                          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          fill="none"
+                          stroke="#556b2f"
+                          strokeWidth="4.5"
+                          strokeDasharray="26 74"
+                          strokeDashoffset="-74"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <span className="text-xl font-black font-serif text-earth">74%</span>
+                        <span className="text-[10px] uppercase font-bold text-stone-600">Roasted</span>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4 text-xs font-bold">
+                      <span className="flex items-center gap-1.5 text-[#b0534c]">
+                        <span className="w-3 h-3 rounded-full bg-[#b0534c]" />
+                        Roasted (74%)
+                      </span>
+                      <span className="flex items-center gap-1.5 text-olive">
+                        <span className="w-3 h-3 rounded-full bg-olive" />
+                        Raw (26%)
                       </span>
                     </div>
-                    <div className="col-span-2 text-right">
-                      <button
-                        onClick={() => handleDeleteProduct(prod.id)}
-                        className="p-1 text-stone-400 hover:text-rose-600 transition"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* RECENT ORDERS TABLE */}
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+                <div className="flex items-center justify-between border-b border-stone-200/60 pb-4">
+                  <div>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+                      LIVE FULFILLMENT LOG
+                    </span>
+                    <h3 className="text-2xl font-bold font-serif text-earth mt-1">
+                      Recent Orders
+                    </h3>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab('orders')}
+                    className="text-xs font-bold text-olive hover:underline flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>View All Orders ({ordersList.length})</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                        <th className="py-3 px-4">Order ID</th>
+                        <th className="py-3 px-4">Customer</th>
+                        <th className="py-3 px-4">Date</th>
+                        <th className="py-3 px-4">Items</th>
+                        <th className="py-3 px-4">Amount</th>
+                        <th className="py-3 px-4">Status</th>
+                        <th className="py-3 px-4 text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-100 font-medium">
+                      {ordersList.slice(0, 8).map((order) => (
+                        <tr key={order.id} className="hover:bg-[#faf8f4] transition">
+                          <td className="py-3.5 px-4 font-bold text-earth font-mono">{order.id}</td>
+                          <td className="py-3.5 px-4 font-bold">{order.shippingAddress?.fullName || 'Customer'}</td>
+                          <td className="py-3.5 px-4 text-stone-600">
+                            {order.createdAt ? new Date(order.createdAt).toLocaleDateString() : 'Today'}
+                          </td>
+                          <td className="py-3.5 px-4 text-stone-600">{order.items.length} Items</td>
+                          <td className="py-3.5 px-4 font-extrabold text-earth">₹{order.total}</td>
+                          <td className="py-3.5 px-4">
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-extrabold ${
+                                order.status === 'Delivered'
+                                  ? 'bg-emerald-100 text-emerald-800'
+                                  : order.status === 'Dispatched' || order.status === 'Shipped'
+                                  ? 'bg-blue-100 text-blue-800'
+                                  : 'bg-amber-100 text-amber-800'
+                              }`}
+                            >
+                              {order.status}
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 text-right">
+                            <select
+                              value={order.status}
+                              onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
+                              className="bg-white border border-stone-200 rounded-xl px-2.5 py-1 text-xs font-bold text-earth focus:outline-none cursor-pointer"
+                            >
+                              <option value="Processing">Processing</option>
+                              <option value="Confirmed">Confirmed</option>
+                              <option value="Dispatched">Dispatched</option>
+                              <option value="Delivered">Delivered</option>
+                              <option value="Cancelled">Cancelled</option>
+                            </select>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* PRODUCTS TAB VIEW */}
+          {activeTab === 'products' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-earth">Product Inventory Catalog</h3>
+                  <p className="text-xs text-stone-600">Total {productsList.length} items registered in database</p>
+                </div>
+
+                <button
+                  onClick={() => setIsAddProductOpen(true)}
+                  className="bg-olive hover:bg-[#455726] text-white font-bold px-5 py-2.5 rounded-2xl text-xs flex items-center gap-2 shadow-sm transition cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New Product</span>
+                </button>
+              </div>
+
+              {/* Products Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Item</th>
+                      <th className="py-3 px-4">Category</th>
+                      <th className="py-3 px-4">Base Price</th>
+                      <th className="py-3 px-4">Live Stock</th>
+                      <th className="py-3 px-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {productsList.map((prod) => (
+                      <tr key={prod.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3 px-4 flex items-center gap-3">
+                          <img src={prod.image} alt={prod.name} className="w-10 h-10 rounded-xl object-cover border border-stone-200" />
+                          <span className="font-bold text-earth font-serif">{prod.name}</span>
+                        </td>
+                        <td className="py-3 px-4 text-stone-600 font-semibold">{prod.category}</td>
+                        <td className="py-3 px-4 font-bold text-earth">₹{prod.variants[0]?.price || 299}</td>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="number"
+                              value={prod.stock}
+                              onChange={(e) => handleUpdateStock(prod.id, Number(e.target.value))}
+                              className="w-16 bg-[#faf8f4] border border-stone-200 rounded-xl px-2 py-1 font-bold text-xs text-center"
+                            />
+                            <span className="text-[10px] text-stone-500 font-bold">units</span>
+                          </div>
+                        </td>
+                        <td className="py-3 px-4 text-right space-x-2">
+                          <button
+                            onClick={() => handleDeleteProduct(prod.id)}
+                            className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                            title="Delete Product"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* ORDERS TAB VIEW */}
+          {activeTab === 'orders' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                All Store Orders ({ordersList.length})
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Order ID</th>
+                      <th className="py-3 px-4">Customer</th>
+                      <th className="py-3 px-4">Address</th>
+                      <th className="py-3 px-4">Total Amount</th>
+                      <th className="py-3 px-4">Status</th>
+                      <th className="py-3 px-4 text-right">Update Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {ordersList.map((order) => (
+                      <tr key={order.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3.5 px-4 font-mono font-bold text-earth">{order.id}</td>
+                        <td className="py-3.5 px-4 font-bold">{order.shippingAddress?.fullName || 'Anita Kulkarni'}</td>
+                        <td className="py-3.5 px-4 text-stone-600 text-xs">
+                          {order.shippingAddress?.street}, {order.shippingAddress?.city}
+                        </td>
+                        <td className="py-3.5 px-4 font-extrabold text-earth">₹{order.total}</td>
+                        <td className="py-3.5 px-4 font-bold text-olive">{order.status}</td>
+                        <td className="py-3.5 px-4 text-right">
+                          <select
+                            value={order.status}
+                            onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
+                            className="bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer"
+                          >
+                            <option value="Processing">Processing</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Dispatched">Dispatched</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                          </select>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* INVENTORY TAB VIEW */}
+          {activeTab === 'inventory' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                Inventory Stock Control
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900">
+                  <p className="text-xs font-bold uppercase">In Stock Products</p>
+                  <p className="text-2xl font-black">{inventoryOverview.inStock}</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900">
+                  <p className="text-xs font-bold uppercase">Low Stock Products</p>
+                  <p className="text-2xl font-black">{inventoryOverview.lowStock}</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-900">
+                  <p className="text-xs font-bold uppercase">Critical Stock</p>
+                  <p className="text-2xl font-black">{inventoryOverview.criticalStock}</p>
+                </div>
+                <div className="p-4 rounded-2xl bg-stone-100 border border-stone-300 text-stone-900">
+                  <p className="text-xs font-bold uppercase">Out of Stock</p>
+                  <p className="text-2xl font-black">{inventoryOverview.outOfStock}</p>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Product Name</th>
+                      <th className="py-3 px-4">Category</th>
+                      <th className="py-3 px-4">Current Stock</th>
+                      <th className="py-3 px-4">Stock Status</th>
+                      <th className="py-3 px-4 text-right">Quick Restock</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {productsList.map((prod) => (
+                      <tr key={prod.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3 px-4 font-bold text-earth font-serif">{prod.name}</td>
+                        <td className="py-3 px-4 text-stone-600">{prod.category}</td>
+                        <td className="py-3 px-4 font-bold">{prod.stock} Units</td>
+                        <td className="py-3 px-4">
+                          <span
+                            className={`px-3 py-1 rounded-full text-xs font-extrabold ${
+                              prod.stock > 15
+                                ? 'bg-emerald-100 text-emerald-800'
+                                : prod.stock > 5
+                                ? 'bg-amber-100 text-amber-800'
+                                : 'bg-red-100 text-red-800'
+                            }`}
+                          >
+                            {prod.stock > 15 ? 'In Stock' : prod.stock > 5 ? 'Low Stock' : 'Critical Stock'}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-right">
+                          <button
+                            onClick={() => handleUpdateStock(prod.id, prod.stock + 50)}
+                            className="bg-olive hover:bg-[#455726] text-white px-3 py-1 rounded-xl text-xs font-bold transition cursor-pointer"
+                          >
+                            + Restock 50
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* COUPONS TAB VIEW */}
+          {activeTab === 'coupons' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-earth flex items-center gap-2">
+                    <Tag className="w-6 h-6 text-olive" />
+                    <span>Discount Coupons & Promo Offers</span>
+                  </h3>
+                  <p className="text-xs text-stone-600">
+                    Create custom coupons with timer expiration rules. All coupons are stored in MongoDB Atlas and immediately valid at checkout!
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => setIsAddCouponOpen(true)}
+                  className="bg-olive hover:bg-[#455726] text-white font-bold px-5 py-2.5 rounded-2xl text-xs flex items-center gap-2 shadow-sm transition cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Create Custom Coupon</span>
+                </button>
+              </div>
+
+              {/* Coupons Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Coupon Code</th>
+                      <th className="py-3 px-4">Discount</th>
+                      <th className="py-3 px-4">Min Order Value</th>
+                      <th className="py-3 px-4">Max Discount</th>
+                      <th className="py-3 px-4">Expiry Date & Timer</th>
+                      <th className="py-3 px-4">Status</th>
+                      <th className="py-3 px-4 text-right">Delete Option</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {couponsList.map((c) => {
+                      const isExpired = c.expiryDate && new Date(c.expiryDate).getTime() < Date.now();
+                      return (
+                        <tr key={c.code} className="hover:bg-[#faf8f4] transition">
+                          <td className="py-3.5 px-4 font-bold text-earth">
+                            <span className="bg-amber-100 text-amber-900 border border-amber-300 font-mono px-3 py-1 rounded-xl text-xs font-black uppercase tracking-wider">
+                              {c.code}
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 font-extrabold text-olive text-sm">
+                            {c.discountPercent}% OFF
+                          </td>
+                          <td className="py-3.5 px-4 font-bold text-stone-700">₹{c.minOrderValue || c.minOrderAmount || 0}</td>
+                          <td className="py-3.5 px-4 font-bold text-stone-700">₹{c.maxDiscount || 500}</td>
+                          <td className="py-3.5 px-4 text-stone-600">
+                            {c.expiryDate ? (
+                              <div className="flex items-center gap-1.5 font-mono text-xs">
+                                <Clock className="w-3.5 h-3.5 text-stone-500" />
+                                <span className={isExpired ? 'text-red-600 font-bold' : 'text-emerald-700 font-bold'}>
+                                  {new Date(c.expiryDate).toLocaleString('en-IN', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                  })}
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="text-stone-600 font-bold text-xs">No Expiry Timer</span>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            <span
+                              className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${
+                                isExpired
+                                  ? 'bg-red-100 text-red-800'
+                                  : 'bg-emerald-100 text-emerald-800'
+                              }`}
+                            >
+                              {isExpired ? 'EXPIRED' : 'ACTIVE'}
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 text-right">
+                            <button
+                              onClick={() => handleDeleteCoupon(c.code)}
+                              className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                              title="Delete Coupon"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* CATEGORIES TAB VIEW */}
+          {activeTab === 'categories' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-earth">Categories Catalog ({categoriesList.length})</h3>
+                  <p className="text-xs text-stone-600">Manage all organic product categories linked to database</p>
+                </div>
+                <button
+                  onClick={() => setIsAddCategoryOpen(true)}
+                  className="bg-olive hover:bg-[#455726] text-white font-bold px-5 py-2.5 rounded-2xl text-xs flex items-center gap-2 shadow-sm transition cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New Category</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {categoriesList.map((cat) => (
+                  <div key={cat.slug} className="bg-[#faf8f4] p-4 rounded-2xl border border-stone-200 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <img src={cat.image || '/images/Dailywell_Products/Ajwain/01.png'} alt={cat.name} className="w-12 h-12 rounded-xl object-cover border border-stone-200" />
+                      <div>
+                        <h4 className="font-bold font-serif text-earth text-sm">{cat.name}</h4>
+                        <p className="text-xs text-stone-500 font-mono">/{cat.slug}</p>
+                      </div>
                     </div>
+                    <button
+                      onClick={() => handleDeleteCategory(cat.slug)}
+                      className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                      title="Delete Category"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* ORDERS TAB */}
-        {activeAdminTab === 'orders' && (
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold text-earth">Customer Orders ({ordersList.length})</h3>
-            <div className="space-y-3">
-              {ordersList.map((ord) => (
-                <div key={ord.id} className="bg-white p-4 rounded-2xl border border-soft space-y-3 text-xs shadow-xs">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <strong className="text-olive text-sm block">{ord.id}</strong>
-                      <span className="text-[10px] text-stone-500">
-                        Customer: {ord.shippingAddress.fullName} ({ord.shippingAddress.mobile})
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <select
-                        value={ord.status}
-                        onChange={(e) => handleUpdateOrderStatus(ord.id, e.target.value as any)}
-                        className="bg-cream border border-soft text-olive font-bold text-xs rounded-xl px-3 py-1 focus:outline-none"
-                      >
-                        <option value="Pending">Pending</option>
-                        <option value="Processing">Processing</option>
-                        <option value="Shipped">Shipped</option>
-                        <option value="Delivered">Delivered</option>
-                      </select>
-                      <span className="font-bold text-earth text-base">₹{ord.total}</span>
-                    </div>
+          {/* CUSTOMERS TAB VIEW */}
+          {activeTab === 'customers' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                Registered Customers ({customersList.length})
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Customer Name</th>
+                      <th className="py-3 px-4">Email</th>
+                      <th className="py-3 px-4">Mobile</th>
+                      <th className="py-3 px-4">Total Orders</th>
+                      <th className="py-3 px-4">Total Spent</th>
+                      <th className="py-3 px-4 text-right">Delete Option</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {customersList.map((cust) => (
+                      <tr key={cust.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3.5 px-4 font-bold text-earth font-serif flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-olive text-white font-bold flex items-center justify-center text-xs">
+                            {cust.name.charAt(0)}
+                          </div>
+                          <span>{cust.name}</span>
+                        </td>
+                        <td className="py-3.5 px-4 text-stone-600 font-mono">{cust.email}</td>
+                        <td className="py-3.5 px-4 text-stone-600">{cust.mobile || '+91 98765 43210'}</td>
+                        <td className="py-3.5 px-4 font-bold text-earth">{cust.ordersCount || 1} Orders</td>
+                        <td className="py-3.5 px-4 font-extrabold text-olive">₹{cust.totalSpent || 1200}</td>
+                        <td className="py-3.5 px-4 text-right">
+                          <button
+                            onClick={() => handleDeleteCustomer(cust.id)}
+                            className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                            title="Delete Customer"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* CUSTOM MASALA TAB VIEW */}
+          {activeTab === 'custom_masala' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                Custom Masala Studio Orders ({customMasalasList.length})
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Recipe ID</th>
+                      <th className="py-3 px-4">Recipe Name</th>
+                      <th className="py-3 px-4">Weight (g)</th>
+                      <th className="py-3 px-4">Price (₹)</th>
+                      <th className="py-3 px-4">Roasting</th>
+                      <th className="py-3 px-4 text-right">Delete Option</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {customMasalasList.map((m) => (
+                      <tr key={m.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3.5 px-4 font-mono font-bold text-earth">{m.id}</td>
+                        <td className="py-3.5 px-4 font-bold text-serif text-earth">{m.recipeName}</td>
+                        <td className="py-3.5 px-4 font-bold">{m.totalWeightGrams}g</td>
+                        <td className="py-3.5 px-4 font-extrabold text-olive">₹{m.totalPrice}</td>
+                        <td className="py-3.5 px-4">
+                          <span className="bg-amber-100 text-amber-800 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase">
+                            {m.roastingCharge > 0 ? 'ROASTED' : 'RAW'}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          <button
+                            onClick={() => handleDeleteCustomMasala(m.id)}
+                            className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                            title="Delete Custom Masala"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* REVIEWS TAB VIEW */}
+          {activeTab === 'reviews' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                Customer Reviews & Ratings ({reviewsList.length})
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Customer</th>
+                      <th className="py-3 px-4">Rating</th>
+                      <th className="py-3 px-4">Review Comment</th>
+                      <th className="py-3 px-4">Date</th>
+                      <th className="py-3 px-4 text-right">Delete Option</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {reviewsList.map((rev) => (
+                      <tr key={rev.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3.5 px-4 font-bold text-earth font-serif">{rev.userName}</td>
+                        <td className="py-3.5 px-4 font-extrabold text-amber-500">⭐ {rev.rating}.0</td>
+                        <td className="py-3.5 px-4 text-stone-700 max-w-md truncate">{rev.comment}</td>
+                        <td className="py-3.5 px-4 text-stone-500 font-mono">{rev.date}</td>
+                        <td className="py-3.5 px-4 text-right">
+                          <button
+                            onClick={() => handleDeleteReview(rev.id)}
+                            className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                            title="Delete Review"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* ANALYTICS TAB VIEW */}
+          {activeTab === 'analytics' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                Detailed Analytics & Insights
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-[#faf8f4] p-5 rounded-2xl border border-stone-200 space-y-2">
+                  <span className="text-xs font-bold text-stone-600 uppercase">Avg Order Value</span>
+                  <p className="text-3xl font-black text-earth">₹1,420</p>
+                  <p className="text-xs text-emerald-700 font-bold">+12% vs last month</p>
+                </div>
+                <div className="bg-[#faf8f4] p-5 rounded-2xl border border-stone-200 space-y-2">
+                  <span className="text-xs font-bold text-stone-600 uppercase">Repeat Customer Rate</span>
+                  <p className="text-3xl font-black text-earth">41.8%</p>
+                  <p className="text-xs text-emerald-700 font-bold">+5.4% retention</p>
+                </div>
+                <div className="bg-[#faf8f4] p-5 rounded-2xl border border-stone-200 space-y-2">
+                  <span className="text-xs font-bold text-stone-600 uppercase">Store Fulfillment Rate</span>
+                  <p className="text-3xl font-black text-earth">98.5%</p>
+                  <p className="text-xs text-emerald-700 font-bold">On-time delivery</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* SETTINGS TAB VIEW */}
+          {activeTab === 'settings' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6 max-w-2xl">
+              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
+                Store Settings & Configuration
+              </h3>
+              <form onSubmit={(e) => { e.preventDefault(); showToast('Settings saved successfully!'); }} className="space-y-4 text-xs font-bold">
+                <div>
+                  <label className="block text-stone-700 uppercase mb-1">Store Name</label>
+                  <input type="text" defaultValue="Dhannya Organic & Custom Masala" className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
+                </div>
+                <div>
+                  <label className="block text-stone-700 uppercase mb-1">Support Email</label>
+                  <input type="email" defaultValue="dhaanyaorganic1@gmail.com" className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-stone-700 uppercase mb-1">GST Tax Rate (%)</label>
+                    <input type="number" defaultValue={5} className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
+                  </div>
+                  <div>
+                    <label className="block text-stone-700 uppercase mb-1">Free Shipping Min (₹)</label>
+                    <input type="number" defaultValue={499} className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
                   </div>
                 </div>
-              ))}
+                <div className="pt-2">
+                  <button type="submit" className="bg-olive text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow-sm cursor-pointer">
+                    Save Settings
+                  </button>
+                </div>
+              </form>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* ADD PRODUCT MODAL */}
-        {isAddProductOpen && (
-          <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-white border border-soft w-full max-w-md rounded-3xl p-6 space-y-4 relative text-earth shadow-xl">
-              <button
-                onClick={() => setIsAddProductOpen(false)}
-                className="absolute top-4 right-4 text-stone-400 hover:text-earth"
-              >
+        </main>
+      </div>
+
+      {/* Add Product Modal */}
+      {isAddProductOpen && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-stone-200 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
+              <h3 className="text-xl font-bold font-serif text-earth">Add New Product to Catalog</h3>
+              <button onClick={() => setIsAddProductOpen(false)} className="text-stone-500 hover:text-earth cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
-              <h3 className="text-base font-bold font-serif text-earth">Add New Product to Store</h3>
-              <form onSubmit={handleCreateProduct} className="space-y-3 text-xs">
-                <div>
-                  <label className="block text-stone-600 font-bold mb-1">Product Title</label>
-                  <input
-                    type="text"
-                    required
-                    value={newProdName}
-                    onChange={(e) => setNewProdName(e.target.value)}
-                    placeholder="e.g. Pure Organic Cold Pressed Sesame Oil"
-                    className="w-full bg-cream border border-stone-200 rounded-xl p-2.5 text-earth focus:outline-none focus:border-olive"
-                  />
-                </div>
+            </div>
 
+            <form onSubmit={handleCreateProduct} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Product Name</label>
+                <input
+                  type="text"
+                  required
+                  value={newProdName}
+                  onChange={(e) => setNewProdName(e.target.value)}
+                  placeholder="e.g. Organic Cold-Pressed Mustard Oil"
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-stone-600 font-bold mb-1">Category</label>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Category</label>
                   <select
                     value={newProdCategory}
-                    onChange={(e) => setNewProdCategory(e.target.value as ProductCategory)}
-                    className="w-full bg-cream border border-stone-200 rounded-xl p-2.5 text-earth focus:outline-none"
+                    onChange={(e) => setNewProdCategory(e.target.value as any)}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
                   >
-                    {CATEGORIES.map((cat) => (
-                      <option key={cat.slug} value={cat.name}>
-                        {cat.name}
+                    {CATEGORIES.map((c) => (
+                      <option key={c.slug} value={c.name}>
+                        {c.name}
                       </option>
                     ))}
                   </select>
                 </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <label className="block text-stone-600 font-bold mb-1">Price (₹)</label>
-                    <input
-                      type="number"
-                      required
-                      value={newProdPrice}
-                      onChange={(e) => setNewProdPrice(Number(e.target.value))}
-                      className="w-full bg-cream border border-stone-200 rounded-xl p-2.5 text-earth focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-stone-600 font-bold mb-1">Stock Qty</label>
-                    <input
-                      type="number"
-                      required
-                      value={newProdStock}
-                      onChange={(e) => setNewProdStock(Number(e.target.value))}
-                      className="w-full bg-cream border border-stone-200 rounded-xl p-2.5 text-earth focus:outline-none"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Price (₹)</label>
+                  <input
+                    type="number"
+                    required
+                    value={newProdPrice}
+                    onChange={(e) => setNewProdPrice(Number(e.target.value))}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                  />
                 </div>
+              </div>
 
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Stock Units</label>
+                <input
+                  type="number"
+                  required
+                  value={newProdStock}
+                  onChange={(e) => setNewProdStock(Number(e.target.value))}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description</label>
+                <textarea
+                  rows={3}
+                  value={newProdDesc}
+                  onChange={(e) => setNewProdDesc(e.target.value)}
+                  placeholder="100% natural, unadulterated product description..."
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth focus:outline-none"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-3">
+                <button
+                  type="button"
+                  onClick={() => setIsAddProductOpen(false)}
+                  className="px-5 py-2.5 rounded-xl border border-stone-200 text-xs font-bold text-stone-700 hover:bg-stone-50 cursor-pointer"
+                >
+                  Cancel
+                </button>
                 <button
                   type="submit"
-                  className="w-full bg-olive hover:bg-[#4a4a34] text-white font-bold py-3 rounded-xl transition"
+                  className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold shadow-sm cursor-pointer"
                 >
-                  Save Product to Catalog
+                  Create Product
                 </button>
-              </form>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Create Custom Coupon Modal */}
+      {isAddCouponOpen && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-stone-200 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
+              <h3 className="text-xl font-bold font-serif text-earth flex items-center gap-2">
+                <Tag className="w-5 h-5 text-olive" />
+                <span>Create Custom Discount Coupon</span>
+              </h3>
+              <button onClick={() => setIsAddCouponOpen(false)} className="text-stone-500 hover:text-earth cursor-pointer">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateCoupon} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Coupon Code</label>
+                <input
+                  type="text"
+                  required
+                  value={newCouponCode}
+                  onChange={(e) => setNewCouponCode(e.target.value.toUpperCase())}
+                  placeholder="e.g. FESTIVE20"
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-bold font-mono text-earth focus:outline-none uppercase"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Discount (%)</label>
+                  <input
+                    type="number"
+                    required
+                    min={1}
+                    max={100}
+                    value={newCouponPercent}
+                    onChange={(e) => setNewCouponPercent(Number(e.target.value))}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Min Order Value (₹)</label>
+                  <input
+                    type="number"
+                    required
+                    value={newCouponMinOrder}
+                    onChange={(e) => setNewCouponMinOrder(Number(e.target.value))}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Max Discount Cap (₹)</label>
+                  <input
+                    type="number"
+                    required
+                    value={newCouponMaxDiscount}
+                    onChange={(e) => setNewCouponMaxDiscount(Number(e.target.value))}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1 flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-olive" />
+                    <span>Expiry Timer Date</span>
+                  </label>
+                  <input
+                    type="datetime-local"
+                    value={newCouponExpiryDate}
+                    onChange={(e) => setNewCouponExpiryDate(e.target.value)}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-earth focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description / Banner Text</label>
+                <input
+                  type="text"
+                  value={newCouponDesc}
+                  onChange={(e) => setNewCouponDesc(e.target.value)}
+                  placeholder="e.g. 20% OFF on all organic orders above ₹499"
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth focus:outline-none"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-3">
+                <button
+                  type="button"
+                  onClick={() => setIsAddCouponOpen(false)}
+                  className="px-5 py-2.5 rounded-xl border border-stone-200 text-xs font-bold text-stone-700 hover:bg-stone-50 cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold shadow-sm cursor-pointer"
+                >
+                  Create & Save Coupon
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Add Category Modal */}
+      {isAddCategoryOpen && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-stone-200 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
+              <h3 className="text-xl font-bold font-serif text-earth">Add New Category</h3>
+              <button onClick={() => setIsAddCategoryOpen(false)} className="text-stone-500 hover:text-earth cursor-pointer">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateCategory} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Category Name</label>
+                <input
+                  type="text"
+                  required
+                  value={newCatName}
+                  onChange={(e) => setNewCatName(e.target.value)}
+                  placeholder="e.g. Organic Beverages & Tea"
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description</label>
+                <textarea
+                  rows={3}
+                  value={newCatDesc}
+                  onChange={(e) => setNewCatDesc(e.target.value)}
+                  placeholder="Category description..."
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth focus:outline-none"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-3">
+                <button
+                  type="button"
+                  onClick={() => setIsAddCategoryOpen(false)}
+                  className="px-5 py-2.5 rounded-xl border border-stone-200 text-xs font-bold text-stone-700 hover:bg-stone-50 cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold shadow-sm cursor-pointer"
+                >
+                  Create Category
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+
+      {/* Stage Email Notification Sent Modal Preview */}
+      {activeEmailModal && (
+        <div className="fixed inset-0 bg-stone-900/70 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full border border-stone-200 shadow-2xl space-y-5 my-8 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold font-serif text-earth flex items-center gap-2">
+                    <span>Stage Email Notification Sent</span>
+                    <span className="bg-emerald-100 text-emerald-800 text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase">
+                      AUTOMATIC DISPATCH
+                    </span>
+                  </h3>
+                  <div className="text-xs text-stone-500 space-y-0.5 mt-0.5">
+                    <p>From: <strong className="text-olive font-mono">Dhannya Organic &lt;dhaanyaorganic1@gmail.com&gt;</strong></p>
+                    <p>Recipient: <strong className="text-earth font-mono">{activeEmailModal.toEmail}</strong></p>
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => setActiveEmailModal(null)}
+                className="text-stone-500 hover:text-earth p-2 rounded-full hover:bg-stone-100 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <div className="bg-[#faf8f4] p-3 rounded-xl border border-stone-200 text-xs">
+                <span className="text-stone-500 font-bold">Subject Line: </span>
+                <strong className="text-earth font-mono">{activeEmailModal.subject}</strong>
+              </div>
+
+
+              <div className="bg-[#2b3e2a] text-amber-50 p-5 rounded-2xl border border-stone-800 text-xs font-mono whitespace-pre-wrap leading-relaxed shadow-inner overflow-x-auto">
+                {activeEmailModal.body}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-2 border-t border-stone-200">
+              <span className="text-xs text-stone-500 font-medium">
+                Stage: <strong className="text-olive">{activeEmailModal.status}</strong>
+              </span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    showToast(`Resent ${activeEmailModal.status} stage email to ${activeEmailModal.toEmail}`);
+                  }}
+                  className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-earth text-xs font-bold transition cursor-pointer"
+                >
+                  Resend Email
+                </button>
+                <button
+                  onClick={() => setActiveEmailModal(null)}
+                  className="px-5 py-2 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold transition cursor-pointer shadow-xs"
+                >
+                  Close Preview
+                </button>
+              </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

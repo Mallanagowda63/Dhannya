@@ -1,60 +1,104 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { HealthConcern } from '../types';
 import { PRODUCTS } from '../data/initialData';
 import { ProductCard } from './ProductCard';
-import { HeartPulse, Activity, Sparkles, Scale } from 'lucide-react';
+import { HeartPulse, Activity, Sparkles, Scale, Flame, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ShopByConcern: React.FC = () => {
-  const [activeConcernTab, setActiveConcernTab] = useState<HealthConcern>('Gut Health');
+  const [activeConcernTab, setActiveConcernTab] = useState<HealthConcern>('Best Sellers');
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const concernsList: { name: HealthConcern; icon: React.ReactNode; desc: string }[] = [
-    { name: 'Gut Health', icon: <Activity className="w-4 h-4" />, desc: 'Probiotic raw honeys & digestion-friendly spices' },
-    { name: 'Weight Loss', icon: <Scale className="w-4 h-4" />, desc: 'High-fiber chia seeds & ancient low-GI millets' },
-    { name: 'Heart Health', icon: <HeartPulse className="w-4 h-4" />, desc: 'Cold pressed mustard oil & omega-rich seeds' },
-    { name: 'Skin & Hair', icon: <Sparkles className="w-4 h-4" />, desc: 'Jumbo California almonds & Ayurvedic Kumkumadi' },
+  const concernsList: { name: HealthConcern; icon: React.ReactNode }[] = [
+    { name: 'Best Sellers', icon: <Flame className="w-4 h-4 text-amber-500" /> },
+    { name: 'Gut Health', icon: <Activity className="w-4 h-4" /> },
+    { name: 'Weight Loss', icon: <Scale className="w-4 h-4" /> },
+    { name: 'Heart Health', icon: <HeartPulse className="w-4 h-4" /> },
+    { name: 'Skin & Hair', icon: <Sparkles className="w-4 h-4" /> },
   ];
 
   const filteredProducts = PRODUCTS.filter(
-    (p) => p.concern && p.concern.includes(activeConcernTab)
+    (p) => activeConcernTab === 'Best Sellers' ? p.isBestSeller : (p.concern && p.concern.includes(activeConcernTab))
   );
 
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === 'left' ? -380 : 380;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="py-12 bg-cream/60 text-earth border-t border-soft">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-bold text-olive uppercase tracking-widest">
-            TARGETED WELLNESS
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-earth mt-1">
-            Shop By Health Concern
-          </h2>
-          <p className="text-xs sm:text-sm text-stone-600 mt-2">
-            Target your daily nutrition goals with pure, natural, nutrient-dense organic foods.
-          </p>
-        </div>
+    <section className="py-14 sm:py-18 bg-[#faf8f4] text-earth border-t border-soft">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
+        
+        {/* Section Header & Navigation Controls */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+              TARGETED WELLNESS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-earth mt-1">
+              Shop By Concern
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-md">
+              Target your daily nutrition goals with pure, natural, nutrient-dense organic foods.
+            </p>
+          </div>
 
-        {/* Concern Tabs */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar pb-4 mb-8">
-          {concernsList.map((item) => (
+          {/* Left / Right Scroll Buttons */}
+          <div className="flex items-center gap-2 self-end md:self-auto">
             <button
-              key={item.name}
-              onClick={() => setActiveConcernTab(item.name)}
-              className={`flex items-center gap-2 px-5 py-3 rounded-full font-bold text-xs sm:text-sm transition duration-300 border shrink-0 ${
-                activeConcernTab === item.name
-                  ? 'bg-olive text-white border-olive shadow-sm'
-                  : 'bg-white text-stone-700 border-soft hover:bg-cream'
-              }`}
+              onClick={() => handleScroll('left')}
+              className="w-10 h-10 rounded-full bg-white hover:bg-cream border border-stone-200 flex items-center justify-center text-earth transition shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+              aria-label="Scroll left"
             >
-              {item.icon}
-              <span>{item.name}</span>
+              <ChevronLeft className="w-5 h-5" />
             </button>
-          ))}
+            <button
+              onClick={() => handleScroll('right')}
+              className="w-10 h-10 rounded-full bg-white hover:bg-cream border border-stone-200 flex items-center justify-center text-earth transition shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Filtered Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Concern Tabs - Styled matching Image 2 */}
+        <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-3 mb-8">
+          {concernsList.map((item) => {
+            const isActive = activeConcernTab === item.name;
+            return (
+              <button
+                key={item.name}
+                onClick={() => {
+                  setActiveConcernTab(item.name);
+                  if (scrollRef.current) {
+                    scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+                  }
+                }}
+                className={`flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all duration-300 shrink-0 border cursor-pointer ${
+                  isActive
+                    ? 'bg-[#b0534c] text-white border-[#b0534c] shadow-md scale-102'
+                    : 'bg-[#e2b292]/50 hover:bg-[#e2b292]/80 text-[#5c3727] border-transparent'
+                }`}
+              >
+                {item.icon}
+                <span>{item.name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Expanded Full-Width Horizontal Sliding Carousel */}
+        <div
+          ref={scrollRef}
+          className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth px-1"
+        >
           {filteredProducts.map((prod) => (
-            <ProductCard key={prod.id} product={prod} />
+            <div key={prod.id} className="min-w-[260px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0">
+              <ProductCard product={prod} />
+            </div>
           ))}
         </div>
       </div>

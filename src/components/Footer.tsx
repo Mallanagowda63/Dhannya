@@ -32,94 +32,95 @@ export const Footer: React.FC<{
 
   return (
     <footer className="bg-cream text-earth border-t border-soft pt-12 pb-8">
-      {/* Trust Badges Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 border-b border-soft pb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-soft shadow-xs hover:border-olive transition">
-            <div className="w-12 h-12 rounded-xl bg-cream border border-soft flex items-center justify-center shrink-0">
-              <Leaf className="w-6 h-6 text-olive" />
+      {/* Trust Badges Section - Scaled Up & Bigger */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 mb-14 border-b border-soft pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-10">
+          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
+            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
+              <Leaf className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <h4 className="text-sm font-bold text-earth">100% Organic & Pure</h4>
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 mb-1">
+                <h4 className="text-base sm:text-lg font-extrabold text-earth">100% Organic & Pure</h4>
+                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
               </div>
-              <p className="text-xs sm:text-sm text-stone-600">Zero additives, artificial colors or preservatives</p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">Zero additives, artificial colors or preservatives</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-soft shadow-xs hover:border-olive transition">
-            <div className="w-12 h-12 rounded-xl bg-cream border border-soft flex items-center justify-center shrink-0">
-              <Truck className="w-6 h-6 text-olive" />
+          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
+            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
+              <Truck className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <h4 className="text-sm font-bold text-earth">Express Shipping</h4>
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 mb-1">
+                <h4 className="text-base sm:text-lg font-extrabold text-earth">Express Shipping</h4>
+                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
               </div>
-              <p className="text-xs sm:text-sm text-stone-600">Free doorstep delivery on orders &gt; ₹499</p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">Free doorstep delivery on orders &gt; ₹499</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-soft shadow-xs hover:border-olive transition">
-            <div className="w-12 h-12 rounded-xl bg-cream border border-soft flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6 text-olive" />
+          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
+            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <h4 className="text-sm font-bold text-earth">100% Freshly Ground</h4>
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 mb-1">
+                <h4 className="text-base sm:text-lg font-extrabold text-earth">100% Freshly Ground</h4>
+                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
               </div>
-              <p className="text-xs sm:text-sm text-stone-600">Custom roasted & milled on demand</p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">Custom roasted & milled on demand</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-soft shadow-xs hover:border-olive transition">
-            <div className="w-12 h-12 rounded-xl bg-cream border border-soft flex items-center justify-center shrink-0">
-              <RotateCcw className="w-6 h-6 text-olive" />
+          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
+            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
+              <RotateCcw className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <h4 className="text-sm font-bold text-earth">Guaranteed Quality</h4>
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 mb-1">
+                <h4 className="text-base sm:text-lg font-extrabold text-earth">Guaranteed Quality</h4>
+                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
               </div>
-              <p className="text-xs sm:text-sm text-stone-600">7-Day easy replacement or 100% refund support</p>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">7-Day easy replacement or 100% refund support</p>
             </div>
           </div>
         </div>
 
-        {/* Verified Organic Certifications & Seals Banner */}
-        <div className="bg-white border border-soft rounded-2xl p-4 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0">
-              <ShieldCheck className="w-6 h-6" />
+        {/* Verified Organic Certifications & Seals Banner - Scaled Up */}
+        <div className="bg-white border border-stone-200/90 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0">
+              <ShieldCheck className="w-8 h-8" />
             </div>
             <div>
-              <h5 className="text-xs sm:text-sm font-bold text-earth flex items-center gap-2">
+              <h5 className="text-sm sm:text-base md:text-lg font-extrabold text-earth flex items-center gap-2.5 flex-wrap">
                 <span>Government Certified Organic Standards</span>
-                <span className="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-0.5 rounded-full font-extrabold uppercase">
-                  Verified
+                <span className="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-black uppercase tracking-wider">
+                  VERIFIED
                 </span>
               </h5>
-              <p className="text-xs text-stone-600">
-                FSSAI License No. <strong className="text-earth">11522001000482</strong> • USDA Organic • India Organic (NPOP) • NABL Lab Tested
+              <p className="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
+                FSSAI License No. <strong className="text-earth font-bold">11522001000482</strong> • USDA Organic • India Organic (NPOP) • NABL Lab Tested
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap text-stone-700 font-bold text-xs sm:text-sm">
-            <span className="bg-cream border border-soft px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+          <div className="flex items-center gap-3 flex-wrap text-stone-800 font-extrabold text-xs sm:text-sm">
+            <span className="bg-[#f7f4ea] border border-stone-200/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-2xs">
               🌿 100% Pure & Unadulterated
             </span>
-            <span className="bg-cream border border-soft px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+            <span className="bg-[#f7f4ea] border border-stone-200/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-2xs">
               🔒 256-Bit SSL Encrypted
             </span>
-            <span className="bg-cream border border-soft px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+            <span className="bg-[#f7f4ea] border border-stone-200/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-2xs">
               ⭐ 50,000+ Happy Customers
             </span>
           </div>
         </div>
       </div>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
         {/* Brand Bio */}

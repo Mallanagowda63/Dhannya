@@ -73,9 +73,12 @@ export const CategoryPageView: React.FC<{
     }
 
     // Health Concern match
-    if (selectedConcern !== 'All') {
-      if (!p.concern || !p.concern.includes(selectedConcern)) return false;
+    if (selectedConcern === 'Best Sellers') {
+      if (!p.isBestSeller) return false;
+    } else if (selectedConcern !== 'All') {
+      if (!p.concern || !p.concern.includes(selectedConcern as HealthConcern)) return false;
     }
+
 
     // Price range match
     const lowestPrice = Math.min(...p.variants.map((v) => v.price));
@@ -229,15 +232,17 @@ export const CategoryPageView: React.FC<{
               <select
                 value={selectedConcern}
                 onChange={(e) => setSelectedConcern(e.target.value as any)}
-                className="bg-transparent font-bold text-olive focus:outline-none"
+                className="bg-transparent font-bold text-olive focus:outline-none cursor-pointer"
               >
                 <option value="All">All Concerns</option>
+                <option value="Best Sellers">🔥 Best Sellers</option>
                 <option value="Gut Health">Gut Health</option>
                 <option value="Weight Loss">Weight Loss</option>
                 <option value="Heart Health">Heart Health</option>
                 <option value="Skin & Hair">Skin & Hair</option>
               </select>
             </div>
+
 
             {/* Filter Pill: Max Price */}
             <div className="flex items-center gap-1.5 bg-cream border border-stone-200 px-3 py-1.5 rounded-xl">

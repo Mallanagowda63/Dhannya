@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import { X, Lock, Mail, User, ShieldCheck, Key } from 'lucide-react';
+import { X, Lock, Mail, User, ShieldCheck, Key, RefreshCw, AlertCircle, CheckCircle2, Sparkles, MailCheck } from 'lucide-react';
 
 export const AuthModal: React.FC = () => {
   const { isAuthModalOpen, setIsAuthModalOpen, login, showToast } = useApp();
@@ -9,120 +9,315 @@ export const AuthModal: React.FC = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [otp, setOtp] = useState('');
+  const [receivedOtpCode, setReceivedOtpCode] = useState<string | null>(null);
+  const [showEmailPreview, setShowEmailPreview] = useState(false);
+
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [resendTimer, setResendTimer] = useState(0);
+
+  useEffect(() => {
+    let interval: any;
+    if (resendTimer > 0) {
+      interval = setInterval(() => setResendTimer((prev) => prev - 1), 1000);
+    }
+    return () => clearInterval(interval);
+  }, [resendTimer]);
 
   if (!isAuthModalOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (mode === 'login' || mode === 'signup') {
-      setMode('otp');
-      showToast('OTP sent to your registered email & phone number: 1234', 'info');
-    } else if (mode === 'otp') {
-      login(email || 'customer@dhaanya.com', name || 'Dhaanya Customer');
-      setIsAuthModalOpen(false);
+    setErrorMessage(null);
+    if (!email.trim() || !email.includes('@')) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSendingOtp(true);
+    try {
+      const res = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), name: name.trim() }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setMode('otp');
+        if (data.otpCode) {
+          setReceivedOtpCode(data.otpCode);
+        }
+        setResendTimer(60);
+        showToast(`Verification OTP dispatched to ${email}`, 'success');
+      } else {
+      setErrorMessage(data.message || 'Failed to send OTP. Please try again.');
+      }
+    } catch {
+      setErrorMessage('Server connection error. Please try again.');
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage(null);
+    if (!otp.trim() || otp.trim().length !== 6) {
+      setErrorMessage('Please enter the 6-digit OTP code.');
+      return;
+    }
+
+    setIsVerifyingOtp(true);
+    try {
+      const res = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email.trim(),
+          otp: otp.trim(),
+          name: name.trim(),
+        }),
+      });
+      const data = await res.json();
+      if (data.success && data.user) {
+        login(data.user.email, data.user.name);
+        showToast(`Welcome back, ${data.user.name}!`, 'success');
+        setIsAuthModalOpen(false);
+        // Reset state
+        setMode('login');
+        setEmail('');
+        setName('');
+        setOtp('');
+        setReceivedOtpCode(null);
+      } else {
+        setErrorMessage(data.message || 'Incorrect OTP code. Please enter the 6-digit code.');
+      }
+    } catch (err: any) {
+      setErrorMessage(err.message || 'Network error verifying OTP. Please try again.');
+    } finally {
+      setIsVerifyingOtp(false);
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border border-soft w-full max-w-md rounded-3xl shadow-xl overflow-hidden text-earth p-6 space-y-6 relative">
+      <div className="bg-white border border-soft w-full max-w-md rounded-3xl shadow-xl overflow-hidden text-earth p-6 sm:p-8 space-y-6 relative my-8">
         <button
-          onClick={() => setIsAuthModalOpen(false)}
-          className="absolute top-4 right-4 p-1.5 rounded-full text-stone-500 hover:text-earth hover:bg-stone-200 transition"
+          onClick={() => {
+            setIsAuthModalOpen(false);
+            setErrorMessage(null);
+          }}
+          className="absolute top-4 right-4 p-1.5 rounded-full text-stone-500 hover:text-earth hover:bg-stone-200 transition cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="text-center space-y-1">
-          <div className="w-12 h-12 rounded-2xl bg-cream text-olive border border-soft flex items-center justify-center mx-auto mb-2">
+          <div className="w-12 h-12 rounded-2xl bg-cream text-olive border border-soft flex items-center justify-center mx-auto mb-2 shadow-xs">
             <Lock className="w-6 h-6" />
           </div>
           <h3 className="text-xl font-bold font-serif text-earth">
             {mode === 'login'
-              ? 'Welcome Back to Dhaanya'
+              ? 'Welcome Back to Dhannya'
               : mode === 'signup'
-              ? 'Create Your Dhaanya Account'
+              ? 'Create Your Dhannya Account'
               : 'Enter Verification OTP'}
           </h3>
           <p className="text-xs text-stone-600">
             {mode === 'otp'
-              ? 'Verification code sent to email (Demo OTP: 1234)'
+              ? `Verification code sent from dhaanyaorganic1@gmail.com to ${email}`
               : 'Access saved masala recipes, track orders & exclusive discounts'}
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {mode === 'signup' && (
-            <div>
-              <label className="block text-[11px] font-bold text-stone-600 mb-1">Full Name</label>
-              <div className="relative">
-                <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Priya Sharma"
-                  className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl pl-9 pr-3 py-2.5 focus:outline-none focus:border-olive"
-                />
-              </div>
-            </div>
-          )}
+        {/* Error Alert Message */}
+        {errorMessage && (
+          <div className="bg-red-50 border border-red-200 text-red-700 text-xs p-3 rounded-2xl flex items-center gap-2 font-medium">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
-          {mode !== 'otp' ? (
+        {/* OTP Sent Success Banner */}
+        {mode === 'otp' && (
+          <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs p-3.5 rounded-2xl space-y-2">
+            <div className="flex items-center gap-2 font-bold">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>OTP Dispatched from <strong className="font-mono text-emerald-950">dhaanyaorganic1@gmail.com</strong></span>
+            </div>
+            <p className="text-[11px] text-emerald-800 font-medium">
+              Verification email dispatched to <strong className="font-mono">{email}</strong>.
+            </p>
+
+            {receivedOtpCode && (
+              <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowEmailPreview(!showEmailPreview)}
+                  className="text-emerald-900 hover:text-emerald-950 underline font-bold text-[11px] flex items-center gap-1 cursor-pointer"
+                >
+                  <MailCheck className="w-3.5 h-3.5" />
+                  <span>{showEmailPreview ? 'Hide Email Preview' : '📩 View Dispatched Email'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOtp(receivedOtpCode);
+                    showToast(`Auto-filled OTP: ${receivedOtpCode}`, 'info');
+                  }}
+                  className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-[11px] px-3 py-1 rounded-xl flex items-center gap-1 shadow-xs cursor-pointer transition active:scale-95"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Auto-Fill Code ({receivedOtpCode})</span>
+                </button>
+              </div>
+            )}
+
+            {/* Email Preview Drawer */}
+            {showEmailPreview && receivedOtpCode && (
+              <div className="mt-2 p-3 bg-stone-900 text-stone-100 rounded-xl text-[11px] font-mono space-y-1.5 border border-stone-700 shadow-inner">
+                <div className="flex justify-between border-b border-stone-800 pb-1">
+                  <span className="text-stone-400">From:</span>
+                  <span className="text-emerald-400 font-bold">Dhannya Organic &lt;dhaanyaorganic1@gmail.com&gt;</span>
+                </div>
+                <div className="flex justify-between border-b border-stone-800 pb-1">
+                  <span className="text-stone-400">To:</span>
+                  <span className="text-stone-200 font-bold">{email}</span>
+                </div>
+                <div className="flex justify-between border-b border-stone-800 pb-1">
+                  <span className="text-stone-400">Subject:</span>
+                  <span className="text-stone-200">Verification Code: {receivedOtpCode} - Dhannya</span>
+                </div>
+                <div className="pt-1 text-stone-300 space-y-1">
+                  <p>Hi {name || email.split('@')[0]},</p>
+                  <p>Your 6-digit verification code to login to Dhannya is:</p>
+                  <p className="text-amber-400 text-sm font-black tracking-widest bg-stone-800 px-2 py-1 rounded text-center my-1 border border-stone-700">
+                    {receivedOtpCode}
+                  </p>
+                  <p className="text-[10px] text-stone-400">This code is valid for 10 minutes. Do not share it with anyone.</p>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {mode !== 'otp' ? (
+          <form onSubmit={handleSendOtp} className="space-y-4">
+            {mode === 'signup' && (
+              <div>
+                <label className="block text-[11px] font-bold text-stone-700 uppercase mb-1">Full Name</label>
+                <div className="relative">
+                  <User className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Priya Sharma"
+                    className="w-full bg-[#faf8f4] border border-stone-200 text-xs text-earth font-medium rounded-xl pl-10 pr-3 py-2.5 focus:outline-none focus:border-olive"
+                  />
+                </div>
+              </div>
+            )}
+
             <div>
-              <label className="block text-[11px] font-bold text-stone-600 mb-1">Email Address</label>
+              <label className="block text-[11px] font-bold text-stone-700 uppercase mb-1">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+                <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@example.com (or admin@dhaanya.com for admin)"
-                  className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl pl-9 pr-3 py-2.5 focus:outline-none focus:border-olive"
+                  placeholder="name@example.com"
+                  className="w-full bg-[#faf8f4] border border-stone-200 text-xs text-earth font-medium rounded-xl pl-10 pr-3 py-2.5 focus:outline-none focus:border-olive"
                 />
               </div>
             </div>
-          ) : (
+
+            <button
+              type="submit"
+              disabled={isSendingOtp}
+              className="w-full bg-olive hover:bg-[#455726] text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition active:scale-95 cursor-pointer disabled:opacity-50"
+            >
+              {isSendingOtp ? (
+                <RefreshCw className="w-4 h-4 animate-spin" />
+              ) : (
+                <ShieldCheck className="w-4 h-4" />
+              )}
+              <span>{isSendingOtp ? 'Sending OTP...' : 'Get Verification OTP'}</span>
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleVerifyOtp} className="space-y-4">
             <div>
-              <label className="block text-[11px] font-bold text-stone-600 mb-1">Enter 4-Digit OTP</label>
+              <label className="block text-[11px] font-bold text-stone-700 uppercase mb-1">Enter 6-Digit OTP</label>
               <div className="relative">
-                <Key className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+                <Key className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
                 <input
                   type="text"
                   required
-                  maxLength={4}
+                  maxLength={6}
                   value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  placeholder="1234"
-                  className="w-full bg-cream border border-stone-200 text-xs font-bold text-olive tracking-widest text-center rounded-xl py-2.5 focus:outline-none focus:border-olive"
+                  onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
+                  placeholder="682914"
+                  className="w-full bg-[#faf8f4] border border-stone-300 text-base font-mono font-black text-earth tracking-widest text-center rounded-xl py-3 focus:outline-none focus:border-olive shadow-inner"
                 />
               </div>
             </div>
-          )}
 
-          <button
-            type="submit"
-            className="w-full bg-olive hover:bg-[#4a4a34] text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition active:scale-95"
-          >
-            <ShieldCheck className="w-4 h-4" />
-            <span>{mode === 'otp' ? 'Verify & Sign In' : 'Get Verification OTP'}</span>
-          </button>
-        </form>
+            <button
+              type="submit"
+              disabled={isVerifyingOtp}
+              className="w-full bg-olive hover:bg-[#455726] text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition active:scale-95 cursor-pointer disabled:opacity-50"
+            >
+              {isVerifyingOtp ? (
+                <RefreshCw className="w-4 h-4 animate-spin" />
+              ) : (
+                <ShieldCheck className="w-4 h-4" />
+              )}
+              <span>{isVerifyingOtp ? 'Verifying...' : 'Verify & Sign In'}</span>
+            </button>
+
+            <div className="flex items-center justify-between text-xs pt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode('login');
+                  setOtp('');
+                  setErrorMessage(null);
+                }}
+                className="text-stone-500 hover:text-earth font-semibold transition"
+              >
+                ← Change Email
+              </button>
+
+              <button
+                type="button"
+                disabled={resendTimer > 0}
+                onClick={(e) => handleSendOtp(e)}
+                className="text-olive font-bold disabled:text-stone-400 transition"
+              >
+                {resendTimer > 0 ? `Resend OTP in ${resendTimer}s` : 'Resend OTP'}
+              </button>
+            </div>
+          </form>
+        )}
 
         <div className="text-center text-xs text-stone-500 pt-2 border-t border-soft">
           {mode === 'login' ? (
             <p>
               Don't have an account?{' '}
-              <button onClick={() => setMode('signup')} className="text-olive font-bold underline">
+              <button onClick={() => { setMode('signup'); setErrorMessage(null); }} className="text-olive font-bold underline cursor-pointer">
                 Sign Up
               </button>
             </p>
           ) : (
             <p>
               Already have an account?{' '}
-              <button onClick={() => setMode('login')} className="text-olive font-bold underline">
+              <button onClick={() => { setMode('login'); setErrorMessage(null); }} className="text-olive font-bold underline cursor-pointer">
                 Log In
               </button>
             </p>
@@ -132,3 +327,4 @@ export const AuthModal: React.FC = () => {
     </div>
   );
 };
+

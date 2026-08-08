@@ -373,7 +373,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setOrders((prev) => [data.data, ...prev]);
         updateLocalUserAddress(normalizedAddr);
         clearCart();
-        setIsCheckoutOpen(false);
         showToast('🎉 Order placed successfully! Order ID: ' + data.data.id, 'success');
         return data.data;
       }
@@ -403,9 +402,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setOrders((prev) => [localOrder, ...prev]);
     updateLocalUserAddress(normalizedAddr);
     clearCart();
-    setIsCheckoutOpen(false);
     showToast('🎉 Order placed successfully! Order ID: ' + localOrder.id, 'success');
     return localOrder;
+
   };
 
   const saveAddress = async (addressData: Address): Promise<Address> => {

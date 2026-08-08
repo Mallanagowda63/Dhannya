@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { HERO_SLIDES } from '../data/initialData';
-import { ChevronLeft, ChevronRight, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ProductCategory } from '../types';
 
@@ -8,6 +6,33 @@ interface HeroSliderProps {
   onNavigateCustomMasala: () => void;
   onNavigateCategoryPage: (cat?: ProductCategory) => void;
 }
+
+export const MAIN_BANNERS = [
+  {
+    id: 'banner-1',
+    image: '/images/banners/banner1.png',
+    alt: 'DailyWell - For your Dailywellness (Spice, Flour & Oil Mill)',
+    action: 'category',
+  },
+  {
+    id: 'banner-2',
+    image: '/images/banners/banner2.png',
+    alt: 'DailyWell - Scoop your favorites (Smart Scoop. Waste Less.)',
+    action: 'category',
+  },
+  {
+    id: 'banner-3',
+    image: '/images/banners/banner3.png',
+    alt: 'DailyWell - Make your own masala (Your Spice. Your Recipe. Your Masala.)',
+    action: 'custom_masala',
+  },
+  {
+    id: 'banner-4',
+    image: '/images/banners/banner4.png',
+    alt: 'DailyWell - Freshly milled your way (Spice, Flour & Oil Mill)',
+    action: 'category',
+  },
+];
 
 export const HeroSlider: React.FC<HeroSliderProps> = ({
   onNavigateCustomMasala,
@@ -17,139 +42,41 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5500);
+      setCurrentIndex((prev) => (prev + 1) % MAIN_BANNERS.length);
+    }, 5000); // 5 Seconds Autoplay Interval
     return () => clearInterval(timer);
   }, []);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1));
-  };
+  const currentBanner = MAIN_BANNERS[currentIndex];
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+  const handleBannerClick = () => {
+    if (currentBanner.action === 'custom_masala') {
+      onNavigateCustomMasala();
+    } else {
+      onNavigateCategoryPage();
+    }
   };
-
-  const currentSlide = HERO_SLIDES[currentIndex];
 
   return (
-    <div className="relative w-full overflow-hidden bg-stone-950 min-h-[480px] sm:min-h-[540px] md:min-h-[600px] flex items-center">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide.id}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${currentSlide.bgImage})` }}
-        >
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/85 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/40" />
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 z-10 w-full">
-        <div className="max-w-2xl">
-          {/* Badge */}
+    <div className="relative w-full bg-[#faf8f4] border-b border-soft overflow-hidden select-none py-4 sm:py-6 lg:py-10">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 relative">
+        <AnimatePresence mode="wait">
           <motion.div
-            key={`badge-${currentIndex}`}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-olive/90 border border-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-bold shadow-md backdrop-blur mb-6"
+            key={currentBanner.id}
+            initial={{ opacity: 0, scale: 0.99 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.99 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            onClick={handleBannerClick}
+            className="cursor-pointer w-full flex items-center justify-center min-h-[260px] sm:min-h-[360px] md:min-h-[460px] lg:min-h-[540px] p-2 sm:p-4 bg-white border border-stone-200/80 rounded-3xl shadow-sm hover:shadow-md transition-shadow"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-200" />
-            <span>{currentSlide.badge}</span>
+            <img
+              src={currentBanner.image}
+              alt={currentBanner.alt}
+              className="w-full h-auto max-h-[580px] lg:max-h-[620px] object-contain mx-auto rounded-2xl"
+            />
           </motion.div>
-
-          {/* Title */}
-          <motion.h1
-            key={`title-${currentIndex}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif tracking-tight leading-[1.15] mb-6 drop-shadow"
-          >
-            {currentSlide.title}
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            key={`sub-${currentIndex}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-sm sm:text-base md:text-lg text-stone-200 mb-8 leading-relaxed font-normal max-w-xl"
-          >
-            {currentSlide.subtitle}
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            key={`cta-${currentIndex}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex flex-wrap items-center gap-4"
-          >
-            <button
-              onClick={() => {
-                if (currentSlide.customMasalaTarget) {
-                  onNavigateCustomMasala();
-                } else if (currentSlide.categoryTarget) {
-                  onNavigateCategoryPage(currentSlide.categoryTarget as ProductCategory);
-                } else {
-                  onNavigateCategoryPage();
-                }
-              }}
-              className="bg-olive hover:bg-[#4a4a34] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5 transition duration-200"
-            >
-              <span>{currentSlide.buttonText}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={() => onNavigateCustomMasala()}
-              className="bg-white/90 hover:bg-white text-earth border border-soft text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full backdrop-blur transition flex items-center gap-2"
-            >
-              <Sparkles className="w-4 h-4 text-terracotta" />
-              <span>{currentSlide.secondaryButtonText}</span>
-            </button>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Slide Navigation Controls */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-stone-900/70 hover:bg-stone-800 border border-stone-700 text-stone-200 flex items-center justify-center backdrop-blur transition hover:scale-110"
-        aria-label="Previous Slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-
-      <button
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-stone-900/70 hover:bg-stone-800 border border-stone-700 text-stone-200 flex items-center justify-center backdrop-blur transition hover:scale-110"
-        aria-label="Next Slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-        {HERO_SLIDES.map((slide, idx) => (
-          <button
-            key={slide.id}
-            onClick={() => setCurrentIndex(idx)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
-              idx === currentIndex ? 'w-8 bg-amber-400 shadow-md shadow-amber-500/50' : 'w-2.5 bg-stone-700 hover:bg-stone-500'
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
+        </AnimatePresence>
       </div>
     </div>
   );

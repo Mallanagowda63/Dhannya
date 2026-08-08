@@ -23,7 +23,8 @@ export type ProductCategory =
   | 'Skin Care'
   | 'Hair Care';
 
-export type HealthConcern = 'Weight Loss' | 'Gut Health' | 'Heart Health' | 'Skin & Hair';
+export type HealthConcern = 'Weight Loss' | 'Gut Health' | 'Heart Health' | 'Skin & Hair' | 'Best Sellers';
+
 
 export interface ProductVariant {
   weight: string; // e.g. '250g', '500g', '1kg'
@@ -116,6 +117,7 @@ export interface Address {
   id: string;
   fullName: string;
   mobile: string;
+  email?: string;
   street: string;
   city: string;
   state: string;
