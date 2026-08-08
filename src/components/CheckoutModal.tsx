@@ -36,14 +36,14 @@ export const CheckoutModal: React.FC = () => {
 
   // Address State
   const [address, setAddress] = useState<Address>(
-    user?.addresses[0] || {
+    user?.addresses?.[0] || {
       id: 'addr-new',
-      fullName: 'Priya Sharma',
-      mobile: '+91 98765 43210',
-      street: 'Flat 402, Green View Apts, Bandra West',
-      city: 'Mumbai',
+      fullName: user?.name || '',
+      mobile: user?.mobile || '',
+      street: '',
+      city: '',
       state: 'Maharashtra',
-      pincode: '400050',
+      pincode: '',
     }
   );
 

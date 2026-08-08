@@ -88,28 +88,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [user, setUser] = useState<User | null>(() => {
     const saved = localStorage.getItem('dhaanya_user');
-    return saved
-      ? JSON.parse(saved)
-      : {
-          id: 'usr-101',
-          name: 'Priya Sharma',
-          email: 'priya.sharma@example.com',
-          mobile: '+91 98765 43210',
-          role: 'user',
-          addresses: [
-            {
-              id: 'addr-1',
-              fullName: 'Priya Sharma',
-              mobile: '+91 98765 43210',
-              street: 'Flat 402, Green View Apartments, Bandra West',
-              city: 'Mumbai',
-              state: 'Maharashtra',
-              pincode: '400050',
-              isDefault: true,
-            },
-          ],
-          savedRecipes: [],
-        };
+    return saved ? JSON.parse(saved) : null;
   });
 
   const [orders, setOrders] = useState<Order[]>([]);

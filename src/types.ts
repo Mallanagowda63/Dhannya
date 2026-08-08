@@ -128,6 +128,7 @@ export interface Address {
 export interface Order {
   id: string;
   userId?: string;
+  userEmail?: string;
   items: CartItem[];
   shippingAddress: Address;
   deliverySlot: string;
@@ -156,8 +157,9 @@ export interface User {
 export interface Coupon {
   code: string;
   discountPercent: number;
-  maxDiscount: number;
-  minOrderValue: number;
+  maxDiscount?: number;
+  minOrderValue?: number;
+  minOrderAmount?: number;
   description: string;
 }
 
