@@ -1341,7 +1341,15 @@ app.get('/api/orders', async (req, res) => {
 
     const connected = await ensureDbConnected();
     if (connected) {
-      const dbOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
+      let dbOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
+      
+      // Auto-seed initial sample orders into MongoDB Atlas if database has 0 orders
+      if (dbOrders.length === 0 && !userId) {
+        console.log('Seeding sample orders into MongoDB Atlas "ecomm" database...');
+        await OrderModel.insertMany(liveOrders);
+        dbOrders = await OrderModel.find({}).sort({ createdAt: -1 }).lean();
+      }
+
       return res.json({ success: true, data: dbOrders, dbConnected: true });
     }
 

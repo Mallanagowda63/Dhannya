@@ -100,10 +100,96 @@ export const AdminPanel: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+const INITIAL_SAMPLE_ORDERS: Order[] = [
+  {
+    id: 'ORD-98231',
+    userId: 'usr-101',
+    items: [
+      {
+        id: 'ci-1',
+        type: 'product',
+        name: 'Wood Pressed Cold Pressed Mustard Oil',
+        image: '/images/Dailywell_Products/Mustard%20Oil/01.jpg',
+        variantWeight: '1 Litre',
+        price: 399,
+        quantity: 1,
+      },
+      {
+        id: 'ci-2',
+        type: 'product',
+        name: 'Organic Whole Ground Garam Masala',
+        image: '/images/Dailywell_Products/Garam%20Masala/01.jpg',
+        variantWeight: '250g',
+        price: 320,
+        quantity: 1,
+      },
+    ],
+    shippingAddress: {
+      id: 'addr-1',
+      fullName: 'Anita Kulkarni',
+      email: 'dhaanyaorganic1@gmail.com',
+      mobile: '+91 98765 43210',
+      street: '402 Sunrise Heights, MG Road',
+      city: 'Mumbai',
+      state: 'Maharashtra',
+      pincode: '400001',
+      isDefault: true,
+    },
+    deliverySlot: 'Morning (9:00 AM - 1:00 PM)',
+    paymentMethod: 'UPI',
+    subtotal: 719,
+    discount: 50,
+    tax: 36,
+    shippingFee: 0,
+    total: 705,
+    status: 'Shipped',
+    createdAt: new Date(Date.now() - 86400000).toISOString(),
+    estimatedDelivery: 'Tomorrow, by 2 PM',
+    trackingNumber: 'DW-TRK-7892341',
+  },
+  {
+    id: 'ORD-78923',
+    userId: 'usr-102',
+    items: [
+      {
+        id: 'ci-3',
+        type: 'product',
+        name: 'Pure Organic Turmeric Powder (High Curcumin)',
+        image: '/images/Dailywell_Products/Turmeric%20Powder/01.jpg',
+        variantWeight: '500g',
+        price: 249,
+        quantity: 2,
+      },
+    ],
+    shippingAddress: {
+      id: 'addr-2',
+      fullName: 'Rahul Sharma',
+      email: 'rahul.sharma@example.com',
+      mobile: '+91 98123 45678',
+      street: 'Flat 12, Green Park Society',
+      city: 'Pune',
+      state: 'Maharashtra',
+      pincode: '411001',
+      isDefault: true,
+    },
+    deliverySlot: 'Evening (4:00 PM - 8:00 PM)',
+    paymentMethod: 'COD',
+    subtotal: 498,
+    discount: 0,
+    tax: 25,
+    shippingFee: 40,
+    total: 563,
+    status: 'Processing',
+    createdAt: new Date().toISOString(),
+    estimatedDelivery: 'Within 2-3 Days',
+    trackingNumber: 'DW-TRK-9812344',
+  },
+];
+
   // Data States
   const [analyticsData, setAnalyticsData] = useState<any>(null);
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS);
-  const [ordersList, setOrdersList] = useState<Order[]>([]);
+  const [ordersList, setOrdersList] = useState<Order[]>(INITIAL_SAMPLE_ORDERS);
   const [couponsList, setCouponsList] = useState<any[]>([]);
   const [categoriesList, setCategoriesList] = useState<any[]>([]);
   const [customersList, setCustomersList] = useState<any[]>([]);
