@@ -131,6 +131,7 @@ export const CheckoutModal: React.FC = () => {
                   <input
                     type="text"
                     required
+                    placeholder="Priya Sharma"
                     value={address.fullName}
                     onChange={(e) => setAddress({ ...address, fullName: e.target.value })}
                     className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
@@ -141,8 +142,23 @@ export const CheckoutModal: React.FC = () => {
                   <input
                     type="tel"
                     required
+                    placeholder="+91 98765 43210"
                     value={address.mobile}
                     onChange={(e) => setAddress({ ...address, mobile: e.target.value })}
+                    className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-stone-600 mb-1 flex items-center justify-between">
+                    <span>Email Address</span>
+                    <span className="text-[10px] text-olive font-semibold">Order confirmation & tracking sent here</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="name@example.com"
+                    value={address.email || ''}
+                    onChange={(e) => setAddress({ ...address, email: e.target.value })}
                     className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
                   />
                 </div>

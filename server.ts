@@ -1246,6 +1246,48 @@ app.post('/api/orders', async (req, res) => {
     }
 
     liveOrders.unshift(newOrder as any);
+
+    // Dispatch Order Confirmation Email to customer if email is provided
+    const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
+    if (targetEmail && mailTransporter) {
+      try {
+        await mailTransporter.sendMail({
+          from: `"Dhannya Organic" <${cleanUser}>`,
+          to: targetEmail,
+          subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
+              <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: #455726; margin: 0; font-family: Georgia, serif; font-size: 24px;">Dhannya Organic & Custom Masala</h2>
+                <p style="color: #666; font-size: 13px; margin-top: 4px;">100% Organic, Cold-Pressed Spices & Health Foods</p>
+              </div>
+
+              <p style="font-size: 14px; color: #333;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
+              <p style="font-size: 14px; color: #555; line-height: 1.5;">Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been successfully placed and is now being processed.</p>
+
+              <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
+                <h3 style="color: #455726; margin-top: 0; font-size: 14px; text-transform: uppercase; border-b: 1px solid #e2ded4; padding-bottom: 8px;">Order Details</h3>
+                <p style="font-size: 13px; margin: 6px 0;"><strong>Order ID:</strong> #${orderId}</p>
+                <p style="font-size: 13px; margin: 6px 0;"><strong>Total Amount:</strong> ₹${total}</p>
+                <p style="font-size: 13px; margin: 6px 0;"><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
+                <p style="font-size: 13px; margin: 6px 0;"><strong>Delivery Slot:</strong> ${deliverySlot || 'Standard Delivery'}</p>
+                <p style="font-size: 13px; margin: 6px 0;"><strong>Delivery Address:</strong> ${shippingAddress?.street || ''}, ${shippingAddress?.city || ''} - ${shippingAddress?.pincode || ''}</p>
+              </div>
+
+              <p style="font-size: 12px; color: #777; text-align: center; margin-top: 24px;">
+                Have questions about your order? Email us at <a href="mailto:dhaanyaorganic1@gmail.com" style="color: #455726; font-weight: bold;">dhaanyaorganic1@gmail.com</a>
+              </p>
+              <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+              <p style="font-size: 11px; color: #999; text-align: center; margin: 0;">Dhannya Organic • Pure • Natural • Healthy</p>
+            </div>
+          `,
+        });
+        console.log(`📧 Order confirmation email successfully sent to ${targetEmail}`);
+      } catch (mailErr: any) {
+        console.error('❌ Could not send order confirmation email via SMTP:', mailErr.message);
+      }
+    }
+
     return res.json({ success: true, message: 'Order placed successfully and stored in database!', data: newOrder });
   } catch (err: any) {
     console.error('Error in /api/orders POST:', err);
