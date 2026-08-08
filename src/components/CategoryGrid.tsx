@@ -46,9 +46,6 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                   }}
                 />
                 <div className="absolute inset-2 rounded-2xl bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <span className="absolute top-4 right-4 bg-white/95 backdrop-blur-md text-xs text-olive font-extrabold px-3 py-1 rounded-full border border-soft shadow-xs">
-                  {cat.productCount} Items
-                </span>
               </div>
 
               {/* Category Content */}

@@ -246,15 +246,15 @@ export const Footer: React.FC<{
             </div>
             <div className="flex items-center gap-2">
               <PhoneCall className="w-4 h-4 text-olive shrink-0" />
-              <span>+91 98765 43210 / 022-26401122</span>
+              <span>+91 9008625716</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-olive shrink-0" />
-              <span>support@dhaanyaorganic.com</span>
+              <span>dhaanyaorganic1@gmail.com</span>
             </div>
             <div className="pt-2 flex items-center gap-2">
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919008625716"
                 target="_blank"
                 rel="noreferrer"
                 className="bg-white text-olive border border-soft px-3 py-1.5 rounded-lg flex items-center gap-1.5 font-bold hover:bg-stone-50 transition"

@@ -37,12 +37,38 @@ import {
   Clock,
   Sparkles,
   Award,
+  Eye,
+  PhoneCall,
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
   const { setIsAdminMode, showToast } = useApp();
 
-  // Navigation State
+  // Admin Portal Auth Gate
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
+    return sessionStorage.getItem('dhannya_admin_authed') === 'true';
+  });
+  const [adminEmailInput, setAdminEmailInput] = useState('dhaanyaorganic1@gmail.com');
+  const [adminPassInput, setAdminPassInput] = useState('');
+
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (adminEmailInput.trim().toLowerCase() === 'dhaanyaorganic1@gmail.com' && adminPassInput === 'Dhaanya@123') {
+      sessionStorage.setItem('dhannya_admin_authed', 'true');
+      setIsAdminAuthenticated(true);
+      showToast('Admin Portal Authenticated Successfully!', 'success');
+    } else {
+      showToast('Invalid Admin Email or Password!', 'error');
+    }
+  };
+
+  const handleAdminLogout = () => {
+    sessionStorage.removeItem('dhannya_admin_authed');
+    setIsAdminAuthenticated(false);
+    setIsAdminMode(false);
+    showToast('Logged out from Admin Portal', 'info');
+  };
+
   const [activeTab, setActiveTab] = useState<
     | 'dashboard'
     | 'orders'
@@ -83,6 +109,8 @@ export const AdminPanel: React.FC = () => {
   const [reviewsList, setReviewsList] = useState<any[]>([]);
   const [customMasalasList, setCustomMasalasList] = useState<any[]>([]);
 
+  const [selectedOrderDetails, setSelectedOrderDetails] = useState<Order | null>(null);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('All');
   const [selectedStatusFilter, setSelectedStatusFilter] = useState<string>('All');
@@ -99,6 +127,7 @@ export const AdminPanel: React.FC = () => {
   const [newProdPrice, setNewProdPrice] = useState(299);
   const [newProdStock, setNewProdStock] = useState(50);
   const [newProdDesc, setNewProdDesc] = useState('');
+  const [newProdImage, setNewProdImage] = useState('/images/Dailywell_Products/Garam%20Masala/01.jpg');
 
   // Coupon Add Modal State
   const [isAddCouponOpen, setIsAddCouponOpen] = useState(false);
@@ -167,6 +196,38 @@ export const AdminPanel: React.FC = () => {
   }, [dateRange]);
 
   // Handlers
+  const handleAddProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newProdName.trim()) return;
+    try {
+      const res = await fetch('/api/admin/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: newProdName,
+          category: newProdCategory,
+          price: newProdPrice,
+          stock: newProdStock,
+          image: newProdImage || '/images/Dailywell_Products/Garam%20Masala/01.jpg',
+          description: newProdDesc,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setProductsList((prev) => [data.data, ...prev]);
+        showToast(`Product "${newProdName}" added successfully with image & description!`, 'success');
+        setIsAddProductOpen(false);
+        setNewProdName('');
+        setNewProdPrice(299);
+        setNewProdStock(50);
+        setNewProdDesc('');
+        setNewProdImage('/images/Dailywell_Products/Garam%20Masala/01.jpg');
+      }
+    } catch {
+      showToast('Failed to add product', 'error');
+    }
+  };
+
   const handleCreateCoupon = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newCouponCode.trim()) return;
@@ -422,6 +483,64 @@ export const AdminPanel: React.FC = () => {
     [salesOverview]
   );
 
+  if (!isAdminAuthenticated) {
+    return (
+      <div className="fixed inset-0 bg-[#faf8f4] z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-3xl p-8 max-w-md w-full border border-stone-200 shadow-2xl space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-stone-900 text-amber-300 font-serif font-black text-2xl mx-auto flex items-center justify-center shadow-md">
+              Dh
+            </div>
+            <h2 className="text-2xl font-bold font-serif text-earth">Dhannya Admin Portal</h2>
+            <p className="text-xs text-stone-500">Enter your store administrator credentials to sign in</p>
+          </div>
+
+          <form onSubmit={handleAdminLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Admin Email</label>
+              <input
+                type="email"
+                required
+                value={adminEmailInput}
+                onChange={(e) => setAdminEmailInput(e.target.value)}
+                placeholder="dhaanyaorganic1@gmail.com"
+                className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-4 py-3 text-sm font-bold text-earth focus:outline-none focus:border-olive"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Admin Password</label>
+              <input
+                type="password"
+                required
+                value={adminPassInput}
+                onChange={(e) => setAdminPassInput(e.target.value)}
+                placeholder="••••••••••••"
+                className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-4 py-3 text-sm font-mono text-earth focus:outline-none focus:border-olive"
+              />
+            </div>
+
+            <div className="pt-2 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setIsAdminMode(false)}
+                className="flex-1 py-3 rounded-xl border border-stone-200 text-xs font-bold text-stone-700 hover:bg-stone-50 transition cursor-pointer"
+              >
+                Back to Store
+              </button>
+              <button
+                type="submit"
+                className="flex-1 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-300 font-serif font-bold text-sm shadow-md transition cursor-pointer"
+              >
+                Sign In to Admin
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#faf8f4] text-earth flex flex-col font-sans">
       {/* Top Admin Navigation Header */}
@@ -459,6 +578,14 @@ export const AdminPanel: React.FC = () => {
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-amber-400' : ''}`} />
             <span className="hidden sm:inline">Refresh</span>
+          </button>
+
+          <button
+            onClick={handleAdminLogout}
+            className="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs transition cursor-pointer shadow-xs"
+            title="Lock & Logout Admin Portal"
+          >
+            <span>Lock / Logout</span>
           </button>
 
           <button
@@ -1101,12 +1228,47 @@ export const AdminPanel: React.FC = () => {
                     <tbody className="divide-y divide-stone-100 font-medium">
                       {ordersList.slice(0, 8).map((order) => (
                         <tr key={order.id} className="hover:bg-[#faf8f4] transition">
-                          <td className="py-3.5 px-4 font-bold text-earth font-mono">{order.id}</td>
+                          <td className="py-3.5 px-4 font-bold text-earth font-mono">
+                            <div className="flex items-center gap-2.5">
+                              {order.items && order.items.length > 0 && (
+                                <img
+                                  src={order.items[0]?.image || order.items[0]?.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg'}
+                                  alt={order.id}
+                                  className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
+                                  onError={(e) => {
+                                    e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                  }}
+                                />
+                              )}
+                              <div>
+                                <span className="font-bold text-olive font-mono block">{order.id}</span>
+                                <span className="text-xs text-earth font-serif font-bold block truncate max-w-[140px]">
+                                  {order.items[0]?.name || order.items[0]?.product?.name || 'Organic Spice'}
+                                </span>
+                              </div>
+                            </div>
+                          </td>
                           <td className="py-3.5 px-4 font-bold">{order.shippingAddress?.fullName || 'Customer'}</td>
                           <td className="py-3.5 px-4 text-stone-600">
                             {order.createdAt ? new Date(order.createdAt).toLocaleDateString() : 'Today'}
                           </td>
-                          <td className="py-3.5 px-4 text-stone-600">{order.items.length} Items</td>
+                          <td className="py-3.5 px-4 text-stone-600">
+                            <div className="flex items-center gap-1">
+                              {order.items.slice(0, 3).map((it: any, idx: number) => (
+                                <img
+                                  key={idx}
+                                  src={it.image || it.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg'}
+                                  alt={it.name || it.product?.name || 'Item'}
+                                  className="w-6 h-6 rounded-lg object-cover border border-stone-200"
+                                  title={it.name || it.product?.name || 'Ordered Item'}
+                                  onError={(e) => {
+                                    e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                  }}
+                                />
+                              ))}
+                              <span className="text-xs font-bold text-earth ml-1">{order.items.length} Items</span>
+                            </div>
+                          </td>
                           <td className="py-3.5 px-4 font-extrabold text-earth">₹{order.total}</td>
                           <td className="py-3.5 px-4">
                             <span
@@ -1122,17 +1284,27 @@ export const AdminPanel: React.FC = () => {
                             </span>
                           </td>
                           <td className="py-3.5 px-4 text-right">
-                            <select
-                              value={order.status}
-                              onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
-                              className="bg-white border border-stone-200 rounded-xl px-2.5 py-1 text-xs font-bold text-earth focus:outline-none cursor-pointer"
-                            >
-                              <option value="Processing">Processing</option>
-                              <option value="Confirmed">Confirmed</option>
-                              <option value="Dispatched">Dispatched</option>
-                              <option value="Delivered">Delivered</option>
-                              <option value="Cancelled">Cancelled</option>
-                            </select>
+                            <div className="flex items-center justify-end gap-1.5">
+                              <button
+                                onClick={() => setSelectedOrderDetails(order)}
+                                className="px-2.5 py-1 rounded-xl bg-amber-50 text-olive hover:bg-amber-100 border border-amber-200 text-xs font-bold flex items-center gap-1 transition cursor-pointer"
+                                title="View Full Order Details"
+                              >
+                                <Eye className="w-3.5 h-3.5" />
+                                <span>View</span>
+                              </button>
+                              <select
+                                value={order.status}
+                                onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
+                                className="bg-white border border-stone-200 rounded-xl px-2.5 py-1 text-xs font-bold text-earth focus:outline-none cursor-pointer"
+                              >
+                                <option value="Processing">Processing</option>
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Dispatched">Dispatched</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
+                              </select>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -1231,7 +1403,35 @@ export const AdminPanel: React.FC = () => {
                   <tbody className="divide-y divide-stone-100 font-medium">
                     {ordersList.map((order) => (
                       <tr key={order.id} className="hover:bg-[#faf8f4] transition">
-                        <td className="py-3.5 px-4 font-mono font-bold text-earth">{order.id}</td>
+                        <td className="py-3.5 px-4 font-mono font-bold text-earth">
+                          <div className="flex items-center gap-2.5">
+                            {order.items && order.items.length > 0 && (
+                              <img
+                                src={order.items[0]?.image || order.items[0]?.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg'}
+                                alt={order.id}
+                                className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
+                                onError={(e) => {
+                                  e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                }}
+                              />
+                            )}
+                            <div>
+                              <span className="font-bold text-olive font-mono block">{order.id}</span>
+                              <div className="mt-0.5 space-y-0.5">
+                                {order.items.slice(0, 3).map((it: any, idx: number) => (
+                                  <span key={idx} className="text-[11px] font-bold text-earth font-serif block truncate max-w-[160px]">
+                                    • {it.name || it.product?.name || 'Organic Product'} ({it.variantWeight || it.selectedWeight || 'Std'})
+                                  </span>
+                                ))}
+                                {order.items.length > 3 && (
+                                  <span className="text-[10px] text-stone-500 font-sans block">
+                                    + {order.items.length - 3} more items
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
                         <td className="py-3.5 px-4 font-bold">{order.shippingAddress?.fullName || 'Anita Kulkarni'}</td>
                         <td className="py-3.5 px-4 text-stone-600 text-xs">
                           {order.shippingAddress?.street}, {order.shippingAddress?.city}
@@ -1239,17 +1439,27 @@ export const AdminPanel: React.FC = () => {
                         <td className="py-3.5 px-4 font-extrabold text-earth">₹{order.total}</td>
                         <td className="py-3.5 px-4 font-bold text-olive">{order.status}</td>
                         <td className="py-3.5 px-4 text-right">
-                          <select
-                            value={order.status}
-                            onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
-                            className="bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer"
-                          >
-                            <option value="Processing">Processing</option>
-                            <option value="Confirmed">Confirmed</option>
-                            <option value="Dispatched">Dispatched</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                          </select>
+                          <div className="flex items-center justify-end gap-2">
+                            <button
+                              onClick={() => setSelectedOrderDetails(order)}
+                              className="px-3 py-1.5 rounded-xl bg-amber-50 text-olive hover:bg-amber-100 border border-amber-200 text-xs font-bold flex items-center gap-1 transition cursor-pointer"
+                              title="View Order Details"
+                            >
+                              <Eye className="w-3.5 h-3.5" />
+                              <span>View Details</span>
+                            </button>
+                            <select
+                              value={order.status}
+                              onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
+                              className="bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer"
+                            >
+                              <option value="Processing">Processing</option>
+                              <option value="Confirmed">Confirmed</option>
+                              <option value="Dispatched">Dispatched</option>
+                              <option value="Delivered">Delivered</option>
+                              <option value="Cancelled">Cancelled</option>
+                            </select>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -1481,7 +1691,8 @@ export const AdminPanel: React.FC = () => {
                     <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
                       <th className="py-3 px-4">Customer Name</th>
                       <th className="py-3 px-4">Email</th>
-                      <th className="py-3 px-4">Mobile</th>
+                      <th className="py-3 px-4">Last Login Activity</th>
+                      <th className="py-3 px-4">Login Sessions</th>
                       <th className="py-3 px-4">Total Orders</th>
                       <th className="py-3 px-4">Total Spent</th>
                       <th className="py-3 px-4 text-right">Delete Option</th>
@@ -1491,13 +1702,33 @@ export const AdminPanel: React.FC = () => {
                     {customersList.map((cust) => (
                       <tr key={cust.id} className="hover:bg-[#faf8f4] transition">
                         <td className="py-3.5 px-4 font-bold text-earth font-serif flex items-center gap-2">
-                          <div className="w-8 h-8 rounded-full bg-olive text-white font-bold flex items-center justify-center text-xs">
-                            {cust.name.charAt(0)}
+                          <div className="w-8 h-8 rounded-full bg-olive text-white font-bold flex items-center justify-center text-xs uppercase">
+                            {cust.name ? cust.name.charAt(0) : 'U'}
                           </div>
                           <span>{cust.name}</span>
                         </td>
-                        <td className="py-3.5 px-4 text-stone-600 font-mono">{cust.email}</td>
-                        <td className="py-3.5 px-4 text-stone-600">{cust.mobile || '+91 98765 43210'}</td>
+                        <td className="py-3.5 px-4 text-stone-600 font-mono text-xs">{cust.email}</td>
+                        <td className="py-3.5 px-4 text-stone-600 text-xs">
+                          <div className="flex items-center gap-1.5 font-mono text-xs">
+                            <Clock className="w-3.5 h-3.5 text-olive" />
+                            <span className="font-bold text-earth">
+                              {cust.lastLoginAt
+                                ? new Date(cust.lastLoginAt).toLocaleString('en-IN', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                  })
+                                : 'Just now'}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <span className="bg-emerald-100 text-emerald-800 border border-emerald-300 font-mono px-2.5 py-0.5 rounded-full text-xs font-extrabold">
+                            {cust.loginCount || 1} logins
+                          </span>
+                        </td>
                         <td className="py-3.5 px-4 font-bold text-earth">{cust.ordersCount || 1} Orders</td>
                         <td className="py-3.5 px-4 font-extrabold text-olive">₹{cust.totalSpent || 1200}</td>
                         <td className="py-3.5 px-4 text-right">
@@ -1679,7 +1910,7 @@ export const AdminPanel: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleCreateProduct} className="space-y-4">
+            <form onSubmit={handleAddProduct} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Product Name</label>
                 <input
@@ -1731,13 +1962,50 @@ export const AdminPanel: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description</label>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1 flex items-center justify-between">
+                  <span>Upload Product Image File</span>
+                  <span className="text-[10px] text-olive font-extrabold lowercase">(JPG, PNG, WEBP)</span>
+                </label>
+                <div className="flex items-center gap-3">
+                  <label className="flex-1 bg-[#faf8f4] border border-dashed border-stone-300 hover:border-olive rounded-xl p-3.5 text-center cursor-pointer transition">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          const reader = new FileReader();
+                          reader.onloadend = () => {
+                            setNewProdImage(reader.result as string);
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      }}
+                    />
+                    <div className="text-xs text-stone-600 font-medium">
+                      📁 <strong className="text-earth font-bold">Click here to select & upload image file</strong>
+                    </div>
+                  </label>
+                  {newProdImage && (
+                    <img
+                      src={newProdImage}
+                      alt="Uploaded Preview"
+                      className="w-12 h-12 rounded-xl object-cover border-2 border-olive shrink-0 shadow-xs"
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Detailed Description</label>
                 <textarea
                   rows={3}
+                  required
                   value={newProdDesc}
                   onChange={(e) => setNewProdDesc(e.target.value)}
-                  placeholder="100% natural, unadulterated product description..."
-                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth focus:outline-none"
+                  placeholder="100% natural, unadulterated product description with benefits and usage instructions..."
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
                 />
               </div>
 
@@ -1985,6 +2253,185 @@ export const AdminPanel: React.FC = () => {
                   className="px-5 py-2 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold transition cursor-pointer shadow-xs"
                 >
                   Close Preview
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Order Details Modal Overlay */}
+      {selectedOrderDetails && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white border border-stone-200 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden text-earth my-8 relative animate-scale-up">
+            {/* Modal Header */}
+            <div className="p-6 bg-[#f7f5ef] border-b border-stone-200 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-olive text-white flex items-center justify-center font-bold text-sm shadow-xs">
+                  <ShoppingBag className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-extrabold font-serif text-lg text-earth">{selectedOrderDetails.id}</h3>
+                    <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase ${
+                      selectedOrderDetails.status === 'Delivered'
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : selectedOrderDetails.status === 'Dispatched'
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'bg-amber-100 text-amber-800'
+                    }`}>
+                      {selectedOrderDetails.status}
+                    </span>
+                  </div>
+                  <p className="text-xs text-stone-500">
+                    Placed on {selectedOrderDetails.createdAt ? new Date(selectedOrderDetails.createdAt).toLocaleString() : 'Today'}
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setSelectedOrderDetails(null)}
+                className="p-2 rounded-full bg-white hover:bg-stone-200 text-stone-600 transition border border-stone-200 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+              {/* Customer Information Card */}
+              <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200/80 space-y-2 text-xs">
+                <h4 className="font-extrabold uppercase tracking-wider text-[11px] text-stone-500 flex items-center gap-1.5">
+                  <Users className="w-3.5 h-3.5 text-olive" /> Customer & Shipping Info
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-earth font-medium pt-1">
+                  <div>
+                    <span className="text-stone-400 block text-[10px]">Customer Name:</span>
+                    <strong className="text-earth font-bold text-sm">
+                      {selectedOrderDetails.shippingAddress?.fullName || 'Store Customer'}
+                    </strong>
+                  </div>
+                  <div>
+                    <span className="text-stone-400 block text-[10px]">Mobile Contact:</span>
+                    <strong className="text-earth font-bold">
+                      {selectedOrderDetails.shippingAddress?.mobile || '+91 9008625716'}
+                    </strong>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <span className="text-stone-400 block text-[10px]">Delivery Address:</span>
+                    <p className="text-stone-700 font-medium">
+                      {selectedOrderDetails.shippingAddress?.street}, {selectedOrderDetails.shippingAddress?.city}, {selectedOrderDetails.shippingAddress?.state} - {selectedOrderDetails.shippingAddress?.pincode}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ordered Items Table */}
+              <div>
+                <h4 className="font-extrabold uppercase tracking-wider text-[11px] text-stone-500 mb-2 flex items-center gap-1.5">
+                  <Package className="w-3.5 h-3.5 text-olive" /> Ordered Items ({selectedOrderDetails.items?.length || 0})
+                </h4>
+                <div className="divide-y divide-stone-100 border border-stone-200 rounded-2xl overflow-hidden bg-white">
+                  {(selectedOrderDetails.items || []).map((item: any, idx: number) => {
+                    const itemName = item.name || item.product?.name || 'Organic Product';
+                    const itemWeight = item.variantWeight || item.selectedWeight || 'Standard';
+                    const itemImg = item.image || item.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                    const itemPrice = item.price || item.unitPrice || 0;
+                    const itemQty = item.quantity || 1;
+
+                    return (
+                      <div key={idx} className="p-3 flex items-center justify-between gap-3 hover:bg-stone-50">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={itemImg}
+                            alt={itemName}
+                            className="w-12 h-12 rounded-xl object-cover border border-stone-200 shrink-0"
+                            onError={(e) => {
+                              e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                            }}
+                          />
+                          <div>
+                            <h5 className="font-bold text-earth text-xs sm:text-sm font-serif leading-tight">
+                              {itemName}
+                            </h5>
+                            <span className="text-[11px] text-stone-500 block">
+                              Variant: <strong className="text-olive font-semibold">{itemWeight}</strong> | Qty: <strong className="text-earth">{itemQty}</strong>
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className="font-extrabold text-earth text-sm block">₹{itemPrice * itemQty}</span>
+                          <span className="text-[10px] text-stone-400">₹{itemPrice} each</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Payment & Amount Summary */}
+              <div className="bg-[#faf8f4] p-4 rounded-2xl border border-stone-200/80 space-y-1.5 text-xs text-stone-600">
+                <div className="flex justify-between">
+                  <span>Subtotal:</span>
+                  <span className="font-bold text-earth">₹{selectedOrderDetails.subtotal || selectedOrderDetails.total}</span>
+                </div>
+                {selectedOrderDetails.discount ? (
+                  <div className="flex justify-between text-emerald-700 font-bold">
+                    <span>Coupon Discount:</span>
+                    <span>-₹{selectedOrderDetails.discount}</span>
+                  </div>
+                ) : null}
+                <div className="flex justify-between">
+                  <span>GST Tax (5%):</span>
+                  <span className="font-bold text-earth">₹{selectedOrderDetails.tax || 0}</span>
+                </div>
+                <div className="flex justify-between border-b border-stone-200 pb-2">
+                  <span>Shipping Fee:</span>
+                  <span className="font-bold text-earth">
+                    {selectedOrderDetails.shippingFee === 0 ? <strong className="text-olive">FREE</strong> : `₹${selectedOrderDetails.shippingFee || 0}`}
+                  </span>
+                </div>
+                <div className="flex justify-between items-baseline pt-1">
+                  <span className="font-extrabold text-earth text-sm">Grand Total:</span>
+                  <span className="text-xl font-extrabold text-olive">₹{selectedOrderDetails.total}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer Actions */}
+            <div className="p-4 bg-stone-50 border-t border-stone-200 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-stone-500 font-medium">Update Status:</span>
+                <select
+                  value={selectedOrderDetails.status}
+                  onChange={(e) => {
+                    handleUpdateOrderStatus(selectedOrderDetails.id, e.target.value);
+                    setSelectedOrderDetails({ ...selectedOrderDetails, status: e.target.value as any });
+                  }}
+                  className="bg-white border border-stone-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer"
+                >
+                  <option value="Processing">Processing</option>
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="Dispatched">Dispatched</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </div>
+
+              <div className="flex gap-2">
+                <a
+                  href={`https://wa.me/91${(selectedOrderDetails.shippingAddress?.mobile || '9008625716').replace(/\D/g, '')}?text=${encodeURIComponent(`Hi ${selectedOrderDetails.shippingAddress?.fullName || 'Customer'}, regarding your Dhaanya Organic order ${selectedOrderDetails.id}: Status is ${selectedOrderDetails.status}.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 transition cursor-pointer shadow-xs"
+                >
+                  <PhoneCall className="w-3.5 h-3.5" /> Contact Customer
+                </a>
+                <button
+                  onClick={() => setSelectedOrderDetails(null)}
+                  className="px-4 py-2 rounded-xl bg-stone-200 hover:bg-stone-300 text-earth text-xs font-bold transition cursor-pointer"
+                >
+                  Close
                 </button>
               </div>
             </div>

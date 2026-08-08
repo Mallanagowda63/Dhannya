@@ -141,65 +141,14 @@ export const AuthModal: React.FC = () => {
 
         {/* OTP Sent Success Banner */}
         {mode === 'otp' && (
-          <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs p-3.5 rounded-2xl space-y-2">
+          <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs p-3.5 rounded-2xl space-y-1">
             <div className="flex items-center gap-2 font-bold">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>OTP Dispatched from <strong className="font-mono text-emerald-950">dhaanyaorganic1@gmail.com</strong></span>
+              <span>Verification Code Sent</span>
             </div>
             <p className="text-[11px] text-emerald-800 font-medium">
-              Verification email dispatched to <strong className="font-mono">{email}</strong>.
+              We have dispatched a 6-digit verification code to <strong className="font-mono">{email}</strong>. Please check your inbox!
             </p>
-
-            {receivedOtpCode && (
-              <div className="pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowEmailPreview(!showEmailPreview)}
-                  className="text-emerald-900 hover:text-emerald-950 underline font-bold text-[11px] flex items-center gap-1 cursor-pointer"
-                >
-                  <MailCheck className="w-3.5 h-3.5" />
-                  <span>{showEmailPreview ? 'Hide Email Preview' : '📩 View Dispatched Email'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOtp(receivedOtpCode);
-                    showToast(`Auto-filled OTP: ${receivedOtpCode}`, 'info');
-                  }}
-                  className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-[11px] px-3 py-1 rounded-xl flex items-center gap-1 shadow-xs cursor-pointer transition active:scale-95"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Auto-Fill Code ({receivedOtpCode})</span>
-                </button>
-              </div>
-            )}
-
-            {/* Email Preview Drawer */}
-            {showEmailPreview && receivedOtpCode && (
-              <div className="mt-2 p-3 bg-stone-900 text-stone-100 rounded-xl text-[11px] font-mono space-y-1.5 border border-stone-700 shadow-inner">
-                <div className="flex justify-between border-b border-stone-800 pb-1">
-                  <span className="text-stone-400">From:</span>
-                  <span className="text-emerald-400 font-bold">Dhannya Organic &lt;dhaanyaorganic1@gmail.com&gt;</span>
-                </div>
-                <div className="flex justify-between border-b border-stone-800 pb-1">
-                  <span className="text-stone-400">To:</span>
-                  <span className="text-stone-200 font-bold">{email}</span>
-                </div>
-                <div className="flex justify-between border-b border-stone-800 pb-1">
-                  <span className="text-stone-400">Subject:</span>
-                  <span className="text-stone-200">Verification Code: {receivedOtpCode} - Dhannya</span>
-                </div>
-                <div className="pt-1 text-stone-300 space-y-1">
-                  <p>Hi {name || email.split('@')[0]},</p>
-                  <p>Your 6-digit verification code to login to Dhannya is:</p>
-                  <p className="text-amber-400 text-sm font-black tracking-widest bg-stone-800 px-2 py-1 rounded text-center my-1 border border-stone-700">
-                    {receivedOtpCode}
-                  </p>
-                  <p className="text-[10px] text-stone-400">This code is valid for 10 minutes. Do not share it with anyone.</p>
-                </div>
-              </div>
-            )}
           </div>
         )}
 

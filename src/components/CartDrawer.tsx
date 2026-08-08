@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { X, Trash2, Plus, Minus, ShoppingBag, Tag, ArrowRight, Sparkles, Check } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, Tag, ArrowRight, Sparkles, Check, PhoneCall } from 'lucide-react';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -22,6 +22,24 @@ export const CartDrawer: React.FC = () => {
 
   const [couponCodeInput, setCouponCodeInput] = useState('');
   const [couponLoading, setCouponLoading] = useState(false);
+
+  const generateCartWhatsAppMessage = () => {
+    const origin = window.location.origin;
+    let text = `🌿 *Dhannya Organic Store - Cart Order Request* 🌿\n\n`;
+    (cart || []).forEach((item, idx) => {
+      const itemImg = item.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+      const imgUrl = itemImg.startsWith('http')
+        ? itemImg
+        : `${origin}${itemImg}`;
+      text += `${idx + 1}. *${item.name || 'Organic Product'}* (${item.variantWeight || 'Standard'})\n`;
+      text += `   - Qty: ${item.quantity} | Price: ₹${(item.price || 0) * item.quantity}\n`;
+      text += `   - Image: ${imgUrl}\n\n`;
+    });
+    text += `💰 *Grand Total:* ₹${cartGrandTotal}\n`;
+    text += `🚚 *Delivery:* Free Shipping above ₹499 | COD & UPI Available\n\n`;
+    text += `Please confirm my order and send payment instructions!`;
+    return encodeURIComponent(text);
+  };
 
   if (!isCartOpen) return null;
 
@@ -213,17 +231,29 @@ export const CartDrawer: React.FC = () => {
               </div>
             </div>
 
-            {/* Proceed to Checkout CTA */}
-            <button
-              onClick={() => {
-                setIsCartOpen(false);
-                setIsCheckoutOpen(true);
-              }}
-              className="w-full bg-olive hover:bg-[#4a4a34] text-white font-bold py-3.5 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow transition active:scale-95"
-            >
-              <span>Proceed to Checkout</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {/* Proceed to Checkout CTA & WhatsApp Order */}
+            <div className="space-y-2">
+              <button
+                onClick={() => {
+                  setIsCartOpen(false);
+                  setIsCheckoutOpen(true);
+                }}
+                className="w-full bg-olive hover:bg-[#4a4a34] text-white font-bold py-3.5 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow transition active:scale-95"
+              >
+                <span>Proceed to Checkout</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <a
+                href={`https://wa.me/919008625716?text=${generateCartWhatsAppMessage()}`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full bg-cream text-olive border border-soft font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-stone-100 transition active:scale-95"
+              >
+                <PhoneCall className="w-4 h-4 text-olive" />
+                <span>Order Entire Cart via WhatsApp</span>
+              </a>
+            </div>
           </div>
         )}
       </div>

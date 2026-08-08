@@ -349,7 +349,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: user?.id || 'usr-101',
+          userId: user?.id || `usr-${Date.now()}`,
+          userEmail: user?.email || normalizedAddr.email || '',
           items: cart,
           shippingAddress: normalizedAddr,
           deliverySlot: slot,
@@ -369,7 +370,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         console.warn('Could not parse order JSON response:', e);
       }
 
-      if (res.ok && data?.success) {
+      if (data && data.success && data.data) {
         setOrders((prev) => [data.data, ...prev]);
         updateLocalUserAddress(normalizedAddr);
         clearCart();
@@ -383,7 +384,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // Reliable fallback if API call fails or server returns an error
     const localOrder: Order = {
       id: `ORD-${Math.floor(10000 + Math.random() * 90000)}`,
-      userId: user?.id || 'usr-101',
+      userId: user?.id || `usr-${Date.now()}`,
+      userEmail: user?.email || normalizedAddr.email || '',
       items: [...cart],
       shippingAddress: normalizedAddr,
       deliverySlot: slot || 'Standard Delivery',

@@ -227,37 +227,21 @@ export const CheckoutModal: React.FC = () => {
                 <CreditCard className="w-4 h-4" /> Select Payment Method
               </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* UPI */}
                 <div
                   onClick={() => setPaymentMethod('UPI')}
                   className={`p-4 rounded-2xl border cursor-pointer transition flex flex-col justify-between ${
                     paymentMethod === 'UPI'
-                      ? 'bg-cream border-olive text-olive'
+                      ? 'bg-cream border-olive text-olive font-bold shadow-xs'
                       : 'bg-white border-soft text-stone-600 hover:border-stone-300'
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <QrCode className="w-5 h-5 text-olive" />
-                    <span className="font-bold text-xs text-earth">Instant UPI / QR</span>
+                    <span className="font-bold text-xs text-earth">Instant UPI / QR Code</span>
                   </div>
-                  <span className="text-[10px] text-stone-500 mt-2 block">GooglePay, PhonePe, Paytm</span>
-                </div>
-
-                {/* Card / Razorpay */}
-                <div
-                  onClick={() => setPaymentMethod('Razorpay')}
-                  className={`p-4 rounded-2xl border cursor-pointer transition flex flex-col justify-between ${
-                    paymentMethod === 'Razorpay'
-                      ? 'bg-cream border-olive text-olive'
-                      : 'bg-white border-soft text-stone-600 hover:border-stone-300'
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <CreditCard className="w-5 h-5 text-olive" />
-                    <span className="font-bold text-xs text-earth">Credit / Debit Card</span>
-                  </div>
-                  <span className="text-[10px] text-stone-500 mt-2 block">Cards, Netbanking & Wallets</span>
+                  <span className="text-[10px] text-stone-500 mt-2 block">GooglePay, PhonePe, Paytm, BHIM</span>
                 </div>
 
                 {/* COD Choice */}
@@ -265,13 +249,13 @@ export const CheckoutModal: React.FC = () => {
                   onClick={() => setPaymentMethod('COD')}
                   className={`p-4 rounded-2xl border cursor-pointer transition flex flex-col justify-between ${
                     paymentMethod === 'COD'
-                      ? 'bg-cream border-olive text-olive'
+                      ? 'bg-cream border-olive text-olive font-bold shadow-xs'
                       : 'bg-white border-soft text-stone-600 hover:border-stone-300'
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <Truck className="w-5 h-5 text-olive" />
-                    <span className="font-bold text-xs text-earth">Cash On Delivery</span>
+                    <span className="font-bold text-xs text-earth">Cash On Delivery (COD)</span>
                   </div>
                   <span className="text-[10px] text-stone-500 mt-2 block">Pay upon doorstep arrival</span>
                 </div>

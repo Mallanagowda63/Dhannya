@@ -56,9 +56,45 @@ export const ProductQuickView: React.FC = () => {
     setIsCheckoutOpen(true);
   };
 
-  const whatsappMessage = encodeURIComponent(
-    `Hi Dhaanya, I want to order: ${quickViewProduct.name} (${selectedVariant.weight}) x ${quantity} - ₹${selectedVariant.price * quantity}`
-  );
+  const fullImageAddress = currentImage.startsWith('http')
+    ? currentImage
+    : `${window.location.origin}${currentImage}`;
+
+  const whatsappText = `🌿 *Dhannya Organic & Custom Spices Order Request* 🌿\n\n` +
+    `📦 *Product:* ${quickViewProduct.name}\n` +
+    `🏷️ *Category:* ${quickViewProduct.category}\n` +
+    `⚖️ *Variant Weight:* ${selectedVariant.weight}\n` +
+    `🔢 *Quantity:* ${quantity} unit(s)\n` +
+    `💰 *Total Price:* ₹${selectedVariant.price * quantity}\n` +
+    `📝 *Description:* ${quickViewProduct.description ? quickViewProduct.description.slice(0, 100) + '...' : '100% Pure & Organic Quality'}\n\n` +
+    `🖼️ *Product Image:* ${fullImageAddress}\n\n` +
+    `🚚 *Delivery:* Free Shipping above ₹499 | COD & Instant UPI Available\n` +
+    `Please confirm my order and payment details!`;
+
+  const whatsappMessage = encodeURIComponent(whatsappText);
+
+  const handleWhatsAppOrderWithImage = async () => {
+    try {
+      const response = await fetch(currentImage);
+      const blob = await response.blob();
+      const filename = `${quickViewProduct.name.replace(/[^a-zA-Z0-9]/g, '_')}.jpg`;
+      const imageFile = new File([blob], filename, { type: blob.type || 'image/jpeg' });
+
+      if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
+        await navigator.share({
+          title: `Dhannya Organic - ${quickViewProduct.name}`,
+          text: whatsappText,
+          files: [imageFile],
+        });
+        showToast('Image and order details shared directly to WhatsApp!', 'success');
+        return;
+      }
+    } catch {
+      // Fallback if fetch or share fails
+    }
+
+    window.open(`https://wa.me/919008625716?text=${whatsappMessage}`, '_blank');
+  };
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -214,15 +250,15 @@ export const ProductQuickView: React.FC = () => {
                 </button>
               </div>
 
-              {/* WhatsApp Order Button */}
-              <a
-                href={`https://wa.me/919876543210?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full bg-cream text-olive border border-soft font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-stone-100 transition"
+              {/* WhatsApp Order Button with Direct Image Attachment */}
+              <button
+                type="button"
+                onClick={handleWhatsAppOrderWithImage}
+                className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition active:scale-95 cursor-pointer"
               >
-                <PhoneCall className="w-4 h-4 text-olive" /> Order via WhatsApp Direct
-              </a>
+                <PhoneCall className="w-4 h-4 text-white" />
+                <span>Order via WhatsApp (With Image & Details)</span>
+              </button>
             </div>
           </div>
         </div>

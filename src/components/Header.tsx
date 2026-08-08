@@ -60,14 +60,14 @@ export const Header: React.FC<HeaderProps> = ({
             <span>100% Traditional Wooden Ghani & Fresh Ground Spices</span>
           </div>
           <div className="flex items-center gap-2 mx-auto md:mx-0">
-            <span className="bg-terracotta text-white px-2.5 py-0.5 rounded text-xs uppercase tracking-wider font-extrabold">
-              LIMITED OFFER
+            <span className="bg-terracotta text-white px-2.5 py-0.5 rounded text-xs uppercase tracking-wider font-extrabold shadow-xs">
+              LIMITED FESTIVE OFFER
             </span>
-            <span>Use Coupon <strong>DHAANYA10</strong> for 10% OFF | Free Shipping above ₹499!</span>
+            <span>Use Coupon <strong className="bg-white/20 px-1.5 py-0.5 rounded font-mono text-amber-200">FESTIVE25</strong> for 25% OFF | Free Shipping above ₹499!</span>
           </div>
           <div className="hidden lg:flex items-center gap-4 text-white/90 text-xs sm:text-sm">
             <a
-              href="https://wa.me/919876543210?text=Hi%20Dhaanya,%20I%20have%20a%20query"
+              href="https://wa.me/919008625716?text=Hi%20Dhaanya,%20I%20have%20a%20query"
               target="_blank"
               rel="noreferrer"
               className="hover:text-amber-200 flex items-center gap-1.5 transition font-semibold"
@@ -192,17 +192,17 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Category Bar / Navigation Links */}
+      {/* Category Bar / Navigation Links & Trust Badges */}
       <div className="border-t border-soft bg-cream/60 py-2.5">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center overflow-x-auto no-scrollbar">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
           {/* Fast Category Links */}
-          <div className="flex items-center gap-5 sm:gap-8 shrink-0 font-sans font-semibold tracking-wide text-stone-700 text-sm sm:text-base">
+          <div className="flex items-center gap-5 sm:gap-7 shrink-0 font-sans font-semibold tracking-wide text-stone-700 text-xs sm:text-sm">
             <button
               onClick={() => {
                 setActiveCategory(null);
                 onNavigateCategoryPage();
               }}
-              className="hover:text-olive hover:scale-105 transition-all"
+              className="hover:text-olive hover:scale-105 transition-all text-earth font-bold"
             >
               All Products
             </button>
@@ -236,6 +236,22 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Sparkles className="w-4 h-4" /> Custom Masala
             </button>
+          </div>
+
+          {/* Right Side Trust Badges / Promo Highlights */}
+          <div className="hidden lg:flex items-center gap-5 text-xs font-bold text-olive border-l border-stone-200 pl-6 shrink-0">
+            <div className="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
+              <span className="text-sm">🚚</span>
+              <span>Free Delivery &gt; ₹499</span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
+              <span className="text-sm">⚡</span>
+              <span>24h Dispatch</span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
+              <span className="text-sm">🌿</span>
+              <span>100% Pure Organic</span>
+            </div>
           </div>
         </div>
       </div>

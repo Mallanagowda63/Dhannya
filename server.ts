@@ -18,25 +18,24 @@ try {
 dotenv.config({ path: '.env.local' });
 dotenv.config();
 
-// Nodemailer Transporter setup (if SMTP_USER / SMTP_PASS configured in .env.local)
+// Nodemailer Transporter setup (using .env.local, .env, or default fallback)
 let mailTransporter: any = null;
-if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-  try {
-    const cleanUser = process.env.SMTP_USER.trim();
-    const cleanPass = process.env.SMTP_PASS.trim().replace(/\s+/g, '');
-    mailTransporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: cleanUser,
-        pass: cleanPass,
-      },
-    });
-    console.log(`📧 Live Nodemailer SMTP Transporter initialized for ${cleanUser}`);
-  } catch (e: any) {
-    console.error('Error initializing nodemailer:', e.message);
-  }
+const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
+const cleanPass = (process.env.SMTP_PASS || 'ydxgavhwwfetjiuv').trim().replace(/\s+/g, '');
+
+try {
+  mailTransporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: cleanUser,
+      pass: cleanPass,
+    },
+  });
+  console.log(`📧 Live Nodemailer SMTP Transporter initialized for ${cleanUser}`);
+} catch (e: any) {
+  console.error('Error initializing nodemailer:', e.message);
 }
 
 const app = express();
@@ -177,6 +176,8 @@ const CustomerSchema = new mongoose.Schema(
     mobile: String,
     ordersCount: { type: Number, default: 0 },
     totalSpent: { type: Number, default: 0 },
+    lastLoginAt: { type: String, default: () => new Date().toISOString() },
+    loginCount: { type: Number, default: 1 },
     createdAt: { type: String, default: () => new Date().toISOString() },
   },
   { timestamps: true }
@@ -721,6 +722,27 @@ app.post('/api/auth/verify-otp', async (req, res) => {
       mobile: '',
     };
 
+    const nowIso = new Date().toISOString();
+
+    // Update or add to liveCustomers in-memory state
+    let existingCust = liveCustomers.find((c) => c.email === cleanEmail);
+    if (existingCust) {
+      existingCust.lastLoginAt = nowIso;
+      existingCust.loginCount = (existingCust.loginCount || 1) + 1;
+    } else {
+      liveCustomers.unshift({
+        id: userId,
+        name: customerName,
+        email: cleanEmail,
+        mobile: '+91 98765 43210',
+        ordersCount: 0,
+        totalSpent: 0,
+        lastLoginAt: nowIso,
+        loginCount: 1,
+        createdAt: nowIso,
+      });
+    }
+
     // Save customer to MongoDB if connected
     if (isDbConnected) {
       try {
@@ -731,8 +753,10 @@ app.post('/api/auth/verify-otp', async (req, res) => {
               id: userId,
               name: customerName,
               email: cleanEmail,
-              updatedAt: new Date().toISOString(),
+              lastLoginAt: nowIso,
+              updatedAt: nowIso,
             },
+            $inc: { loginCount: 1 },
           },
           { upsert: true }
         );

@@ -297,7 +297,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -355,7 +355,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -414,7 +414,7 @@ export const PRODUCTS: Product[] = [
       "Nut Butters",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -472,7 +472,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -530,7 +530,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -588,7 +588,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -646,7 +646,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -704,7 +704,7 @@ export const PRODUCTS: Product[] = [
       "Noodles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -763,7 +763,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -821,7 +821,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -879,7 +879,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -937,7 +937,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -995,7 +995,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1053,7 +1053,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1111,7 +1111,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1169,7 +1169,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1227,7 +1227,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1285,7 +1285,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1343,7 +1343,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1395,7 +1395,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1447,7 +1447,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1499,7 +1499,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1557,7 +1557,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1615,7 +1615,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1673,7 +1673,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1731,7 +1731,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1789,7 +1789,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1847,7 +1847,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1905,7 +1905,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -1963,7 +1963,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2021,7 +2021,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2079,7 +2079,7 @@ export const PRODUCTS: Product[] = [
       "Hair Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2138,7 +2138,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2196,7 +2196,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2254,7 +2254,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2312,7 +2312,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2370,7 +2370,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2428,7 +2428,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2486,7 +2486,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2544,7 +2544,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2602,7 +2602,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2661,7 +2661,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2720,7 +2720,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2778,7 +2778,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2836,7 +2836,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2895,7 +2895,7 @@ export const PRODUCTS: Product[] = [
       "Nut Butters",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -2953,7 +2953,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3011,7 +3011,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3069,7 +3069,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3127,7 +3127,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3185,7 +3185,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3243,7 +3243,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3302,7 +3302,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3360,7 +3360,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3418,7 +3418,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3476,7 +3476,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3534,7 +3534,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3592,7 +3592,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3651,7 +3651,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3703,7 +3703,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3761,7 +3761,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3819,7 +3819,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3877,7 +3877,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3939,7 +3939,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -3998,7 +3998,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4056,7 +4056,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4108,7 +4108,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4168,7 +4168,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4226,7 +4226,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4287,7 +4287,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4345,7 +4345,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4403,7 +4403,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4461,7 +4461,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4520,7 +4520,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4579,7 +4579,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4638,7 +4638,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4697,7 +4697,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4756,7 +4756,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4814,7 +4814,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4872,7 +4872,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4930,7 +4930,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -4988,7 +4988,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5046,7 +5046,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5104,7 +5104,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5162,7 +5162,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5220,7 +5220,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5278,7 +5278,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5336,7 +5336,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5394,7 +5394,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5452,7 +5452,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5510,7 +5510,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5568,7 +5568,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5626,7 +5626,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5684,7 +5684,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5742,7 +5742,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5800,7 +5800,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5858,7 +5858,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5916,7 +5916,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -5974,7 +5974,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6033,7 +6033,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6085,7 +6085,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6143,7 +6143,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6201,7 +6201,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6259,7 +6259,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6317,7 +6317,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6375,7 +6375,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6433,7 +6433,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6491,7 +6491,7 @@ export const PRODUCTS: Product[] = [
       "Pickles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6549,7 +6549,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6607,7 +6607,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6665,7 +6665,7 @@ export const PRODUCTS: Product[] = [
       "Pickles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6723,7 +6723,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6781,7 +6781,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6839,7 +6839,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6898,7 +6898,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -6956,7 +6956,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7014,7 +7014,7 @@ export const PRODUCTS: Product[] = [
       "Nut Butters",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7072,7 +7072,7 @@ export const PRODUCTS: Product[] = [
       "Skin Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7130,7 +7130,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7188,7 +7188,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7246,7 +7246,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7304,7 +7304,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7362,7 +7362,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7420,7 +7420,7 @@ export const PRODUCTS: Product[] = [
       "Rice",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7472,7 +7472,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7530,7 +7530,7 @@ export const PRODUCTS: Product[] = [
       "Hair Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7588,7 +7588,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7646,7 +7646,7 @@ export const PRODUCTS: Product[] = [
       "Pasta",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7704,7 +7704,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7762,7 +7762,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7820,7 +7820,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7878,7 +7878,7 @@ export const PRODUCTS: Product[] = [
       "Poha",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7936,7 +7936,7 @@ export const PRODUCTS: Product[] = [
       "Pasta",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -7994,7 +7994,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8052,7 +8052,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8110,7 +8110,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8168,7 +8168,7 @@ export const PRODUCTS: Product[] = [
       "Skin Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8226,7 +8226,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8284,7 +8284,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8342,7 +8342,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8400,7 +8400,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8458,7 +8458,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8516,7 +8516,7 @@ export const PRODUCTS: Product[] = [
       "Pickles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8574,7 +8574,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8632,7 +8632,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8690,7 +8690,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8748,7 +8748,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8806,7 +8806,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8864,7 +8864,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8922,7 +8922,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -8980,7 +8980,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9038,7 +9038,7 @@ export const PRODUCTS: Product[] = [
       "Skin Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9096,7 +9096,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9154,7 +9154,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9212,7 +9212,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9270,7 +9270,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9328,7 +9328,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9386,7 +9386,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9444,7 +9444,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9502,7 +9502,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9560,7 +9560,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9618,7 +9618,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9676,7 +9676,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9735,7 +9735,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9793,7 +9793,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9851,7 +9851,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9909,7 +9909,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -9967,7 +9967,7 @@ export const PRODUCTS: Product[] = [
       "Noodles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10025,7 +10025,7 @@ export const PRODUCTS: Product[] = [
       "Pasta",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10083,7 +10083,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10141,7 +10141,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10199,7 +10199,7 @@ export const PRODUCTS: Product[] = [
       "Skin Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10257,7 +10257,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10315,7 +10315,7 @@ export const PRODUCTS: Product[] = [
       "Noodles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10374,7 +10374,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10432,7 +10432,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10493,7 +10493,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10551,7 +10551,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10609,7 +10609,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10667,7 +10667,7 @@ export const PRODUCTS: Product[] = [
       "Rice",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10719,7 +10719,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10771,7 +10771,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10829,7 +10829,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10881,7 +10881,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10933,7 +10933,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -10985,7 +10985,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11043,7 +11043,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11101,7 +11101,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11159,7 +11159,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11217,7 +11217,7 @@ export const PRODUCTS: Product[] = [
       "Skin Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11275,7 +11275,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11334,7 +11334,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11392,7 +11392,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11450,7 +11450,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11508,7 +11508,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11566,7 +11566,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11624,7 +11624,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11682,7 +11682,7 @@ export const PRODUCTS: Product[] = [
       "Nut Butters",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11740,7 +11740,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11798,7 +11798,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11856,7 +11856,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11914,7 +11914,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -11972,7 +11972,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12030,7 +12030,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12088,7 +12088,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12146,7 +12146,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12204,7 +12204,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12262,7 +12262,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12320,7 +12320,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12378,7 +12378,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12436,7 +12436,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12494,7 +12494,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12552,7 +12552,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12610,7 +12610,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12668,7 +12668,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12726,7 +12726,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12784,7 +12784,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12842,7 +12842,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12900,7 +12900,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -12958,7 +12958,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13016,7 +13016,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13074,7 +13074,7 @@ export const PRODUCTS: Product[] = [
       "Noodles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13132,7 +13132,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13190,7 +13190,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13248,7 +13248,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13306,7 +13306,7 @@ export const PRODUCTS: Product[] = [
       "Poha",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13364,7 +13364,7 @@ export const PRODUCTS: Product[] = [
       "Noodles",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13422,7 +13422,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13480,7 +13480,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13538,7 +13538,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13597,7 +13597,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13655,7 +13655,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13713,7 +13713,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13771,7 +13771,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13823,7 +13823,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13881,7 +13881,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13940,7 +13940,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -13998,7 +13998,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14056,7 +14056,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14114,7 +14114,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14172,7 +14172,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14230,7 +14230,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14288,7 +14288,7 @@ export const PRODUCTS: Product[] = [
       "Poha",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14346,7 +14346,7 @@ export const PRODUCTS: Product[] = [
       "Hair Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14404,7 +14404,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14462,7 +14462,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14520,7 +14520,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14578,7 +14578,7 @@ export const PRODUCTS: Product[] = [
       "Coffee",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14636,7 +14636,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14694,7 +14694,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14752,7 +14752,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14810,7 +14810,7 @@ export const PRODUCTS: Product[] = [
       "Rice",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14868,7 +14868,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14926,7 +14926,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -14984,7 +14984,7 @@ export const PRODUCTS: Product[] = [
       "Masalas",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15042,7 +15042,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15103,7 +15103,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15164,7 +15164,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15222,7 +15222,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15280,7 +15280,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15338,7 +15338,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15397,7 +15397,7 @@ export const PRODUCTS: Product[] = [
       "Flour",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15455,7 +15455,7 @@ export const PRODUCTS: Product[] = [
       "Hair Care",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15513,7 +15513,7 @@ export const PRODUCTS: Product[] = [
       "Rice",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15565,7 +15565,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15623,7 +15623,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15675,7 +15675,7 @@ export const PRODUCTS: Product[] = [
       "Eco Friendly",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15733,7 +15733,7 @@ export const PRODUCTS: Product[] = [
       "Millets",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15791,7 +15791,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15849,7 +15849,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15907,7 +15907,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -15965,7 +15965,7 @@ export const PRODUCTS: Product[] = [
       "Natural Sweeteners",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16023,7 +16023,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16084,7 +16084,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16142,7 +16142,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16200,7 +16200,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16259,7 +16259,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16318,7 +16318,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16376,7 +16376,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16434,7 +16434,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16492,7 +16492,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16550,7 +16550,7 @@ export const PRODUCTS: Product[] = [
       "Tea",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16609,7 +16609,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16667,7 +16667,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16725,7 +16725,7 @@ export const PRODUCTS: Product[] = [
       "Rice",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16783,7 +16783,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16841,7 +16841,7 @@ export const PRODUCTS: Product[] = [
       "Rava",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16899,7 +16899,7 @@ export const PRODUCTS: Product[] = [
       "Health Foods",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -16957,7 +16957,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17015,7 +17015,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17073,7 +17073,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17131,7 +17131,7 @@ export const PRODUCTS: Product[] = [
       "Spices",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17194,7 +17194,7 @@ export const PRODUCTS: Product[] = [
       "Wood Pressed Oils",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17253,7 +17253,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17311,7 +17311,7 @@ export const PRODUCTS: Product[] = [
       "Nut Butters",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17370,7 +17370,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17428,7 +17428,7 @@ export const PRODUCTS: Product[] = [
       "Seeds",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17486,7 +17486,7 @@ export const PRODUCTS: Product[] = [
       "Poha",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17544,7 +17544,7 @@ export const PRODUCTS: Product[] = [
       "Pulses",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17602,7 +17602,7 @@ export const PRODUCTS: Product[] = [
       "Poha",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17660,7 +17660,7 @@ export const PRODUCTS: Product[] = [
       "Quick Bites",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   },
   {
@@ -17718,7 +17718,7 @@ export const PRODUCTS: Product[] = [
       "Dry Fruits",
       "Organic",
       "Natural",
-      "DailyWell"
+      "Dhaanya"
     ]
   }
 ];
@@ -17943,6 +17943,18 @@ export const MASALA_INGREDIENTS: MasalaIngredient[] = [
 ];
 
 export const COUPONS: Coupon[] = [
+  {
+    "code": "FESTIVE25",
+    "discountPercent": 25,
+    "minOrderAmount": 499,
+    "description": "Get 25% OFF on all organic products & spices orders above ₹499"
+  },
+  {
+    "code": "DHAANYA10",
+    "discountPercent": 10,
+    "minOrderAmount": 299,
+    "description": "Get 10% OFF on all organic orders above ₹299"
+  },
   {
     "code": "ORGANIC10",
     "discountPercent": 10,

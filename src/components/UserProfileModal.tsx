@@ -49,6 +49,18 @@ export const UserProfileModal: React.FC = () => {
 
   const wishlistedProducts = PRODUCTS.filter((p) => wishlist.includes(p.id));
 
+  const userOrders = (orders || []).filter((o) => {
+    if (!user) return false;
+    const uEmail = (user.email || '').toLowerCase().trim();
+    const uId = user.id;
+
+    if (o.userId && o.userId === uId) return true;
+    if (o.userEmail && o.userEmail.toLowerCase().trim() === uEmail) return true;
+    if (o.shippingAddress?.email && o.shippingAddress.email.toLowerCase().trim() === uEmail) return true;
+
+    return false;
+  });
+
   const handleSaveAddress = async (e: React.FormEvent) => {
     e.preventDefault();
     await saveAddress(newAddrForm);
@@ -67,32 +79,29 @@ export const UserProfileModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border border-soft w-full max-w-3xl rounded-3xl shadow-xl overflow-hidden text-earth my-8">
-        {/* Profile Header */}
-        <div className="bg-cream p-6 border-b border-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white border border-soft w-full max-w-2xl rounded-3xl shadow-xl overflow-hidden text-earth my-8 relative">
+        {/* Header */}
+        <div className="p-6 bg-cream border-b border-soft flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-olive text-white font-bold text-xl flex items-center justify-center shadow">
-              {user.name.charAt(0).toUpperCase()}
+            <div className="w-12 h-12 rounded-2xl bg-olive text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              {user.name ? user.name[0].toUpperCase() : 'U'}
             </div>
             <div>
-              <h3 className="text-lg font-bold font-serif text-earth">{user.name}</h3>
-              <p className="text-xs text-stone-500">{user.email} • {user.mobile}</p>
+              <h3 className="font-bold font-serif text-lg text-earth">{user.name}</h3>
+              <p className="text-xs text-stone-500">{user.email}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <button
-              onClick={() => {
-                logout();
-                setIsProfileOpen(false);
-              }}
-              className="text-xs text-stone-600 hover:text-rose-600 bg-white hover:bg-stone-100 border border-soft px-3 py-1.5 rounded-xl font-semibold flex items-center gap-1 transition"
+              onClick={logout}
+              className="bg-white hover:bg-stone-100 border border-soft text-rose-600 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5 transition"
             >
               <LogOut className="w-3.5 h-3.5" /> Logout
             </button>
             <button
               onClick={() => setIsProfileOpen(false)}
-              className="p-1.5 rounded-full text-stone-500 hover:text-earth hover:bg-stone-200 transition"
+              className="p-2 rounded-full bg-white hover:bg-stone-100 border border-soft text-stone-600 transition"
             >
               <X className="w-5 h-5" />
             </button>
@@ -109,7 +118,7 @@ export const UserProfileModal: React.FC = () => {
                 : 'border-transparent text-stone-500 hover:text-earth'
             }`}
           >
-            <Package className="w-4 h-4" /> My Orders ({orders.length})
+            <Package className="w-4 h-4" /> My Orders ({userOrders.length})
           </button>
           <button
             onClick={() => setActiveTab('wishlist')}
@@ -148,12 +157,16 @@ export const UserProfileModal: React.FC = () => {
           {/* ORDERS TAB */}
           {activeTab === 'orders' && (
             <div className="space-y-3">
-              {orders.length === 0 ? (
+              {userOrders.length === 0 ? (
                 <div className="text-center py-12 text-stone-500 text-xs">
-                  No orders placed yet.
+                  <Package className="w-10 h-10 mx-auto text-stone-300 mb-2" />
+                  <p className="font-bold text-stone-600">No orders placed yet.</p>
+                  <p className="text-[11px] text-stone-400 mt-1">
+                    Your placed orders will appear here after checkout!
+                  </p>
                 </div>
               ) : (
-                orders.map((ord) => (
+                userOrders.map((ord) => (
                   <div
                     key={ord.id}
                     className="bg-cream p-4 rounded-2xl border border-soft space-y-3 text-xs"
