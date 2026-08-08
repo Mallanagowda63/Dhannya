@@ -14,6 +14,7 @@ import {
   QrCode,
   Sparkles,
   PackageCheck,
+  Mail,
 } from 'lucide-react';
 
 export const CheckoutModal: React.FC = () => {
@@ -40,6 +41,7 @@ export const CheckoutModal: React.FC = () => {
       id: 'addr-new',
       fullName: user?.name || '',
       mobile: user?.mobile || '',
+      email: user?.email || '',
       street: '',
       city: '',
       state: 'Maharashtra',
@@ -127,7 +129,7 @@ export const CheckoutModal: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Full Name</label>
+                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Full Name *</label>
                   <input
                     type="text"
                     required
@@ -138,20 +140,11 @@ export const CheckoutModal: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Mobile Number</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+91 98765 43210"
-                    value={address.mobile}
-                    onChange={(e) => setAddress({ ...address, mobile: e.target.value })}
-                    className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
-                  />
-                </div>
-                <div className="sm:col-span-2">
                   <label className="block text-[11px] font-bold text-stone-600 mb-1 flex items-center justify-between">
-                    <span>Email Address</span>
-                    <span className="text-[10px] text-olive font-semibold">Order confirmation & tracking sent here</span>
+                    <span className="flex items-center gap-1">
+                      <Mail className="w-3 h-3 text-olive" /> Email Address *
+                    </span>
+                    <span className="text-[10px] text-olive font-medium">Order receipt sent here</span>
                   </label>
                   <input
                     type="email"
@@ -162,33 +155,47 @@ export const CheckoutModal: React.FC = () => {
                     className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
                   />
                 </div>
-                <div className="sm:col-span-2">
-                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Street Address / House No / Area</label>
+                <div>
+                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Mobile Number *</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                    value={address.mobile}
+                    onChange={(e) => setAddress({ ...address, mobile: e.target.value })}
+                    className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Pincode *</label>
                   <input
                     type="text"
                     required
+                    placeholder="400001"
+                    value={address.pincode}
+                    onChange={(e) => setAddress({ ...address, pincode: e.target.value })}
+                    className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Street Address / House No / Area *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Flat 402, Green View Apartments, Bandra West"
                     value={address.street}
                     onChange={(e) => setAddress({ ...address, street: e.target.value })}
                     className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
                   />
                 </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-stone-600 mb-1">City</label>
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-stone-600 mb-1">City *</label>
                   <input
                     type="text"
                     required
+                    placeholder="Mumbai"
                     value={address.city}
                     onChange={(e) => setAddress({ ...address, city: e.target.value })}
-                    className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-stone-600 mb-1">Pincode</label>
-                  <input
-                    type="text"
-                    required
-                    value={address.pincode}
-                    onChange={(e) => setAddress({ ...address, pincode: e.target.value })}
                     className="w-full bg-cream border border-stone-200 text-xs text-earth rounded-xl p-2.5 focus:outline-none focus:border-olive"
                   />
                 </div>
