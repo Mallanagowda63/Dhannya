@@ -1196,7 +1196,7 @@ app.delete('/api/admin/custom-masalas/:id', async (req, res) => {
 // Orders API - Robust MongoDB Storage & Retrieval
 app.post('/api/orders', async (req, res) => {
   try {
-    const { items, shippingAddress, deliverySlot, paymentMethod, subtotal, discount, tax, shippingFee, total, userId } =
+    const { items, shippingAddress, deliverySlot, paymentMethod, subtotal, discount, tax, shippingFee, total, userId, userEmail } =
       req.body;
 
     if (!items || items.length === 0) {
