@@ -386,6 +386,15 @@ export async function initDatabase() {
       } else {
         console.log(`✅ ${addressCount} addresses verified in MongoDB Atlas "ecomm" database!`);
       }
+
+      // Seed initial customers if collection is empty
+      const customerCount = await CustomerModel.countDocuments();
+      if (customerCount === 0) {
+        await CustomerModel.insertMany(liveCustomers);
+        console.log('✅ Initial customers seeded into MongoDB database "ecomm"!');
+      } else {
+        console.log(`✅ ${customerCount} customers verified in MongoDB Atlas "ecomm" database!`);
+      }
     } catch (err: any) {
       console.error('⚠️ Error seeding MongoDB Atlas initial data:', err.message);
     }
@@ -1234,9 +1243,11 @@ app.post('/api/orders', async (req, res) => {
       });
     }
 
+    // 1. Save Order Document to MongoDB Atlas
     const createdDoc: any = await OrderModel.create(newOrder as any);
     console.log(`✅ Order ${orderId} successfully saved into MongoDB Atlas "ecomm" database! Doc ID:`, createdDoc?._id);
 
+    // 2. Save Shipping Address Document to MongoDB Atlas "addresses" collection
     if (shippingAddress) {
       try {
         const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
@@ -1249,20 +1260,49 @@ app.post('/api/orders', async (req, res) => {
             $set: {
               id: addrId,
               userId: userId || 'usr-101',
-              fullName: shippingAddress.fullName,
-              mobile: shippingAddress.mobile,
-              email: shippingAddress.email || '',
-              street: shippingAddress.street,
-              city: shippingAddress.city,
+              fullName: shippingAddress.fullName || 'Valued Customer',
+              mobile: shippingAddress.mobile || '',
+              email: shippingAddress.email || userEmail || '',
+              street: shippingAddress.street || '',
+              city: shippingAddress.city || '',
               state: shippingAddress.state || 'Maharashtra',
-              pincode: shippingAddress.pincode,
+              pincode: shippingAddress.pincode || '',
               isDefault: shippingAddress.isDefault ?? true,
             },
           },
           { upsert: true }
         );
+        console.log(`✅ Customer Address ${addrId} successfully saved into MongoDB Atlas "addresses" collection!`);
       } catch (e: any) {
-        console.error('Error saving address to MongoDB:', e.message);
+        console.error('❌ Error saving address to MongoDB Atlas:', e.message);
+      }
+    }
+
+    // 3. Save/Update Customer Profile Document to MongoDB Atlas "customers" collection
+    if (shippingAddress || userEmail) {
+      try {
+        const custEmail = (userEmail || shippingAddress?.email || `${userId}@dhannya.com`).trim().toLowerCase();
+        const custName = shippingAddress?.fullName || 'Valued Customer';
+        await CustomerModel.updateOne(
+          { email: custEmail },
+          {
+            $set: {
+              id: userId || `cust-${Date.now()}`,
+              name: custName,
+              email: custEmail,
+              mobile: shippingAddress?.mobile || '',
+              lastLoginAt: new Date().toISOString(),
+            },
+            $inc: {
+              ordersCount: 1,
+              totalSpent: Number(total) || 0,
+            },
+          },
+          { upsert: true }
+        );
+        console.log(`✅ Customer profile for ${custEmail} saved into MongoDB Atlas "customers" collection!`);
+      } catch (custErr: any) {
+        console.error('❌ Error saving customer profile to MongoDB Atlas:', custErr.message);
       }
     }
 
@@ -1425,6 +1465,25 @@ app.delete('/api/addresses/:id', async (req, res) => {
     res.json({ success: true, message: 'Address deleted from database' });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Admin Customers Endpoint - Real MongoDB Atlas Integration
+app.get('/api/admin/customers', async (req, res) => {
+  try {
+    const connected = await ensureDbConnected();
+    if (connected) {
+      let dbCustomers = await CustomerModel.find().sort({ createdAt: -1 }).lean();
+      if (dbCustomers.length === 0) {
+        console.log('Seeding initial customers into MongoDB Atlas "ecomm" database...');
+        await CustomerModel.insertMany(liveCustomers);
+        dbCustomers = await CustomerModel.find().sort({ createdAt: -1 }).lean();
+      }
+      return res.json({ success: true, data: dbCustomers, dbConnected: true });
+    }
+    return res.json({ success: true, data: liveCustomers });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message, data: liveCustomers });
   }
 });
 
