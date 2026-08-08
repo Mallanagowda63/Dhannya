@@ -1226,44 +1226,44 @@ app.post('/api/orders', async (req, res) => {
     };
 
     const dbConnected = await ensureDbConnected();
-    if (dbConnected) {
+    if (!dbConnected) {
+      console.error(`❌ Cannot save order ${orderId}: MongoDB Atlas database is disconnected.`);
+      return res.status(500).json({
+        success: false,
+        message: 'Database Connection Error: Could not connect to MongoDB Atlas. Please check network access and connection string.',
+      });
+    }
+
+    const createdDoc: any = await OrderModel.create(newOrder as any);
+    console.log(`✅ Order ${orderId} successfully saved into MongoDB Atlas "ecomm" database! Doc ID:`, createdDoc?._id);
+
+    if (shippingAddress) {
       try {
-        const createdDoc: any = await OrderModel.create(newOrder as any);
-        console.log(`✅ Order ${orderId} successfully saved into MongoDB Atlas "ecomm" database! Doc ID:`, createdDoc?._id);
-      } catch (e: any) {
-        console.error(`❌ Error saving order ${orderId} to MongoDB Atlas:`, e.message);
-      }
+        const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
+          ? shippingAddress.id
+          : `addr-${Date.now()}`;
 
-      if (shippingAddress) {
-        try {
-          const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
-            ? shippingAddress.id
-            : `addr-${Date.now()}`;
-
-          await AddressModel.updateOne(
-            { id: addrId },
-            {
-              $set: {
-                id: addrId,
-                userId: userId || 'usr-101',
-                fullName: shippingAddress.fullName,
-                mobile: shippingAddress.mobile,
-                email: shippingAddress.email || '',
-                street: shippingAddress.street,
-                city: shippingAddress.city,
-                state: shippingAddress.state || 'Maharashtra',
-                pincode: shippingAddress.pincode,
-                isDefault: shippingAddress.isDefault ?? true,
-              },
+        await AddressModel.updateOne(
+          { id: addrId },
+          {
+            $set: {
+              id: addrId,
+              userId: userId || 'usr-101',
+              fullName: shippingAddress.fullName,
+              mobile: shippingAddress.mobile,
+              email: shippingAddress.email || '',
+              street: shippingAddress.street,
+              city: shippingAddress.city,
+              state: shippingAddress.state || 'Maharashtra',
+              pincode: shippingAddress.pincode,
+              isDefault: shippingAddress.isDefault ?? true,
             },
-            { upsert: true }
-          );
-        } catch (e: any) {
-          console.error('Error saving address to MongoDB:', e.message);
-        }
+          },
+          { upsert: true }
+        );
+      } catch (e: any) {
+        console.error('Error saving address to MongoDB:', e.message);
       }
-    } else {
-      console.warn(`⚠️ MongoDB Atlas was not connected when placing order ${orderId}, fallback to in-memory store.`);
     }
 
     if (shippingAddress) {
