@@ -42,7 +42,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                   className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 opacity-95 group-hover:opacity-100"
                   loading="lazy"
                   onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80';
+                    e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
                   }}
                 />
                 <div className="absolute inset-2 rounded-2xl bg-gradient-to-t from-black/40 via-transparent to-transparent" />

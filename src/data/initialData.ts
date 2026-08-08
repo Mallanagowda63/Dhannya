@@ -68,7 +68,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "flour",
     "iconName": "Wheat",
     "description": "Stone-ground, unbleached organic flours & ancient grain blends.",
-    "image": "/images/Dailywell_Products/Appam%20Idiyappam%20Podi/01.jpg",
+    "image": "/images/Dailywell_Products/Dailywell%20Multi%20Millet%20Atta/01.jpg",
     "productCount": 16
   },
   {
@@ -76,7 +76,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "dry-fruits",
     "iconName": "Nut",
     "description": "Premium handpicked almonds, walnuts, cashews, raisins, and dates.",
-    "image": "/images/Dailywell_Products/Ajwa%20Dates/01.jpg",
+    "image": "/images/Dailywell_Products/Almonds%20Jumbo/01.jpg",
     "productCount": 45
   },
   {
@@ -84,7 +84,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "seeds",
     "iconName": "Sprout",
     "description": "Nutrient-dense raw and roasted chia, flax, pumpkin, and sunflower seeds.",
-    "image": "/images/Dailywell_Products/Alovi%20Seeds%20(Halim%20Seeds)/01.jpg",
+    "image": "/images/Dailywell_Products/Chia%20Seeds/01.png",
     "productCount": 14
   },
   {
@@ -92,7 +92,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "millets",
     "iconName": "Grain",
     "description": "Gluten-free super grains including Ragi, Foxtail, Bajra, and Jowar.",
-    "image": "/images/Dailywell_Products/Amaranth%20(Rajgira)/01.jpg",
+    "image": "/images/Dailywell_Products/Foxtail%20Millet%20(Navane)/01.jpg",
     "productCount": 15
   },
   {
@@ -100,7 +100,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "spices",
     "iconName": "Flame",
     "description": "Aromatic unadulterated whole & ground spices sourced straight from farms.",
-    "image": "/images/Dailywell_Products/Ajwain%20(Ayamodakam)/01.jpg",
+    "image": "/images/Dailywell_Products/Cardamom%20Bold/01.jpg",
     "productCount": 49
   },
   {
@@ -108,7 +108,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "masalas",
     "iconName": "CookingPot",
     "description": "Authentic handcrafted curry blends, Garam Masala, and regional spice mixes.",
-    "image": "/images/Dailywell_Products/Avalose%20Podi/01.jpg",
+    "image": "/images/Dailywell_Products/Garam%20Masala/01.jpg",
     "productCount": 11
   },
   {
@@ -116,7 +116,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "health-foods",
     "iconName": "HeartPulse",
     "description": "Superfood powders, immunity boosters, chyawanprash & protein mixes.",
-    "image": "/images/Dailywell_Products/Amla%20Powder/01.jpg",
+    "image": "/images/Dailywell_Products/Ashwagandha/01.jpg",
     "productCount": 21
   },
   {
@@ -124,7 +124,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "coffee",
     "iconName": "Coffee",
     "description": "Single-origin estate filter coffee powders and dark roast beans.",
-    "image": "/images/Dailywell_Products/Arabica%20Coffee%20Bean/01.jpg",
+    "image": "/images/Dailywell_Products/Arabica%20Coffee%20Powder/01.jpg",
     "productCount": 7
   },
   {
@@ -148,7 +148,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "natural-sweeteners",
     "iconName": "Candy",
     "description": "Pure raw forest honey, organic jaggery powder, dates syrup, and stevia.",
-    "image": "/images/Dailywell_Products/Brahmi%20Honey/01.jpg",
+    "image": "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/01.jpg",
     "productCount": 14
   },
   {
@@ -156,7 +156,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "pulses",
     "iconName": "Bean",
     "description": "Unpolished protein-rich lentils, chickpeas, and native dals.",
-    "image": "/images/Dailywell_Products/Barnyard%20Millet%20(Oodalu)/01.jpg",
+    "image": "/images/Dailywell_Products/Toor%20Dal%20Fine%20(Yellow)/01.jpg",
     "productCount": 20
   },
   {
@@ -172,7 +172,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "rice",
     "iconName": "Bowl",
     "description": "Aged Basmati, Brown Rice, Black Rice, and heirloom traditional varieties.",
-    "image": "/images/Dailywell_Products/Idly%20Rice%20SR%20Orange/01.jpg",
+    "image": "/images/Dailywell_Products/Red%20Matta%20Rice%20(Parboiled%20%26%20Semi-Polished)/01.jpg",
     "productCount": 5
   },
   {
@@ -188,7 +188,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "poha",
     "iconName": "Leaf",
     "description": "Thick & thin red rice poha, brown poha, and traditional flattened rice.",
-    "image": "/images/Dailywell_Products/Jowar%20Flakes/01.png",
+    "image": "/images/Dailywell_Products/Red%20Rice%20Flakes%20(Avalakki)/01.png",
     "productCount": 5
   },
   {
@@ -212,7 +212,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "eco-friendly",
     "iconName": "ShieldCheck",
     "description": "Clay cooking pots, copper water bottles, neem wood cutlery.",
-    "image": "/images/Dailywell_Products/Baby%20Fork/01.jpg",
+    "image": "/images/Dailywell_Products/Neem%20Comb/01.jpg",
     "productCount": 15
   },
   {
@@ -220,7 +220,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "quick-bites",
     "iconName": "Cookie",
     "description": "Roasted makhana, millet cookies, seed crackers, and healthier snacks.",
-    "image": "/images/Dailywell_Products/Amla%20Dry%20Candy/01.jpg",
+    "image": "/images/Dailywell_Products/Makhana%20(Lotus%20Seeds)/01.jpg",
     "productCount": 16
   },
   {
@@ -228,7 +228,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "skin-care",
     "iconName": "Smile",
     "description": "Cold-pressed coconut skin oil, organic ubtan body scrub, rose water.",
-    "image": "/images/Dailywell_Products/Henna%20Powder/01.jpg",
+    "image": "/images/Dailywell_Products/Multani%20Mitti/01.jpg",
     "productCount": 5
   },
   {
