@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { getApiUrl } from '../utils/apiConfig';
 import { Product, Order, ProductCategory } from '../types';
-import { CATEGORIES } from '../data/initialData';
+import { CATEGORIES, PRODUCTS } from '../data/initialData';
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -102,7 +102,7 @@ export const AdminPanel: React.FC = () => {
 
   // Data States
   const [analyticsData, setAnalyticsData] = useState<any>(null);
-  const [productsList, setProductsList] = useState<Product[]>([]);
+  const [productsList, setProductsList] = useState<Product[]>(PRODUCTS);
   const [ordersList, setOrdersList] = useState<Order[]>([]);
   const [couponsList, setCouponsList] = useState<any[]>([]);
   const [categoriesList, setCategoriesList] = useState<any[]>([]);
@@ -144,52 +144,87 @@ export const AdminPanel: React.FC = () => {
   const [newCatName, setNewCatName] = useState('');
   const [newCatDesc, setNewCatDesc] = useState('');
 
-  // Fetch Analytics & Database Records
+  // Fetch Analytics & Database Records safely
   const fetchDashboardData = async () => {
     setIsLoading(true);
+
+    // Products
     try {
-      const [
-        analyticsRes,
-        productsRes,
-        ordersRes,
-        couponsRes,
-        categoriesRes,
-        customersRes,
-        reviewsRes,
-        customMasalasRes,
-      ] = await Promise.all([
-        fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`)),
-        fetch(getApiUrl('/api/products')),
-        fetch(getApiUrl('/api/orders')),
-        fetch(getApiUrl('/api/coupons')),
-        fetch(getApiUrl('/api/categories')),
-        fetch(getApiUrl('/api/admin/customers')),
-        fetch(getApiUrl('/api/reviews')),
-        fetch(getApiUrl('/api/admin/custom-masalas')),
-      ]);
-
-      const analyticsJson = await analyticsRes.json();
-      const productsJson = await productsRes.json();
-      const ordersJson = await ordersRes.json();
-      const couponsJson = await couponsRes.json();
-      const categoriesJson = await categoriesRes.json();
-      const customersJson = await customersRes.json();
-      const reviewsJson = await reviewsRes.json();
-      const customMasalasJson = await customMasalasRes.json();
-
-      if (analyticsJson.success) setAnalyticsData(analyticsJson.data);
-      if (productsJson.success) setProductsList(productsJson.data);
-      if (ordersJson.success) setOrdersList(ordersJson.data);
-      if (couponsJson.success) setCouponsList(couponsJson.data);
-      if (categoriesJson.success) setCategoriesList(categoriesJson.data);
-      if (customersJson.success) setCustomersList(customersJson.data);
-      if (reviewsJson.success) setReviewsList(reviewsJson.data);
-      if (customMasalasJson.success) setCustomMasalasList(customMasalasJson.data);
+      const res = await fetch(getApiUrl('/api/products'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          setProductsList(json.data);
+        }
+      }
     } catch (e) {
-      console.error('Error fetching dashboard data:', e);
-    } finally {
-      setIsLoading(false);
+      console.warn('Using default products catalog fallback');
     }
+
+    // Orders
+    try {
+      const res = await fetch(getApiUrl('/api/orders'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setOrdersList(json.data);
+      }
+    } catch (e) {}
+
+    // Analytics
+    try {
+      const res = await fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success) setAnalyticsData(json.data);
+      }
+    } catch (e) {}
+
+    // Coupons
+    try {
+      const res = await fetch(getApiUrl('/api/coupons'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setCouponsList(json.data);
+      }
+    } catch (e) {}
+
+    // Categories
+    try {
+      const res = await fetch(getApiUrl('/api/categories'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setCategoriesList(json.data);
+      }
+    } catch (e) {}
+
+    // Customers
+    try {
+      const res = await fetch(getApiUrl('/api/admin/customers'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setCustomersList(json.data);
+      }
+    } catch (e) {}
+
+    // Reviews
+    try {
+      const res = await fetch(getApiUrl('/api/reviews'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setReviewsList(json.data);
+      }
+    } catch (e) {}
+
+    // Custom Masalas
+    try {
+      const res = await fetch(getApiUrl('/api/admin/custom-masalas'));
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setCustomMasalasList(json.data);
+      }
+    } catch (e) {}
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
