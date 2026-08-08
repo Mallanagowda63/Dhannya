@@ -65,6 +65,18 @@ app.get('/api/health', (req, res) => {
   res.json({ success: true, status: 'online', time: new Date().toISOString() });
 });
 
+// MongoDB Atlas Status Endpoint
+app.get('/api/db-status', async (req, res) => {
+  const connected = await ensureDbConnected();
+  res.json({
+    success: connected,
+    dbConnected: connected,
+    dbName: 'ecomm',
+    connectionState: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
+    mongoUriConfigured: !!process.env.MONGODB_URI,
+  });
+});
+
 
 // MongoDB Schemas
 const ProductSchema = new mongoose.Schema(
@@ -308,55 +320,75 @@ let liveOrders: Order[] = [
 
 let isDbConnected = false;
 
-// Connect to MongoDB and seed initial data if empty
-export async function initDatabase() {
+// Ensure MongoDB Atlas Connection (Auto-reconnects if disconnected)
+export async function ensureDbConnected(): Promise<boolean> {
+  if (mongoose.connection.readyState === 1) {
+    isDbConnected = true;
+    return true;
+  }
+
   try {
-    console.log('Connecting to MongoDB Atlas cluster "ecomm"...');
+    try {
+      dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
+    } catch {
+      // fallback
+    }
+    console.log('Connecting/re-connecting to MongoDB Atlas cluster "ecomm"...');
     await mongoose.connect(MONGO_URI, {
       dbName: 'ecomm',
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 15000,
+      connectTimeoutMS: 15000,
     });
     isDbConnected = true;
     console.log('✅ Connected to MongoDB Atlas "ecomm" database successfully!');
-
-    // Seed or update products into MongoDB Atlas database
-    console.log(`Seeding/Updating ${PRODUCTS.length} products into MongoDB Atlas...`);
-    const bulkOps = PRODUCTS.map((prod) => ({
-      updateOne: {
-        filter: { id: prod.id },
-        update: { $set: prod },
-        upsert: true,
-      },
-    }));
-    await ProductModel.bulkWrite(bulkOps as any);
-    console.log(`✅ All ${PRODUCTS.length} products synchronized in MongoDB Atlas "ecomm" database!`);
-
-
-
-    // Seed initial order if collection is empty
-    const orderCount = await OrderModel.countDocuments();
-    if (orderCount === 0) {
-      await OrderModel.insertMany(liveOrders);
-      console.log('✅ Initial order seeded into MongoDB database "ecomm"!');
-    } else {
-      console.log(`✅ ${orderCount} orders verified in MongoDB Atlas "ecomm" database!`);
-    }
-
-    // Seed initial addresses if collection is empty
-    const addressCount = await AddressModel.countDocuments();
-    if (addressCount === 0) {
-      await AddressModel.insertMany(liveAddresses);
-      console.log('✅ Initial addresses seeded into MongoDB database "ecomm"!');
-    } else {
-      console.log(`✅ ${addressCount} addresses verified in MongoDB Atlas "ecomm" database!`);
-    }
+    return true;
   } catch (err: any) {
     isDbConnected = false;
     console.error('❌ MongoDB Atlas Connection Error:', err.message);
     console.log('--------------------------------------------------');
     console.log('⚠️ Ensure IP Whitelist in Atlas Security Network Access is set to 0.0.0.0/0');
     console.log('--------------------------------------------------');
+    return false;
+  }
+}
+
+// Connect to MongoDB and seed initial data if empty
+export async function initDatabase() {
+  const connected = await ensureDbConnected();
+  if (connected) {
+    try {
+      // Seed or update products into MongoDB Atlas database
+      console.log(`Seeding/Updating ${PRODUCTS.length} products into MongoDB Atlas...`);
+      const bulkOps = PRODUCTS.map((prod) => ({
+        updateOne: {
+          filter: { id: prod.id },
+          update: { $set: prod },
+          upsert: true,
+        },
+      }));
+      await ProductModel.bulkWrite(bulkOps as any);
+      console.log(`✅ All ${PRODUCTS.length} products synchronized in MongoDB Atlas "ecomm" database!`);
+
+      // Seed initial order if collection is empty
+      const orderCount = await OrderModel.countDocuments();
+      if (orderCount === 0) {
+        await OrderModel.insertMany(liveOrders);
+        console.log('✅ Initial order seeded into MongoDB database "ecomm"!');
+      } else {
+        console.log(`✅ ${orderCount} orders verified in MongoDB Atlas "ecomm" database!`);
+      }
+
+      // Seed initial addresses if collection is empty
+      const addressCount = await AddressModel.countDocuments();
+      if (addressCount === 0) {
+        await AddressModel.insertMany(liveAddresses);
+        console.log('✅ Initial addresses seeded into MongoDB database "ecomm"!');
+      } else {
+        console.log(`✅ ${addressCount} addresses verified in MongoDB Atlas "ecomm" database!`);
+      }
+    } catch (err: any) {
+      console.error('⚠️ Error seeding MongoDB Atlas initial data:', err.message);
+    }
   }
 }
 
@@ -1193,12 +1225,13 @@ app.post('/api/orders', async (req, res) => {
       trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
     };
 
-    if (isDbConnected) {
+    const dbConnected = await ensureDbConnected();
+    if (dbConnected) {
       try {
         const createdDoc: any = await OrderModel.create(newOrder as any);
         console.log(`✅ Order ${orderId} successfully saved into MongoDB Atlas "ecomm" database! Doc ID:`, createdDoc?._id);
       } catch (e: any) {
-        console.error(`❌ Error saving order ${orderId} to MongoDB:`, e.message);
+        console.error(`❌ Error saving order ${orderId} to MongoDB Atlas:`, e.message);
       }
 
       if (shippingAddress) {
@@ -1215,6 +1248,7 @@ app.post('/api/orders', async (req, res) => {
                 userId: userId || 'usr-101',
                 fullName: shippingAddress.fullName,
                 mobile: shippingAddress.mobile,
+                email: shippingAddress.email || '',
                 street: shippingAddress.street,
                 city: shippingAddress.city,
                 state: shippingAddress.state || 'Maharashtra',
@@ -1224,10 +1258,12 @@ app.post('/api/orders', async (req, res) => {
             },
             { upsert: true }
           );
-        } catch (e) {
-          console.error('Error saving address to MongoDB:', e);
+        } catch (e: any) {
+          console.error('Error saving address to MongoDB:', e.message);
         }
       }
+    } else {
+      console.warn(`⚠️ MongoDB Atlas was not connected when placing order ${orderId}, fallback to in-memory store.`);
     }
 
     if (shippingAddress) {
@@ -1303,9 +1339,10 @@ app.get('/api/orders', async (req, res) => {
       query = { $or: [{ userId: String(userId) }, { userId: 'usr-101' }] };
     }
 
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       const dbOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
-      return res.json({ success: true, data: dbOrders });
+      return res.json({ success: true, data: dbOrders, dbConnected: true });
     }
 
     const filtered = userId
@@ -1322,10 +1359,11 @@ app.get('/api/orders', async (req, res) => {
 app.get('/api/addresses', async (req, res) => {
   try {
     const { userId } = req.query;
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       const query = userId ? { userId: String(userId) } : {};
       const addresses = await AddressModel.find(query).sort({ createdAt: -1 }).lean();
-      return res.json({ success: true, data: addresses });
+      return res.json({ success: true, data: addresses, dbConnected: true });
     }
     const filtered = userId ? liveAddresses.filter((a) => a.userId === String(userId)) : liveAddresses;
     res.json({ success: true, data: filtered });
@@ -1350,7 +1388,8 @@ app.post('/api/addresses', async (req, res) => {
       isDefault: !!isDefault,
     };
 
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       await AddressModel.updateOne({ id: addressId }, { $set: addressData }, { upsert: true });
     }
 
