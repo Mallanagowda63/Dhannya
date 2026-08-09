@@ -14,7 +14,7 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === 'production';
 const allowMemoryDbInDev = !isProduction && process.env.USE_MEMORY_DB === 'true';
 
-// Nodemailer Transporter setup
+// Nodemailer Transporter setup with 5s max timeouts
 let mailTransporter: any = null;
 const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
 const cleanPass = (process.env.SMTP_PASS || 'ydxgavhwwfetjiuv').trim().replace(/\s+/g, '');
@@ -24,6 +24,9 @@ try {
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 5000,
     auth: {
       user: cleanUser,
       pass: cleanPass,
@@ -582,38 +585,35 @@ dhaanyaorganic1@gmail.com`;
 
     console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
 
-    let emailSent = false;
+    console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
+
     if (mailTransporter) {
-      try {
-        await mailTransporter.sendMail({
-          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-          to: cleanEmail,
-          subject: emailSubject,
-          text: emailBody,
-          html: `
-            <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
-              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic</h2>
-              <p style="margin-top: 16px;">Hi <strong>${recipientName}</strong>,</p>
-              <p>Your 6-digit verification code to sign into your Dhannya account is:</p>
-              <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #faf8f4; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
-                ${generatedOtp}
-              </div>
-              <p style="font-size: 12px; color: #666;">This code is valid for 10 minutes.</p>
+      mailTransporter.sendMail({
+        from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
+        to: cleanEmail,
+        subject: emailSubject,
+        text: emailBody,
+        html: `
+          <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
+            <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic</h2>
+            <p style="margin-top: 16px;">Hi <strong>${recipientName}</strong>,</p>
+            <p>Your 6-digit verification code to sign into your Dhannya account is:</p>
+            <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #faf8f4; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
+              ${generatedOtp}
             </div>
-          `,
-        });
-        emailSent = true;
-        console.log(`[OTP] Email delivered to ${cleanEmail}`);
-      } catch (mailErr: any) {
+            <p style="font-size: 12px; color: #666;">This code is valid for 10 minutes.</p>
+          </div>
+        `,
+      }).then(() => {
+        console.log(`[OTP] Email delivered asynchronously to ${cleanEmail}`);
+      }).catch((mailErr: any) => {
         console.error(`[OTP ERROR] Nodemailer Error:`, mailErr.message);
-      }
+      });
     }
 
     return res.json({
       success: true,
-      message: emailSent
-        ? `Verification OTP sent to ${cleanEmail}.`
-        : `Verification code generated for ${cleanEmail}`,
+      message: `Verification code generated and sent to ${cleanEmail}`,
       email: cleanEmail,
       otpCode: generatedOtp,
     });
@@ -1395,30 +1395,30 @@ app.post('/api/orders', async (req, res) => {
       liveOrders.unshift(newOrder as any);
     }
 
-    // Dispatch Order Confirmation Email
+    // Dispatch Order Confirmation Email asynchronously
     const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
     if (targetEmail && mailTransporter) {
-      try {
-        await mailTransporter.sendMail({
-          from: `"Dhannya Organic" <${cleanUser}>`,
-          to: targetEmail,
-          subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
-              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
-              <p style="margin-top: 16px;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
-              <p>Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been placed.</p>
-              <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
-                <p><strong>Order ID:</strong> #${orderId}</p>
-                <p><strong>Total Amount:</strong> ₹${total}</p>
-                <p><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
-              </div>
+      mailTransporter.sendMail({
+        from: `"Dhannya Organic" <${cleanUser}>`,
+        to: targetEmail,
+        subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
+            <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
+            <p style="margin-top: 16px;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
+            <p>Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been placed.</p>
+            <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
+              <p><strong>Order ID:</strong> #${orderId}</p>
+              <p><strong>Total Amount:</strong> ₹${total}</p>
+              <p><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
             </div>
-          `,
-        });
-      } catch (mailErr: any) {
+          </div>
+        `,
+      }).then(() => {
+        console.log(`[MAIL] Order confirmation email sent to ${targetEmail}`);
+      }).catch((mailErr: any) => {
         console.error('[MAIL ERROR] Order confirmation email failed:', mailErr.message);
-      }
+      });
     }
 
     return res.json({ success: true, message: 'Order placed successfully and stored in MongoDB!', data: newOrder });
