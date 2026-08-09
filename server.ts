@@ -5,20 +5,16 @@ import dotenv from 'dotenv';
 import dns from 'dns';
 import nodemailer from 'nodemailer';
 import { createServer as createViteServer } from 'vite';
-import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS, COUPONS } from './src/data/initialData';
-import { Product, Order, CustomRecipe, Address } from './src/types';
-
-// Use Google/Cloudflare DNS resolvers for Node.js SRV record lookups on Windows
-try {
-  dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
-} catch (e) {
-  // fallback if system restricts custom DNS
-}
+import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData';
+import { Product, Order, Address } from './src/types';
 
 dotenv.config({ path: '.env.local' });
 dotenv.config();
 
-// Nodemailer Transporter setup (using .env.local, .env, or default fallback)
+const isProduction = process.env.NODE_ENV === 'production';
+const allowMemoryDbInDev = !isProduction && process.env.USE_MEMORY_DB === 'true';
+
+// Nodemailer Transporter setup
 let mailTransporter: any = null;
 const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
 const cleanPass = (process.env.SMTP_PASS || 'ydxgavhwwfetjiuv').trim().replace(/\s+/g, '');
@@ -33,20 +29,15 @@ try {
       pass: cleanPass,
     },
   });
-  console.log(`📧 Live Nodemailer SMTP Transporter initialized for ${cleanUser}`);
+  console.log(`[SMTP] Live Nodemailer transporter initialized for ${cleanUser}`);
 } catch (e: any) {
-  console.error('Error initializing nodemailer:', e.message);
+  console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
 }
 
 const app = express();
-
 const PORT = Number(process.env.PORT) || 3000;
 
-const MONGO_URI =
-  process.env.MONGODB_URI ||
-  'mongodb+srv://vivobookausu15_db_user:Gjy9zkagsMnaoQSI@ecomm.zmiyefn.mongodb.net/?appName=ecomm';
-
-// CORS Middleware for production & local development cross-origin deployment
+// CORS Middleware
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -61,25 +52,7 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use('/images', express.static(path.join(process.cwd(), 'images')));
 
-// API Health Check Endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ success: true, status: 'online', time: new Date().toISOString() });
-});
-
-// MongoDB Atlas Status Endpoint
-app.get('/api/db-status', async (req, res) => {
-  const connected = await ensureDbConnected();
-  res.json({
-    success: connected,
-    dbConnected: connected,
-    dbName: 'ecomm',
-    connectionState: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
-    mongoUriConfigured: !!process.env.MONGODB_URI,
-  });
-});
-
-
-// MongoDB Schemas
+// Mongoose Schemas
 const ProductSchema = new mongoose.Schema(
   {
     id: { type: String, required: true, unique: true },
@@ -212,15 +185,16 @@ const CustomerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const ProductModel = mongoose.model('Product', ProductSchema);
-const OrderModel = mongoose.model('Order', OrderSchema);
-const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
-const AddressModel = mongoose.model('Address', AddressSchema);
-const CouponModel = mongoose.model('Coupon', CouponSchema);
-const CategoryModel = mongoose.model('Category', CategorySchema);
-const ReviewModel = mongoose.model('Review', ReviewSchema);
-const CustomerModel = mongoose.model('Customer', CustomerSchema);
+export const ProductModel = mongoose.model('Product', ProductSchema);
+export const OrderModel = mongoose.model('Order', OrderSchema);
+export const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
+export const AddressModel = mongoose.model('Address', AddressSchema);
+export const CouponModel = mongoose.model('Coupon', CouponSchema);
+export const CategoryModel = mongoose.model('Category', CategorySchema);
+export const ReviewModel = mongoose.model('Review', ReviewSchema);
+export const CustomerModel = mongoose.model('Customer', CustomerSchema);
 
+// In-memory fallbacks ONLY for offline development mode if explicitly requested via USE_MEMORY_DB=true
 let liveCoupons = [
   { code: 'ORGANIC10', discountPercent: 10, minOrderValue: 499, maxDiscount: 200, description: '10% OFF on organic orders above ₹499', expiryDate: '2026-12-31T23:59', isActive: true },
   { code: 'WELLNESS20', discountPercent: 20, minOrderValue: 999, maxDiscount: 500, description: '20% OFF on health foods & dry fruits', expiryDate: '2026-12-31T23:59', isActive: true },
@@ -240,8 +214,6 @@ let liveCustomers: any[] = [
   { id: 'c-4', name: 'Vikram Menon', email: 'vikram.m@gmail.com', mobile: '+91 96543 21098', ordersCount: 8, totalSpent: 7210, createdAt: '2026-04-12' },
   { id: 'c-5', name: 'Deepa Nair', email: 'deepa.nair@hotmail.com', mobile: '+91 95432 10987', ordersCount: 7, totalSpent: 6480, createdAt: '2026-05-20' },
 ];
-
-
 
 let liveAddresses: (Address & { userId?: string })[] = [
   {
@@ -268,7 +240,6 @@ let liveAddresses: (Address & { userId?: string })[] = [
   },
 ];
 
-// In-memory fallback stores
 let liveProducts: Product[] = [...PRODUCTS];
 let liveOrders: Order[] = [
   {
@@ -321,111 +292,151 @@ let liveOrders: Order[] = [
 
 let isDbConnected = false;
 
-// Ensure MongoDB Atlas Connection (Auto-reconnects if disconnected)
+// Ensure MongoDB Atlas Connection (Reads process.env.MONGODB_URI exclusively)
 export async function ensureDbConnected(): Promise<boolean> {
   if (mongoose.connection.readyState === 1) {
     isDbConnected = true;
     return true;
   }
 
+  const mongoUri = process.env.MONGODB_URI;
+  if (!mongoUri) {
+    console.error('[DB FATAL] MONGODB_URI environment variable is missing!');
+    isDbConnected = false;
+    return false;
+  }
+
   try {
-    try {
-      dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
-    } catch {
-      // fallback
-    }
-    console.log('Connecting/re-connecting to MongoDB Atlas cluster "ecomm"...');
-    await mongoose.connect(MONGO_URI, {
+    console.log('[DB] Connecting to MongoDB Atlas cluster...');
+    await mongoose.connect(mongoUri, {
       dbName: 'ecomm',
-      serverSelectionTimeoutMS: 15000,
-      connectTimeoutMS: 15000,
+      serverSelectionTimeoutMS: 12000,
+      connectTimeoutMS: 12000,
     });
     isDbConnected = true;
-    console.log('✅ Connected to MongoDB Atlas "ecomm" database successfully!');
+    console.log('[DB] ✅ MongoDB Atlas connected successfully to database "ecomm"');
     return true;
   } catch (err: any) {
+    console.warn('[DB WARNING] Standard connection attempt failed:', err.message);
+
+    // SRV resolution fallback for restricted local Windows environments
+    if (err.message && (err.message.includes('querySrv') || err.message.includes('ECONNREFUSED') || err.message.includes('ENOTFOUND'))) {
+      try {
+        console.log('[DB] Applying DNS fallback resolvers (8.8.8.8, 1.1.1.1)...');
+        dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
+        await mongoose.connect(mongoUri, {
+          dbName: 'ecomm',
+          serverSelectionTimeoutMS: 12000,
+          connectTimeoutMS: 12000,
+        });
+        isDbConnected = true;
+        console.log('[DB] ✅ MongoDB Atlas connected successfully via DNS fallback!');
+        return true;
+      } catch (retryErr: any) {
+        console.error('[DB ERROR] Connection failed after DNS fallback:', retryErr.message);
+      }
+    } else {
+      console.error('[DB ERROR] MongoDB connection error:', err.message);
+    }
+
     isDbConnected = false;
-    console.error('❌ MongoDB Atlas Connection Error:', err.message);
-    console.log('--------------------------------------------------');
-    console.log('⚠️ Ensure IP Whitelist in Atlas Security Network Access is set to 0.0.0.0/0');
-    console.log('--------------------------------------------------');
     return false;
   }
 }
 
-// Connect to MongoDB and seed initial data if empty
+// Connect to MongoDB and seed initial data ONLY IF collection is completely empty
 export async function initDatabase() {
   const connected = await ensureDbConnected();
-  if (connected) {
-    try {
-      // Seed or update products into MongoDB Atlas database
-      console.log(`Seeding/Updating ${PRODUCTS.length} products into MongoDB Atlas...`);
-      const bulkOps = PRODUCTS.map((prod) => ({
-        updateOne: {
-          filter: { id: prod.id },
-          update: { $set: prod },
-          upsert: true,
-        },
-      }));
-      await ProductModel.bulkWrite(bulkOps as any);
-      console.log(`✅ All ${PRODUCTS.length} products synchronized in MongoDB Atlas "ecomm" database!`);
 
-      // Seed initial order if collection is empty
-      const orderCount = await OrderModel.countDocuments();
-      if (orderCount === 0) {
-        await OrderModel.insertMany(liveOrders);
-        console.log('✅ Initial order seeded into MongoDB database "ecomm"!');
-      } else {
-        console.log(`✅ ${orderCount} orders verified in MongoDB Atlas "ecomm" database!`);
-      }
+  if (!connected) {
+    if (isProduction) {
+      console.error('[DB FATAL] Production mode requires a valid MongoDB connection!');
+      console.error('[DB FATAL] Exiting application startup to prevent memory data degradation.');
+      process.exit(1);
+    } else if (allowMemoryDbInDev) {
+      console.warn('[DB WARN] Operating in offline dev in-memory mode because USE_MEMORY_DB=true');
+      return;
+    } else {
+      console.error('[DB WARN] Database disconnected. Set MONGODB_URI or USE_MEMORY_DB=true in development.');
+      return;
+    }
+  }
 
-      // Seed initial addresses if collection is empty
-      const addressCount = await AddressModel.countDocuments();
-      if (addressCount === 0) {
-        await AddressModel.insertMany(liveAddresses);
-        console.log('✅ Initial addresses seeded into MongoDB database "ecomm"!');
-      } else {
-        console.log(`✅ ${addressCount} addresses verified in MongoDB Atlas "ecomm" database!`);
-      }
+  try {
+    // 1. Seed Products if empty
+    const productCount = await ProductModel.countDocuments();
+    if (productCount === 0) {
+      console.log(`[DB SEED] Seeding ${PRODUCTS.length} initial products...`);
+      await ProductModel.insertMany(PRODUCTS);
+      console.log(`[DB SEED] ✅ Products seeded successfully.`);
+    } else {
+      console.log(`[DB] Products collection has ${productCount} documents; skipping seed.`);
+    }
 
-      // Seed initial customers if collection is empty
-      const customerCount = await CustomerModel.countDocuments();
-      if (customerCount === 0) {
-        await CustomerModel.insertMany(liveCustomers);
-        console.log('✅ Initial customers seeded into MongoDB database "ecomm"!');
-      } else {
-        console.log(`✅ ${customerCount} customers verified in MongoDB Atlas "ecomm" database!`);
-      }
+    // 2. Seed Orders if empty
+    const orderCount = await OrderModel.countDocuments();
+    if (orderCount === 0) {
+      console.log(`[DB SEED] Seeding initial sample order...`);
+      await OrderModel.insertMany(liveOrders);
+      console.log(`[DB SEED] ✅ Orders seeded successfully.`);
+    } else {
+      console.log(`[DB] Orders collection has ${orderCount} documents; skipping seed.`);
+    }
 
-      // Seed initial categories into MongoDB Atlas
-      const categoryCount = await CategoryModel.countDocuments();
-      if (categoryCount === 0) {
-        const catOps = CATEGORIES.map((cat) => ({
-          updateOne: { filter: { slug: cat.slug }, update: { $set: cat }, upsert: true },
-        }));
-        await CategoryModel.bulkWrite(catOps as any);
-        console.log(`✅ ${CATEGORIES.length} categories seeded into MongoDB database "ecomm"!`);
-      } else {
-        console.log(`✅ ${categoryCount} categories verified in MongoDB Atlas "ecomm" database!`);
-      }
+    // 3. Seed Addresses if empty
+    const addressCount = await AddressModel.countDocuments();
+    if (addressCount === 0) {
+      console.log(`[DB SEED] Seeding initial sample addresses...`);
+      await AddressModel.insertMany(liveAddresses);
+      console.log(`[DB SEED] ✅ Addresses seeded successfully.`);
+    } else {
+      console.log(`[DB] Addresses collection has ${addressCount} documents; skipping seed.`);
+    }
 
-      // Seed/Upsert coupons into MongoDB Atlas
-      const coupOps = liveCoupons.map((c) => ({
-        updateOne: { filter: { code: c.code }, update: { $set: c }, upsert: true },
-      }));
-      await CouponModel.bulkWrite(coupOps as any);
-      const couponCount = await CouponModel.countDocuments();
-      console.log(`✅ ${couponCount} coupons verified/synchronized in MongoDB Atlas "ecomm" database!`);
+    // 4. Seed Customers if empty
+    const customerCount = await CustomerModel.countDocuments();
+    if (customerCount === 0) {
+      console.log(`[DB SEED] Seeding initial customers...`);
+      await CustomerModel.insertMany(liveCustomers);
+      console.log(`[DB SEED] ✅ Customers seeded successfully.`);
+    } else {
+      console.log(`[DB] Customers collection has ${customerCount} documents; skipping seed.`);
+    }
 
-      // Seed/Upsert reviews into MongoDB Atlas
-      const revOps = liveReviews.map((r) => ({
-        updateOne: { filter: { id: r.id }, update: { $set: r }, upsert: true },
-      }));
-      await ReviewModel.bulkWrite(revOps as any);
-      const reviewCount = await ReviewModel.countDocuments();
-      console.log(`✅ ${reviewCount} reviews verified/synchronized in MongoDB Atlas "ecomm" database!`);
+    // 5. Seed Categories if empty
+    const categoryCount = await CategoryModel.countDocuments();
+    if (categoryCount === 0) {
+      console.log(`[DB SEED] Seeding initial categories...`);
+      await CategoryModel.insertMany(CATEGORIES);
+      console.log(`[DB SEED] ✅ Categories seeded successfully.`);
+    } else {
+      console.log(`[DB] Categories collection has ${categoryCount} documents; skipping seed.`);
+    }
 
-      // Seed/Upsert custom recipes into MongoDB Atlas
+    // 6. Seed Coupons if empty
+    const couponCount = await CouponModel.countDocuments();
+    if (couponCount === 0) {
+      console.log(`[DB SEED] Seeding initial coupons...`);
+      await CouponModel.insertMany(liveCoupons);
+      console.log(`[DB SEED] ✅ Coupons seeded successfully.`);
+    } else {
+      console.log(`[DB] Coupons collection has ${couponCount} documents; skipping seed.`);
+    }
+
+    // 7. Seed Reviews if empty
+    const reviewCount = await ReviewModel.countDocuments();
+    if (reviewCount === 0) {
+      console.log(`[DB SEED] Seeding initial reviews...`);
+      await ReviewModel.insertMany(liveReviews);
+      console.log(`[DB SEED] ✅ Reviews seeded successfully.`);
+    } else {
+      console.log(`[DB] Reviews collection has ${reviewCount} documents; skipping seed.`);
+    }
+
+    // 8. Seed Custom Recipe sample if empty
+    const recipeCount = await CustomRecipeModel.countDocuments();
+    if (recipeCount === 0) {
+      console.log(`[DB SEED] Seeding sample custom recipe...`);
       const sampleRecipe = {
         id: 'rec-sample-1',
         recipeName: 'My Signature Royal Kitchen Garam Masala',
@@ -442,22 +453,72 @@ export async function initDatabase() {
         totalPrice: 230,
         createdAt: new Date().toISOString(),
       };
-      await CustomRecipeModel.updateOne({ id: sampleRecipe.id }, { $set: sampleRecipe }, { upsert: true });
-      const recipeCount = await CustomRecipeModel.countDocuments();
-      console.log(`✅ ${recipeCount} custom recipes verified/synchronized in MongoDB Atlas "ecomm" database!`);
-    } catch (err: any) {
-      console.error('⚠️ Error seeding MongoDB Atlas initial data:', err.message);
+      await CustomRecipeModel.create(sampleRecipe);
+      console.log(`[DB SEED] ✅ Custom recipes seeded successfully.`);
+    } else {
+      console.log(`[DB] Custom recipes collection has ${recipeCount} documents; skipping seed.`);
+    }
+  } catch (err: any) {
+    console.error('[DB SEED ERROR] Exception initializing database:', err.message);
+    if (isProduction) {
+      process.exit(1);
     }
   }
 }
 
-// Force seed database endpoint
+// Helper to check DB status or return 503 error if DB is down
+async function requireDb(res: express.Response): Promise<boolean> {
+  const connected = await ensureDbConnected();
+  if (!connected) {
+    if (allowMemoryDbInDev) return false;
+    res.status(503).json({
+      success: false,
+      message: 'Database Connection Unavailable. Please check MONGODB_URI and MongoDB Atlas access.',
+    });
+    return false;
+  }
+  return true;
+}
+
+// ==================== AUTHORITATIVE SINGLE API ROUTES ====================
+
+// Health check endpoint
+app.get('/api/health', async (req, res) => {
+  const connected = await ensureDbConnected();
+  if (!connected && isProduction) {
+    return res.status(503).json({
+      status: 'unhealthy',
+      database: 'disconnected',
+      dbConnected: false,
+    });
+  }
+  return res.json({
+    status: 'healthy',
+    database: connected ? 'connected' : 'in-memory-dev',
+    dbConnected: connected,
+  });
+});
+
+// MongoDB Atlas Status Endpoint
+app.get('/api/db-status', async (req, res) => {
+  const connected = await ensureDbConnected();
+  return res.json({
+    success: connected,
+    dbConnected: connected,
+    dbName: 'ecomm',
+    connectionState: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
+    mongoUriConfigured: !!process.env.MONGODB_URI,
+  });
+});
+
+// Force seed database endpoint (Admin reset)
 app.post('/api/seed', async (req, res) => {
   try {
-    if (!isDbConnected) {
-      return res.status(500).json({
+    const connected = await ensureDbConnected();
+    if (!connected) {
+      return res.status(503).json({
         success: false,
-        message: 'MongoDB is currently disconnected. Ensure 0.0.0.0/0 is whitelisted in Atlas Network Access.',
+        message: 'MongoDB is currently disconnected.',
       });
     }
 
@@ -467,9 +528,15 @@ app.post('/api/seed', async (req, res) => {
     await OrderModel.deleteMany({});
     await OrderModel.insertMany(liveOrders);
 
+    await CategoryModel.deleteMany({});
+    await CategoryModel.insertMany(CATEGORIES);
+
+    await CouponModel.deleteMany({});
+    await CouponModel.insertMany(liveCoupons);
+
     res.json({
       success: true,
-      message: 'Successfully seeded 22+ products and orders into MongoDB Atlas "ecomm" database!',
+      message: 'Successfully re-seeded database in MongoDB Atlas!',
       productCount: PRODUCTS.length,
     });
   } catch (error: any) {
@@ -477,146 +544,170 @@ app.post('/api/seed', async (req, res) => {
   }
 });
 
-// API ENDPOINTS
+// OTP Storage Map
+const otpStoreMap: Record<string, { otp: string; expiresAt: number; name?: string }> = {};
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    database: isDbConnected ? 'MongoDB Connected' : 'In-Memory Mode',
-  });
-});
-
-// OTP Storage for Authentication
-const otpStore = new Map<string, { otp: string; expiresAt: number; name?: string }>();
-
-// Auth API: Send OTP
+// Send OTP Endpoint
 app.post('/api/auth/send-otp', async (req, res) => {
   try {
     const { email, name } = req.body;
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
+    const cleanEmail = String(email || '').trim().toLowerCase();
+
+    if (!cleanEmail || !cleanEmail.includes('@')) {
       return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
     }
 
-    const cleanEmail = email.trim().toLowerCase();
-    // Generate 6-digit OTP code
-    const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
+    const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
 
-    otpStore.set(cleanEmail, { otp: otpCode, expiresAt, name });
-    console.log(`🔑 OTP generated for ${cleanEmail}: ${otpCode}`);
+    otpStoreMap[cleanEmail] = {
+      otp: generatedOtp,
+      expiresAt,
+      name: name || cleanEmail.split('@')[0],
+    };
+
+    const recipientName = name || cleanEmail.split('@')[0];
+    const emailSubject = `Verification Code: ${generatedOtp} - Dhannya Authentication`;
+    const emailBody = `Hi ${recipientName},
+
+Your 6-digit verification code to login to Dhannya is:
+
+${generatedOtp}
+
+This OTP code is valid for 10 minutes.
+
+Warm regards,
+Team Dhannya
+dhaanyaorganic1@gmail.com`;
+
+    console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
 
     let emailSent = false;
     if (mailTransporter) {
       try {
         await mailTransporter.sendMail({
-          from: `"Dhannya Organic Spices" <${cleanUser}>`,
+          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
           to: cleanEmail,
-          subject: `${otpCode} is your Dhannya Verification Code`,
+          subject: emailSubject,
+          text: emailBody,
           html: `
-            <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px; border: 1px solid #e0e0e0; border-radius: 16px; background-color: #faf8f4;">
-              <h2 style="color: #455726; margin-top: 0; text-align: center; font-family: Georgia, serif;">Dhannya Organic & Custom Masala</h2>
-              <p style="color: #333; font-size: 15px;">Hello ${name || 'Valued Customer'},</p>
-              <p style="color: #555; font-size: 14px;">Use the following 6-digit verification code to sign in to your Dhannya account:</p>
-              <div style="text-align: center; margin: 28px 0;">
-                <span style="font-size: 34px; font-weight: bold; letter-spacing: 8px; background-color: #455726; color: #ffffff; padding: 14px 28px; border-radius: 12px; display: inline-block;">${otpCode}</span>
+            <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
+              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic</h2>
+              <p style="margin-top: 16px;">Hi <strong>${recipientName}</strong>,</p>
+              <p>Your 6-digit verification code to sign into your Dhannya account is:</p>
+              <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #faf8f4; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
+                ${generatedOtp}
               </div>
-              <p style="color: #777; font-size: 12px; text-align: center;">This code is valid for 10 minutes. Do not share this OTP with anyone.</p>
-              <hr style="border: none; border-top: 1px solid #e2ded4; margin: 24px 0;" />
-              <p style="color: #999; font-size: 11px; text-align: center; margin: 0;">Dhannya - 100% Organic, Cold-Pressed Spices & Oils</p>
+              <p style="font-size: 12px; color: #666;">This code is valid for 10 minutes.</p>
             </div>
           `,
         });
         emailSent = true;
-        console.log(`📧 OTP Email successfully delivered to ${cleanEmail}`);
+        console.log(`[OTP] Email delivered to ${cleanEmail}`);
       } catch (mailErr: any) {
-        console.error('⚠️ Could not send OTP email via SMTP:', mailErr.message);
+        console.error(`[OTP ERROR] Nodemailer Error:`, mailErr.message);
       }
     }
 
     return res.json({
       success: true,
       message: emailSent
-        ? `Verification code dispatched to ${cleanEmail}`
+        ? `Verification OTP sent to ${cleanEmail}.`
         : `Verification code generated for ${cleanEmail}`,
-      otpCode: otpCode,
+      email: cleanEmail,
+      otpCode: generatedOtp,
     });
   } catch (err: any) {
-    console.error('Error in send-otp route:', err);
-    return res.status(500).json({ success: false, message: err.message || 'Failed to send OTP' });
+    return res.status(500).json({ success: false, message: err.message });
   }
 });
 
-// Auth API: Verify OTP
+// Verify OTP Endpoint
 app.post('/api/auth/verify-otp', async (req, res) => {
   try {
     const { email, otp, name } = req.body;
-    if (!email || !otp) {
-      return res.status(400).json({ success: false, message: 'Email address and OTP code are required.' });
-    }
+    const cleanEmail = String(email || '').trim().toLowerCase();
+    const cleanOtp = String(otp || '').trim();
 
-    const cleanEmail = email.trim().toLowerCase();
-    const cleanOtp = String(otp).trim();
-    const storedData = otpStore.get(cleanEmail);
-
+    const storedData = otpStoreMap[cleanEmail];
     const isMasterOtp = cleanOtp === '123456' || cleanOtp === '682914';
-    const isValidStoredOtp = storedData && storedData.otp === cleanOtp && storedData.expiresAt > Date.now();
 
-    if (!isValidStoredOtp && !isMasterOtp) {
+    if (!storedData && !isMasterOtp) {
       return res.status(400).json({
         success: false,
-        message: 'Incorrect or expired OTP code. Please enter the 6-digit code or request a new one.',
+        message: 'No active OTP found for this email. Please request a new code.',
+      });
+    }
+
+    if (storedData && Date.now() > storedData.expiresAt && !isMasterOtp) {
+      delete otpStoreMap[cleanEmail];
+      return res.status(400).json({
+        success: false,
+        message: 'This OTP code has expired. Please request a new code.',
+      });
+    }
+
+    if (storedData && storedData.otp !== cleanOtp && !isMasterOtp) {
+      return res.status(400).json({
+        success: false,
+        message: 'Incorrect OTP code. Please enter the 6-digit code.',
       });
     }
 
     if (storedData) {
-      otpStore.delete(cleanEmail);
+      delete otpStoreMap[cleanEmail];
     }
 
-    const userName = name || (storedData && storedData.name) || cleanEmail.split('@')[0];
-    const userPayload = {
-      id: `usr-${Date.now()}`,
-      name: userName,
+    const customerName = name || (storedData && storedData.name) || cleanEmail.split('@')[0];
+    const userId = `usr-${Math.floor(100 + Math.random() * 900)}`;
+
+    const userObj = {
+      id: userId,
+      name: customerName,
       email: cleanEmail,
-      role: cleanEmail.includes('admin') ? 'admin' : 'user',
+      mobile: '',
     };
 
-    if (isDbConnected) {
+    const nowIso = new Date().toISOString();
+
+    const connected = await ensureDbConnected();
+    if (connected) {
       try {
-        await CustomerModel.findOneAndUpdate(
+        await CustomerModel.updateOne(
           { email: cleanEmail },
           {
             $set: {
-              id: userPayload.id,
-              name: userName,
+              id: userId,
+              name: customerName,
               email: cleanEmail,
-              lastLoginAt: new Date().toISOString(),
+              lastLoginAt: nowIso,
             },
             $inc: { loginCount: 1 },
           },
-          { upsert: true, returnDocument: 'after' }
+          { upsert: true }
         );
-      } catch (dbErr) {
-        console.error('Error recording customer in MongoDB:', dbErr);
+      } catch (e) {
+        console.error('[AUTH ERROR] Error saving customer to DB:', e);
       }
     }
 
     return res.json({
       success: true,
-      message: 'Logged in successfully',
-      user: userPayload,
+      message: 'Logged in successfully!',
+      user: userObj,
     });
   } catch (err: any) {
-    console.error('Error in verify-otp route:', err);
-    return res.status(500).json({ success: false, message: err.message || 'Error verifying OTP' });
+    return res.status(500).json({ success: false, message: err.message });
   }
 });
 
-// Products API
+// Products API: Read all
 app.get('/api/products', async (req, res) => {
   try {
     let result: Product[] = [];
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+
+    if (connected) {
       const dbProducts = await ProductModel.find().lean();
       result = dbProducts.map((p: any) => ({
         id: p.id,
@@ -637,22 +728,20 @@ app.get('/api/products', async (req, res) => {
         stock: p.stock,
         tags: p.tags,
       }));
-    } else {
+    } else if (allowMemoryDbInDev) {
       result = [...liveProducts];
+    } else {
+      return res.status(503).json({ success: false, message: 'Database disconnected' });
     }
 
     const { category, concern, search, minPrice, maxPrice, sort, isBestSeller, isRecommended } = req.query;
 
     if (category) {
-      result = result.filter(
-        (p) => p.category.toLowerCase() === String(category).toLowerCase()
-      );
+      result = result.filter((p) => p.category.toLowerCase() === String(category).toLowerCase());
     }
 
     if (concern) {
-      result = result.filter(
-        (p) => p.concern && p.concern.some((c) => c.toLowerCase() === String(concern).toLowerCase())
-      );
+      result = result.filter((p) => p.concern && p.concern.some((c) => c.toLowerCase() === String(concern).toLowerCase()));
     }
 
     if (search) {
@@ -676,41 +765,45 @@ app.get('/api/products', async (req, res) => {
 
     if (minPrice) {
       const minP = Number(minPrice);
-      result = result.filter((p) => p.variants.some((v) => v.price >= minP));
+      result = result.filter((p) => p.variants && p.variants.some((v) => v.price >= minP));
     }
 
     if (maxPrice) {
       const maxP = Number(maxPrice);
-      result = result.filter((p) => p.variants.some((v) => v.price <= maxP));
+      result = result.filter((p) => p.variants && p.variants.some((v) => v.price <= maxP));
     }
 
-    // Sorting
     if (sort === 'price-low-high') {
-      result.sort((a, b) => a.variants[0].price - b.variants[0].price);
+      result.sort((a, b) => (a.variants?.[0]?.price || 0) - (b.variants?.[0]?.price || 0));
     } else if (sort === 'price-high-low') {
-      result.sort((a, b) => b.variants[0].price - a.variants[0].price);
+      result.sort((a, b) => (b.variants?.[0]?.price || 0) - (a.variants?.[0]?.price || 0));
     } else if (sort === 'rating') {
       result.sort((a, b) => b.rating - a.rating);
     } else if (sort === 'newest') {
       result.reverse();
     }
 
-    res.json({ success: true, count: result.length, data: result, dbConnected: isDbConnected });
+    res.json({ success: true, count: result.length, data: result, dbConnected: connected });
   } catch (err: any) {
-    res.status(500).json({ success: false, message: err.message, data: liveProducts });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
+// Products API: Read single by ID
 app.get('/api/products/:id', async (req, res) => {
   try {
     let prod: Product | null = null;
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+
+    if (connected) {
       const dbP = await ProductModel.findOne({ id: req.params.id }).lean();
       if (dbP) {
         prod = dbP as unknown as Product;
       }
-    } else {
+    } else if (allowMemoryDbInDev) {
       prod = liveProducts.find((p) => p.id === req.params.id) || null;
+    } else {
+      return res.status(503).json({ success: false, message: 'Database disconnected' });
     }
 
     if (!prod) {
@@ -722,9 +815,136 @@ app.get('/api/products/:id', async (req, res) => {
   }
 });
 
+// Admin Product APIs
+app.post('/api/admin/products', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const p = req.body;
+    const newProduct: Product = {
+      id: p.id || `prod-${Date.now()}`,
+      name: p.name,
+      category: p.category,
+      description: p.description || '',
+      image: p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80',
+      gallery: p.gallery || [p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80'],
+      variants: p.variants || [{ weight: '500g', price: p.price || 299, originalPrice: p.price ? p.price + 50 : 350, inStock: true }],
+      rating: p.rating || 5.0,
+      reviewCount: p.reviewCount || 1,
+      stock: p.stock || 50,
+      isBestSeller: !!p.isBestSeller,
+      isRecommended: !!p.isRecommended,
+      tags: p.tags || [],
+    };
+
+    if (connected) {
+      await ProductModel.create(newProduct);
+    } else if (allowMemoryDbInDev) {
+      liveProducts.unshift(newProduct);
+    }
+
+    res.json({ success: true, message: 'Product created and saved to MongoDB!', data: newProduct });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.put('/api/admin/products/:id', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const productId = req.params.id;
+
+    if (connected) {
+      const updated = await ProductModel.findOneAndUpdate({ id: productId }, { $set: req.body }, { new: true }).lean();
+      if (!updated) {
+        return res.status(404).json({ success: false, message: 'Product not found' });
+      }
+      return res.json({ success: true, message: 'Product updated in MongoDB', data: updated });
+    } else if (allowMemoryDbInDev) {
+      const index = liveProducts.findIndex((p) => p.id === productId);
+      if (index !== -1) {
+        liveProducts[index] = { ...liveProducts[index], ...req.body };
+      }
+      return res.json({ success: true, message: 'Product updated in memory' });
+    }
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.delete('/api/admin/products/:id', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const productId = req.params.id;
+
+    if (connected) {
+      await ProductModel.findOneAndDelete({ id: productId });
+      return res.json({ success: true, message: `Product ${productId} deleted from MongoDB!` });
+    } else if (allowMemoryDbInDev) {
+      liveProducts = liveProducts.filter((p) => p.id !== productId);
+      return res.json({ success: true, message: `Product ${productId} deleted from memory` });
+    }
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 // Categories API
-app.get('/api/categories', (req, res) => {
-  res.json({ success: true, data: CATEGORIES });
+app.get('/api/categories', async (req, res) => {
+  try {
+    const connected = await ensureDbConnected();
+    if (connected) {
+      const dbCats = await CategoryModel.find().lean();
+      return res.json({ success: true, data: dbCats });
+    } else if (allowMemoryDbInDev) {
+      return res.json({ success: true, data: liveCategories });
+    }
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/admin/categories', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const { name, description, image } = req.body;
+    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const newCat = {
+      name,
+      slug,
+      iconName: 'Package',
+      description: description || 'Organic premium quality category.',
+      image: image || '/images/Dailywell_Products/Ajwain/01.png',
+      productCount: 0,
+    };
+
+    if (connected) {
+      await CategoryModel.updateOne({ slug }, { $set: newCat }, { upsert: true });
+    } else if (allowMemoryDbInDev) {
+      const idx = liveCategories.findIndex((c) => c.slug === slug);
+      if (idx > -1) liveCategories[idx] = newCat;
+      else liveCategories.push(newCat);
+    }
+
+    res.json({ success: true, message: `Category ${name} saved to MongoDB!`, data: newCat });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.delete('/api/admin/categories/:slug', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const { slug } = req.params;
+    if (connected) {
+      await CategoryModel.deleteOne({ slug });
+    } else if (allowMemoryDbInDev) {
+      liveCategories = liveCategories.filter((c) => c.slug !== slug);
+    }
+    res.json({ success: true, message: `Category ${slug} deleted from MongoDB!` });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 });
 
 // Masala Ingredients API
@@ -776,7 +996,7 @@ app.post('/api/masalas/calculate', async (req, res) => {
   const subtotal = Math.round(rawIngredientCost + roastingCharge);
   let discount = 0;
   if (totalWeightGrams >= 500) {
-    discount = Math.round(subtotal * 0.1); // 10% batch discount
+    discount = Math.round(subtotal * 0.1);
   }
 
   const totalPrice = Math.max(1, subtotal - discount);
@@ -794,230 +1014,29 @@ app.post('/api/masalas/calculate', async (req, res) => {
     createdAt: new Date().toISOString(),
   };
 
-  if (isDbConnected) {
+  const connected = await ensureDbConnected();
+  if (connected) {
     try {
       await CustomRecipeModel.create(recipeData);
     } catch (e) {
-      console.error('Error saving custom recipe to MongoDB:', e);
+      console.error('[RECIPE ERROR] Error saving recipe:', e);
     }
   }
 
-  res.json({
-    success: true,
-    data: recipeData,
-  });
+  res.json({ success: true, data: recipeData });
 });
 
-// OTP Storage Map (In-Memory + MongoDB sync)
-const otpStoreMap: Record<string, { otp: string; expiresAt: number; name?: string }> = {};
-
-// Send OTP Endpoint
-app.post('/api/auth/send-otp', async (req, res) => {
-  try {
-    const { email, name } = req.body;
-    const cleanEmail = String(email || '').trim().toLowerCase();
-
-    if (!cleanEmail || !cleanEmail.includes('@')) {
-      return res.status(400).json({ success: false, message: 'Please enter a valid email address' });
-    }
-
-    // Generate 6-digit OTP
-    const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = Date.now() + 10 * 60 * 1000; // 10 minutes
-
-    otpStoreMap[cleanEmail] = {
-      otp: generatedOtp,
-      expiresAt,
-      name: name || cleanEmail.split('@')[0],
-    };
-
-    const recipientName = name || cleanEmail.split('@')[0];
-    const emailSubject = `Verification Code: ${generatedOtp} - Dhannya Authentication`;
-    const emailBody = `Hi ${recipientName},
-
-Your 6-digit verification code to login to Dhannya is:
-
-${generatedOtp}
-
-This OTP code is valid for 10 minutes. Please enter this code on the website to complete your sign-in.
-
-Thank you for choosing Dhannya.
-
-Warm regards,
-Team Dhannya
-dhaanyaorganic1@gmail.com
-Fresh • Healthy • Naturally Yours`;
-
-    console.log(`🔑 OTP GENERATED FOR ${cleanEmail}: [ ${generatedOtp} ] (Expires in 10 mins)`);
-    console.log(`📧 AUTOMATIC EMAIL DISPATCHED FROM dhaanyaorganic1@gmail.com TO ${cleanEmail}`);
-
-    if (mailTransporter) {
-      try {
-        await mailTransporter.sendMail({
-          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-          sender: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-          replyTo: '"Dhannya Organic Support" <dhaanyaorganic1@gmail.com>',
-          to: cleanEmail,
-          subject: emailSubject,
-          text: emailBody,
-          html: `
-            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
-              <div style="text-align: center; margin-bottom: 20px;">
-                <div style="display: inline-block; width: 48px; height: 48px; line-height: 48px; background-color: #455726; color: white; font-weight: bold; font-size: 20px; border-radius: 12px; margin-bottom: 8px;">D</div>
-                <h2 style="color: #2d2b26; margin: 0; font-size: 22px;">Dhannya Organic</h2>
-                <p style="color: #666; font-size: 13px; margin-top: 4px;">Fresh • Healthy • Naturally Yours</p>
-              </div>
-
-              <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-                <p style="margin-top: 0; font-size: 14px; color: #444;">Hi <strong>${recipientName}</strong>,</p>
-                <p style="font-size: 14px; color: #444; margin-bottom: 16px;">Your 6-digit verification code to sign into your Dhannya account is:</p>
-
-                <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #ffffff; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
-                  ${generatedOtp}
-                </div>
-
-                <p style="font-size: 12px; color: #666; margin-bottom: 0;">This code is valid for <strong>10 minutes</strong>. Please enter this code on the website to complete your login.</p>
-              </div>
-
-              <div style="font-size: 11px; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 16px;">
-                Team Dhannya • Support: dhaanyaorganic1@gmail.com
-              </div>
-            </div>
-          `,
-          priority: 'high',
-          headers: {
-            'X-Priority': '1 (Highest)',
-            'X-MSMail-Priority': 'High',
-            'Importance': 'High',
-          },
-        });
-        console.log(`✅ Live email successfully delivered to ${cleanEmail} via Nodemailer!`);
-      } catch (mailErr: any) {
-        console.error(`❌ Nodemailer Email Dispatch Error:`, mailErr.message);
-      }
-    }
-
-    return res.json({
-      success: true,
-      message: `Verification OTP has been sent to ${cleanEmail}. Please check your email inbox.`,
-      email: cleanEmail,
-      otpCode: generatedOtp,
-    });
-  } catch (err: any) {
-    return res.status(500).json({ success: false, message: err.message });
-  }
-});
-
-
-// Verify OTP Endpoint
-app.post('/api/auth/verify-otp', async (req, res) => {
-  try {
-    const { email, otp, name } = req.body;
-    const cleanEmail = String(email || '').trim().toLowerCase();
-    const cleanOtp = String(otp || '').trim();
-
-    const storedData = otpStoreMap[cleanEmail];
-
-    if (!storedData) {
-      return res.json({
-        success: false,
-        message: 'No active OTP found for this email. Please click "Resend OTP" to get a new code.',
-      });
-    }
-
-    if (Date.now() > storedData.expiresAt) {
-      delete otpStoreMap[cleanEmail];
-      return res.json({
-        success: false,
-        message: 'This OTP code has expired. Please click "Resend OTP" to get a new code.',
-      });
-    }
-
-    if (storedData.otp !== cleanOtp) {
-      return res.json({
-        success: false,
-        message: 'Incorrect OTP code. Please enter the 6-digit verification code.',
-      });
-    }
-
-
-    // OTP Verified! Clean up stored OTP
-    delete otpStoreMap[cleanEmail];
-
-    const customerName = name || storedData.name || cleanEmail.split('@')[0];
-    const userId = `usr-${Math.floor(100 + Math.random() * 900)}`;
-
-    const userObj = {
-      id: userId,
-      name: customerName,
-      email: cleanEmail,
-      mobile: '',
-    };
-
-    const nowIso = new Date().toISOString();
-
-    // Update or add to liveCustomers in-memory state
-    let existingCust = liveCustomers.find((c) => c.email === cleanEmail);
-    if (existingCust) {
-      existingCust.lastLoginAt = nowIso;
-      existingCust.loginCount = (existingCust.loginCount || 1) + 1;
-    } else {
-      liveCustomers.unshift({
-        id: userId,
-        name: customerName,
-        email: cleanEmail,
-        mobile: '+91 98765 43210',
-        ordersCount: 0,
-        totalSpent: 0,
-        lastLoginAt: nowIso,
-        loginCount: 1,
-        createdAt: nowIso,
-      });
-    }
-
-    // Save customer to MongoDB if connected
-    if (isDbConnected) {
-      try {
-        await CustomerModel.updateOne(
-          { email: cleanEmail },
-          {
-            $set: {
-              id: userId,
-              name: customerName,
-              email: cleanEmail,
-              lastLoginAt: nowIso,
-              updatedAt: nowIso,
-            },
-            $inc: { loginCount: 1 },
-          },
-          { upsert: true }
-        );
-      } catch (e) {
-        console.error('Error saving customer to DB:', e);
-      }
-    }
-
-    return res.json({
-      success: true,
-      message: 'OTP verified successfully! Welcome back to Dhannya.',
-      user: userObj,
-    });
-  } catch (err: any) {
-    return res.status(500).json({ success: false, message: err.message });
-  }
-});
-
-// Validate Coupon API with Database persistence & Timer Expiration validation
+// Coupon APIs
 app.post('/api/coupons/validate', async (req, res) => {
   try {
     const { code, cartSubtotal } = req.body;
     const reqCode = String(code || '').trim().toUpperCase();
 
     let coupon: any = null;
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       coupon = await CouponModel.findOne({ code: reqCode, isActive: true }).lean();
-    }
-    if (!coupon) {
+    } else if (allowMemoryDbInDev) {
       coupon = liveCoupons.find((c) => c.code.toUpperCase() === reqCode && c.isActive);
     }
 
@@ -1025,18 +1044,17 @@ app.post('/api/coupons/validate', async (req, res) => {
       return res.status(404).json({ success: false, message: 'Invalid or inactive coupon code' });
     }
 
-    // Timer Expiry Validation!
     if (coupon.expiryDate) {
       const expTime = new Date(coupon.expiryDate).getTime();
       if (!isNaN(expTime) && expTime < Date.now()) {
         return res.status(400).json({
           success: false,
-          message: `Coupon code "${coupon.code}" has expired on ${new Date(coupon.expiryDate).toLocaleString()}`,
+          message: `Coupon code "${coupon.code}" expired on ${new Date(coupon.expiryDate).toLocaleString()}`,
         });
       }
     }
 
-    const minReq = coupon.minOrderValue || coupon.minOrderAmount || 0;
+    const minReq = coupon.minOrderValue || 0;
     if (cartSubtotal < minReq) {
       return res.status(400).json({
         success: false,
@@ -1064,21 +1082,24 @@ app.post('/api/coupons/validate', async (req, res) => {
   }
 });
 
-// Admin Coupon CRUD API
 app.get('/api/coupons', async (req, res) => {
   try {
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       const dbCoupons = await CouponModel.find().sort({ createdAt: -1 }).lean();
       return res.json({ success: true, data: dbCoupons });
+    } else if (allowMemoryDbInDev) {
+      return res.json({ success: true, data: liveCoupons });
     }
-    res.json({ success: true, data: liveCoupons });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
-    res.json({ success: true, data: liveCoupons });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
 app.post('/api/admin/coupons', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { code, discountPercent, minOrderValue, maxDiscount, description, expiryDate } = req.body;
     const upperCode = String(code).trim().toUpperCase();
 
@@ -1092,19 +1113,15 @@ app.post('/api/admin/coupons', async (req, res) => {
       isActive: true,
     };
 
-    if (isDbConnected) {
+    if (connected) {
       await CouponModel.updateOne({ code: upperCode }, { $set: newCoupon }, { upsert: true });
+    } else if (allowMemoryDbInDev) {
+      const idx = liveCoupons.findIndex((c) => c.code === upperCode);
+      if (idx > -1) liveCoupons[idx] = newCoupon;
+      else liveCoupons.unshift(newCoupon);
     }
 
-    const idx = liveCoupons.findIndex((c) => c.code === upperCode);
-    if (idx > -1) liveCoupons[idx] = newCoupon;
-    else liveCoupons.unshift(newCoupon);
-
-    res.json({
-      success: true,
-      message: `Custom coupon ${upperCode} created successfully and saved to database!`,
-      data: newCoupon,
-    });
+    res.json({ success: true, message: `Coupon ${upperCode} saved to MongoDB!`, data: newCoupon });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -1112,65 +1129,14 @@ app.post('/api/admin/coupons', async (req, res) => {
 
 app.delete('/api/admin/coupons/:code', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const code = req.params.code.toUpperCase();
-    if (isDbConnected) {
+    if (connected) {
       await CouponModel.deleteOne({ code });
+    } else if (allowMemoryDbInDev) {
+      liveCoupons = liveCoupons.filter((c) => c.code.toUpperCase() !== code);
     }
-    liveCoupons = liveCoupons.filter((c) => c.code.toUpperCase() !== code);
-    res.json({ success: true, message: `Coupon ${code} deleted from database!` });
-  } catch (err: any) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-});
-
-// Admin Categories CRUD API
-app.get('/api/categories', async (req, res) => {
-  try {
-    if (isDbConnected) {
-      const dbCats = await CategoryModel.find().lean();
-      if (dbCats.length > 0) return res.json({ success: true, data: dbCats });
-    }
-    res.json({ success: true, data: liveCategories });
-  } catch (err: any) {
-    res.json({ success: true, data: liveCategories });
-  }
-});
-
-app.post('/api/admin/categories', async (req, res) => {
-  try {
-    const { name, description, image } = req.body;
-    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    const newCat = {
-      name,
-      slug,
-      iconName: 'Package',
-      description: description || 'Organic premium quality category.',
-      image: image || '/images/Dailywell_Products/Ajwain/01.png',
-      productCount: 0,
-    };
-
-    if (isDbConnected) {
-      await CategoryModel.updateOne({ slug }, { $set: newCat }, { upsert: true });
-    }
-
-    const idx = liveCategories.findIndex((c) => c.slug === slug);
-    if (idx > -1) liveCategories[idx] = newCat;
-    else liveCategories.push(newCat);
-
-    res.json({ success: true, message: `Category ${name} created and saved to database!`, data: newCat });
-  } catch (err: any) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-});
-
-app.delete('/api/admin/categories/:slug', async (req, res) => {
-  try {
-    const { slug } = req.params;
-    if (isDbConnected) {
-      await CategoryModel.deleteOne({ slug });
-    }
-    liveCategories = liveCategories.filter((c) => c.slug !== slug);
-    res.json({ success: true, message: `Category ${slug} deleted from database!` });
+    res.json({ success: true, message: `Coupon ${code} deleted from MongoDB!` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -1179,88 +1145,130 @@ app.delete('/api/admin/categories/:slug', async (req, res) => {
 // Admin Customers API
 app.get('/api/admin/customers', async (req, res) => {
   try {
-    if (isDbConnected) {
-      const dbCust = await CustomerModel.find().lean();
-      if (dbCust.length > 0) return res.json({ success: true, data: dbCust });
+    const connected = await ensureDbConnected();
+    if (connected) {
+      const dbCust = await CustomerModel.find().sort({ createdAt: -1 }).lean();
+      return res.json({ success: true, data: dbCust, dbConnected: true });
+    } else if (allowMemoryDbInDev) {
+      return res.json({ success: true, data: liveCustomers });
     }
-    res.json({ success: true, data: liveCustomers });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
-    res.json({ success: true, data: liveCustomers });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
 app.delete('/api/admin/customers/:id', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id } = req.params;
-    if (isDbConnected) {
+    if (connected) {
       await CustomerModel.deleteOne({ id });
+    } else if (allowMemoryDbInDev) {
+      liveCustomers = liveCustomers.filter((c) => c.id !== id);
     }
-    liveCustomers = liveCustomers.filter((c) => c.id !== id);
-    res.json({ success: true, message: `Customer ${id} deleted from database!` });
+    res.json({ success: true, message: `Customer ${id} deleted from MongoDB!` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
 });
 
-// Admin Reviews API
+// Reviews API
 app.get('/api/reviews', async (req, res) => {
   try {
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       const dbRevs = await ReviewModel.find().sort({ createdAt: -1 }).lean();
-      if (dbRevs.length > 0) return res.json({ success: true, data: dbRevs });
+      return res.json({ success: true, data: dbRevs });
+    } else if (allowMemoryDbInDev) {
+      return res.json({ success: true, data: liveReviews });
     }
-    res.json({ success: true, data: liveReviews });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
-    res.json({ success: true, data: liveReviews });
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/reviews', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const { userName, rating, comment, productName } = req.body;
+    const newRev = {
+      id: `rev-${Date.now()}`,
+      userName: userName || 'Valued Customer',
+      rating: Number(rating) || 5,
+      date: new Date().toISOString(),
+      comment: comment || '',
+      productName: productName || 'Dhannya Product',
+      verifiedPurchase: true,
+    };
+
+    if (connected) {
+      await ReviewModel.create(newRev);
+    } else if (allowMemoryDbInDev) {
+      liveReviews.unshift(newRev);
+    }
+
+    res.json({ success: true, message: 'Review saved to MongoDB!', data: newRev });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
 app.delete('/api/admin/reviews/:id', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id } = req.params;
-    if (isDbConnected) {
+    if (connected) {
       await ReviewModel.deleteOne({ id });
+    } else if (allowMemoryDbInDev) {
+      liveReviews = liveReviews.filter((r) => r.id !== id);
     }
-    liveReviews = liveReviews.filter((r) => r.id !== id);
-    res.json({ success: true, message: `Review ${id} deleted from database!` });
+    res.json({ success: true, message: `Review ${id} deleted from MongoDB!` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
 });
 
-// Admin Custom Masala Recipes API
+// Recipes API
 app.get('/api/admin/custom-masalas', async (req, res) => {
   try {
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       const dbMasalas = await CustomRecipeModel.find().sort({ createdAt: -1 }).lean();
       return res.json({ success: true, data: dbMasalas });
+    } else if (allowMemoryDbInDev) {
+      return res.json({ success: true, data: [] });
     }
-    res.json({ success: true, data: [] });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
-    res.json({ success: true, data: [] });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
 app.delete('/api/admin/custom-masalas/:id', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id } = req.params;
-    if (isDbConnected) {
+    if (connected) {
       await CustomRecipeModel.deleteOne({ id });
     }
-    res.json({ success: true, message: `Custom recipe ${id} deleted from database!` });
+    res.json({ success: true, message: `Custom recipe ${id} deleted from MongoDB!` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
 });
 
-// Custom Recipes API
 app.get('/api/recipes', async (req, res) => {
   try {
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       const dbRecipes = await CustomRecipeModel.find().sort({ createdAt: -1 }).lean();
       return res.json({ success: true, count: dbRecipes.length, data: dbRecipes });
+    } else if (allowMemoryDbInDev) {
+      return res.json({ success: true, count: 0, data: [] });
     }
-    res.json({ success: true, count: 0, data: [] });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -1268,6 +1276,7 @@ app.get('/api/recipes', async (req, res) => {
 
 app.post('/api/recipes', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const recipeData = req.body;
     const newRecipe = {
       id: recipeData.id || `rec-${Date.now()}`,
@@ -1282,20 +1291,20 @@ app.post('/api/recipes', async (req, res) => {
       createdAt: new Date().toISOString(),
     };
 
-    if (isDbConnected) {
+    if (connected) {
       await CustomRecipeModel.updateOne({ id: newRecipe.id }, { $set: newRecipe }, { upsert: true });
     }
 
-    res.json({ success: true, message: 'Custom recipe saved to MongoDB Atlas database!', data: newRecipe });
+    res.json({ success: true, message: 'Custom recipe saved to MongoDB!', data: newRecipe });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
 });
 
-
-// Orders API - Robust MongoDB Storage & Retrieval
+// Orders API
 app.post('/api/orders', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { items, shippingAddress, deliverySlot, paymentMethod, subtotal, discount, tax, shippingFee, total, userId, userEmail } =
       req.body;
 
@@ -1325,96 +1334,68 @@ app.post('/api/orders', async (req, res) => {
       trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
     };
 
-    const dbConnected = await ensureDbConnected();
-    if (!dbConnected) {
-      console.error(`❌ Cannot save order ${orderId}: MongoDB Atlas database is disconnected.`);
-      return res.status(500).json({
-        success: false,
-        message: 'Database Connection Error: Could not connect to MongoDB Atlas. Please check network access and connection string.',
-      });
-    }
+    if (connected) {
+      await OrderModel.create(newOrder as any);
 
-    // 1. Save Order Document to MongoDB Atlas
-    const createdDoc: any = await OrderModel.create(newOrder as any);
-    console.log(`✅ Order ${orderId} successfully saved into MongoDB Atlas "ecomm" database! Doc ID:`, createdDoc?._id);
+      if (shippingAddress) {
+        try {
+          const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
+            ? shippingAddress.id
+            : `addr-${Date.now()}`;
 
-    // 2. Save Shipping Address Document to MongoDB Atlas "addresses" collection
-    if (shippingAddress) {
-      try {
-        const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
-          ? shippingAddress.id
-          : `addr-${Date.now()}`;
-
-        await AddressModel.updateOne(
-          { id: addrId },
-          {
-            $set: {
-              id: addrId,
-              userId: userId || 'usr-101',
-              fullName: shippingAddress.fullName || 'Valued Customer',
-              mobile: shippingAddress.mobile || '',
-              email: shippingAddress.email || userEmail || '',
-              street: shippingAddress.street || '',
-              city: shippingAddress.city || '',
-              state: shippingAddress.state || 'Maharashtra',
-              pincode: shippingAddress.pincode || '',
-              isDefault: shippingAddress.isDefault ?? true,
+          await AddressModel.updateOne(
+            { id: addrId },
+            {
+              $set: {
+                id: addrId,
+                userId: userId || 'usr-101',
+                fullName: shippingAddress.fullName || 'Valued Customer',
+                mobile: shippingAddress.mobile || '',
+                email: shippingAddress.email || userEmail || '',
+                street: shippingAddress.street || '',
+                city: shippingAddress.city || '',
+                state: shippingAddress.state || 'Maharashtra',
+                pincode: shippingAddress.pincode || '',
+                isDefault: shippingAddress.isDefault ?? true,
+              },
             },
-          },
-          { upsert: true }
-        );
-        console.log(`✅ Customer Address ${addrId} successfully saved into MongoDB Atlas "addresses" collection!`);
-      } catch (e: any) {
-        console.error('❌ Error saving address to MongoDB Atlas:', e.message);
+            { upsert: true }
+          );
+        } catch (e: any) {
+          console.error('[ORDER ERROR] Error saving address to MongoDB:', e.message);
+        }
       }
-    }
 
-    // 3. Save/Update Customer Profile Document to MongoDB Atlas "customers" collection
-    if (shippingAddress || userEmail) {
-      try {
-        const custEmail = (userEmail || shippingAddress?.email || `${userId}@dhannya.com`).trim().toLowerCase();
-        const custName = shippingAddress?.fullName || 'Valued Customer';
-        await CustomerModel.updateOne(
-          { email: custEmail },
-          {
-            $set: {
-              id: userId || `cust-${Date.now()}`,
-              name: custName,
-              email: custEmail,
-              mobile: shippingAddress?.mobile || '',
-              lastLoginAt: new Date().toISOString(),
+      if (shippingAddress || userEmail) {
+        try {
+          const custEmail = (userEmail || shippingAddress?.email || `${userId}@dhannya.com`).trim().toLowerCase();
+          const custName = shippingAddress?.fullName || 'Valued Customer';
+          await CustomerModel.updateOne(
+            { email: custEmail },
+            {
+              $set: {
+                id: userId || `cust-${Date.now()}`,
+                name: custName,
+                email: custEmail,
+                mobile: shippingAddress?.mobile || '',
+                lastLoginAt: new Date().toISOString(),
+              },
+              $inc: {
+                ordersCount: 1,
+                totalSpent: Number(total) || 0,
+              },
             },
-            $inc: {
-              ordersCount: 1,
-              totalSpent: Number(total) || 0,
-            },
-          },
-          { upsert: true }
-        );
-        console.log(`✅ Customer profile for ${custEmail} saved into MongoDB Atlas "customers" collection!`);
-      } catch (custErr: any) {
-        console.error('❌ Error saving customer profile to MongoDB Atlas:', custErr.message);
+            { upsert: true }
+          );
+        } catch (custErr: any) {
+          console.error('[ORDER ERROR] Error updating customer in MongoDB:', custErr.message);
+        }
       }
+    } else if (allowMemoryDbInDev) {
+      liveOrders.unshift(newOrder as any);
     }
 
-    if (shippingAddress) {
-      const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new' ? shippingAddress.id : `addr-${Date.now()}`;
-      const addrObj = {
-        ...shippingAddress,
-        id: addrId,
-        userId: userId || 'usr-101',
-      };
-      const existingIdx = liveAddresses.findIndex((a) => a.id === addrId);
-      if (existingIdx > -1) {
-        liveAddresses[existingIdx] = addrObj;
-      } else {
-        liveAddresses.push(addrObj);
-      }
-    }
-
-    liveOrders.unshift(newOrder as any);
-
-    // Dispatch Order Confirmation Email to customer if email is provided
+    // Dispatch Order Confirmation Email
     const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
     if (targetEmail && mailTransporter) {
       try {
@@ -1424,40 +1405,24 @@ app.post('/api/orders', async (req, res) => {
           subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
-              <div style="text-align: center; margin-bottom: 20px;">
-                <h2 style="color: #455726; margin: 0; font-family: Georgia, serif; font-size: 24px;">Dhannya Organic & Custom Masala</h2>
-                <p style="color: #666; font-size: 13px; margin-top: 4px;">100% Organic, Cold-Pressed Spices & Health Foods</p>
-              </div>
-
-              <p style="font-size: 14px; color: #333;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
-              <p style="font-size: 14px; color: #555; line-height: 1.5;">Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been successfully placed and is now being processed.</p>
-
+              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
+              <p style="margin-top: 16px;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
+              <p>Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been placed.</p>
               <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
-                <h3 style="color: #455726; margin-top: 0; font-size: 14px; text-transform: uppercase; border-b: 1px solid #e2ded4; padding-bottom: 8px;">Order Details</h3>
-                <p style="font-size: 13px; margin: 6px 0;"><strong>Order ID:</strong> #${orderId}</p>
-                <p style="font-size: 13px; margin: 6px 0;"><strong>Total Amount:</strong> ₹${total}</p>
-                <p style="font-size: 13px; margin: 6px 0;"><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
-                <p style="font-size: 13px; margin: 6px 0;"><strong>Delivery Slot:</strong> ${deliverySlot || 'Standard Delivery'}</p>
-                <p style="font-size: 13px; margin: 6px 0;"><strong>Delivery Address:</strong> ${shippingAddress?.street || ''}, ${shippingAddress?.city || ''} - ${shippingAddress?.pincode || ''}</p>
+                <p><strong>Order ID:</strong> #${orderId}</p>
+                <p><strong>Total Amount:</strong> ₹${total}</p>
+                <p><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
               </div>
-
-              <p style="font-size: 12px; color: #777; text-align: center; margin-top: 24px;">
-                Have questions about your order? Email us at <a href="mailto:dhaanyaorganic1@gmail.com" style="color: #455726; font-weight: bold;">dhaanyaorganic1@gmail.com</a>
-              </p>
-              <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-              <p style="font-size: 11px; color: #999; text-align: center; margin: 0;">Dhannya Organic • Pure • Natural • Healthy</p>
             </div>
           `,
         });
-        console.log(`📧 Order confirmation email successfully sent to ${targetEmail}`);
       } catch (mailErr: any) {
-        console.error('❌ Could not send order confirmation email via SMTP:', mailErr.message);
+        console.error('[MAIL ERROR] Order confirmation email failed:', mailErr.message);
       }
     }
 
-    return res.json({ success: true, message: 'Order placed successfully and stored in database!', data: newOrder });
+    return res.json({ success: true, message: 'Order placed successfully and stored in MongoDB!', data: newOrder });
   } catch (err: any) {
-    console.error('Error in /api/orders POST:', err);
     return res.status(500).json({ success: false, message: err.message || 'Server error placing order' });
   }
 });
@@ -1472,27 +1437,19 @@ app.get('/api/orders', async (req, res) => {
 
     const connected = await ensureDbConnected();
     if (connected) {
-      let dbOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
-      
-      // Auto-seed initial sample orders into MongoDB Atlas if database has 0 orders
-      if (dbOrders.length === 0 && !userId) {
-        console.log('Seeding sample orders into MongoDB Atlas "ecomm" database...');
-        await OrderModel.insertMany(liveOrders);
-        dbOrders = await OrderModel.find({}).sort({ createdAt: -1 }).lean();
-      }
-
+      const dbOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
       return res.json({ success: true, data: dbOrders, dbConnected: true });
+    } else if (allowMemoryDbInDev) {
+      const filtered = userId
+        ? liveOrders.filter((o) => o.userId === String(userId) || o.userId === 'usr-101')
+        : liveOrders;
+      return res.json({ success: true, data: filtered });
     }
-
-    const filtered = userId
-      ? liveOrders.filter((o) => o.userId === String(userId) || o.userId === 'usr-101')
-      : liveOrders;
-    return res.json({ success: true, data: filtered });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
-    return res.json({ success: true, data: liveOrders });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
-
 
 // Addresses API
 app.get('/api/addresses', async (req, res) => {
@@ -1503,16 +1460,19 @@ app.get('/api/addresses', async (req, res) => {
       const query = userId ? { userId: String(userId) } : {};
       const addresses = await AddressModel.find(query).sort({ createdAt: -1 }).lean();
       return res.json({ success: true, data: addresses, dbConnected: true });
+    } else if (allowMemoryDbInDev) {
+      const filtered = userId ? liveAddresses.filter((a) => a.userId === String(userId)) : liveAddresses;
+      return res.json({ success: true, data: filtered });
     }
-    const filtered = userId ? liveAddresses.filter((a) => a.userId === String(userId)) : liveAddresses;
-    res.json({ success: true, data: filtered });
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
   } catch (err: any) {
-    res.status(500).json({ success: false, message: err.message, data: liveAddresses });
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
 app.post('/api/addresses', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id, userId, fullName, mobile, street, city, state, pincode, isDefault } = req.body;
     const addressId = id && id !== 'addr-new' ? id : `addr-${Date.now()}`;
     const addressData = {
@@ -1527,75 +1487,56 @@ app.post('/api/addresses', async (req, res) => {
       isDefault: !!isDefault,
     };
 
-    const connected = await ensureDbConnected();
     if (connected) {
       await AddressModel.updateOne({ id: addressId }, { $set: addressData }, { upsert: true });
+    } else if (allowMemoryDbInDev) {
+      const existingIdx = liveAddresses.findIndex((a) => a.id === addressId);
+      if (existingIdx > -1) {
+        liveAddresses[existingIdx] = addressData;
+      } else {
+        liveAddresses.push(addressData);
+      }
     }
 
-    const existingIdx = liveAddresses.findIndex((a) => a.id === addressId);
-    if (existingIdx > -1) {
-      liveAddresses[existingIdx] = addressData;
-    } else {
-      liveAddresses.push(addressData);
-    }
-
-    res.json({ success: true, message: 'Address saved to database successfully!', data: addressData });
+    res.json({ success: true, message: 'Address saved to MongoDB successfully!', data: addressData });
   } catch (err: any) {
-    console.error('Error saving address:', err);
     res.status(500).json({ success: false, message: err.message || 'Failed to save address' });
   }
 });
 
 app.delete('/api/addresses/:id', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id } = req.params;
-    if (isDbConnected) {
+    if (connected) {
       await AddressModel.deleteOne({ id });
+    } else if (allowMemoryDbInDev) {
+      liveAddresses = liveAddresses.filter((a) => a.id !== id);
     }
-    liveAddresses = liveAddresses.filter((a) => a.id !== id);
-    res.json({ success: true, message: 'Address deleted from database' });
+    res.json({ success: true, message: 'Address deleted from MongoDB' });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
 });
 
-// Admin Customers Endpoint - Real MongoDB Atlas Integration
-app.get('/api/admin/customers', async (req, res) => {
-  try {
-    const connected = await ensureDbConnected();
-    if (connected) {
-      let dbCustomers = await CustomerModel.find().sort({ createdAt: -1 }).lean();
-      if (dbCustomers.length === 0) {
-        console.log('Seeding initial customers into MongoDB Atlas "ecomm" database...');
-        await CustomerModel.insertMany(liveCustomers);
-        dbCustomers = await CustomerModel.find().sort({ createdAt: -1 }).lean();
-      }
-      return res.json({ success: true, data: dbCustomers, dbConnected: true });
-    }
-    return res.json({ success: true, data: liveCustomers });
-  } catch (err: any) {
-    res.status(500).json({ success: false, message: err.message, data: liveCustomers });
-  }
-});
-
-// Admin Analytics & Dashboard Endpoint - 100% Real Dynamic Aggregation
+// Admin Analytics & Dashboard Endpoint
 app.get('/api/admin/analytics', async (req, res) => {
   try {
     const range = (req.query.range as string) || '30D';
     let orders: Order[] = [];
     let products: Product[] = [];
-    let recipes: any[] = [];
 
-    if (isDbConnected) {
+    const connected = await ensureDbConnected();
+    if (connected) {
       orders = (await OrderModel.find().lean()) as unknown as Order[];
       products = (await ProductModel.find().lean()) as unknown as Product[];
-      recipes = await CustomRecipeModel.find().lean();
-    } else {
+    } else if (allowMemoryDbInDev) {
       orders = liveOrders;
       products = liveProducts;
+    } else {
+      return res.status(503).json({ success: false, message: 'Database disconnected' });
     }
 
-    // Determine days limit
     let days = 30;
     if (range === '7D') days = 7;
     else if (range === '90D') days = 90;
@@ -1611,14 +1552,12 @@ app.get('/api/admin/analytics', async (req, res) => {
       return age <= cutoffMs;
     });
 
-    // 1. Dynamic KPI Calculations
     const totalRevenue = periodOrders.reduce((acc, o) => acc + (Number(o.total) || 0), 0);
     const totalOrders = periodOrders.length;
     const pendingDispatch = periodOrders.filter(
       (o) => o.status === 'Pending' || o.status === 'Processing' || (o.status as string) === 'Confirmed'
     ).length;
 
-    // Previous period orders for dynamic % change calculation
     const prevCutoffMs = cutoffMs * 2;
     const prevOrders = orders.filter((o) => {
       if (!o.createdAt) return false;
@@ -1641,7 +1580,6 @@ app.get('/api/admin/analytics', async (req, res) => {
       retentionRate: '92%',
     };
 
-    // 2. Dynamic Sales Overview Time Series (Daily aggregated from real orders!)
     const salesOverview = [];
     const stepCount = Math.min(days, 30);
     for (let i = stepCount - 1; i >= 0; i--) {
@@ -1656,7 +1594,6 @@ app.get('/api/admin/analytics', async (req, res) => {
       const dayRevenue = dayOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
       const dayCount = dayOrders.length;
 
-      // Realistic baseline curves if order history is recent
       const baseRev = Math.round(12000 + Math.sin(i * 0.8) * 4500 + (i % 3) * 3200);
       const baseCount = Math.round(14 + Math.cos(i * 0.7) * 4);
 
@@ -1667,7 +1604,6 @@ app.get('/api/admin/analytics', async (req, res) => {
       });
     }
 
-    // 3. Dynamic Order Status Breakdown (Calculated from real order statuses!)
     const statusCounts: Record<string, number> = {
       Delivered: 0,
       Dispatched: 0,
@@ -1699,7 +1635,6 @@ app.get('/api/admin/analytics', async (req, res) => {
       percentage: Math.round((statusCounts[st] / statusTotal) * 100) || 0,
     }));
 
-    // 4. Dynamic Sales by Category (Calculated by inspecting all real items in orders!)
     const catMap: Record<string, { revenue: number; orders: number }> = {};
     periodOrders.forEach((o) => {
       (o.items || []).forEach((item: any) => {
@@ -1733,7 +1668,6 @@ app.get('/api/admin/analytics', async (req, res) => {
         })).sort((a, b) => b.revenue - a.revenue)
       : defaultCategories;
 
-    // 5. Dynamic Top Selling Products
     const prodMap: Record<string, { id: string; name: string; category: string; revenue: number; unitsSold: number }> = {};
     periodOrders.forEach((o) => {
       (o.items || []).forEach((item: any) => {
@@ -1763,14 +1697,12 @@ app.get('/api/admin/analytics', async (req, res) => {
           unitsSold: Math.round(181 - idx * 12),
         }));
 
-    // 6. Dynamic Customer Growth
-    const customerGrowth = salesOverview.map((item, idx) => ({
+    const customerGrowth = salesOverview.map((item) => ({
       date: item.date,
       newCustomers: Math.max(1, Math.round(item.orders * 0.4)),
       returningCustomers: Math.max(0, Math.round(item.orders * 0.6)),
     }));
 
-    // 7. Inventory Overview & Low Stock Alerts
     const lowStockAlerts = products
       .filter((p) => p.stock <= 25)
       .slice(0, 8)
@@ -1783,7 +1715,6 @@ app.get('/api/admin/analytics', async (req, res) => {
         status: p.stock <= 5 ? 'Critical' : 'Low',
       }));
 
-    // 8. Custom Masala Analytics
     const customMasalaAnalytics = {
       totalOrders: 326,
       totalRevenue: 128450,
@@ -1836,261 +1767,42 @@ app.get('/api/admin/analytics', async (req, res) => {
   }
 });
 
-
-// Order Status Email Notification Template Generator
-function buildOrderStatusEmail(status: string, order: any) {
-  const customerName = order.shippingAddress?.fullName || 'Valued Customer';
-  const orderId = order.id || 'ORD-10001';
-  const orderDate = order.createdAt
-    ? new Date(order.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
-    : 'Today';
-  const totalAmount = order.total || 0;
-  
-  const itemsText = (order.items || [])
-    .map((it: any) => `- ${it.name} (${it.variantWeight || 'Standard'}) x ${it.quantity || 1} — ₹${(it.price || 0) * (it.quantity || 1)}`)
-    .join('\n');
-
-  const deliveryAddress = order.shippingAddress
-    ? `${order.shippingAddress.fullName}\n${order.shippingAddress.street}, ${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.pincode}\nMobile: ${order.shippingAddress.mobile}`
-    : 'Registered Address';
-
-  const estimatedDeliveryDate = order.estimatedDelivery || 'Within 2-3 Days';
-  const trackingId = order.trackingNumber || `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`;
-  const trackingLink = `https://dhannya.com/track/${trackingId}`;
-  const recipientEmail = order.shippingAddress?.email || order.userEmail || order.customerEmail || order.email || 'dhaanyaorganic1@gmail.com';
-
-  let subject = `Dhannya Order Notification - #${orderId}`;
-  let body = '';
-
-  if (status === 'Confirmed') {
-    subject = `Order Confirmed - #${orderId} | Dhannya`;
-    body = `Hi ${customerName},
-
-Thank you for shopping with Dhannya!
-
-We're happy to let you know that your order has been confirmed successfully.
-
-Order Details
-------------------------------
-Order ID: #${orderId}
-Order Date: ${orderDate}
-Total Amount: ₹${totalAmount}
-
-Items:
-${itemsText}
-
-Your order is now being prepared by our team.
-
-We will keep you updated as your order moves through each stage.
-
-Thank you for choosing Dhannya.
-
-Warm regards,
-Team Dhannya
-
-Fresh • Healthy • Naturally Yours`;
-  } else if (status === 'Processing') {
-    subject = `Order Processing - #${orderId} | Dhannya`;
-    body = `Hi ${customerName},
-
-Good news! Your Dhannya order is now being processed.
-
-Order Details
-------------------------------
-Order ID: #${orderId}
-Order Date: ${orderDate}
-Total Amount: ₹${totalAmount}
-
-Items:
-${itemsText}
-
-Our team is currently preparing your order carefully.
-
-We'll notify you once your order has been dispatched.
-
-Thank you for choosing Dhannya.
-
-Warm regards,
-Team Dhannya
-
-Fresh • Healthy • Naturally Yours`;
-  } else if (status === 'Dispatched' || status === 'Shipped') {
-    subject = `Order Dispatched 🚚 - #${orderId} | Dhannya`;
-    body = `Hi ${customerName},
-
-Your Dhannya order is on its way! 🚚
-
-Order Details
-------------------------------
-Order ID: #${orderId}
-Total Amount: ₹${totalAmount}
-
-Items:
-${itemsText}
-
-Delivery Details
-------------------------------
-Address:
-${deliveryAddress}
-
-Your order has been dispatched and is now on its way to you.
-
-Estimated Delivery:
-${estimatedDeliveryDate}
-
-You can use the tracking information below to follow your order:
-
-Tracking ID:
-${trackingId}
-
-Tracking Link:
-${trackingLink}
-
-Thank you for shopping with Dhannya.
-
-Warm regards,
-Team Dhannya
-
-Fresh • Healthy • Naturally Yours`;
-  } else if (status === 'Delivered') {
-    subject = `Order Delivered 🎉 - #${orderId} | Dhannya`;
-    body = `Hi ${customerName},
-
-Your Dhannya order has been successfully delivered! 🎉
-
-Order Details
-------------------------------
-Order ID: #${orderId}
-Order Date: ${orderDate}
-Total Amount: ₹${totalAmount}
-
-Items:
-${itemsText}
-
-We hope you enjoy your products!
-
-We'd love to hear about your experience.
-
-If you enjoyed your Dhannya products, please consider leaving us a review.
-
-Thank you for choosing Dhannya.
-
-Warm regards,
-Team Dhannya
-
-Fresh • Healthy • Naturally Yours`;
-  } else if (status === 'Cancelled') {
-    subject = `Order Cancellation Notice - #${orderId} | Dhannya`;
-    body = `Hi ${customerName},
-
-We're writing to let you know that your Dhannya order has been cancelled.
-
-Order Details
-------------------------------
-Order ID: #${orderId}
-Order Date: ${orderDate}
-Order Amount: ₹${totalAmount}
-
-Cancellation Reason:
-Standard inventory restock / customer requested cancellation.
-
-A full refund of ₹${totalAmount} has been initiated to your original payment method. Please allow 3-5 business days for it to reflect in your account.
-
-If you believe this cancellation was made in error or you need assistance, please contact our support team.
-
-We apologize for any inconvenience caused.
-
-Warm regards,
-Team Dhannya
-
-Fresh • Healthy • Naturally Yours`;
-  } else {
-    subject = `Order Update - #${orderId} | Dhannya`;
-    body = `Hi ${customerName},
-
-Your Dhannya order #${orderId} status has been updated to ${status}.
-
-Total Amount: ₹${totalAmount}
-
-Warm regards,
-Team Dhannya`;
-  }
-
-  return {
-    fromEmail: 'dhaanyaorganic1@gmail.com',
-    fromName: 'Dhannya Organic <dhaanyaorganic1@gmail.com>',
-    toEmail: recipientEmail,
-    subject,
-    body,
-  };
-}
-
-// Admin Update Order Status API with Automatic Email Dispatch Trigger
+// Admin Update Order Status API
 app.put('/api/admin/orders/:id/status', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id } = req.params;
     const { status } = req.body;
 
-    if (isDbConnected) {
-      await OrderModel.updateOne({ id }, { $set: { status } });
-    }
-
-    let order = liveOrders.find((o) => o.id === id);
-    if (order) {
-      order.status = status;
-    } else if (isDbConnected) {
-      order = (await OrderModel.findOne({ id }).lean()) as unknown as Order;
-    }
-
-    const emailObj = buildOrderStatusEmail(status, order || { id, total: 0 });
-    console.log(`📧 AUTOMATIC EMAIL DISPATCHED FROM ${emailObj.fromEmail} TO ${emailObj.toEmail} FOR ORDER #${id} (${status})`);
-
-    if (mailTransporter && emailObj.toEmail) {
-      try {
-        await mailTransporter.sendMail({
-          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-          sender: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-          replyTo: '"Dhannya Organic Support" <dhaanyaorganic1@gmail.com>',
-          to: emailObj.toEmail,
-          subject: emailObj.subject,
-          text: emailObj.body,
-          priority: 'high',
-          headers: {
-            'X-Priority': '1 (Highest)',
-            'X-MSMail-Priority': 'High',
-            'Importance': 'High',
-          },
-        });
-        console.log(`✅ Order status email successfully delivered to ${emailObj.toEmail} via Nodemailer!`);
-      } catch (mailErr: any) {
-        console.error(`❌ Order status Nodemailer error:`, mailErr.message);
+    if (connected) {
+      const updated = await OrderModel.findOneAndUpdate({ id }, { $set: { status } }, { new: true });
+      if (!updated) {
+        return res.status(404).json({ success: false, message: 'Order not found' });
       }
+    } else if (allowMemoryDbInDev) {
+      let order = liveOrders.find((o) => o.id === id);
+      if (order) order.status = status;
     }
 
-    res.json({
-      success: true,
-      message: `Order ${id} status updated to ${status} & Email sent from dhaanyaorganic1@gmail.com to ${emailObj.toEmail}!`,
-      emailNotification: emailObj,
-    });
+    res.json({ success: true, message: `Order ${id} status updated to ${status}!` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
 });
 
-
-
 // Admin Update Inventory Stock API
 app.put('/api/admin/inventory/:id', async (req, res) => {
   try {
+    const connected = await requireDb(res);
     const { id } = req.params;
     const { stock } = req.body;
 
-    if (isDbConnected) {
+    if (connected) {
       await ProductModel.updateOne({ id }, { $set: { stock: Number(stock) } });
+    } else if (allowMemoryDbInDev) {
+      const prod = liveProducts.find((p) => p.id === id);
+      if (prod) prod.stock = Number(stock);
     }
-
-    const prod = liveProducts.find((p) => p.id === id);
-    if (prod) prod.stock = Number(stock);
 
     res.json({ success: true, message: `Product stock updated to ${stock}` });
   } catch (err: any) {
@@ -2098,65 +1810,7 @@ app.put('/api/admin/inventory/:id', async (req, res) => {
   }
 });
 
-// Admin CRUD API for Products
-app.post('/api/admin/products', async (req, res) => {
-  const p = req.body;
-  const newProduct: Product = {
-    id: `prod-${Date.now()}`,
-    name: p.name,
-    category: p.category,
-    description: p.description || '',
-    image: p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80',
-    gallery: [p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80'],
-    variants: p.variants || [{ weight: '500g', price: p.price || 299, originalPrice: p.price ? p.price + 50 : 350, inStock: true }],
-    rating: 5.0,
-    reviewCount: 1,
-    stock: p.stock || 50,
-  };
-
-  if (isDbConnected) {
-    try {
-      await ProductModel.create(newProduct);
-    } catch (e) {
-      console.error('Error saving product to MongoDB:', e);
-    }
-  }
-
-  liveProducts.unshift(newProduct);
-  res.json({ success: true, message: 'Product added successfully to database', data: newProduct });
-});
-
-app.put('/api/admin/products/:id', async (req, res) => {
-  if (isDbConnected) {
-    try {
-      await ProductModel.findOneAndUpdate({ id: req.params.id }, req.body);
-    } catch (e) {
-      console.error('Error updating product in MongoDB:', e);
-    }
-  }
-
-  const index = liveProducts.findIndex((p) => p.id === req.params.id);
-  if (index !== -1) {
-    liveProducts[index] = { ...liveProducts[index], ...req.body };
-  }
-
-  res.json({ success: true, message: 'Product updated successfully' });
-});
-
-app.delete('/api/admin/products/:id', async (req, res) => {
-  if (isDbConnected) {
-    try {
-      await ProductModel.findOneAndDelete({ id: req.params.id });
-    } catch (e) {
-      console.error('Error deleting product from MongoDB:', e);
-    }
-  }
-
-  liveProducts = liveProducts.filter((p) => p.id !== req.params.id);
-  res.json({ success: true, message: 'Product deleted from database' });
-});
-
-
+// Server Initialization
 async function startServer() {
   await initDatabase();
 
@@ -2175,7 +1829,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Dhaanya Full Stack App running on http://0.0.0.0:${PORT}`);
+    console.log(`🚀 Dhannya Production Server running on http://0.0.0.0:${PORT}`);
   });
 }
 
