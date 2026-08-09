@@ -14,13 +14,18 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === 'production';
 const allowMemoryDbInDev = !isProduction && process.env.USE_MEMORY_DB === 'true';
 
-// Nodemailer Transporter setup with 5s max timeouts
+// Nodemailer Transporter setup with persistent connection pooling & 5s timeouts
 let mailTransporter: any = null;
 const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
 const cleanPass = (process.env.SMTP_PASS || 'ydxgavhwwfetjiuv').trim().replace(/\s+/g, '');
 
 try {
   mailTransporter = nodemailer.createTransport({
+    pool: true, // Reuse persistent SMTP socket connections across requests
+    maxConnections: 5,
+    maxMessages: 100,
+    rateDelta: 1000,
+    rateLimit: 5,
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
@@ -32,9 +37,30 @@ try {
       pass: cleanPass,
     },
   });
-  console.log(`[SMTP] Live Nodemailer transporter initialized for ${cleanUser}`);
+
+  // Verify and warm up persistent connection pool asynchronously on startup
+  mailTransporter.verify((err: any) => {
+    if (err) {
+      console.warn('[SMTP WARN] Connection pool verification warning:', err.message);
+    } else {
+      console.log(`[SMTP] ✅ Persistent SMTP connection pool verified & warmed up for ${cleanUser}`);
+    }
+  });
 } catch (e: any) {
   console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
+}
+
+// In-memory duplicate email protection cache (cleared after 60 seconds)
+const recentEmailCache = new Set<string>();
+
+function shouldSendEmail(emailKey: string): boolean {
+  if (recentEmailCache.has(emailKey)) {
+    console.log(`[SMTP DUP] Suppressed duplicate email dispatch for key: ${emailKey}`);
+    return false;
+  }
+  recentEmailCache.add(emailKey);
+  setTimeout(() => recentEmailCache.delete(emailKey), 60000);
+  return true;
 }
 
 const app = express();
@@ -585,30 +611,31 @@ dhaanyaorganic1@gmail.com`;
 
     console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
 
-    console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
-
     if (mailTransporter) {
-      mailTransporter.sendMail({
-        from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-        to: cleanEmail,
-        subject: emailSubject,
-        text: emailBody,
-        html: `
-          <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
-            <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic</h2>
-            <p style="margin-top: 16px;">Hi <strong>${recipientName}</strong>,</p>
-            <p>Your 6-digit verification code to sign into your Dhannya account is:</p>
-            <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #faf8f4; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
-              ${generatedOtp}
+      const dupKey = `otp-${cleanEmail}-${generatedOtp}`;
+      if (shouldSendEmail(dupKey)) {
+        mailTransporter.sendMail({
+          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
+          to: cleanEmail,
+          subject: emailSubject,
+          text: emailBody,
+          html: `
+            <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
+              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic</h2>
+              <p style="margin-top: 16px;">Hi <strong>${recipientName}</strong>,</p>
+              <p>Your 6-digit verification code to sign into your Dhannya account is:</p>
+              <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #faf8f4; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
+                ${generatedOtp}
+              </div>
+              <p style="font-size: 12px; color: #666;">This code is valid for 10 minutes.</p>
             </div>
-            <p style="font-size: 12px; color: #666;">This code is valid for 10 minutes.</p>
-          </div>
-        `,
-      }).then(() => {
-        console.log(`[OTP] Email delivered asynchronously to ${cleanEmail}`);
-      }).catch((mailErr: any) => {
-        console.error(`[OTP ERROR] Nodemailer Error:`, mailErr.message);
-      });
+          `,
+        }).then(() => {
+          console.log(`[OTP] Email delivered asynchronously to ${cleanEmail}`);
+        }).catch((mailErr: any) => {
+          console.error(`[OTP ERROR] Nodemailer Error:`, mailErr.message);
+        });
+      }
     }
 
     return res.json({
@@ -1395,30 +1422,33 @@ app.post('/api/orders', async (req, res) => {
       liveOrders.unshift(newOrder as any);
     }
 
-    // Dispatch Order Confirmation Email asynchronously
+    // Dispatch Order Confirmation Email asynchronously with duplicate suppression
     const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
     if (targetEmail && mailTransporter) {
-      mailTransporter.sendMail({
-        from: `"Dhannya Organic" <${cleanUser}>`,
-        to: targetEmail,
-        subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
-            <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
-            <p style="margin-top: 16px;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
-            <p>Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been placed.</p>
-            <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
-              <p><strong>Order ID:</strong> #${orderId}</p>
-              <p><strong>Total Amount:</strong> ₹${total}</p>
-              <p><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
+      const dupKey = `order-confirm-${orderId}-${targetEmail}`;
+      if (shouldSendEmail(dupKey)) {
+        mailTransporter.sendMail({
+          from: `"Dhannya Organic" <${cleanUser}>`,
+          to: targetEmail,
+          subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
+              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
+              <p style="margin-top: 16px;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
+              <p>Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been placed.</p>
+              <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
+                <p><strong>Order ID:</strong> #${orderId}</p>
+                <p><strong>Total Amount:</strong> ₹${total}</p>
+                <p><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
+              </div>
             </div>
-          </div>
-        `,
-      }).then(() => {
-        console.log(`[MAIL] Order confirmation email sent to ${targetEmail}`);
-      }).catch((mailErr: any) => {
-        console.error('[MAIL ERROR] Order confirmation email failed:', mailErr.message);
-      });
+          `,
+        }).then(() => {
+          console.log(`[MAIL] Order confirmation email sent to ${targetEmail}`);
+        }).catch((mailErr: any) => {
+          console.error('[MAIL ERROR] Order confirmation email failed:', mailErr.message);
+        });
+      }
     }
 
     return res.json({ success: true, message: 'Order placed successfully and stored in MongoDB!', data: newOrder });
@@ -1767,6 +1797,33 @@ app.get('/api/admin/analytics', async (req, res) => {
   }
 });
 
+function buildOrderStatusEmail(status: string, order: any) {
+  const customerName = order?.shippingAddress?.fullName || 'Valued Customer';
+  const orderId = order?.id || 'ORD-10001';
+  const totalAmount = order?.total || 0;
+  const deliveryAddress = order?.shippingAddress
+    ? `${order.shippingAddress.fullName}\n${order.shippingAddress.street}, ${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.pincode}`
+    : 'Registered Address';
+
+  const recipientEmail = (order?.shippingAddress?.email || order?.userEmail || order?.customerEmail || order?.email || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
+
+  let subject = `Order Status Update - #${orderId} | Dhannya Organic`;
+  let body = `Hi ${customerName},\n\nYour Dhannya order #${orderId} status has been updated to ${status}.\n\nTotal Amount: ₹${totalAmount}\n\nWarm regards,\nTeam Dhannya`;
+
+  if (status === 'Confirmed') {
+    subject = `🎉 Order Confirmed - #${orderId} | Dhannya Organic`;
+    body = `Hi ${customerName},\n\nYour order #${orderId} has been confirmed.\n\nTotal: ₹${totalAmount}\n\nWarm regards,\nTeam Dhannya`;
+  } else if (status === 'Dispatched' || status === 'Shipped') {
+    subject = `🚚 Order Dispatched - #${orderId} | Dhannya Organic`;
+    body = `Hi ${customerName},\n\nYour order #${orderId} is on its way! 🚚\n\nDelivery Address:\n${deliveryAddress}\n\nWarm regards,\nTeam Dhannya`;
+  } else if (status === 'Delivered') {
+    subject = `🎉 Order Delivered - #${orderId} | Dhannya Organic`;
+    body = `Hi ${customerName},\n\nYour order #${orderId} has been delivered successfully! 🎉\n\nThank you for choosing Dhannya Organic.\n\nWarm regards,\nTeam Dhannya`;
+  }
+
+  return { toEmail: recipientEmail, subject, body };
+}
+
 // Admin Update Order Status API
 app.put('/api/admin/orders/:id/status', async (req, res) => {
   try {
@@ -1774,17 +1831,36 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
 
+    let targetOrder: any = null;
     if (connected) {
-      const updated = await OrderModel.findOneAndUpdate({ id }, { $set: { status } }, { new: true });
-      if (!updated) {
+      targetOrder = await OrderModel.findOneAndUpdate({ id }, { $set: { status } }, { new: true }).lean();
+      if (!targetOrder) {
         return res.status(404).json({ success: false, message: 'Order not found' });
       }
     } else if (allowMemoryDbInDev) {
-      let order = liveOrders.find((o) => o.id === id);
-      if (order) order.status = status;
+      targetOrder = liveOrders.find((o) => o.id === id);
+      if (targetOrder) targetOrder.status = status;
     }
 
     res.json({ success: true, message: `Order ${id} status updated to ${status}!` });
+
+    // Send order status update email asynchronously via pooled SMTP connection
+    if (mailTransporter && targetOrder) {
+      const emailObj = buildOrderStatusEmail(status, targetOrder);
+      const dupKey = `status-update-${id}-${status}-${emailObj.toEmail}`;
+      if (emailObj.toEmail && shouldSendEmail(dupKey)) {
+        mailTransporter.sendMail({
+          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
+          to: emailObj.toEmail,
+          subject: emailObj.subject,
+          text: emailObj.body,
+        }).then(() => {
+          console.log(`[SMTP STATUS] Delivered status email for #${id} (${status}) to ${emailObj.toEmail}`);
+        }).catch((err: any) => {
+          console.error(`[SMTP STATUS ERROR] Status email failed for #${id}:`, err.message);
+        });
+      }
+    }
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
