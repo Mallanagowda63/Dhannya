@@ -206,6 +206,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const [hoveredSalesPoint, setHoveredSalesPoint] = useState<any>(null);
   const [ordersViewMode, setOrdersViewMode] = useState<'count' | 'revenue'>('count');
   const [topProductsMode, setTopProductsMode] = useState<'revenue' | 'units'>('revenue');
+  const [activeCustomFormulaModal, setActiveCustomFormulaModal] = useState<any>(null);
 
   // Product Add Modal State
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
@@ -1882,44 +1883,69 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
           {/* CUSTOM MASALA TAB VIEW */}
           {activeTab === 'custom_masala' && (
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
-              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
-                Custom Masala Studio Orders ({customMasalasList.length})
-              </h3>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-earth flex items-center gap-2">
+                    <ChefHat className="w-6 h-6 text-olive" />
+                    <span>Custom Masala Studio Orders ({customMasalasList.length})</span>
+                  </h3>
+                  <p className="text-xs text-stone-600 mt-1">
+                    Authentic custom spice formulas created by customers in Masala Studio or ordered in cart. Real-time ingredient gram weights and roasting instructions.
+                  </p>
+                </div>
+              </div>
+
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
-                      <th className="py-3 px-4">Recipe ID</th>
+                      <th className="py-3 px-4">Order / Recipe ID</th>
+                      <th className="py-3 px-4">Customer Name</th>
                       <th className="py-3 px-4">Recipe Name</th>
-                      <th className="py-3 px-4">Weight (g)</th>
-                      <th className="py-3 px-4">Price (₹)</th>
+                      <th className="py-3 px-4">Batch Weight</th>
+                      <th className="py-3 px-4">Total Price</th>
                       <th className="py-3 px-4">Roasting</th>
-                      <th className="py-3 px-4 text-right">Delete Option</th>
+                      <th className="py-3 px-4 text-right">Spice Formula Specs</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-stone-100 font-medium">
-                    {customMasalasList.map((m) => (
-                      <tr key={m.id} className="hover:bg-[#faf8f4] transition">
-                        <td className="py-3.5 px-4 font-mono font-bold text-earth">{m.id}</td>
-                        <td className="py-3.5 px-4 font-bold text-serif text-earth">{m.recipeName}</td>
-                        <td className="py-3.5 px-4 font-bold">{m.totalWeightGrams}g</td>
-                        <td className="py-3.5 px-4 font-extrabold text-olive">₹{m.totalPrice}</td>
-                        <td className="py-3.5 px-4">
-                          <span className="bg-amber-100 text-amber-800 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase">
-                            {m.roastingCharge > 0 ? 'ROASTED' : 'RAW'}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4 text-right">
-                          <button
-                            onClick={() => handleDeleteCustomMasala(m.id)}
-                            className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
-                            title="Delete Custom Masala"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                    {customMasalasList.map((m: any) => {
+                      const isOrder = !!m.orderId;
+                      const displayId = m.orderId || m.id;
+                      const custName = m.customerName || 'Store Customer';
+                      const recName = m.recipeName || m.name || 'Custom Garam Masala';
+                      const weightGrams = m.totalWeightGrams || m.customDetails?.totalWeight || 250;
+                      const price = m.totalPrice || m.price || 0;
+                      const isRoasted = (m.roastingCharge && m.roastingCharge > 0) || (m.customDetails?.roastingSummary && m.customDetails.roastingSummary.toLowerCase().includes('roasted'));
+
+                      return (
+                        <tr key={m.id || displayId} className="hover:bg-[#faf8f4] transition">
+                          <td className="py-3.5 px-4 font-mono font-bold text-earth">
+                            <span className="bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-xl text-xs font-black">
+                              {displayId}
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 font-bold text-earth">{custName}</td>
+                          <td className="py-3.5 px-4 font-bold font-serif text-olive text-sm">{recName}</td>
+                          <td className="py-3.5 px-4 font-extrabold text-earth font-mono">{weightGrams}g Batch</td>
+                          <td className="py-3.5 px-4 font-black text-olive">₹{price}</td>
+                          <td className="py-3.5 px-4">
+                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase ${isRoasted ? 'bg-amber-100 text-amber-800 border border-amber-300' : 'bg-emerald-100 text-emerald-800 border border-emerald-300'}`}>
+                              {isRoasted ? '🔥 ROASTED' : '🌿 RAW'}
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 text-right">
+                            <button
+                              onClick={() => setActiveCustomFormulaModal(m)}
+                              className="px-3.5 py-1.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold transition flex items-center gap-1.5 ml-auto shadow-2xs cursor-pointer"
+                            >
+                              <ChefHat className="w-3.5 h-3.5" />
+                              <span>View Spice Ratios</span>
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -2502,30 +2528,84 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                     const itemPrice = item.price || item.unitPrice || 0;
                     const itemQty = item.quantity || 1;
 
+                    const isCustomMasala = item.type === 'custom_masala' || !!item.customDetails || (typeof itemName === 'string' && itemName.includes('Custom Masala'));
+
                     return (
-                      <div key={idx} className="p-3 flex items-center justify-between gap-3 hover:bg-stone-50">
-                        <div className="flex items-center gap-3">
-                          <img
-                            src={itemImg}
-                            alt={itemName}
-                            className="w-12 h-12 rounded-xl object-cover border border-stone-200 shrink-0"
-                            onError={(e) => {
-                              e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
-                            }}
-                          />
-                          <div>
-                            <h5 className="font-bold text-earth text-xs sm:text-sm font-serif leading-tight">
-                              {itemName}
-                            </h5>
-                            <span className="text-[11px] text-stone-500 block">
-                              Variant: <strong className="text-olive font-semibold">{itemWeight}</strong> | Qty: <strong className="text-earth">{itemQty}</strong>
-                            </span>
+                      <div key={idx} className="p-3.5 space-y-3 hover:bg-stone-50 transition">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3">
+                            <img
+                              src={itemImg}
+                              alt={itemName}
+                              className="w-12 h-12 rounded-xl object-cover border border-stone-200 shrink-0"
+                              onError={(e) => {
+                                e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                              }}
+                            />
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <h5 className="font-bold text-earth text-xs sm:text-sm font-serif leading-tight">
+                                  {itemName}
+                                </h5>
+                                {isCustomMasala && (
+                                  <span className="bg-olive/10 text-olive border border-olive/30 text-[10px] px-2 py-0.5 rounded-full font-black uppercase flex items-center gap-1">
+                                    <ChefHat className="w-3 h-3 text-olive" />
+                                    <span>Custom Recipe</span>
+                                  </span>
+                                )}
+                              </div>
+                              <span className="text-[11px] text-stone-500 block mt-0.5">
+                                Variant: <strong className="text-olive font-semibold">{itemWeight}</strong> | Qty: <strong className="text-earth">{itemQty}</strong>
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="font-extrabold text-earth text-sm block">₹{itemPrice * itemQty}</span>
+                            <span className="text-[10px] text-stone-400">₹{itemPrice} each</span>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <span className="font-extrabold text-earth text-sm block">₹{itemPrice * itemQty}</span>
-                          <span className="text-[10px] text-stone-400">₹{itemPrice} each</span>
-                        </div>
+
+                        {/* Custom Masala Recipe Ingredients Breakdown Card */}
+                        {isCustomMasala && (
+                          <div className="p-3.5 bg-[#faf8f4] border border-amber-200/90 rounded-2xl space-y-2.5 text-xs text-earth shadow-inner">
+                            <div className="flex items-center justify-between border-b border-amber-200/60 pb-2">
+                              <div className="flex items-center gap-1.5 font-bold text-earth text-xs">
+                                <Sparkles className="w-4 h-4 text-amber-600" />
+                                <span className="font-serif">Custom Spice Blend Grinding Formula</span>
+                              </div>
+                              <span className="bg-amber-100 text-amber-900 border border-amber-300 font-mono text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase">
+                                {itemWeight || `${item.customDetails?.totalWeight || 250}g Batch`}
+                              </span>
+                            </div>
+
+                            {item.customDetails?.roastingSummary && (
+                              <p className="text-[11px] text-stone-700 font-medium bg-white p-2 rounded-xl border border-stone-200">
+                                🔥 <strong className="text-earth">Roasting Preference:</strong> {item.customDetails.roastingSummary}
+                              </p>
+                            )}
+
+                            {item.customDetails?.itemsList && item.customDetails.itemsList.length > 0 ? (
+                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
+                                {item.customDetails.itemsList.map((ing: any, iIdx: number) => (
+                                  <div key={iIdx} className="bg-white p-2.5 rounded-xl border border-stone-200 shadow-2xs flex flex-col justify-between">
+                                    <span className="font-bold text-earth text-[11px] truncate">{ing.name}</span>
+                                    <div className="flex items-center justify-between mt-1.5 text-[10px]">
+                                      <strong className="text-olive font-mono">{ing.weight}g</strong>
+                                      <span className={`px-1.5 py-0.2 rounded font-extrabold text-[9px] uppercase ${ing.roasting === 'Roasted' ? 'bg-amber-100 text-amber-800' : 'bg-stone-100 text-stone-600'}`}>
+                                        {ing.roasting || 'Raw'}
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="bg-white p-2.5 rounded-xl border border-stone-200 text-stone-600 text-[11px] font-medium flex items-center gap-2">
+                                <span>🌿</span>
+                                <span>Signature custom spice recipe created in Masala Studio. Ready for stone grinding.</span>
+                              </div>
+                            )}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -2597,6 +2677,112 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                   Close
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Custom Masala Formula Modal Overlay */}
+      {activeCustomFormulaModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white border border-stone-200 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden text-earth my-8 relative animate-scale-up">
+            {/* Header */}
+            <div className="p-6 bg-olive text-white flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-white/20 text-amber-200 flex items-center justify-center font-bold text-sm">
+                  <ChefHat className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-extrabold font-serif text-lg text-white">
+                    {activeCustomFormulaModal.recipeName || activeCustomFormulaModal.name || 'Custom Masala Formula'}
+                  </h3>
+                  <p className="text-xs text-stone-200">
+                    Order ID: <strong className="font-mono text-amber-200">{activeCustomFormulaModal.orderId || activeCustomFormulaModal.id}</strong> | Customer: <strong>{activeCustomFormulaModal.customerName || 'Valued Customer'}</strong>
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setActiveCustomFormulaModal(null)}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
+              <div className="bg-[#faf8f4] p-4 rounded-2xl border border-stone-200 flex items-center justify-between text-xs">
+                <div>
+                  <span className="text-stone-500 font-bold block text-[10px] uppercase">Batch Total Weight</span>
+                  <strong className="text-earth text-lg font-black font-mono">
+                    {activeCustomFormulaModal.totalWeightGrams || activeCustomFormulaModal.customDetails?.totalWeight || 250}g
+                  </strong>
+                </div>
+                <div className="text-right">
+                  <span className="text-stone-500 font-bold block text-[10px] uppercase">Price</span>
+                  <strong className="text-olive text-lg font-black">
+                    ₹{activeCustomFormulaModal.totalPrice || activeCustomFormulaModal.price || 0}
+                  </strong>
+                </div>
+              </div>
+
+              {/* Roasting summary */}
+              {activeCustomFormulaModal.customDetails?.roastingSummary && (
+                <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200 text-xs text-amber-900 font-medium">
+                  🔥 <strong>Roasting Specification:</strong> {activeCustomFormulaModal.customDetails.roastingSummary}
+                </div>
+              )}
+
+              {/* Ingredients Composition List */}
+              <div className="space-y-2">
+                <h4 className="font-extrabold uppercase tracking-wider text-[11px] text-stone-500 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-olive" /> Ingredient Composition Formula
+                </h4>
+
+                {activeCustomFormulaModal.customDetails?.itemsList && activeCustomFormulaModal.customDetails.itemsList.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {activeCustomFormulaModal.customDetails.itemsList.map((ing: any, idx: number) => (
+                      <div key={idx} className="p-3 bg-white border border-stone-200 rounded-2xl flex items-center justify-between shadow-2xs">
+                        <div>
+                          <span className="font-bold text-earth text-xs block">{ing.name}</span>
+                          <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full inline-block mt-1 ${ing.roasting === 'Roasted' ? 'bg-amber-100 text-amber-800' : 'bg-stone-100 text-stone-600'}`}>
+                            {ing.roasting || 'Raw'}
+                          </span>
+                        </div>
+                        <span className="font-extrabold text-olive text-sm font-mono">{ing.weight}g</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : activeCustomFormulaModal.items && activeCustomFormulaModal.items.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {activeCustomFormulaModal.items.map((ing: any, idx: number) => (
+                      <div key={idx} className="p-3 bg-white border border-stone-200 rounded-2xl flex items-center justify-between shadow-2xs">
+                        <div>
+                          <span className="font-bold text-earth text-xs block">{ing.ingredient?.name || ing.name}</span>
+                          <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full inline-block mt-1 ${ing.roastingType === 'Roasted' ? 'bg-amber-100 text-amber-800' : 'bg-stone-100 text-stone-600'}`}>
+                            {ing.roastingType || 'Raw'}
+                          </span>
+                        </div>
+                        <span className="font-extrabold text-olive text-sm font-mono">{ing.weightGrams || ing.weight}g</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200 text-center text-stone-500 text-xs">
+                    No individual ingredient breakdown stored. Recipe created as custom batch.
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 bg-stone-50 border-t border-stone-200 flex justify-end">
+              <button
+                onClick={() => setActiveCustomFormulaModal(null)}
+                className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold transition shadow-xs cursor-pointer"
+              >
+                Close Recipe View
+              </button>
             </div>
           </div>
         </div>

@@ -1263,7 +1263,29 @@ app.get('/api/admin/custom-masalas', async (req, res) => {
     const connected = await ensureDbConnected();
     if (connected) {
       const dbMasalas = await CustomRecipeModel.find().sort({ createdAt: -1 }).lean();
-      return res.json({ success: true, data: dbMasalas });
+      const dbOrders = await OrderModel.find().sort({ createdAt: -1 }).lean();
+
+      const orderedMasalas: any[] = [];
+      dbOrders.forEach((o: any) => {
+        (o.items || []).forEach((it: any) => {
+          if (it.type === 'custom_masala' || it.customDetails || (it.name && it.name.includes('Custom Masala'))) {
+            orderedMasalas.push({
+              id: it.id || `cm-${o.id}`,
+              orderId: o.id,
+              customerName: o.shippingAddress?.fullName || 'Store Customer',
+              recipeName: (it.name || 'Custom Masala Recipe').replace('Custom Masala: ', ''),
+              totalWeightGrams: it.customDetails?.totalWeight || parseInt(it.variantWeight) || 250,
+              totalPrice: (it.price || 0) * (it.quantity || 1),
+              roastingCharge: 30,
+              customDetails: it.customDetails,
+              createdAt: o.createdAt || new Date().toISOString(),
+            });
+          }
+        });
+      });
+
+      const combined = [...orderedMasalas, ...dbMasalas];
+      return res.json({ success: true, data: combined });
     } else if (allowMemoryDbInDev) {
       return res.json({ success: true, data: [] });
     }
@@ -1422,15 +1444,17 @@ app.post('/api/orders', async (req, res) => {
       liveOrders.unshift(newOrder as any);
     }
 
-    // Dispatch Order Confirmation Email asynchronously with duplicate suppression
+    // Dispatch Order Confirmation Email asynchronously with timing telemetry & duplicate suppression
     const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
     if (targetEmail && mailTransporter) {
       const dupKey = `order-confirm-${orderId}-${targetEmail}`;
       if (shouldSendEmail(dupKey)) {
+        const t0_mail_start = Date.now();
         mailTransporter.sendMail({
           from: `"Dhannya Organic" <${cleanUser}>`,
           to: targetEmail,
           subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
+          text: `Hello ${shippingAddress?.fullName || 'Valued Customer'},\n\nThank you for shopping with Dhannya Organic! Your order #${orderId} has been confirmed.\n\nTotal: ₹${total}\nPayment Method: ${paymentMethod || 'COD'}\n\nWarm regards,\nTeam Dhannya`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
               <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
@@ -1443,8 +1467,13 @@ app.post('/api/orders', async (req, res) => {
               </div>
             </div>
           `,
-        }).then(() => {
-          console.log(`[MAIL] Order confirmation email sent to ${targetEmail}`);
+          headers: {
+            'X-Priority': '1',
+            'Importance': 'high',
+          },
+        }).then((info: any) => {
+          const mailDuration = Date.now() - t0_mail_start;
+          console.log(`[SMTP PERF] Order #${orderId} sendMail completed in ${mailDuration}ms | Server Response: "${info?.response || '250 OK'}"`);
         }).catch((mailErr: any) => {
           console.error('[MAIL ERROR] Order confirmation email failed:', mailErr.message);
         });
