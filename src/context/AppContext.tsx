@@ -19,6 +19,7 @@ interface Toast {
 }
 
 interface AppContextType {
+  products: Product[];
   cart: CartItem[];
   wishlist: string[]; // Product IDs
   user: User | null;
@@ -33,10 +34,12 @@ interface AppContextType {
   isAuthModalOpen: boolean;
   isProfileOpen: boolean;
   isAdminMode: boolean;
+  isServerModalOpen: boolean;
   quickViewProduct: Product | null;
   toasts: Toast[];
 
   // Actions
+  refreshProducts: () => Promise<void>;
   setActiveCategory: (cat: ProductCategory | null) => void;
   setActiveConcern: (concern: HealthConcern | null) => void;
   setSearchQuery: (query: string) => void;
@@ -45,6 +48,7 @@ interface AppContextType {
   setIsAuthModalOpen: (open: boolean) => void;
   setIsProfileOpen: (open: boolean) => void;
   setIsAdminMode: (admin: boolean) => void;
+  setIsServerModalOpen: (open: boolean) => void;
   setQuickViewProduct: (product: Product | null) => void;
 
   addToCart: (product: Product, variantWeight?: string, quantity?: number) => void;
@@ -77,10 +81,29 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [products, setProducts] = useState<Product[]>(PRODUCTS);
   const [cart, setCart] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('dhaanya_cart');
     return saved ? JSON.parse(saved) : [];
   });
+
+  const refreshProducts = async () => {
+    try {
+      const res = await fetch(getApiUrl('/api/products'));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          setProducts(data.data);
+        }
+      }
+    } catch (e) {
+      console.warn('Error fetching live products from API:', e);
+    }
+  };
+
+  useEffect(() => {
+    refreshProducts();
+  }, []);
 
   const [wishlist, setWishlist] = useState<string[]>(() => {
     const saved = localStorage.getItem('dhaanya_wishlist');
@@ -112,6 +135,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isAdminMode, setIsAdminMode] = useState(false);
+  const [isServerModalOpen, setIsServerModalOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
 
@@ -474,6 +498,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   return (
     <AppContext.Provider
       value={{
+        products,
         cart,
         wishlist,
         user,
@@ -488,8 +513,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         isAuthModalOpen,
         isProfileOpen,
         isAdminMode,
+        isServerModalOpen,
         quickViewProduct,
         toasts,
+        refreshProducts,
         setActiveCategory,
         setActiveConcern,
         setSearchQuery,
@@ -498,6 +525,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setIsAuthModalOpen,
         setIsProfileOpen,
         setIsAdminMode,
+        setIsServerModalOpen,
         setQuickViewProduct,
         addToCart,
         addCustomMasalaToCart,

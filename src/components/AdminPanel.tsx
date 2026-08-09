@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
-  const { setIsAdminMode, showToast } = useApp();
+  const { setIsAdminMode, showToast, refreshProducts } = useApp();
 
   // Admin Portal Auth Gate
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
@@ -317,7 +317,6 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     fetchDashboardData();
   }, [dateRange]);
 
-  // Handlers
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProdName.trim()) return;
@@ -328,25 +327,36 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
         body: JSON.stringify({
           name: newProdName,
           category: newProdCategory,
-          price: newProdPrice,
-          stock: newProdStock,
+          price: Number(newProdPrice) || 299,
+          stock: Number(newProdStock) || 50,
           image: newProdImage || '/images/Dailywell_Products/Garam%20Masala/01.jpg',
-          description: newProdDesc,
+          description: newProdDesc || '100% pure organic product.',
         }),
       });
-      const data = await res.json();
-      if (data.success) {
+
+      let data: any = {};
+      try {
+        data = await res.json();
+      } catch (jsonErr) {
+        console.warn('Response JSON parse error:', jsonErr);
+      }
+
+      if (res.ok && data.success) {
         setProductsList((prev) => [data.data, ...prev]);
-        showToast(`Product "${newProdName}" added successfully with image & description!`, 'success');
+        refreshProducts();
+        showToast(`Product "${newProdName}" added successfully!`, 'success');
         setIsAddProductOpen(false);
         setNewProdName('');
         setNewProdPrice(299);
         setNewProdStock(50);
         setNewProdDesc('');
         setNewProdImage('/images/Dailywell_Products/Garam%20Masala/01.jpg');
+      } else {
+        showToast(data.message || 'Failed to add product. Please check input values.', 'error');
       }
-    } catch {
-      showToast('Failed to add product', 'error');
+    } catch (err: any) {
+      console.error('Error adding product:', err);
+      showToast(err.message || 'Failed to add product', 'error');
     }
   };
 
@@ -2098,7 +2108,39 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                         if (file) {
                           const reader = new FileReader();
                           reader.onloadend = () => {
-                            setNewProdImage(reader.result as string);
+                            const rawDataUrl = reader.result as string;
+                            const img = new Image();
+                            img.src = rawDataUrl;
+                            img.onload = () => {
+                              const canvas = document.createElement('canvas');
+                              const MAX_WIDTH = 800;
+                              const MAX_HEIGHT = 800;
+                              let width = img.width;
+                              let height = img.height;
+                              if (width > height) {
+                                if (width > MAX_WIDTH) {
+                                  height *= MAX_WIDTH / width;
+                                  width = MAX_WIDTH;
+                                }
+                              } else {
+                                if (height > MAX_HEIGHT) {
+                                  width *= MAX_HEIGHT / height;
+                                  height = MAX_HEIGHT;
+                                }
+                              }
+                              canvas.width = width;
+                              canvas.height = height;
+                              const ctx = canvas.getContext('2d');
+                              if (ctx) {
+                                ctx.drawImage(img, 0, 0, width, height);
+                                setNewProdImage(canvas.toDataURL('image/jpeg', 0.85));
+                              } else {
+                                setNewProdImage(rawDataUrl);
+                              }
+                            };
+                            img.onerror = () => {
+                              setNewProdImage(rawDataUrl);
+                            };
                           };
                           reader.readAsDataURL(file);
                         }

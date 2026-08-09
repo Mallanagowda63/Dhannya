@@ -40,7 +40,7 @@ try {
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 const MONGO_URI =
   process.env.MONGODB_URI ||
@@ -57,7 +57,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use('/images', express.static(path.join(process.cwd(), 'images')));
 
 // API Health Check Endpoint
@@ -537,12 +538,14 @@ app.post('/api/auth/verify-otp', async (req, res) => {
           { email: cleanEmail },
           {
             $set: {
+              id: userPayload.id,
               name: userName,
+              email: cleanEmail,
               lastLoginAt: new Date().toISOString(),
             },
             $inc: { loginCount: 1 },
           },
-          { upsert: true, new: true }
+          { upsert: true, returnDocument: 'after' }
         );
       } catch (dbErr) {
         console.error('Error recording customer in MongoDB:', dbErr);

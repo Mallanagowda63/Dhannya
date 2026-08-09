@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
+import { useApp } from '../context/AppContext';
 import { HealthConcern } from '../types';
-import { PRODUCTS } from '../data/initialData';
 import { ProductCard } from './ProductCard';
 import { HeartPulse, Activity, Sparkles, Scale, Flame, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ShopByConcern: React.FC = () => {
+  const { products } = useApp();
   const [activeConcernTab, setActiveConcernTab] = useState<HealthConcern>('Best Sellers');
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -16,9 +17,10 @@ export const ShopByConcern: React.FC = () => {
     { name: 'Skin & Hair', icon: <Sparkles className="w-4 h-4" /> },
   ];
 
-  const filteredProducts = PRODUCTS.filter(
+  const filteredProducts = (products || []).filter(
     (p) => activeConcernTab === 'Best Sellers' ? p.isBestSeller : (p.concern && p.concern.includes(activeConcernTab))
   );
+  const displayList = filteredProducts.length > 0 ? filteredProducts : (products || []).slice(0, 8);
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -95,7 +97,7 @@ export const ShopByConcern: React.FC = () => {
           ref={scrollRef}
           className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth px-1"
         >
-          {filteredProducts.map((prod) => (
+          {displayList.map((prod) => (
             <div key={prod.id} className="min-w-[260px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0">
               <ProductCard product={prod} />
             </div>

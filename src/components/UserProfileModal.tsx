@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { PRODUCTS } from '../data/initialData';
 import { ProductCard } from './ProductCard';
 import { Address } from '../types';
 import {
@@ -20,6 +19,7 @@ import {
 
 export const UserProfileModal: React.FC = () => {
   const {
+    products,
     user,
     isProfileOpen,
     setIsProfileOpen,
@@ -47,7 +47,7 @@ export const UserProfileModal: React.FC = () => {
 
   if (!isProfileOpen || !user) return null;
 
-  const wishlistedProducts = PRODUCTS.filter((p) => wishlist.includes(p.id));
+  const wishlistedProducts = (products || []).filter((p) => wishlist.includes(p.id));
 
   const userOrders = (orders || []).filter((o) => {
     if (!user) return false;

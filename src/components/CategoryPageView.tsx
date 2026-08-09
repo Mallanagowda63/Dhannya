@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
-import { PRODUCTS, CATEGORIES } from '../data/initialData';
+import { CATEGORIES } from '../data/initialData';
 import { ProductCategory, HealthConcern, SortOption } from '../types';
 import { ProductCard } from './ProductCard';
 import {
@@ -21,7 +21,7 @@ export const CategoryPageView: React.FC<{
   onNavigateHome?: () => void;
   onSelectCategory: (cat?: ProductCategory) => void;
 }> = ({ onNavigateHome, onSelectCategory }) => {
-  const { activeCategory, setActiveCategory, searchQuery, setSearchQuery } = useApp();
+  const { products, activeCategory, setActiveCategory, searchQuery, setSearchQuery } = useApp();
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortOption, setSortOption] = useState<SortOption>('featured');
@@ -59,7 +59,7 @@ export const CategoryPageView: React.FC<{
   const categoryInfo = CATEGORIES.find((c) => c.name === activeCategory);
 
   // Filtering Logic
-  let filteredList = PRODUCTS.filter((p) => {
+  let filteredList = (products || []).filter((p) => {
     // Category match
     if (activeCategory && p.category !== activeCategory) return false;
 

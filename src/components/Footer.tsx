@@ -10,6 +10,7 @@ import {
   Sparkles,
   Send,
   Heart,
+  Activity,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -17,7 +18,7 @@ export const Footer: React.FC<{
   onNavigateHome?: () => void;
   onNavigateCustomMasala: () => void;
 }> = ({ onNavigateHome, onNavigateCustomMasala }) => {
-  const { showToast } = useApp();
+  const { showToast, setIsServerModalOpen } = useApp();
   const [email, setEmail] = useState('');
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -268,8 +269,16 @@ export const Footer: React.FC<{
 
       {/* Bottom Legal & Payment Icons */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-soft pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-        <div>
-          © {new Date().getFullYear()} Dhaanya Organic Foods Pvt. Ltd. All Rights Reserved.
+        <div className="flex items-center gap-4">
+          <span>© {new Date().getFullYear()} Dhaanya Organic Foods Pvt. Ltd. All Rights Reserved.</span>
+          <button
+            onClick={() => setIsServerModalOpen(true)}
+            className="text-emerald-700 hover:text-emerald-900 font-bold underline flex items-center gap-1 cursor-pointer"
+            title="Check MongoDB Atlas & Server Status"
+          >
+            <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+            <span>Server & DB Health</span>
+          </button>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-[10px] uppercase font-bold text-stone-500">Accepted Payments:</span>

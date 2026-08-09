@@ -17,10 +17,11 @@ import { ProductQuickView } from './components/ProductQuickView';
 import { ToastContainer } from './components/ToastContainer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { AdminPanel } from './components/AdminPanel';
+import { ServerConditionModal } from './components/ServerConditionModal';
 import { ProductCategory } from './types';
 
 const MainAppContent: React.FC = () => {
-  const { isAdminMode, setActiveCategory } = useApp();
+  const { isAdminMode, setActiveCategory, isServerModalOpen, setIsServerModalOpen } = useApp();
   const [currentPageView, setCurrentPageView] = useState<'home' | 'category'>('home');
 
   const handleNavigateHome = () => {
@@ -50,6 +51,10 @@ const MainAppContent: React.FC = () => {
       <div className="min-h-screen bg-stone-900 font-sans antialiased text-stone-100 selection:bg-amber-500 selection:text-stone-950">
         <AdminPanel />
         <ToastContainer />
+        <ServerConditionModal
+          isOpen={isServerModalOpen}
+          onClose={() => setIsServerModalOpen(false)}
+        />
       </div>
     );
   }
@@ -93,8 +98,13 @@ const MainAppContent: React.FC = () => {
       {/* Global Overlays */}
       <CartDrawer />
       <CheckoutModal />
+      <AuthModal />
       <UserProfileModal />
       <ProductQuickView />
+      <ServerConditionModal
+        isOpen={isServerModalOpen}
+        onClose={() => setIsServerModalOpen(false)}
+      />
       <ToastContainer />
       <WhatsAppButton />
     </div>

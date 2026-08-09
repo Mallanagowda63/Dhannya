@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
-import { PRODUCTS } from '../data/initialData';
+import { useApp } from '../context/AppContext';
 import { ProductCard } from './ProductCard';
 import { ChevronLeft, ChevronRight, Flame } from 'lucide-react';
 
 export const BestSellersCarousel: React.FC = () => {
+  const { products } = useApp();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const bestSellers = PRODUCTS.filter((p) => p.isBestSeller);
+  const bestSellers = (products || []).filter((p) => p.isBestSeller);
+  const displayList = bestSellers.length > 0 ? bestSellers : (products || []).slice(0, 8);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -51,7 +53,7 @@ export const BestSellersCarousel: React.FC = () => {
           ref={scrollRef}
           className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth px-1"
         >
-          {bestSellers.map((prod) => (
+          {displayList.map((prod) => (
             <div key={prod.id} className="min-w-[260px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0">
               <ProductCard product={prod} />
             </div>
