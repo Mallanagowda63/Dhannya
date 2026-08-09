@@ -396,6 +396,55 @@ export async function initDatabase() {
       } else {
         console.log(`✅ ${customerCount} customers verified in MongoDB Atlas "ecomm" database!`);
       }
+
+      // Seed initial categories into MongoDB Atlas
+      const categoryCount = await CategoryModel.countDocuments();
+      if (categoryCount === 0) {
+        const catOps = CATEGORIES.map((cat) => ({
+          updateOne: { filter: { slug: cat.slug }, update: { $set: cat }, upsert: true },
+        }));
+        await CategoryModel.bulkWrite(catOps as any);
+        console.log(`✅ ${CATEGORIES.length} categories seeded into MongoDB database "ecomm"!`);
+      } else {
+        console.log(`✅ ${categoryCount} categories verified in MongoDB Atlas "ecomm" database!`);
+      }
+
+      // Seed/Upsert coupons into MongoDB Atlas
+      const coupOps = liveCoupons.map((c) => ({
+        updateOne: { filter: { code: c.code }, update: { $set: c }, upsert: true },
+      }));
+      await CouponModel.bulkWrite(coupOps as any);
+      const couponCount = await CouponModel.countDocuments();
+      console.log(`✅ ${couponCount} coupons verified/synchronized in MongoDB Atlas "ecomm" database!`);
+
+      // Seed/Upsert reviews into MongoDB Atlas
+      const revOps = liveReviews.map((r) => ({
+        updateOne: { filter: { id: r.id }, update: { $set: r }, upsert: true },
+      }));
+      await ReviewModel.bulkWrite(revOps as any);
+      const reviewCount = await ReviewModel.countDocuments();
+      console.log(`✅ ${reviewCount} reviews verified/synchronized in MongoDB Atlas "ecomm" database!`);
+
+      // Seed/Upsert custom recipes into MongoDB Atlas
+      const sampleRecipe = {
+        id: 'rec-sample-1',
+        recipeName: 'My Signature Royal Kitchen Garam Masala',
+        items: [
+          { id: 'ing-1', name: 'Coriander Seeds (Dhaniya)', weightGrams: 200, cost: 50 },
+          { id: 'ing-2', name: 'Cumin Seeds (Jeera)', weightGrams: 150, cost: 60 },
+          { id: 'ing-3', name: 'Black Cardamom (Badi Elaichi)', weightGrams: 50, cost: 90 },
+        ],
+        totalWeightGrams: 400,
+        ingredientCost: 200,
+        roastingCharge: 30,
+        subtotal: 230,
+        discount: 0,
+        totalPrice: 230,
+        createdAt: new Date().toISOString(),
+      };
+      await CustomRecipeModel.updateOne({ id: sampleRecipe.id }, { $set: sampleRecipe }, { upsert: true });
+      const recipeCount = await CustomRecipeModel.countDocuments();
+      console.log(`✅ ${recipeCount} custom recipes verified/synchronized in MongoDB Atlas "ecomm" database!`);
     } catch (err: any) {
       console.error('⚠️ Error seeding MongoDB Atlas initial data:', err.message);
     }
@@ -1199,6 +1248,45 @@ app.delete('/api/admin/custom-masalas/:id', async (req, res) => {
       await CustomRecipeModel.deleteOne({ id });
     }
     res.json({ success: true, message: `Custom recipe ${id} deleted from database!` });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Custom Recipes API
+app.get('/api/recipes', async (req, res) => {
+  try {
+    if (isDbConnected) {
+      const dbRecipes = await CustomRecipeModel.find().sort({ createdAt: -1 }).lean();
+      return res.json({ success: true, count: dbRecipes.length, data: dbRecipes });
+    }
+    res.json({ success: true, count: 0, data: [] });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/recipes', async (req, res) => {
+  try {
+    const recipeData = req.body;
+    const newRecipe = {
+      id: recipeData.id || `rec-${Date.now()}`,
+      recipeName: recipeData.name || recipeData.recipeName || 'Custom Masala Blend',
+      items: recipeData.items || [],
+      totalWeightGrams: recipeData.totalWeightGrams || 250,
+      ingredientCost: recipeData.ingredientCost || 150,
+      roastingCharge: recipeData.roastingCharge || 30,
+      subtotal: recipeData.subtotal || 180,
+      discount: recipeData.discount || 0,
+      totalPrice: recipeData.totalPrice || 180,
+      createdAt: new Date().toISOString(),
+    };
+
+    if (isDbConnected) {
+      await CustomRecipeModel.updateOne({ id: newRecipe.id }, { $set: newRecipe }, { upsert: true });
+    }
+
+    res.json({ success: true, message: 'Custom recipe saved to MongoDB Atlas database!', data: newRecipe });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }

@@ -464,9 +464,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return true;
   };
 
-  const saveCustomRecipe = (recipe: CustomRecipe) => {
+  const saveCustomRecipe = async (recipe: CustomRecipe) => {
+    try {
+      await fetch(getApiUrl('/api/recipes'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(recipe),
+      });
+    } catch (e) {
+      console.warn('API error saving recipe:', e);
+    }
     setSavedRecipes((prev) => [recipe, ...prev]);
-    showToast(`Saved recipe "${recipe.name}" to your profile!`);
+    showToast(`Saved recipe "${recipe.name}" to your profile!`, 'success');
   };
 
   const login = (email: string, name: string = 'Dhaanya Customer') => {
