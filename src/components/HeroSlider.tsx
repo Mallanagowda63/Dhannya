@@ -93,10 +93,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-full bg-[#faf8f4] border-b border-soft overflow-hidden select-none py-4 sm:py-6 lg:py-8 group"
+      className="relative w-full bg-[#faf8f4] border-b border-soft overflow-hidden select-none py-0 group"
     >
-      <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 relative">
-        <div className="relative overflow-hidden rounded-3xl min-h-[260px] sm:min-h-[360px] md:min-h-[460px] lg:min-h-[540px] bg-white border border-stone-200/80 shadow-xs">
+      <div className="w-full relative">
+        <div className="relative overflow-hidden w-full min-h-[220px] sm:min-h-[320px] md:min-h-[400px] lg:min-h-[460px] bg-[#f8f5ef]">
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
               key={currentBanner.id}
@@ -110,12 +110,12 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 opacity: { duration: 0.45, ease: 'easeInOut' },
               }}
               onClick={handleBannerClick}
-              className="cursor-pointer w-full h-full flex items-center justify-center p-2 sm:p-4"
+              className="cursor-pointer w-full h-full flex items-center justify-center p-0"
             >
               <img
                 src={currentBanner.image}
                 alt={currentBanner.alt}
-                className="w-full h-auto max-h-[580px] lg:max-h-[620px] object-contain mx-auto rounded-2xl"
+                className="w-full h-auto max-h-[500px] object-contain mx-auto"
               />
             </motion.div>
           </AnimatePresence>

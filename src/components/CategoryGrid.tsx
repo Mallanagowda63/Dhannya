@@ -9,21 +9,14 @@ interface CategoryGridProps {
 
 export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) => {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-[#faf8f4] text-earth border-t border-soft">
+    <section className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 bg-[#faf8f4] text-earth border-t border-soft">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-        {/* Section Header with generous whitespace */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4 pb-4 border-b border-stone-200/60">
-          <div>
-            <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
-              OUR ORGANIC RANGE
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif text-earth mt-2 tracking-tight">
-              Explore 22 Artisanal Categories
-            </h2>
-          </div>
-          <p className="text-sm sm:text-base text-stone-600 max-w-lg leading-relaxed font-normal">
-            Handcrafted, slow-milled, and unadulterated organic staples delivered directly from certified Indian farms.
-          </p>
+
+        {/* Section Header */}
+        <div className="mb-4 sm:mb-6 text-center sm:text-left">
+          <span className="text-xs font-extrabold uppercase tracking-widest text-olive">
+            OUR PRODUCTS
+          </span>
         </div>
 
         {/* Spacious Category Cards Grid */}

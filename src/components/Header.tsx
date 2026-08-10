@@ -111,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="sticky top-0 z-40 bg-white border-b border-soft text-earth shadow-sm">
       {/* Top Announcement Bar - Re-arranged for Pristine Alignment & Visual Appeal */}
       <div className="bg-[#2d3a29] text-white text-xs font-medium py-2 px-4 border-b border-black/15 shadow-2xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4">
           
           {/* Left: Quality Promise Badge */}
           <div className="hidden lg:flex items-center gap-2 text-stone-200 text-xs font-medium">
@@ -182,7 +182,7 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Main Nav Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-3.5 flex items-center justify-between gap-4">
         {/* Left: Mobile menu toggle + Logo */}
         <div className="flex items-center gap-3">
           <button
@@ -491,7 +491,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Category Bar / Navigation Links & Trust Badges */}
       <div className="border-t border-soft bg-cream/60 py-2.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
           {/* Fast Category Links */}
           <div className="flex items-center gap-5 sm:gap-7 shrink-0 font-sans font-semibold tracking-wide text-stone-700 text-xs sm:text-sm">
             <button
