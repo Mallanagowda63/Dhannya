@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
-import { Star, Heart, ShoppingBag, Eye, Check } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, Check } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -12,12 +12,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
   const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useApp();
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
 
-  const selectedVariant = product.variants[selectedVariantIndex] || product.variants[0];
-  const isWishlisted = isInWishlist(product.id);
+  if (!product) return null;
 
-  const discountPercent = Math.round(
-    ((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100
-  );
+  const variants = product.variants && product.variants.length > 0
+    ? product.variants
+    : [{ weight: '250g', price: 199, originalPrice: 249, inStock: true }];
+
+  const selectedVariant = variants[selectedVariantIndex] || variants[0];
+  const isWishlisted = product.id ? isInWishlist(product.id) : false;
+
+  const origPrice = selectedVariant.originalPrice || selectedVariant.price || 0;
+  const currentPrice = selectedVariant.price || 0;
+  const discountPercent = origPrice > currentPrice && origPrice > 0
+    ? Math.round(((origPrice - currentPrice) / origPrice) * 100)
+    : 0;
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -46,19 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
           }}
         />
 
-        {/* Badges */}
-        <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
-          {product.isBestSeller && (
-            <span className="bg-terracotta text-white text-xs font-bold uppercase px-2 py-0.5 rounded shadow-sm">
-              Bestseller
-            </span>
-          )}
-          {discountPercent > 0 && (
-            <span className="bg-olive text-white text-xs font-bold px-2 py-0.5 rounded shadow-sm">
-              {discountPercent}% OFF
-            </span>
-          )}
-        </div>
+
 
         {/* Wishlist Button */}
         <button
@@ -95,39 +91,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
       {/* Product Information */}
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
         <div>
-          <div className="flex items-center justify-between text-xs text-stone-600 mb-1">
+          <div className="text-xs text-stone-600 mb-1">
             <span className="uppercase tracking-wider font-bold text-olive">
               {product.category}
             </span>
-            <div className="flex items-center gap-1 bg-cream px-2 py-0.5 rounded border border-soft">
-              <Star className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
-              <span className="text-earth font-bold text-xs">{product.rating}</span>
-            </div>
           </div>
 
           <h3 className="text-base font-bold font-serif text-earth group-hover:text-olive transition leading-snug line-clamp-2">
             {product.name}
           </h3>
         </div>
-
-        {/* Variant Selector Chips */}
-        {product.variants.length > 1 && (
-          <div className="flex flex-wrap gap-1" onClick={(e) => e.stopPropagation()}>
-            {product.variants.map((v, idx) => (
-              <button
-                key={v.weight}
-                onClick={() => setSelectedVariantIndex(idx)}
-                className={`text-xs font-semibold px-2.5 py-1 rounded-md border transition ${
-                  selectedVariantIndex === idx
-                    ? 'bg-olive text-white border-olive'
-                    : 'bg-cream text-stone-700 border-soft hover:border-stone-400'
-                }`}
-              >
-                {v.weight}
-              </button>
-            ))}
-          </div>
-        )}
 
         {/* Pricing and Add to Cart */}
         <div className="pt-2 border-t border-soft flex items-center justify-between gap-2">
@@ -147,7 +120,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
 
           <button
             onClick={handleQuickAdd}
-            className="bg-olive hover:bg-[#4a4a34] text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1 shadow-sm transition active:scale-95 shrink-0"
+            className="bg-olive hover:bg-[#4a4a34] text-white font-bold px-3.5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 shadow-sm transition active:scale-95 shrink-0 min-h-[40px] min-w-[68px] cursor-pointer"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Add</span>

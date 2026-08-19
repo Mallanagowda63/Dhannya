@@ -40,10 +40,14 @@ import {
   Award,
   Eye,
   PhoneCall,
+  CreditCard,
+  Wallet,
+  QrCode,
+  Banknote,
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
-  const { setIsAdminMode, showToast, refreshProducts } = useApp();
+  const { setIsAdminMode, showToast, refreshProducts, refreshCoupons } = useApp();
 
   // Admin Portal Auth Gate
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
@@ -73,6 +77,7 @@ export const AdminPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState<
     | 'dashboard'
     | 'orders'
+    | 'payments'
     | 'products'
     | 'categories'
     | 'inventory'
@@ -94,6 +99,10 @@ export const AdminPanel: React.FC = () => {
     orderId: string;
     status: string;
   } | null>(null);
+
+  // Low Stock Warning Popup Modal State
+  const [isLowStockModalOpen, setIsLowStockModalOpen] = useState(false);
+  const [isLowStockModalDismissed, setIsLowStockModalDismissed] = useState(false);
 
   // Filters & Range
   const [dateRange, setDateRange] = useState<'Today' | 'Yesterday' | '7D' | '30D' | '90D' | '1Y' | 'Custom'>('30D');
@@ -137,6 +146,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     },
     deliverySlot: 'Morning (9:00 AM - 1:00 PM)',
     paymentMethod: 'UPI',
+    paymentStatus: 'Paid',
     subtotal: 719,
     discount: 50,
     tax: 36,
@@ -174,6 +184,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     },
     deliverySlot: 'Evening (4:00 PM - 8:00 PM)',
     paymentMethod: 'COD',
+    paymentStatus: 'Pending',
     subtotal: 498,
     discount: 0,
     tax: 25,
@@ -253,7 +264,13 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const res = await fetch(getApiUrl('/api/orders'));
       if (res.ok) {
         const json = await res.json();
-        if (json.success && Array.isArray(json.data)) setOrdersList(json.data);
+        if (json.success && Array.isArray(json.data)) {
+          const mappedOrders = json.data.map((o: any) => ({
+            ...o,
+            paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+          }));
+          setOrdersList(mappedOrders);
+        }
       }
     } catch (e) {}
 
@@ -375,12 +392,15 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
           maxDiscount: newCouponMaxDiscount,
           description: newCouponDesc,
           expiryDate: newCouponExpiryDate,
+          isActive: true,
+          isFeatured: true,
         }),
       });
       const data = await res.json();
       if (data.success) {
         setCouponsList((prev) => [data.data, ...prev.filter((c) => c.code !== data.data.code)]);
-        showToast(`Custom coupon ${newCouponCode.toUpperCase()} created & saved to database!`, 'success');
+        await refreshCoupons();
+        showToast(`Coupon ${newCouponCode.toUpperCase()} created & set as Top Banner Coupon!`, 'success');
         setIsAddCouponOpen(false);
         setNewCouponCode('');
         setNewCouponPercent(15);
@@ -400,10 +420,69 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const data = await res.json();
       if (data.success) {
         setCouponsList((prev) => prev.filter((c) => c.code !== code));
+        await refreshCoupons();
         showToast(`Coupon ${code} deleted from database!`, 'success');
       }
     } catch {
       showToast('Failed to delete coupon', 'error');
+    }
+  };
+
+  const handleDeleteAllCoupons = async () => {
+    if (!confirm('⚠️ Are you sure you want to DELETE ALL COUPONS from MongoDB?')) return;
+    try {
+      const res = await fetch(getApiUrl('/api/admin/coupons/all'), { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setCouponsList([]);
+        await refreshCoupons();
+        showToast('All coupons deleted from database!', 'info');
+      }
+    } catch {
+      showToast('Failed to delete all coupons', 'error');
+    }
+  };
+
+  const handleToggleCouponStatus = async (code: string, currentActive: boolean) => {
+    const newStatus = !currentActive;
+    try {
+      const res = await fetch(getApiUrl(`/api/admin/coupons/${code}/toggle`), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isActive: newStatus }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCouponsList((prev) =>
+          prev.map((c) => (c.code === code ? { ...c, isActive: newStatus } : c))
+        );
+        await refreshCoupons();
+        showToast(`Coupon ${code} ${newStatus ? 'Activated' : 'Deactivated'}!`, newStatus ? 'success' : 'info');
+      }
+    } catch {
+      showToast('Failed to update coupon status', 'error');
+    }
+  };
+
+  const handleSetFeaturedCoupon = async (code: string) => {
+    try {
+      const res = await fetch(getApiUrl(`/api/admin/coupons/${code}/feature`), {
+        method: 'PUT',
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCouponsList((prev) =>
+          prev.map((c) => ({
+            ...c,
+            isFeatured: c.code === code,
+            isActive: c.code === code ? true : c.isActive,
+          }))
+        );
+        await refreshCoupons();
+        showToast(`Coupon ${code} set as Top Bar Banner Coupon!`, 'success');
+      }
+    } catch {
+      showToast('Failed to set featured coupon', 'error');
     }
   };
 
@@ -514,6 +593,34 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     }
   };
 
+  const handleUpdatePaymentStatus = async (orderId: string, newPaymentStatus: 'Paid' | 'Pending') => {
+    try {
+      const res = await fetch(getApiUrl(`/api/admin/orders/${orderId}/payment-status`), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentStatus: newPaymentStatus }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setOrdersList((prev) =>
+          prev.map((o) => (o.id === orderId ? { ...o, paymentStatus: newPaymentStatus } : o))
+        );
+        if (selectedOrderDetails && selectedOrderDetails.id === orderId) {
+          setSelectedOrderDetails({ ...selectedOrderDetails, paymentStatus: newPaymentStatus });
+        }
+        showToast(
+          newPaymentStatus === 'Paid'
+            ? `🎉 Cash received for order ${orderId}! Payment status marked as PAID.`
+            : `Payment status for ${orderId} updated to PENDING.`,
+          newPaymentStatus === 'Paid' ? 'success' : 'info'
+        );
+        fetchDashboardData();
+      }
+    } catch {
+      showToast('Failed to update payment status', 'error');
+    }
+  };
+
   const handleUpdateStock = async (prodId: string, newStock: number) => {
     try {
       const res = await fetch(getApiUrl(`/api/admin/inventory/${prodId}`), {
@@ -595,6 +702,16 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const customerGrowth = analyticsData?.customerGrowth || [];
   const inventoryOverview = analyticsData?.inventoryOverview || { inStock: 240, lowStock: 35, criticalStock: 18, outOfStock: 9 };
   const lowStockAlerts = analyticsData?.lowStockAlerts || [];
+
+  const lowStockItems = useMemo(() => {
+    return productsList.filter((p) => typeof p.stock === 'number' && p.stock < 10);
+  }, [productsList]);
+
+  useEffect(() => {
+    if (activeTab === 'inventory' && lowStockItems.length > 0 && !isLowStockModalDismissed) {
+      setIsLowStockModalOpen(true);
+    }
+  }, [activeTab, lowStockItems.length, isLowStockModalDismissed]);
   const customMasalaAnalytics = analyticsData?.customMasalaAnalytics || {
     totalOrders: 326,
     totalRevenue: 128450,
@@ -731,10 +848,18 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       </header>
 
       <div className="flex flex-1 relative">
+        {/* Mobile Sidebar Backdrop Overlay */}
+        {isSidebarOpen && (
+          <div
+            onClick={() => setIsSidebarOpen(false)}
+            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-xs z-30 transition-opacity"
+          />
+        )}
+
         {/* Admin Sidebar */}
         <aside
-          className={`bg-white border-r border-stone-200/90 w-64 shrink-0 transition-all duration-300 z-30 flex flex-col justify-between ${
-            isSidebarOpen ? 'translate-x-0' : '-translate-x-full absolute h-full'
+          className={`bg-white border-r border-stone-200/90 w-64 shrink-0 transition-all duration-300 z-40 flex flex-col justify-between fixed md:static inset-y-0 left-0 top-[57px] md:top-0 ${
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:hidden'
           }`}
         >
           <div className="p-4 space-y-1">
@@ -745,6 +870,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
             {[
               { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
               { id: 'orders', label: 'Orders', icon: ShoppingBag, badge: kpis.pendingDispatch },
+              { id: 'payments', label: 'Payments', icon: CreditCard },
               { id: 'products', label: 'Products', icon: Package, badge: productsList.length },
               { id: 'categories', label: 'Categories', icon: Layers },
               { id: 'inventory', label: 'Inventory', icon: Warehouse, badge: lowStockAlerts.length },
@@ -1528,6 +1654,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                       <th className="py-3 px-4">Customer</th>
                       <th className="py-3 px-4">Address</th>
                       <th className="py-3 px-4">Total Amount</th>
+                      <th className="py-3 px-4">Payment Details</th>
                       <th className="py-3 px-4">Status</th>
                       <th className="py-3 px-4 text-right">Update Status</th>
                     </tr>
@@ -1569,6 +1696,63 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                           {order.shippingAddress?.street}, {order.shippingAddress?.city}
                         </td>
                         <td className="py-3.5 px-4 font-extrabold text-earth">₹{order.total}</td>
+                        <td className="py-3.5 px-4 text-xs font-bold">
+                          <div className="space-y-1">
+                            <span
+                              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-black uppercase shadow-2xs ${
+                                order.paymentMethod === 'UPI'
+                                  ? 'bg-purple-100 text-purple-900 border border-purple-200'
+                                  : order.paymentMethod === 'Razorpay' || order.paymentMethod === 'Online'
+                                  ? 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                                  : 'bg-amber-100 text-amber-900 border border-amber-200'
+                              }`}
+                            >
+                              {order.paymentMethod === 'UPI' ? (
+                                <QrCode className="w-3.5 h-3.5 text-purple-700 shrink-0" />
+                              ) : order.paymentMethod === 'Razorpay' || order.paymentMethod === 'Online' ? (
+                                <CreditCard className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                              ) : (
+                                <Banknote className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                              )}
+                              <span>{order.paymentMethod || 'COD'}</span>
+                            </span>
+
+                            {order.paymentMethod === 'COD' || !order.paymentMethod ? (
+                              order.paymentStatus === 'Paid' ? (
+                                <div className="space-y-0.5">
+                                  <span className="bg-emerald-100 text-emerald-900 border border-emerald-300 px-2 py-0.5 rounded-full text-[10px] font-black uppercase inline-flex items-center gap-1">
+                                    <CheckCircle2 className="w-3 h-3 text-emerald-700" />
+                                    <span>COD Paid</span>
+                                  </span>
+                                  <button
+                                    onClick={() => handleUpdatePaymentStatus(order.id, 'Pending')}
+                                    className="text-[9px] text-stone-500 hover:text-stone-800 underline font-bold block cursor-pointer"
+                                  >
+                                    Mark Pending
+                                  </button>
+                                </div>
+                              ) : (
+                                <div className="space-y-1">
+                                  <span className="block text-[10px] font-bold text-amber-800">
+                                    Pending Cash
+                                  </span>
+                                  <button
+                                    onClick={() => handleUpdatePaymentStatus(order.id, 'Paid')}
+                                    className="px-2 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-[10px] flex items-center gap-1 shadow-2xs transition cursor-pointer"
+                                    title="Click when shop receives COD cash"
+                                  >
+                                    <CheckCircle2 className="w-3 h-3" />
+                                    <span>Mark Cash Received</span>
+                                  </button>
+                                </div>
+                              )
+                            ) : (
+                              <span className="block text-[10px] font-bold text-emerald-700">
+                                ✅ Paid Online
+                              </span>
+                            )}
+                          </div>
+                        </td>
                         <td className="py-3.5 px-4 font-bold text-olive">{order.status}</td>
                         <td className="py-3.5 px-4 text-right">
                           <div className="flex items-center justify-end gap-2">
@@ -1601,12 +1785,299 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
             </div>
           )}
 
+          {/* PAYMENTS & TRANSACTIONS TAB VIEW */}
+          {activeTab === 'payments' && (
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                <div>
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-700">
+                    FINANCIAL LEDGER & TRANSACTIONS
+                  </span>
+                  <h3 className="text-2xl font-bold font-serif text-earth mt-1 flex items-center gap-2">
+                    <CreditCard className="w-6 h-6 text-olive" />
+                    <span>Store Payments & Collection Details</span>
+                  </h3>
+                  <p className="text-xs text-stone-600 mt-1">
+                    Real-time payment modes breakdown, today's collections, UPI vs Online vs Cash on Delivery details.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 bg-[#faf8f4] p-2 rounded-2xl border border-stone-200 text-xs font-bold text-stone-700">
+                  <Activity className="w-4 h-4 text-emerald-600" />
+                  <span>Real-time DB Sync</span>
+                </div>
+              </div>
+
+              {/* Payment KPI Summary Cards with Mutual Real-Time Connection */}
+              {(() => {
+                const todayStr = new Date().toISOString().split('T')[0];
+                const isToday = (dateStr?: string) => {
+                  if (!dateStr) return false;
+                  try {
+                    const d = new Date(dateStr);
+                    return d.toISOString().split('T')[0] === todayStr || dateStr.startsWith(todayStr);
+                  } catch {
+                    return false;
+                  }
+                };
+
+                const todayOrders = ordersList.filter(o => isToday(o.createdAt));
+                const todayTotalRevenue = todayOrders.reduce((s, o) => s + (o.total || 0), 0);
+                const todayPaidRevenue = todayOrders.filter(o => o.paymentStatus === 'Paid').reduce((s, o) => s + (o.total || 0), 0);
+
+                const upiOrders = ordersList.filter(o => o.paymentMethod === 'UPI');
+                const upiTotalRevenue = upiOrders.reduce((s, o) => s + (o.total || 0), 0);
+                const upiPaidCount = upiOrders.filter(o => o.paymentStatus === 'Paid').length;
+
+                const cardOrders = ordersList.filter(o => o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online');
+                const cardTotalRevenue = cardOrders.reduce((s, o) => s + (o.total || 0), 0);
+                const cardPaidCount = cardOrders.filter(o => o.paymentStatus === 'Paid').length;
+
+                const codOrders = ordersList.filter(o => o.paymentMethod === 'COD' || !o.paymentMethod);
+                const codPendingOrders = codOrders.filter(o => o.paymentStatus !== 'Paid');
+                const codPaidOrders = codOrders.filter(o => o.paymentStatus === 'Paid');
+
+                const codPendingAmount = codPendingOrders.reduce((s, o) => s + (o.total || 0), 0);
+                const codPaidAmount = codPaidOrders.reduce((s, o) => s + (o.total || 0), 0);
+
+                return (
+                  <div className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                      {/* Today's Payments Card */}
+                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-stone-600">
+                            Today's Payments
+                          </span>
+                          <div className="w-9 h-9 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-base">
+                            ₹
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <h4 className="text-2xl font-extrabold font-mono text-earth">
+                            ₹{todayTotalRevenue.toLocaleString()}
+                          </h4>
+                          <p className="text-[11px] font-bold text-emerald-700 mt-1 flex items-center gap-1">
+                            <TrendingUp className="w-3.5 h-3.5" />
+                            <span>{todayOrders.length} orders today • ₹{todayPaidRevenue.toLocaleString()} Paid</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* UPI Payments Card */}
+                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-purple-900 font-serif">
+                            UPI Payments
+                          </span>
+                          <div className="w-9 h-9 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold">
+                            <QrCode className="w-5 h-5" />
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <h4 className="text-2xl font-extrabold font-mono text-purple-950">
+                            ₹{upiTotalRevenue.toLocaleString()}
+                          </h4>
+                          <p className="text-[11px] font-bold text-purple-700 mt-1">
+                            {upiOrders.length} UPI Txns ({upiPaidCount} Verified Paid)
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Razorpay Online Card */}
+                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-blue-900 font-serif">
+                            Razorpay / Cards
+                          </span>
+                          <div className="w-9 h-9 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold">
+                            <CreditCard className="w-5 h-5" />
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <h4 className="text-2xl font-extrabold font-mono text-blue-950">
+                            ₹{cardTotalRevenue.toLocaleString()}
+                          </h4>
+                          <p className="text-[11px] font-bold text-blue-700 mt-1">
+                            {cardOrders.length} Gateway Orders ({cardPaidCount} Paid)
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Cash on Delivery Card */}
+                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-900 font-serif">
+                            Cash On Delivery (COD)
+                          </span>
+                          <div className="w-9 h-9 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+                            <Banknote className="w-5 h-5" />
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <h4 className="text-2xl font-extrabold font-mono text-amber-950">
+                            ₹{codPendingAmount.toLocaleString()}
+                          </h4>
+                          <p className="text-[11px] font-bold text-amber-800 mt-1">
+                            {codPendingOrders.length} Pending COD • ₹{codPaidAmount.toLocaleString()} ({codPaidOrders.length} Paid)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Payment Mode Distribution Share */}
+                    <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 space-y-3">
+                      <div className="flex justify-between items-center text-xs font-bold text-earth">
+                        <span className="uppercase tracking-wider font-extrabold text-[11px] text-stone-600">Payment Modes Split Share</span>
+                        <span>Total Revenue: <strong className="text-olive font-mono text-sm">₹{ordersList.reduce((s, o) => s + (o.total || 0), 0).toLocaleString()}</strong></span>
+                      </div>
+                      <div className="w-full bg-stone-200 h-4 rounded-full overflow-hidden flex shadow-inner">
+                        {(() => {
+                          const grand = ordersList.reduce((s, o) => s + (o.total || 0), 0) || 1;
+                          return (
+                            <>
+                              <div style={{ width: `${(upiTotalRevenue / grand) * 100}%` }} className="bg-purple-600 h-full transition-all" title={`UPI: ${Math.round((upiTotalRevenue / grand) * 100)}%`} />
+                              <div style={{ width: `${(cardTotalRevenue / grand) * 100}%` }} className="bg-emerald-600 h-full transition-all" title={`Razorpay: ${Math.round((cardTotalRevenue / grand) * 100)}%`} />
+                              <div style={{ width: `${((codPendingAmount + codPaidAmount) / grand) * 100}%` }} className="bg-amber-500 h-full transition-all" title={`COD: ${Math.round(((codPendingAmount + codPaidAmount) / grand) * 100)}%`} />
+                            </>
+                          );
+                        })()}
+                      </div>
+                      <div className="flex flex-wrap gap-5 text-xs font-bold text-stone-700 pt-1">
+                        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-purple-600 inline-block" /> UPI Instant (₹{upiTotalRevenue.toLocaleString()})</span>
+                        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" /> Razorpay Online (₹{cardTotalRevenue.toLocaleString()})</span>
+                        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-amber-500 inline-block" /> Cash On Delivery (₹{(codPendingAmount + codPaidAmount).toLocaleString()})</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Payments & Transactions Log Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Transaction / Order ID</th>
+                      <th className="py-3 px-4">Customer Details</th>
+                      <th className="py-3 px-4">Date & Time</th>
+                      <th className="py-3 px-4">Payment Method</th>
+                      <th className="py-3 px-4">Amount</th>
+                      <th className="py-3 px-4">Payment Status</th>
+                      <th className="py-3 px-4 text-right">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 font-medium">
+                    {ordersList.map((order) => (
+                      <tr key={order.id} className="hover:bg-[#faf8f4] transition">
+                        <td className="py-3.5 px-4 font-mono font-bold text-olive">
+                          {order.id}
+                        </td>
+                        <td className="py-3.5 px-4 font-bold text-earth">
+                          <div>
+                            <span>{order.shippingAddress?.fullName || 'Customer'}</span>
+                            <span className="block text-[10px] text-stone-500 font-mono font-normal">
+                              {order.shippingAddress?.email || order.shippingAddress?.mobile || 'No contact provided'}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3.5 px-4 text-stone-600 text-xs font-mono">
+                          {order.createdAt ? new Date(order.createdAt).toLocaleString('en-IN', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                          }) : 'Today'}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-black uppercase ${
+                            order.paymentMethod === 'UPI'
+                              ? 'bg-purple-100 text-purple-900 border border-purple-200'
+                              : order.paymentMethod === 'Razorpay' || order.paymentMethod === 'Online'
+                              ? 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                              : 'bg-amber-100 text-amber-900 border border-amber-200'
+                          }`}>
+                            {order.paymentMethod === 'UPI' ? <QrCode className="w-3.5 h-3.5 text-purple-700" /> : order.paymentMethod === 'Razorpay' || order.paymentMethod === 'Online' ? <CreditCard className="w-3.5 h-3.5 text-emerald-700" /> : <Banknote className="w-3.5 h-3.5 text-amber-700" />}
+                            <span>{order.paymentMethod || 'COD'}</span>
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 font-extrabold text-earth text-sm">₹{order.total}</td>
+                        <td className="py-3.5 px-4">
+                          {order.paymentMethod === 'COD' || !order.paymentMethod ? (
+                            order.paymentStatus === 'Paid' ? (
+                              <div>
+                                <span className="bg-emerald-100 text-emerald-900 border border-emerald-300 px-3 py-1 rounded-full text-[10px] font-black uppercase inline-flex items-center gap-1">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                                  <span>COD Cash Received</span>
+                                </span>
+                                <button
+                                  onClick={() => handleUpdatePaymentStatus(order.id, 'Pending')}
+                                  className="text-[10px] text-stone-500 hover:text-stone-800 underline font-bold block mt-1 cursor-pointer"
+                                >
+                                  Revert to Pending
+                                </button>
+                              </div>
+                            ) : (
+                              <div>
+                                <span className="bg-amber-100 text-amber-900 border border-amber-300 px-3 py-1 rounded-full text-[10px] font-black uppercase inline-flex items-center gap-1">
+                                  <Clock className="w-3.5 h-3.5 text-amber-700" />
+                                  <span>Pending COD</span>
+                                </span>
+                                <button
+                                  onClick={() => handleUpdatePaymentStatus(order.id, 'Paid')}
+                                  className="mt-1.5 px-3 py-1 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-[11px] flex items-center gap-1.5 shadow-xs transition cursor-pointer"
+                                  title="Mark Cash Received at Shop / Delivery"
+                                >
+                                  <CheckCircle2 className="w-3.5 h-3.5" />
+                                  <span>Mark Cash Received</span>
+                                </button>
+                              </div>
+                            )
+                          ) : (
+                            <span className="bg-emerald-100 text-emerald-900 border border-emerald-200 px-3 py-1 rounded-full text-[10px] font-black uppercase inline-flex items-center gap-1">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                              <span>Paid Online</span>
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          <button
+                            onClick={() => setSelectedOrderDetails(order)}
+                            className="px-3 py-1.5 rounded-xl bg-amber-50 text-olive hover:bg-amber-100 border border-amber-200 text-xs font-bold transition cursor-pointer"
+                          >
+                            View Order
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           {/* INVENTORY TAB VIEW */}
           {activeTab === 'inventory' && (
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-xs space-y-6">
-              <h3 className="text-2xl font-bold font-serif text-earth border-b border-stone-200/60 pb-4">
-                Inventory Stock Control
-              </h3>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-stone-200/60 pb-4">
+                <div>
+                  <h3 className="text-2xl font-bold font-serif text-earth">
+                    Inventory Stock Control
+                  </h3>
+                  <p className="text-xs text-stone-600 mt-1">
+                    Monitor product stock levels, view low stock alerts, and quick restock items.
+                  </p>
+                </div>
+                {lowStockItems.length > 0 && (
+                  <button
+                    onClick={() => setIsLowStockModalOpen(true)}
+                    className="bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center gap-2 transition cursor-pointer shadow-xs animate-pulse"
+                  >
+                    <AlertTriangle className="w-4 h-4 text-amber-700" />
+                    <span>⚠️ Low Stock Alert ({lowStockItems.length} Items Below 10)</span>
+                  </button>
+                )}
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900">
                   <p className="text-xs font-bold uppercase">In Stock Products</p>
@@ -1679,95 +2150,152 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                 <div>
                   <h3 className="text-2xl font-bold font-serif text-earth flex items-center gap-2">
                     <Tag className="w-6 h-6 text-olive" />
-                    <span>Discount Coupons & Promo Offers</span>
+                    <span>Discount Coupons & Promo Offers ({couponsList.length})</span>
                   </h3>
-                  <p className="text-xs text-stone-600">
-                    Create custom coupons with timer expiration rules. All coupons are stored in MongoDB Atlas and immediately valid at checkout!
+                  <p className="text-xs text-stone-600 mt-1">
+                    Manage store coupons, activate/deactivate offers, set the featured coupon for the Top Announcement Bar, or delete coupons.
                   </p>
                 </div>
 
-                <button
-                  onClick={() => setIsAddCouponOpen(true)}
-                  className="bg-olive hover:bg-[#455726] text-white font-bold px-5 py-2.5 rounded-2xl text-xs flex items-center gap-2 shadow-sm transition cursor-pointer"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>Create Custom Coupon</span>
-                </button>
+                <div className="flex items-center gap-3">
+                  {couponsList.length > 0 && (
+                    <button
+                      onClick={handleDeleteAllCoupons}
+                      className="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center gap-2 transition cursor-pointer"
+                      title="Delete ALL coupons from MongoDB"
+                    >
+                      <Trash2 className="w-4 h-4 text-red-600" />
+                      <span>Delete All Coupons</span>
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setIsAddCouponOpen(true)}
+                    className="bg-olive hover:bg-[#455726] text-white font-bold px-5 py-2.5 rounded-2xl text-xs flex items-center gap-2 shadow-sm transition cursor-pointer"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Create Custom Coupon</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Coupons Table */}
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse text-xs sm:text-sm">
-                  <thead>
-                    <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
-                      <th className="py-3 px-4">Coupon Code</th>
-                      <th className="py-3 px-4">Discount</th>
-                      <th className="py-3 px-4">Min Order Value</th>
-                      <th className="py-3 px-4">Max Discount</th>
-                      <th className="py-3 px-4">Expiry Date & Timer</th>
-                      <th className="py-3 px-4">Status</th>
-                      <th className="py-3 px-4 text-right">Delete Option</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-stone-100 font-medium">
-                    {couponsList.map((c) => {
-                      const isExpired = c.expiryDate && new Date(c.expiryDate).getTime() < Date.now();
-                      return (
-                        <tr key={c.code} className="hover:bg-[#faf8f4] transition">
-                          <td className="py-3.5 px-4 font-bold text-earth">
-                            <span className="bg-amber-100 text-amber-900 border border-amber-300 font-mono px-3 py-1 rounded-xl text-xs font-black uppercase tracking-wider">
-                              {c.code}
-                            </span>
-                          </td>
-                          <td className="py-3.5 px-4 font-extrabold text-olive text-sm">
-                            {c.discountPercent}% OFF
-                          </td>
-                          <td className="py-3.5 px-4 font-bold text-stone-700">₹{c.minOrderValue || c.minOrderAmount || 0}</td>
-                          <td className="py-3.5 px-4 font-bold text-stone-700">₹{c.maxDiscount || 500}</td>
-                          <td className="py-3.5 px-4 text-stone-600">
-                            {c.expiryDate ? (
-                              <div className="flex items-center gap-1.5 font-mono text-xs">
-                                <Clock className="w-3.5 h-3.5 text-stone-500" />
-                                <span className={isExpired ? 'text-red-600 font-bold' : 'text-emerald-700 font-bold'}>
-                                  {new Date(c.expiryDate).toLocaleString('en-IN', {
-                                    day: 'numeric',
-                                    month: 'short',
-                                    year: 'numeric',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                  })}
+              {/* Coupons Table or Empty State */}
+              {couponsList.length === 0 ? (
+                <div className="text-center py-12 bg-[#faf8f4] rounded-2xl border border-dashed border-stone-300 space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center mx-auto font-bold text-lg">
+                    🏷️
+                  </div>
+                  <h4 className="text-sm font-bold font-serif text-earth">No Active Discount Coupons</h4>
+                  <p className="text-xs text-stone-500 max-w-sm mx-auto">
+                    All coupons have been deleted. Click <strong>Create Custom Coupon</strong> above to add a new offer code.
+                  </p>
+                  <button
+                    onClick={() => setIsAddCouponOpen(true)}
+                    className="bg-olive hover:bg-[#455726] text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xs transition cursor-pointer"
+                  >
+                    + Add New Coupon
+                  </button>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-stone-200 text-stone-600 font-extrabold uppercase tracking-wider text-[11px]">
+                        <th className="py-3 px-4">Coupon Code</th>
+                        <th className="py-3 px-4">Discount</th>
+                        <th className="py-3 px-4">Min Order</th>
+                        <th className="py-3 px-4">Expiry Timer</th>
+                        <th className="py-3 px-4 text-center">Top Bar Banner</th>
+                        <th className="py-3 px-4 text-center">Active Status</th>
+                        <th className="py-3 px-4 text-right">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-stone-100 font-medium">
+                      {couponsList.map((c) => {
+                        const isExpired = c.expiryDate && new Date(c.expiryDate).getTime() < Date.now();
+                        const isActive = c.isActive !== false && !isExpired;
+                        const isFeatured = c.isFeatured;
+
+                        return (
+                          <tr key={c.code} className="hover:bg-[#faf8f4] transition">
+                            <td className="py-3.5 px-4 font-bold text-earth">
+                              <div className="flex items-center gap-2">
+                                <span className="bg-amber-100 text-amber-900 border border-amber-300 font-mono px-3 py-1 rounded-xl text-xs font-black uppercase tracking-wider">
+                                  {c.code}
                                 </span>
+                                {isFeatured && (
+                                  <span className="bg-amber-400 text-stone-950 font-black text-[9px] px-2 py-0.5 rounded-full uppercase flex items-center gap-1 shadow-2xs">
+                                    ⭐ TOP BANNER
+                                  </span>
+                                )}
                               </div>
-                            ) : (
-                              <span className="text-stone-600 font-bold text-xs">No Expiry Timer</span>
-                            )}
-                          </td>
-                          <td className="py-3.5 px-4">
-                            <span
-                              className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${
-                                isExpired
-                                  ? 'bg-red-100 text-red-800'
-                                  : 'bg-emerald-100 text-emerald-800'
-                              }`}
-                            >
-                              {isExpired ? 'EXPIRED' : 'ACTIVE'}
-                            </span>
-                          </td>
-                          <td className="py-3.5 px-4 text-right">
-                            <button
-                              onClick={() => handleDeleteCoupon(c.code)}
-                              className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
-                              title="Delete Coupon"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                            </td>
+                            <td className="py-3.5 px-4 font-extrabold text-olive text-sm">
+                              {c.discountPercent}% OFF
+                            </td>
+                            <td className="py-3.5 px-4 font-bold text-stone-700">₹{c.minOrderValue || c.minOrderAmount || 0}</td>
+                            <td className="py-3.5 px-4 text-stone-600">
+                              {c.expiryDate ? (
+                                <div className="flex items-center gap-1.5 font-mono text-xs">
+                                  <Clock className="w-3.5 h-3.5 text-stone-500" />
+                                  <span className={isExpired ? 'text-red-600 font-bold' : 'text-emerald-700 font-bold'}>
+                                    {new Date(c.expiryDate).toLocaleString('en-IN', {
+                                      day: 'numeric',
+                                      month: 'short',
+                                      year: 'numeric',
+                                      hour: '2-digit',
+                                      minute: '2-digit',
+                                    })}
+                                  </span>
+                                </div>
+                              ) : (
+                                <span className="text-stone-500 font-bold text-xs">No Expiry Timer</span>
+                              )}
+                            </td>
+                            <td className="py-3.5 px-4 text-center">
+                              {isFeatured ? (
+                                <span className="text-xs font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-xl">
+                                  ⭐ Active Banner
+                                </span>
+                              ) : (
+                                <button
+                                  onClick={() => handleSetFeaturedCoupon(c.code)}
+                                  className="text-xs font-bold text-stone-600 hover:text-earth hover:bg-stone-100 border border-stone-200 px-2.5 py-1 rounded-xl transition cursor-pointer"
+                                  title="Show on top announcement bar"
+                                >
+                                  Set Top Banner
+                                </button>
+                              )}
+                            </td>
+                            <td className="py-3.5 px-4 text-center">
+                              <button
+                                onClick={() => handleToggleCouponStatus(c.code, c.isActive !== false)}
+                                className={`px-3 py-1 rounded-full text-[10px] font-black uppercase transition cursor-pointer ${
+                                  isExpired
+                                    ? 'bg-red-100 text-red-800 border border-red-300'
+                                    : isActive
+                                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 hover:bg-emerald-200'
+                                    : 'bg-stone-200 text-stone-600 border border-stone-300 hover:bg-stone-300'
+                                }`}
+                              >
+                                {isExpired ? 'EXPIRED' : isActive ? '● ACTIVE' : '○ DEACTIVATED'}
+                              </button>
+                            </td>
+                            <td className="py-3.5 px-4 text-right">
+                              <button
+                                onClick={() => handleDeleteCoupon(c.code)}
+                                className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
+                                title="Delete Coupon"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           )}
 
@@ -2614,6 +3142,41 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
               {/* Payment & Amount Summary */}
               <div className="bg-[#faf8f4] p-4 rounded-2xl border border-stone-200/80 space-y-1.5 text-xs text-stone-600">
+                <div className="flex justify-between items-center border-b border-stone-200 pb-2 mb-1 flex-wrap gap-2">
+                  <span className="font-bold text-stone-700">Payment Mode & Status:</span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-xl text-xs font-extrabold uppercase ${
+                        selectedOrderDetails.paymentMethod === 'UPI'
+                          ? 'bg-purple-100 text-purple-900 border border-purple-200'
+                          : selectedOrderDetails.paymentMethod === 'Razorpay' || selectedOrderDetails.paymentMethod === 'Online'
+                          ? 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                          : 'bg-amber-100 text-amber-900 border border-amber-200'
+                      }`}
+                    >
+                      {selectedOrderDetails.paymentMethod || 'COD'} ({selectedOrderDetails.paymentStatus === 'Paid' ? '✅ Paid' : selectedOrderDetails.paymentMethod === 'COD' ? 'Pending Cash' : 'Paid Online'})
+                    </span>
+
+                    {(selectedOrderDetails.paymentMethod === 'COD' || !selectedOrderDetails.paymentMethod) && (
+                      selectedOrderDetails.paymentStatus === 'Paid' ? (
+                        <button
+                          onClick={() => handleUpdatePaymentStatus(selectedOrderDetails.id, 'Pending')}
+                          className="text-[10px] bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold px-2.5 py-1 rounded-lg border border-stone-300 transition cursor-pointer"
+                        >
+                          Mark Pending
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleUpdatePaymentStatus(selectedOrderDetails.id, 'Paid')}
+                          className="px-2.5 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs flex items-center gap-1 shadow-2xs transition cursor-pointer"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>Mark Cash Received</span>
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
                 <div className="flex justify-between">
                   <span>Subtotal:</span>
                   <span className="font-bold text-earth">₹{selectedOrderDetails.subtotal || selectedOrderDetails.total}</span>
@@ -2782,6 +3345,107 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                 className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold transition shadow-xs cursor-pointer"
               >
                 Close Recipe View
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Low Stock Warning Alert Modal Popup */}
+      {isLowStockModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white border border-amber-200 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden text-earth my-8 relative animate-scale-up">
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 text-white p-5 flex items-center justify-between shadow-md">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-white border border-white/30 shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-amber-100" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold font-serif leading-tight">
+                    ⚠️ Low Stock Warning Alert!
+                  </h3>
+                  <p className="text-xs text-amber-100 font-medium mt-0.5">
+                    {lowStockItems.length} product(s) have stock levels below 10 units.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setIsLowStockModalOpen(false);
+                  setIsLowStockModalDismissed(true);
+                }}
+                className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition cursor-pointer"
+                title="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-4 max-h-[60vh] overflow-y-auto">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-xs text-amber-900 leading-relaxed font-medium">
+                <strong>Attention Admin:</strong> The following inventory items have stock levels below the safety limit of <strong>10 units</strong>. Please restock them promptly.
+              </div>
+
+              {lowStockItems.length === 0 ? (
+                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center text-emerald-900 text-xs font-bold">
+                  🎉 All products are adequately stocked above 10 units!
+                </div>
+              ) : (
+                <div className="divide-y divide-stone-100 border border-stone-200 rounded-2xl overflow-hidden bg-white">
+                  {lowStockItems.map((item) => (
+                    <div key={item.id} className="p-3.5 flex items-center justify-between gap-3 hover:bg-stone-50 transition">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
+                          onError={(e) => {
+                            e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                          }}
+                        />
+                        <div className="min-w-0">
+                          <h4 className="text-xs font-bold font-serif text-earth truncate">{item.name}</h4>
+                          <span className="text-[11px] text-stone-500 block">{item.category}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4 shrink-0">
+                        <div className="text-right">
+                          <span className="bg-red-100 text-red-800 font-extrabold text-xs px-2.5 py-1 rounded-full border border-red-200 block">
+                            Stock: {item.stock} Units
+                          </span>
+                          <span className="text-[10px] text-red-600 font-bold block mt-0.5">Below 10 Threshold!</span>
+                        </div>
+
+                        <button
+                          onClick={() => handleUpdateStock(item.id, (item.stock || 0) + 50)}
+                          className="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-xs flex items-center gap-1 cursor-pointer"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                          <span>+ Restock 50</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-stone-50 border-t border-stone-200 p-4 px-6 flex items-center justify-between">
+              <span className="text-xs text-stone-500 font-medium">
+                Restocking will update inventory levels in MongoDB.
+              </span>
+              <button
+                onClick={() => {
+                  setIsLowStockModalOpen(false);
+                  setIsLowStockModalDismissed(true);
+                }}
+                className="bg-olive hover:bg-[#455726] text-white font-bold px-5 py-2 rounded-xl text-xs transition cursor-pointer"
+              >
+                Acknowledge & Close
               </button>
             </div>
           </div>

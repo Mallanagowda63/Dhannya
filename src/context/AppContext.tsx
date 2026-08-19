@@ -9,6 +9,7 @@ import {
   Order,
   User,
   Address,
+  Coupon,
 } from '../types';
 import { PRODUCTS, COUPONS } from '../data/initialData';
 
@@ -20,6 +21,7 @@ interface Toast {
 
 interface AppContextType {
   products: Product[];
+  coupons: Coupon[];
   cart: CartItem[];
   wishlist: string[]; // Product IDs
   user: User | null;
@@ -40,6 +42,7 @@ interface AppContextType {
 
   // Actions
   refreshProducts: () => Promise<void>;
+  refreshCoupons: () => Promise<void>;
   setActiveCategory: (cat: ProductCategory | null) => void;
   setActiveConcern: (concern: HealthConcern | null) => void;
   setSearchQuery: (query: string) => void;
@@ -87,6 +90,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [coupons, setCoupons] = useState<Coupon[]>([]);
+
   const refreshProducts = async () => {
     try {
       const res = await fetch(getApiUrl('/api/products'));
@@ -101,8 +106,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  const refreshCoupons = async () => {
+    try {
+      const res = await fetch(getApiUrl('/api/coupons'));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setCoupons(data.data);
+        }
+      }
+    } catch (e) {
+      console.warn('Error fetching live coupons from API:', e);
+    }
+  };
+
   useEffect(() => {
     refreshProducts();
+    refreshCoupons();
   }, []);
 
   const [wishlist, setWishlist] = useState<string[]>(() => {
@@ -508,6 +528,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     <AppContext.Provider
       value={{
         products,
+        coupons,
         cart,
         wishlist,
         user,
@@ -526,6 +547,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         quickViewProduct,
         toasts,
         refreshProducts,
+        refreshCoupons,
         setActiveCategory,
         setActiveConcern,
         setSearchQuery,

@@ -70,13 +70,13 @@ export const CheckoutModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-md flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="bg-white border border-soft w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden text-earth my-8 relative"
+        className="bg-white border border-soft w-full max-w-2xl rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden text-earth my-auto relative max-h-[92vh] overflow-y-auto"
       >
         {/* Header */}
         <div className="bg-cream p-5 border-b border-soft flex items-center justify-between">

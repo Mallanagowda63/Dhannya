@@ -120,6 +120,7 @@ const OrderSchema = new mongoose.Schema(
     shippingAddress: mongoose.Schema.Types.Mixed,
     deliverySlot: String,
     paymentMethod: String,
+    paymentStatus: { type: String, default: 'Pending' },
     subtotal: Number,
     discount: Number,
     tax: Number,
@@ -170,6 +171,7 @@ const CouponSchema = new mongoose.Schema(
     description: String,
     expiryDate: { type: String, default: null },
     isActive: { type: Boolean, default: true },
+    isFeatured: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
@@ -225,9 +227,11 @@ export const CustomerModel = mongoose.model('Customer', CustomerSchema);
 
 // In-memory fallbacks ONLY for offline development mode if explicitly requested via USE_MEMORY_DB=true
 let liveCoupons = [
-  { code: 'ORGANIC10', discountPercent: 10, minOrderValue: 499, maxDiscount: 200, description: '10% OFF on organic orders above ₹499', expiryDate: '2026-12-31T23:59', isActive: true },
-  { code: 'WELLNESS20', discountPercent: 20, minOrderValue: 999, maxDiscount: 500, description: '20% OFF on health foods & dry fruits', expiryDate: '2026-12-31T23:59', isActive: true },
-  { code: 'CUSTOMMASALA', discountPercent: 15, minOrderValue: 299, maxDiscount: 150, description: '15% OFF on custom masala recipes', expiryDate: '2026-12-31T23:59', isActive: true },
+  { code: 'DHAANYA10', discountPercent: 10, minOrderValue: 0, maxDiscount: 300, description: '10% OFF on all organic orders', expiryDate: '2028-12-31T23:59', isActive: true },
+  { code: 'FESTIVE25', discountPercent: 25, minOrderValue: 499, maxDiscount: 500, description: '25% OFF on festive organic orders above ₹499', expiryDate: '2028-12-31T23:59', isActive: true },
+  { code: 'ORGANIC10', discountPercent: 10, minOrderValue: 499, maxDiscount: 200, description: '10% OFF on organic orders above ₹499', expiryDate: '2028-12-31T23:59', isActive: true },
+  { code: 'WELLNESS20', discountPercent: 20, minOrderValue: 999, maxDiscount: 500, description: '20% OFF on health foods & dry fruits', expiryDate: '2028-12-31T23:59', isActive: true },
+  { code: 'CUSTOMMASALA', discountPercent: 15, minOrderValue: 299, maxDiscount: 150, description: '15% OFF on custom masala recipes', expiryDate: '2028-12-31T23:59', isActive: true },
 ];
 
 let liveCategories = [...CATEGORIES];
@@ -442,15 +446,11 @@ export async function initDatabase() {
       console.log(`[DB] Categories collection has ${categoryCount} documents; skipping seed.`);
     }
 
-    // 6. Seed Coupons if empty
-    const couponCount = await CouponModel.countDocuments();
-    if (couponCount === 0) {
-      console.log(`[DB SEED] Seeding initial coupons...`);
-      await CouponModel.insertMany(liveCoupons);
-      console.log(`[DB SEED] ✅ Coupons seeded successfully.`);
-    } else {
-      console.log(`[DB] Coupons collection has ${couponCount} documents; skipping seed.`);
+    // 6. Seed / Sync Coupons
+    for (const c of liveCoupons) {
+      await CouponModel.updateOne({ code: c.code }, { $set: c }, { upsert: true });
     }
+    console.log(`[DB SEED] ✅ Coupons synced to MongoDB successfully.`);
 
     // 7. Seed Reviews if empty
     const reviewCount = await ReviewModel.countDocuments();
@@ -1127,8 +1127,18 @@ app.get('/api/coupons', async (req, res) => {
 app.post('/api/admin/coupons', async (req, res) => {
   try {
     const connected = await requireDb(res);
-    const { code, discountPercent, minOrderValue, maxDiscount, description, expiryDate } = req.body;
+    const { code, discountPercent, minOrderValue, maxDiscount, description, expiryDate, isActive, isFeatured } = req.body;
     const upperCode = String(code).trim().toUpperCase();
+
+    const makeFeatured = isFeatured !== undefined ? Boolean(isFeatured) : true;
+    const activeState = isActive !== undefined ? Boolean(isActive) : true;
+
+    if (makeFeatured) {
+      if (connected) {
+        await CouponModel.updateMany({}, { $set: { isFeatured: false } });
+      }
+      liveCoupons.forEach((c) => (c.isFeatured = false));
+    }
 
     const newCoupon = {
       code: upperCode,
@@ -1137,16 +1147,16 @@ app.post('/api/admin/coupons', async (req, res) => {
       maxDiscount: Number(maxDiscount) || 500,
       description: description || `${discountPercent}% OFF coupon`,
       expiryDate: expiryDate || null,
-      isActive: true,
+      isActive: activeState,
+      isFeatured: makeFeatured,
     };
 
     if (connected) {
       await CouponModel.updateOne({ code: upperCode }, { $set: newCoupon }, { upsert: true });
-    } else if (allowMemoryDbInDev) {
-      const idx = liveCoupons.findIndex((c) => c.code === upperCode);
-      if (idx > -1) liveCoupons[idx] = newCoupon;
-      else liveCoupons.unshift(newCoupon);
     }
+    const idx = liveCoupons.findIndex((c) => c.code === upperCode);
+    if (idx > -1) liveCoupons[idx] = newCoupon;
+    else liveCoupons.unshift(newCoupon);
 
     res.json({ success: true, message: `Coupon ${upperCode} saved to MongoDB!`, data: newCoupon });
   } catch (err: any) {
@@ -1154,16 +1164,76 @@ app.post('/api/admin/coupons', async (req, res) => {
   }
 });
 
+// Delete Single Coupon or Delete All Coupons
 app.delete('/api/admin/coupons/:code', async (req, res) => {
   try {
     const connected = await requireDb(res);
     const code = req.params.code.toUpperCase();
+
+    if (code === 'ALL') {
+      if (connected) {
+        await CouponModel.deleteMany({});
+      }
+      liveCoupons = [];
+      return res.json({ success: true, message: 'All coupons deleted successfully from MongoDB!' });
+    }
+
     if (connected) {
       await CouponModel.deleteOne({ code });
-    } else if (allowMemoryDbInDev) {
-      liveCoupons = liveCoupons.filter((c) => c.code.toUpperCase() !== code);
     }
+    liveCoupons = liveCoupons.filter((c) => c.code.toUpperCase() !== code);
+
     res.json({ success: true, message: `Coupon ${code} deleted from MongoDB!` });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Toggle Active / Deactive Status
+app.put('/api/admin/coupons/:code/toggle', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const code = req.params.code.toUpperCase();
+    const { isActive } = req.body;
+
+    if (connected) {
+      const existing = await CouponModel.findOne({ code });
+      const newActive = isActive !== undefined ? Boolean(isActive) : !existing?.isActive;
+      await CouponModel.updateOne({ code }, { $set: { isActive: newActive } });
+    }
+
+    const item = liveCoupons.find((c) => c.code.toUpperCase() === code);
+    if (item) {
+      item.isActive = isActive !== undefined ? Boolean(isActive) : !item.isActive;
+    }
+
+    res.json({ success: true, message: `Coupon ${code} status updated!` });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Set Featured Top-Bar Banner Coupon
+app.put('/api/admin/coupons/:code/feature', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const code = req.params.code.toUpperCase();
+
+    if (connected) {
+      await CouponModel.updateMany({}, { $set: { isFeatured: false } });
+      await CouponModel.updateOne({ code }, { $set: { isFeatured: true, isActive: true } });
+    }
+
+    liveCoupons.forEach((c) => {
+      if (c.code.toUpperCase() === code) {
+        c.isFeatured = true;
+        c.isActive = true;
+      } else {
+        c.isFeatured = false;
+      }
+    });
+
+    res.json({ success: true, message: `Coupon ${code} set as Top Bar Featured Coupon!` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -1372,6 +1442,7 @@ app.post('/api/orders', async (req, res) => {
       shippingAddress: cleanAddress,
       deliverySlot: deliverySlot || 'Standard Delivery',
       paymentMethod: paymentMethod || 'COD',
+      paymentStatus: (paymentMethod === 'UPI' || paymentMethod === 'Razorpay' || paymentMethod === 'Online') ? 'Paid' : 'Pending',
       subtotal: Number(subtotal) || 0,
       discount: Number(discount) || 0,
       tax: Number(tax) || 0,
@@ -1496,12 +1567,19 @@ app.get('/api/orders', async (req, res) => {
 
     const connected = await ensureDbConnected();
     if (connected) {
-      const dbOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
+      const rawOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
+      const dbOrders = rawOrders.map((o: any) => ({
+        ...o,
+        paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+      }));
       return res.json({ success: true, data: dbOrders, dbConnected: true });
     } else if (allowMemoryDbInDev) {
-      const filtered = userId
+      const filtered = (userId
         ? liveOrders.filter((o) => o.userId === String(userId) || o.userId === 'usr-101')
-        : liveOrders;
+        : liveOrders).map((o: any) => ({
+          ...o,
+          paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+        }));
       return res.json({ success: true, data: filtered });
     }
     return res.status(503).json({ success: false, message: 'Database disconnected' });
@@ -1872,26 +1950,29 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
     }
 
     res.json({ success: true, message: `Order ${id} status updated to ${status}!` });
-
-    // Send order status update email asynchronously via pooled SMTP connection
-    if (mailTransporter && targetOrder) {
-      const emailObj = buildOrderStatusEmail(status, targetOrder);
-      const dupKey = `status-update-${id}-${status}-${emailObj.toEmail}`;
-      if (emailObj.toEmail && shouldSendEmail(dupKey)) {
-        mailTransporter.sendMail({
-          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
-          to: emailObj.toEmail,
-          subject: emailObj.subject,
-          text: emailObj.body,
-        }).then(() => {
-          console.log(`[SMTP STATUS] Delivered status email for #${id} (${status}) to ${emailObj.toEmail}`);
-        }).catch((err: any) => {
-          console.error(`[SMTP STATUS ERROR] Status email failed for #${id}:`, err.message);
-        });
-      }
-    }
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Admin Update Order Payment Status API (e.g. Mark COD as Paid)
+app.put('/api/admin/orders/:id/payment-status', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    const { id } = req.params;
+    const { paymentStatus } = req.body;
+
+    if (connected) {
+      await OrderModel.updateOne({ id }, { $set: { paymentStatus } });
+    }
+    const targetOrder = liveOrders.find((o) => o.id === id);
+    if (targetOrder) {
+      (targetOrder as any).paymentStatus = paymentStatus;
+    }
+
+    return res.json({ success: true, message: `Payment status for ${id} updated to ${paymentStatus}!` });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
   }
 });
 

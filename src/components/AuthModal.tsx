@@ -131,8 +131,8 @@ export const AuthModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border border-soft w-full max-w-md rounded-3xl shadow-xl overflow-hidden text-earth p-6 sm:p-8 space-y-6 relative my-8">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-white border border-soft w-full max-w-md rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden text-earth p-5 sm:p-8 space-y-6 relative my-auto max-h-[92vh] overflow-y-auto">
         <button
           onClick={() => {
             setIsAuthModalOpen(false);

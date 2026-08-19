@@ -18,7 +18,7 @@ export const ShopByConcern: React.FC = () => {
   ];
 
   const filteredProducts = (products || []).filter(
-    (p) => activeConcernTab === 'Best Sellers' ? p.isBestSeller : (p.concern && p.concern.includes(activeConcernTab))
+    (p) => p && (activeConcernTab === 'Best Sellers' ? p.isBestSeller : (Array.isArray(p.concern) && p.concern.includes(activeConcernTab)))
   );
   const displayList = filteredProducts.length > 0 ? filteredProducts : (products || []).slice(0, 8);
 
@@ -95,10 +95,10 @@ export const ShopByConcern: React.FC = () => {
         {/* Expanded Full-Width Horizontal Sliding Carousel */}
         <div
           ref={scrollRef}
-          className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth px-1"
+          className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth px-1 snap-x snap-mandatory"
         >
           {displayList.map((prod) => (
-            <div key={prod.id} className="min-w-[260px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0">
+            <div key={prod.id} className="min-w-[230px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0 snap-start">
               <ProductCard product={prod} />
             </div>
           ))}

@@ -123,18 +123,18 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           {/* Navigation Arrows */}
           <button
             onClick={handlePrev}
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 text-earth hover:bg-olive hover:text-white flex items-center justify-center transition-all duration-200 shadow-md opacity-0 group-hover:opacity-100 z-10 cursor-pointer"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 text-earth hover:bg-olive hover:text-white flex items-center justify-center transition-all duration-200 shadow-md opacity-80 sm:opacity-0 sm:group-hover:opacity-100 z-10 cursor-pointer"
             aria-label="Previous Slide"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           <button
             onClick={handleNext}
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 text-earth hover:bg-olive hover:text-white flex items-center justify-center transition-all duration-200 shadow-md opacity-0 group-hover:opacity-100 z-10 cursor-pointer"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 text-earth hover:bg-olive hover:text-white flex items-center justify-center transition-all duration-200 shadow-md opacity-80 sm:opacity-0 sm:group-hover:opacity-100 z-10 cursor-pointer"
             aria-label="Next Slide"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Indicator Dots */}

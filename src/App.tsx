@@ -85,6 +85,7 @@ const MainAppContent: React.FC = () => {
             <CategoryPageView
               onNavigateHome={handleNavigateHome}
               onSelectCategory={handleNavigateCategoryPage}
+              onNavigateCustomMasala={handleNavigateCustomMasala}
             />
           </main>
         )}

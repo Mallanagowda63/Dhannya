@@ -19,39 +19,31 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
           </span>
         </div>
 
-        {/* Spacious Category Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6 lg:gap-8">
+        {/* Spacious Category Cards Grid - Image Card with Title Below */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-8 lg:gap-10">
           {CATEGORIES.map((cat) => (
             <div
               key={cat.slug}
               onClick={() => onSelectCategory(cat.name)}
-              className="group cursor-pointer relative bg-white border border-stone-200/80 rounded-3xl overflow-hidden hover:border-olive transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between transform hover:-translate-y-1"
+              className="group cursor-pointer flex flex-col items-center text-center space-y-3"
             >
-              {/* Category Image - Larger & Crisp */}
-              <div className="relative h-40 sm:h-48 md:h-52 w-full overflow-hidden bg-stone-100 p-2">
+              {/* Category Image Card Container */}
+              <div className="relative aspect-[4/3] sm:aspect-square w-full rounded-3xl sm:rounded-[32px] overflow-hidden bg-[#fffaf3] border border-stone-200/60 p-3 sm:p-4 shadow-xs group-hover:shadow-lg group-hover:border-olive/40 transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500 opacity-95 group-hover:opacity-100"
+                  className="w-full h-full object-cover rounded-2xl sm:rounded-[24px] group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   onError={(e) => {
                     e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
                   }}
                 />
-                <div className="absolute inset-2 rounded-2xl bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
-              {/* Category Content */}
-              <div className="p-4 sm:p-5 flex items-center justify-between bg-white">
-                <div>
-                  <h3 className="text-sm sm:text-base font-bold text-earth group-hover:text-olive transition-colors leading-snug font-serif">
-                    {cat.name}
-                  </h3>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-cream group-hover:bg-olive group-hover:text-white text-stone-700 flex items-center justify-center transition-all duration-300 shrink-0 shadow-2xs">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
+              {/* Category Title Centered Below Image */}
+              <h3 className="text-sm sm:text-base font-bold text-earth group-hover:text-olive transition-colors leading-snug tracking-tight font-serif pt-1">
+                {cat.name}
+              </h3>
             </div>
           ))}
         </div>

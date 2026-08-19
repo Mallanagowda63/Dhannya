@@ -6,7 +6,6 @@ import {
   Star,
   ShoppingBag,
   Heart,
-  PhoneCall,
   Share2,
   CheckCircle2,
   ShieldCheck,
@@ -102,8 +101,8 @@ export const ProductQuickView: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border border-soft w-full max-w-4xl rounded-3xl shadow-xl overflow-hidden text-earth my-8 relative">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-white border border-soft w-full max-w-4xl rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden text-earth my-auto relative max-h-[92vh] overflow-y-auto">
         <button
           onClick={() => setQuickViewProduct(null)}
           className="absolute top-4 right-4 z-20 p-2 rounded-full bg-cream text-stone-600 hover:text-earth border border-soft transition"
@@ -250,15 +249,7 @@ export const ProductQuickView: React.FC = () => {
                 </button>
               </div>
 
-              {/* WhatsApp Order Button with Direct Image Attachment */}
-              <button
-                type="button"
-                onClick={handleWhatsAppOrderWithImage}
-                className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition active:scale-95 cursor-pointer"
-              >
-                <PhoneCall className="w-4 h-4 text-white" />
-                <span>Order via WhatsApp (With Image & Details)</span>
-              </button>
+
             </div>
           </div>
         </div>

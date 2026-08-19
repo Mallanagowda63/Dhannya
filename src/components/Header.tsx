@@ -34,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const {
     products,
+    coupons,
     cart,
     wishlist,
     user,
@@ -54,6 +55,14 @@ export const Header: React.FC<HeaderProps> = ({
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [tickerIndex, setTickerIndex] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
+
+  const activeTopCoupon = useMemo(() => {
+    return (
+      (coupons || []).find((c) => c.isActive !== false && c.isFeatured) ||
+      (coupons || []).find((c) => c.isActive !== false) ||
+      null
+    );
+  }, [coupons]);
 
   // Auto-rotate announcement banner ticker for compact screens
   useEffect(() => {
@@ -82,11 +91,12 @@ export const Header: React.FC<HeaderProps> = ({
     const q = searchQuery.toLowerCase().trim();
     return (products || [])
       .filter((p) => {
-        const matchName = p.name.toLowerCase().includes(q);
-        const matchCat = p.category.toLowerCase().includes(q);
+        if (!p) return false;
+        const matchName = (p.name || '').toLowerCase().includes(q);
+        const matchCat = (p.category || '').toLowerCase().includes(q);
         const matchDesc = (p.description || '').toLowerCase().includes(q);
-        const matchConcern = p.concern && p.concern.some((c) => c.toLowerCase().includes(q));
-        const matchTags = p.tags && p.tags.some((t) => t.toLowerCase().includes(q));
+        const matchConcern = Array.isArray(p.concern) && p.concern.some((c) => (c || '').toLowerCase().includes(q));
+        const matchTags = Array.isArray(p.tags) && p.tags.some((t) => (t || '').toLowerCase().includes(q));
         return matchName || matchCat || matchDesc || matchConcern || matchTags;
       })
       .slice(0, 6);
@@ -108,39 +118,45 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-soft text-earth shadow-sm">
-      {/* Top Announcement Bar - Re-arranged for Pristine Alignment & Visual Appeal */}
-      <div className="bg-[#2d3a29] text-white text-xs font-medium py-2 px-4 border-b border-black/15 shadow-2xs">
+    <>
+      {/* Top Banner Announcement Bar (Static at top of page, scrolls away) */}
+      <div className="bg-[#243323] text-stone-200 py-1.5 px-4 text-xs font-serif border-b border-stone-800 shadow-inner relative z-30">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4">
-          
-          {/* Left: Quality Promise Badge */}
-          <div className="hidden lg:flex items-center gap-2 text-stone-200 text-xs font-medium">
-            <span className="flex items-center gap-1.5 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
-              <Leaf className="w-3.5 h-3.5 text-amber-300" />
-              <span>100% Traditional Wooden Ghani & Pure Spices</span>
-            </span>
+          {/* Left Feature Pill */}
+          <div className="hidden sm:flex items-center gap-2 font-mono text-[11px] text-amber-300 font-semibold tracking-tight">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>100% Traditional Wooden Ghani & Pure Spices</span>
           </div>
 
-          {/* Center: Main Festive Offer Banner (Desktop & Tablet) */}
+          {/* Center: Main Dynamic Active Coupon Offer Banner (Desktop & Tablet) */}
           <div className="hidden md:flex items-center justify-center gap-2 mx-auto text-xs font-medium">
-            <span className="bg-amber-400 text-stone-950 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-2xs flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-stone-950" />
-              FESTIVE OFFER
-            </span>
-            <span className="text-stone-100 font-semibold">
-              Use Coupon{' '}
-              <button
-                onClick={() => {
-                  navigator.clipboard?.writeText('FESTIVE25');
-                  showToast('Coupon FESTIVE25 copied to clipboard!', 'info');
-                }}
-                title="Click to copy coupon code"
-                className="inline-flex items-center gap-1 bg-amber-300 hover:bg-amber-400 text-stone-950 font-black font-mono px-2 py-0.5 rounded-md shadow-2xs transition active:scale-95 cursor-pointer mx-1"
-              >
-                FESTIVE25
-              </button>{' '}
-              for <strong>25% OFF</strong> <span className="text-white/40 mx-1">|</span> Free Shipping &gt; ₹499
-            </span>
+            {activeTopCoupon ? (
+              <>
+                <span className="bg-amber-400 text-stone-950 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-2xs flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-stone-950" />
+                  SPECIAL OFFER
+                </span>
+                <span className="text-stone-100 font-semibold">
+                  Use Coupon{' '}
+                  <button
+                    onClick={() => {
+                      navigator.clipboard?.writeText(activeTopCoupon.code);
+                      showToast(`Coupon ${activeTopCoupon.code} copied to clipboard!`, 'info');
+                    }}
+                    title="Click to copy coupon code"
+                    className="inline-flex items-center gap-1 bg-amber-300 hover:bg-amber-400 text-stone-950 font-black font-mono px-2 py-0.5 rounded-md shadow-2xs transition active:scale-95 cursor-pointer mx-1"
+                  >
+                    {activeTopCoupon.code}
+                  </button>{' '}
+                  for <strong>{activeTopCoupon.discountPercent}% OFF</strong> <span className="text-white/40 mx-1">|</span> Free Shipping &gt; ₹499
+                </span>
+              </>
+            ) : (
+              <span className="text-stone-100 font-semibold flex items-center gap-2">
+                <Leaf className="w-3.5 h-3.5 text-amber-300" />
+                100% Pure Traditional Wood Pressed Oils & Spices | Free Shipping &gt; ₹499
+              </span>
+            )}
           </div>
 
           {/* Mobile Auto-Rotating Ticker (visible on small screens) */}
@@ -152,10 +168,16 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             )}
             {tickerIndex === 1 && (
-              <span className="animate-in fade-in duration-300 flex items-center gap-1.5">
-                <span className="bg-amber-400 text-stone-950 px-1.5 py-0.2 rounded text-[10px] font-black uppercase">FESTIVE25</span>
-                Use code <strong className="text-amber-200 font-mono">FESTIVE25</strong> for 25% OFF!
-              </span>
+              activeTopCoupon ? (
+                <span className="animate-in fade-in duration-300 flex items-center gap-1.5">
+                  <span className="bg-amber-400 text-stone-950 px-1.5 py-0.2 rounded text-[10px] font-black uppercase">{activeTopCoupon.code}</span>
+                  Use code <strong className="text-amber-200 font-mono">{activeTopCoupon.code}</strong> for {activeTopCoupon.discountPercent}% OFF!
+                </span>
+              ) : (
+                <span className="animate-in fade-in duration-300 flex items-center gap-1.5 text-amber-200">
+                  Free Delivery on Orders Above ₹499
+                </span>
+              )
             )}
             {tickerIndex === 2 && (
               <span className="animate-in fade-in duration-300 flex items-center gap-1.5 text-stone-200">
@@ -177,14 +199,14 @@ export const Header: React.FC<HeaderProps> = ({
               <span>WhatsApp Support</span>
             </a>
           </div>
-
         </div>
       </div>
 
-      {/* Main Nav Bar */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-3.5 flex items-center justify-between gap-4">
+      {/* Sticky Main Nav Bar (Solid Opaque Header) */}
+      <header className="sticky top-0 z-40 bg-[#FDFBF7] shadow-sm border-b border-stone-200/80 transition-all duration-300">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
         {/* Left: Mobile menu toggle + Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-stone-600 hover:text-olive p-1 rounded-lg"
@@ -202,239 +224,18 @@ export const Header: React.FC<HeaderProps> = ({
               D
             </div>
             <div>
-              <span className="text-2xl sm:text-3xl font-bold tracking-tight text-olive font-serif">
+              <span className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-olive font-serif">
                 Dhaanya
               </span>
-              <span className="block text-xs tracking-widest text-stone-500 uppercase font-sans font-bold">
+              <span className="hidden sm:block text-[10px] sm:text-xs tracking-widest text-stone-500 uppercase font-sans font-bold">
                 Organic & Custom Spices
               </span>
             </div>
           </div>
         </div>
 
-        {/* Center: Interactive Search Bar with Live Suggestions */}
-        <div ref={searchRef} className="hidden md:flex flex-1 max-w-md mx-4 relative">
-          <div className="relative w-full">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onFocus={() => setIsSearchFocused(true)}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setIsSearchFocused(true);
-                if (e.target.value.trim().length > 0) {
-                  onNavigateCategoryPage();
-                }
-              }}
-              placeholder="Search wood pressed oils, dry fruits, spices, seeds..."
-              className="w-full bg-cream border border-stone-200 text-earth text-xs sm:text-sm rounded-full pl-9 pr-8 py-2.5 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition placeholder:text-stone-400 shadow-2xs"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setIsSearchFocused(false);
-                }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-xs font-bold p-1 cursor-pointer"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-
-          {/* Live Autocomplete Search Dropdown */}
-          {isSearchFocused && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-stone-200 rounded-3xl shadow-2xl overflow-hidden z-50 p-4 text-earth space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-              {searchQuery.trim().length === 0 ? (
-                /* Popular Searches & Fast Categories when search input is empty */
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs font-bold text-stone-500 uppercase tracking-wider">
-                    <span className="flex items-center gap-1.5 text-terracotta">
-                      <Flame className="w-3.5 h-3.5 fill-terracotta" />
-                      Trending & Popular Searches
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      'Mustard Oil',
-                      'Garam Masala',
-                      'Turmeric Powder',
-                      'Groundnut Oil',
-                      'Dry Fruits',
-                      'Gut Health',
-                      'Millets',
-                    ].map((term) => (
-                      <button
-                        key={term}
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={() => {
-                          setSearchQuery(term);
-                          onNavigateCategoryPage();
-                          setIsSearchFocused(false);
-                        }}
-                        className="bg-[#faf8f4] hover:bg-cream text-earth hover:text-olive border border-stone-200 rounded-full px-3 py-1 text-xs font-bold transition active:scale-95 cursor-pointer flex items-center gap-1"
-                      >
-                        <Search className="w-3 h-3 text-stone-400" />
-                        <span>{term}</span>
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-stone-100 pt-3">
-                    <span className="block text-[11px] font-bold text-stone-500 uppercase tracking-wider mb-2">
-                      Explore Categories
-                    </span>
-                    <div className="grid grid-cols-2 gap-2">
-                      {CATEGORIES.slice(0, 6).map((cat) => (
-                        <button
-                          key={cat.slug}
-                          onMouseDown={(e) => e.preventDefault()}
-                          onClick={() => {
-                            handleCategorySelect(cat.name as ProductCategory);
-                            setIsSearchFocused(false);
-                          }}
-                          className="flex items-center gap-2 p-2 rounded-xl bg-stone-50 hover:bg-cream text-xs font-bold text-earth hover:text-olive transition cursor-pointer text-left"
-                        >
-                          <span className="w-6 h-6 rounded-lg bg-olive/10 text-olive flex items-center justify-center font-serif text-xs font-extrabold">
-                            {cat.name.charAt(0)}
-                          </span>
-                          <span className="truncate">{cat.name}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                /* Live Search Suggestions when typing */
-                <div className="space-y-3">
-                  {/* Matching Categories */}
-                  {matchingCategories.length > 0 && (
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-extrabold text-stone-400 uppercase tracking-wider">
-                        Categories
-                      </span>
-                      <div className="flex flex-wrap gap-2">
-                        {matchingCategories.map((cat) => (
-                          <button
-                            key={cat.slug}
-                            onMouseDown={(e) => e.preventDefault()}
-                            onClick={() => {
-                              handleCategorySelect(cat.name as ProductCategory);
-                              setIsSearchFocused(false);
-                            }}
-                            className="bg-olive/10 hover:bg-olive text-olive hover:text-white px-3 py-1 rounded-full text-xs font-bold transition cursor-pointer flex items-center gap-1"
-                          >
-                            <span>{cat.name}</span>
-                            <ChevronRight className="w-3 h-3" />
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Matching Products */}
-                  <div>
-                    <div className="flex items-center justify-between text-[11px] font-extrabold text-stone-500 uppercase tracking-wider mb-2">
-                      <span>Product Matches ({matchingProducts.length})</span>
-                      {matchingProducts.length > 0 && (
-                        <button
-                          onMouseDown={(e) => e.preventDefault()}
-                          onClick={() => {
-                            onNavigateCategoryPage();
-                            setIsSearchFocused(false);
-                          }}
-                          className="text-olive hover:underline font-bold text-xs capitalize flex items-center gap-1 cursor-pointer"
-                        >
-                          View all results <ArrowRight className="w-3 h-3" />
-                        </button>
-                      )}
-                    </div>
-
-                    {matchingProducts.length > 0 ? (
-                      <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                        {matchingProducts.map((prod) => (
-                          <div
-                            key={prod.id}
-                            onMouseDown={(e) => e.preventDefault()}
-                            onClick={() => {
-                              setQuickViewProduct(prod);
-                              setIsSearchFocused(false);
-                            }}
-                            className="flex items-center gap-3 p-2 rounded-2xl hover:bg-cream transition cursor-pointer group border border-transparent hover:border-stone-200/80"
-                          >
-                            <img
-                              src={prod.image}
-                              alt={prod.name}
-                              className="w-12 h-12 rounded-xl object-cover border border-stone-200 shrink-0 group-hover:scale-105 transition"
-                              onError={(e) => {
-                                e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
-                              }}
-                            />
-                            <div className="flex-1 min-w-0">
-                              <h5 className="font-bold text-earth text-xs font-serif truncate group-hover:text-olive">
-                                {prod.name}
-                              </h5>
-                              <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium">
-                                <span className="bg-stone-100 text-stone-700 px-1.5 py-0.5 rounded text-[10px] font-semibold">
-                                  {prod.category}
-                                </span>
-                                <span>
-                                  {prod.variants && prod.variants[0]
-                                    ? `${prod.variants[0].weight}`
-                                    : '500g'}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="text-right shrink-0">
-                              <span className="font-extrabold text-olive text-xs">
-                                ₹{prod.variants && prod.variants[0] ? prod.variants[0].price : 299}
-                              </span>
-                              <span className="block text-[10px] text-amber-600 font-bold">
-                                ★ {prod.rating || 4.8}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="py-6 text-center text-stone-500 space-y-1">
-                        <p className="text-xs font-medium">
-                          No exact product match found for "<strong>{searchQuery}</strong>"
-                        </p>
-                        <button
-                          onMouseDown={(e) => e.preventDefault()}
-                          onClick={() => {
-                            onNavigateCategoryPage();
-                            setIsSearchFocused(false);
-                          }}
-                          className="text-xs text-olive font-bold underline cursor-pointer"
-                        >
-                          Browse all products in catalog →
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* Right Action Icons */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          {/* Custom Masala CTA Button */}
-          <button
-            onClick={onNavigateCustomMasala}
-            className="relative hidden sm:flex items-center gap-2 bg-olive hover:bg-[#4a4a34] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full shadow-xs hover:shadow transition duration-200 active:scale-95"
-          >
-            <Sparkles className="w-4 h-4 text-amber-200" />
-            <span>Make Custom Masala</span>
-            <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded font-extrabold uppercase">
-              BUILD
-            </span>
-          </button>
-
+        {/* Right Action Icons (Aligned to Right Edge with Search Icon Next to Cart Icon) */}
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 ml-auto">
           {/* Admin Toggle Button */}
           <button
             onClick={() => setIsAdminMode(!isAdminMode)}
@@ -453,7 +254,7 @@ export const Header: React.FC<HeaderProps> = ({
           {!user ? (
             <button
               onClick={() => setIsAuthModalOpen(true)}
-              className="flex items-center gap-1.5 bg-cream hover:bg-stone-200 text-earth font-bold text-xs px-3.5 py-2 rounded-full border border-stone-200 shadow-2xs transition active:scale-95 cursor-pointer"
+              className="flex items-center gap-1.5 bg-cream hover:bg-stone-200 text-earth font-bold text-xs px-2.5 sm:px-3.5 py-2 rounded-full border border-stone-200 shadow-2xs transition active:scale-95 cursor-pointer"
               title="Sign in with OTP"
             >
               <LogIn className="w-4 h-4 text-olive" />
@@ -486,69 +287,93 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             )}
           </button>
-        </div>
-      </div>
 
-      {/* Category Bar / Navigation Links & Trust Badges */}
-      <div className="border-t border-soft bg-cream/60 py-2.5">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
-          {/* Fast Category Links */}
-          <div className="flex items-center gap-5 sm:gap-7 shrink-0 font-sans font-semibold tracking-wide text-stone-700 text-xs sm:text-sm">
+          {/* Search Icon (Placed beyond/next to Cart Icon) */}
+          <div ref={searchRef} className="relative">
             <button
-              onClick={() => {
-                setActiveCategory(null);
-                onNavigateCategoryPage();
-              }}
-              className="hover:text-olive hover:scale-105 transition-all text-earth font-bold"
+              onClick={() => setIsSearchFocused(!isSearchFocused)}
+              className={`p-2 rounded-full transition flex items-center justify-center cursor-pointer ${
+                isSearchFocused || searchQuery
+                  ? 'bg-olive text-white shadow'
+                  : 'text-stone-700 hover:text-olive hover:bg-cream'
+              }`}
+              aria-label="Search Spices & Oils"
+              title="Search Spices & Oils"
             >
-              All Products
+              <Search className="w-5 h-5" />
             </button>
-            <button
-              onClick={() => handleCategorySelect('Wood Pressed Oils')}
-              className="hover:text-olive hover:scale-105 transition-all"
-            >
-              Wood Pressed Oils
-            </button>
-            <button
-              onClick={() => handleCategorySelect('Spices')}
-              className="hover:text-olive hover:scale-105 transition-all"
-            >
-              Spices
-            </button>
-            <button
-              onClick={() => handleCategorySelect('Dry Fruits')}
-              className="hover:text-olive hover:scale-105 transition-all"
-            >
-              Dry Fruits
-            </button>
-            <button
-              onClick={() => handleCategorySelect('Health Foods')}
-              className="hover:text-olive hover:scale-105 transition-all"
-            >
-              Health Foods
-            </button>
-            <button
-              onClick={onNavigateCustomMasala}
-              className="text-terracotta hover:text-amber-700 font-extrabold flex items-center gap-1.5 hover:scale-105 transition-all"
-            >
-              <Sparkles className="w-4 h-4" /> Custom Masala
-            </button>
-          </div>
 
-          {/* Right Side Trust Badges / Promo Highlights */}
-          <div className="hidden lg:flex items-center gap-5 text-xs font-bold text-olive border-l border-stone-200 pl-6 shrink-0">
-            <div className="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
-              <span className="text-sm">🚚</span>
-              <span>Free Delivery &gt; ₹499</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
-              <span className="text-sm">⚡</span>
-              <span>24h Dispatch</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
-              <span className="text-sm">🌿</span>
-              <span>100% Pure Organic</span>
-            </div>
+            {/* Interactive Search Popover Dropdown when Search Icon is Clicked */}
+            {isSearchFocused && (
+              <div className="absolute top-full right-0 mt-3 w-[calc(100vw-2rem)] max-w-xs sm:w-96 bg-white border border-stone-200 rounded-3xl shadow-2xl overflow-hidden z-50 p-4 text-earth space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="relative">
+                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    autoFocus
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      if (e.target.value.trim().length > 0) {
+                        onNavigateCategoryPage();
+                      }
+                    }}
+                    placeholder="Search oils, spices, dry fruits..."
+                    className="w-full bg-cream border border-stone-200 text-earth text-xs sm:text-sm rounded-full pl-9 pr-8 py-2 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition placeholder:text-stone-400"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-xs font-bold p-1 cursor-pointer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Popular / Live Search Matches */}
+                {searchQuery.trim().length === 0 ? (
+                  <div className="space-y-2">
+                    <span className="block text-[10px] font-extrabold text-stone-400 uppercase tracking-wider">
+                      Popular Searches
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Mustard Oil', 'Garam Masala', 'Turmeric', 'Dry Fruits', 'Millets'].map((term) => (
+                        <button
+                          key={term}
+                          onClick={() => {
+                            setSearchQuery(term);
+                            onNavigateCategoryPage();
+                          }}
+                          className="bg-stone-100 hover:bg-cream text-earth text-xs font-bold px-2.5 py-1 rounded-full border border-stone-200"
+                        >
+                          {term}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-2 max-h-60 overflow-y-auto">
+                    {matchingProducts.map((prod) => (
+                      <div
+                        key={prod.id}
+                        onClick={() => {
+                          setQuickViewProduct(prod);
+                          setIsSearchFocused(false);
+                        }}
+                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-cream transition cursor-pointer"
+                      >
+                        <img src={prod.image} alt={prod.name} className="w-10 h-10 rounded-lg object-cover" />
+                        <div className="flex-1 min-w-0">
+                          <h5 className="font-bold text-xs truncate">{prod.name}</h5>
+                          <span className="text-[10px] text-stone-500">₹{prod.variants?.[0]?.price || 299}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -619,5 +444,6 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
     </header>
-  );
+  </>
+);
 };

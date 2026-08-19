@@ -133,6 +133,7 @@ export interface Order {
   shippingAddress: Address;
   deliverySlot: string;
   paymentMethod: 'COD' | 'Razorpay' | 'UPI';
+  paymentStatus?: 'Paid' | 'Pending' | 'Refunded';
   subtotal: number;
   discount: number;
   tax: number;
@@ -161,6 +162,9 @@ export interface Coupon {
   minOrderValue?: number;
   minOrderAmount?: number;
   description: string;
+  expiryDate?: string;
+  isActive?: boolean;
+  isFeatured?: boolean;
 }
 
 export type SortOption = 'featured' | 'newest' | 'popularity' | 'price-low-high' | 'price-high-low' | 'rating';

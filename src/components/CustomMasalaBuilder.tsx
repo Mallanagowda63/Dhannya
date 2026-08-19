@@ -166,7 +166,7 @@ export const CustomMasalaBuilder: React.FC = () => {
 
   return (
     <section id="custom-masala-builder" className="py-12 bg-paper text-earth min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header Hero Banner for Masala Studio */}
         <div className="bg-olive border border-soft rounded-3xl p-6 sm:p-10 mb-8 shadow-sm relative overflow-hidden text-white">
           <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[url('https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&auto=format&fit=crop&q=80')] bg-cover bg-center opacity-15 pointer-events-none" />

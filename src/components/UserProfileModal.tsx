@@ -78,8 +78,8 @@ export const UserProfileModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border border-soft w-full max-w-2xl rounded-3xl shadow-xl overflow-hidden text-earth my-8 relative">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-white border border-soft w-full max-w-2xl rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden text-earth my-auto relative max-h-[92vh] overflow-y-auto">
         {/* Header */}
         <div className="p-6 bg-cream border-b border-soft flex items-center justify-between">
           <div className="flex items-center gap-3">

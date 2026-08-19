@@ -123,7 +123,7 @@ export const Footer: React.FC<{
       </div>
 
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
         {/* Brand Bio */}
         <div className="lg:col-span-2 space-y-4">
           <div
@@ -268,7 +268,7 @@ export const Footer: React.FC<{
       </div>
 
       {/* Bottom Legal & Payment Icons */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-soft pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 border-t border-soft pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500">
         <div className="flex items-center gap-4">
           <span>© {new Date().getFullYear()} Dhaanya Organic Foods Pvt. Ltd. All Rights Reserved.</span>
           <button

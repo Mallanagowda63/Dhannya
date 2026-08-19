@@ -4,15 +4,9 @@ import { CATEGORIES } from '../data/initialData';
 import { ProductCategory, HealthConcern, SortOption } from '../types';
 import { ProductCard } from './ProductCard';
 import {
-  SlidersHorizontal,
-  Grid,
-  List,
   Search,
   ChevronRight,
   ChevronLeft,
-  X,
-  Filter,
-  Check,
   Store,
   Home as HomeIcon,
 } from 'lucide-react';
@@ -20,7 +14,8 @@ import {
 export const CategoryPageView: React.FC<{
   onNavigateHome?: () => void;
   onSelectCategory: (cat?: ProductCategory) => void;
-}> = ({ onNavigateHome, onSelectCategory }) => {
+  onNavigateCustomMasala?: () => void;
+}> = ({ onNavigateHome, onSelectCategory, onNavigateCustomMasala }) => {
   const { products, activeCategory, setActiveCategory, searchQuery, setSearchQuery } = useApp();
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -60,45 +55,57 @@ export const CategoryPageView: React.FC<{
 
   // Filtering Logic
   let filteredList = (products || []).filter((p) => {
+    if (!p) return false;
+
     // Category match
     if (activeCategory && p.category !== activeCategory) return false;
 
     // Search query match
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
-      const matchName = p.name.toLowerCase().includes(q);
-      const matchCat = p.category.toLowerCase().includes(q);
-      const matchDesc = p.description.toLowerCase().includes(q);
-      if (!matchName && !matchCat && !matchDesc) return false;
+      const matchName = (p.name || '').toLowerCase().includes(q);
+      const matchCat = (p.category || '').toLowerCase().includes(q);
+      const matchDesc = (p.description || '').toLowerCase().includes(q);
+      const matchConcern = Array.isArray(p.concern) && p.concern.some((c) => (c || '').toLowerCase().includes(q));
+      const matchTags = Array.isArray(p.tags) && p.tags.some((t) => (t || '').toLowerCase().includes(q));
+      if (!matchName && !matchCat && !matchDesc && !matchConcern && !matchTags) return false;
     }
 
     // Health Concern match
     if (selectedConcern === 'Best Sellers') {
       if (!p.isBestSeller) return false;
     } else if (selectedConcern !== 'All') {
-      if (!p.concern || !p.concern.includes(selectedConcern as HealthConcern)) return false;
+      if (!Array.isArray(p.concern) || !p.concern.includes(selectedConcern as HealthConcern)) return false;
     }
 
-
     // Price range match
-    const lowestPrice = Math.min(...p.variants.map((v) => v.price));
+    const vars = Array.isArray(p.variants) && p.variants.length > 0 ? p.variants : [{ price: 199 }];
+    const lowestPrice = Math.min(...vars.map((v) => v.price || 0));
     if (lowestPrice > priceRange) return false;
 
     // In Stock
-    if (onlyInStock && p.stock <= 0) return false;
+    if (onlyInStock && (p.stock || 0) <= 0) return false;
 
     return true;
   });
 
   // Sorting Logic
   if (sortOption === 'price-low-high') {
-    filteredList.sort((a, b) => a.variants[0].price - b.variants[0].price);
+    filteredList.sort((a, b) => {
+      const priceA = a.variants?.[0]?.price || 0;
+      const priceB = b.variants?.[0]?.price || 0;
+      return priceA - priceB;
+    });
   } else if (sortOption === 'price-high-low') {
-    filteredList.sort((a, b) => b.variants[0].price - a.variants[0].price);
+    filteredList.sort((a, b) => {
+      const priceA = a.variants?.[0]?.price || 0;
+      const priceB = b.variants?.[0]?.price || 0;
+      return priceB - priceA;
+    });
   } else if (sortOption === 'rating') {
-    filteredList.sort((a, b) => b.rating - a.rating);
+    filteredList.sort((a, b) => (b.rating || 0) - (a.rating || 0));
   } else if (sortOption === 'popularity') {
-    filteredList.sort((a, b) => b.reviewCount - a.reviewCount);
+    filteredList.sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
   }
 
   // Pagination (8 items per page)
@@ -111,32 +118,27 @@ export const CategoryPageView: React.FC<{
 
   return (
     <div className="bg-paper text-earth min-h-screen py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Breadcrumb Navigation */}
-        <div className="flex items-center gap-2 text-xs sm:text-sm text-stone-700 bg-white border border-soft px-4 py-3 rounded-xl shadow-2xs font-semibold">
-          <button
-            onClick={handleHomeClick}
-            className="hover:text-olive flex items-center gap-1.5 transition font-bold text-stone-800"
-          >
-            <HomeIcon className="w-4 h-4 text-olive" />
-            <span>Home</span>
-          </button>
-          <ChevronRight className="w-4 h-4 text-stone-400" />
-          <button
-            onClick={handleStorefrontClick}
-            className="hover:text-olive flex items-center gap-1.5 transition font-bold text-stone-700"
-          >
-            <Store className="w-4 h-4 text-stone-500" />
-            <span>Storefront</span>
-          </button>
-          {activeCategory && (
-            <>
-              <ChevronRight className="w-4 h-4 text-stone-400" />
-              <span className="text-olive font-extrabold bg-cream px-2.5 py-0.5 rounded-lg border border-soft shadow-2xs">
-                {activeCategory}
-              </span>
-            </>
-          )}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 space-y-8">
+        {/* Combined Breadcrumb & Fast Category Filter Bar */}
+        <div className="flex items-center gap-3 text-xs sm:text-sm text-stone-700 bg-white border border-soft px-4 py-2.5 rounded-2xl shadow-2xs overflow-x-auto no-scrollbar">
+          {/* Left: Home > Storefront Base */}
+          <div className="flex items-center gap-2 shrink-0 font-semibold">
+            <button
+              onClick={handleHomeClick}
+              className="hover:text-olive flex items-center gap-1.5 transition font-bold text-stone-800"
+            >
+              <HomeIcon className="w-4 h-4 text-olive" />
+              <span>Home</span>
+            </button>
+            <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
+            <button
+              onClick={handleStorefrontClick}
+              className="hover:text-olive flex items-center gap-1.5 transition font-bold text-stone-700"
+            >
+              <Store className="w-3.5 h-3.5 text-stone-500" />
+              <span>Storefront</span>
+            </button>
+          </div>
         </div>
 
         {/* Category Header Banner */}
@@ -156,192 +158,94 @@ export const CategoryPageView: React.FC<{
           </div>
         </div>
 
-        {/* Category Icons Pills Slider */}
-        <div className="relative bg-white border border-soft p-3 rounded-2xl shadow-xs">
-          <div className="flex items-center justify-between mb-2 px-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
-              Categories ({CATEGORIES.length})
-            </span>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => scrollCategories('left')}
-                className="w-7 h-7 rounded-lg bg-cream border border-soft hover:bg-olive hover:text-white flex items-center justify-center transition text-stone-600"
-                title="Scroll Left"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => scrollCategories('right')}
-                className="w-7 h-7 rounded-lg bg-cream border border-soft hover:bg-olive hover:text-white flex items-center justify-center transition text-stone-600"
-                title="Scroll Right"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+        {/* Story-Style Circular Categories Carousel (Matching Reference Screenshot) */}
+        <div className="relative py-4 px-2">
+          {/* Scroll Left Arrow */}
+          <button
+            onClick={() => scrollCategories('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-stone-200 shadow-md hover:bg-olive hover:text-white flex items-center justify-center transition text-stone-700 active:scale-95"
+            title="Scroll Left"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Scroll Right Arrow */}
+          <button
+            onClick={() => scrollCategories('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white border border-stone-200 shadow-md hover:bg-olive hover:text-white flex items-center justify-center transition text-stone-700 active:scale-95"
+            title="Scroll Right"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
 
           <div
             ref={categoryScrollRef}
-            className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1 scroll-smooth"
+            className="flex items-start gap-4 sm:gap-6 overflow-x-auto no-scrollbar px-10 py-2 scroll-smooth"
           >
+            {/* All Categories Circle */}
             <button
               onClick={() => setActiveCategory(null)}
-              className={`text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shrink-0 transition flex items-center gap-2 ${
-                !activeCategory
-                  ? 'bg-olive text-white shadow-xs'
-                  : 'bg-cream border border-soft text-stone-700 hover:border-olive'
-              }`}
+              className="flex flex-col items-center gap-2 group shrink-0 w-20 sm:w-24 cursor-pointer"
             >
-              <span className="w-5 h-5 rounded-full bg-stone-200/60 flex items-center justify-center text-[10px]">
-                🌿
-              </span>
-              <span>All Categories</span>
-            </button>
-
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.slug}
-                onClick={() => setActiveCategory(cat.name)}
-                className={`text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl shrink-0 transition flex items-center gap-2 border ${
-                  activeCategory === cat.name
-                    ? 'bg-olive text-white border-olive font-bold shadow-xs'
-                    : 'bg-white border-soft text-stone-700 hover:border-olive hover:text-earth'
+              <div
+                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 flex items-center justify-center ${
+                  !activeCategory
+                    ? 'border-2 border-emerald-600 bg-emerald-50/50 shadow-md ring-2 ring-emerald-600/30'
+                    : 'border border-stone-200 bg-[#FAF7F2] group-hover:border-olive group-hover:scale-105'
                 }`}
               >
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="w-6 h-6 rounded-lg object-cover shrink-0 border border-black/10"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=100&auto=format&fit=crop&q=80';
-                  }}
-                />
-                <span className="whitespace-nowrap">{cat.name}</span>
-              </button>
-            ))}
+                <div className="w-full h-full rounded-full bg-emerald-100 flex items-center justify-center text-xl font-serif font-bold text-emerald-800">
+                  🌿
+                </div>
+              </div>
+              <span
+                className={`text-xs sm:text-sm text-center leading-tight tracking-tight font-serif transition-colors ${
+                  !activeCategory ? 'text-emerald-700 font-extrabold' : 'text-stone-700 font-semibold group-hover:text-olive'
+                }`}
+              >
+                All Categories
+              </span>
+            </button>
+
+            {CATEGORIES.map((cat) => {
+              const isSelected = activeCategory === cat.name;
+              return (
+                <button
+                  key={cat.slug}
+                  onClick={() => setActiveCategory(cat.name)}
+                  className="flex flex-col items-center gap-2 group shrink-0 w-20 sm:w-24 cursor-pointer"
+                >
+                  <div
+                    className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 transition-all duration-300 ${
+                      isSelected
+                        ? 'border-2 border-emerald-600 bg-emerald-50/50 shadow-md ring-2 ring-emerald-600/30 scale-105'
+                        : 'border border-stone-200 bg-[#FAF7F2] group-hover:border-olive group-hover:scale-105'
+                    }`}
+                  >
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full rounded-full object-cover shadow-2xs"
+                      onError={(e) => {
+                        e.currentTarget.src =
+                          '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                      }}
+                    />
+                  </div>
+                  <span
+                    className={`text-xs sm:text-sm text-center leading-tight tracking-tight font-serif transition-colors max-w-[90px] line-clamp-2 ${
+                      isSelected ? 'text-emerald-700 font-extrabold' : 'text-stone-700 font-semibold group-hover:text-olive'
+                    }`}
+                  >
+                    {cat.name}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Filters + Sort Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-soft shadow-sm">
-          <div className="flex flex-wrap items-center gap-3 text-xs">
-            {/* Filter Pill: Health Concern */}
-            <div className="flex items-center gap-1.5 bg-cream border border-stone-200 px-3 py-1.5 rounded-xl">
-              <span className="text-stone-600 font-bold">Concern:</span>
-              <select
-                value={selectedConcern}
-                onChange={(e) => setSelectedConcern(e.target.value as any)}
-                className="bg-transparent font-bold text-olive focus:outline-none cursor-pointer"
-              >
-                <option value="All">All Concerns</option>
-                <option value="Best Sellers">🔥 Best Sellers</option>
-                <option value="Gut Health">Gut Health</option>
-                <option value="Weight Loss">Weight Loss</option>
-                <option value="Heart Health">Heart Health</option>
-                <option value="Skin & Hair">Skin & Hair</option>
-              </select>
-            </div>
 
-
-            {/* Filter Pill: Max Price */}
-            <div className="flex items-center gap-1.5 bg-cream border border-stone-200 px-3 py-1.5 rounded-xl">
-              <span className="text-stone-600 font-bold">Max Price: ₹{priceRange}</span>
-              <input
-                type="range"
-                min="100"
-                max="2000"
-                step="50"
-                value={priceRange}
-                onChange={(e) => setPriceRange(Number(e.target.value))}
-                className="w-20 accent-olive"
-              />
-            </div>
-
-            {/* Filter Pill: In Stock Only */}
-            <button
-              onClick={() => setOnlyInStock(!onlyInStock)}
-              className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1 transition ${
-                onlyInStock
-                  ? 'bg-olive text-white border border-olive'
-                  : 'bg-cream text-stone-600 border border-stone-200 hover:text-earth'
-              }`}
-            >
-              <Check className={`w-3.5 h-3.5 ${onlyInStock ? 'text-white' : 'opacity-0'}`} />
-              <span>In Stock Only</span>
-            </button>
-          </div>
-
-          {/* Sort & Grid Toggle */}
-          <div className="flex items-center gap-3 text-xs justify-between md:justify-end">
-            <div className="flex items-center gap-2">
-              <span className="text-stone-500">Sort by:</span>
-              <select
-                value={sortOption}
-                onChange={(e) => setSortOption(e.target.value as SortOption)}
-                className="bg-cream border border-stone-200 text-earth rounded-xl px-3 py-1.5 font-bold focus:outline-none"
-              >
-                <option value="featured">Featured</option>
-                <option value="price-low-high">Price: Low to High</option>
-                <option value="price-high-low">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-                <option value="popularity">Popularity</option>
-              </select>
-            </div>
-
-            <div className="flex items-center bg-cream border border-stone-200 rounded-xl p-1">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-1.5 rounded-lg transition ${
-                  viewMode === 'grid' ? 'bg-olive text-white' : 'text-stone-500 hover:text-earth'
-                }`}
-                title="Grid View"
-              >
-                <Grid className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-1.5 rounded-lg transition ${
-                  viewMode === 'list' ? 'bg-olive text-white' : 'text-stone-500 hover:text-earth'
-                }`}
-                title="List View"
-              >
-                <List className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Active Filter Badges */}
-        {(activeCategory || searchQuery || selectedConcern !== 'All' || priceRange < 2000) && (
-          <div className="flex items-center gap-2 flex-wrap text-xs">
-            <span className="text-stone-500 font-bold">Active Filters:</span>
-            {activeCategory && (
-              <span className="bg-cream text-olive border border-soft px-2.5 py-1 rounded-lg flex items-center gap-1 font-bold">
-                {activeCategory}
-                <button onClick={() => setActiveCategory(null)}>
-                  <X className="w-3 h-3 hover:text-earth" />
-                </button>
-              </span>
-            )}
-            {searchQuery && (
-              <span className="bg-cream text-earth border border-soft px-2.5 py-1 rounded-lg flex items-center gap-1 font-bold">
-                Search: "{searchQuery}"
-                <button onClick={() => setSearchQuery('')}>
-                  <X className="w-3 h-3 hover:text-earth" />
-                </button>
-              </span>
-            )}
-            {selectedConcern !== 'All' && (
-              <span className="bg-cream text-earth border border-soft px-2.5 py-1 rounded-lg flex items-center gap-1 font-bold">
-                Concern: {selectedConcern}
-                <button onClick={() => setSelectedConcern('All')}>
-                  <X className="w-3 h-3 hover:text-earth" />
-                </button>
-              </span>
-            )}
-          </div>
-        )}
 
         {/* Product Cards Grid */}
         {paginatedList.length === 0 ? (
