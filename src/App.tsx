@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -21,17 +21,126 @@ import { ServerConditionModal } from './components/ServerConditionModal';
 import { ProductCategory } from './types';
 
 const MainAppContent: React.FC = () => {
-  const { isAdminMode, setActiveCategory, isServerModalOpen, setIsServerModalOpen } = useApp();
+  const {
+    isAdminMode,
+    setIsAdminMode,
+    isCartOpen,
+    setIsCartOpen,
+    isCheckoutOpen,
+    setIsCheckoutOpen,
+    isAuthModalOpen,
+    setIsAuthModalOpen,
+    isProfileOpen,
+    setIsProfileOpen,
+    quickViewProduct,
+    setQuickViewProduct,
+    isServerModalOpen,
+    setIsServerModalOpen,
+    setActiveCategory,
+  } = useApp();
+
   const [currentPageView, setCurrentPageView] = useState<'home' | 'category'>('home');
 
+  // Push history state entry whenever any modal overlay opens
+  useEffect(() => {
+    if (
+      isCartOpen ||
+      isCheckoutOpen ||
+      isAuthModalOpen ||
+      isProfileOpen ||
+      quickViewProduct ||
+      isAdminMode ||
+      isServerModalOpen
+    ) {
+      window.history.pushState({ modal: true }, '');
+    }
+  }, [
+    isCartOpen,
+    isCheckoutOpen,
+    isAuthModalOpen,
+    isProfileOpen,
+    quickViewProduct,
+    isAdminMode,
+    isServerModalOpen,
+  ]);
+
+  // Handle Mobile Hardware / Browser Back Button (popstate event)
+  useEffect(() => {
+    const handlePopState = () => {
+      // 1. Close open modals first
+      if (isCheckoutOpen) {
+        setIsCheckoutOpen(false);
+        return;
+      }
+      if (isCartOpen) {
+        setIsCartOpen(false);
+        return;
+      }
+      if (quickViewProduct) {
+        setQuickViewProduct(null);
+        return;
+      }
+      if (isAuthModalOpen) {
+        setIsAuthModalOpen(false);
+        return;
+      }
+      if (isProfileOpen) {
+        setIsProfileOpen(false);
+        return;
+      }
+      if (isServerModalOpen) {
+        setIsServerModalOpen(false);
+        return;
+      }
+      if (isAdminMode) {
+        setIsAdminMode(false);
+        return;
+      }
+
+      // 2. Handle page view navigation
+      if (currentPageView === 'category') {
+        setActiveCategory(null);
+        setCurrentPageView('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [
+    isCartOpen,
+    isCheckoutOpen,
+    isAuthModalOpen,
+    isProfileOpen,
+    quickViewProduct,
+    isAdminMode,
+    isServerModalOpen,
+    currentPageView,
+    setIsCartOpen,
+    setIsCheckoutOpen,
+    setIsAuthModalOpen,
+    setIsProfileOpen,
+    setQuickViewProduct,
+    setIsServerModalOpen,
+    setIsAdminMode,
+    setActiveCategory,
+  ]);
+
   const handleNavigateHome = () => {
+    if (currentPageView !== 'home') {
+      window.history.pushState({ view: 'home' }, '');
+    }
     setActiveCategory(null);
     setCurrentPageView('home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateCustomMasala = () => {
-    setCurrentPageView('home');
+    if (currentPageView !== 'home') {
+      window.history.pushState({ view: 'home' }, '');
+      setCurrentPageView('home');
+    }
     setTimeout(() => {
       const el = document.getElementById('custom-masala-builder');
       if (el) {
@@ -42,6 +151,9 @@ const MainAppContent: React.FC = () => {
 
   const handleNavigateCategoryPage = (cat?: ProductCategory) => {
     if (cat) setActiveCategory(cat);
+    if (currentPageView !== 'category') {
+      window.history.pushState({ view: 'category', cat }, '');
+    }
     setCurrentPageView('category');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
