@@ -56,11 +56,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
       <div className={`h-1.5 w-full ${getCategoryStripe(product.category)}`} />
 
       {/* Product Image Box */}
-      <div className="relative h-48 sm:h-56 w-full bg-[#F4ECD8]/40 overflow-hidden flex items-center justify-center p-3">
+      <div className="relative h-64 sm:h-72 md:h-56 w-full bg-[#F4ECD8]/40 overflow-hidden flex items-center justify-center p-3.5 sm:p-4">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full max-w-[90%] max-h-[90%] object-contain group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
           onError={(e) => {
             e.currentTarget.src =
