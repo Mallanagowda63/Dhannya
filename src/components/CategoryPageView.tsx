@@ -92,8 +92,8 @@ export const CategoryPageView: React.FC<{
 
   return (
     <div className="bg-[#F4ECD8] text-[#2A2620] min-h-screen pb-20">
-      {/* Category Header Banner */}
-      <div className="bg-[#2A2620] text-[#F4ECD8] py-12 px-4 sm:px-6 lg:px-8 border-b border-[#C89211]/30">
+      {/* Category Header Banner — Hidden on Mobile (<=768px), Visible on Desktop (>=769px) */}
+      <div className="hidden md:block category-page-header bg-[#2A2620] text-[#F4ECD8] py-12 px-4 sm:px-6 lg:px-8 border-b border-[#C89211]/30">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-xs font-semibold text-[#E8B93E] uppercase tracking-widest mb-4">
@@ -128,7 +128,7 @@ export const CategoryPageView: React.FC<{
       </div>
 
       {/* Main Content Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {/* Category Pills Bar */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6 border-b border-[#2A2620]/10">
           <button
