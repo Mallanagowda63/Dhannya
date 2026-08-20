@@ -14,6 +14,12 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === 'production';
 const allowMemoryDbInDev = !isProduction && process.env.USE_MEMORY_DB === 'true';
 
+const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Dhaanya@123';
+
+// Rate Limiter for Admin Login
+const failedAdminAttempts: Record<string, { count: number; lockUntil: number }> = {};
+
 // Nodemailer Transporter setup with persistent connection pooling & 5s timeouts
 let mailTransporter: any = null;
 const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
@@ -49,7 +55,6 @@ try {
 } catch (e: any) {
   console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
 }
-
 // In-memory duplicate email protection cache (cleared after 60 seconds)
 const recentEmailCache = new Set<string>();
 
@@ -66,11 +71,11 @@ function shouldSendEmail(emailKey: string): boolean {
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-// CORS Middleware
+// CORS & Body Parser Middleware
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Admin-Role');
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200);
   }
@@ -80,6 +85,131 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use('/images', express.static(path.join(process.cwd(), 'images')));
+
+// OTP Storage Map
+const otpStoreMap: Record<string, { otp: string; expiresAt: number; name?: string }> = {};
+
+// Check Email API (Identifies Admin vs Customer)
+app.post('/api/auth/check-email', (req, res) => {
+  const { email } = req.body;
+  const cleanEmail = String(email || '').trim().toLowerCase();
+  const isAdmin = cleanEmail === ADMIN_EMAIL;
+  return res.json({ success: true, isAdmin, email: cleanEmail });
+});
+
+// Dedicated Admin Login Endpoint (Password Authentication)
+app.post('/api/auth/admin-login', async (req, res) => {
+  try {
+    console.log('[ADMIN AUTH] Request received');
+
+    const { email, password } = req.body;
+    const cleanEmail = String(email || '').trim().toLowerCase();
+    console.log('[ADMIN AUTH] Email normalized');
+
+    const clientIp = req.ip || req.socket.remoteAddress || 'unknown';
+    const lockKey = `${clientIp}_${cleanEmail}`;
+
+    // Rate Limiting Check
+    const attemptRecord = failedAdminAttempts[lockKey];
+    if (attemptRecord && attemptRecord.lockUntil > Date.now()) {
+      const waitSeconds = Math.ceil((attemptRecord.lockUntil - Date.now()) / 1000);
+      console.warn(`[ADMIN AUTH] Rate limit active for IP ${clientIp}`);
+      return res.status(429).json({
+        success: false,
+        message: `Too many failed login attempts. Account temporarily locked. Please try again in ${waitSeconds} seconds.`,
+      });
+    }
+
+    if (!cleanEmail || !password) {
+      console.warn('[ADMIN AUTH] Missing email or password');
+      return res.status(400).json({
+        success: false,
+        message: 'Email and password are required.',
+      });
+    }
+
+    // Step: Database Connection & Lookup
+    console.log('[ADMIN AUTH] Starting database lookup');
+    const connected = await ensureDbConnected();
+    let dbUser: any = null;
+
+    if (connected) {
+      try {
+        dbUser = await CustomerModel.findOne({ email: cleanEmail }).maxTimeMS(3000).lean();
+      } catch (dbErr: any) {
+        console.error('[ADMIN AUTH] Error during CustomerModel lookup:', dbErr.message);
+      }
+    }
+    console.log('[ADMIN AUTH] Database lookup completed');
+
+    if (dbUser) {
+      console.log('[ADMIN AUTH] Admin user found');
+    } else {
+      console.log('[ADMIN AUTH] User not found in DB (using configured admin credentials check)');
+    }
+
+    // Step: Password Verification
+    console.log('[ADMIN AUTH] Starting password verification');
+    const isValidPassword = (password === ADMIN_PASSWORD);
+    const isMatchingAdminEmail = (cleanEmail === ADMIN_EMAIL);
+
+    console.log('[ADMIN AUTH] Password verification completed');
+
+    if (!isValidPassword || !isMatchingAdminEmail) {
+      const count = (attemptRecord?.count || 0) + 1;
+      const lockUntil = count >= 5 ? Date.now() + 5 * 60 * 1000 : 0;
+      failedAdminAttempts[lockKey] = { count, lockUntil };
+
+      console.warn(`[SECURITY AUDIT] Failed admin login attempt for "${cleanEmail}" from IP ${clientIp} (Attempt ${count})`);
+
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid admin credentials.',
+      });
+    }
+
+    // Step: Role Verification
+    console.log('[ADMIN AUTH] Checking admin role');
+    const userRole = dbUser?.role || 'admin';
+    if (userRole !== 'admin' && userRole !== 'ADMIN' && userRole !== 'administrator') {
+      console.warn(`[ADMIN AUTH] Access denied: User role "${userRole}" is not admin`);
+      return res.status(403).json({
+        success: false,
+        message: 'Admin access required.',
+      });
+    }
+    console.log('[ADMIN AUTH] Role verified');
+
+    // Reset failed attempts on success
+    delete failedAdminAttempts[lockKey];
+
+    // Step: Token Creation
+    console.log('[ADMIN AUTH] Creating authentication token');
+    const authToken = 'admin-auth-token-dhaanya';
+    console.log('[ADMIN AUTH] Token created');
+
+    const adminUserObj = {
+      id: dbUser?.id || 'usr-admin-1',
+      name: dbUser?.name || 'Dhaanya Administrator',
+      email: ADMIN_EMAIL,
+      role: 'admin',
+    };
+
+    console.log('[ADMIN AUTH] Sending success response');
+    return res.json({
+      success: true,
+      message: 'Admin authenticated successfully!',
+      user: adminUserObj,
+      token: authToken,
+    });
+  } catch (err: any) {
+    console.error('[ADMIN AUTH ERROR] Exception in admin-login route:', err.message);
+    return res.status(500).json({
+      success: false,
+      message: 'Authentication service temporarily unavailable.',
+    });
+  }
+});
 
 // Mongoose Schemas
 const ProductSchema = new mongoose.Schema(
@@ -207,6 +337,7 @@ const CustomerSchema = new mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     mobile: String,
+    role: { type: String, default: 'customer' },
     ordersCount: { type: Number, default: 0 },
     totalSpent: { type: Number, default: 0 },
     lastLoginAt: { type: String, default: () => new Date().toISOString() },
@@ -226,13 +357,14 @@ export const ReviewModel = mongoose.model('Review', ReviewSchema);
 export const CustomerModel = mongoose.model('Customer', CustomerSchema);
 
 // In-memory fallbacks ONLY for offline development mode if explicitly requested via USE_MEMORY_DB=true
-let liveCoupons = [
-  { code: 'DHAANYA10', discountPercent: 10, minOrderValue: 0, maxDiscount: 300, description: '10% OFF on all organic orders', expiryDate: '2028-12-31T23:59', isActive: true },
-  { code: 'FESTIVE25', discountPercent: 25, minOrderValue: 499, maxDiscount: 500, description: '25% OFF on festive organic orders above ₹499', expiryDate: '2028-12-31T23:59', isActive: true },
-  { code: 'ORGANIC10', discountPercent: 10, minOrderValue: 499, maxDiscount: 200, description: '10% OFF on organic orders above ₹499', expiryDate: '2028-12-31T23:59', isActive: true },
-  { code: 'WELLNESS20', discountPercent: 20, minOrderValue: 999, maxDiscount: 500, description: '20% OFF on health foods & dry fruits', expiryDate: '2028-12-31T23:59', isActive: true },
-  { code: 'CUSTOMMASALA', discountPercent: 15, minOrderValue: 299, maxDiscount: 150, description: '15% OFF on custom masala recipes', expiryDate: '2028-12-31T23:59', isActive: true },
+const INITIAL_COUPONS = [
+  { code: 'DHAANYA10', discountPercent: 10, minOrderValue: 0, maxDiscount: 300, description: '10% OFF on all organic orders', expiryDate: '2028-12-31T23:59', isActive: true, isFeatured: true },
+  { code: 'FESTIVE25', discountPercent: 25, minOrderValue: 499, maxDiscount: 500, description: '25% OFF on festive organic orders above ₹499', expiryDate: '2028-12-31T23:59', isActive: true, isFeatured: false },
+  { code: 'ORGANIC10', discountPercent: 10, minOrderValue: 499, maxDiscount: 200, description: '10% OFF on organic orders above ₹499', expiryDate: '2028-12-31T23:59', isActive: true, isFeatured: false },
+  { code: 'WELLNESS20', discountPercent: 20, minOrderValue: 999, maxDiscount: 500, description: '20% OFF on health foods & dry fruits', expiryDate: '2028-12-31T23:59', isActive: true, isFeatured: false },
+  { code: 'CUSTOMMASALA', discountPercent: 15, minOrderValue: 299, maxDiscount: 150, description: '15% OFF on custom masala recipes', expiryDate: '2028-12-31T23:59', isActive: true, isFeatured: false },
 ];
+let liveCoupons: any[] = [...INITIAL_COUPONS];
 
 let liveCategories = [...CATEGORIES];
 let liveReviews = [
@@ -274,54 +406,7 @@ let liveAddresses: (Address & { userId?: string })[] = [
 ];
 
 let liveProducts: Product[] = [...PRODUCTS];
-let liveOrders: Order[] = [
-  {
-    id: 'ORD-98231',
-    userId: 'usr-1',
-    items: [
-      {
-        id: 'ci-1',
-        type: 'product',
-        name: 'Wood Pressed Cold Pressed Mustard Oil',
-        image: PRODUCTS[0].image,
-        variantWeight: '1 Litre',
-        price: 399,
-        quantity: 1,
-      },
-      {
-        id: 'ci-2',
-        type: 'product',
-        name: 'Organic Whole Ground Garam Masala',
-        image: PRODUCTS[2].image,
-        variantWeight: '250g',
-        price: 320,
-        quantity: 1,
-      },
-    ],
-    shippingAddress: {
-      id: 'addr-1',
-      fullName: 'Anita Kulkarni',
-      email: 'dhaanyaorganic1@gmail.com',
-      mobile: '+91 98765 43210',
-      street: '402 Sunrise Heights, MG Road',
-      city: 'Mumbai',
-      state: 'Maharashtra',
-      pincode: '400001',
-      isDefault: true,
-    },
-    deliverySlot: 'Morning (9:00 AM - 1:00 PM)',
-    paymentMethod: 'UPI',
-    subtotal: 719,
-    discount: 50,
-    tax: 36,
-    shippingFee: 0,
-    total: 705,
-    status: 'Shipped',
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    estimatedDelivery: 'Tomorrow, by 2 PM',
-    trackingNumber: 'DW-TRK-7892341',
-  },
-];
+let liveOrders: Order[] = [];
 
 let isDbConnected = false;
 
@@ -343,14 +428,14 @@ export async function ensureDbConnected(): Promise<boolean> {
     console.log('[DB] Connecting to MongoDB Atlas cluster...');
     await mongoose.connect(mongoUri, {
       dbName: 'ecomm',
-      serverSelectionTimeoutMS: 12000,
-      connectTimeoutMS: 12000,
+      serverSelectionTimeoutMS: 4000,
+      connectTimeoutMS: 4000,
     });
     isDbConnected = true;
     console.log('[DB] ✅ MongoDB Atlas connected successfully to database "ecomm"');
     return true;
   } catch (err: any) {
-    console.warn('[DB WARNING] Standard connection attempt failed:', err.message);
+    console.warn('[DB WARNING] Connection attempt failed:', err.message);
 
     // SRV resolution fallback for restricted local Windows environments
     if (err.message && (err.message.includes('querySrv') || err.message.includes('ECONNREFUSED') || err.message.includes('ENOTFOUND'))) {
@@ -359,8 +444,8 @@ export async function ensureDbConnected(): Promise<boolean> {
         dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
         await mongoose.connect(mongoUri, {
           dbName: 'ecomm',
-          serverSelectionTimeoutMS: 12000,
-          connectTimeoutMS: 12000,
+          serverSelectionTimeoutMS: 4000,
+          connectTimeoutMS: 4000,
         });
         isDbConnected = true;
         console.log('[DB] ✅ MongoDB Atlas connected successfully via DNS fallback!');
@@ -573,9 +658,6 @@ app.post('/api/seed', async (req, res) => {
   }
 });
 
-// OTP Storage Map
-const otpStoreMap: Record<string, { otp: string; expiresAt: number; name?: string }> = {};
-
 // Send OTP Endpoint
 app.post('/api/auth/send-otp', async (req, res) => {
   try {
@@ -584,6 +666,15 @@ app.post('/api/auth/send-otp', async (req, res) => {
 
     if (!cleanEmail || !cleanEmail.includes('@')) {
       return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
+    }
+
+    // Bypass OTP for Authorized Admin Account
+    if (cleanEmail === ADMIN_EMAIL) {
+      return res.status(400).json({
+        success: false,
+        isAdmin: true,
+        message: 'Admin account detected. Please login using Admin Password.',
+      });
     }
 
     const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -1559,10 +1650,17 @@ app.post('/api/orders', async (req, res) => {
 
 app.get('/api/orders', async (req, res) => {
   try {
-    const { userId } = req.query;
+    const { userId, email } = req.query;
     let query: any = {};
-    if (userId) {
-      query = { $or: [{ userId: String(userId) }, { userId: 'usr-101' }] };
+    if (userId || email) {
+      const conditions: any[] = [];
+      if (userId) conditions.push({ userId: String(userId) });
+      if (email) {
+        const cleanE = String(email).trim().toLowerCase();
+        conditions.push({ userEmail: cleanE });
+        conditions.push({ 'shippingAddress.email': cleanE });
+      }
+      query = { $or: conditions };
     }
 
     const connected = await ensureDbConnected();
@@ -1574,8 +1672,11 @@ app.get('/api/orders', async (req, res) => {
       }));
       return res.json({ success: true, data: dbOrders, dbConnected: true });
     } else if (allowMemoryDbInDev) {
-      const filtered = (userId
-        ? liveOrders.filter((o) => o.userId === String(userId) || o.userId === 'usr-101')
+      const filtered = (userId || email
+        ? liveOrders.filter((o: any) =>
+            (userId && o.userId === String(userId)) ||
+            (email && (o.userEmail?.toLowerCase().trim() === String(email).toLowerCase().trim() || o.shippingAddress?.email?.toLowerCase().trim() === String(email).toLowerCase().trim()))
+          )
         : liveOrders).map((o: any) => ({
           ...o,
           paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')

@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import {
-  Leaf,
   PhoneCall,
   Mail,
   MapPin,
   ShieldCheck,
   Truck,
-  RotateCcw,
   Sparkles,
   Send,
   Heart,
-  Activity,
+  Wheat,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { DhaanyaLogo } from './DhaanyaLogo';
 
 export const Footer: React.FC<{
   onNavigateHome?: () => void;
   onNavigateCustomMasala: () => void;
-}> = ({ onNavigateHome, onNavigateCustomMasala }) => {
-  const { showToast, setIsServerModalOpen } = useApp();
+  onNavigateOurStory?: () => void;
+  onNavigateFreshMilling?: () => void;
+}> = ({ onNavigateHome, onNavigateCustomMasala, onNavigateOurStory, onNavigateFreshMilling }) => {
+  const { showToast, setActiveCategory, login, setIsAdminMode } = useApp();
   const [email, setEmail] = useState('');
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -27,273 +28,178 @@ export const Footer: React.FC<{
       showToast('Please enter a valid email address', 'error');
       return;
     }
-    showToast('🎉 Thank you for subscribing! Check your inbox for ₹100 discount coupon.', 'success');
+    showToast('🎉 Thank you for subscribing to Dhaanya Pantry updates!', 'success');
     setEmail('');
   };
 
   return (
-    <footer className="bg-cream text-earth border-t border-soft pt-12 pb-8">
-      {/* Trust Badges Section - Scaled Up & Bigger */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 mb-14 border-b border-soft pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-10">
-          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
-            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
-              <Leaf className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
+    <footer className="bg-[#2A2620] text-[#F4ECD8] border-t border-[#C89211]/30 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top Pillars */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-12 border-b border-[#F4ECD8]/10">
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F4ECD8]/5 border border-[#F4ECD8]/10">
+            <div className="w-12 h-12 rounded-lg bg-[#3E4B32] text-[#E8B93E] flex items-center justify-center shrink-0">
+              <Wheat className="w-6 h-6" />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h4 className="text-base sm:text-lg font-extrabold text-earth">100% Organic & Pure</h4>
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-              </div>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">Zero additives, artificial colors or preservatives</p>
+              <h4 className="font-serif font-bold text-base text-[#F4ECD8]">Freshly Milled</h4>
+              <p className="text-xs text-[#F4ECD8]/70">Ground fresh on order placement</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
-            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
-              <Truck className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F4ECD8]/5 border border-[#F4ECD8]/10">
+            <div className="w-12 h-12 rounded-lg bg-[#3E4B32] text-[#E8B93E] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h4 className="text-base sm:text-lg font-extrabold text-earth">Express Shipping</h4>
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-              </div>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">Free doorstep delivery on orders &gt; ₹499</p>
+              <h4 className="font-serif font-bold text-base text-[#F4ECD8]">Whole Grain Purity</h4>
+              <p className="text-xs text-[#F4ECD8]/70">100% unpolished, zero chemicals</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
-            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F4ECD8]/5 border border-[#F4ECD8]/10">
+            <div className="w-12 h-12 rounded-lg bg-[#3E4B32] text-[#E8B93E] flex items-center justify-center shrink-0">
+              <Truck className="w-6 h-6" />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h4 className="text-base sm:text-lg font-extrabold text-earth">100% Freshly Ground</h4>
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-              </div>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">Custom roasted & milled on demand</p>
+              <h4 className="font-serif font-bold text-base text-[#F4ECD8]">Express Delivery</h4>
+              <p className="text-xs text-[#F4ECD8]/70">Free shipping on orders above ₹499</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-5 bg-white p-6 sm:p-7 rounded-3xl border border-stone-200/80 shadow-xs hover:border-olive transition duration-300 hover:shadow-md">
-            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-[#f7f4ea] border border-stone-200 flex items-center justify-center shrink-0">
-              <RotateCcw className="w-8 h-8 sm:w-9 sm:h-9 text-olive" />
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F4ECD8]/5 border border-[#F4ECD8]/10">
+            <div className="w-12 h-12 rounded-lg bg-[#3E4B32] text-[#E8B93E] flex items-center justify-center shrink-0">
+              <Sparkles className="w-6 h-6 text-[#C89211]" />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h4 className="text-base sm:text-lg font-extrabold text-earth">Guaranteed Quality</h4>
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-              </div>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">7-Day easy replacement or 100% refund support</p>
+              <h4 className="font-serif font-bold text-base text-[#F4ECD8]">Custom Masala Mill</h4>
+              <p className="text-xs text-[#F4ECD8]/70">Blend your exact spice ratios</p>
             </div>
           </div>
         </div>
 
-        {/* Verified Organic Certifications & Seals Banner - Scaled Up */}
-        <div className="bg-white border border-stone-200/90 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0">
-              <ShieldCheck className="w-8 h-8" />
-            </div>
-            <div>
-              <h5 className="text-sm sm:text-base md:text-lg font-extrabold text-earth flex items-center gap-2.5 flex-wrap">
-                <span>Government Certified Organic Standards</span>
-                <span className="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-black uppercase tracking-wider">
-                  VERIFIED
-                </span>
-              </h5>
-              <p className="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
-                FSSAI License No. <strong className="text-earth font-bold">11522001000482</strong> • USDA Organic • India Organic (NPOP) • NABL Lab Tested
-              </p>
-            </div>
+        {/* Main Footer Links */}
+        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 border-b border-[#F4ECD8]/10">
+          {/* Brand Info */}
+          <div className="lg:col-span-2 space-y-4">
+            <DhaanyaLogo variant="light" size="lg" />
+            <p className="font-serif italic text-base text-[#E8B93E] max-w-sm">
+              "Rooted in tradition, freshly milled before you and for you."
+            </p>
+            <p className="text-xs text-[#F4ECD8]/75 leading-relaxed max-w-sm">
+              Restoring authentic Indian food wisdom. Unpolished whole grains, freshly ground spices, and cold-pressed oils prepared with complete transparency.
+            </p>
           </div>
 
-          <div className="flex items-center gap-3 flex-wrap text-stone-800 font-extrabold text-xs sm:text-sm">
-            <span className="bg-[#f7f4ea] border border-stone-200/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-2xs">
-              🌿 100% Pure & Unadulterated
-            </span>
-            <span className="bg-[#f7f4ea] border border-stone-200/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-2xs">
-              🔒 256-Bit SSL Encrypted
-            </span>
-            <span className="bg-[#f7f4ea] border border-stone-200/80 px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-2xs">
-              ⭐ 50,000+ Happy Customers
-            </span>
+          {/* Shop Column */}
+          <div className="space-y-3">
+            <h4 className="font-serif font-bold text-sm text-[#E8B93E] uppercase tracking-wider">
+              Explore Pantry
+            </h4>
+            <ul className="space-y-2 text-xs text-[#F4ECD8]/80">
+              <li>
+                <button
+                  onClick={() => setActiveCategory('Flour')}
+                  className="hover:text-[#E8B93E] transition-colors"
+                >
+                  Fresh Flours & Atta
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveCategory('Spices')}
+                  className="hover:text-[#E8B93E] transition-colors"
+                >
+                  Whole Ground Spices
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveCategory('Wood Pressed Oils')}
+                  className="hover:text-[#E8B93E] transition-colors"
+                >
+                  Cold-Pressed Oils
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveCategory('Millets')}
+                  className="hover:text-[#E8B93E] transition-colors"
+                >
+                  Heritage Millets
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onNavigateCustomMasala}
+                  className="hover:text-[#E8B93E] transition-colors flex items-center gap-1 text-[#C89211] font-semibold"
+                >
+                  <Sparkles className="w-3 h-3" /> Custom Masala Mill
+                </button>
+              </li>
+            </ul>
           </div>
-        </div>
-      </div>
 
-
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-        {/* Brand Bio */}
-        <div className="lg:col-span-2 space-y-4">
-          <div
-            onClick={onNavigateHome}
-            className="flex items-center gap-2 cursor-pointer group"
-            title="Go to Home"
-          >
-            <div className="w-9 h-9 rounded-xl bg-olive p-0.5 flex items-center justify-center group-hover:scale-105 transition">
-              <Leaf className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-2xl font-bold font-serif text-earth tracking-tight">Dhaanya</span>
+          {/* Brand & Experience Column */}
+          <div className="space-y-3">
+            <h4 className="font-serif font-bold text-sm text-[#E8B93E] uppercase tracking-wider">
+              About Dhaanya
+            </h4>
+            <ul className="space-y-2 text-xs text-[#F4ECD8]/80">
+              <li>
+                <button
+                  onClick={onNavigateOurStory}
+                  className="hover:text-[#E8B93E] transition-colors"
+                >
+                  Our Story & Belief
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onNavigateFreshMilling}
+                  className="hover:text-[#E8B93E] transition-colors"
+                >
+                  Fresh Milling Ritual
+                </button>
+              </li>
+              <li>
+                <span className="text-[#F4ECD8]/60 cursor-default">Store & Mill Locations</span>
+              </li>
+            </ul>
           </div>
-          <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-sm">
-            Dhaanya is India’s premier artisanal organic wellness store. We bring you 100% cold-pressed oils from traditional wooden Ghani, handpicked superfoods, and our industry-first <strong>Make Your Own Masala</strong> custom spice milling studio.
-          </p>
 
-          {/* Newsletter */}
-          <form onSubmit={handleSubscribe} className="space-y-2 pt-2">
-            <label className="block text-xs font-bold text-earth">
-              Subscribe for organic health tips & ₹100 voucher:
-            </label>
-            <div className="flex items-center gap-2 max-w-sm">
+          {/* Newsletter Column */}
+          <div className="space-y-3">
+            <h4 className="font-serif font-bold text-sm text-[#E8B93E] uppercase tracking-wider">
+              Stay Connected
+            </h4>
+            <p className="text-xs text-[#F4ECD8]/75">
+              Subscribe to receive updates on seasonal grain harvests and custom recipe blends.
+            </p>
+            <form onSubmit={handleSubscribe} className="space-y-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="bg-white border border-stone-200 text-xs text-earth rounded-lg px-3 py-2.5 flex-1 focus:outline-none focus:border-olive"
+                placeholder="Enter your email"
+                className="w-full bg-[#F4ECD8]/10 border border-[#F4ECD8]/20 rounded-md px-3 py-2 text-xs text-[#F4ECD8] placeholder-[#F4ECD8]/50 focus:outline-none focus:border-[#C89211]"
               />
               <button
                 type="submit"
-                className="bg-olive hover:bg-[#4a4a34] text-white font-bold px-4 py-2.5 rounded-lg text-xs flex items-center gap-1 transition"
+                className="w-full py-2 bg-[#C89211] hover:bg-[#A9542B] text-[#2A2620] hover:text-white font-bold text-xs uppercase tracking-wider rounded-md transition-colors flex items-center justify-center gap-1.5"
               >
-                <span>Join</span>
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-3 h-3" /> Subscribe
               </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h4 className="text-sm font-bold text-earth uppercase tracking-wider mb-4 border-b border-soft pb-1">
-            Shop Categories
-          </h4>
-          <ul className="space-y-2 text-xs text-stone-600">
-            <li>
-              <a href="#category" className="hover:text-olive transition">
-                Wood Pressed Oils
-              </a>
-            </li>
-            <li>
-              <a href="#category" className="hover:text-olive transition">
-                Dry Fruits & Nuts
-              </a>
-            </li>
-            <li>
-              <a href="#category" className="hover:text-olive transition">
-                Organic Millets & Flours
-              </a>
-            </li>
-            <li>
-              <a href="#category" className="hover:text-olive transition">
-                Pure Natural Honey
-              </a>
-            </li>
-            <li>
-              <button
-                onClick={onNavigateCustomMasala}
-                className="text-olive hover:underline font-bold flex items-center gap-1 transition"
-              >
-                <Sparkles className="w-3.5 h-3.5" /> Custom Masala Studio
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        {/* Support & Policies */}
-        <div>
-          <h4 className="text-sm font-bold text-earth uppercase tracking-wider mb-4 border-b border-soft pb-1">
-            Customer Care
-          </h4>
-          <ul className="space-y-2 text-xs text-stone-600">
-            <li>
-              <a href="#orders" className="hover:text-olive transition">
-                Track Your Order
-              </a>
-            </li>
-            <li>
-              <a href="#shipping" className="hover:text-olive transition">
-                Shipping & Delivery Policy
-              </a>
-            </li>
-            <li>
-              <a href="#returns" className="hover:text-olive transition">
-                Returns & Replacement
-              </a>
-            </li>
-            <li>
-              <a href="#terms" className="hover:text-olive transition">
-                Terms & Conditions
-              </a>
-            </li>
-            <li>
-              <a href="#privacy" className="hover:text-olive transition">
-                Privacy Policy
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact Info */}
-        <div>
-          <h4 className="text-sm font-bold text-earth uppercase tracking-wider mb-4 border-b border-soft pb-1">
-            Contact Us
-          </h4>
-          <div className="space-y-3 text-xs text-stone-600">
-            <div className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-olive shrink-0 mt-0.5" />
-              <span>Dhaanya Organic Mills, Plot 42, Organic Hub, Bandra West, Mumbai 400050</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <PhoneCall className="w-4 h-4 text-olive shrink-0" />
-              <span>+91 9008625716</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-olive shrink-0" />
-              <span>dhaanyaorganic1@gmail.com</span>
-            </div>
-            <div className="pt-2 flex items-center gap-2">
-              <a
-                href="https://wa.me/919008625716"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-white text-olive border border-soft px-3 py-1.5 rounded-lg flex items-center gap-1.5 font-bold hover:bg-stone-50 transition"
-              >
-                <PhoneCall className="w-3.5 h-3.5 text-olive" /> WhatsApp Chat
-              </a>
-            </div>
+            </form>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Legal & Payment Icons */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 border-t border-soft pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-        <div className="flex items-center gap-4">
-          <span>© {new Date().getFullYear()} Dhaanya Organic Foods Pvt. Ltd. All Rights Reserved.</span>
-          <button
-            onClick={() => setIsServerModalOpen(true)}
-            className="text-emerald-700 hover:text-emerald-900 font-bold underline flex items-center gap-1 cursor-pointer"
-            title="Check MongoDB Atlas & Server Status"
-          >
-            <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
-            <span>Server & DB Health</span>
-          </button>
-        </div>
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] uppercase font-bold text-stone-500">Accepted Payments:</span>
-          <span className="bg-white px-2 py-1 rounded text-stone-700 font-bold border border-soft">
-            UPI / GPay
-          </span>
-          <span className="bg-white px-2 py-1 rounded text-stone-700 font-bold border border-soft">
-            Razorpay
-          </span>
-          <span className="bg-white px-2 py-1 rounded text-stone-700 font-bold border border-soft">
-            Visa / MC
-          </span>
-          <span className="bg-white px-2 py-1 rounded text-stone-700 font-bold border border-soft">
-            Cash On Delivery
-          </span>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#F4ECD8]/60">
+          <p>© {new Date().getFullYear()} Dhaanya (ಧಾನ್ಯ). All Rights Reserved.</p>
+          <div className="flex items-center gap-1 font-kannada text-[#E8B93E]">
+            <span>ಧಾನ್ಯ — Rooted in tradition, freshly milled for you.</span>
+          </div>
         </div>
       </div>
     </footer>

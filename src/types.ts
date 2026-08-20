@@ -99,6 +99,7 @@ export interface CustomRecipe {
 export interface CartItem {
   id: string; // unique ID in cart
   productId?: string;
+  product?: any;
   customRecipeId?: string;
   type: 'product' | 'custom_masala';
   name: string;
@@ -132,14 +133,14 @@ export interface Order {
   items: CartItem[];
   shippingAddress: Address;
   deliverySlot: string;
-  paymentMethod: 'COD' | 'Razorpay' | 'UPI';
-  paymentStatus?: 'Paid' | 'Pending' | 'Refunded';
+  paymentMethod: 'COD' | 'Razorpay' | 'UPI' | 'Online' | string;
+  paymentStatus?: 'Paid' | 'Pending' | 'Refunded' | string;
   subtotal: number;
   discount: number;
   tax: number;
   shippingFee: number;
   total: number;
-  status: 'Pending' | 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled';
+  status: 'Pending' | 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled' | 'Dispatched' | string;
   createdAt: string;
   estimatedDelivery: string;
   trackingNumber: string;

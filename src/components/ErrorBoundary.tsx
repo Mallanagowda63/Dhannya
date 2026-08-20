@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 interface Props {
@@ -11,8 +11,8 @@ interface State {
   errorInfo: ErrorInfo | null;
 }
 
-export class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
+export class ErrorBoundary extends React.Component<Props, State> {
+  override state: State = {
     hasError: false,
     error: null,
     errorInfo: null,
@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error, errorInfo: null };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  public override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught React ErrorBoundary caught an error:', error, errorInfo);
     this.setState({ errorInfo });
   }
@@ -37,24 +37,24 @@ export class ErrorBoundary extends Component<Props, State> {
     window.location.href = '/';
   };
 
-  public render() {
+  public override render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-6 text-earth font-sans">
-          <div className="bg-white border border-stone-200 rounded-3xl p-8 max-w-lg w-full shadow-xl text-center space-y-5">
-            <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mx-auto shadow-inner">
+        <div className="min-h-screen bg-[#F4ECD8] flex items-center justify-center p-6 text-[#2A2620] font-sans">
+          <div className="kraft-card bg-[#F8F3E6] border border-[#2A2620]/20 rounded-2xl p-8 max-w-lg w-full shadow-xl text-center space-y-5">
+            <div className="w-16 h-16 rounded-2xl bg-[#7C2A1E]/10 text-[#7C2A1E] flex items-center justify-center mx-auto shadow-inner">
               <AlertTriangle className="w-8 h-8" />
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold font-serif text-earth">Something went wrong</h2>
-              <p className="text-xs text-stone-600 mt-2 leading-relaxed">
-                An unexpected display error occurred while processing your click or request. Don't worry, your cart and data are safe!
+              <h2 className="text-2xl font-bold font-serif text-[#2A2620]">This page wandered away from the kitchen</h2>
+              <p className="text-xs text-[#2A2620]/75 mt-2 leading-relaxed">
+                An unexpected error occurred while processing your request. Don't worry, your basket and saved data are completely safe!
               </p>
             </div>
 
             {this.state.error && (
-              <div className="bg-stone-100 p-3 rounded-xl border border-stone-200 text-left overflow-x-auto max-h-32 text-[11px] font-mono text-rose-700">
+              <div className="bg-[#2A2620]/5 p-3 rounded-xl border border-[#2A2620]/10 text-left overflow-x-auto max-h-32 text-[11px] font-mono text-[#7C2A1E]">
                 {this.state.error.toString()}
               </div>
             )}
@@ -62,16 +62,16 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
               <button
                 onClick={this.handleReset}
-                className="w-full sm:w-auto bg-olive hover:bg-[#4a4a34] text-white font-bold px-5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] font-bold px-5 py-2.5 rounded-lg text-xs flex items-center justify-center gap-2 shadow-sm transition active:scale-95 cursor-pointer"
               >
-                <RefreshCw className="w-4 h-4" />
-                <span>Reload Page</span>
+                <RefreshCw className="w-4 h-4 text-[#E8B93E]" />
+                <span>Reload Kitchen</span>
               </button>
               <button
                 onClick={this.handleGoHome}
-                className="w-full sm:w-auto bg-cream hover:bg-stone-200 border border-stone-200 text-earth font-bold px-5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto bg-[#F4ECD8] hover:bg-[#F8F3E6] border border-[#2A2620]/20 text-[#2A2620] font-bold px-5 py-2.5 rounded-lg text-xs flex items-center justify-center gap-2 transition active:scale-95 cursor-pointer"
               >
-                <Home className="w-4 h-4 text-olive" />
+                <Home className="w-4 h-4 text-[#3E4B32]" />
                 <span>Return to Home</span>
               </button>
             </div>

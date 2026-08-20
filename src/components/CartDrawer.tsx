@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { X, Trash2, Plus, Minus, ShoppingBag, Tag, ArrowRight, Sparkles, Check, PhoneCall } from 'lucide-react';
+import { DhaanyaLogo } from './DhaanyaLogo';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -25,19 +26,18 @@ export const CartDrawer: React.FC = () => {
 
   const generateCartWhatsAppMessage = () => {
     const origin = window.location.origin;
-    let text = `🌿 *Dhannya Organic Store - Cart Order Request* 🌿\n\n`;
+    let text = `🌱 *Dhaanya (ಧಾನ್ಯ) - Fresh Milling Order Request* 🌱\n\n`;
     (cart || []).forEach((item, idx) => {
       const itemImg = item.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg';
-      const imgUrl = itemImg.startsWith('http')
-        ? itemImg
-        : `${origin}${itemImg}`;
-      text += `${idx + 1}. *${item.name || 'Organic Product'}* (${item.variantWeight || 'Standard'})\n`;
+      const imgUrl = itemImg.startsWith('http') ? itemImg : `${origin}${itemImg}`;
+      text += `${idx + 1}. *${item.name || 'Dhaanya Item'}* (${item.variantWeight || 'Standard'})\n`;
       text += `   - Qty: ${item.quantity} | Price: ₹${(item.price || 0) * item.quantity}\n`;
       text += `   - Image: ${imgUrl}\n\n`;
     });
-    text += `💰 *Grand Total:* ₹${cartGrandTotal}\n`;
-    text += `🚚 *Delivery:* Free Shipping above ₹499 | COD & UPI Available\n\n`;
-    text += `Please confirm my order and send payment instructions!`;
+    text += `💰 *Subtotal:* ₹${cartSubtotal}\n`;
+    text += `🚚 *Delivery:* ₹${cartShippingFee === 0 ? 'FREE' : cartShippingFee}\n`;
+    text += `✨ *Grand Total:* ₹${cartGrandTotal}\n\n`;
+    text += `Please confirm my fresh milling order!`;
     return encodeURIComponent(text);
   };
 
@@ -53,109 +53,100 @@ export const CartDrawer: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/40 backdrop-blur-sm flex justify-end">
-      <div className="w-full max-w-md bg-white border-l border-soft h-full flex flex-col justify-between shadow-xl animate-slide-left text-earth">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-[#2A2620]/70 backdrop-blur-sm flex justify-end">
+      <div className="w-full max-w-md bg-[#F4ECD8] text-[#2A2620] border-l border-[#2A2620]/15 h-full flex flex-col justify-between shadow-2xl animate-slide-left">
         {/* Header */}
-        <div className="p-4 border-b border-soft flex items-center justify-between bg-cream">
-          <div className="flex items-center gap-2">
-            <ShoppingBag className="w-5 h-5 text-olive" />
-            <h3 className="text-base font-bold font-serif text-earth">Your Shopping Cart ({cart.length})</h3>
+        <div className="p-5 border-b border-[#2A2620]/10 flex items-center justify-between bg-[#F8F3E6]">
+          <div className="flex items-center gap-3">
+            <ShoppingBag className="w-5 h-5 text-[#3E4B32]" />
+            <h2 className="font-serif font-bold text-xl text-[#2A2620]">
+              Your Fresh Basket
+            </h2>
+            <span className="text-xs bg-[#3E4B32] text-[#F4ECD8] px-2 py-0.5 rounded-full font-bold">
+              {cart.reduce((a, b) => a + b.quantity, 0)}
+            </span>
           </div>
           <button
             onClick={() => setIsCartOpen(false)}
-            className="p-1.5 rounded-full text-stone-500 hover:text-earth hover:bg-stone-200 transition"
+            className="p-1.5 rounded-full hover:bg-[#2A2620]/10 text-[#2A2620] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Free Shipping Progress Indicator */}
-        <div className="bg-cream/80 px-4 py-2 border-b border-soft text-xs">
-          {cartSubtotal >= 499 ? (
-            <div className="text-olive font-bold flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-olive" />
-              <span>🎉 Congratulations! You unlocked FREE Delivery!</span>
-            </div>
-          ) : (
-            <div className="text-stone-700">
-              Add <strong className="text-terracotta">₹{499 - cartSubtotal}</strong> more to get{' '}
-              <strong className="text-olive">FREE Shipping</strong>!
-            </div>
-          )}
-        </div>
-
-        {/* Cart Items List */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-paper">
+        {/* Cart Item List / Empty State */}
+        <div className="flex-1 overflow-y-auto p-5 space-y-4 no-scrollbar">
           {cart.length === 0 ? (
-            <div className="text-center py-16 space-y-3">
-              <div className="w-16 h-16 rounded-full bg-cream flex items-center justify-center mx-auto text-stone-400">
-                <ShoppingBag className="w-8 h-8" />
-              </div>
-              <p className="text-sm font-medium text-stone-600">Your cart is currently empty</p>
+            <div className="text-center py-16 space-y-4">
+              <DhaanyaLogo variant="default" size="md" className="mx-auto opacity-70" />
+              <h3 className="font-serif text-2xl font-bold text-[#2A2620]">
+                Your basket is waiting.
+              </h3>
+              <p className="text-xs text-[#2A2620]/70 max-w-xs mx-auto">
+                Explore our freshly milled whole flours, stone-ground spices, and cold-pressed oils.
+              </p>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="bg-olive hover:bg-[#4a4a34] text-white text-xs font-bold px-4 py-2 rounded-xl transition"
+                className="mt-4 px-6 py-3 rounded-md bg-[#3E4B32] text-[#F4ECD8] font-semibold text-xs uppercase tracking-wider shadow-sm hover:bg-[#2A2620] transition-colors"
               >
-                Start Shopping
+                Browse Fresh Pantry
               </button>
             </div>
           ) : (
             cart.map((item) => (
               <div
                 key={item.id}
-                className="bg-white border border-soft p-3 rounded-2xl flex gap-3 relative group shadow-sm"
+                className="kraft-card p-3 rounded-xl flex gap-3 items-center justify-between shadow-xs"
               >
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-16 h-16 rounded-xl object-cover shrink-0 border border-soft"
+                  className="w-16 h-16 object-cover rounded-lg bg-white/50 shrink-0"
                 />
 
                 <div className="flex-1 min-w-0">
-                  <div className="flex justify-between items-start gap-1">
-                    <h4 className="text-xs font-bold font-serif text-earth leading-tight line-clamp-1">
-                      {item.name}
-                    </h4>
-                    <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="text-stone-400 hover:text-rose-600 transition"
-                      title="Remove"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-
-                  <span className="text-[10px] bg-cream text-olive px-2 py-0.5 rounded border border-soft inline-block my-1 font-semibold">
-                    {item.variantWeight}
+                  <h4 className="font-serif font-bold text-sm text-[#2A2620] truncate">
+                    {item.name}
+                  </h4>
+                  <span className="text-[11px] text-[#2A2620]/60 block">
+                    Weight: {item.variantWeight}
                   </span>
-
-                  {item.customDetails && (
-                    <p className="text-[10px] text-stone-500 line-clamp-2 italic mb-1">
-                      {item.customDetails.roastingSummary}
-                    </p>
-                  )}
-
-                  <div className="flex items-center justify-between mt-1">
-                    <span className="text-xs font-bold text-earth">
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="font-serif font-bold text-sm text-[#2A2620]">
                       ₹{item.price * item.quantity}
                     </span>
+                    <span className="text-[10px] text-[#2A2620]/50">
+                      (₹{item.price} each)
+                    </span>
+                  </div>
+                </div>
 
-                    {/* Qty Controls */}
-                    <div className="flex items-center bg-cream border border-stone-200 rounded-lg p-0.5">
-                      <button
-                        onClick={() => updateCartQty(item.id, -1)}
-                        className="w-5 h-5 rounded text-stone-600 hover:bg-stone-200 flex items-center justify-center"
-                      >
-                        <Minus className="w-3 h-3" />
-                      </button>
-                      <span className="text-xs font-bold px-2 text-earth">{item.quantity}</span>
-                      <button
-                        onClick={() => updateCartQty(item.id, 1)}
-                        className="w-5 h-5 rounded text-stone-600 hover:bg-stone-200 flex items-center justify-center"
-                      >
-                        <Plus className="w-3 h-3" />
-                      </button>
-                    </div>
+                {/* Quantity Controls */}
+                <div className="flex flex-col items-end gap-2">
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-[#7C2A1E] hover:text-[#2A2620] p-1"
+                    title="Remove item"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+
+                  <div className="flex items-center border border-[#2A2620]/20 rounded bg-[#F4ECD8]">
+                    <button
+                      onClick={() => updateCartQty(item.id, item.quantity - 1)}
+                      className="p-1 hover:bg-[#2A2620]/10 text-[#2A2620]"
+                    >
+                      <Minus className="w-3 h-3" />
+                    </button>
+                    <span className="px-2 font-bold text-xs text-[#2A2620]">
+                      {item.quantity}
+                    </span>
+                    <button
+                      onClick={() => updateCartQty(item.id, item.quantity + 1)}
+                      className="p-1 hover:bg-[#2A2620]/10 text-[#2A2620]"
+                    >
+                      <Plus className="w-3 h-3" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -163,22 +154,19 @@ export const CartDrawer: React.FC = () => {
           )}
         </div>
 
-        {/* Footer & Checkout Calculations */}
+        {/* Footer Summary & Checkout */}
         {cart.length > 0 && (
-          <div className="p-4 border-t border-soft bg-cream space-y-3">
-            {/* Coupon Code Section */}
+          <div className="p-5 border-t border-[#2A2620]/10 bg-[#F8F3E6] space-y-4">
+            {/* Coupon Code Input */}
             <div>
               {appliedCoupon ? (
-                <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-2.5 rounded-xl text-xs flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <Tag className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>
-                      Coupon <strong>{appliedCoupon.code}</strong> applied (-₹{appliedCoupon.discountAmount})
-                    </span>
-                  </div>
+                <div className="flex items-center justify-between bg-[#3E4B32]/10 border border-[#3E4B32]/30 p-2.5 rounded-lg text-xs">
+                  <span className="flex items-center gap-1.5 font-semibold text-[#3E4B32]">
+                    <Tag className="w-3.5 h-3.5 text-[#C89211]" /> Coupon applied ({appliedCoupon.code})
+                  </span>
                   <button
                     onClick={removeCoupon}
-                    className="text-stone-500 hover:text-rose-600 font-bold underline text-[11px]"
+                    className="text-[#7C2A1E] hover:underline font-bold"
                   >
                     Remove
                   </button>
@@ -189,13 +177,13 @@ export const CartDrawer: React.FC = () => {
                     type="text"
                     value={couponCodeInput}
                     onChange={(e) => setCouponCodeInput(e.target.value)}
-                    placeholder="Enter Coupon Code (e.g. DHAANYA10)"
-                    className="bg-white border border-stone-200 text-xs text-earth rounded-xl px-3 py-2 flex-1 focus:outline-none focus:border-olive uppercase font-semibold"
+                    placeholder="Enter Coupon Code"
+                    className="flex-1 bg-[#F4ECD8] border border-[#2A2620]/20 rounded-md px-3 py-1.5 text-xs text-[#2A2620] focus:outline-none focus:border-[#C89211] uppercase"
                   />
                   <button
                     type="submit"
-                    disabled={couponLoading}
-                    className="bg-white hover:bg-stone-100 text-earth border border-stone-200 text-xs font-bold px-3 py-2 rounded-xl transition"
+                    disabled={couponLoading || !couponCodeInput.trim()}
+                    className="px-3 py-1.5 bg-[#2A2620] text-[#F4ECD8] font-bold text-xs rounded-md uppercase tracking-wider hover:bg-[#3E4B32] disabled:opacity-50"
                   >
                     Apply
                   </button>
@@ -203,55 +191,51 @@ export const CartDrawer: React.FC = () => {
               )}
             </div>
 
-            {/* Calculations Breakdown */}
-            <div className="space-y-1.5 text-xs text-stone-600">
+            {/* Subtotal Calculations */}
+            <div className="space-y-1.5 text-xs text-[#2A2620]/80 pt-2 border-t border-[#2A2620]/10">
               <div className="flex justify-between">
                 <span>Subtotal:</span>
-                <span className="font-bold text-earth">₹{cartSubtotal}</span>
+                <span className="font-semibold">₹{cartSubtotal}</span>
               </div>
               {cartTotalDiscount > 0 && (
-                <div className="flex justify-between text-emerald-700 font-bold">
-                  <span>Coupon Discount:</span>
-                  <span>-₹{cartTotalDiscount}</span>
+                <div className="flex justify-between text-[#3E4B32]">
+                  <span>Discount:</span>
+                  <span className="font-semibold">-₹{cartTotalDiscount}</span>
                 </div>
               )}
               <div className="flex justify-between">
-                <span>GST Tax (5%):</span>
-                <span className="font-bold text-earth">₹{cartTax}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Shipping Fee:</span>
-                <span className="font-bold text-earth">
-                  {cartShippingFee === 0 ? <strong className="text-olive">FREE</strong> : `₹${cartShippingFee}`}
+                <span>Delivery:</span>
+                <span className="font-semibold">
+                  {cartShippingFee === 0 ? 'FREE' : `₹${cartShippingFee}`}
                 </span>
               </div>
-              <div className="pt-2 border-t border-stone-200 flex justify-between items-baseline text-sm">
-                <span className="font-bold text-earth">Grand Total:</span>
-                <span className="text-xl font-bold text-olive">₹{cartGrandTotal}</span>
+              <div className="flex justify-between text-base font-serif font-bold text-[#2A2620] pt-2 border-t border-[#2A2620]/10">
+                <span>Total Amount:</span>
+                <span className="text-[#C89211]">₹{cartGrandTotal}</span>
               </div>
             </div>
 
-            {/* Proceed to Checkout CTA & WhatsApp Order */}
+            {/* CTAs */}
             <div className="space-y-2">
               <button
                 onClick={() => {
                   setIsCartOpen(false);
                   setIsCheckoutOpen(true);
                 }}
-                className="w-full bg-olive hover:bg-[#4a4a34] text-white font-bold py-3.5 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow transition active:scale-95"
+                className="w-full py-3.5 bg-[#C89211] hover:bg-[#A9542B] text-[#2A2620] hover:text-white font-bold text-xs uppercase tracking-wider rounded-md transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Proceed to Checkout</span>
+                <span>PROCEED TO CHECKOUT</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <a
-                href={`https://wa.me/919008625716?text=${generateCartWhatsAppMessage()}`}
+                href={`https://wa.me/919876543210?text=${generateCartWhatsAppMessage()}`}
                 target="_blank"
-                rel="noreferrer"
-                className="w-full bg-cream text-olive border border-soft font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-stone-100 transition active:scale-95"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 bg-[#3E4B32]/10 hover:bg-[#3E4B32]/20 text-[#3E4B32] font-semibold text-xs uppercase tracking-wider rounded-md transition-colors flex items-center justify-center gap-2 border border-[#3E4B32]/30"
               >
-                <PhoneCall className="w-4 h-4 text-olive" />
-                <span>Order Entire Cart via WhatsApp</span>
+                <PhoneCall className="w-3.5 h-3.5" />
+                <span>Order via WhatsApp</span>
               </a>
             </div>
           </div>

@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HeroSlider } from './components/HeroSlider';
 import { CategoryGrid } from './components/CategoryGrid';
+import { WhatWentMissing } from './components/WhatWentMissing';
+import { OurBeliefSection } from './components/OurBeliefSection';
+import { DhaanyaRitualSection } from './components/DhaanyaRitualSection';
+import { WhoWereForSection } from './components/WhoWereForSection';
+import { WhyDhaanyaTrustSection } from './components/WhyDhaanyaTrustSection';
 import { BestSellersCarousel } from './components/BestSellersCarousel';
 import { RecommendedCarousel } from './components/RecommendedCarousel';
-import { ShopByConcern } from './components/ShopByConcern';
 import { CustomMasalaBuilder } from './components/CustomMasalaBuilder';
 import { CategoryPageView } from './components/CategoryPageView';
+import { OurStoryPage } from './components/OurStoryPage';
+import { FreshMillingPage } from './components/FreshMillingPage';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { AuthModal } from './components/AuthModal';
@@ -22,6 +28,7 @@ import { ProductCategory } from './types';
 
 const MainAppContent: React.FC = () => {
   const {
+    user,
     isAdminMode,
     setIsAdminMode,
     isCartOpen,
@@ -39,7 +46,7 @@ const MainAppContent: React.FC = () => {
     setActiveCategory,
   } = useApp();
 
-  const [currentPageView, setCurrentPageView] = useState<'home' | 'category'>('home');
+  const [currentPageView, setCurrentPageView] = useState<'home' | 'category' | 'our-story' | 'fresh-milling'>('home');
 
   // Push history state entry whenever any modal overlay opens
   useEffect(() => {
@@ -98,7 +105,7 @@ const MainAppContent: React.FC = () => {
       }
 
       // 2. Handle page view navigation
-      if (currentPageView === 'category') {
+      if (currentPageView !== 'home') {
         setActiveCategory(null);
         setCurrentPageView('home');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -158,7 +165,23 @@ const MainAppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (isAdminMode) {
+  const handleNavigateOurStory = () => {
+    if (currentPageView !== 'our-story') {
+      window.history.pushState({ view: 'our-story' }, '');
+    }
+    setCurrentPageView('our-story');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateFreshMilling = () => {
+    if (currentPageView !== 'fresh-milling') {
+      window.history.pushState({ view: 'fresh-milling' }, '');
+    }
+    setCurrentPageView('fresh-milling');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (isAdminMode && user?.role === 'admin') {
     return (
       <div className="min-h-screen bg-stone-900 font-sans antialiased text-stone-100 selection:bg-amber-500 selection:text-stone-950">
         <AdminPanel />
@@ -172,27 +195,36 @@ const MainAppContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-paper font-sans antialiased text-earth selection:bg-olive selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#F4ECD8] font-sans antialiased text-[#2A2620] selection:bg-[#3E4B32] selection:text-[#F4ECD8] flex flex-col justify-between">
       <div>
         <Header
           onNavigateHome={handleNavigateHome}
           onNavigateCustomMasala={handleNavigateCustomMasala}
           onNavigateCategoryPage={handleNavigateCategoryPage}
+          onNavigateOurStory={handleNavigateOurStory}
+          onNavigateFreshMilling={handleNavigateFreshMilling}
         />
 
-        {currentPageView === 'home' ? (
+        {currentPageView === 'home' && (
           <main>
             <HeroSlider
               onNavigateCustomMasala={handleNavigateCustomMasala}
               onNavigateCategoryPage={handleNavigateCategoryPage}
+              onNavigateFreshMilling={handleNavigateFreshMilling}
             />
             <CategoryGrid onSelectCategory={handleNavigateCategoryPage} />
+            <WhatWentMissing />
+            <OurBeliefSection />
+            <DhaanyaRitualSection onNavigateCustomMasala={handleNavigateCustomMasala} />
             <CustomMasalaBuilder />
             <BestSellersCarousel />
-            <ShopByConcern />
+            <WhoWereForSection />
+            <WhyDhaanyaTrustSection />
             <RecommendedCarousel />
           </main>
-        ) : (
+        )}
+
+        {currentPageView === 'category' && (
           <main>
             <CategoryPageView
               onNavigateHome={handleNavigateHome}
@@ -201,11 +233,32 @@ const MainAppContent: React.FC = () => {
             />
           </main>
         )}
+
+        {currentPageView === 'our-story' && (
+          <main>
+            <OurStoryPage
+              onNavigateHome={handleNavigateHome}
+              onNavigateCategoryPage={handleNavigateCategoryPage}
+            />
+          </main>
+        )}
+
+        {currentPageView === 'fresh-milling' && (
+          <main>
+            <FreshMillingPage
+              onNavigateHome={handleNavigateHome}
+              onNavigateCustomMasala={handleNavigateCustomMasala}
+              onNavigateCategoryPage={handleNavigateCategoryPage}
+            />
+          </main>
+        )}
       </div>
 
       <Footer
         onNavigateHome={handleNavigateHome}
         onNavigateCustomMasala={handleNavigateCustomMasala}
+        onNavigateOurStory={handleNavigateOurStory}
+        onNavigateFreshMilling={handleNavigateFreshMilling}
       />
 
       {/* Global Overlays */}

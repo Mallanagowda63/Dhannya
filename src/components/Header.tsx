@@ -8,32 +8,32 @@ import {
   Sparkles,
   Menu,
   X,
-  Leaf,
   ShieldAlert,
-  PhoneCall,
-  Activity,
   LogIn,
   Flame,
-  ArrowRight,
   ChevronRight,
-  Tag,
+  Sparkle,
 } from 'lucide-react';
-import { CATEGORIES } from '../data/initialData';
+import { DhaanyaLogo } from './DhaanyaLogo';
+import { SearchOverlay } from './SearchOverlay';
 import { ProductCategory } from '../types';
 
 interface HeaderProps {
   onNavigateHome: () => void;
   onNavigateCustomMasala: () => void;
   onNavigateCategoryPage: (category?: ProductCategory) => void;
+  onNavigateOurStory?: () => void;
+  onNavigateFreshMilling?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   onNavigateHome,
   onNavigateCustomMasala,
   onNavigateCategoryPage,
+  onNavigateOurStory,
+  onNavigateFreshMilling,
 }) => {
   const {
-    products,
     coupons,
     cart,
     wishlist,
@@ -44,17 +44,16 @@ export const Header: React.FC<HeaderProps> = ({
     isAdminMode,
     setIsAdminMode,
     setIsServerModalOpen,
-    setQuickViewProduct,
-    searchQuery,
-    setSearchQuery,
-    setActiveCategory,
     showToast,
   } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [tickerIndex, setTickerIndex] = useState(0);
-  const searchRef = useRef<HTMLDivElement>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const cartCount = useMemo(() => {
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
+  }, [cart]);
 
   const activeTopCoupon = useMemo(() => {
     return (
@@ -64,386 +63,351 @@ export const Header: React.FC<HeaderProps> = ({
     );
   }, [coupons]);
 
-  // Auto-rotate announcement banner ticker for compact screens
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTickerIndex((prev) => (prev + 1) % 3);
-    }, 3800);
-    return () => clearInterval(timer);
-  }, []);
-
-  // Close search autocomplete popover on click outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
-        setIsSearchFocused(false);
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-  // Computed Live Search Product Matches
-  const matchingProducts = useMemo(() => {
-    if (!searchQuery.trim()) return [];
-    const q = searchQuery.toLowerCase().trim();
-    return (products || [])
-      .filter((p) => {
-        if (!p) return false;
-        const matchName = (p.name || '').toLowerCase().includes(q);
-        const matchCat = (p.category || '').toLowerCase().includes(q);
-        const matchDesc = (p.description || '').toLowerCase().includes(q);
-        const matchConcern = Array.isArray(p.concern) && p.concern.some((c) => (c || '').toLowerCase().includes(q));
-        const matchTags = Array.isArray(p.tags) && p.tags.some((t) => (t || '').toLowerCase().includes(q));
-        return matchName || matchCat || matchDesc || matchConcern || matchTags;
-      })
-      .slice(0, 6);
-  }, [products, searchQuery]);
-
-  // Computed Live Search Category Matches
-  const matchingCategories = useMemo(() => {
-    if (!searchQuery.trim()) return [];
-    const q = searchQuery.toLowerCase().trim();
-    return CATEGORIES.filter(
-      (c) => c.name.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)
-    );
-  }, [searchQuery]);
-
-  const handleCategorySelect = (category: ProductCategory) => {
-    setActiveCategory(category);
-    onNavigateCategoryPage(category);
-    setMobileMenuOpen(false);
+  const handleCopyCoupon = (code: string) => {
+    navigator.clipboard.writeText(code);
+    showToast(`Coupon code ${code} copied to clipboard!`, 'success');
   };
 
   return (
     <>
-      {/* Top Banner Announcement Bar (Static at top of page, scrolls away) */}
-      <div className="bg-[#243323] text-stone-200 py-1.5 px-4 text-xs font-serif border-b border-stone-800 shadow-inner relative z-30">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-4">
-          {/* Left Feature Pill */}
-          <div className="hidden sm:flex items-center gap-2 font-mono text-[11px] text-amber-300 font-semibold tracking-tight">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>100% Traditional Wooden Ghani & Pure Spices</span>
-          </div>
-
-          {/* Center: Main Dynamic Active Coupon Offer Banner (Desktop & Tablet) */}
-          <div className="hidden md:flex items-center justify-center gap-2 mx-auto text-xs font-medium">
-            {activeTopCoupon ? (
-              <>
-                <span className="bg-amber-400 text-stone-950 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-2xs flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-stone-950" />
-                  SPECIAL OFFER
-                </span>
-                <span className="text-stone-100 font-semibold">
-                  Use Coupon{' '}
-                  <button
-                    onClick={() => {
-                      navigator.clipboard?.writeText(activeTopCoupon.code);
-                      showToast(`Coupon ${activeTopCoupon.code} copied to clipboard!`, 'info');
-                    }}
-                    title="Click to copy coupon code"
-                    className="inline-flex items-center gap-1 bg-amber-300 hover:bg-amber-400 text-stone-950 font-black font-mono px-2 py-0.5 rounded-md shadow-2xs transition active:scale-95 cursor-pointer mx-1"
-                  >
-                    {activeTopCoupon.code}
-                  </button>{' '}
-                  for <strong>{activeTopCoupon.discountPercent}% OFF</strong> <span className="text-white/40 mx-1">|</span> Free Shipping &gt; ₹499
-                </span>
-              </>
-            ) : (
-              <span className="text-stone-100 font-semibold flex items-center gap-2">
-                <Leaf className="w-3.5 h-3.5 text-amber-300" />
-                100% Pure Traditional Wood Pressed Oils & Spices | Free Shipping &gt; ₹499
+      <header className="sticky top-0 z-40 w-full transition-all duration-300">
+        {/* Announcement Ticker Bar */}
+        <div className="bg-[#2A2620] text-[#F4ECD8] py-2 px-4 text-xs font-medium border-b border-[#C89211]/30">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="hidden md:flex items-center gap-4 text-[#F4ECD8]/90">
+              <span className="flex items-center gap-1.5 text-[#E8B93E]">
+                <Sparkle className="w-3.5 h-3.5 fill-[#E8B93E]" />
+                Freshly milled before you and for you
               </span>
-            )}
-          </div>
-
-          {/* Mobile Auto-Rotating Ticker (visible on small screens) */}
-          <div className="md:hidden w-full flex items-center justify-center text-center text-xs font-semibold py-0.5">
-            {tickerIndex === 0 && (
-              <span className="animate-in fade-in duration-300 flex items-center gap-1.5 text-amber-200">
-                <Leaf className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                100% Traditional Wooden Ghani & Pure Spices
-              </span>
-            )}
-            {tickerIndex === 1 && (
-              activeTopCoupon ? (
-                <span className="animate-in fade-in duration-300 flex items-center gap-1.5">
-                  <span className="bg-amber-400 text-stone-950 px-1.5 py-0.2 rounded text-[10px] font-black uppercase">{activeTopCoupon.code}</span>
-                  Use code <strong className="text-amber-200 font-mono">{activeTopCoupon.code}</strong> for {activeTopCoupon.discountPercent}% OFF!
-                </span>
-              ) : (
-                <span className="animate-in fade-in duration-300 flex items-center gap-1.5 text-amber-200">
-                  Free Delivery on Orders Above ₹499
-                </span>
-              )
-            )}
-            {tickerIndex === 2 && (
-              <span className="animate-in fade-in duration-300 flex items-center gap-1.5 text-stone-200">
-                <PhoneCall className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                Need Help? WhatsApp Support (+91 90086 25716)
-              </span>
-            )}
-          </div>
-
-          {/* Right: WhatsApp Support Button */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            <a
-              href="https://wa.me/919008625716?text=Hi%20Dhaanya,%20I%20have%20a%20query"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 bg-emerald-700/90 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full transition shadow-2xs border border-emerald-500/40 cursor-pointer"
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-emerald-200" />
-              <span>WhatsApp Support</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Sticky Main Nav Bar (Solid Opaque Header) */}
-      <header className="sticky top-0 z-40 bg-[#FDFBF7] shadow-sm border-b border-stone-200/80 transition-all duration-300">
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
-        {/* Left: Mobile menu toggle + Logo */}
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-stone-600 hover:text-olive p-1 rounded-lg"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-
-          <div
-            onClick={onNavigateHome}
-            className="cursor-pointer flex items-center gap-2.5 group"
-            title="Go to Home"
-          >
-            <div className="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center font-bold text-xl shadow-sm group-hover:scale-105 transition">
-              D
+              <span className="text-[#F4ECD8]/40">•</span>
+              <span>100% Pure Whole Grains & Cold-Pressed Oils</span>
             </div>
-            <div>
-              <span className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-olive font-serif">
-                Dhaanya
-              </span>
-              <span className="hidden sm:block text-[10px] sm:text-xs tracking-widest text-stone-500 uppercase font-sans font-bold">
-                Organic & Custom Spices
-              </span>
+
+            <div className="w-full md:w-auto text-center md:text-right flex items-center justify-between md:justify-end gap-3">
+              {activeTopCoupon && (
+                <button
+                  onClick={() => handleCopyCoupon(activeTopCoupon.code)}
+                  className="inline-flex items-center gap-1.5 bg-[#C89211]/20 hover:bg-[#C89211]/30 text-[#E8B93E] px-2.5 py-0.5 rounded border border-[#C89211]/40 transition-colors"
+                >
+                  <Flame className="w-3 h-3 text-[#E8B93E] animate-pulse" />
+                  <span>Use <strong>{activeTopCoupon.code}</strong> for {activeTopCoupon.discountPercent}% OFF</span>
+                </button>
+              )}
+
+              <button
+                onClick={() => setIsServerModalOpen(true)}
+                className="hidden lg:flex items-center gap-1 text-[11px] text-[#F4ECD8]/70 hover:text-[#E8B93E] transition-colors ml-2"
+              >
+                <ShieldAlert className="w-3 h-3 text-[#E8B93E]" />
+                <span>System Status</span>
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Right Action Icons (Aligned to Right Edge with Search Icon Next to Cart Icon) */}
-        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 ml-auto">
-          {/* Admin Toggle Button */}
-          <button
-            onClick={() => setIsAdminMode(!isAdminMode)}
-            className={`p-2 rounded-full border text-xs transition flex items-center gap-1 ${
-              isAdminMode
-                ? 'bg-olive text-white border-olive font-bold shadow'
-                : 'border-stone-200 text-stone-600 hover:text-olive hover:border-olive'
-            }`}
-            title={isAdminMode ? 'Switch to Storefront' : 'Admin Management Portal'}
-          >
-            <ShieldAlert className="w-4 h-4" />
-            <span className="hidden xl:inline">{isAdminMode ? 'Admin Portal' : 'Admin Mode'}</span>
-          </button>
+        {/* Main Navbar */}
+        <nav
+          className={`w-full transition-all duration-300 ${
+            isScrolled
+              ? 'bg-[#F4ECD8]/95 backdrop-blur-md shadow-sm border-b border-[#2A2620]/10'
+              : 'bg-[#F4ECD8] border-b border-[#2A2620]/10'
+          }`}
+        >
+          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-10 h-18 sm:h-20 flex items-center justify-between gap-4">
+            {/* Left: Mobile Menu Toggle & Logo */}
+            <div className="flex items-center gap-3 shrink-0">
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="p-2 text-[#2A2620] hover:text-[#3E4B32] transition-colors lg:hidden"
+                aria-label="Open Mobile Menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
 
-          {/* Login / Sign Up CTA (If logged out) */}
-          {!user ? (
-            <button
-              onClick={() => setIsAuthModalOpen(true)}
-              className="flex items-center gap-1.5 bg-cream hover:bg-stone-200 text-earth font-bold text-xs px-2.5 sm:px-3.5 py-2 rounded-full border border-stone-200 shadow-2xs transition active:scale-95 cursor-pointer"
-              title="Sign in with OTP"
-            >
-              <LogIn className="w-4 h-4 text-olive" />
-              <span className="hidden sm:inline">Login / Sign Up</span>
-            </button>
-          ) : (
-            /* User Profile (If logged in) */
-            <button
-              onClick={() => setIsProfileOpen(true)}
-              className="flex items-center gap-2 text-stone-700 hover:text-olive p-2 rounded-full hover:bg-cream transition cursor-pointer"
-              title={`Profile: ${user.name}`}
-            >
-              <div className="w-7 h-7 rounded-full bg-olive text-white flex items-center justify-center text-xs font-bold shadow-2xs">
-                {user.name.charAt(0).toUpperCase()}
-              </div>
-              <span className="hidden lg:inline text-xs font-medium max-w-[100px] truncate">{user.name}</span>
-            </button>
-          )}
-
-          {/* Cart Icon */}
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative p-2 text-stone-700 hover:text-olive hover:bg-cream rounded-full transition"
-            aria-label="Shopping Cart"
-          >
-            <ShoppingBag className="w-5 h-5" />
-            {totalCartItems > 0 && (
-              <span className="absolute -top-1 -right-1 bg-olive text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">
-                {totalCartItems}
-              </span>
-            )}
-          </button>
-
-          {/* Search Icon (Placed beyond/next to Cart Icon) */}
-          <div ref={searchRef} className="relative">
-            <button
-              onClick={() => setIsSearchFocused(!isSearchFocused)}
-              className={`p-2 rounded-full transition flex items-center justify-center cursor-pointer ${
-                isSearchFocused || searchQuery
-                  ? 'bg-olive text-white shadow'
-                  : 'text-stone-700 hover:text-olive hover:bg-cream'
-              }`}
-              aria-label="Search Spices & Oils"
-              title="Search Spices & Oils"
-            >
-              <Search className="w-5 h-5" />
-            </button>
-
-            {/* Interactive Search Popover Dropdown when Search Icon is Clicked */}
-            {isSearchFocused && (
-              <div className="absolute top-full right-0 mt-3 w-[calc(100vw-2rem)] max-w-xs sm:w-96 bg-white border border-stone-200 rounded-3xl shadow-2xl overflow-hidden z-50 p-4 text-earth space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="relative">
-                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    autoFocus
-                    onChange={(e) => {
-                      setSearchQuery(e.target.value);
-                      if (e.target.value.trim().length > 0) {
-                        onNavigateCategoryPage();
-                      }
-                    }}
-                    placeholder="Search oils, spices, dry fruits..."
-                    className="w-full bg-cream border border-stone-200 text-earth text-xs sm:text-sm rounded-full pl-9 pr-8 py-2 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition placeholder:text-stone-400"
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-xs font-bold p-1 cursor-pointer"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  )}
-                </div>
-
-                {/* Popular / Live Search Matches */}
-                {searchQuery.trim().length === 0 ? (
-                  <div className="space-y-2">
-                    <span className="block text-[10px] font-extrabold text-stone-400 uppercase tracking-wider">
-                      Popular Searches
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {['Mustard Oil', 'Garam Masala', 'Turmeric', 'Dry Fruits', 'Millets'].map((term) => (
-                        <button
-                          key={term}
-                          onClick={() => {
-                            setSearchQuery(term);
-                            onNavigateCategoryPage();
-                          }}
-                          className="bg-stone-100 hover:bg-cream text-earth text-xs font-bold px-2.5 py-1 rounded-full border border-stone-200"
-                        >
-                          {term}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="space-y-2 max-h-60 overflow-y-auto">
-                    {matchingProducts.map((prod) => (
-                      <div
-                        key={prod.id}
-                        onClick={() => {
-                          setQuickViewProduct(prod);
-                          setIsSearchFocused(false);
-                        }}
-                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-cream transition cursor-pointer"
-                      >
-                        <img src={prod.image} alt={prod.name} className="w-10 h-10 rounded-lg object-cover" />
-                        <div className="flex-1 min-w-0">
-                          <h5 className="font-bold text-xs truncate">{prod.name}</h5>
-                          <span className="text-[10px] text-stone-500">₹{prod.variants?.[0]?.price || 299}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-soft p-4 space-y-4">
-          {/* Mobile Search */}
-          <div className="relative space-y-2">
-            <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  onNavigateCategoryPage();
+              <DhaanyaLogo
+                variant="compact"
+                size="md"
+                onClick={() => {
+                  onNavigateHome();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                placeholder="Search wood pressed oils, dry fruits, spices..."
-                className="w-full bg-cream border border-stone-200 text-earth text-xs rounded-xl pl-9 pr-4 py-2.5 focus:outline-none focus:border-olive"
               />
             </div>
-            {/* Quick Popular Search Pills for Mobile */}
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {['Mustard Oil', 'Garam Masala', 'Turmeric', 'Gut Health'].map((term) => (
+
+            {/* Center: Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-7 whitespace-nowrap">
+              <button
+                onClick={onNavigateHome}
+                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Home
+              </button>
+
+              <button
+                onClick={() => onNavigateCategoryPage()}
+                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Shop All
+              </button>
+
+              <button
+                onClick={() => onNavigateCategoryPage('Flour')}
+                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Flours
+              </button>
+
+              <button
+                onClick={() => onNavigateCategoryPage('Spices')}
+                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Spices
+              </button>
+
+              <button
+                onClick={() => onNavigateCategoryPage('Wood Pressed Oils')}
+                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Oils
+              </button>
+
+              <button
+                onClick={onNavigateCustomMasala}
+                className="font-sans text-xs xl:text-sm font-bold text-[#3E4B32] hover:text-[#C89211] transition-all uppercase tracking-wider flex items-center gap-1.5 bg-[#3E4B32]/10 hover:bg-[#3E4B32]/15 px-3.5 py-1.5 rounded-full border border-[#3E4B32]/25 shadow-2xs whitespace-nowrap cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#C89211]" />
+                <span>✦ Custom Masala</span>
+              </button>
+
+              <button
+                onClick={onNavigateFreshMilling}
+                className="font-sans text-xs xl:text-sm font-bold text-[#A9542B] hover:text-[#C89211] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Fresh Milling
+              </button>
+
+              <button
+                onClick={onNavigateOurStory}
+                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+              >
+                Our Story
+              </button>
+            </div>
+
+            {/* Right: Header Actions */}
+            <div className="flex items-center gap-3 shrink-0">
+              {/* Search Trigger */}
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="w-10 h-10 rounded-full text-[#2A2620] hover:text-[#3E4B32] hover:bg-[#2A2620]/5 flex items-center justify-center transition-colors cursor-pointer"
+                title="Search Dhaanya Pantry"
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+
+              {/* Admin Toggle Button */}
+              {user?.role === 'admin' && (
                 <button
-                  key={term}
-                  onClick={() => {
-                    setSearchQuery(term);
-                    onNavigateCategoryPage();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="bg-cream hover:bg-stone-200 text-earth text-[10px] font-bold px-2.5 py-1 rounded-full border border-stone-200/80 cursor-pointer"
+                  onClick={() => setIsAdminMode(!isAdminMode)}
+                  className={`h-10 px-4 text-xs font-bold rounded-full border transition-all whitespace-nowrap flex items-center justify-center cursor-pointer ${
+                    isAdminMode
+                      ? 'bg-[#A9542B] text-white border-[#A9542B] shadow-xs'
+                      : 'bg-[#2A2620] text-[#E8B93E] border-[#C89211] hover:bg-black'
+                  }`}
                 >
-                  {term}
+                  {isAdminMode ? 'Exit Admin' : 'Admin Panel'}
                 </button>
-              ))}
+              )}
+
+              {/* Account / User Button */}
+              {user ? (
+                <button
+                  onClick={() => setIsProfileOpen(true)}
+                  className="w-10 h-10 rounded-full bg-[#3E4B32] text-[#F4ECD8] flex items-center justify-center font-bold text-xs uppercase shadow-xs hover:scale-105 transition-transform cursor-pointer shrink-0"
+                  title={user.name}
+                >
+                  {user.name.charAt(0)}
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsAuthModalOpen(true)}
+                  className="w-10 h-10 rounded-full bg-[#2A2620]/5 hover:bg-[#2A2620]/10 text-[#2A2620] flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                  title="Sign In / Register"
+                >
+                  <UserIcon className="w-5 h-5" />
+                </button>
+              )}
+
+              {/* Cart Drawer Trigger */}
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative w-10 h-10 bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] rounded-full flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
+                aria-label="View Cart"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-[#C89211] text-[#2A2620] text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#F4ECD8]">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
             </div>
           </div>
+        </nav>
+      </header>
 
-          <button
-            onClick={() => {
-              onNavigateCustomMasala();
-              setMobileMenuOpen(false);
-            }}
-            className="w-full flex items-center justify-center gap-2 bg-olive text-white text-xs font-bold py-2.5 rounded-xl shadow-sm"
-          >
-            <Sparkles className="w-4 h-4 text-amber-200" />
-            <span>Make Your Own Custom Masala</span>
-          </button>
+      {/* Dynamic Search Modal */}
+      <SearchOverlay
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onSelectCategory={onNavigateCategoryPage}
+      />
 
-          <div className="space-y-1 text-xs">
-            <div className="text-stone-500 font-bold uppercase text-[10px] tracking-wider py-1 border-b border-stone-200">
-              Categories
-            </div>
-            <div className="max-h-60 overflow-y-auto space-y-1 pt-1">
-              {CATEGORIES.map((cat) => (
+      {/* Mobile Side Drawer Navigation */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden flex">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          <div className="relative w-4/5 max-w-sm bg-[#F4ECD8] h-full shadow-2xl flex flex-col justify-between p-6 z-10 overflow-y-auto">
+            <div>
+              <div className="flex items-center justify-between pb-6 border-b border-[#2A2620]/10">
+                <DhaanyaLogo
+                  variant="compact"
+                  size="md"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateHome();
+                  }}
+                />
                 <button
-                  key={cat.slug}
-                  onClick={() => handleCategorySelect(cat.name)}
-                  className="w-full text-left px-2 py-1.5 rounded text-earth hover:bg-cream hover:text-olive"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2 text-[#2A2620] hover:text-[#A9542B]"
                 >
-                  {cat.name}
+                  <X className="w-6 h-6" />
                 </button>
-              ))}
+              </div>
+
+              <div className="py-6 flex flex-col gap-4">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateHome();
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span>Home</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateCategoryPage();
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span>Shop All Products</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateCategoryPage('Flour');
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span>Fresh Flours</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateCategoryPage('Spices');
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span>Ground Spices</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateCategoryPage('Wood Pressed Oils');
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span>Cold Pressed Oils</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onNavigateCustomMasala();
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#3E4B32] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#C89211]" />
+                    Custom Masala Blend
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-[#C89211]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onNavigateFreshMilling) onNavigateFreshMilling();
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                >
+                  <span>Fresh Milling Ritual</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onNavigateOurStory) onNavigateOurStory();
+                  }}
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 flex items-center justify-between"
+                >
+                  <span>Our Story</span>
+                  <ChevronRight className="w-4 h-4 text-[#A9542B]" />
+                </button>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-[#2A2620]/10 text-center">
+              <p className="font-kannada text-[#A9542B] text-sm font-semibold">
+                ಧಾನ್ಯ — Rooted in tradition
+              </p>
+              <p className="text-xs text-[#2A2620]/60 mt-1">
+                Freshly milled before you and for you
+              </p>
             </div>
           </div>
         </div>
       )}
-    </header>
-  </>
-);
+    </>
+  );
 };

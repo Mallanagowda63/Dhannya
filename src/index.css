@@ -1,6 +1,29 @@
 @import "tailwindcss";
 
+@theme {
+  --color-earth: #2A2620;
+  --color-olive: #3E4B32;
+  --color-cream: #FAF6ED;
+  --color-paper: #FAF8F4;
+  --color-parchment: #F4ECD8;
+  --color-charcoal: #2A2620;
+  --color-millet: #3E4B32;
+  --color-gold: #C89211;
+  --color-ochre: #A9542B;
+  --color-spice: #7C2A1E;
+}
+
 @layer base {
+  :root {
+    --dhaanya-parchment: #F4ECD8;
+    --dhaanya-charcoal: #2A2620;
+    --dhaanya-millet: #3E4B32;
+    --dhaanya-gold: #C89211;
+    --dhaanya-ochre: #A9542B;
+    --dhaanya-spice: #7C2A1E;
+    --dhaanya-light-gold: #E8B93E;
+  }
+
   html, body {
     max-width: 100vw;
     overflow-x: hidden;
@@ -10,76 +33,94 @@
   }
 
   body {
-    background-color: #FDFBF7;
-    color: #3E3E32;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--dhaanya-parchment);
+    color: #2A2620;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     width: 100%;
   }
 
-  img, video, canvas, svg {
-    max-width: 100%;
-    height: auto;
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Spectral', Georgia, serif;
+    color: #2A2620;
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: 'Georgia', serif;
+  .font-kannada {
+    font-family: 'Noto Sans Kannada', sans-serif;
   }
 
-  /* Sleek Custom Scrollbar */
+  /* Custom Sleek Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #f5f2ed;
+    background: #EFE4CC;
   }
   ::-webkit-scrollbar-thumb {
-    background: #5a5a40;
+    background: #3E4B32;
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #455726;
+    background: #2A2620;
   }
 }
 
 @layer utilities {
-  .bg-paper {
-    background-color: #FDFBF7;
-  }
-  .bg-cream {
-    background-color: #F5F2ED;
-  }
-  .bg-dark-olive {
-    background-color: #1A1A10;
-  }
-  .bg-olive {
-    background-color: #5A5A40;
-  }
-  .text-olive {
-    color: #5A5A40;
-  }
-  .border-soft {
-    border-color: rgba(90, 90, 64, 0.15);
-  }
-  .text-earth {
-    color: #3E3E32;
-  }
-  .text-terracotta {
-    color: #BC6C25;
-  }
-  .bg-terracotta {
-    background-color: #BC6C25;
-  }
-  .border-terracotta {
-    border-color: #BC6C25;
+  /* Dhaanya Color Palette Classes */
+  .text-earth { color: #2A2620 !important; }
+  .bg-earth { background-color: #2A2620; }
+
+  .text-olive { color: #3E4B32 !important; }
+  .bg-olive { background-color: #3E4B32; }
+
+  .text-cream { color: #FAF6ED; }
+  .bg-cream { background-color: #FAF6ED; }
+
+  .text-paper { color: #FAF8F4; }
+  .bg-paper { background-color: #FAF8F4; }
+
+  .text-soft { color: #524b42 !important; }
+  .border-soft { border-color: rgba(42, 38, 32, 0.15); }
+
+  .bg-dhaanya-parchment { background-color: #F4ECD8; }
+  .bg-dhaanya-charcoal { background-color: #2A2620; }
+  .bg-dhaanya-millet { background-color: #3E4B32; }
+  .bg-dhaanya-gold { background-color: #C89211; }
+  .bg-dhaanya-ochre { background-color: #A9542B; }
+  .bg-dhaanya-spice { background-color: #7C2A1E; }
+  .bg-dhaanya-light-gold { background-color: #E8B93E; }
+
+  .text-dhaanya-parchment { color: #F4ECD8; }
+  .text-dhaanya-charcoal { color: #2A2620 !important; }
+  .text-dhaanya-millet { color: #3E4B32 !important; }
+  .text-dhaanya-gold { color: #C89211; }
+  .text-dhaanya-ochre { color: #A9542B; }
+  .text-dhaanya-spice { color: #7C2A1E; }
+
+  .border-dhaanya-gold { border-color: #C89211; }
+  .border-dhaanya-millet { border-color: #3E4B32; }
+  .border-dhaanya-charcoal { border-color: #2A2620; }
+  .border-dhaanya-ochre { border-color: #A9542B; }
+  .border-dhaanya-soft { border-color: rgba(42, 38, 32, 0.12); }
+
+  /* Interactive & Kraft styling */
+  .kraft-card {
+    background-color: #F8F3E6;
+    border: 1px solid rgba(42, 38, 32, 0.12);
+    box-shadow: 0 4px 20px -2px rgba(42, 38, 32, 0.05);
+    color: #2A2620;
   }
 
-  /* Smooth interaction utilities */
+  .kraft-card-dark {
+    background-color: #2A2620;
+    color: #F4ECD8;
+    border: 1px solid rgba(200, 146, 17, 0.2);
+  }
+
   .transition-smooth {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Hide scrollbar utility */
   .no-scrollbar::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;

@@ -71,7 +71,7 @@ interface AppContextType {
   saveAddress: (address: Address) => Promise<Address>;
   deleteAddress: (addressId: string) => Promise<boolean>;
   saveCustomRecipe: (recipe: CustomRecipe) => void;
-  login: (email: string, name?: string) => void;
+  login: (email: string, name?: string, role?: 'admin' | 'user') => void;
   logout: () => void;
   showToast: (message: string, type?: 'success' | 'error' | 'info') => void;
   cartSubtotal: number;
@@ -127,7 +127,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [wishlist, setWishlist] = useState<string[]>(() => {
     const saved = localStorage.getItem('dhaanya_wishlist');
-    return saved ? JSON.parse(saved) : ['prod-1', 'prod-3'];
+    return saved ? JSON.parse(saved) : [];
   });
 
   const [user, setUser] = useState<User | null>(() => {
@@ -177,27 +177,37 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('dhaanya_recipes', JSON.stringify(savedRecipes));
   }, [savedRecipes]);
 
-  // Load orders from server on mount
+  // Load orders for current authenticated user from server
   useEffect(() => {
-    fetch(getApiUrl('/api/orders'))
+    if (!user) {
+      setOrders([]);
+      return;
+    }
+    const uEmail = encodeURIComponent(user.email || '');
+    fetch(getApiUrl(`/api/orders?userId=${user.id}&email=${uEmail}`))
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) setOrders(data.data);
+        if (data.success && Array.isArray(data.data)) {
+          setOrders(data.data);
+        } else {
+          setOrders([]);
+        }
       })
-      .catch(() => {});
-  }, []);
+      .catch(() => setOrders([]));
+  }, [user?.id, user?.email]);
 
-  // Load user addresses from server on mount
+  // Load addresses for current authenticated user from server
   useEffect(() => {
-    fetch(getApiUrl('/api/addresses?userId=usr-101'))
+    if (!user) return;
+    fetch(getApiUrl(`/api/addresses?userId=${user.id}`))
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           setUser((prev) => (prev ? { ...prev, addresses: data.data } : null));
         }
       })
       .catch(() => {});
-  }, []);
+  }, [user?.id]);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
     const id = Math.random().toString(36).substring(2, 9);
@@ -498,22 +508,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast(`Saved recipe "${recipe.name}" to your profile!`, 'success');
   };
 
-  const login = (email: string, name: string = 'Dhaanya Customer') => {
+  const login = (email: string, name: string = 'Dhaanya Customer', role?: 'admin' | 'user') => {
+    const cleanEmail = email.trim().toLowerCase();
+    const isAdmin = role === 'admin' || cleanEmail === 'dhaanyaorganic1@gmail.com';
+
     const newUser: User = {
-      id: `usr-${Date.now()}`,
-      name,
+      id: isAdmin ? 'usr-admin-1' : `usr-${Date.now()}`,
+      name: isAdmin ? 'Dhaanya Administrator' : name,
       email,
       mobile: '+91 98765 00000',
-      role: email.includes('admin') ? 'admin' : 'user',
+      role: isAdmin ? 'admin' : 'user',
       addresses: user ? user.addresses : [],
       savedRecipes,
     };
     setUser(newUser);
-    if (email.includes('admin')) {
+    if (isAdmin) {
       setIsAdminMode(true);
-      showToast('Logged in as Administrator');
+      showToast('Logged in as Store Administrator 👑', 'success');
     } else {
-      showToast(`Welcome back, ${name}!`);
+      showToast(`Welcome back, ${name}!`, 'success');
     }
     setIsAuthModalOpen(false);
   };
@@ -521,6 +534,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const logout = () => {
     setUser(null);
     setIsAdminMode(false);
+    setOrders([]);
+    setCart([]);
+    setWishlist([]);
+    setSavedRecipes([]);
+    localStorage.removeItem('dhaanya_cart');
+    localStorage.removeItem('dhaanya_wishlist');
+    localStorage.removeItem('dhaanya_user');
+    localStorage.removeItem('dhaanya_recipes');
     showToast('Logged out successfully', 'info');
   };
 

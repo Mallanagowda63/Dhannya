@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
-import { Heart, ShoppingBag, Eye, Check } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, Star, Sparkles } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -14,18 +14,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
 
   if (!product) return null;
 
-  const variants = product.variants && product.variants.length > 0
-    ? product.variants
-    : [{ weight: '250g', price: 199, originalPrice: 249, inStock: true }];
+  const variants =
+    product.variants && product.variants.length > 0
+      ? product.variants
+      : [{ weight: '250g', price: 199, originalPrice: 249, inStock: true }];
 
   const selectedVariant = variants[selectedVariantIndex] || variants[0];
   const isWishlisted = product.id ? isInWishlist(product.id) : false;
 
   const origPrice = selectedVariant.originalPrice || selectedVariant.price || 0;
   const currentPrice = selectedVariant.price || 0;
-  const discountPercent = origPrice > currentPrice && origPrice > 0
-    ? Math.round(((origPrice - currentPrice) / origPrice) * 100)
-    : 0;
+  const discountPercent =
+    origPrice > currentPrice && origPrice > 0
+      ? Math.round(((origPrice - currentPrice) / origPrice) * 100)
+      : 0;
+
+  // Category Stripe Color
+  const getCategoryStripe = (cat: string) => {
+    if (cat.toLowerCase().includes('flour')) return 'bg-[#A9542B]';
+    if (cat.toLowerCase().includes('spice') || cat.toLowerCase().includes('masala')) return 'bg-[#7C2A1E]';
+    if (cat.toLowerCase().includes('oil')) return 'bg-[#3E4B32]';
+    return 'bg-[#C89211]';
+  };
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -40,47 +50,50 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
   return (
     <div
       onClick={handleCardClick}
-      className="group bg-white border border-soft rounded-2xl overflow-hidden hover:border-olive transition duration-300 shadow-sm hover:shadow-md flex flex-col justify-between cursor-pointer"
+      className="group kraft-card rounded-xl overflow-hidden hover:border-[#C89211]/60 transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between cursor-pointer relative"
     >
-      {/* Product Image Container */}
-      <div className="relative h-48 sm:h-52 w-full bg-stone-100 overflow-hidden">
+      {/* Category Accent Stripe */}
+      <div className={`h-1.5 w-full ${getCategoryStripe(product.category)}`} />
+
+      {/* Product Image Box */}
+      <div className="relative h-48 sm:h-56 w-full bg-[#F4ECD8]/40 overflow-hidden flex items-center justify-center p-3">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
           onError={(e) => {
-            e.currentTarget.src = 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+            e.currentTarget.src =
+              'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
           }}
         />
 
 
 
-        {/* Wishlist Button */}
+        {/* Wishlist Icon */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             toggleWishlist(product.id);
           }}
-          className={`absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full border flex items-center justify-center transition shadow-sm ${
+          className={`absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full border flex items-center justify-center transition shadow-xs ${
             isWishlisted
-              ? 'bg-rose-50 border-rose-200 text-rose-600'
-              : 'bg-white/90 border-soft text-stone-500 hover:text-terracotta'
+              ? 'bg-[#7C2A1E] border-[#7C2A1E] text-white'
+              : 'bg-[#F4ECD8]/90 border-[#2A2620]/15 text-[#2A2620] hover:text-[#A9542B]'
           }`}
           aria-label="Wishlist"
         >
-          <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-rose-600 text-rose-600' : ''}`} />
+          <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-white' : ''}`} />
         </button>
 
-        {/* Quick View Floating Overlay */}
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-2">
+        {/* Quick View Floating Hover Overlay */}
+        <div className="absolute inset-0 bg-[#2A2620]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <button
             onClick={(e) => {
               e.stopPropagation();
-              if (onOpenQuickView) onOpenQuickView(product);
-              else setQuickViewProduct(product);
+              handleCardClick();
             }}
-            className="bg-white/90 text-earth border border-soft hover:bg-olive hover:text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center gap-1 shadow transition"
+            className="bg-[#F4ECD8] text-[#2A2620] hover:bg-[#3E4B32] hover:text-white px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 shadow-md transition-all"
           >
             <Eye className="w-3.5 h-3.5" />
             <span>Quick View</span>
@@ -88,39 +101,75 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenQuickVi
         </div>
       </div>
 
-      {/* Product Information */}
+      {/* Product Details & Variant Pills */}
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
         <div>
-          <div className="text-xs text-stone-600 mb-1">
-            <span className="uppercase tracking-wider font-bold text-olive">
+          <div className="flex items-center justify-between text-xs text-[#2A2620]/60 mb-1">
+            <span className="uppercase tracking-widest font-semibold text-[#A9542B]">
               {product.category}
             </span>
+            {product.rating > 0 && (
+              <div className="flex items-center gap-1 text-[#C89211] font-bold text-xs">
+                <Star className="w-3 h-3 fill-[#C89211]" />
+                <span>{product.rating.toFixed(1)}</span>
+              </div>
+            )}
           </div>
 
-          <h3 className="text-base font-bold font-serif text-earth group-hover:text-olive transition leading-snug line-clamp-2">
+          <h3 className="text-base sm:text-lg font-serif font-bold text-[#2A2620] group-hover:text-[#A9542B] transition-colors leading-snug line-clamp-2">
             {product.name}
           </h3>
+
+          {product.description && (
+            <p className="text-xs text-[#2A2620]/70 line-clamp-1 mt-1 font-sans">
+              {product.description}
+            </p>
+          )}
         </div>
 
+        {/* Weight Variant Selection */}
+        {variants.length > 1 && (
+          <div className="flex flex-wrap gap-1 pt-1">
+            {variants.map((v, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedVariantIndex(idx);
+                }}
+                className={`px-2 py-0.5 rounded text-[11px] font-medium border transition-colors ${
+                  selectedVariantIndex === idx
+                    ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]'
+                    : 'bg-[#F4ECD8]/60 text-[#2A2620] border-[#2A2620]/15 hover:border-[#2A2620]/40'
+                }`}
+              >
+                {v.weight}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Pricing and Add to Cart */}
-        <div className="pt-2 border-t border-soft flex items-center justify-between gap-2">
+        <div className="pt-3 border-t border-[#2A2620]/10 flex items-center justify-between gap-2">
           <div>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-lg font-bold text-terracotta">₹{selectedVariant.price}</span>
+              <span className="text-lg font-bold text-[#2A2620] font-serif">
+                ₹{selectedVariant.price}
+              </span>
               {selectedVariant.originalPrice > selectedVariant.price && (
-                <span className="text-xs sm:text-sm text-stone-400 line-through">
+                <span className="text-xs text-[#2A2620]/40 line-through">
                   ₹{selectedVariant.originalPrice}
                 </span>
               )}
             </div>
-            <span className="text-xs text-stone-600 block font-medium">
-              Net Weight: {selectedVariant.weight}
+            <span className="text-[11px] text-[#2A2620]/60 block font-medium">
+              Weight: {selectedVariant.weight}
             </span>
           </div>
 
           <button
             onClick={handleQuickAdd}
-            className="bg-olive hover:bg-[#4a4a34] text-white font-bold px-3.5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 shadow-sm transition active:scale-95 shrink-0 min-h-[40px] min-w-[68px] cursor-pointer"
+            className="bg-[#C89211] hover:bg-[#A9542B] text-[#2A2620] hover:text-white font-bold px-4 py-2 rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-xs shrink-0 cursor-pointer"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Add</span>

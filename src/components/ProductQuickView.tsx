@@ -6,12 +6,11 @@ import {
   Star,
   ShoppingBag,
   Heart,
-  Share2,
   CheckCircle2,
   ShieldCheck,
   Plus,
   Minus,
-  MessageSquare,
+  Sparkles,
 } from 'lucide-react';
 
 export const ProductQuickView: React.FC = () => {
@@ -21,7 +20,6 @@ export const ProductQuickView: React.FC = () => {
     addToCart,
     toggleWishlist,
     isInWishlist,
-    showToast,
     setIsCartOpen,
     setIsCheckoutOpen,
   } = useApp();
@@ -29,7 +27,7 @@ export const ProductQuickView: React.FC = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'nutrition' | 'benefits' | 'reviews'>('description');
+  const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'nutrition' | 'benefits'>('description');
 
   if (!quickViewProduct) return null;
 
@@ -40,9 +38,9 @@ export const ProductQuickView: React.FC = () => {
   const currentImage = images[selectedImageIndex] || quickViewProduct.image;
   const isWishlisted = isInWishlist(quickViewProduct.id);
 
-  const discountPercent = Math.round(
-    ((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100
-  );
+  const discountPercent = selectedVariant.originalPrice > selectedVariant.price
+    ? Math.round(((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100)
+    : 0;
 
   const handleAddToCart = () => {
     addToCart(quickViewProduct, selectedVariant.weight, quantity);
@@ -55,274 +53,225 @@ export const ProductQuickView: React.FC = () => {
     setIsCheckoutOpen(true);
   };
 
-  const fullImageAddress = currentImage.startsWith('http')
-    ? currentImage
-    : `${window.location.origin}${currentImage}`;
-
-  const whatsappText = `🌿 *Dhannya Organic & Custom Spices Order Request* 🌿\n\n` +
-    `📦 *Product:* ${quickViewProduct.name}\n` +
-    `🏷️ *Category:* ${quickViewProduct.category}\n` +
-    `⚖️ *Variant Weight:* ${selectedVariant.weight}\n` +
-    `🔢 *Quantity:* ${quantity} unit(s)\n` +
-    `💰 *Total Price:* ₹${selectedVariant.price * quantity}\n` +
-    `📝 *Description:* ${quickViewProduct.description ? quickViewProduct.description.slice(0, 100) + '...' : '100% Pure & Organic Quality'}\n\n` +
-    `🖼️ *Product Image:* ${fullImageAddress}\n\n` +
-    `🚚 *Delivery:* Free Shipping above ₹499 | COD & Instant UPI Available\n` +
-    `Please confirm my order and payment details!`;
-
-  const whatsappMessage = encodeURIComponent(whatsappText);
-
-  const handleWhatsAppOrderWithImage = async () => {
-    try {
-      const response = await fetch(currentImage);
-      const blob = await response.blob();
-      const filename = `${quickViewProduct.name.replace(/[^a-zA-Z0-9]/g, '_')}.jpg`;
-      const imageFile = new File([blob], filename, { type: blob.type || 'image/jpeg' });
-
-      if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
-        await navigator.share({
-          title: `Dhannya Organic - ${quickViewProduct.name}`,
-          text: whatsappText,
-          files: [imageFile],
-        });
-        showToast('Image and order details shared directly to WhatsApp!', 'success');
-        return;
-      }
-    } catch {
-      // Fallback if fetch or share fails
-    }
-
-    window.open(`https://wa.me/919008625716?text=${whatsappMessage}`, '_blank');
-  };
-
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
-    showToast('Product link copied to clipboard!', 'info');
-  };
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-white border border-soft w-full max-w-4xl rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden text-earth my-auto relative max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#2A2620]/80 backdrop-blur-sm flex items-center justify-center p-4">
+      <div
+        className="relative bg-[#F4ECD8] text-[#2A2620] w-full max-w-4xl rounded-2xl shadow-2xl border border-[#2A2620]/15 overflow-hidden animate-fade-in my-8 max-h-[90vh] flex flex-col md:flex-row"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
         <button
           onClick={() => setQuickViewProduct(null)}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-cream text-stone-600 hover:text-earth border border-soft transition"
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#2A2620]/10 hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors"
+          aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* LEFT: Image Gallery & Zoom */}
-          <div className="p-6 bg-cream flex flex-col justify-between border-b md:border-b-0 md:border-r border-soft">
-            <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white border border-soft group">
-              <img
-                src={currentImage}
-                alt={quickViewProduct.name}
-                className="w-full h-full object-cover group-hover:scale-125 transition duration-500 cursor-zoom-in"
-              />
-              <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur text-[10px] text-stone-600 font-bold px-2 py-1 rounded-lg border border-soft">
-                Hover to Zoom
-              </span>
-            </div>
+        {/* Left Column: Product Gallery */}
+        <div className="md:w-1/2 p-6 bg-[#F8F3E6] border-b md:border-b-0 md:border-r border-[#2A2620]/10 flex flex-col justify-between">
+          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-white/50 border border-[#2A2620]/10 mb-4 flex items-center justify-center">
+            <img
+              src={currentImage}
+              alt={quickViewProduct.name}
+              className="w-full h-full object-contain p-4"
+            />
 
-            {/* Thumbnail Row */}
-            {images.length > 1 && (
-              <div className="flex gap-2 mt-4 overflow-x-auto no-scrollbar">
-                {images.map((img, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedImageIndex(idx)}
-                    className={`w-14 h-14 rounded-xl overflow-hidden border-2 transition shrink-0 ${
-                      selectedImageIndex === idx ? 'border-olive' : 'border-soft opacity-60'
-                    }`}
-                  >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
 
-          {/* RIGHT: Product Info & Buy Controls */}
-          <div className="p-6 space-y-5 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-widest text-olive">
-                  {quickViewProduct.category}
-                </span>
-                <div className="flex items-center gap-2">
-                  <button onClick={handleShare} className="text-stone-500 hover:text-earth transition p-1">
-                    <Share2 className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => toggleWishlist(quickViewProduct.id)}
-                    className={`p-1 transition ${isWishlisted ? 'text-rose-500' : 'text-stone-500 hover:text-rose-500'}`}
-                  >
-                    <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-rose-500' : ''}`} />
-                  </button>
-                </div>
-              </div>
-
-              <h2 className="text-xl sm:text-2xl font-bold font-serif text-earth">
-                {quickViewProduct.name}
-              </h2>
-
-              {/* Rating */}
-              <div className="flex items-center gap-2 text-xs">
-                <div className="flex items-center gap-1 bg-cream border border-soft text-olive px-2 py-0.5 rounded-lg font-bold">
-                  <Star className="w-3.5 h-3.5 fill-olive" />
-                  <span>{quickViewProduct.rating}</span>
-                </div>
-                <span className="text-stone-500">({quickViewProduct.reviewCount} customer reviews)</span>
-                <span className="text-olive font-bold flex items-center gap-1 ml-auto text-[11px]">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> In Stock ({quickViewProduct.stock} left)
-                </span>
-              </div>
-
-              {/* Price Display */}
-              <div className="bg-cream p-3.5 rounded-2xl border border-soft flex items-baseline gap-2">
-                <span className="text-2xl font-bold text-olive">₹{selectedVariant.price}</span>
-                {selectedVariant.originalPrice > selectedVariant.price && (
-                  <span className="text-sm text-stone-400 line-through">
-                    ₹{selectedVariant.originalPrice}
-                  </span>
-                )}
-                {discountPercent > 0 && (
-                  <span className="bg-olive text-white text-[10px] font-bold px-2 py-0.5 rounded ml-auto">
-                    Save {discountPercent}%
-                  </span>
-                )}
-              </div>
-
-              {/* Weight Variant Selection */}
-              <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-stone-600">Select Pack Weight:</label>
-                <div className="flex flex-wrap gap-2">
-                  {quickViewProduct.variants.map((v, idx) => (
-                    <button
-                      key={v.weight}
-                      onClick={() => setSelectedVariantIndex(idx)}
-                      className={`text-xs font-bold px-3.5 py-1.5 rounded-xl border transition ${
-                        selectedVariantIndex === idx
-                          ? 'bg-olive text-white border-olive'
-                          : 'bg-cream text-earth border-soft hover:border-stone-300'
-                      }`}
-                    >
-                      {v.weight} - ₹{v.price}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quantity Selector */}
-              <div className="flex items-center gap-4 pt-1">
-                <span className="text-xs font-bold text-stone-600">Quantity:</span>
-                <div className="flex items-center bg-cream border border-soft rounded-xl p-1">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-7 h-7 rounded-lg bg-white hover:bg-stone-100 text-earth flex items-center justify-center transition border border-soft"
-                  >
-                    <Minus className="w-3.5 h-3.5" />
-                  </button>
-                  <span className="w-10 text-center font-bold text-xs text-earth">{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="w-7 h-7 rounded-lg bg-white hover:bg-stone-100 text-earth flex items-center justify-center transition border border-soft"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Action CTA Buttons */}
-              <div className="grid grid-cols-2 gap-2 pt-2">
+          {/* Thumbnail Strip */}
+          {images.length > 1 && (
+            <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
+              {images.map((img, idx) => (
                 <button
-                  onClick={handleAddToCart}
-                  className="bg-cream hover:bg-stone-100 border border-soft text-earth font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition active:scale-95"
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className={`w-14 h-14 rounded-lg overflow-hidden border-2 shrink-0 transition ${
+                    selectedImageIndex === idx ? 'border-[#C89211]' : 'border-[#2A2620]/10 opacity-70'
+                  }`}
                 >
-                  <ShoppingBag className="w-4 h-4 text-olive" /> Add to Cart
+                  <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
                 </button>
-                <button
-                  onClick={handleBuyNow}
-                  className="bg-olive hover:bg-[#4a4a34] text-white font-bold py-3 rounded-xl text-xs transition active:scale-95"
-                >
-                  Buy Now
-                </button>
-              </div>
+              ))}
+            </div>
+          )}
 
-
+          {/* Why Dhaanya Promise Block */}
+          <div className="mt-6 pt-4 border-t border-[#2A2620]/10 space-y-2 text-xs text-[#2A2620]/80">
+            <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider block">
+              Why Dhaanya?
+            </span>
+            <div className="grid grid-cols-2 gap-2">
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Freshly Milled</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Whole Ingredients</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Traditional Process</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Made with Care</span>
             </div>
           </div>
         </div>
 
-        {/* Tabbed Info Section (Description, Ingredients, Nutrition, Benefits, Reviews) */}
-        <div className="border-t border-soft p-6 bg-cream space-y-4">
-          <div className="flex items-center gap-4 border-b border-soft text-xs font-bold overflow-x-auto no-scrollbar">
-            {(['description', 'ingredients', 'nutrition', 'benefits', 'reviews'] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`py-2.5 capitalize border-b-2 transition ${
-                  activeTab === tab
-                    ? 'border-olive text-olive'
-                    : 'border-transparent text-stone-500 hover:text-earth'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          <div className="text-xs text-stone-600 leading-relaxed max-h-40 overflow-y-auto">
-            {activeTab === 'description' && <p>{quickViewProduct.description}</p>}
-
-            {activeTab === 'ingredients' && (
-              <div className="flex flex-wrap gap-2">
-                {quickViewProduct.ingredients?.map((ing) => (
-                  <span key={ing} className="bg-white border border-soft px-2.5 py-1 rounded-lg text-olive font-medium">
-                    🌿 {ing}
+        {/* Right Column: Details & Actions */}
+        <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto no-scrollbar">
+          <div className="space-y-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#A9542B]">
+                {quickViewProduct.category}
+              </span>
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#2A2620] mt-1 leading-tight">
+                {quickViewProduct.name}
+              </h2>
+              {quickViewProduct.rating > 0 && (
+                <div className="flex items-center gap-2 mt-2">
+                  <div className="flex text-[#C89211]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 ${i < Math.floor(quickViewProduct.rating) ? 'fill-[#C89211]' : 'opacity-30'}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xs text-[#2A2620]/70 font-semibold">
+                    {quickViewProduct.rating.toFixed(1)} ({quickViewProduct.reviewCount || 12} verified reviews)
                   </span>
-                )) || <p>100% Pure Organic Product</p>}
-              </div>
-            )}
+                </div>
+              )}
+            </div>
 
-            {activeTab === 'nutrition' && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {quickViewProduct.nutritionInfo ? (
-                  Object.entries(quickViewProduct.nutritionInfo).map(([k, v]) => (
-                    <div key={k} className="bg-white p-2 rounded-xl border border-soft">
-                      <span className="text-stone-500 block text-[10px]">{k}</span>
-                      <strong className="text-olive font-bold">{v}</strong>
-                    </div>
-                  ))
-                ) : (
-                  <p>Nutritional values per 100g standard serving.</p>
+            {/* Price Display */}
+            <div className="flex items-baseline gap-3 py-2 border-y border-[#2A2620]/10">
+              <span className="font-serif text-3xl font-bold text-[#2A2620]">
+                ₹{selectedVariant.price}
+              </span>
+              {selectedVariant.originalPrice > selectedVariant.price && (
+                <span className="text-sm text-[#2A2620]/40 line-through font-serif">
+                  ₹{selectedVariant.originalPrice}
+                </span>
+              )}
+              <span className="text-xs text-[#3E4B32] font-semibold bg-[#3E4B32]/10 px-2 py-0.5 rounded ml-auto">
+                In Stock ({selectedVariant.weight})
+              </span>
+            </div>
+
+            {/* Weight Selection Pills */}
+            <div>
+              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2">
+                Select Weight / Portion
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {quickViewProduct.variants.map((v, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedVariantIndex(idx)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-semibold border transition-all ${
+                      selectedVariantIndex === idx
+                        ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32] shadow-xs'
+                        : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20 hover:border-[#C89211]'
+                    }`}
+                  >
+                    {v.weight} — ₹{v.price}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Quantity Selector */}
+            <div className="flex items-center gap-4 pt-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70">
+                Quantity:
+              </label>
+              <div className="flex items-center border border-[#2A2620]/20 rounded-md bg-[#F8F3E6]">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="p-2 text-[#2A2620] hover:text-[#A9542B]"
+                >
+                  <Minus className="w-3.5 h-3.5" />
+                </button>
+                <span className="px-4 font-bold text-sm text-[#2A2620]">{quantity}</span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="p-2 text-[#2A2620] hover:text-[#A9542B]"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Tabs: Description / Ingredients / Nutrition */}
+            <div className="pt-4 border-t border-[#2A2620]/10">
+              <div className="flex border-b border-[#2A2620]/10 text-xs font-semibold">
+                <button
+                  onClick={() => setActiveTab('description')}
+                  className={`pb-2 pr-4 transition-colors ${
+                    activeTab === 'description'
+                      ? 'border-b-2 border-[#C89211] text-[#C89211]'
+                      : 'text-[#2A2620]/60'
+                  }`}
+                >
+                  Description
+                </button>
+                {quickViewProduct.ingredients && (
+                  <button
+                    onClick={() => setActiveTab('ingredients')}
+                    className={`pb-2 px-4 transition-colors ${
+                      activeTab === 'ingredients'
+                        ? 'border-b-2 border-[#C89211] text-[#C89211]'
+                        : 'text-[#2A2620]/60'
+                    }`}
+                  >
+                    Ingredients
+                  </button>
+                )}
+                {quickViewProduct.nutritionInfo && (
+                  <button
+                    onClick={() => setActiveTab('nutrition')}
+                    className={`pb-2 px-4 transition-colors ${
+                      activeTab === 'nutrition'
+                        ? 'border-b-2 border-[#C89211] text-[#C89211]'
+                        : 'text-[#2A2620]/60'
+                    }`}
+                  >
+                    Nutrition
+                  </button>
                 )}
               </div>
-            )}
 
-            {activeTab === 'benefits' && (
-              <ul className="space-y-1 list-disc list-inside">
-                {quickViewProduct.benefits?.map((b) => (
-                  <li key={b}>{b}</li>
-                )) || <li>Promotes overall health and holistic immunity.</li>}
-              </ul>
-            )}
-
-            {activeTab === 'reviews' && (
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-earth">Customer Reviews ({quickViewProduct.reviewCount})</span>
-                  <span className="text-olive font-bold">★ {quickViewProduct.rating} / 5.0</span>
-                </div>
-                <div className="bg-white p-3 rounded-xl border border-soft">
-                  <div className="flex justify-between items-center text-[10px] text-stone-500 mb-1">
-                    <strong className="text-earth">Meera S. (Verified Buyer)</strong>
-                    <span>5 Stars</span>
+              <div className="py-3 text-xs text-[#2A2620]/80 leading-relaxed">
+                {activeTab === 'description' && <p>{quickViewProduct.description}</p>}
+                {activeTab === 'ingredients' && (
+                  <p>{quickViewProduct.ingredients?.join(', ')}</p>
+                )}
+                {activeTab === 'nutrition' && quickViewProduct.nutritionInfo && (
+                  <div className="grid grid-cols-2 gap-2">
+                    {Object.entries(quickViewProduct.nutritionInfo).map(([k, v]) => (
+                      <div key={k} className="flex justify-between border-b border-[#2A2620]/5 py-1">
+                        <span className="font-semibold text-[#2A2620]">{k}:</span>
+                        <span>{v}</span>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-stone-600 italic">"Extremely happy with the authentic aroma and quality. Pure organic goodness!"</p>
-                </div>
+                )}
               </div>
-            )}
+            </div>
+          </div>
+
+          {/* Action CTAs */}
+          <div className="pt-6 space-y-2 border-t border-[#2A2620]/10 mt-6">
+            <div className="flex gap-3">
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow cursor-pointer"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span>ADD TO BASKET</span>
+              </button>
+
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-[#C89211] hover:bg-[#A9542B] text-[#2A2620] hover:text-white font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow cursor-pointer"
+              >
+                <span>BUY NOW</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
