@@ -24,6 +24,7 @@ import { ToastContainer } from './components/ToastContainer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { AdminPanel } from './components/AdminPanel';
 import { ServerConditionModal } from './components/ServerConditionModal';
+import { BottomNav } from './components/BottomNav';
 import { ProductCategory } from './types';
 
 const MainAppContent: React.FC = () => {
@@ -195,7 +196,7 @@ const MainAppContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F4ECD8] font-sans antialiased text-[#2A2620] selection:bg-[#3E4B32] selection:text-[#F4ECD8] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#F4ECD8] font-sans antialiased text-[#2A2620] selection:bg-[#3E4B32] selection:text-[#F4ECD8] flex flex-col justify-between pb-16 lg:pb-0">
       <div>
         <Header
           onNavigateHome={handleNavigateHome}
@@ -259,6 +260,14 @@ const MainAppContent: React.FC = () => {
         onNavigateCustomMasala={handleNavigateCustomMasala}
         onNavigateOurStory={handleNavigateOurStory}
         onNavigateFreshMilling={handleNavigateFreshMilling}
+      />
+
+      {/* Mobile Fixed Bottom Navigation */}
+      <BottomNav
+        currentPageView={currentPageView}
+        onNavigateHome={handleNavigateHome}
+        onNavigateCategoryPage={handleNavigateCategoryPage}
+        onNavigateCustomMasala={handleNavigateCustomMasala}
       />
 
       {/* Global Overlays */}
