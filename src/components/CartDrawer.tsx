@@ -133,8 +133,9 @@ export const CartDrawer: React.FC = () => {
 
                   <div className="flex items-center border border-[#2A2620]/20 rounded bg-[#F4ECD8]">
                     <button
-                      onClick={() => updateCartQty(item.id, item.quantity - 1)}
-                      className="p-1 hover:bg-[#2A2620]/10 text-[#2A2620]"
+                      onClick={() => updateCartQty(item.id, -1)}
+                      className="p-1 hover:bg-[#2A2620]/10 text-[#2A2620] cursor-pointer"
+                      aria-label="Decrease quantity"
                     >
                       <Minus className="w-3 h-3" />
                     </button>
@@ -142,8 +143,9 @@ export const CartDrawer: React.FC = () => {
                       {item.quantity}
                     </span>
                     <button
-                      onClick={() => updateCartQty(item.id, item.quantity + 1)}
-                      className="p-1 hover:bg-[#2A2620]/10 text-[#2A2620]"
+                      onClick={() => updateCartQty(item.id, 1)}
+                      className="p-1 hover:bg-[#2A2620]/10 text-[#2A2620] cursor-pointer"
+                      aria-label="Increase quantity"
                     >
                       <Plus className="w-3 h-3" />
                     </button>

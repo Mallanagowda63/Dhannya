@@ -25,7 +25,10 @@ import { WhatsAppButton } from './components/WhatsAppButton';
 import { AdminPanel } from './components/AdminPanel';
 import { ServerConditionModal } from './components/ServerConditionModal';
 import { BottomNav } from './components/BottomNav';
-import { ProductCategory } from './types';
+import { BrandSystemModal } from './components/BrandSystemModal';
+import { PackagingQRModal } from './components/PackagingQRModal';
+import { UnboxingExperienceModal } from './components/UnboxingExperienceModal';
+import { ProductCategory, Product, Order } from './types';
 
 const MainAppContent: React.FC = () => {
   const {
@@ -48,6 +51,9 @@ const MainAppContent: React.FC = () => {
   } = useApp();
 
   const [currentPageView, setCurrentPageView] = useState<'home' | 'category' | 'our-story' | 'fresh-milling'>('home');
+  const [isBrandSystemOpen, setIsBrandSystemOpen] = useState(false);
+  const [inspectingProduct, setInspectingProduct] = useState<Product | null>(null);
+  const [unboxingOrder, setUnboxingOrder] = useState<Order | null>(null);
 
   // Push history state entry whenever any modal overlay opens
   useEffect(() => {
@@ -58,7 +64,10 @@ const MainAppContent: React.FC = () => {
       isProfileOpen ||
       quickViewProduct ||
       isAdminMode ||
-      isServerModalOpen
+      isServerModalOpen ||
+      isBrandSystemOpen ||
+      inspectingProduct ||
+      unboxingOrder
     ) {
       window.history.pushState({ modal: true }, '');
     }
@@ -70,12 +79,27 @@ const MainAppContent: React.FC = () => {
     quickViewProduct,
     isAdminMode,
     isServerModalOpen,
+    isBrandSystemOpen,
+    inspectingProduct,
+    unboxingOrder,
   ]);
 
   // Handle Mobile Hardware / Browser Back Button (popstate event)
   useEffect(() => {
     const handlePopState = () => {
       // 1. Close open modals first
+      if (unboxingOrder) {
+        setUnboxingOrder(null);
+        return;
+      }
+      if (inspectingProduct) {
+        setInspectingProduct(null);
+        return;
+      }
+      if (isBrandSystemOpen) {
+        setIsBrandSystemOpen(false);
+        return;
+      }
       if (isCheckoutOpen) {
         setIsCheckoutOpen(false);
         return;
@@ -124,6 +148,9 @@ const MainAppContent: React.FC = () => {
     quickViewProduct,
     isAdminMode,
     isServerModalOpen,
+    isBrandSystemOpen,
+    inspectingProduct,
+    unboxingOrder,
     currentPageView,
     setIsCartOpen,
     setIsCheckoutOpen,
@@ -184,12 +211,16 @@ const MainAppContent: React.FC = () => {
 
   if (isAdminMode && user?.role === 'admin') {
     return (
-      <div className="min-h-screen bg-stone-900 font-sans antialiased text-stone-100 selection:bg-amber-500 selection:text-stone-950">
+      <div className="min-h-screen bg-[#2A2620] font-sans antialiased text-[#F4ECD8] selection:bg-[#C89211] selection:text-[#2A2620]">
         <AdminPanel />
         <ToastContainer />
         <ServerConditionModal
           isOpen={isServerModalOpen}
           onClose={() => setIsServerModalOpen(false)}
+        />
+        <BrandSystemModal
+          isOpen={isBrandSystemOpen}
+          onClose={() => setIsBrandSystemOpen(false)}
         />
       </div>
     );
@@ -204,6 +235,7 @@ const MainAppContent: React.FC = () => {
           onNavigateCategoryPage={handleNavigateCategoryPage}
           onNavigateOurStory={handleNavigateOurStory}
           onNavigateFreshMilling={handleNavigateFreshMilling}
+          onOpenBrandSystem={() => setIsBrandSystemOpen(true)}
         />
 
         {currentPageView === 'home' && (
@@ -260,6 +292,7 @@ const MainAppContent: React.FC = () => {
         onNavigateCustomMasala={handleNavigateCustomMasala}
         onNavigateOurStory={handleNavigateOurStory}
         onNavigateFreshMilling={handleNavigateFreshMilling}
+        onOpenBrandSystem={() => setIsBrandSystemOpen(true)}
       />
 
       {/* Mobile Fixed Bottom Navigation */}
@@ -272,7 +305,7 @@ const MainAppContent: React.FC = () => {
 
       {/* Global Overlays */}
       <CartDrawer />
-      <CheckoutModal />
+      <CheckoutModal onShowUnboxing={(order) => setUnboxingOrder(order)} />
       <AuthModal />
       <UserProfileModal />
       <ProductQuickView />
@@ -280,6 +313,24 @@ const MainAppContent: React.FC = () => {
         isOpen={isServerModalOpen}
         onClose={() => setIsServerModalOpen(false)}
       />
+
+      {/* 360 Brand Experience Modals */}
+      <BrandSystemModal
+        isOpen={isBrandSystemOpen}
+        onClose={() => setIsBrandSystemOpen(false)}
+      />
+      <PackagingQRModal
+        product={inspectingProduct}
+        isOpen={!!inspectingProduct}
+        onClose={() => setInspectingProduct(null)}
+        onNavigateCustomMasala={handleNavigateCustomMasala}
+      />
+      <UnboxingExperienceModal
+        order={unboxingOrder}
+        isOpen={!!unboxingOrder}
+        onClose={() => setUnboxingOrder(null)}
+      />
+
       <ToastContainer />
       <WhatsAppButton />
     </div>

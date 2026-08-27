@@ -218,30 +218,35 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const addToCart = (product: Product, variantWeight?: string, quantity: number = 1) => {
+    const addQty = Number(quantity) > 0 ? Number(quantity) : 1;
     const selectedVariant =
       product.variants.find((v) => v.weight === variantWeight) || product.variants[0];
 
-    const existingIndex = cart.findIndex(
-      (item) => item.productId === product.id && item.variantWeight === selectedVariant.weight
-    );
+    setCart((prevCart) => {
+      const existingIndex = prevCart.findIndex(
+        (item) => item.productId === product.id && item.variantWeight === selectedVariant.weight
+      );
 
-    if (existingIndex > -1) {
-      const updated = [...cart];
-      updated[existingIndex].quantity += quantity;
-      setCart(updated);
-    } else {
-      const newItem: CartItem = {
-        id: `ci-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
-        productId: product.id,
-        type: 'product',
-        name: product.name,
-        image: product.image,
-        variantWeight: selectedVariant.weight,
-        price: selectedVariant.price,
-        quantity,
-      };
-      setCart((prev) => [...prev, newItem]);
-    }
+      if (existingIndex > -1) {
+        return prevCart.map((item, idx) =>
+          idx === existingIndex
+            ? { ...item, quantity: Number(item.quantity || 0) + addQty }
+            : item
+        );
+      } else {
+        const newItem: CartItem = {
+          id: `ci-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+          productId: product.id,
+          type: 'product',
+          name: product.name,
+          image: product.image,
+          variantWeight: selectedVariant.weight,
+          price: selectedVariant.price,
+          quantity: addQty,
+        };
+        return [...prevCart, newItem];
+      }
+    });
 
     showToast(`Added ${product.name} (${selectedVariant.weight}) to cart!`);
   };

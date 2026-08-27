@@ -54,7 +54,7 @@ export const RecommendedCarousel: React.FC = () => {
           className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth px-1 snap-x snap-mandatory"
         >
           {displayList.map((prod) => (
-            <div key={prod.id} className="min-w-[230px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0 snap-start">
+            <div key={prod.id} className="min-w-[230px] sm:min-w-[280px] md:min-w-[300px] max-w-[300px] shrink-0 snap-start flex flex-col h-full">
               <ProductCard product={prod} />
             </div>
           ))}

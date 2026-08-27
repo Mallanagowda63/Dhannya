@@ -17,7 +17,11 @@ import {
 } from 'lucide-react';
 import { DhaanyaLogo } from './DhaanyaLogo';
 
-export const CheckoutModal: React.FC = () => {
+interface CheckoutModalProps {
+  onShowUnboxing?: (order: Order) => void;
+}
+
+export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onShowUnboxing }) => {
   const {
     isCheckoutOpen,
     setIsCheckoutOpen,
@@ -239,6 +243,28 @@ export const CheckoutModal: React.FC = () => {
 
                   <label
                     className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                      paymentMethod === 'Razorpay'
+                        ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]'
+                        : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <CreditCard className="w-5 h-5 text-[#C89211]" />
+                      <div>
+                        <span className="font-bold text-sm block">Online Payment (Cards / NetBanking / Razorpay)</span>
+                        <span className="text-[11px] opacity-75">Server-side Razorpay Payment Gateway Test Mode</span>
+                      </div>
+                    </div>
+                    <input
+                      type="radio"
+                      name="payment"
+                      checked={paymentMethod === 'Razorpay'}
+                      onChange={() => setPaymentMethod('Razorpay')}
+                    />
+                  </label>
+
+                  <label
+                    className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                       paymentMethod === 'COD'
                         ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]'
                         : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20'
@@ -322,12 +348,28 @@ export const CheckoutModal: React.FC = () => {
                 </div>
               </div>
 
-              <button
-                onClick={handleCloseModal}
-                className="px-8 py-3.5 bg-[#3E4B32] text-[#F4ECD8] font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#2A2620] transition-colors"
-              >
-                CONTINUE SHOPPING
-              </button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button
+                  onClick={handleCloseModal}
+                  className="w-full sm:w-auto px-8 py-3.5 bg-[#3E4B32] text-[#F4ECD8] font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#2A2620] transition-colors"
+                >
+                  CONTINUE SHOPPING
+                </button>
+
+                {onShowUnboxing && (
+                  <button
+                    onClick={() => {
+                      const currentOrder = completedOrder;
+                      handleCloseModal();
+                      if (currentOrder) onShowUnboxing(currentOrder);
+                    }}
+                    className="w-full sm:w-auto px-6 py-3.5 bg-[#C89211] text-[#2A2620] font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#A9542B] hover:text-white transition-colors flex items-center justify-center gap-2"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    <span>View Unboxing Experience</span>
+                  </button>
+                )}
+              </div>
             </div>
           )}
         </div>

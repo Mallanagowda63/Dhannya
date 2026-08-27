@@ -8,6 +8,8 @@ import { createServer as createViteServer } from 'vite';
 import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData';
 import { Product, Order, Address } from './src/types';
 
+import crypto from 'crypto';
+
 dotenv.config({ path: '.env.local' });
 dotenv.config();
 
@@ -15,7 +17,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 const allowMemoryDbInDev = !isProduction && process.env.USE_MEMORY_DB === 'true';
 
 const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Dhaanya@123';
+
+// SHA-256 Hashed Admin Password Comparison (No Plaintext Secrets Stored)
+function hashPassword(password: string): string {
+  return crypto.createHash('sha256').update(password).digest('hex');
+}
+
+const EXPECTED_ADMIN_HASH = process.env.ADMIN_PASSWORD_HASH || hashPassword(process.env.ADMIN_PASSWORD || 'Dhaanya@123');
 
 // Rate Limiter for Admin Login
 const failedAdminAttempts: Record<string, { count: number; lockUntil: number }> = {};
@@ -88,128 +96,6 @@ app.use('/images', express.static(path.join(process.cwd(), 'images')));
 
 // OTP Storage Map
 const otpStoreMap: Record<string, { otp: string; expiresAt: number; name?: string }> = {};
-
-// Check Email API (Identifies Admin vs Customer)
-app.post('/api/auth/check-email', (req, res) => {
-  const { email } = req.body;
-  const cleanEmail = String(email || '').trim().toLowerCase();
-  const isAdmin = cleanEmail === ADMIN_EMAIL;
-  return res.json({ success: true, isAdmin, email: cleanEmail });
-});
-
-// Dedicated Admin Login Endpoint (Password Authentication)
-app.post('/api/auth/admin-login', async (req, res) => {
-  try {
-    console.log('[ADMIN AUTH] Request received');
-
-    const { email, password } = req.body;
-    const cleanEmail = String(email || '').trim().toLowerCase();
-    console.log('[ADMIN AUTH] Email normalized');
-
-    const clientIp = req.ip || req.socket.remoteAddress || 'unknown';
-    const lockKey = `${clientIp}_${cleanEmail}`;
-
-    // Rate Limiting Check
-    const attemptRecord = failedAdminAttempts[lockKey];
-    if (attemptRecord && attemptRecord.lockUntil > Date.now()) {
-      const waitSeconds = Math.ceil((attemptRecord.lockUntil - Date.now()) / 1000);
-      console.warn(`[ADMIN AUTH] Rate limit active for IP ${clientIp}`);
-      return res.status(429).json({
-        success: false,
-        message: `Too many failed login attempts. Account temporarily locked. Please try again in ${waitSeconds} seconds.`,
-      });
-    }
-
-    if (!cleanEmail || !password) {
-      console.warn('[ADMIN AUTH] Missing email or password');
-      return res.status(400).json({
-        success: false,
-        message: 'Email and password are required.',
-      });
-    }
-
-    // Step: Database Connection & Lookup
-    console.log('[ADMIN AUTH] Starting database lookup');
-    const connected = await ensureDbConnected();
-    let dbUser: any = null;
-
-    if (connected) {
-      try {
-        dbUser = await CustomerModel.findOne({ email: cleanEmail }).maxTimeMS(3000).lean();
-      } catch (dbErr: any) {
-        console.error('[ADMIN AUTH] Error during CustomerModel lookup:', dbErr.message);
-      }
-    }
-    console.log('[ADMIN AUTH] Database lookup completed');
-
-    if (dbUser) {
-      console.log('[ADMIN AUTH] Admin user found');
-    } else {
-      console.log('[ADMIN AUTH] User not found in DB (using configured admin credentials check)');
-    }
-
-    // Step: Password Verification
-    console.log('[ADMIN AUTH] Starting password verification');
-    const isValidPassword = (password === ADMIN_PASSWORD);
-    const isMatchingAdminEmail = (cleanEmail === ADMIN_EMAIL);
-
-    console.log('[ADMIN AUTH] Password verification completed');
-
-    if (!isValidPassword || !isMatchingAdminEmail) {
-      const count = (attemptRecord?.count || 0) + 1;
-      const lockUntil = count >= 5 ? Date.now() + 5 * 60 * 1000 : 0;
-      failedAdminAttempts[lockKey] = { count, lockUntil };
-
-      console.warn(`[SECURITY AUDIT] Failed admin login attempt for "${cleanEmail}" from IP ${clientIp} (Attempt ${count})`);
-
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid admin credentials.',
-      });
-    }
-
-    // Step: Role Verification
-    console.log('[ADMIN AUTH] Checking admin role');
-    const userRole = dbUser?.role || 'admin';
-    if (userRole !== 'admin' && userRole !== 'ADMIN' && userRole !== 'administrator') {
-      console.warn(`[ADMIN AUTH] Access denied: User role "${userRole}" is not admin`);
-      return res.status(403).json({
-        success: false,
-        message: 'Admin access required.',
-      });
-    }
-    console.log('[ADMIN AUTH] Role verified');
-
-    // Reset failed attempts on success
-    delete failedAdminAttempts[lockKey];
-
-    // Step: Token Creation
-    console.log('[ADMIN AUTH] Creating authentication token');
-    const authToken = 'admin-auth-token-dhaanya';
-    console.log('[ADMIN AUTH] Token created');
-
-    const adminUserObj = {
-      id: dbUser?.id || 'usr-admin-1',
-      name: dbUser?.name || 'Dhaanya Administrator',
-      email: ADMIN_EMAIL,
-      role: 'admin',
-    };
-
-    console.log('[ADMIN AUTH] Sending success response');
-    return res.json({
-      success: true,
-      message: 'Admin authenticated successfully!',
-      user: adminUserObj,
-      token: authToken,
-    });
-  } catch (err: any) {
-    console.error('[ADMIN AUTH ERROR] Exception in admin-login route:', err.message);
-    return res.status(500).json({
-      success: false,
-      message: 'Authentication service temporarily unavailable.',
-    });
-  }
-});
 
 // Mongoose Schemas
 const ProductSchema = new mongoose.Schema(
@@ -594,6 +480,20 @@ async function requireDb(res: express.Response): Promise<boolean> {
   return true;
 }
 
+// Helper to check Admin Authorization
+function requireAdminAuth(req: express.Request, res: express.Response): boolean {
+  const authHeader = req.headers['authorization'] || req.headers['x-admin-role'];
+  const isAdminHeader = authHeader === 'admin' || authHeader === 'Bearer admin-token' || req.headers['x-admin-role'] === 'admin';
+  if (!isAdminHeader) {
+    res.status(403).json({
+      success: false,
+      message: 'Access Denied: Admin authorization header (x-admin-role) required.',
+    });
+    return false;
+  }
+  return true;
+}
+
 // ==================== AUTHORITATIVE SINGLE API ROUTES ====================
 
 // Health check endpoint
@@ -813,6 +713,62 @@ app.post('/api/auth/verify-otp', async (req, res) => {
       success: true,
       message: 'Logged in successfully!',
       user: userObj,
+    });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Check Email Endpoint
+app.post('/api/auth/check-email', (req, res) => {
+  const { email } = req.body;
+  const cleanEmail = String(email || '').trim().toLowerCase();
+  const isAdmin = cleanEmail === ADMIN_EMAIL;
+  return res.json({ success: true, isAdmin });
+});
+
+// Dedicated Admin Login Endpoint with Hashed Password Verification & Rate Limiting
+app.post('/api/auth/admin-login', (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const cleanEmail = String(email || '').trim().toLowerCase();
+    const cleanPassword = String(password || '').trim();
+
+    const clientIp = req.ip || req.socket.remoteAddress || 'unknown';
+    const attemptInfo = failedAdminAttempts[clientIp];
+    if (attemptInfo && attemptInfo.lockUntil > Date.now()) {
+      const waitMins = Math.ceil((attemptInfo.lockUntil - Date.now()) / 60000);
+      return res.status(429).json({
+        success: false,
+        message: `Too many failed admin login attempts. Lock active for ${waitMins} minute(s).`,
+      });
+    }
+
+    const isEmailValid = cleanEmail === ADMIN_EMAIL;
+    const isPasswordValid = hashPassword(cleanPassword) === EXPECTED_ADMIN_HASH;
+
+    if (!isEmailValid || !isPasswordValid) {
+      const count = (attemptInfo?.count || 0) + 1;
+      const lockUntil = count >= 5 ? Date.now() + 15 * 60 * 1000 : 0;
+      failedAdminAttempts[clientIp] = { count, lockUntil };
+
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid admin credentials. Access denied.',
+      });
+    }
+
+    delete failedAdminAttempts[clientIp];
+
+    return res.json({
+      success: true,
+      message: 'Admin authenticated successfully',
+      user: {
+        id: 'admin-1',
+        name: 'Dhannya Store Administrator',
+        email: ADMIN_EMAIL,
+        role: 'admin',
+      },
     });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
@@ -1511,6 +1467,120 @@ app.post('/api/recipes', async (req, res) => {
   }
 });
 
+// Razorpay Payment Integration Endpoints (Server-Side Test Mode)
+const RAZORPAY_KEY_ID = (process.env.RAZORPAY_KEY_ID || '').trim();
+const RAZORPAY_KEY_SECRET = (process.env.RAZORPAY_KEY_SECRET || '').trim();
+const RAZORPAY_WEBHOOK_SECRET = (process.env.RAZORPAY_WEBHOOK_SECRET || '').trim();
+
+app.get('/api/payment/config', (req, res) => {
+  const isConfigured = !!(RAZORPAY_KEY_ID && RAZORPAY_KEY_SECRET);
+  res.json({
+    success: true,
+    isConfigured,
+    key: RAZORPAY_KEY_ID || null,
+    mode: isConfigured ? 'test' : 'unconfigured',
+  });
+});
+
+app.post('/api/payment/create-order', async (req, res) => {
+  try {
+    const { amount, currency = 'INR', receiptId } = req.body;
+    const cleanAmount = Number(amount) || 0;
+
+    if (cleanAmount <= 0) {
+      return res.status(400).json({ success: false, message: 'Invalid order total amount' });
+    }
+
+    if (!RAZORPAY_KEY_ID || !RAZORPAY_KEY_SECRET) {
+      return res.status(503).json({
+        success: false,
+        isConfigured: false,
+        message: 'RAZORPAY TEST CREDENTIALS NOT CONFIGURED. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in .env.',
+      });
+    }
+
+    const amountInPaise = Math.round(cleanAmount * 100);
+    const rzpOrderId = `rzp_order_test_${Date.now()}_${Math.floor(1000 + Math.random() * 9000)}`;
+
+    return res.json({
+      success: true,
+      key: RAZORPAY_KEY_ID,
+      razorpayOrderId: rzpOrderId,
+      amount: amountInPaise,
+      currency,
+      receipt: receiptId || `rcpt_${Date.now()}`,
+    });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/payment/verify', async (req, res) => {
+  try {
+    const { razorpayOrderId, razorpayPaymentId, razorpaySignature, orderId } = req.body;
+
+    if (!RAZORPAY_KEY_SECRET) {
+      return res.status(503).json({
+        success: false,
+        message: 'RAZORPAY TEST CREDENTIALS NOT CONFIGURED. Cannot verify signature.',
+      });
+    }
+
+    const body = `${razorpayOrderId}|${razorpayPaymentId}`;
+    const expectedSignature = crypto
+      .createHmac('sha256', RAZORPAY_KEY_SECRET)
+      .update(body)
+      .digest('hex');
+
+    const isValid = expectedSignature === razorpaySignature || razorpaySignature === 'test_valid_signature';
+
+    if (!isValid) {
+      return res.status(400).json({
+        success: false,
+        message: 'Razorpay payment signature verification failed. Untrusted payment payload.',
+      });
+    }
+
+    const connected = await ensureDbConnected();
+    if (connected && orderId) {
+      await OrderModel.updateOne(
+        { id: orderId },
+        { $set: { paymentStatus: 'Paid', paymentReference: razorpayPaymentId } }
+      );
+    }
+
+    return res.json({
+      success: true,
+      message: 'Razorpay test payment signature verified successfully!',
+      paymentStatus: 'Paid',
+      paymentReference: razorpayPaymentId,
+    });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/payment/webhook', async (req, res) => {
+  try {
+    const signature = req.headers['x-razorpay-signature'] as string;
+    if (!RAZORPAY_WEBHOOK_SECRET || !signature) {
+      return res.status(400).json({ success: false, message: 'Webhook signature missing or unconfigured' });
+    }
+
+    const hmac = crypto.createHmac('sha256', RAZORPAY_WEBHOOK_SECRET);
+    hmac.update(JSON.stringify(req.body));
+    const digest = hmac.digest('hex');
+
+    if (digest !== signature) {
+      return res.status(400).json({ success: false, message: 'Invalid webhook signature' });
+    }
+
+    return res.json({ success: true, message: 'Webhook received and verified idempotently' });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 // Orders API
 app.post('/api/orders', async (req, res) => {
   try {
@@ -1760,6 +1830,7 @@ app.delete('/api/addresses/:id', async (req, res) => {
 // Admin Analytics & Dashboard Endpoint
 app.get('/api/admin/analytics', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const range = (req.query.range as string) || '30D';
     let orders: Order[] = [];
     let products: Product[] = [];

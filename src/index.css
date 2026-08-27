@@ -11,6 +11,7 @@
   --color-gold: #C89211;
   --color-ochre: #A9542B;
   --color-spice: #7C2A1E;
+  --color-light-gold: #E8B93E;
 }
 
 @layer base {
@@ -22,6 +23,12 @@
     --dhaanya-ochre: #A9542B;
     --dhaanya-spice: #7C2A1E;
     --dhaanya-light-gold: #E8B93E;
+
+    /* Category Specific Accents */
+    --accent-flour: #A9542B;
+    --accent-spice: #7C2A1E;
+    --accent-oil: #3E4B32;
+    --accent-millet: #C89211;
   }
 
   html, body {
@@ -46,6 +53,10 @@
 
   .font-kannada {
     font-family: 'Noto Sans Kannada', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Work Sans', sans-serif;
   }
 
   /* Custom Sleek Scrollbar */
@@ -96,12 +107,23 @@
   .text-dhaanya-gold { color: #C89211; }
   .text-dhaanya-ochre { color: #A9542B; }
   .text-dhaanya-spice { color: #7C2A1E; }
+  .text-dhaanya-light-gold { color: #E8B93E; }
 
   .border-dhaanya-gold { border-color: #C89211; }
   .border-dhaanya-millet { border-color: #3E4B32; }
   .border-dhaanya-charcoal { border-color: #2A2620; }
   .border-dhaanya-ochre { border-color: #A9542B; }
+  .border-dhaanya-spice { border-color: #7C2A1E; }
   .border-dhaanya-soft { border-color: rgba(42, 38, 32, 0.12); }
+
+  /* Category Specific Accents */
+  .category-flours { border-top-color: #A9542B; }
+  .category-spices { border-top-color: #7C2A1E; }
+  .category-oils { border-top-color: #3E4B32; }
+
+  .badge-flours { background-color: #A9542B; color: #F4ECD8; }
+  .badge-spices { background-color: #7C2A1E; color: #F4ECD8; }
+  .badge-oils { background-color: #3E4B32; color: #F4ECD8; }
 
   /* Interactive & Kraft styling */
   .kraft-card {
@@ -117,6 +139,16 @@
     border: 1px solid rgba(200, 146, 17, 0.2);
   }
 
+  .kraft-texture {
+    background-color: #FAF4E8;
+    background-image: radial-gradient(rgba(42, 38, 32, 0.04) 1px, transparent 0);
+    background-size: 16px 16px;
+  }
+
+  .seal-border {
+    border: 2px dashed #C89211;
+  }
+
   .transition-smooth {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -129,5 +161,151 @@
   .no-scrollbar {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
+  }
+
+  /* Universal Product Card Component Design System */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: #F8F3E6;
+    border: 1px solid rgba(42, 38, 32, 0.12);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .product-card:hover {
+    box-shadow: 0 12px 30px -4px rgba(42, 38, 32, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .product-image-section {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(244, 236, 216, 0.4);
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-image {
+    transform: scale(1.06);
+  }
+
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem;
+    justify-content: space-between;
+  }
+
+  .product-meta-row {
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-title-slot {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.375rem;
+  }
+
+  .product-description-slot {
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.25rem;
+  }
+
+  .product-variants-slot {
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .product-bottom-area {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(42, 38, 32, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Typography Hierarchy Classes */
+  .display-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 3rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .h1-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 2.25rem;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .h2-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  .h3-title {
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .body-large {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .body-normal {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .caption-text {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 }

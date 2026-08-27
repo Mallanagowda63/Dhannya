@@ -200,7 +200,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   // Data States
   const [analyticsData, setAnalyticsData] = useState<any>(null);
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS);
-  const [ordersList, setOrdersList] = useState<Order[]>(INITIAL_SAMPLE_ORDERS);
+  const [ordersList, setOrdersList] = useState<Order[]>([]);
   const [couponsList, setCouponsList] = useState<any[]>([]);
   const [categoriesList, setCategoriesList] = useState<any[]>([]);
   const [customersList, setCustomersList] = useState<any[]>([]);

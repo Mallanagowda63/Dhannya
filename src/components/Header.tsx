@@ -1,15 +1,13 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import {
   ShoppingBag,
-  Heart,
   User as UserIcon,
   Search,
   Sparkles,
   Menu,
   X,
   ShieldAlert,
-  LogIn,
   Flame,
   ChevronRight,
   Sparkle,
@@ -24,6 +22,7 @@ interface HeaderProps {
   onNavigateCategoryPage: (category?: ProductCategory) => void;
   onNavigateOurStory?: () => void;
   onNavigateFreshMilling?: () => void;
+  onOpenBrandSystem?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -32,11 +31,11 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigateCategoryPage,
   onNavigateOurStory,
   onNavigateFreshMilling,
+  onOpenBrandSystem,
 }) => {
   const {
     coupons,
     cart,
-    wishlist,
     user,
     setIsCartOpen,
     setIsAuthModalOpen,
@@ -85,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
       <header className="sticky top-0 z-40 w-full transition-all duration-300">
         {/* Announcement Ticker Bar */}
         <div className="bg-[#2A2620] text-[#F4ECD8] py-2 px-4 text-xs font-medium border-b border-[#C89211]/30">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <div className="hidden md:flex items-center gap-4 text-[#F4ECD8]/90">
               <span className="flex items-center gap-1.5 text-[#E8B93E]">
                 <Sparkle className="w-3.5 h-3.5 fill-[#E8B93E]" />
@@ -99,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
               {activeTopCoupon && (
                 <button
                   onClick={() => handleCopyCoupon(activeTopCoupon.code)}
-                  className="inline-flex items-center gap-1.5 bg-[#C89211]/20 hover:bg-[#C89211]/30 text-[#E8B93E] px-2.5 py-0.5 rounded border border-[#C89211]/40 transition-colors"
+                  className="inline-flex items-center gap-1.5 bg-[#C89211]/20 hover:bg-[#C89211]/30 text-[#E8B93E] px-2.5 py-0.5 rounded border border-[#C89211]/40 transition-colors cursor-pointer"
                 >
                   <Flame className="w-3 h-3 text-[#E8B93E] animate-pulse" />
                   <span>Use <strong>{activeTopCoupon.code}</strong> for {activeTopCoupon.discountPercent}% OFF</span>
@@ -108,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 onClick={() => setIsServerModalOpen(true)}
-                className="hidden lg:flex items-center gap-1 text-[11px] text-[#F4ECD8]/70 hover:text-[#E8B93E] transition-colors ml-2"
+                className="hidden lg:flex items-center gap-1 text-[11px] text-[#F4ECD8]/70 hover:text-[#E8B93E] transition-colors ml-2 cursor-pointer"
               >
                 <ShieldAlert className="w-3 h-3 text-[#E8B93E]" />
                 <span>System Status</span>
@@ -125,12 +124,12 @@ export const Header: React.FC<HeaderProps> = ({
               : 'bg-[#F4ECD8] border-b border-[#2A2620]/10'
           }`}
         >
-          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-10 h-18 sm:h-20 flex items-center justify-between gap-4">
-            {/* Left: Mobile Menu Toggle & Logo */}
+          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-2 sm:gap-4 overflow-x-hidden">
+            {/* LEFT: Logo & Mobile Hamburger Trigger */}
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 text-[#2A2620] hover:text-[#3E4B32] transition-colors lg:hidden"
+                className="p-2 text-[#2A2620] hover:text-[#3E4B32] transition-colors xl:hidden cursor-pointer"
                 aria-label="Open Mobile Menu"
               >
                 <Menu className="w-6 h-6" />
@@ -146,86 +145,101 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </div>
 
-            {/* Center: Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-7 whitespace-nowrap">
+            {/* CENTER: Main Navigation Links (Visible on XL Desktop screens 1280px+) */}
+            <div className="hidden xl:flex items-center justify-center gap-3.5 2xl:gap-6 whitespace-nowrap flex-1 px-2 min-w-0">
               <button
                 onClick={onNavigateHome}
-                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-semibold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Home
               </button>
 
               <button
                 onClick={() => onNavigateCategoryPage()}
-                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-semibold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Shop All
               </button>
 
               <button
                 onClick={() => onNavigateCategoryPage('Flour')}
-                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-semibold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Flours
               </button>
 
               <button
                 onClick={() => onNavigateCategoryPage('Spices')}
-                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-semibold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Spices
               </button>
 
               <button
                 onClick={() => onNavigateCategoryPage('Wood Pressed Oils')}
-                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-semibold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Oils
               </button>
 
+              {/* Custom Masala (Featured Highlight Pill) */}
               <button
                 onClick={onNavigateCustomMasala}
-                className="font-sans text-xs xl:text-sm font-bold text-[#3E4B32] hover:text-[#C89211] transition-all uppercase tracking-wider flex items-center gap-1.5 bg-[#3E4B32]/10 hover:bg-[#3E4B32]/15 px-3.5 py-1.5 rounded-full border border-[#3E4B32]/25 shadow-2xs whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs font-semibold text-[#3E4B32] hover:text-[#C89211] transition-all uppercase tracking-wider flex items-center gap-1.5 bg-[#3E4B32]/10 hover:bg-[#3E4B32]/18 h-9 px-3.5 rounded-full border border-[#3E4B32]/25 shadow-2xs whitespace-nowrap cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#C89211]" />
                 <span>✦ Custom Masala</span>
               </button>
 
+              {/* Fresh Milling (Accent Color Destination) */}
               <button
                 onClick={onNavigateFreshMilling}
-                className="font-sans text-xs xl:text-sm font-bold text-[#A9542B] hover:text-[#C89211] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-bold text-[#A9542B] hover:text-[#C89211] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Fresh Milling
               </button>
 
               <button
                 onClick={onNavigateOurStory}
-                className="font-sans text-xs xl:text-sm font-bold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
+                className="font-sans text-xs 2xl:text-sm font-semibold text-[#2A2620] hover:text-[#A9542B] transition-colors uppercase tracking-wider whitespace-nowrap cursor-pointer"
               >
                 Our Story
               </button>
             </div>
 
-            {/* Right: Header Actions */}
-            <div className="flex items-center gap-3 shrink-0">
+            {/* RIGHT: Utility Action Group */}
+            <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 ml-auto">
               {/* Search Trigger */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="w-10 h-10 rounded-full text-[#2A2620] hover:text-[#3E4B32] hover:bg-[#2A2620]/5 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full text-[#2A2620] hover:text-[#3E4B32] hover:bg-[#2A2620]/8 flex items-center justify-center transition-colors cursor-pointer shrink-0"
                 title="Search Dhaanya Pantry"
                 aria-label="Search"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
-              {/* Admin Toggle Button */}
+              {/* 360° Brand System Compact Utility Button (Visible on sm 640px and up) */}
+              {onOpenBrandSystem && (
+                <button
+                  onClick={onOpenBrandSystem}
+                  className="hidden sm:flex h-8.5 sm:h-9 px-2.5 sm:px-3 rounded-lg bg-[#C89211]/12 hover:bg-[#C89211]/22 text-[#C89211] font-semibold text-[11px] sm:text-xs border border-[#C89211]/35 items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shrink-0"
+                  title="360° Brand System Guidelines"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#C89211]" />
+                  <span className="hidden 2xl:inline">360° BRAND SYSTEM</span>
+                  <span className="inline 2xl:hidden">360° BRAND</span>
+                </button>
+              )}
+
+              {/* Admin Toggle Button (Visible on md 768px and up) */}
               {user?.role === 'admin' && (
                 <button
                   onClick={() => setIsAdminMode(!isAdminMode)}
-                  className={`h-10 px-4 text-xs font-bold rounded-full border transition-all whitespace-nowrap flex items-center justify-center cursor-pointer ${
+                  className={`hidden md:flex h-8.5 sm:h-9 px-3 sm:px-3.5 text-xs font-semibold rounded-full border transition-all whitespace-nowrap items-center justify-center cursor-pointer shrink-0 ${
                     isAdminMode
-                      ? 'bg-[#A9542B] text-white border-[#A9542B] shadow-xs'
-                      : 'bg-[#2A2620] text-[#E8B93E] border-[#C89211] hover:bg-black'
+                      ? 'bg-[#A9542B] text-white border-[#A9542B] shadow-2xs'
+                      : 'bg-[#2A2620] text-[#E8B93E] border-[#C89211]/50 hover:bg-black'
                   }`}
                 >
                   {isAdminMode ? 'Exit Admin' : 'Admin Panel'}
@@ -236,7 +250,7 @@ export const Header: React.FC<HeaderProps> = ({
               {user ? (
                 <button
                   onClick={() => setIsProfileOpen(true)}
-                  className="w-10 h-10 rounded-full bg-[#3E4B32] text-[#F4ECD8] flex items-center justify-center font-bold text-xs uppercase shadow-xs hover:scale-105 transition-transform cursor-pointer shrink-0"
+                  className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-[#3E4B32] text-[#F4ECD8] flex items-center justify-center font-bold text-xs uppercase shadow-2xs hover:scale-105 transition-transform cursor-pointer shrink-0"
                   title={user.name}
                 >
                   {user.name.charAt(0)}
@@ -244,22 +258,22 @@ export const Header: React.FC<HeaderProps> = ({
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="w-10 h-10 rounded-full bg-[#2A2620]/5 hover:bg-[#2A2620]/10 text-[#2A2620] flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                  className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-[#2A2620]/5 hover:bg-[#2A2620]/10 text-[#2A2620] flex items-center justify-center transition-colors cursor-pointer shrink-0"
                   title="Sign In / Register"
                 >
-                  <UserIcon className="w-5 h-5" />
+                  <UserIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               )}
 
               {/* Cart Drawer Trigger */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative w-10 h-10 bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] rounded-full flex items-center justify-center transition-all shadow-xs cursor-pointer shrink-0"
+                className="relative w-8.5 h-8.5 sm:w-10 sm:h-10 bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] rounded-full flex items-center justify-center transition-all shadow-2xs cursor-pointer shrink-0"
                 aria-label="View Cart"
               >
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#C89211] text-[#2A2620] text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#F4ECD8]">
+                  <span className="absolute -top-1 -right-1 bg-[#C89211] text-[#2A2620] text-[10px] font-extrabold w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center border-2 border-[#F4ECD8] shadow-2xs">
                     {cartCount}
                   </span>
                 )}
@@ -276,9 +290,9 @@ export const Header: React.FC<HeaderProps> = ({
         onSelectCategory={onNavigateCategoryPage}
       />
 
-      {/* Mobile Side Drawer Navigation */}
+      {/* Mobile & Tablet Side Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex">
+        <div className="fixed inset-0 z-50 xl:hidden flex">
           <div
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
@@ -297,19 +311,19 @@ export const Header: React.FC<HeaderProps> = ({
                 />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 text-[#2A2620] hover:text-[#A9542B]"
+                  className="p-2 text-[#2A2620] hover:text-[#A9542B] cursor-pointer"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="py-6 flex flex-col gap-4">
+              <div className="py-6 flex flex-col gap-3">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onNavigateHome();
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Home</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
@@ -320,7 +334,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onNavigateCategoryPage();
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Shop All Products</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
@@ -331,7 +345,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onNavigateCategoryPage('Flour');
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Fresh Flours</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
@@ -342,7 +356,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onNavigateCategoryPage('Spices');
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Ground Spices</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
@@ -353,7 +367,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onNavigateCategoryPage('Wood Pressed Oils');
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Cold Pressed Oils</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
@@ -364,7 +378,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onNavigateCustomMasala();
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#3E4B32] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#3E4B32] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#C89211]" />
@@ -378,7 +392,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     if (onNavigateFreshMilling) onNavigateFreshMilling();
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Fresh Milling Ritual</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
@@ -389,11 +403,27 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     if (onNavigateOurStory) onNavigateOurStory();
                   }}
-                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 flex items-center justify-between"
+                  className="text-left font-serif text-lg font-medium text-[#2A2620] hover:text-[#A9542B] py-2 border-b border-[#2A2620]/5 flex items-center justify-between cursor-pointer"
                 >
                   <span>Our Story</span>
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
                 </button>
+
+                {onOpenBrandSystem && (
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenBrandSystem();
+                    }}
+                    className="text-left font-serif text-lg font-medium text-[#C89211] py-2 flex items-center justify-between cursor-pointer"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-[#C89211]" />
+                      360° Brand System
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-[#C89211]" />
+                  </button>
+                )}
               </div>
             </div>
 
@@ -411,3 +441,4 @@ export const Header: React.FC<HeaderProps> = ({
     </>
   );
 };
+

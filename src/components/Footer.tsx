@@ -18,7 +18,8 @@ export const Footer: React.FC<{
   onNavigateCustomMasala: () => void;
   onNavigateOurStory?: () => void;
   onNavigateFreshMilling?: () => void;
-}> = ({ onNavigateHome, onNavigateCustomMasala, onNavigateOurStory, onNavigateFreshMilling }) => {
+  onOpenBrandSystem?: () => void;
+}> = ({ onNavigateHome, onNavigateCustomMasala, onNavigateOurStory, onNavigateFreshMilling, onOpenBrandSystem }) => {
   const { showToast, setActiveCategory, login, setIsAdminMode } = useApp();
   const [email, setEmail] = useState('');
 
@@ -162,6 +163,17 @@ export const Footer: React.FC<{
                   Fresh Milling Ritual
                 </button>
               </li>
+              {onOpenBrandSystem && (
+                <li>
+                  <button
+                    onClick={onOpenBrandSystem}
+                    className="text-[#E8B93E] hover:text-[#FAF6ED] font-bold transition-colors flex items-center gap-1"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#C89211]" />
+                    360° Brand System & Guidelines
+                  </button>
+                </li>
+              )}
               <li>
                 <span className="text-[#F4ECD8]/60 cursor-default">Store & Mill Locations</span>
               </li>
