@@ -1,0 +1,109 @@
+{
+  "totals": {
+    "csvDataRows": 1022,
+    "uniqueProducts": 297,
+    "totalVariants": 1020
+  },
+  "zeroPriceFlags": [
+    {
+      "name": "Thippili (Long Pepper)",
+      "size": "Default Title",
+      "price": "0.00"
+    }
+  ],
+  "exactDuplicateRows": [
+    {
+      "name": "Neem Comb",
+      "size": "Default Title",
+      "price": "110.00",
+      "occurrences": 2
+    },
+    {
+      "name": "Neem Spatula",
+      "size": "Default Title",
+      "price": "90.00",
+      "occurrences": 2
+    }
+  ],
+  "namingConflicts": [
+    {
+      "name": "Spoon",
+      "size": "Default Title",
+      "variants": [
+        {
+          "price": "165.00",
+          "available": true
+        },
+        {
+          "price": "110.00",
+          "available": true
+        }
+      ]
+    }
+  ],
+  "irregularVariantProducts": [
+    {
+      "name": "Red Chilli- Byadagi Kaddi",
+      "sizes": [
+        "1kg",
+        "25og",
+        "500g"
+      ]
+    },
+    {
+      "name": "Spoon",
+      "sizes": [
+        "Default Title",
+        "Default Title"
+      ]
+    }
+  ],
+  "unresolvedCategoryProducts": [
+    {
+      "name": "Corn/ Maize",
+      "reason": "No site-data match and no keyword rule matched"
+    },
+    {
+      "name": "Incha/ Acacia Wild",
+      "reason": "No site-data match and no keyword rule matched"
+    },
+    {
+      "name": "Travancore Tamarind/ Vaalan Puli",
+      "reason": "No site-data match and no keyword rule matched"
+    }
+  ],
+  "outOfStockVariantCount": 4,
+  "outOfStockVariants": [
+    {
+      "name": "Cocoa Tea",
+      "size": "1kg"
+    },
+    {
+      "name": "Cocoa Tea",
+      "size": "500g"
+    },
+    {
+      "name": "Quinoa",
+      "size": "250g"
+    },
+    {
+      "name": "Quinoa",
+      "size": "500g"
+    }
+  ],
+  "selectorTypeCounts": {
+    "weight": 261,
+    "flavor": 9,
+    "single": 24,
+    "custom_numeric": 1,
+    "irregular": 2
+  },
+  "categorySourceCounts": {
+    "site-data": 278,
+    "keyword-guess": 16,
+    "unresolved": 3
+  },
+  "notes": [
+    "\"Custom Masala Blend\" (selectorType: custom_numeric, ~90 gram-based price points) duplicates pricing already handled by the app's existing Custom Masala Builder feature -- likely not meant to be rendered as a standard product page with a 90-option dropdown. Flagged for a product decision, not auto-rendered."
+  ]
+}

@@ -1,0 +1,1171 @@
+{
+  "totalProductsInSite": 302,
+  "mergedCount": 286,
+  "merged": [
+    {
+      "name": "Ajwa Dates",
+      "variantCount": 3
+    },
+    {
+      "name": "Ajwain (Ayamodakam)",
+      "variantCount": 3
+    },
+    {
+      "name": "Almond Nut Butter",
+      "variantCount": 3
+    },
+    {
+      "name": "Almonds Jumbo",
+      "variantCount": 3
+    },
+    {
+      "name": "Almonds USA",
+      "variantCount": 3
+    },
+    {
+      "name": "Alovi Seeds (Halim Seeds)",
+      "variantCount": 3
+    },
+    {
+      "name": "Amaranth (Rajgira)",
+      "variantCount": 3
+    },
+    {
+      "name": "Amaranth Noodles",
+      "variantCount": 3
+    },
+    {
+      "name": "Amla Dry Candy",
+      "variantCount": 3
+    },
+    {
+      "name": "Amla Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Appam Idiyappam Podi",
+      "variantCount": 3
+    },
+    {
+      "name": "Apricot Soft",
+      "variantCount": 3
+    },
+    {
+      "name": "Arabica Coffee Bean",
+      "variantCount": 3
+    },
+    {
+      "name": "Arabica Coffee Beans (organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Arabica Coffee Powder",
+      "variantCount": 3
+    },
+    {
+      "name": "Ashwagandha",
+      "variantCount": 4
+    },
+    {
+      "name": "Assam Tea",
+      "variantCount": 3
+    },
+    {
+      "name": "Avalose Podi",
+      "variantCount": 3
+    },
+    {
+      "name": "Baby Fork",
+      "variantCount": 1
+    },
+    {
+      "name": "Baby Spoon",
+      "variantCount": 1
+    },
+    {
+      "name": "Bamboo Toothbrush",
+      "variantCount": 1
+    },
+    {
+      "name": "Banana Dried (Kannan Kaya)",
+      "variantCount": 3
+    },
+    {
+      "name": "Barley",
+      "variantCount": 3
+    },
+    {
+      "name": "Barnyard Millet (Oodalu)",
+      "variantCount": 3
+    },
+    {
+      "name": "Barnyard Millet (Oodalu) Rava",
+      "variantCount": 3
+    },
+    {
+      "name": "Barnyard Millet Cookies",
+      "variantCount": 3
+    },
+    {
+      "name": "Basil Seeds (Sabja)",
+      "variantCount": 3
+    },
+    {
+      "name": "Bay Leaves Tej Patta",
+      "variantCount": 3
+    },
+    {
+      "name": "Beetroot Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Bengal Gram Dal (Besan)",
+      "variantCount": 3
+    },
+    {
+      "name": "Bhringraj Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Black Cardamom (Black Elaichi)",
+      "variantCount": 3
+    },
+    {
+      "name": "Black Chana",
+      "variantCount": 3
+    },
+    {
+      "name": "Black Chickpea Powder (Kadala Podi)",
+      "variantCount": 3
+    },
+    {
+      "name": "Black Salt",
+      "variantCount": 3
+    },
+    {
+      "name": "Black Seedless Raisins",
+      "variantCount": 3
+    },
+    {
+      "name": "Black Sesame Chikki",
+      "variantCount": 3
+    },
+    {
+      "name": "Brahmi Honey",
+      "variantCount": 2
+    },
+    {
+      "name": "Brazil Nuts",
+      "variantCount": 3
+    },
+    {
+      "name": "Browntop Millet (Korale)",
+      "variantCount": 3
+    },
+    {
+      "name": "Cardamom Bold",
+      "variantCount": 8
+    },
+    {
+      "name": "Cardamom Bulk",
+      "variantCount": 3
+    },
+    {
+      "name": "Cashew 180",
+      "variantCount": 3
+    },
+    {
+      "name": "Cashew 240",
+      "variantCount": 3
+    },
+    {
+      "name": "Cashew Nut Butter",
+      "variantCount": 3
+    },
+    {
+      "name": "Cashew Peanut Chikki",
+      "variantCount": 3
+    },
+    {
+      "name": "Cashew Roasted And Salted",
+      "variantCount": 3
+    },
+    {
+      "name": "Cashew Split",
+      "variantCount": 3
+    },
+    {
+      "name": "Cassia Cinnamon",
+      "variantCount": 3
+    },
+    {
+      "name": "Chammanthi Podi",
+      "variantCount": 3
+    },
+    {
+      "name": "Chia Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Chilli Chocolate",
+      "variantCount": 1
+    },
+    {
+      "name": "Chocolate Muesli",
+      "variantCount": 3
+    },
+    {
+      "name": "Cinnamon Roll (Churul Patta, Indonesia)",
+      "variantCount": 8
+    },
+    {
+      "name": "Cloth Loofah",
+      "variantCount": 1
+    },
+    {
+      "name": "Cloves",
+      "variantCount": 8
+    },
+    {
+      "name": "Cocoa Powder",
+      "variantCount": 3
+    },
+    {
+      "name": "Cocoa Tea",
+      "variantCount": 3
+    },
+    {
+      "name": "Coconut Oil",
+      "variantCount": 2
+    },
+    {
+      "name": "Coconut Sugar",
+      "variantCount": 3
+    },
+    {
+      "name": "Coffee Chocolate",
+      "variantCount": 1
+    },
+    {
+      "name": "Copper Tongue Cleaner",
+      "variantCount": 1
+    },
+    {
+      "name": "Coriander",
+      "variantCount": 8
+    },
+    {
+      "name": "Corn Maize",
+      "variantCount": 3
+    },
+    {
+      "name": "Cow Ghee",
+      "variantCount": 3
+    },
+    {
+      "name": "Cucumber Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Cumin (Jeerakam)",
+      "variantCount": 13
+    },
+    {
+      "name": "Dailywell Fibre Atta",
+      "variantCount": 3
+    },
+    {
+      "name": "Dailywell Gluten Free Atta",
+      "variantCount": 3
+    },
+    {
+      "name": "Dailywell Multi Millet Atta",
+      "variantCount": 3
+    },
+    {
+      "name": "Dailywell Nuts & Seeds Atta",
+      "variantCount": 3
+    },
+    {
+      "name": "Dailywell Protein Atta",
+      "variantCount": 3
+    },
+    {
+      "name": "Dark Chocolate 55%",
+      "variantCount": 1
+    },
+    {
+      "name": "Dark Chocolate 80%",
+      "variantCount": 1
+    },
+    {
+      "name": "Dark Milk Chocolate",
+      "variantCount": 1
+    },
+    {
+      "name": "Dates- Dry Black Fine (Oman Kaarakka)",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Blueberries",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Cherry",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Cranberries",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Curry Leaves",
+      "variantCount": 4
+    },
+    {
+      "name": "Dried Ginger",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Ginger Powder",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Jackfruit",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Lemon",
+      "variantCount": 3
+    },
+    {
+      "name": "Dried Strawberry",
+      "variantCount": 3
+    },
+    {
+      "name": "Ekanayakam",
+      "variantCount": 3
+    },
+    {
+      "name": "Emmer Khapli Wheat",
+      "variantCount": 6
+    },
+    {
+      "name": "Fennel (Perumjeerakam)",
+      "variantCount": 3
+    },
+    {
+      "name": "Fenugreek (Uluva)",
+      "variantCount": 3
+    },
+    {
+      "name": "Fig (Big)",
+      "variantCount": 3
+    },
+    {
+      "name": "Flax Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Forest Honey (Kattuthen)",
+      "variantCount": 4
+    },
+    {
+      "name": "Fork",
+      "variantCount": 1
+    },
+    {
+      "name": "Foxtail Millet (Navane)",
+      "variantCount": 3
+    },
+    {
+      "name": "Foxtail Millet (Navane) Rava",
+      "variantCount": 3
+    },
+    {
+      "name": "Fruit & Nut Chocolate",
+      "variantCount": 1
+    },
+    {
+      "name": "Fruits & Nuts Muesli",
+      "variantCount": 3
+    },
+    {
+      "name": "Fruits Granola",
+      "variantCount": 3
+    },
+    {
+      "name": "Garam Masala",
+      "variantCount": 1
+    },
+    {
+      "name": "Garlic pickle",
+      "variantCount": 1
+    },
+    {
+      "name": "Ginger Cube",
+      "variantCount": 3
+    },
+    {
+      "name": "Ginger Honey",
+      "variantCount": 2
+    },
+    {
+      "name": "Gooseberry Pickle",
+      "variantCount": 1
+    },
+    {
+      "name": "Green Gram",
+      "variantCount": 3
+    },
+    {
+      "name": "Green Gram Powder (Cherupayar Podi)",
+      "variantCount": 3
+    },
+    {
+      "name": "Green Peas",
+      "variantCount": 3
+    },
+    {
+      "name": "Groundnut Oil",
+      "variantCount": 2
+    },
+    {
+      "name": "Hazel Nuts",
+      "variantCount": 3
+    },
+    {
+      "name": "Hazelnut Nut Butter",
+      "variantCount": 3
+    },
+    {
+      "name": "Henna Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Hibiscus Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Hing (Asafoetida)",
+      "variantCount": 4
+    },
+    {
+      "name": "Honey Dipper",
+      "variantCount": 1
+    },
+    {
+      "name": "Horse Gram (Muthira)",
+      "variantCount": 3
+    },
+    {
+      "name": "Idli Powder",
+      "variantCount": 3
+    },
+    {
+      "name": "Idly Rice SR Orange",
+      "variantCount": 3
+    },
+    {
+      "name": "Incha Acacia Wild",
+      "variantCount": 4
+    },
+    {
+      "name": "Indigo Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Iratti Madhuram",
+      "variantCount": 3
+    },
+    {
+      "name": "Jackfruit Pasta",
+      "variantCount": 3
+    },
+    {
+      "name": "Jaggery Mix Dry Fruit",
+      "variantCount": 3
+    },
+    {
+      "name": "Jowar (Sorghum Millet)",
+      "variantCount": 3
+    },
+    {
+      "name": "Jowar (Sorghum Millet) Rava",
+      "variantCount": 3
+    },
+    {
+      "name": "Jowar Flakes",
+      "variantCount": 3
+    },
+    {
+      "name": "Jowar Millet Pasta",
+      "variantCount": 3
+    },
+    {
+      "name": "Kabuli Chana White",
+      "variantCount": 3
+    },
+    {
+      "name": "Kadukka (Haritaki)",
+      "variantCount": 3
+    },
+    {
+      "name": "Karingali (Black Cutch)",
+      "variantCount": 3
+    },
+    {
+      "name": "Kasthuri Haldi Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Kiwi Green Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Kodo Millet (Arka)",
+      "variantCount": 3
+    },
+    {
+      "name": "Kodo Millet (Arka) Rava",
+      "variantCount": 3
+    },
+    {
+      "name": "Kodo Millet Cookies",
+      "variantCount": 3
+    },
+    {
+      "name": "Lapsi Daliya (Broken Wheat)",
+      "variantCount": 3
+    },
+    {
+      "name": "Lemon pickle",
+      "variantCount": 1
+    },
+    {
+      "name": "Little Millet (Samai)",
+      "variantCount": 3
+    },
+    {
+      "name": "Little Millet (Samai) Rava",
+      "variantCount": 3
+    },
+    {
+      "name": "Little Millet Cookies",
+      "variantCount": 3
+    },
+    {
+      "name": "Lobia (Red Cowpeas)",
+      "variantCount": 3
+    },
+    {
+      "name": "Lokwan Gund Wheat",
+      "variantCount": 6
+    },
+    {
+      "name": "Makhana (Lotus Seeds)",
+      "variantCount": 3
+    },
+    {
+      "name": "Mango Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Manjishta Root Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Marathi Moggu",
+      "variantCount": 3
+    },
+    {
+      "name": "Marathi Moggu Long (Kapok Buds)",
+      "variantCount": 3
+    },
+    {
+      "name": "Marayoor Jaggery Powder",
+      "variantCount": 3
+    },
+    {
+      "name": "Marayoor Jaggery Whole",
+      "variantCount": 3
+    },
+    {
+      "name": "Masoor Dal (Split)",
+      "variantCount": 3
+    },
+    {
+      "name": "Medjool Jumbo Dates",
+      "variantCount": 3
+    },
+    {
+      "name": "Methi Leaves Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Mexican Bites",
+      "variantCount": 3
+    },
+    {
+      "name": "Milky Bar",
+      "variantCount": 1
+    },
+    {
+      "name": "Mixed DryFruit & Seeds Roasted",
+      "variantCount": 3
+    },
+    {
+      "name": "Mixed Vegetables (Air Fried)",
+      "variantCount": 3
+    },
+    {
+      "name": "Moong Dal",
+      "variantCount": 3
+    },
+    {
+      "name": "Moringa Noodles",
+      "variantCount": 3
+    },
+    {
+      "name": "Moringa Pasta",
+      "variantCount": 3
+    },
+    {
+      "name": "Moringa Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Mulethi Root Powder Irattimadhuram",
+      "variantCount": 4
+    },
+    {
+      "name": "Multani Mitti",
+      "variantCount": 4
+    },
+    {
+      "name": "Multi Millet Cookies",
+      "variantCount": 3
+    },
+    {
+      "name": "Multi Millet Vermiceli",
+      "variantCount": 3
+    },
+    {
+      "name": "Multigrain Chikki",
+      "variantCount": 3
+    },
+    {
+      "name": "Munakka Raisins",
+      "variantCount": 3
+    },
+    {
+      "name": "Mustard Oil (Black Seed)",
+      "variantCount": 2
+    },
+    {
+      "name": "Mustard Seeds Black",
+      "variantCount": 3
+    },
+    {
+      "name": "Nannari Root",
+      "variantCount": 3
+    },
+    {
+      "name": "Navara Rice",
+      "variantCount": 3
+    },
+    {
+      "name": "Neem Comb",
+      "variantCount": 1
+    },
+    {
+      "name": "Neem Ladle",
+      "variantCount": 1
+    },
+    {
+      "name": "Neem Leaf Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Neem Massage Comb",
+      "variantCount": 1
+    },
+    {
+      "name": "Neem Spatula",
+      "variantCount": 1
+    },
+    {
+      "name": "Neem Tongue Cleaner",
+      "variantCount": 1
+    },
+    {
+      "name": "Nutmeg",
+      "variantCount": 3
+    },
+    {
+      "name": "Nutmeg Mace (Red Flower)",
+      "variantCount": 3
+    },
+    {
+      "name": "Nutmeg Mace (Yellow Flower)",
+      "variantCount": 3
+    },
+    {
+      "name": "Orange Peel Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Oregano",
+      "variantCount": 3
+    },
+    {
+      "name": "Palm Candy Crystal (Panam Kalkandam)",
+      "variantCount": 3
+    },
+    {
+      "name": "Palm Jaggery (Karupatti)",
+      "variantCount": 3
+    },
+    {
+      "name": "Papaya Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Pathimukham",
+      "variantCount": 3
+    },
+    {
+      "name": "Peanut Chikki",
+      "variantCount": 3
+    },
+    {
+      "name": "Peanut Plain Roasted",
+      "variantCount": 3
+    },
+    {
+      "name": "Peanut Plain Roasted Nut Butter",
+      "variantCount": 3
+    },
+    {
+      "name": "Peanut Salted",
+      "variantCount": 3
+    },
+    {
+      "name": "Pearl Millet (Bajra)",
+      "variantCount": 3
+    },
+    {
+      "name": "Pecan Nuts",
+      "variantCount": 3
+    },
+    {
+      "name": "Pepper",
+      "variantCount": 11
+    },
+    {
+      "name": "Pineapple Coin (Dried)",
+      "variantCount": 3
+    },
+    {
+      "name": "Pineapple Ring Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Pink Salt Powder",
+      "variantCount": 3
+    },
+    {
+      "name": "Pista California (AM)",
+      "variantCount": 3
+    },
+    {
+      "name": "Pista Plain w o Shell",
+      "variantCount": 3
+    },
+    {
+      "name": "Plum Black Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Pomegranate Honey",
+      "variantCount": 2
+    },
+    {
+      "name": "Poppy (KhusKhus) White",
+      "variantCount": 3
+    },
+    {
+      "name": "Pot Tamarind (Kudampuli)",
+      "variantCount": 3
+    },
+    {
+      "name": "Protein Beans",
+      "variantCount": 3
+    },
+    {
+      "name": "Prunes Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Psyllium Husk (Isabgol Busi)",
+      "variantCount": 3
+    },
+    {
+      "name": "Pumpkin Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Putana (Parched Gram) Fine",
+      "variantCount": 3
+    },
+    {
+      "name": "Puttu Powder Roasted (Red)",
+      "variantCount": 3
+    },
+    {
+      "name": "Puttu Powder Roasted (White)",
+      "variantCount": 3
+    },
+    {
+      "name": "Quinoa",
+      "variantCount": 3
+    },
+    {
+      "name": "Quinoa Vermicelli",
+      "variantCount": 3
+    },
+    {
+      "name": "Raamacham",
+      "variantCount": 4
+    },
+    {
+      "name": "Ragi (Finger Millet)",
+      "variantCount": 3
+    },
+    {
+      "name": "Ragi (Finger Millet) Rava",
+      "variantCount": 3
+    },
+    {
+      "name": "Ragi Flakes",
+      "variantCount": 3
+    },
+    {
+      "name": "Ragi Noodles",
+      "variantCount": 3
+    },
+    {
+      "name": "Raisin- Afghan Long",
+      "variantCount": 3
+    },
+    {
+      "name": "Rajapuri Turmeric",
+      "variantCount": 10
+    },
+    {
+      "name": "Rajwadi Wheat",
+      "variantCount": 6
+    },
+    {
+      "name": "Rakthachandana",
+      "variantCount": 4
+    },
+    {
+      "name": "Raw Honey",
+      "variantCount": 3
+    },
+    {
+      "name": "Rectangle Loofah",
+      "variantCount": 1
+    },
+    {
+      "name": "Red Chilli- Byadagi Kaddi",
+      "variantCount": 3
+    },
+    {
+      "name": "Red Chilli- Dabbi",
+      "variantCount": 8
+    },
+    {
+      "name": "Red Chilli- Guntur Long",
+      "variantCount": 8
+    },
+    {
+      "name": "Red Chilli- Guntur Small",
+      "variantCount": 3
+    },
+    {
+      "name": "Red Chilli- Salem Ball",
+      "variantCount": 8
+    },
+    {
+      "name": "Red Matta Rice (Parboiled & Semi-Polished)",
+      "variantCount": 3
+    },
+    {
+      "name": "Red Rajma Kidney Beans",
+      "variantCount": 3
+    },
+    {
+      "name": "Red Rice Flakes (Avalakki)",
+      "variantCount": 3
+    },
+    {
+      "name": "Reetha Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Roasted Chana",
+      "variantCount": 3
+    },
+    {
+      "name": "Robusta Coffee Beans",
+      "variantCount": 3
+    },
+    {
+      "name": "Robusta Coffee Beans (organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Robusta Coffee Powder (Idukki)",
+      "variantCount": 3
+    },
+    {
+      "name": "Rose Mary Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Rose Petals",
+      "variantCount": 3
+    },
+    {
+      "name": "Royal Prime Kimia Dates",
+      "variantCount": 3
+    },
+    {
+      "name": "Royal Rajamudi Rice Premium",
+      "variantCount": 3
+    },
+    {
+      "name": "Safawi Dates",
+      "variantCount": 3
+    },
+    {
+      "name": "Sago (Tapioca Pearls)",
+      "variantCount": 3
+    },
+    {
+      "name": "Sambar Masala",
+      "variantCount": 1
+    },
+    {
+      "name": "Sandalwood Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Sesame Oil (Brown Gingelly Seed)",
+      "variantCount": 2
+    },
+    {
+      "name": "Sesame Oil (White Gingelly Seed)",
+      "variantCount": 2
+    },
+    {
+      "name": "Sesame Seeds (Til) Black",
+      "variantCount": 3
+    },
+    {
+      "name": "Sesame Seeds (Til) White",
+      "variantCount": 3
+    },
+    {
+      "name": "Shah Jeera (Caraway)",
+      "variantCount": 3
+    },
+    {
+      "name": "Sharbati Wheat (Rajnigandha)",
+      "variantCount": 6
+    },
+    {
+      "name": "Shikha Kai Powder",
+      "variantCount": 4
+    },
+    {
+      "name": "Sona Masoori Rice",
+      "variantCount": 3
+    },
+    {
+      "name": "Soup Spoon",
+      "variantCount": 1
+    },
+    {
+      "name": "Soya Bean",
+      "variantCount": 3
+    },
+    {
+      "name": "Spoon",
+      "variantCount": 2
+    },
+    {
+      "name": "Sprouted Ragi",
+      "variantCount": 3
+    },
+    {
+      "name": "Star Anise",
+      "variantCount": 8
+    },
+    {
+      "name": "Stingless Bee Honey (Cheruthen)",
+      "variantCount": 2
+    },
+    {
+      "name": "Stone Flower",
+      "variantCount": 3
+    },
+    {
+      "name": "Sugar Free Muesli",
+      "variantCount": 3
+    },
+    {
+      "name": "Sukkari Wet Dates",
+      "variantCount": 3
+    },
+    {
+      "name": "Sunflower Oil",
+      "variantCount": 2
+    },
+    {
+      "name": "Sunflower Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Tarbuj Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Tea - Cardamom Idukki (Organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Tea - Ginger Idukki (Organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Tea - Green Leaf Idukki",
+      "variantCount": 3
+    },
+    {
+      "name": "Tea - Masala Idukki (Organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Tea - Orthodox Black Idukki (Organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Tea - Orthodox Black Leaf Idukki (Organic)",
+      "variantCount": 3
+    },
+    {
+      "name": "Tenseed Chikki",
+      "variantCount": 3
+    },
+    {
+      "name": "Thippili (Long Pepper)",
+      "variantCount": 1
+    },
+    {
+      "name": "Thooyamalli Rice",
+      "variantCount": 3
+    },
+    {
+      "name": "Toor Dal Fine (Yellow)",
+      "variantCount": 3
+    },
+    {
+      "name": "Travancore Tamarind Vaalan Puli",
+      "variantCount": 3
+    },
+    {
+      "name": "Triphala",
+      "variantCount": 4
+    },
+    {
+      "name": "Urad Dal Black Split",
+      "variantCount": 3
+    },
+    {
+      "name": "Urad Gola Fine-Ball",
+      "variantCount": 3
+    },
+    {
+      "name": "Urad White Chilka (Split)",
+      "variantCount": 3
+    },
+    {
+      "name": "Venga Dried",
+      "variantCount": 3
+    },
+    {
+      "name": "Virgin coconut Oil",
+      "variantCount": 3
+    },
+    {
+      "name": "Walnut Chile",
+      "variantCount": 3
+    },
+    {
+      "name": "Walnut Nut Butter",
+      "variantCount": 3
+    },
+    {
+      "name": "Walnut Super White (Kashmiri)",
+      "variantCount": 3
+    },
+    {
+      "name": "Watermelon Seeds",
+      "variantCount": 3
+    },
+    {
+      "name": "Wheat Flakes",
+      "variantCount": 3
+    },
+    {
+      "name": "White Rajma (Pinto Beans)",
+      "variantCount": 3
+    },
+    {
+      "name": "White Rice Flakes (Avalakki)",
+      "variantCount": 3
+    },
+    {
+      "name": "White Sesame Chikki",
+      "variantCount": 3
+    },
+    {
+      "name": "Yellow Ball Raisins",
+      "variantCount": 3
+    }
+  ],
+  "skippedExcluded": [
+    "Custom Masala Blend"
+  ],
+  "skippedNoMatchCount": 15,
+  "skippedNoMatch": [
+    "Apricot Dried",
+    "Cashew- Broken PS",
+    "Cashew- Chilli Garlic 240",
+    "Cashew- Pepper Garlic 240",
+    "Chicken Masala",
+    "Fig (Small)",
+    "Fish Curry Masala",
+    "Macadamia Nuts",
+    "Masala Grinding Charge",
+    "Masala Roasting Charge",
+    "Meat Masala",
+    "Pista Salted & Roasted",
+    "Plum Red Dried",
+    "Raisins Long Yellow",
+    "Raisins Seed Black"
+  ]
+}
