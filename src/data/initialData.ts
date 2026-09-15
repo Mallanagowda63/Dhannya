@@ -14408,7 +14408,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-243",
     "name": "Red Matta Rice (Parboiled & Semi-Polished)",
-    "category": "Wood Pressed Oils",
+    "category": "Rice",
     "concern": [
       "Heart Health"
     ],

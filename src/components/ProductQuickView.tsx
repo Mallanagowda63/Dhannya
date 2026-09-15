@@ -125,6 +125,106 @@ export const ProductQuickView: React.FC = () => {
             </button>
           </div>
 
+          {/* Mobile Buy Block - name/price/weight/qty/CTA right after the image so
+              they aren't buried below the chat CTA and trust badges on small screens */}
+          <div className="md:hidden mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#A9542B]">
+              {quickViewProduct.category}
+            </span>
+            <h2 className="font-serif text-2xl font-bold text-[#2A2620] mt-1 leading-tight">
+              {quickViewProduct.name}
+            </h2>
+
+            <div className="py-3 border-y border-[#2A2620]/10 mt-3">
+              <div className="flex items-end flex-wrap gap-x-3 gap-y-1">
+                <span className="font-sans text-4xl font-bold text-[#2A2620] leading-none tracking-tight">
+                  ₹{selectedVariant.price}
+                </span>
+                {selectedVariant.originalPrice > selectedVariant.price && (
+                  <span className="text-sm text-[#2A2620]/40 line-through font-sans mb-1">
+                    ₹{selectedVariant.originalPrice}
+                  </span>
+                )}
+                {discountPercent > 0 && (
+                  <span className="text-xs font-bold text-[#7C2A1E] mb-1">
+                    Save {discountPercent}%
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#3E4B32]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3E4B32] inline-block" />
+                In Stock · {selectedVariant.weight} pack
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2.5">
+                Select Weight / Portion
+              </label>
+              <div className="flex flex-wrap gap-2.5">
+                {quickViewProduct.variants.map((v, idx) => {
+                  const selected = selectedVariantIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedVariantIndex(idx)}
+                      className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold border-2 transition-all cursor-pointer ${
+                        selected
+                          ? 'bg-[#2A2620] text-[#F4ECD8] border-[#2A2620] shadow-sm'
+                          : 'bg-white/60 text-[#2A2620] border-[#2A2620]/15 hover:border-[#C89211]'
+                      }`}
+                    >
+                      {selected && <CheckCircle2 className="w-3.5 h-3.5 text-[#C89211]" />}
+                      <span>{v.weight} — ₹{v.price}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 mt-4">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70">
+                Quantity
+              </label>
+              <div className="flex items-center rounded-xl border-2 border-[#2A2620]/15 bg-white/60 overflow-hidden">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  disabled={quantity <= 1}
+                  className="w-9 h-9 flex items-center justify-center text-[#2A2620] hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
+                  aria-label="Decrease quantity"
+                >
+                  <Minus className="w-3.5 h-3.5" />
+                </button>
+                <span className="w-10 text-center font-bold text-sm text-[#2A2620]">{quantity}</span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="w-9 h-9 flex items-center justify-center text-[#2A2620] hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors cursor-pointer"
+                  aria-label="Increase quantity"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 mt-5">
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span>Add to Basket</span>
+              </button>
+
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <span>Buy Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
           {/* Thumbnail Strip - enlarged, primary navigation for the main preview */}
           {images.length > 1 && (
             <div className="flex gap-3 overflow-x-auto no-scrollbar mb-8">
@@ -183,7 +283,7 @@ export const ProductQuickView: React.FC = () => {
         {/* Right Column: Details & Actions */}
         <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto no-scrollbar">
           <div className="space-y-6">
-            <div>
+            <div className="hidden md:block">
               <span className="text-xs font-bold uppercase tracking-widest text-[#A9542B]">
                 {quickViewProduct.category}
               </span>
@@ -193,7 +293,7 @@ export const ProductQuickView: React.FC = () => {
             </div>
 
             {/* Price Display - clear hierarchy: dominant price, muted strike-through, subtle stock tag */}
-            <div className="py-3 border-y border-[#2A2620]/10">
+            <div className="hidden md:block py-3 border-y border-[#2A2620]/10">
               <div className="flex items-end flex-wrap gap-x-3 gap-y-1">
                 <span className="font-sans text-4xl md:text-[2.75rem] font-bold text-[#2A2620] leading-none tracking-tight">
                   ₹{selectedVariant.price}
@@ -216,7 +316,7 @@ export const ProductQuickView: React.FC = () => {
             </div>
 
             {/* Weight Selection */}
-            <div>
+            <div className="hidden md:block">
               <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2.5">
                 Select Weight / Portion
               </label>
@@ -242,7 +342,7 @@ export const ProductQuickView: React.FC = () => {
             </div>
 
             {/* Quantity Selector */}
-            <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-4">
               <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70">
                 Quantity
               </label>
@@ -405,8 +505,8 @@ export const ProductQuickView: React.FC = () => {
             )}
           </div>
 
-          {/* Action CTAs - distinct primary/secondary purpose */}
-          <div className="pt-6 border-t border-[#2A2620]/10 mt-6">
+          {/* Action CTAs - distinct primary/secondary purpose (mobile has its own copy right after the image) */}
+          <div className="hidden md:block pt-6 border-t border-[#2A2620]/10 mt-6">
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAddToCart}
