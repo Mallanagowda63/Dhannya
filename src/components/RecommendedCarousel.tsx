@@ -26,7 +26,7 @@ export const RecommendedCarousel: React.FC = () => {
               <span>HANDPICKED FOR YOU</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-serif text-earth">
-              Recommended Organic Essentials
+              Recommended Dhaanya Essentials
             </h2>
           </div>
 

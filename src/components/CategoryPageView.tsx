@@ -178,15 +178,7 @@ export const CategoryPageView: React.FC<{
             )}
           </div>
 
-          <div className="flex items-center gap-3">
-            {/* Mobile Filter Toggle */}
-            <button
-              onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden px-4 py-2 rounded-md bg-[#3E4B32] text-[#F4ECD8] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5"
-            >
-              <SlidersHorizontal className="w-4 h-4" /> Filters
-            </button>
-
+          <div className="flex items-center gap-3 ml-auto">
             {/* Sort Dropdown */}
             <div className="flex items-center gap-2">
               <ArrowUpDown className="w-4 h-4 text-[#A9542B]" />
@@ -205,141 +197,37 @@ export const CategoryPageView: React.FC<{
           </div>
         </div>
 
-        {/* Layout Grid: Desktop Sidebar Filters + Product Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Desktop Filter Sidebar */}
-          <aside className="hidden lg:block lg:col-span-3 space-y-6">
-            <div className="kraft-card p-6 rounded-xl space-y-6">
-              <div className="flex items-center justify-between border-b border-[#2A2620]/10 pb-3">
-                <span className="font-serif font-bold text-lg text-[#2A2620]">Refine Selection</span>
-                <button
-                  onClick={() => {
-                    setActiveCategory(null);
-                    setSearchQuery('');
-                    setSelectedConcern('All');
-                    setPriceRange(2000);
-                    setOnlyInStock(false);
-                  }}
-                  className="text-xs text-[#A9542B] hover:underline"
-                >
-                  Reset
-                </button>
-              </div>
-
-              {/* Price Range Filter */}
-              <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2">
-                  Max Price: ₹{priceRange}
-                </label>
-                <input
-                  type="range"
-                  min="50"
-                  max="2500"
-                  step="50"
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(Number(e.target.value))}
-                  className="w-full accent-[#3E4B32]"
-                />
-              </div>
-
-              {/* In Stock Toggle */}
-              <div className="flex items-center gap-2 pt-2 border-t border-[#2A2620]/10">
-                <input
-                  type="checkbox"
-                  id="desktopInStock"
-                  checked={onlyInStock}
-                  onChange={(e) => setOnlyInStock(e.target.checked)}
-                  className="w-4 h-4 accent-[#3E4B32]"
-                />
-                <label htmlFor="desktopInStock" className="text-xs font-medium text-[#2A2620] cursor-pointer">
-                  In Stock Only
-                </label>
-              </div>
-            </div>
-          </aside>
-
-          {/* Product Cards Grid */}
-          <main className="lg:col-span-9">
-            {filteredList.length === 0 ? (
-              <div className="kraft-card p-12 text-center rounded-xl my-8 space-y-4">
-                <Sparkles className="w-10 h-10 text-[#C89211] mx-auto" />
-                <h3 className="font-serif text-2xl font-bold text-[#2A2620]">
-                  Nothing here yet. Try another selection.
-                </h3>
-                <p className="text-sm text-[#2A2620]/70 max-w-md mx-auto">
-                  We couldn't find any products matching your current filter choices. Try clearing filters or searching for another grain or spice.
-                </p>
-                <button
-                  onClick={() => {
-                    setActiveCategory(null);
-                    setSearchQuery('');
-                    setSelectedConcern('All');
-                    setPriceRange(2000);
-                  }}
-                  className="px-6 py-2.5 rounded-md bg-[#3E4B32] text-[#F4ECD8] text-xs font-bold uppercase tracking-wider"
-                >
-                  Clear All Filters
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredList.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
-          </main>
-        </div>
-      </div>
-
-      {/* Mobile Bottom-Sheet Filter Drawer */}
-      {isMobileFilterOpen && (
-        <div className="fixed inset-0 z-50 flex items-end bg-black/60 backdrop-blur-sm lg:hidden">
-          <div className="w-full bg-[#F4ECD8] text-[#2A2620] rounded-t-2xl p-6 space-y-6 max-h-[80vh] overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-[#2A2620]/10 pb-3">
-              <h3 className="font-serif font-bold text-xl">Filter Pantry</h3>
-              <button onClick={() => setIsMobileFilterOpen(false)} className="p-1">
-                <X className="w-6 h-6" />
+        {/* Product Cards Grid — Full Width Layout */}
+        <main className="w-full">
+          {filteredList.length === 0 ? (
+            <div className="kraft-card p-12 text-center rounded-xl my-8 space-y-4">
+              <Sparkles className="w-10 h-10 text-[#C89211] mx-auto" />
+              <h3 className="font-serif text-2xl font-bold text-[#2A2620]">
+                Nothing here yet. Try another selection.
+              </h3>
+              <p className="text-sm text-[#2A2620]/70 max-w-md mx-auto">
+                We couldn't find any products matching your current choices. Try selecting another category or clear your search query.
+              </p>
+              <button
+                onClick={() => {
+                  setActiveCategory(null);
+                  setSearchQuery('');
+                  setSelectedConcern('All');
+                }}
+                className="px-6 py-2.5 rounded-md bg-[#3E4B32] text-[#F4ECD8] text-xs font-bold uppercase tracking-wider cursor-pointer"
+              >
+                View All Pantry Products
               </button>
             </div>
-
-            <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2">
-                Max Price: ₹{priceRange}
-              </label>
-              <input
-                type="range"
-                min="50"
-                max="2500"
-                step="50"
-                value={priceRange}
-                onChange={(e) => setPriceRange(Number(e.target.value))}
-                className="w-full accent-[#3E4B32]"
-              />
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredList.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="mobileInStock"
-                checked={onlyInStock}
-                onChange={(e) => setOnlyInStock(e.target.checked)}
-                className="w-4 h-4 accent-[#3E4B32]"
-              />
-              <label htmlFor="mobileInStock" className="text-sm font-medium">
-                In Stock Only
-              </label>
-            </div>
-
-            <button
-              onClick={() => setIsMobileFilterOpen(false)}
-              className="w-full py-3.5 bg-[#3E4B32] text-[#F4ECD8] font-bold text-xs uppercase tracking-wider rounded-md"
-            >
-              Apply Filters
-            </button>
-          </div>
-        </div>
-      )}
+          )}
+        </main>
+      </div>
     </div>
   );
 };

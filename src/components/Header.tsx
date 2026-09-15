@@ -10,11 +10,18 @@ import {
   ShieldAlert,
   Flame,
   ChevronRight,
-  Sparkle,
 } from 'lucide-react';
 import { DhaanyaLogo } from './DhaanyaLogo';
 import { SearchOverlay } from './SearchOverlay';
 import { ProductCategory } from '../types';
+
+const TICKER_ITEMS = [
+  'Washed & Cleaned',
+  'No Preservatives Or Adulterants',
+  'Freshly Packed On Order',
+  'Premium Quality Ingredients',
+  'Sourced From Local Farms',
+];
 
 interface HeaderProps {
   onNavigateHome: () => void;
@@ -83,36 +90,31 @@ export const Header: React.FC<HeaderProps> = ({
     <>
       <header className="sticky top-0 z-40 w-full transition-all duration-300">
         {/* Announcement Ticker Bar */}
-        <div className="bg-[#2A2620] text-[#F4ECD8] py-2 px-4 text-xs font-medium border-b border-[#C89211]/30">
-          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            <div className="hidden md:flex items-center gap-4 text-[#F4ECD8]/90">
-              <span className="flex items-center gap-1.5 text-[#E8B93E]">
-                <Sparkle className="w-3.5 h-3.5 fill-[#E8B93E]" />
-                Freshly milled before you and for you
-              </span>
-              <span className="text-[#F4ECD8]/40">•</span>
-              <span>100% Pure Whole Grains & Cold-Pressed Oils</span>
+        <div className="bg-[#3E4B32] text-[#F4ECD8] py-2 text-xs font-medium border-b border-[#C89211]/30">
+          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <div className="flex-1 min-w-0 overflow-hidden">
+              <div className="flex w-max animate-marquee">
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="flex items-center shrink-0" aria-hidden={copy === 1}>
+                    {TICKER_ITEMS.map((item, idx) => (
+                      <span key={idx} className="font-bold whitespace-nowrap px-5">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="w-full md:w-auto text-center md:text-right flex items-center justify-between md:justify-end gap-3">
-              {activeTopCoupon && (
-                <button
-                  onClick={() => handleCopyCoupon(activeTopCoupon.code)}
-                  className="inline-flex items-center gap-1.5 bg-[#C89211]/20 hover:bg-[#C89211]/30 text-[#E8B93E] px-2.5 py-0.5 rounded border border-[#C89211]/40 transition-colors cursor-pointer"
-                >
-                  <Flame className="w-3 h-3 text-[#E8B93E] animate-pulse" />
-                  <span>Use <strong>{activeTopCoupon.code}</strong> for {activeTopCoupon.discountPercent}% OFF</span>
-                </button>
-              )}
-
+            {activeTopCoupon && (
               <button
-                onClick={() => setIsServerModalOpen(true)}
-                className="hidden lg:flex items-center gap-1 text-[11px] text-[#F4ECD8]/70 hover:text-[#E8B93E] transition-colors ml-2 cursor-pointer"
+                onClick={() => handleCopyCoupon(activeTopCoupon.code)}
+                className="shrink-0 inline-flex items-center gap-1.5 bg-[#C89211]/20 hover:bg-[#C89211]/30 text-[#E8B93E] px-2.5 py-0.5 rounded border border-[#C89211]/40 transition-colors cursor-pointer"
               >
-                <ShieldAlert className="w-3 h-3 text-[#E8B93E]" />
-                <span>System Status</span>
+                <Flame className="w-3 h-3 text-[#E8B93E] animate-pulse" />
+                <span>Use <strong>{activeTopCoupon.code}</strong> for {activeTopCoupon.discountPercent}% OFF</span>
               </button>
-            </div>
+            )}
           </div>
         </div>
 
@@ -219,18 +221,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <Search className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
-              {/* 360° Brand System Compact Utility Button (Visible on sm 640px and up) */}
-              {onOpenBrandSystem && (
-                <button
-                  onClick={onOpenBrandSystem}
-                  className="hidden sm:flex h-8.5 sm:h-9 px-2.5 sm:px-3 rounded-lg bg-[#C89211]/12 hover:bg-[#C89211]/22 text-[#C89211] font-semibold text-[11px] sm:text-xs border border-[#C89211]/35 items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap shrink-0"
-                  title="360° Brand System Guidelines"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-[#C89211]" />
-                  <span className="hidden 2xl:inline">360° BRAND SYSTEM</span>
-                  <span className="inline 2xl:hidden">360° BRAND</span>
-                </button>
-              )}
+
 
               {/* Admin Toggle Button (Visible on md 768px and up) */}
               {user?.role === 'admin' && (
@@ -409,21 +400,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <ChevronRight className="w-4 h-4 text-[#A9542B]" />
                 </button>
 
-                {onOpenBrandSystem && (
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      onOpenBrandSystem();
-                    }}
-                    className="text-left font-serif text-lg font-medium text-[#C89211] py-2 flex items-center justify-between cursor-pointer"
-                  >
-                    <span className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-[#C89211]" />
-                      360° Brand System
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-[#C89211]" />
-                  </button>
-                )}
+
               </div>
             </div>
 

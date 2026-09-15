@@ -171,6 +171,10 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({
                       src={product.image}
                       alt={product.name}
                       className="w-20 h-20 object-cover rounded bg-white/10 shrink-0"
+                      onError={(e) => {
+                        e.currentTarget.src =
+                          'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+                      }}
                     />
                     <div className="flex flex-col justify-center">
                       <span className="text-xs text-[#E8B93E] uppercase tracking-wider">

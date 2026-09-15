@@ -276,7 +276,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
     // Analytics
     try {
-      const res = await fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`));
+      const res = await fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`), {
+        headers: { 'x-admin-role': 'admin' },
+      });
       if (res.ok) {
         const json = await res.json();
         if (json.success) setAnalyticsData(json.data);
@@ -303,7 +305,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
     // Customers
     try {
-      const res = await fetch(getApiUrl('/api/admin/customers'));
+      const res = await fetch(getApiUrl('/api/admin/customers'), {
+        headers: { 'x-admin-role': 'admin' },
+      });
       if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) setCustomersList(json.data);
@@ -321,7 +325,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
     // Custom Masalas
     try {
-      const res = await fetch(getApiUrl('/api/admin/custom-masalas'));
+      const res = await fetch(getApiUrl('/api/admin/custom-masalas'), {
+        headers: { 'x-admin-role': 'admin' },
+      });
       if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) setCustomMasalasList(json.data);
@@ -664,6 +670,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
         showToast('New product added to inventory!', 'success');
         setNewProdName('');
         setNewProdDesc('');
+        refreshProducts();
       }
     } catch {
       showToast('Error creating product', 'error');
@@ -677,6 +684,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       if (data.success) {
         setProductsList((prev) => prev.filter((p) => p.id !== id));
         showToast('Product removed from database', 'info');
+        refreshProducts();
       }
     } catch {
       showToast('Error removing product', 'error');

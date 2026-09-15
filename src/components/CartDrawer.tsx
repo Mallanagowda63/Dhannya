@@ -36,6 +36,7 @@ export const CartDrawer: React.FC = () => {
     });
     text += `💰 *Subtotal:* ₹${cartSubtotal}\n`;
     text += `🚚 *Delivery:* ₹${cartShippingFee === 0 ? 'FREE' : cartShippingFee}\n`;
+    if (cartTax > 0) text += `🧾 *GST Tax (5%):* ₹${cartTax}\n`;
     text += `✨ *Grand Total:* ₹${cartGrandTotal}\n\n`;
     text += `Please confirm my fresh milling order!`;
     return encodeURIComponent(text);
@@ -102,6 +103,10 @@ export const CartDrawer: React.FC = () => {
                   src={item.image}
                   alt={item.name}
                   className="w-16 h-16 object-cover rounded-lg bg-white/50 shrink-0"
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+                  }}
                 />
 
                 <div className="flex-1 min-w-0">
@@ -211,6 +216,12 @@ export const CartDrawer: React.FC = () => {
                   {cartShippingFee === 0 ? 'FREE' : `₹${cartShippingFee}`}
                 </span>
               </div>
+              {cartTax > 0 && (
+                <div className="flex justify-between">
+                  <span>GST Tax (5%):</span>
+                  <span className="font-semibold">₹{cartTax}</span>
+                </div>
+              )}
               <div className="flex justify-between text-base font-serif font-bold text-[#2A2620] pt-2 border-t border-[#2A2620]/10">
                 <span>Total Amount:</span>
                 <span className="text-[#C89211]">₹{cartGrandTotal}</span>

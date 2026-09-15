@@ -17,7 +17,11 @@ interface Toast {
   id: string;
   type: 'success' | 'error' | 'info';
   message: string;
+  title?: string;
+  image?: string;
 }
+
+export const TOAST_DURATION_MS = 3000;
 
 interface AppContextType {
   products: Product[];
@@ -73,7 +77,8 @@ interface AppContextType {
   saveCustomRecipe: (recipe: CustomRecipe) => void;
   login: (email: string, name?: string, role?: 'admin' | 'user') => void;
   logout: () => void;
-  showToast: (message: string, type?: 'success' | 'error' | 'info') => void;
+  showToast: (message: string, type?: 'success' | 'error' | 'info', options?: { title?: string; image?: string }) => void;
+  dismissToast: (id: string) => void;
   cartSubtotal: number;
   cartTotalDiscount: number;
   cartTax: number;
@@ -99,10 +104,34 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
           setProducts(data.data);
+          if ((import.meta as any).env?.DEV) warnOnUnpricedProducts(data.data);
         }
       }
     } catch (e) {
       console.warn('Error fetching live products from API:', e);
+    }
+  };
+
+  // Dev-only: flag any live product whose name has no matching entry in the
+  // validated price list, so a stale/mock-data regression (like the Coconut
+  // Oil variant mismatch) is caught on load instead of shipping silently.
+  const PRICE_LIST_EXEMPT = new Set(['Custom Masala Blend']);
+  const warnOnUnpricedProducts = async (liveProducts: Product[]) => {
+    try {
+      const priceList = (await import('../data/priceList.json')).default as { productName: string }[];
+      const known = new Set(priceList.map((p) => p.productName));
+      const unmatched = liveProducts
+        .map((p) => p.name)
+        .filter((name) => !known.has(name) && !PRICE_LIST_EXEMPT.has(name));
+      if (unmatched.length > 0) {
+        console.warn(
+          `[price-list check] ${unmatched.length} live product(s) have no matching entry in priceList.json ` +
+            '-- they may still be on stale/mock variant data:',
+          unmatched
+        );
+      }
+    } catch {
+      // priceList.json not present in this build -- nothing to check.
     }
   };
 
@@ -159,6 +188,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
 
+  // Sync cart item images with live products catalog
+  useEffect(() => {
+    if (!products || products.length === 0 || cart.length === 0) return;
+    setCart((prevCart) => {
+      let updated = false;
+      const newCart = prevCart.map((item) => {
+        if (item.type === 'product') {
+          const liveProd = products.find((p) => p.id === item.id || p.name === item.name);
+          if (liveProd && liveProd.image && liveProd.image !== item.image) {
+            updated = true;
+            return { ...item, image: liveProd.image };
+          }
+        }
+        return item;
+      });
+      return updated ? newCart : prevCart;
+    });
+  }, [products]);
+
   // Sync to local storage
   useEffect(() => {
     localStorage.setItem('dhaanya_cart', JSON.stringify(cart));
@@ -209,12 +257,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       .catch(() => {});
   }, [user?.id]);
 
-  const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
+  const showToast = (
+    message: string,
+    type: 'success' | 'error' | 'info' = 'success',
+    options?: { title?: string; image?: string }
+  ) => {
     const id = Math.random().toString(36).substring(2, 9);
-    setToasts((prev) => [...prev, { id, type, message }]);
+    setToasts((prev) => [...prev, { id, type, message, title: options?.title, image: options?.image }]);
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 3500);
+    }, TOAST_DURATION_MS);
+  };
+
+  const dismissToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
   const addToCart = (product: Product, variantWeight?: string, quantity: number = 1) => {
@@ -248,7 +304,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
     });
 
-    showToast(`Added ${product.name} (${selectedVariant.weight}) to cart!`);
+    showToast(`${product.name} (${selectedVariant.weight})`, 'success', {
+      title: 'Added to cart',
+      image: product.image,
+    });
   };
 
   const addCustomMasalaToCart = (recipe: CustomRecipe) => {
@@ -277,7 +336,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     setCart((prev) => [...prev, newItem]);
-    showToast(`Added custom recipe "${recipe.name}" (${recipe.totalWeightGrams}g) to cart!`);
+    showToast(`Custom Masala "${recipe.name}" (${recipe.totalWeightGrams}g)`, 'success', {
+      title: 'Added to cart',
+      image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&auto=format&fit=crop&q=80',
+    });
     setIsCartOpen(true);
   };
 
@@ -600,6 +662,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         login,
         logout,
         showToast,
+        dismissToast,
         cartSubtotal,
         cartTotalDiscount,
         cartTax,

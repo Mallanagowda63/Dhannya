@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 import {
   X,
-  Star,
   ShoppingBag,
   Heart,
   CheckCircle2,
@@ -11,6 +11,10 @@ import {
   Plus,
   Minus,
   Sparkles,
+  ArrowRight,
+  Leaf,
+  Mountain,
+  MessageCircle,
 } from 'lucide-react';
 
 export const ProductQuickView: React.FC = () => {
@@ -22,6 +26,7 @@ export const ProductQuickView: React.FC = () => {
     isInWishlist,
     setIsCartOpen,
     setIsCheckoutOpen,
+    products,
   } = useApp();
 
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
@@ -42,6 +47,12 @@ export const ProductQuickView: React.FC = () => {
     ? Math.round(((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100)
     : 0;
 
+  const sameCategory = (products || []).filter(
+    (p) => p.id !== quickViewProduct.id && p.category === quickViewProduct.category
+  );
+  const fallback = (products || []).filter((p) => p.id !== quickViewProduct.id);
+  const recommendedProducts = (sameCategory.length > 0 ? sameCategory : fallback).slice(0, 6);
+
   const handleAddToCart = () => {
     addToCart(quickViewProduct, selectedVariant.weight, quantity);
   };
@@ -53,66 +64,125 @@ export const ProductQuickView: React.FC = () => {
     setIsCheckoutOpen(true);
   };
 
+  const handleSwitchProduct = (product: Product) => {
+    setQuickViewProduct(product);
+    setSelectedVariantIndex(0);
+    setSelectedImageIndex(0);
+    setQuantity(1);
+    setActiveTab('description');
+  };
+
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#2A2620]/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#2A2620]/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
       <div
-        className="relative bg-[#F4ECD8] text-[#2A2620] w-full max-w-4xl rounded-2xl shadow-2xl border border-[#2A2620]/15 overflow-hidden animate-fade-in my-8 max-h-[90vh] flex flex-col md:flex-row"
+        className="relative bg-[#F4ECD8] text-[#2A2620] w-full max-w-4xl rounded-2xl shadow-2xl border border-[#2A2620]/15 overflow-hidden animate-fade-in my-4 sm:my-8 max-h-[92vh] flex flex-col md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={() => setQuickViewProduct(null)}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#2A2620]/10 hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors"
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#F4ECD8]/90 border border-[#2A2620]/10 text-[#2A2620] hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors cursor-pointer"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Left Column: Product Gallery */}
-        <div className="md:w-1/2 p-6 bg-[#F8F3E6] border-b md:border-b-0 md:border-r border-[#2A2620]/10 flex flex-col justify-between">
-          <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-white/50 border border-[#2A2620]/10 mb-4 flex items-center justify-center">
+        <div
+          className="md:w-1/2 p-6 md:p-8 border-b md:border-b-0 md:border-r border-[#2A2620]/10 flex flex-col"
+          style={{
+            backgroundColor: '#F8F3E6',
+            backgroundImage: 'radial-gradient(rgba(42,38,32,0.05) 1px, transparent 0)',
+            backgroundSize: '18px 18px',
+          }}
+        >
+          {/* Main Image - large, full-bleed within frame */}
+          <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white/60 border border-[#2A2620]/10 mb-6 flex items-center justify-center shadow-sm">
             <img
               src={currentImage}
               alt={quickViewProduct.name}
-              className="w-full h-full object-contain p-4"
+              className="w-full h-full object-contain p-5"
+              onError={(e) => {
+                e.currentTarget.src =
+                  'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+              }}
             />
-
+            {discountPercent > 0 && (
+              <span className="absolute top-3 left-3 bg-[#7C2A1E] text-[#F4ECD8] text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                {discountPercent}% Off
+              </span>
+            )}
+            <button
+              onClick={() => toggleWishlist(quickViewProduct.id)}
+              className={`absolute top-3 right-3 w-9 h-9 rounded-full border flex items-center justify-center transition shadow-sm cursor-pointer ${
+                isWishlisted
+                  ? 'bg-[#7C2A1E] border-[#7C2A1E] text-white'
+                  : 'bg-[#F4ECD8]/90 border-[#2A2620]/15 text-[#2A2620] hover:text-[#A9542B]'
+              }`}
+              aria-label="Wishlist"
+            >
+              <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-white' : ''}`} />
+            </button>
           </div>
 
-          {/* Thumbnail Strip */}
+          {/* Thumbnail Strip - enlarged, primary navigation for the main preview */}
           {images.length > 1 && (
-            <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
+            <div className="flex gap-3 overflow-x-auto no-scrollbar mb-8">
               {images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImageIndex(idx)}
-                  className={`w-14 h-14 rounded-lg overflow-hidden border-2 shrink-0 transition ${
-                    selectedImageIndex === idx ? 'border-[#C89211]' : 'border-[#2A2620]/10 opacity-70'
+                  className={`w-[72px] h-[72px] rounded-xl overflow-hidden border-2 shrink-0 transition cursor-pointer ${
+                    selectedImageIndex === idx ? 'border-[#C89211] shadow-sm' : 'border-[#2A2620]/10 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
+                  <img
+                    src={img}
+                    alt="thumbnail"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+                    }}
+                  />
                 </button>
               ))}
             </div>
           )}
 
+          {/* Secondary CTA - gives the left column real content instead of dead space */}
+          <a
+            href={`https://wa.me/919876543210?text=${encodeURIComponent(
+              `Hi! I have a question about ${quickViewProduct.name}.`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between gap-3 rounded-xl border border-[#3E4B32]/20 bg-[#3E4B32]/5 hover:bg-[#3E4B32]/10 px-4 py-3.5 mb-8 transition-colors"
+          >
+            <span className="flex items-center gap-2.5 text-sm font-semibold text-[#2A2620]">
+              <MessageCircle className="w-4 h-4 text-[#3E4B32] shrink-0" />
+              Have a question? Chat with us
+            </span>
+            <ArrowRight className="w-4 h-4 text-[#3E4B32] shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+
           {/* Why Dhaanya Promise Block */}
-          <div className="mt-6 pt-4 border-t border-[#2A2620]/10 space-y-2 text-xs text-[#2A2620]/80">
-            <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider block">
+          <div className="pt-6 border-t border-[#2A2620]/10 space-y-2.5 text-xs text-[#2A2620]/80">
+            <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider text-xs block">
               Why Dhaanya?
             </span>
-            <div className="grid grid-cols-2 gap-2">
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Freshly Milled</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Whole Ingredients</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Traditional Process</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32]" /> Made with Care</span>
+            <div className="grid grid-cols-2 gap-x-2 gap-y-2">
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Freshly Milled</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Whole Ingredients</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Traditional Process</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Made with Care</span>
             </div>
           </div>
         </div>
 
         {/* Right Column: Details & Actions */}
         <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto no-scrollbar">
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-[#A9542B]">
                 {quickViewProduct.category}
@@ -120,76 +190,76 @@ export const ProductQuickView: React.FC = () => {
               <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#2A2620] mt-1 leading-tight">
                 {quickViewProduct.name}
               </h2>
-              {quickViewProduct.rating > 0 && (
-                <div className="flex items-center gap-2 mt-2">
-                  <div className="flex text-[#C89211]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${i < Math.floor(quickViewProduct.rating) ? 'fill-[#C89211]' : 'opacity-30'}`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-xs text-[#2A2620]/70 font-semibold">
-                    {quickViewProduct.rating.toFixed(1)} ({quickViewProduct.reviewCount || 12} verified reviews)
-                  </span>
-                </div>
-              )}
             </div>
 
-            {/* Price Display */}
-            <div className="flex items-baseline gap-3 py-2 border-y border-[#2A2620]/10">
-              <span className="font-serif text-3xl font-bold text-[#2A2620]">
-                ₹{selectedVariant.price}
-              </span>
-              {selectedVariant.originalPrice > selectedVariant.price && (
-                <span className="text-sm text-[#2A2620]/40 line-through font-serif">
-                  ₹{selectedVariant.originalPrice}
+            {/* Price Display - clear hierarchy: dominant price, muted strike-through, subtle stock tag */}
+            <div className="py-3 border-y border-[#2A2620]/10">
+              <div className="flex items-end flex-wrap gap-x-3 gap-y-1">
+                <span className="font-sans text-4xl md:text-[2.75rem] font-bold text-[#2A2620] leading-none tracking-tight">
+                  ₹{selectedVariant.price}
                 </span>
-              )}
-              <span className="text-xs text-[#3E4B32] font-semibold bg-[#3E4B32]/10 px-2 py-0.5 rounded ml-auto">
-                In Stock ({selectedVariant.weight})
-              </span>
+                {selectedVariant.originalPrice > selectedVariant.price && (
+                  <span className="text-sm text-[#2A2620]/40 line-through font-sans mb-1">
+                    ₹{selectedVariant.originalPrice}
+                  </span>
+                )}
+                {discountPercent > 0 && (
+                  <span className="text-xs font-bold text-[#7C2A1E] mb-1">
+                    Save {discountPercent}%
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#3E4B32]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3E4B32] inline-block" />
+                In Stock · {selectedVariant.weight} pack
+              </div>
             </div>
 
-            {/* Weight Selection Pills */}
+            {/* Weight Selection */}
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2.5">
                 Select Weight / Portion
               </label>
-              <div className="flex flex-wrap gap-2">
-                {quickViewProduct.variants.map((v, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedVariantIndex(idx)}
-                    className={`px-3 py-1.5 rounded-md text-xs font-semibold border transition-all ${
-                      selectedVariantIndex === idx
-                        ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32] shadow-xs'
-                        : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20 hover:border-[#C89211]'
-                    }`}
-                  >
-                    {v.weight} — ₹{v.price}
-                  </button>
-                ))}
+              <div className="flex flex-wrap gap-2.5">
+                {quickViewProduct.variants.map((v, idx) => {
+                  const selected = selectedVariantIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedVariantIndex(idx)}
+                      className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold border-2 transition-all cursor-pointer ${
+                        selected
+                          ? 'bg-[#2A2620] text-[#F4ECD8] border-[#2A2620] shadow-sm'
+                          : 'bg-white/60 text-[#2A2620] border-[#2A2620]/15 hover:border-[#C89211]'
+                      }`}
+                    >
+                      {selected && <CheckCircle2 className="w-3.5 h-3.5 text-[#C89211]" />}
+                      <span>{v.weight} — ₹{v.price}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             {/* Quantity Selector */}
-            <div className="flex items-center gap-4 pt-2">
+            <div className="flex items-center gap-4">
               <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70">
-                Quantity:
+                Quantity
               </label>
-              <div className="flex items-center border border-[#2A2620]/20 rounded-md bg-[#F8F3E6]">
+              <div className="flex items-center rounded-xl border-2 border-[#2A2620]/15 bg-white/60 overflow-hidden">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 text-[#2A2620] hover:text-[#A9542B]"
+                  disabled={quantity <= 1}
+                  className="w-9 h-9 flex items-center justify-center text-[#2A2620] hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
+                  aria-label="Decrease quantity"
                 >
                   <Minus className="w-3.5 h-3.5" />
                 </button>
-                <span className="px-4 font-bold text-sm text-[#2A2620]">{quantity}</span>
+                <span className="w-10 text-center font-bold text-sm text-[#2A2620]">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-2 text-[#2A2620] hover:text-[#A9542B]"
+                  className="w-9 h-9 flex items-center justify-center text-[#2A2620] hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors cursor-pointer"
+                  aria-label="Increase quantity"
                 >
                   <Plus className="w-3.5 h-3.5" />
                 </button>
@@ -197,79 +267,161 @@ export const ProductQuickView: React.FC = () => {
             </div>
 
             {/* Tabs: Description / Ingredients / Nutrition */}
-            <div className="pt-4 border-t border-[#2A2620]/10">
-              <div className="flex border-b border-[#2A2620]/10 text-xs font-semibold">
-                <button
-                  onClick={() => setActiveTab('description')}
-                  className={`pb-2 pr-4 transition-colors ${
-                    activeTab === 'description'
-                      ? 'border-b-2 border-[#C89211] text-[#C89211]'
-                      : 'text-[#2A2620]/60'
-                  }`}
-                >
-                  Description
-                </button>
-                {quickViewProduct.ingredients && (
+            <div className="pt-1 border-t border-[#2A2620]/10">
+              <div className="relative flex gap-6 overflow-x-auto no-scrollbar border-b border-[#2A2620]/10 pt-3">
+                {([
+                  { key: 'description' as const, label: 'Description', show: true },
+                  { key: 'ingredients' as const, label: 'Ingredients', show: !!quickViewProduct.ingredients },
+                  { key: 'nutrition' as const, label: 'Nutrition', show: !!quickViewProduct.nutritionInfo },
+                ]).filter((t) => t.show).map((t) => (
                   <button
-                    onClick={() => setActiveTab('ingredients')}
-                    className={`pb-2 px-4 transition-colors ${
-                      activeTab === 'ingredients'
-                        ? 'border-b-2 border-[#C89211] text-[#C89211]'
-                        : 'text-[#2A2620]/60'
+                    key={t.key}
+                    onClick={() => setActiveTab(t.key)}
+                    className={`relative shrink-0 whitespace-nowrap pb-2.5 px-1 text-xs font-bold uppercase tracking-wide transition-colors cursor-pointer rounded-t-md ${
+                      activeTab === t.key
+                        ? 'text-[#A9542B]'
+                        : 'text-[#2A2620]/45 hover:text-[#2A2620]/80 hover:bg-[#2A2620]/[0.04]'
                     }`}
                   >
-                    Ingredients
+                    {t.label}
+                    {activeTab === t.key && (
+                      <motion.span
+                        layoutId="qv-tab-underline"
+                        className="absolute left-0 right-0 -bottom-px h-[3px] rounded-full bg-gradient-to-r from-[#A9542B] to-[#C89211]"
+                        transition={{ type: 'spring', stiffness: 500, damping: 36 }}
+                      />
+                    )}
                   </button>
-                )}
-                {quickViewProduct.nutritionInfo && (
-                  <button
-                    onClick={() => setActiveTab('nutrition')}
-                    className={`pb-2 px-4 transition-colors ${
-                      activeTab === 'nutrition'
-                        ? 'border-b-2 border-[#C89211] text-[#C89211]'
-                        : 'text-[#2A2620]/60'
-                    }`}
-                  >
-                    Nutrition
-                  </button>
-                )}
+                ))}
               </div>
 
-              <div className="py-3 text-xs text-[#2A2620]/80 leading-relaxed">
-                {activeTab === 'description' && <p>{quickViewProduct.description}</p>}
-                {activeTab === 'ingredients' && (
-                  <p>{quickViewProduct.ingredients?.join(', ')}</p>
-                )}
-                {activeTab === 'nutrition' && quickViewProduct.nutritionInfo && (
-                  <div className="grid grid-cols-2 gap-2">
-                    {Object.entries(quickViewProduct.nutritionInfo).map(([k, v]) => (
-                      <div key={k} className="flex justify-between border-b border-[#2A2620]/5 py-1">
-                        <span className="font-semibold text-[#2A2620]">{k}:</span>
-                        <span>{v}</span>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18 }}
+                  className="py-6 sm:py-7"
+                >
+                  {activeTab === 'description' && (
+                    <div className="space-y-4">
+                      <p className="text-sm text-[#2A2620]/80 leading-relaxed">
+                        {quickViewProduct.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          { icon: Leaf, label: '100% Natural' },
+                          { icon: ShieldCheck, label: 'No Additives' },
+                          { icon: Mountain, label: 'Stone Ground' },
+                        ].map(({ icon: Icon, label }) => (
+                          <span
+                            key={label}
+                            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#3E4B32] bg-[#3E4B32]/8 border border-[#3E4B32]/15 px-3 py-1.5 rounded-full"
+                          >
+                            <Icon className="w-3.5 h-3.5" />
+                            {label}
+                          </span>
+                        ))}
                       </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'ingredients' && quickViewProduct.ingredients && (
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {quickViewProduct.ingredients.map((ing, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center gap-2 text-sm text-[#2A2620]/85 bg-white/50 border border-[#2A2620]/8 rounded-lg px-3 py-2"
+                        >
+                          <Leaf className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" />
+                          <span>{ing}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {activeTab === 'nutrition' && quickViewProduct.nutritionInfo && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                      {Object.entries(quickViewProduct.nutritionInfo).map(([k, v], idx) => {
+                        const bgColors = ['bg-[#3E4B32]/8', 'bg-[#A9542B]/8', 'bg-[#C89211]/10', 'bg-[#7C2A1E]/8'];
+                        return (
+                          <div
+                            key={k}
+                            className={`rounded-xl px-3 py-3 text-center ${bgColors[idx % bgColors.length]}`}
+                          >
+                            <div className="text-sm font-bold text-[#2A2620]">{v}</div>
+                            <div className="text-[10px] uppercase tracking-wide font-semibold text-[#2A2620]/60 mt-0.5">
+                              {k}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* You May Also Like */}
+            {recommendedProducts.length > 0 && (
+              <div className="pt-6 border-t border-[#2A2620]/10">
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#A9542B] mb-3">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  You May Also Like
+                </span>
+                <div className="relative -mx-1">
+                  <div className="pointer-events-none absolute left-0 top-0 bottom-1 w-6 bg-gradient-to-r from-[#F4ECD8] to-transparent z-10" />
+                  <div className="pointer-events-none absolute right-0 top-0 bottom-1 w-6 bg-gradient-to-l from-[#F4ECD8] to-transparent z-10" />
+                  <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1 px-1 snap-x snap-proximity">
+                    {recommendedProducts.map((p) => (
+                      <button
+                        key={p.id}
+                        onClick={() => handleSwitchProduct(p)}
+                        className="w-[100px] shrink-0 snap-start text-left group cursor-pointer"
+                      >
+                        <div className="w-[100px] h-[100px] rounded-xl overflow-hidden bg-white/60 border border-[#2A2620]/10 group-hover:border-[#C89211] transition-colors">
+                          <img
+                            src={p.image}
+                            alt={p.name}
+                            className="w-full h-full object-contain p-2.5"
+                            onError={(e) => {
+                              e.currentTarget.src =
+                                'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+                            }}
+                          />
+                        </div>
+                        <p className="mt-1.5 text-[11px] font-semibold text-[#2A2620] leading-snug line-clamp-2 h-[2.2em] group-hover:text-[#A9542B] transition-colors">
+                          {p.name}
+                        </p>
+                        <p className="text-[11px] font-bold text-[#3E4B32]">
+                          ₹{(p.variants && p.variants[0]?.price) ?? ''}
+                        </p>
+                      </button>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
-          {/* Action CTAs */}
-          <div className="pt-6 space-y-2 border-t border-[#2A2620]/10 mt-6">
-            <div className="flex gap-3">
+          {/* Action CTAs - distinct primary/secondary purpose */}
+          <div className="pt-6 border-t border-[#2A2620]/10 mt-6">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAddToCart}
-                className="flex-1 bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow cursor-pointer"
+                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>ADD TO BASKET</span>
+                <span>Add to Basket</span>
               </button>
 
               <button
                 onClick={handleBuyNow}
-                className="flex-1 bg-[#C89211] hover:bg-[#A9542B] text-[#2A2620] hover:text-white font-bold py-3.5 rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow cursor-pointer"
+                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
-                <span>BUY NOW</span>
+                <span>Buy Now</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>

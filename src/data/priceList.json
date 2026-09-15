@@ -1,0 +1,8795 @@
+[
+  {
+    "productName": "Ajwa Dates",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1780,
+        "priceDisplay": "₹1780",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 445,
+        "priceDisplay": "₹445",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 890,
+        "priceDisplay": "₹890",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ajwain (Ayamodakam)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Almond Nut Butter",
+    "category": "Nut Butters",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "250g / Honey",
+        "price": 517,
+        "priceDisplay": "₹517",
+        "available": true
+      },
+      {
+        "size": "250g / Jaggery",
+        "price": 507,
+        "priceDisplay": "₹507",
+        "available": true
+      },
+      {
+        "size": "250g / Unsweetened",
+        "price": 487,
+        "priceDisplay": "₹487",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Almonds Jumbo",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1790,
+        "priceDisplay": "₹1790",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 447.5,
+        "priceDisplay": "₹447.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 895,
+        "priceDisplay": "₹895",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Almonds USA",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1650,
+        "priceDisplay": "₹1650",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 412.5,
+        "priceDisplay": "₹412.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 825,
+        "priceDisplay": "₹825",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Alovi Seeds (Halim Seeds)",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 550,
+        "priceDisplay": "₹550",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 137.5,
+        "priceDisplay": "₹137.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 275,
+        "priceDisplay": "₹275",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Amaranth (Rajgira)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 87.5,
+        "priceDisplay": "₹87.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Amaranth Noodles",
+    "category": "Noodles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 162.5,
+        "priceDisplay": "₹162.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Amla Dry Candy",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 102.5,
+        "priceDisplay": "₹102.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Amla Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 201,
+        "priceDisplay": "₹201",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2010,
+        "priceDisplay": "₹2010",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 502.5,
+        "priceDisplay": "₹502.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1005,
+        "priceDisplay": "₹1005",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Appam Idiyappam Podi",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 35,
+        "priceDisplay": "₹35",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 70,
+        "priceDisplay": "₹70",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Apricot Soft",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1988,
+        "priceDisplay": "₹1988",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 497,
+        "priceDisplay": "₹497",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 994,
+        "priceDisplay": "₹994",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Arabica Coffee Bean",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1800,
+        "priceDisplay": "₹1800",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Arabica Coffee Beans (organic)",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2100,
+        "priceDisplay": "₹2100",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Arabica Coffee Powder",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1800,
+        "priceDisplay": "₹1800",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ashwagandha",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2250,
+        "priceDisplay": "₹2250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 562.5,
+        "priceDisplay": "₹562.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1125,
+        "priceDisplay": "₹1125",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Assam Tea",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 720,
+        "priceDisplay": "₹720",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 360,
+        "priceDisplay": "₹360",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Avalose Podi",
+    "category": "Masalas",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 480,
+        "priceDisplay": "₹480",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Baby Fork",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Baby Spoon",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Bamboo Toothbrush",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 55,
+        "priceDisplay": "₹55",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Banana Dried (Kannan Kaya)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 500,
+        "priceDisplay": "₹500",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Barley",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 160,
+        "priceDisplay": "₹160",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 40,
+        "priceDisplay": "₹40",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 80,
+        "priceDisplay": "₹80",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Barnyard Millet (Oodalu)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Barnyard Millet (Oodalu) Rava",
+    "category": "Rava",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 87.5,
+        "priceDisplay": "₹87.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Barnyard Millet Cookies",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 520,
+        "priceDisplay": "₹520",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Basil Seeds (Sabja)",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 162.5,
+        "priceDisplay": "₹162.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Bay Leaves / Tej Patta",
+    "category": "Spices",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Beetroot Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 145,
+        "priceDisplay": "₹145",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1450,
+        "priceDisplay": "₹1450",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 362.5,
+        "priceDisplay": "₹362.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 725,
+        "priceDisplay": "₹725",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Bengal Gram Dal (Besan)",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 160,
+        "priceDisplay": "₹160",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 40,
+        "priceDisplay": "₹40",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 80,
+        "priceDisplay": "₹80",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Bhringraj Powder",
+    "category": "Hair Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100G",
+        "price": 99,
+        "priceDisplay": "₹99",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 990,
+        "priceDisplay": "₹990",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 247.5,
+        "priceDisplay": "₹247.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 495,
+        "priceDisplay": "₹495",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Black Cardamom (Black Elaichi)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 3380,
+        "priceDisplay": "₹3380",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 845,
+        "priceDisplay": "₹845",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1690,
+        "priceDisplay": "₹1690",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Black Chana",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 160,
+        "priceDisplay": "₹160",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 40,
+        "priceDisplay": "₹40",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 80,
+        "priceDisplay": "₹80",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Black Chickpea Powder (Kadala Podi)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 360,
+        "priceDisplay": "₹360",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Black Salt",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 25,
+        "priceDisplay": "₹25",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 50,
+        "priceDisplay": "₹50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Black Seedless Raisins",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 890,
+        "priceDisplay": "₹890",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 222.5,
+        "priceDisplay": "₹222.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 445,
+        "priceDisplay": "₹445",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Black Sesame Chikki",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 680,
+        "priceDisplay": "₹680",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 170,
+        "priceDisplay": "₹170",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 340,
+        "priceDisplay": "₹340",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Brahmi Honey",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "250g",
+        "price": 435,
+        "priceDisplay": "₹435",
+        "available": true
+      },
+      {
+        "size": "400g",
+        "price": 670,
+        "priceDisplay": "₹670",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Brazil Nuts",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 4550,
+        "priceDisplay": "₹4550",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 1137.5,
+        "priceDisplay": "₹1137.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 2275,
+        "priceDisplay": "₹2275",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Browntop Millet (Korale)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cardamom Bold",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 495,
+        "priceDisplay": "₹495",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 742.5,
+        "priceDisplay": "₹742.50",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 4950,
+        "priceDisplay": "₹4950",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 990,
+        "priceDisplay": "₹990",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 1237.5,
+        "priceDisplay": "₹1237.50",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 1237.5,
+        "priceDisplay": "₹1237.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 2475,
+        "priceDisplay": "₹2475",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 247.5,
+        "priceDisplay": "₹247.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cardamom Bulk",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2900,
+        "priceDisplay": "₹2900",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 725,
+        "priceDisplay": "₹725",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1450,
+        "priceDisplay": "₹1450",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew - Broken Pieces",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1320,
+        "priceDisplay": "₹1320",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 330,
+        "priceDisplay": "₹330",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 660,
+        "priceDisplay": "₹660",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew - Pepper Garlic",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1740,
+        "priceDisplay": "₹1740",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 435,
+        "priceDisplay": "₹435",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 870,
+        "priceDisplay": "₹870",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew - Roasted And Salted",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1690,
+        "priceDisplay": "₹1690",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 422.5,
+        "priceDisplay": "₹422.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 845,
+        "priceDisplay": "₹845",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew - Split",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1460,
+        "priceDisplay": "₹1460",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 365,
+        "priceDisplay": "₹365",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 730,
+        "priceDisplay": "₹730",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew 180",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1750,
+        "priceDisplay": "₹1750",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 437.5,
+        "priceDisplay": "₹437.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 875,
+        "priceDisplay": "₹875",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew 240",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1590,
+        "priceDisplay": "₹1590",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 397.5,
+        "priceDisplay": "₹397.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 795,
+        "priceDisplay": "₹795",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew Borma - Premium",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1480,
+        "priceDisplay": "₹1480",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 370,
+        "priceDisplay": "₹370",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 740,
+        "priceDisplay": "₹740",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew Nut Butter",
+    "category": "Nut Butters",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "250g / Honey",
+        "price": 470,
+        "priceDisplay": "₹470",
+        "available": true
+      },
+      {
+        "size": "250g / Jaggery",
+        "price": 460,
+        "priceDisplay": "₹460",
+        "available": true
+      },
+      {
+        "size": "250g / Unsweetened",
+        "price": 440,
+        "priceDisplay": "₹440",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew Peanut Chikki",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 720,
+        "priceDisplay": "₹720",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 360,
+        "priceDisplay": "₹360",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cashew- Chilli Garlic",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1740,
+        "priceDisplay": "₹1740",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 435,
+        "priceDisplay": "₹435",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 870,
+        "priceDisplay": "₹870",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cassia Cinnamon",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 580,
+        "priceDisplay": "₹580",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 145,
+        "priceDisplay": "₹145",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 290,
+        "priceDisplay": "₹290",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Chammanthi Podi",
+    "category": "Masalas",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Chia Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 187.5,
+        "priceDisplay": "₹187.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Chilli Chocolate",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 230,
+        "priceDisplay": "₹230",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Chocolate Muesli",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 187.5,
+        "priceDisplay": "₹187.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cinnamon Roll (Churul Patta, Indonesia)",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1265,
+        "priceDisplay": "₹1265",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 316.25,
+        "priceDisplay": "₹316.25",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 632.5,
+        "priceDisplay": "₹632.50",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cloth Loofah",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 35,
+        "priceDisplay": "₹35",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cloves",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 170,
+        "priceDisplay": "₹170",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 255,
+        "priceDisplay": "₹255",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1800,
+        "priceDisplay": "₹1800",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 340,
+        "priceDisplay": "₹340",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 425,
+        "priceDisplay": "₹425",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 85,
+        "priceDisplay": "₹85",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cocoa Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2400,
+        "priceDisplay": "₹2400",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cocoa Tea",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1350,
+        "priceDisplay": "₹1350",
+        "available": false
+      },
+      {
+        "size": "250g",
+        "price": 337.5,
+        "priceDisplay": "₹337.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 675,
+        "priceDisplay": "₹675",
+        "available": false
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Coconut Oil",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "460g",
+        "price": 380,
+        "priceDisplay": "₹380",
+        "available": true
+      },
+      {
+        "size": "910g",
+        "price": 720,
+        "priceDisplay": "₹720",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Coconut Sugar",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 162.5,
+        "priceDisplay": "₹162.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Coffee Chocolate",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 235,
+        "priceDisplay": "₹235",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Copper Tongue Cleaner",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Coriander",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 45,
+        "priceDisplay": "₹45",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 67.5,
+        "priceDisplay": "₹67.50",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 112.5,
+        "priceDisplay": "₹112.50",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 112.5,
+        "priceDisplay": "₹112.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 22.5,
+        "priceDisplay": "₹22.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Corn/ Maize",
+    "category": null,
+    "categorySource": "unresolved",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 110,
+        "priceDisplay": "₹110",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 27.5,
+        "priceDisplay": "₹27.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 55,
+        "priceDisplay": "₹55",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cow Ghee",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "280g",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      },
+      {
+        "size": "600g",
+        "price": 795,
+        "priceDisplay": "₹795",
+        "available": true
+      },
+      {
+        "size": "900g",
+        "price": 1170,
+        "priceDisplay": "₹1170",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cucumber Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1650,
+        "priceDisplay": "₹1650",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 412.5,
+        "priceDisplay": "₹412.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 825,
+        "priceDisplay": "₹825",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Cumin (Jeerakam)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 69,
+        "priceDisplay": "₹69",
+        "available": true
+      },
+      {
+        "size": "125g - Masala",
+        "price": 86.25,
+        "priceDisplay": "₹86.25",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 103.5,
+        "priceDisplay": "₹103.50",
+        "available": true
+      },
+      {
+        "size": "175g - Masala",
+        "price": 120.75,
+        "priceDisplay": "₹120.75",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 770,
+        "priceDisplay": "₹770",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 138,
+        "priceDisplay": "₹138",
+        "available": true
+      },
+      {
+        "size": "225g - Masala",
+        "price": 155.25,
+        "priceDisplay": "₹155.25",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 192.5,
+        "priceDisplay": "₹192.50",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 172.5,
+        "priceDisplay": "₹172.50",
+        "available": true
+      },
+      {
+        "size": "25g - Masala",
+        "price": 19.25,
+        "priceDisplay": "₹19.25",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 385,
+        "priceDisplay": "₹385",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 38.5,
+        "priceDisplay": "₹38.50",
+        "available": true
+      },
+      {
+        "size": "75g - Masala",
+        "price": 57.75,
+        "priceDisplay": "₹57.75",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Custom Masala Blend",
+    "category": "Masalas",
+    "categorySource": "site-data",
+    "selectorType": "custom_numeric",
+    "variants": [
+      {
+        "size": "100",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      },
+      {
+        "size": "1000",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      },
+      {
+        "size": "1050",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      },
+      {
+        "size": "1100",
+        "price": 1100,
+        "priceDisplay": "₹1100",
+        "available": true
+      },
+      {
+        "size": "1150",
+        "price": 1150,
+        "priceDisplay": "₹1150",
+        "available": true
+      },
+      {
+        "size": "1200",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      },
+      {
+        "size": "1250",
+        "price": 1250,
+        "priceDisplay": "₹1250",
+        "available": true
+      },
+      {
+        "size": "1300",
+        "price": 1300,
+        "priceDisplay": "₹1300",
+        "available": true
+      },
+      {
+        "size": "1350",
+        "price": 1350,
+        "priceDisplay": "₹1350",
+        "available": true
+      },
+      {
+        "size": "1400",
+        "price": 1400,
+        "priceDisplay": "₹1400",
+        "available": true
+      },
+      {
+        "size": "1450",
+        "price": 1450,
+        "priceDisplay": "₹1450",
+        "available": true
+      },
+      {
+        "size": "150",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "1500",
+        "price": 1500,
+        "priceDisplay": "₹1500",
+        "available": true
+      },
+      {
+        "size": "1550",
+        "price": 1550,
+        "priceDisplay": "₹1550",
+        "available": true
+      },
+      {
+        "size": "1600",
+        "price": 1600,
+        "priceDisplay": "₹1600",
+        "available": true
+      },
+      {
+        "size": "1650",
+        "price": 1650,
+        "priceDisplay": "₹1650",
+        "available": true
+      },
+      {
+        "size": "1700",
+        "price": 1700,
+        "priceDisplay": "₹1700",
+        "available": true
+      },
+      {
+        "size": "1750",
+        "price": 1750,
+        "priceDisplay": "₹1750",
+        "available": true
+      },
+      {
+        "size": "1800",
+        "price": 1800,
+        "priceDisplay": "₹1800",
+        "available": true
+      },
+      {
+        "size": "1850",
+        "price": 1850,
+        "priceDisplay": "₹1850",
+        "available": true
+      },
+      {
+        "size": "1900",
+        "price": 1900,
+        "priceDisplay": "₹1900",
+        "available": true
+      },
+      {
+        "size": "1950",
+        "price": 1950,
+        "priceDisplay": "₹1950",
+        "available": true
+      },
+      {
+        "size": "200",
+        "price": 200,
+        "priceDisplay": "₹200",
+        "available": true
+      },
+      {
+        "size": "2000",
+        "price": 2000,
+        "priceDisplay": "₹2000",
+        "available": true
+      },
+      {
+        "size": "2050",
+        "price": 2050,
+        "priceDisplay": "₹2050",
+        "available": true
+      },
+      {
+        "size": "2100",
+        "price": 2100,
+        "priceDisplay": "₹2100",
+        "available": true
+      },
+      {
+        "size": "2150",
+        "price": 2150,
+        "priceDisplay": "₹2150",
+        "available": true
+      },
+      {
+        "size": "2200",
+        "price": 2200,
+        "priceDisplay": "₹2200",
+        "available": true
+      },
+      {
+        "size": "2250",
+        "price": 2250,
+        "priceDisplay": "₹2250",
+        "available": true
+      },
+      {
+        "size": "2300",
+        "price": 2300,
+        "priceDisplay": "₹2300",
+        "available": true
+      },
+      {
+        "size": "2350",
+        "price": 2350,
+        "priceDisplay": "₹2350",
+        "available": true
+      },
+      {
+        "size": "2400",
+        "price": 2400,
+        "priceDisplay": "₹2400",
+        "available": true
+      },
+      {
+        "size": "2450",
+        "price": 2450,
+        "priceDisplay": "₹2450",
+        "available": true
+      },
+      {
+        "size": "250",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "2500",
+        "price": 2500,
+        "priceDisplay": "₹2500",
+        "available": true
+      },
+      {
+        "size": "2550",
+        "price": 2550,
+        "priceDisplay": "₹2550",
+        "available": true
+      },
+      {
+        "size": "2600",
+        "price": 2600,
+        "priceDisplay": "₹2600",
+        "available": true
+      },
+      {
+        "size": "2650",
+        "price": 2650,
+        "priceDisplay": "₹2650",
+        "available": true
+      },
+      {
+        "size": "2700",
+        "price": 2700,
+        "priceDisplay": "₹2700",
+        "available": true
+      },
+      {
+        "size": "2750",
+        "price": 2750,
+        "priceDisplay": "₹2750",
+        "available": true
+      },
+      {
+        "size": "2800",
+        "price": 2800,
+        "priceDisplay": "₹2800",
+        "available": true
+      },
+      {
+        "size": "2850",
+        "price": 2850,
+        "priceDisplay": "₹2850",
+        "available": true
+      },
+      {
+        "size": "2900",
+        "price": 2900,
+        "priceDisplay": "₹2900",
+        "available": true
+      },
+      {
+        "size": "2950",
+        "price": 2950,
+        "priceDisplay": "₹2950",
+        "available": true
+      },
+      {
+        "size": "300",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "3000",
+        "price": 3000,
+        "priceDisplay": "₹3000",
+        "available": true
+      },
+      {
+        "size": "3050",
+        "price": 3050,
+        "priceDisplay": "₹3050",
+        "available": true
+      },
+      {
+        "size": "3100",
+        "price": 3100,
+        "priceDisplay": "₹3100",
+        "available": true
+      },
+      {
+        "size": "3150",
+        "price": 3150,
+        "priceDisplay": "₹3150",
+        "available": true
+      },
+      {
+        "size": "3200",
+        "price": 3200,
+        "priceDisplay": "₹3200",
+        "available": true
+      },
+      {
+        "size": "3250",
+        "price": 3250,
+        "priceDisplay": "₹3250",
+        "available": true
+      },
+      {
+        "size": "3300",
+        "price": 3300,
+        "priceDisplay": "₹3300",
+        "available": true
+      },
+      {
+        "size": "3350",
+        "price": 3350,
+        "priceDisplay": "₹3350",
+        "available": true
+      },
+      {
+        "size": "3400",
+        "price": 3400,
+        "priceDisplay": "₹3400",
+        "available": true
+      },
+      {
+        "size": "3450",
+        "price": 3450,
+        "priceDisplay": "₹3450",
+        "available": true
+      },
+      {
+        "size": "350",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      },
+      {
+        "size": "3500",
+        "price": 3500,
+        "priceDisplay": "₹3500",
+        "available": true
+      },
+      {
+        "size": "3550",
+        "price": 3550,
+        "priceDisplay": "₹3550",
+        "available": true
+      },
+      {
+        "size": "3600",
+        "price": 3600,
+        "priceDisplay": "₹3600",
+        "available": true
+      },
+      {
+        "size": "3650",
+        "price": 3650,
+        "priceDisplay": "₹3650",
+        "available": true
+      },
+      {
+        "size": "3700",
+        "price": 3700,
+        "priceDisplay": "₹3700",
+        "available": true
+      },
+      {
+        "size": "3750",
+        "price": 3750,
+        "priceDisplay": "₹3750",
+        "available": true
+      },
+      {
+        "size": "3800",
+        "price": 3800,
+        "priceDisplay": "₹3800",
+        "available": true
+      },
+      {
+        "size": "3850",
+        "price": 3850,
+        "priceDisplay": "₹3850",
+        "available": true
+      },
+      {
+        "size": "3900",
+        "price": 3900,
+        "priceDisplay": "₹3900",
+        "available": true
+      },
+      {
+        "size": "3950",
+        "price": 3950,
+        "priceDisplay": "₹3950",
+        "available": true
+      },
+      {
+        "size": "400",
+        "price": 400,
+        "priceDisplay": "₹400",
+        "available": true
+      },
+      {
+        "size": "4000",
+        "price": 4000,
+        "priceDisplay": "₹4000",
+        "available": true
+      },
+      {
+        "size": "4050",
+        "price": 4050,
+        "priceDisplay": "₹4050",
+        "available": true
+      },
+      {
+        "size": "4100",
+        "price": 4100,
+        "priceDisplay": "₹4100",
+        "available": true
+      },
+      {
+        "size": "4150",
+        "price": 4150,
+        "priceDisplay": "₹4150",
+        "available": true
+      },
+      {
+        "size": "4200",
+        "price": 4200,
+        "priceDisplay": "₹4200",
+        "available": true
+      },
+      {
+        "size": "4250",
+        "price": 4250,
+        "priceDisplay": "₹4250",
+        "available": true
+      },
+      {
+        "size": "4300",
+        "price": 4300,
+        "priceDisplay": "₹4300",
+        "available": true
+      },
+      {
+        "size": "4350",
+        "price": 4350,
+        "priceDisplay": "₹4350",
+        "available": true
+      },
+      {
+        "size": "4400",
+        "price": 4400,
+        "priceDisplay": "₹4400",
+        "available": true
+      },
+      {
+        "size": "4450",
+        "price": 4450,
+        "priceDisplay": "₹4450",
+        "available": true
+      },
+      {
+        "size": "450",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "4500",
+        "price": 4500,
+        "priceDisplay": "₹4500",
+        "available": true
+      },
+      {
+        "size": "4550",
+        "price": 4550,
+        "priceDisplay": "₹4550",
+        "available": true
+      },
+      {
+        "size": "4600",
+        "price": 4600,
+        "priceDisplay": "₹4600",
+        "available": true
+      },
+      {
+        "size": "4650",
+        "price": 4650,
+        "priceDisplay": "₹4650",
+        "available": true
+      },
+      {
+        "size": "4700",
+        "price": 4700,
+        "priceDisplay": "₹4700",
+        "available": true
+      },
+      {
+        "size": "4750",
+        "price": 4750,
+        "priceDisplay": "₹4750",
+        "available": true
+      },
+      {
+        "size": "4800",
+        "price": 4800,
+        "priceDisplay": "₹4800",
+        "available": true
+      },
+      {
+        "size": "4850",
+        "price": 4850,
+        "priceDisplay": "₹4850",
+        "available": true
+      },
+      {
+        "size": "4900",
+        "price": 4900,
+        "priceDisplay": "₹4900",
+        "available": true
+      },
+      {
+        "size": "4950",
+        "price": 4950,
+        "priceDisplay": "₹4950",
+        "available": true
+      },
+      {
+        "size": "50",
+        "price": 50,
+        "priceDisplay": "₹50",
+        "available": true
+      },
+      {
+        "size": "500",
+        "price": 500,
+        "priceDisplay": "₹500",
+        "available": true
+      },
+      {
+        "size": "5000",
+        "price": 5000,
+        "priceDisplay": "₹5000",
+        "available": true
+      },
+      {
+        "size": "550",
+        "price": 550,
+        "priceDisplay": "₹550",
+        "available": true
+      },
+      {
+        "size": "600",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      },
+      {
+        "size": "650",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      },
+      {
+        "size": "700",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      },
+      {
+        "size": "750",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      },
+      {
+        "size": "800",
+        "price": 800,
+        "priceDisplay": "₹800",
+        "available": true
+      },
+      {
+        "size": "850",
+        "price": 850,
+        "priceDisplay": "₹850",
+        "available": true
+      },
+      {
+        "size": "900",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      },
+      {
+        "size": "950",
+        "price": 950,
+        "priceDisplay": "₹950",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dailywell Fibre Atta",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 102,
+        "priceDisplay": "₹102",
+        "available": true
+      },
+      {
+        "size": "3kg",
+        "price": 306,
+        "priceDisplay": "₹306",
+        "available": true
+      },
+      {
+        "size": "5kg",
+        "price": 510,
+        "priceDisplay": "₹510",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dailywell Gluten Free Atta",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 222,
+        "priceDisplay": "₹222",
+        "available": true
+      },
+      {
+        "size": "3kg",
+        "price": 666,
+        "priceDisplay": "₹666",
+        "available": true
+      },
+      {
+        "size": "5kg",
+        "price": 1110,
+        "priceDisplay": "₹1110",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dailywell Multi Millet Atta",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1 kg",
+        "price": 109,
+        "priceDisplay": "₹109",
+        "available": true
+      },
+      {
+        "size": "3 kg",
+        "price": 327,
+        "priceDisplay": "₹327",
+        "available": true
+      },
+      {
+        "size": "5 kg",
+        "price": 545,
+        "priceDisplay": "₹545",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dailywell Nuts & Seeds Atta",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 283,
+        "priceDisplay": "₹283",
+        "available": true
+      },
+      {
+        "size": "3kg",
+        "price": 849,
+        "priceDisplay": "₹849",
+        "available": true
+      },
+      {
+        "size": "5kg",
+        "price": 1415,
+        "priceDisplay": "₹1415",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dailywell Protein Atta",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 127,
+        "priceDisplay": "₹127",
+        "available": true
+      },
+      {
+        "size": "3kg",
+        "price": 381,
+        "priceDisplay": "₹381",
+        "available": true
+      },
+      {
+        "size": "5kg",
+        "price": 635,
+        "priceDisplay": "₹635",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dark Chocolate 55%",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dark Chocolate 80%",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 370,
+        "priceDisplay": "₹370",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dark Milk Chocolate",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dates- Dry Black Fine (Oman Kaarakka)",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Blueberries",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2400,
+        "priceDisplay": "₹2400",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Cherry",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1250,
+        "priceDisplay": "₹1250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 312.5,
+        "priceDisplay": "₹312.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 625,
+        "priceDisplay": "₹625",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Cranberries",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 262.5,
+        "priceDisplay": "₹262.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Curry Leaves",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 85,
+        "priceDisplay": "₹85",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 850,
+        "priceDisplay": "₹850",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 212.5,
+        "priceDisplay": "₹212.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 425,
+        "priceDisplay": "₹425",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Ginger",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 820,
+        "priceDisplay": "₹820",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Ginger Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 850,
+        "priceDisplay": "₹850",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 212.5,
+        "priceDisplay": "₹212.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 425,
+        "priceDisplay": "₹425",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Jackfruit",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1250,
+        "priceDisplay": "₹1250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 312.5,
+        "priceDisplay": "₹312.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 625,
+        "priceDisplay": "₹625",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Lemon",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 500,
+        "priceDisplay": "₹500",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 125,
+        "priceDisplay": "₹125",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Dried Strawberry",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1340,
+        "priceDisplay": "₹1340",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 335,
+        "priceDisplay": "₹335",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 670,
+        "priceDisplay": "₹670",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ekanayakam",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Emmer Khapli Wheat",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "1kg / Powder",
+        "price": 195,
+        "priceDisplay": "₹195",
+        "available": true
+      },
+      {
+        "size": "1kg / Raw",
+        "price": 195,
+        "priceDisplay": "₹195",
+        "available": true
+      },
+      {
+        "size": "3kg / Powder",
+        "price": 585,
+        "priceDisplay": "₹585",
+        "available": true
+      },
+      {
+        "size": "3kg / Raw",
+        "price": 585,
+        "priceDisplay": "₹585",
+        "available": true
+      },
+      {
+        "size": "5kg / Powder",
+        "price": 975,
+        "priceDisplay": "₹975",
+        "available": true
+      },
+      {
+        "size": "5kg / Raw",
+        "price": 975,
+        "priceDisplay": "₹975",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fennel (Perumjeerakam)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1KG",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      },
+      {
+        "size": "250G",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "500G",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fenugreek (Uluva)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 230,
+        "priceDisplay": "₹230",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 57.5,
+        "priceDisplay": "₹57.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 115,
+        "priceDisplay": "₹115",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fig (Big)",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2800,
+        "priceDisplay": "₹2800",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1400,
+        "priceDisplay": "₹1400",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fig (Normal Size)",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1KG",
+        "price": 2100,
+        "priceDisplay": "₹2100",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Flax Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 87.5,
+        "priceDisplay": "₹87.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Forest Honey (Kattuthen)",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1350g",
+        "price": 1325,
+        "priceDisplay": "₹1325",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 360,
+        "priceDisplay": "₹360",
+        "available": true
+      },
+      {
+        "size": "400g",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "950g",
+        "price": 1240,
+        "priceDisplay": "₹1240",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fork",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Foxtail Millet (Navane)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 170,
+        "priceDisplay": "₹170",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 42.5,
+        "priceDisplay": "₹42.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 85,
+        "priceDisplay": "₹85",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Foxtail Millet (Navane) Rava",
+    "category": "Rava",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 62.5,
+        "priceDisplay": "₹62.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 125,
+        "priceDisplay": "₹125",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fruit & Nut Chocolate",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fruits & Nuts Muesli",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 720,
+        "priceDisplay": "₹720",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 360,
+        "priceDisplay": "₹360",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Fruits Granola",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 187.5,
+        "priceDisplay": "₹187.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Garam Masala",
+    "category": "Masalas",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "150gm",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Garlic pickle",
+    "category": "Pickles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "280g",
+        "price": 295,
+        "priceDisplay": "₹295",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ginger Cube",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1040,
+        "priceDisplay": "₹1040",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 520,
+        "priceDisplay": "₹520",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ginger Honey",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "250g",
+        "price": 435,
+        "priceDisplay": "₹435",
+        "available": true
+      },
+      {
+        "size": "400g",
+        "price": 670,
+        "priceDisplay": "₹670",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Gooseberry Pickle",
+    "category": "Pickles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "280g",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Green Gram",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Green Gram Powder (Cherupayar Podi)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 460,
+        "priceDisplay": "₹460",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 115,
+        "priceDisplay": "₹115",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 230,
+        "priceDisplay": "₹230",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Green Peas",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 160,
+        "priceDisplay": "₹160",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 40,
+        "priceDisplay": "₹40",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 80,
+        "priceDisplay": "₹80",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Groundnut Oil",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "460gm",
+        "price": 255,
+        "priceDisplay": "₹255",
+        "available": true
+      },
+      {
+        "size": "910 gm",
+        "price": 470,
+        "priceDisplay": "₹470",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Hazel Nuts",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 3700,
+        "priceDisplay": "₹3700",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 925,
+        "priceDisplay": "₹925",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1850,
+        "priceDisplay": "₹1850",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Hazelnut Nut Butter",
+    "category": "Nut Butters",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "250g / Honey",
+        "price": 1030,
+        "priceDisplay": "₹1030",
+        "available": true
+      },
+      {
+        "size": "250g / Jaggery",
+        "price": 1020,
+        "priceDisplay": "₹1020",
+        "available": true
+      },
+      {
+        "size": "250g / Unsweetened",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Henna Powder",
+    "category": "Skin Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100G",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2050,
+        "priceDisplay": "₹2050",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 512.5,
+        "priceDisplay": "₹512.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1025,
+        "priceDisplay": "₹1025",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Hibiscus Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2100,
+        "priceDisplay": "₹2100",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Hing (Asafoetida)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 3500,
+        "priceDisplay": "₹3500",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 875,
+        "priceDisplay": "₹875",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1750,
+        "priceDisplay": "₹1750",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Honey",
+    "category": "Natural Sweeteners",
+    "categorySource": "keyword-guess",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 20,
+        "priceDisplay": "₹20",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Honey Dipper",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Horse Gram (Muthira)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 45,
+        "priceDisplay": "₹45",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Idli Powder",
+    "category": "Masalas",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 840,
+        "priceDisplay": "₹840",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 420,
+        "priceDisplay": "₹420",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Idly Rice SR Orange",
+    "category": "Rice",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 85,
+        "priceDisplay": "₹85",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 21.25,
+        "priceDisplay": "₹21.25",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 42.5,
+        "priceDisplay": "₹42.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Incha/ Acacia Wild",
+    "category": null,
+    "categorySource": "unresolved",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2500,
+        "priceDisplay": "₹2500",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 625,
+        "priceDisplay": "₹625",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1250,
+        "priceDisplay": "₹1250",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Indigo Powder",
+    "category": "Hair Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2100,
+        "priceDisplay": "₹2100",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Iratti Madhuram",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jackfruit Pasta",
+    "category": "Pasta",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 520,
+        "priceDisplay": "₹520",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jaggery",
+    "category": "Natural Sweeteners",
+    "categorySource": "keyword-guess",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 20,
+        "priceDisplay": "₹20",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jaggery Mix Dry Fruit",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1600,
+        "priceDisplay": "₹1600",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 400,
+        "priceDisplay": "₹400",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 800,
+        "priceDisplay": "₹800",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jowar (Sorghum Millet)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 115,
+        "priceDisplay": "₹115",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 28.75,
+        "priceDisplay": "₹28.75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 57.5,
+        "priceDisplay": "₹57.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jowar (Sorghum Millet) Rava",
+    "category": "Rava",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 52.5,
+        "priceDisplay": "₹52.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 105,
+        "priceDisplay": "₹105",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jowar Flakes",
+    "category": "Poha",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 220,
+        "priceDisplay": "₹220",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 55,
+        "priceDisplay": "₹55",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 110,
+        "priceDisplay": "₹110",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Jowar Millet Pasta",
+    "category": "Pasta",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kabuli Chana White",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 62.5,
+        "priceDisplay": "₹62.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 125,
+        "priceDisplay": "₹125",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kadukka (Haritaki)",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Karingali (Black Cutch)",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 630,
+        "priceDisplay": "₹630",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 157.5,
+        "priceDisplay": "₹157.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 315,
+        "priceDisplay": "₹315",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kasthuri Haldi Powder",
+    "category": "Skin Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "1KG",
+        "price": 1500,
+        "priceDisplay": "₹1500",
+        "available": true
+      },
+      {
+        "size": "250G",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      },
+      {
+        "size": "500G",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kiwi Green Dried",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 890,
+        "priceDisplay": "₹890",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 222.5,
+        "priceDisplay": "₹222.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 445,
+        "priceDisplay": "₹445",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kiwi Yellow Dried",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 820,
+        "priceDisplay": "₹820",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kodo Millet (Arka)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1 kg",
+        "price": 170,
+        "priceDisplay": "₹170",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 42.5,
+        "priceDisplay": "₹42.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 85,
+        "priceDisplay": "₹85",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kodo Millet (Arka) Rava",
+    "category": "Rava",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 270,
+        "priceDisplay": "₹270",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 67.5,
+        "priceDisplay": "₹67.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 135,
+        "priceDisplay": "₹135",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Kodo Millet Cookies",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Lapsi Daliya (Broken Wheat)",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 30,
+        "priceDisplay": "₹30",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Lemon pickle",
+    "category": "Pickles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "280g",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Little Millet (Samai)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 52.5,
+        "priceDisplay": "₹52.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 105,
+        "priceDisplay": "₹105",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Little Millet (Samai) Rava",
+    "category": "Rava",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Little Millet Cookies",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "250gm",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "500gm",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Lobia (Red Cowpeas)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 47.5,
+        "priceDisplay": "₹47.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Lokwan Gund Wheat",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "1kg / Powder",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      },
+      {
+        "size": "1kg / Raw",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      },
+      {
+        "size": "3kg / Powder",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      },
+      {
+        "size": "3kg / Raw",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      },
+      {
+        "size": "5kg / Powder",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      },
+      {
+        "size": "5kg / Raw",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Macadamia Nuts - With Shell",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 3880,
+        "priceDisplay": "₹3880",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 970,
+        "priceDisplay": "₹970",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1940,
+        "priceDisplay": "₹1940",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Makhana (Lotus Seeds)",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1980,
+        "priceDisplay": "₹1980",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 495,
+        "priceDisplay": "₹495",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 990,
+        "priceDisplay": "₹990",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mango Dried",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Manjishta Root Powder",
+    "category": "Skin Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 195,
+        "priceDisplay": "₹195",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1950,
+        "priceDisplay": "₹1950",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 487.5,
+        "priceDisplay": "₹487.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 975,
+        "priceDisplay": "₹975",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Marathi Moggu",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Marathi Moggu Long (Kapok Buds)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1200,
+        "priceDisplay": "₹1200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Marayoor Jaggery Powder",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 70,
+        "priceDisplay": "₹70",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Marayoor Jaggery Whole",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 200,
+        "priceDisplay": "₹200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 50,
+        "priceDisplay": "₹50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Masoor Dal (Split)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 37.5,
+        "priceDisplay": "₹37.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Medjool Jumbo Dates",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2200,
+        "priceDisplay": "₹2200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 550,
+        "priceDisplay": "₹550",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1100,
+        "priceDisplay": "₹1100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Methi Leaves Dried",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 490,
+        "priceDisplay": "₹490",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 122.5,
+        "priceDisplay": "₹122.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 245,
+        "priceDisplay": "₹245",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mexican Bites",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1100,
+        "priceDisplay": "₹1100",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 275,
+        "priceDisplay": "₹275",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 550,
+        "priceDisplay": "₹550",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Milky Bar",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mixed DryFruit & Seeds Roasted",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1840,
+        "priceDisplay": "₹1840",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 460,
+        "priceDisplay": "₹460",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 920,
+        "priceDisplay": "₹920",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mixed Vegetables (Air Fried)",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1960,
+        "priceDisplay": "₹1960",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 490,
+        "priceDisplay": "₹490",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 980,
+        "priceDisplay": "₹980",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Moong Dal",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 52.5,
+        "priceDisplay": "₹52.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 105,
+        "priceDisplay": "₹105",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Moringa Noodles",
+    "category": "Noodles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 580,
+        "priceDisplay": "₹580",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 145,
+        "priceDisplay": "₹145",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 290,
+        "priceDisplay": "₹290",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Moringa Pasta",
+    "category": "Pasta",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 540,
+        "priceDisplay": "₹540",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 135,
+        "priceDisplay": "₹135",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 270,
+        "priceDisplay": "₹270",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Moringa Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2050,
+        "priceDisplay": "₹2050",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 512.5,
+        "priceDisplay": "₹512.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1025,
+        "priceDisplay": "₹1025",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mulethi Root Powder/ Irattimadhuram",
+    "category": "Health Foods",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 224,
+        "priceDisplay": "₹224",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2240,
+        "priceDisplay": "₹2240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 560,
+        "priceDisplay": "₹560",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1120,
+        "priceDisplay": "₹1120",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Multani Mitti",
+    "category": "Skin Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 101,
+        "priceDisplay": "₹101",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1010,
+        "priceDisplay": "₹1010",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 252.5,
+        "priceDisplay": "₹252.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 505,
+        "priceDisplay": "₹505",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Multi Millet Cookies",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 580,
+        "priceDisplay": "₹580",
+        "available": true
+      },
+      {
+        "size": "250gm",
+        "price": 145,
+        "priceDisplay": "₹145",
+        "available": true
+      },
+      {
+        "size": "500gm",
+        "price": 290,
+        "priceDisplay": "₹290",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Multi Millet Vermiceli",
+    "category": "Noodles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 102.5,
+        "priceDisplay": "₹102.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Multigrain Chikki",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      },
+      {
+        "size": "250gm",
+        "price": 187.5,
+        "priceDisplay": "₹187.50",
+        "available": true
+      },
+      {
+        "size": "500gm",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Munakka Raisins",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 870,
+        "priceDisplay": "₹870",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 217.5,
+        "priceDisplay": "₹217.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 435,
+        "priceDisplay": "₹435",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mustard Oil (Black Seed)",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "460 g",
+        "price": 335,
+        "priceDisplay": "₹335",
+        "available": true
+      },
+      {
+        "size": "910 g",
+        "price": 630,
+        "priceDisplay": "₹630",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Mustard Seeds Black",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 220,
+        "priceDisplay": "₹220",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 55,
+        "priceDisplay": "₹55",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 110,
+        "priceDisplay": "₹110",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Nannari Root",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Navara Rice",
+    "category": "Rice",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 146,
+        "priceDisplay": "₹146",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 36.5,
+        "priceDisplay": "₹36.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 73,
+        "priceDisplay": "₹73",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Neem Comb",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 110,
+        "priceDisplay": "₹110",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Neem Ladle",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 125,
+        "priceDisplay": "₹125",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Neem Leaf Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 145,
+        "priceDisplay": "₹145",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1450,
+        "priceDisplay": "₹1450",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 362.5,
+        "priceDisplay": "₹362.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 725,
+        "priceDisplay": "₹725",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Neem Massage Comb",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Neem Spatula",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Neem Tongue Cleaner",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Nutmeg",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1300,
+        "priceDisplay": "₹1300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Nutmeg Mace (Red Flower)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 4000,
+        "priceDisplay": "₹4000",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 2000,
+        "priceDisplay": "₹2000",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Nutmeg Mace (Yellow Flower)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 3700,
+        "priceDisplay": "₹3700",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 925,
+        "priceDisplay": "₹925",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1850,
+        "priceDisplay": "₹1850",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Orange Peel Powder",
+    "category": "Skin Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 199,
+        "priceDisplay": "₹199",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1990,
+        "priceDisplay": "₹1990",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 497.5,
+        "priceDisplay": "₹497.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 995,
+        "priceDisplay": "₹995",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Oregano",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Palm Candy Crystal (Panam Kalkandam)",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 262.5,
+        "priceDisplay": "₹262.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Palm Jaggery (Karupatti)",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 330,
+        "priceDisplay": "₹330",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 107.5,
+        "priceDisplay": "₹107.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 165,
+        "priceDisplay": "₹165",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Papaya Dried",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 890,
+        "priceDisplay": "₹890",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 222.5,
+        "priceDisplay": "₹222.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 445,
+        "priceDisplay": "₹445",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pathimukham",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 810,
+        "priceDisplay": "₹810",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 202.5,
+        "priceDisplay": "₹202.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 405,
+        "priceDisplay": "₹405",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Peanut Chikki",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 590,
+        "priceDisplay": "₹590",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 147.5,
+        "priceDisplay": "₹147.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 295,
+        "priceDisplay": "₹295",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Peanut Plain Roasted",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 460,
+        "priceDisplay": "₹460",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 115,
+        "priceDisplay": "₹115",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 230,
+        "priceDisplay": "₹230",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Peanut Plain Roasted Nut Butter",
+    "category": "Nut Butters",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "250g / Honey",
+        "price": 220,
+        "priceDisplay": "₹220",
+        "available": true
+      },
+      {
+        "size": "250g / Jaggery",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "250g / Unsweetened",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Peanut Salted",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 520,
+        "priceDisplay": "₹520",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pearl Millet (Bajra)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 23.75,
+        "priceDisplay": "₹23.75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 47.5,
+        "priceDisplay": "₹47.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pecan Nuts",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2700,
+        "priceDisplay": "₹2700",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 675,
+        "priceDisplay": "₹675",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1350,
+        "priceDisplay": "₹1350",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pepper",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "125g - Masala",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "175g - Masala",
+        "price": 245,
+        "priceDisplay": "₹245",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1570,
+        "priceDisplay": "₹1570",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 280,
+        "priceDisplay": "₹280",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 392.5,
+        "priceDisplay": "₹392.50",
+        "available": true
+      },
+      {
+        "size": "25g - Masala",
+        "price": 35,
+        "priceDisplay": "₹35",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 785,
+        "priceDisplay": "₹785",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 70,
+        "priceDisplay": "₹70",
+        "available": true
+      },
+      {
+        "size": "75g - Masala",
+        "price": 105,
+        "priceDisplay": "₹105",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pineapple Coin (Dried)",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1150,
+        "priceDisplay": "₹1150",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 287.5,
+        "priceDisplay": "₹287.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 575,
+        "priceDisplay": "₹575",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pineapple Ring Dried",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1250,
+        "priceDisplay": "₹1250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 312.5,
+        "priceDisplay": "₹312.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 625,
+        "priceDisplay": "₹625",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pink Salt Powder",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 37.5,
+        "priceDisplay": "₹37.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 75,
+        "priceDisplay": "₹75",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pista California (AM)",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2300,
+        "priceDisplay": "₹2300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 575,
+        "priceDisplay": "₹575",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1150,
+        "priceDisplay": "₹1150",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pista California Premium - Salted & Roasted",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2500,
+        "priceDisplay": "₹2500",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 625,
+        "priceDisplay": "₹625",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1250,
+        "priceDisplay": "₹1250",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pista Plain w/o Shell",
+    "category": "Dry Fruits",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 3980,
+        "priceDisplay": "₹3980",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 995,
+        "priceDisplay": "₹995",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1990,
+        "priceDisplay": "₹1990",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Plum Black Dried",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pomegranate Honey",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "250g",
+        "price": 435,
+        "priceDisplay": "₹435",
+        "available": true
+      },
+      {
+        "size": "400g",
+        "price": 670,
+        "priceDisplay": "₹670",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Poppy (KhusKhus) White",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 3350,
+        "priceDisplay": "₹3350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 837.5,
+        "priceDisplay": "₹837.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1675,
+        "priceDisplay": "₹1675",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pot Tamarind (Kudampuli)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 530,
+        "priceDisplay": "₹530",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 132.5,
+        "priceDisplay": "₹132.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 265,
+        "priceDisplay": "₹265",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Protein Beans",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1300,
+        "priceDisplay": "₹1300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Prunes Dried",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1290,
+        "priceDisplay": "₹1290",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 322.5,
+        "priceDisplay": "₹322.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 645,
+        "priceDisplay": "₹645",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Psyllium Husk (Isabgol Busi)",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2000,
+        "priceDisplay": "₹2000",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 500,
+        "priceDisplay": "₹500",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Pumpkin Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 980,
+        "priceDisplay": "₹980",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 245,
+        "priceDisplay": "₹245",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 490,
+        "priceDisplay": "₹490",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Putana (Parched Gram) Fine",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 45,
+        "priceDisplay": "₹45",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Puttu Powder Roasted (Red)",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 32.5,
+        "priceDisplay": "₹32.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 65,
+        "priceDisplay": "₹65",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Puttu Powder Roasted (White)",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 32.5,
+        "priceDisplay": "₹32.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 65,
+        "priceDisplay": "₹65",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Quinoa",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 47.5,
+        "priceDisplay": "₹47.50",
+        "available": false
+      },
+      {
+        "size": "500g",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": false
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Quinoa Vermicelli",
+    "category": "Noodles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 102.5,
+        "priceDisplay": "₹102.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Raamacham",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 180,
+        "priceDisplay": "₹180",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1800,
+        "priceDisplay": "₹1800",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 900,
+        "priceDisplay": "₹900",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ragi (Finger Millet)",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 23.75,
+        "priceDisplay": "₹23.75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 47.5,
+        "priceDisplay": "₹47.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ragi (Finger Millet) Rava",
+    "category": "Rava",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 200,
+        "priceDisplay": "₹200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 50,
+        "priceDisplay": "₹50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ragi Flakes",
+    "category": "Poha",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 230,
+        "priceDisplay": "₹230",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 57.5,
+        "priceDisplay": "₹57.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 115,
+        "priceDisplay": "₹115",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Ragi Noodles",
+    "category": "Noodles",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 620,
+        "priceDisplay": "₹620",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 155,
+        "priceDisplay": "₹155",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 310,
+        "priceDisplay": "₹310",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Raisin- Afghan Long",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1280,
+        "priceDisplay": "₹1280",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 320,
+        "priceDisplay": "₹320",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 640,
+        "priceDisplay": "₹640",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Rajapuri Turmeric",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 59,
+        "priceDisplay": "₹59",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 88.5,
+        "priceDisplay": "₹88.50",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 590,
+        "priceDisplay": "₹590",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 118,
+        "priceDisplay": "₹118",
+        "available": true
+      },
+      {
+        "size": "20g - Masala",
+        "price": 11.8,
+        "priceDisplay": "₹11.80",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 147.5,
+        "priceDisplay": "₹147.50",
+        "available": true
+      },
+      {
+        "size": "40g - Masala",
+        "price": 23.6,
+        "priceDisplay": "₹23.60",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 295,
+        "priceDisplay": "₹295",
+        "available": true
+      },
+      {
+        "size": "60g - Masala",
+        "price": 35.4,
+        "priceDisplay": "₹35.40",
+        "available": true
+      },
+      {
+        "size": "80g - Masala",
+        "price": 47.2,
+        "priceDisplay": "₹47.20",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Rajwadi Wheat",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "1kg / Powder",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      },
+      {
+        "size": "1kg / Raw",
+        "price": 90,
+        "priceDisplay": "₹90",
+        "available": true
+      },
+      {
+        "size": "3kg / Powder",
+        "price": 270,
+        "priceDisplay": "₹270",
+        "available": true
+      },
+      {
+        "size": "3kg / Raw",
+        "price": 270,
+        "priceDisplay": "₹270",
+        "available": true
+      },
+      {
+        "size": "5kg / Powder",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "5kg / Raw",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Rakthachandana",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100G",
+        "price": 400,
+        "priceDisplay": "₹400",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 4000,
+        "priceDisplay": "₹4000",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 2000,
+        "priceDisplay": "₹2000",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Raw Honey",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1350g",
+        "price": 930,
+        "priceDisplay": "₹930",
+        "available": true
+      },
+      {
+        "size": "400g",
+        "price": 310,
+        "priceDisplay": "₹310",
+        "available": true
+      },
+      {
+        "size": "950g",
+        "price": 680,
+        "priceDisplay": "₹680",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Rectangle Loofah",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 45,
+        "priceDisplay": "₹45",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Chilli- Byadagi Kaddi",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "irregular",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1050,
+        "priceDisplay": "₹1050",
+        "available": true
+      },
+      {
+        "size": "25og",
+        "price": 262.5,
+        "priceDisplay": "₹262.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 525,
+        "priceDisplay": "₹525",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Chilli- Dabbi",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 148,
+        "priceDisplay": "₹148",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 222,
+        "priceDisplay": "₹222",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1480,
+        "priceDisplay": "₹1480",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 296,
+        "priceDisplay": "₹296",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 370,
+        "priceDisplay": "₹370",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 370,
+        "priceDisplay": "₹370",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 740,
+        "priceDisplay": "₹740",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 74,
+        "priceDisplay": "₹74",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Chilli- Guntur Long",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 53,
+        "priceDisplay": "₹53",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 79.5,
+        "priceDisplay": "₹79.50",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 530,
+        "priceDisplay": "₹530",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 106,
+        "priceDisplay": "₹106",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 132.5,
+        "priceDisplay": "₹132.50",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 132.5,
+        "priceDisplay": "₹132.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 265,
+        "priceDisplay": "₹265",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 26.5,
+        "priceDisplay": "₹26.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Chilli- Guntur Small",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 162.5,
+        "priceDisplay": "₹162.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Chilli- Salem Ball",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 82,
+        "priceDisplay": "₹82",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 123,
+        "priceDisplay": "₹123",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 820,
+        "priceDisplay": "₹820",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 164,
+        "priceDisplay": "₹164",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 410,
+        "priceDisplay": "₹410",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 41,
+        "priceDisplay": "₹41",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Matta Rice (Parboiled & Semi-Polished)",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 99,
+        "priceDisplay": "₹99",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 24.75,
+        "priceDisplay": "₹24.75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 49.5,
+        "priceDisplay": "₹49.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Rajma/ Kidney Beans",
+    "category": "Pulses",
+    "categorySource": "keyword-guess",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 65,
+        "priceDisplay": "₹65",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Red Rice Flakes (Avalakki)",
+    "category": "Poha",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 47.5,
+        "priceDisplay": "₹47.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Reetha Powder",
+    "category": "Hair Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 205,
+        "priceDisplay": "₹205",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2050,
+        "priceDisplay": "₹2050",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 512.5,
+        "priceDisplay": "₹512.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1025,
+        "priceDisplay": "₹1025",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Roasted Chana",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 350,
+        "priceDisplay": "₹350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 87.5,
+        "priceDisplay": "₹87.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 175,
+        "priceDisplay": "₹175",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Robusta Coffee Beans",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1500,
+        "priceDisplay": "₹1500",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Robusta Coffee Beans (organic)",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1900,
+        "priceDisplay": "₹1900",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 475,
+        "priceDisplay": "₹475",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 950,
+        "priceDisplay": "₹950",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Robusta Coffee Powder (Idukki)",
+    "category": "Coffee",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1350,
+        "priceDisplay": "₹1350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 337.5,
+        "priceDisplay": "₹337.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 675,
+        "priceDisplay": "₹675",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Rose Mary Dried",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 850,
+        "priceDisplay": "₹850",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 212.5,
+        "priceDisplay": "₹212.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 425,
+        "priceDisplay": "₹425",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Rose Petals",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1180,
+        "priceDisplay": "₹1180",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 295,
+        "priceDisplay": "₹295",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 590,
+        "priceDisplay": "₹590",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Royal Prime Kimia Dates",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Royal Rajamudi Rice Premium",
+    "category": "Rice",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 139,
+        "priceDisplay": "₹139",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 34.75,
+        "priceDisplay": "₹34.75",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 69.5,
+        "priceDisplay": "₹69.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Safawi Dates",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1180,
+        "priceDisplay": "₹1180",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 295,
+        "priceDisplay": "₹295",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 590,
+        "priceDisplay": "₹590",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sago (Tapioca Pearls)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 130,
+        "priceDisplay": "₹130",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 32.5,
+        "priceDisplay": "₹32.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 65,
+        "priceDisplay": "₹65",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sambar Masala",
+    "category": "Masalas",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "150gm",
+        "price": 165,
+        "priceDisplay": "₹165",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sandalwood Powder",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100G",
+        "price": 260,
+        "priceDisplay": "₹260",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 2600,
+        "priceDisplay": "₹2600",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1300,
+        "priceDisplay": "₹1300",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sesame Oil (Brown Gingelly Seed)",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "460g",
+        "price": 360,
+        "priceDisplay": "₹360",
+        "available": true
+      },
+      {
+        "size": "910g",
+        "price": 680,
+        "priceDisplay": "₹680",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sesame Oil (White Gingelly Seed)",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "460g",
+        "price": 370,
+        "priceDisplay": "₹370",
+        "available": true
+      },
+      {
+        "size": "910g",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sesame Seeds (Til) Black",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 552,
+        "priceDisplay": "₹552",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 138,
+        "priceDisplay": "₹138",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 276,
+        "priceDisplay": "₹276",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sesame Seeds (Til) White",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 420,
+        "priceDisplay": "₹420",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 105,
+        "priceDisplay": "₹105",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Shah Jeera (Caraway)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 187.5,
+        "priceDisplay": "₹187.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sharbati Wheat (Rajnigandha)",
+    "category": "Flour",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "1kg / Powder",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      },
+      {
+        "size": "1kg / Raw",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      },
+      {
+        "size": "3kg / Powder",
+        "price": 285,
+        "priceDisplay": "₹285",
+        "available": true
+      },
+      {
+        "size": "3kg / Raw",
+        "price": 285,
+        "priceDisplay": "₹285",
+        "available": true
+      },
+      {
+        "size": "5kg / Powder",
+        "price": 475,
+        "priceDisplay": "₹475",
+        "available": true
+      },
+      {
+        "size": "5kg / Raw",
+        "price": 475,
+        "priceDisplay": "₹475",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Shikha Kai Powder",
+    "category": "Hair Care",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1500,
+        "priceDisplay": "₹1500",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 375,
+        "priceDisplay": "₹375",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 750,
+        "priceDisplay": "₹750",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sona Masoori Rice",
+    "category": "Rice",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 86,
+        "priceDisplay": "₹86",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 21.5,
+        "priceDisplay": "₹21.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 43,
+        "priceDisplay": "₹43",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Soup Spoon",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Soya Bean",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 200,
+        "priceDisplay": "₹200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 50,
+        "priceDisplay": "₹50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Spoon",
+    "category": "Eco Friendly",
+    "categorySource": "site-data",
+    "selectorType": "irregular",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 165,
+        "priceDisplay": "₹165",
+        "available": true
+      },
+      {
+        "size": "Default Title",
+        "price": 110,
+        "priceDisplay": "₹110",
+        "available": true
+      }
+    ],
+    "hasConflict": true
+  },
+  {
+    "productName": "Sprouted Ragi",
+    "category": "Millets",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 62.5,
+        "priceDisplay": "₹62.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 125,
+        "priceDisplay": "₹125",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Star Anise",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g - Masala",
+        "price": 135,
+        "priceDisplay": "₹135",
+        "available": true
+      },
+      {
+        "size": "150g - Masala",
+        "price": 202.5,
+        "priceDisplay": "₹202.50",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1450,
+        "priceDisplay": "₹1450",
+        "available": true
+      },
+      {
+        "size": "200g - Masala",
+        "price": 270,
+        "priceDisplay": "₹270",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 362.5,
+        "priceDisplay": "₹362.50",
+        "available": true
+      },
+      {
+        "size": "250g - Masala",
+        "price": 337.5,
+        "priceDisplay": "₹337.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 725,
+        "priceDisplay": "₹725",
+        "available": true
+      },
+      {
+        "size": "50g - Masala",
+        "price": 67.5,
+        "priceDisplay": "₹67.50",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Stingless Bee Honey (Cheruthen)",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "250g",
+        "price": 890,
+        "priceDisplay": "₹890",
+        "available": true
+      },
+      {
+        "size": "400g",
+        "price": 1410,
+        "priceDisplay": "₹1410",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Stone Flower",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1300,
+        "priceDisplay": "₹1300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sugar Free Muesli",
+    "category": "Natural Sweeteners",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 640,
+        "priceDisplay": "₹640",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 160,
+        "priceDisplay": "₹160",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 320,
+        "priceDisplay": "₹320",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sukkari Wet Dates",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 760,
+        "priceDisplay": "₹760",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 380,
+        "priceDisplay": "₹380",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sunflower Oil",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "460g",
+        "price": 305,
+        "priceDisplay": "₹305",
+        "available": true
+      },
+      {
+        "size": "910 g",
+        "price": 570,
+        "priceDisplay": "₹570",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Sunflower Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 600,
+        "priceDisplay": "₹600",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tarbuj Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1350,
+        "priceDisplay": "₹1350",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 337.5,
+        "priceDisplay": "₹337.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 675,
+        "priceDisplay": "₹675",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tea - Cardamom Idukki (Organic)",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1900,
+        "priceDisplay": "₹1900",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 475,
+        "priceDisplay": "₹475",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 950,
+        "priceDisplay": "₹950",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tea - Ginger Idukki (Organic)",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1900,
+        "priceDisplay": "₹1900",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 475,
+        "priceDisplay": "₹475",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 950,
+        "priceDisplay": "₹950",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tea - Green Leaf Idukki",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 4000,
+        "priceDisplay": "₹4000",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 1000,
+        "priceDisplay": "₹1000",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 2000,
+        "priceDisplay": "₹2000",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tea - Masala Idukki (Organic)",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2200,
+        "priceDisplay": "₹2200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 550,
+        "priceDisplay": "₹550",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1100,
+        "priceDisplay": "₹1100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tea - Orthodox Black Idukki (Organic)",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1300,
+        "priceDisplay": "₹1300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 325,
+        "priceDisplay": "₹325",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 650,
+        "priceDisplay": "₹650",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tea - Orthodox Black Leaf Idukki (Organic)",
+    "category": "Tea",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2800,
+        "priceDisplay": "₹2800",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 700,
+        "priceDisplay": "₹700",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1400,
+        "priceDisplay": "₹1400",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Tenseed Chikki",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 740,
+        "priceDisplay": "₹740",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 185,
+        "priceDisplay": "₹185",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 370,
+        "priceDisplay": "₹370",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Thippili (Long Pepper)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "single",
+    "variants": [
+      {
+        "size": "Default Title",
+        "price": 0,
+        "priceDisplay": "₹0",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Thooyamalli Rice",
+    "category": "Rice",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 190,
+        "priceDisplay": "₹190",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 47.5,
+        "priceDisplay": "₹47.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 95,
+        "priceDisplay": "₹95",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Toor Dal Fine (Yellow)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Travancore Tamarind/ Vaalan Puli",
+    "category": null,
+    "categorySource": "unresolved",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 550,
+        "priceDisplay": "₹550",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 137.5,
+        "priceDisplay": "₹137.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 275,
+        "priceDisplay": "₹275",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Triphala",
+    "category": "Health Foods",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "100g",
+        "price": 149,
+        "priceDisplay": "₹149",
+        "available": true
+      },
+      {
+        "size": "1kg",
+        "price": 1490,
+        "priceDisplay": "₹1490",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 372.5,
+        "priceDisplay": "₹372.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 745,
+        "priceDisplay": "₹745",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Urad Dal Black Split",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 200,
+        "priceDisplay": "₹200",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 50,
+        "priceDisplay": "₹50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 100,
+        "priceDisplay": "₹100",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Urad Gola Fine-Ball",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 250,
+        "priceDisplay": "₹250",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 62.5,
+        "priceDisplay": "₹62.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 125,
+        "priceDisplay": "₹125",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Urad White Chilka (Split)",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Venga Dried",
+    "category": "Spices",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 450,
+        "priceDisplay": "₹450",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 112.5,
+        "priceDisplay": "₹112.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 225,
+        "priceDisplay": "₹225",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Virgin coconut Oil",
+    "category": "Wood Pressed Oils",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "160g",
+        "price": 340,
+        "priceDisplay": "₹340",
+        "available": true
+      },
+      {
+        "size": "280g",
+        "price": 595,
+        "priceDisplay": "₹595",
+        "available": true
+      },
+      {
+        "size": "600g",
+        "price": 1275,
+        "priceDisplay": "₹1275",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Walnut Chile",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 2580,
+        "priceDisplay": "₹2580",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 645,
+        "priceDisplay": "₹645",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 1290,
+        "priceDisplay": "₹1290",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Walnut Nut Butter",
+    "category": "Nut Butters",
+    "categorySource": "site-data",
+    "selectorType": "flavor",
+    "variants": [
+      {
+        "size": "250g / Honey",
+        "price": 597,
+        "priceDisplay": "₹597",
+        "available": true
+      },
+      {
+        "size": "250g / Jaggery",
+        "price": 587,
+        "priceDisplay": "₹587",
+        "available": true
+      },
+      {
+        "size": "250g / Unsweetened",
+        "price": 567,
+        "priceDisplay": "₹567",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Walnut Super White (Kashmiri)",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1970,
+        "priceDisplay": "₹1970",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 492.5,
+        "priceDisplay": "₹492.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 985,
+        "priceDisplay": "₹985",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Watermelon Seeds",
+    "category": "Seeds",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 1150,
+        "priceDisplay": "₹1150",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 287.5,
+        "priceDisplay": "₹287.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 575,
+        "priceDisplay": "₹575",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Wheat Flakes",
+    "category": "Poha",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 300,
+        "priceDisplay": "₹300",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 52.5,
+        "priceDisplay": "₹52.50",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 150,
+        "priceDisplay": "₹150",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "White Rajma (Pinto Beans)",
+    "category": "Pulses",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 240,
+        "priceDisplay": "₹240",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 60,
+        "priceDisplay": "₹60",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 120,
+        "priceDisplay": "₹120",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "White Rice Flakes (Avalakki)",
+    "category": "Poha",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 140,
+        "priceDisplay": "₹140",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 35,
+        "priceDisplay": "₹35",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 70,
+        "priceDisplay": "₹70",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "White Sesame Chikki",
+    "category": "Quick Bites",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 640,
+        "priceDisplay": "₹640",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 160,
+        "priceDisplay": "₹160",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 320,
+        "priceDisplay": "₹320",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  },
+  {
+    "productName": "Yellow Ball Raisins",
+    "category": "Dry Fruits",
+    "categorySource": "site-data",
+    "selectorType": "weight",
+    "variants": [
+      {
+        "size": "1kg",
+        "price": 840,
+        "priceDisplay": "₹840",
+        "available": true
+      },
+      {
+        "size": "250g",
+        "price": 210,
+        "priceDisplay": "₹210",
+        "available": true
+      },
+      {
+        "size": "500g",
+        "price": 420,
+        "priceDisplay": "₹420",
+        "available": true
+      }
+    ],
+    "hasConflict": false
+  }
+]

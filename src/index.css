@@ -153,6 +153,19 @@
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee-scroll 26s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;

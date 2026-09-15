@@ -270,21 +270,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1780,
+        "originalPrice": 1780,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 445,
+        "originalPrice": 445,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 890,
+        "originalPrice": 890,
         "inStock": true
       }
     ],
@@ -328,21 +328,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 140,
+        "originalPrice": 140,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 280,
+        "originalPrice": 280,
         "inStock": true
       }
     ],
@@ -387,21 +387,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "weight": "250g / Honey",
+        "price": 517,
+        "originalPrice": 517,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
+        "weight": "250g / Jaggery",
+        "price": 507,
+        "originalPrice": 507,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "weight": "250g / Unsweetened",
+        "price": 487,
+        "originalPrice": 487,
         "inStock": true
       }
     ],
@@ -445,21 +445,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1790,
+        "originalPrice": 1790,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 447.5,
+        "originalPrice": 447.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 895,
+        "originalPrice": 895,
         "inStock": true
       }
     ],
@@ -503,21 +503,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1650,
+        "originalPrice": 1650,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 412.5,
+        "originalPrice": 412.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 825,
+        "originalPrice": 825,
         "inStock": true
       }
     ],
@@ -561,21 +561,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 137.5,
+        "originalPrice": 137.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 275,
+        "originalPrice": 275,
         "inStock": true
       }
     ],
@@ -619,21 +619,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 87.5,
+        "originalPrice": 87.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       }
     ],
@@ -677,21 +677,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 162.5,
+        "originalPrice": 162.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       }
     ],
@@ -736,21 +736,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 102.5,
+        "originalPrice": 102.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       }
     ],
@@ -794,21 +794,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 201,
+        "originalPrice": 201,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2010,
+        "originalPrice": 2010,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 502.5,
+        "originalPrice": 502.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1005,
+        "originalPrice": 1005,
         "inStock": true
       }
     ],
@@ -852,21 +858,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
+        "weight": "1kg",
+        "price": 140,
         "originalPrice": 140,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "250g",
+        "price": 35,
+        "originalPrice": 35,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "500g",
+        "price": 70,
+        "originalPrice": 70,
         "inStock": true
       }
     ],
@@ -968,21 +974,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1988,
+        "originalPrice": 1988,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 497,
+        "originalPrice": 497,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 994,
+        "originalPrice": 994,
         "inStock": true
       }
     ],
@@ -1026,21 +1032,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 450,
+        "originalPrice": 450,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 900,
+        "originalPrice": 900,
         "inStock": true
       }
     ],
@@ -1084,21 +1090,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2100,
+        "originalPrice": 2100,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 525,
+        "originalPrice": 525,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1050,
+        "originalPrice": 1050,
         "inStock": true
       }
     ],
@@ -1142,21 +1148,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 450,
+        "originalPrice": 450,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 900,
+        "originalPrice": 900,
         "inStock": true
       }
     ],
@@ -1200,21 +1206,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 225,
+        "originalPrice": 225,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2250,
+        "originalPrice": 2250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 562.5,
+        "originalPrice": 562.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1125,
+        "originalPrice": 1125,
         "inStock": true
       }
     ],
@@ -1258,21 +1270,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 180,
+        "originalPrice": 180,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 360,
+        "originalPrice": 360,
         "inStock": true
       }
     ],
@@ -1316,21 +1328,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 480,
+        "originalPrice": 480,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 240,
+        "originalPrice": 240,
         "inStock": true
       }
     ],
@@ -1374,15 +1386,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       }
     ],
@@ -1426,15 +1432,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       }
     ],
@@ -1478,15 +1478,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 55,
+        "originalPrice": 55,
         "inStock": true
       }
     ],
@@ -1530,20 +1524,20 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1000,
+        "originalPrice": 1000,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 250,
+        "originalPrice": 250,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
+        "price": 500,
         "originalPrice": 500,
         "inStock": true
       }
@@ -1588,21 +1582,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 40,
+        "originalPrice": 40,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 80,
+        "originalPrice": 80,
         "inStock": true
       }
     ],
@@ -1646,21 +1640,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       }
     ],
@@ -1704,21 +1698,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 87.5,
+        "originalPrice": 87.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       }
     ],
@@ -1762,21 +1756,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 130,
+        "originalPrice": 130,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 260,
+        "originalPrice": 260,
         "inStock": true
       }
     ],
@@ -1820,21 +1814,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 162.5,
+        "originalPrice": 162.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       }
     ],
@@ -1878,21 +1872,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 350,
+        "originalPrice": 350,
         "inStock": true
       }
     ],
@@ -1936,21 +1930,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 145,
+        "originalPrice": 145,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 362.5,
+        "originalPrice": 362.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 725,
+        "originalPrice": 725,
         "inStock": true
       }
     ],
@@ -1994,21 +1994,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 40,
+        "originalPrice": 40,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 80,
+        "originalPrice": 80,
         "inStock": true
       }
     ],
@@ -2052,21 +2052,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100G",
+        "price": 99,
+        "originalPrice": 99,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 990,
+        "originalPrice": 990,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 247.5,
+        "originalPrice": 247.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 495,
+        "originalPrice": 495,
         "inStock": true
       }
     ],
@@ -2111,21 +2117,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 3380,
+        "originalPrice": 3380,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 845,
+        "originalPrice": 845,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 1690,
+        "originalPrice": 1690,
         "inStock": true
       }
     ],
@@ -2169,21 +2175,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 40,
+        "originalPrice": 40,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 80,
+        "originalPrice": 80,
         "inStock": true
       }
     ],
@@ -2227,21 +2233,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 180,
+        "originalPrice": 180,
         "inStock": true
       }
     ],
@@ -2285,21 +2291,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 100,
+        "originalPrice": 100,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 25,
+        "originalPrice": 25,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 50,
+        "originalPrice": 50,
         "inStock": true
       }
     ],
@@ -2343,21 +2349,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 222.5,
+        "originalPrice": 222.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 445,
+        "originalPrice": 445,
         "inStock": true
       }
     ],
@@ -2401,21 +2407,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 680,
+        "originalPrice": 680,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 170,
+        "originalPrice": 170,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 340,
+        "originalPrice": 340,
         "inStock": true
       }
     ],
@@ -2460,20 +2466,14 @@ export const PRODUCTS: Product[] = [
     "variants": [
       {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 435,
+        "originalPrice": 435,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "400g",
+        "price": 670,
+        "originalPrice": 670,
         "inStock": true
       }
     ],
@@ -2517,21 +2517,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 4550,
+        "originalPrice": 4550,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 1137.5,
+        "originalPrice": 1137.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 2275,
+        "originalPrice": 2275,
         "inStock": true
       }
     ],
@@ -2575,21 +2575,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       }
     ],
@@ -2634,21 +2634,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 495,
+        "originalPrice": 495,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 742.5,
+        "originalPrice": 742.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 4950,
+        "originalPrice": 4950,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 990,
+        "originalPrice": 990,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 1237.5,
+        "originalPrice": 1237.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 1237.5,
+        "originalPrice": 1237.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 2475,
+        "originalPrice": 2475,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 247.5,
+        "originalPrice": 247.5,
         "inStock": true
       }
     ],
@@ -2693,21 +2723,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 2900,
+        "originalPrice": 2900,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 725,
+        "originalPrice": 725,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 1450,
+        "originalPrice": 1450,
         "inStock": true
       }
     ],
@@ -2751,21 +2781,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1750,
+        "originalPrice": 1750,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 437.5,
+        "originalPrice": 437.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 875,
+        "originalPrice": 875,
         "inStock": true
       }
     ],
@@ -2809,21 +2839,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1590,
+        "originalPrice": 1590,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 397.5,
+        "originalPrice": 397.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 795,
+        "originalPrice": 795,
         "inStock": true
       }
     ],
@@ -2868,21 +2898,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "weight": "250g / Honey",
+        "price": 470,
+        "originalPrice": 470,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
+        "weight": "250g / Jaggery",
+        "price": 460,
+        "originalPrice": 460,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "weight": "250g / Unsweetened",
+        "price": 440,
+        "originalPrice": 440,
         "inStock": true
       }
     ],
@@ -2926,21 +2956,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 180,
+        "originalPrice": 180,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 360,
+        "originalPrice": 360,
         "inStock": true
       }
     ],
@@ -2984,21 +3014,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1690,
+        "originalPrice": 1690,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 422.5,
+        "originalPrice": 422.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 845,
+        "originalPrice": 845,
         "inStock": true
       }
     ],
@@ -3042,21 +3072,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1460,
+        "originalPrice": 1460,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 365,
+        "originalPrice": 365,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 730,
+        "originalPrice": 730,
         "inStock": true
       }
     ],
@@ -3275,21 +3305,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 580,
+        "originalPrice": 580,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 145,
+        "originalPrice": 145,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 290,
+        "originalPrice": 290,
         "inStock": true
       }
     ],
@@ -3333,21 +3363,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       }
     ],
@@ -3391,21 +3421,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 187.5,
+        "originalPrice": 187.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       }
     ],
@@ -3507,21 +3537,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "Default Title",
+        "price": 230,
+        "originalPrice": 230,
         "inStock": true
       }
     ],
@@ -3565,21 +3583,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 187.5,
+        "originalPrice": 187.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       }
     ],
@@ -3624,21 +3642,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "100g - Masala",
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "150g - Masala",
+        "price": 180,
+        "originalPrice": 180,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1265,
+        "originalPrice": 1265,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 316.25,
+        "originalPrice": 316.25,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 632.5,
+        "originalPrice": 632.5,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       }
     ],
@@ -3682,15 +3730,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 35,
+        "originalPrice": 35,
         "inStock": true
       }
     ],
@@ -3734,21 +3776,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 255,
+        "originalPrice": 255,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 340,
+        "originalPrice": 340,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 425,
+        "originalPrice": 425,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 85,
+        "originalPrice": 85,
         "inStock": true
       }
     ],
@@ -3792,21 +3864,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2400,
+        "originalPrice": 2400,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1200,
+        "originalPrice": 1200,
         "inStock": true
       }
     ],
@@ -3850,22 +3922,22 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": false
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 337.5,
+        "originalPrice": 337.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
-        "inStock": true
+        "price": 675,
+        "originalPrice": 675,
+        "inStock": false
       }
     ],
     "rating": 4.8,
@@ -3912,21 +3984,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "460g",
+        "price": 380,
+        "originalPrice": 380,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
-        "inStock": true
-      },
-      {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "910g",
+        "price": 720,
+        "originalPrice": 720,
         "inStock": true
       }
     ],
@@ -3971,21 +4037,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 162.5,
+        "originalPrice": 162.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       }
     ],
@@ -4029,21 +4095,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "Default Title",
+        "price": 235,
+        "originalPrice": 235,
         "inStock": true
       }
     ],
@@ -4087,15 +4141,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       }
     ],
@@ -4141,21 +4189,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 45,
+        "originalPrice": 45,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 67.5,
+        "originalPrice": 67.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 112.5,
+        "originalPrice": 112.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 112.5,
+        "originalPrice": 112.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 22.5,
+        "originalPrice": 22.5,
         "inStock": true
       }
     ],
@@ -4199,21 +4277,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 110,
+        "originalPrice": 110,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 27.5,
+        "originalPrice": 27.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 55,
+        "originalPrice": 55,
         "inStock": true
       }
     ],
@@ -4260,21 +4338,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "280g",
+        "price": 410,
+        "originalPrice": 410,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
+        "weight": "600g",
+        "price": 795,
+        "originalPrice": 795,
         "inStock": true
       },
       {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "900g",
+        "price": 1170,
+        "originalPrice": 1170,
         "inStock": true
       }
     ],
@@ -4318,21 +4396,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1650,
+        "originalPrice": 1650,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 412.5,
+        "originalPrice": 412.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 825,
+        "originalPrice": 825,
         "inStock": true
       }
     ],
@@ -4376,21 +4454,81 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 69,
+        "originalPrice": 69,
+        "inStock": true
+      },
+      {
+        "weight": "125g - Masala",
+        "price": 86.25,
+        "originalPrice": 86.25,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 103.5,
+        "originalPrice": 103.5,
+        "inStock": true
+      },
+      {
+        "weight": "175g - Masala",
+        "price": 120.75,
+        "originalPrice": 120.75,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 770,
+        "originalPrice": 770,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 138,
+        "originalPrice": 138,
+        "inStock": true
+      },
+      {
+        "weight": "225g - Masala",
+        "price": 155.25,
+        "originalPrice": 155.25,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 192.5,
+        "originalPrice": 192.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 172.5,
+        "originalPrice": 172.5,
+        "inStock": true
+      },
+      {
+        "weight": "25g - Masala",
+        "price": 19.25,
+        "originalPrice": 19.25,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 385,
+        "originalPrice": 385,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 38.5,
+        "originalPrice": 38.5,
+        "inStock": true
+      },
+      {
+        "weight": "75g - Masala",
+        "price": 57.75,
+        "originalPrice": 57.75,
         "inStock": true
       }
     ],
@@ -4493,21 +4631,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 102,
+        "originalPrice": 102,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 306,
+        "originalPrice": 306,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 510,
+        "originalPrice": 510,
         "inStock": true
       }
     ],
@@ -4552,21 +4690,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 222,
+        "originalPrice": 222,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 666,
+        "originalPrice": 666,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 1110,
+        "originalPrice": 1110,
         "inStock": true
       }
     ],
@@ -4611,21 +4749,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1 kg",
+        "price": 109,
+        "originalPrice": 109,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "3 kg",
+        "price": 327,
+        "originalPrice": 327,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "5 kg",
+        "price": 545,
+        "originalPrice": 545,
         "inStock": true
       }
     ],
@@ -4670,21 +4808,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 283,
+        "originalPrice": 283,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 849,
+        "originalPrice": 849,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 1415,
+        "originalPrice": 1415,
         "inStock": true
       }
     ],
@@ -4729,21 +4867,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 127,
+        "originalPrice": 127,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 381,
+        "originalPrice": 381,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 635,
+        "originalPrice": 635,
         "inStock": true
       }
     ],
@@ -4787,21 +4925,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "Default Title",
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       }
     ],
@@ -4845,21 +4971,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "Default Title",
+        "price": 370,
+        "originalPrice": 370,
         "inStock": true
       }
     ],
@@ -4903,21 +5017,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
+        "weight": "Default Title",
+        "price": 250,
         "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
         "inStock": true
       }
     ],
@@ -4961,21 +5063,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 140,
+        "originalPrice": 140,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 280,
+        "originalPrice": 280,
         "inStock": true
       }
     ],
@@ -5019,21 +5121,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2400,
+        "originalPrice": 2400,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1200,
+        "originalPrice": 1200,
         "inStock": true
       }
     ],
@@ -5077,21 +5179,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1250,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 312.5,
+        "originalPrice": 312.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 625,
+        "originalPrice": 625,
         "inStock": true
       }
     ],
@@ -5135,21 +5237,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 262.5,
+        "originalPrice": 262.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 525,
+        "originalPrice": 525,
         "inStock": true
       }
     ],
@@ -5194,20 +5296,26 @@ export const PRODUCTS: Product[] = [
     "variants": [
       {
         "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 850,
+        "originalPrice": 850,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 212.5,
+        "originalPrice": 212.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 425,
+        "originalPrice": 425,
         "inStock": true
       }
     ],
@@ -5251,21 +5359,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 820,
+        "originalPrice": 820,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       },
       {
         "weight": "500g",
         "price": 410,
-        "originalPrice": 500,
+        "originalPrice": 410,
         "inStock": true
       }
     ],
@@ -5309,21 +5417,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 850,
+        "originalPrice": 850,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 212.5,
+        "originalPrice": 212.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 425,
+        "originalPrice": 425,
         "inStock": true
       }
     ],
@@ -5367,21 +5475,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1250,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 312.5,
+        "originalPrice": 312.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 625,
+        "originalPrice": 625,
         "inStock": true
       }
     ],
@@ -5425,21 +5533,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 500,
+        "originalPrice": 500,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 125,
+        "originalPrice": 125,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 250,
+        "originalPrice": 250,
         "inStock": true
       }
     ],
@@ -5483,21 +5591,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1340,
+        "originalPrice": 1340,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 335,
+        "originalPrice": 335,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 670,
+        "originalPrice": 670,
         "inStock": true
       }
     ],
@@ -5541,21 +5649,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       }
     ],
@@ -5599,21 +5707,39 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1kg / Powder",
+        "price": 195,
+        "originalPrice": 195,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "1kg / Raw",
+        "price": 195,
+        "originalPrice": 195,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "3kg / Powder",
+        "price": 585,
+        "originalPrice": 585,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 585,
+        "originalPrice": 585,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 975,
+        "originalPrice": 975,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 975,
+        "originalPrice": 975,
         "inStock": true
       }
     ],
@@ -5657,21 +5783,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1KG",
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       },
       {
-        "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "weight": "250G",
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "weight": "500G",
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       }
     ],
@@ -5715,21 +5841,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 230,
+        "originalPrice": 230,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 57.5,
+        "originalPrice": 57.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 115,
+        "originalPrice": 115,
         "inStock": true
       }
     ],
@@ -5773,21 +5899,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2800,
+        "originalPrice": 2800,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 700,
+        "originalPrice": 700,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1400,
+        "originalPrice": 1400,
         "inStock": true
       }
     ],
@@ -5947,21 +6073,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 87.5,
+        "originalPrice": 87.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       }
     ],
@@ -6006,21 +6132,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1350g",
+        "price": 1325,
+        "originalPrice": 1325,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 360,
+        "originalPrice": 360,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "400g",
+        "price": 560,
+        "originalPrice": 560,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "950g",
+        "price": 1240,
+        "originalPrice": 1240,
         "inStock": true
       }
     ],
@@ -6064,15 +6196,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 190,
+        "originalPrice": 190,
         "inStock": true
       }
     ],
@@ -6116,21 +6242,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 42.5,
+        "originalPrice": 42.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 85,
+        "originalPrice": 85,
         "inStock": true
       }
     ],
@@ -6174,21 +6300,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
+        "weight": "1kg",
+        "price": 250,
         "originalPrice": 250,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
         "inStock": true
       }
     ],
@@ -6232,21 +6358,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
+        "weight": "Default Title",
+        "price": 250,
         "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
         "inStock": true
       }
     ],
@@ -6290,21 +6404,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 180,
+        "originalPrice": 180,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 360,
+        "originalPrice": 360,
         "inStock": true
       }
     ],
@@ -6348,21 +6462,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 187.5,
+        "originalPrice": 187.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       }
     ],
@@ -6406,21 +6520,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
-        "inStock": true
-      },
-      {
-        "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "weight": "150gm",
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       }
     ],
@@ -6464,21 +6566,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "280g",
+        "price": 295,
+        "originalPrice": 295,
         "inStock": true
       }
     ],
@@ -6522,21 +6612,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1040,
+        "originalPrice": 1040,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 260,
+        "originalPrice": 260,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 520,
+        "originalPrice": 520,
         "inStock": true
       }
     ],
@@ -6581,20 +6671,14 @@ export const PRODUCTS: Product[] = [
     "variants": [
       {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 435,
+        "originalPrice": 435,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "400g",
+        "price": 670,
+        "originalPrice": 670,
         "inStock": true
       }
     ],
@@ -6638,21 +6722,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "280g",
+        "price": 260,
+        "originalPrice": 260,
         "inStock": true
       }
     ],
@@ -6696,21 +6768,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       }
     ],
@@ -6754,21 +6826,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 460,
+        "originalPrice": 460,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 115,
+        "originalPrice": 115,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 230,
+        "originalPrice": 230,
         "inStock": true
       }
     ],
@@ -6812,21 +6884,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 40,
+        "originalPrice": 40,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 80,
+        "originalPrice": 80,
         "inStock": true
       }
     ],
@@ -6871,21 +6943,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "460gm",
+        "price": 255,
+        "originalPrice": 255,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
-        "inStock": true
-      },
-      {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "910 gm",
+        "price": 470,
+        "originalPrice": 470,
         "inStock": true
       }
     ],
@@ -6929,21 +6995,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 3700,
+        "originalPrice": 3700,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 925,
+        "originalPrice": 925,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1850,
+        "originalPrice": 1850,
         "inStock": true
       }
     ],
@@ -6987,21 +7053,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "weight": "250g / Honey",
+        "price": 1030,
+        "originalPrice": 1030,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
+        "weight": "250g / Jaggery",
+        "price": 1020,
+        "originalPrice": 1020,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "weight": "250g / Unsweetened",
+        "price": 1000,
+        "originalPrice": 1000,
         "inStock": true
       }
     ],
@@ -7045,21 +7111,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100G",
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2050,
+        "originalPrice": 2050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 512.5,
+        "originalPrice": 512.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1025,
+        "originalPrice": 1025,
         "inStock": true
       }
     ],
@@ -7103,21 +7175,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2100,
+        "originalPrice": 2100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1050,
+        "originalPrice": 1050,
         "inStock": true
       }
     ],
@@ -7162,20 +7240,26 @@ export const PRODUCTS: Product[] = [
     "variants": [
       {
         "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 3500,
+        "originalPrice": 3500,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 875,
+        "originalPrice": 875,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 1750,
+        "originalPrice": 1750,
         "inStock": true
       }
     ],
@@ -7219,21 +7303,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "Default Title",
+        "price": 100,
+        "originalPrice": 100,
         "inStock": true
       }
     ],
@@ -7277,21 +7349,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 45,
+        "originalPrice": 45,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       }
     ],
@@ -7335,21 +7407,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 840,
+        "originalPrice": 840,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 420,
+        "originalPrice": 420,
         "inStock": true
       }
     ],
@@ -7393,21 +7465,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 21.25,
+        "originalPrice": 21.25,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 42.5,
+        "originalPrice": 42.5,
         "inStock": true
       }
     ],
@@ -7451,15 +7523,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
+        "weight": "100g",
+        "price": 250,
+        "originalPrice": 250,
         "inStock": true
       },
       {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "1kg",
+        "price": 2500,
+        "originalPrice": 2500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 625,
+        "originalPrice": 625,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1250,
+        "originalPrice": 1250,
         "inStock": true
       }
     ],
@@ -7503,21 +7587,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2100,
+        "originalPrice": 2100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1050,
+        "originalPrice": 1050,
         "inStock": true
       }
     ],
@@ -7561,21 +7651,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 900,
+        "originalPrice": 900,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 225,
+        "originalPrice": 225,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 450,
+        "originalPrice": 450,
         "inStock": true
       }
     ],
@@ -7619,21 +7709,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 130,
+        "originalPrice": 130,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 260,
+        "originalPrice": 260,
         "inStock": true
       }
     ],
@@ -7677,21 +7767,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1600,
+        "originalPrice": 1600,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 400,
+        "originalPrice": 400,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 800,
+        "originalPrice": 800,
         "inStock": true
       }
     ],
@@ -7735,21 +7825,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 28.75,
+        "originalPrice": 28.75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 57.5,
+        "originalPrice": 57.5,
         "inStock": true
       }
     ],
@@ -7793,21 +7883,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 52.5,
+        "originalPrice": 52.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 105,
+        "originalPrice": 105,
         "inStock": true
       }
     ],
@@ -7851,21 +7941,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 55,
+        "originalPrice": 55,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 110,
+        "originalPrice": 110,
         "inStock": true
       }
     ],
@@ -7909,21 +7999,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
+        "price": 140,
         "originalPrice": 140,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 280,
+        "originalPrice": 280,
         "inStock": true
       }
     ],
@@ -7967,21 +8057,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
+        "weight": "1kg",
+        "price": 250,
         "originalPrice": 250,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
         "inStock": true
       }
     ],
@@ -8025,21 +8115,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       }
     ],
@@ -8083,21 +8173,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 630,
+        "originalPrice": 630,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 157.5,
+        "originalPrice": 157.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 315,
+        "originalPrice": 315,
         "inStock": true
       }
     ],
@@ -8141,21 +8231,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "1KG",
+        "price": 1500,
+        "originalPrice": 1500,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "250G",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "500G",
+        "price": 750,
+        "originalPrice": 750,
         "inStock": true
       }
     ],
@@ -8199,21 +8295,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 222.5,
+        "originalPrice": 222.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 445,
+        "originalPrice": 445,
         "inStock": true
       }
     ],
@@ -8257,21 +8353,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1 kg",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 42.5,
+        "originalPrice": 42.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 85,
+        "originalPrice": 85,
         "inStock": true
       }
     ],
@@ -8315,21 +8411,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 67.5,
+        "originalPrice": 67.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 135,
+        "originalPrice": 135,
         "inStock": true
       }
     ],
@@ -8373,21 +8469,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
+        "price": 140,
         "originalPrice": 140,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 280,
+        "originalPrice": 280,
         "inStock": true
       }
     ],
@@ -8431,21 +8527,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 30,
+        "originalPrice": 30,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       }
     ],
@@ -8489,21 +8585,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "280g",
+        "price": 280,
+        "originalPrice": 280,
         "inStock": true
       }
     ],
@@ -8547,21 +8631,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 52.5,
+        "originalPrice": 52.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 105,
+        "originalPrice": 105,
         "inStock": true
       }
     ],
@@ -8605,21 +8689,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       }
     ],
@@ -8663,21 +8747,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "250gm",
+        "price": 140,
         "originalPrice": 140,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "500gm",
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       }
     ],
@@ -8721,21 +8805,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 47.5,
+        "originalPrice": 47.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 95,
+        "originalPrice": 95,
         "inStock": true
       }
     ],
@@ -8779,21 +8863,39 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1kg / Powder",
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "1kg / Raw",
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "3kg / Powder",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       }
     ],
@@ -8895,21 +8997,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1980,
+        "originalPrice": 1980,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 495,
+        "originalPrice": 495,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 990,
+        "originalPrice": 990,
         "inStock": true
       }
     ],
@@ -8953,21 +9055,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       }
     ],
@@ -9011,21 +9113,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 195,
+        "originalPrice": 195,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1950,
+        "originalPrice": 1950,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 487.5,
+        "originalPrice": 487.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 975,
+        "originalPrice": 975,
         "inStock": true
       }
     ],
@@ -9069,21 +9177,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       }
     ],
@@ -9127,21 +9235,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 600,
+        "originalPrice": 600,
         "inStock": true
       }
     ],
@@ -9185,21 +9293,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 70,
+        "originalPrice": 70,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 140,
+        "originalPrice": 140,
         "inStock": true
       }
     ],
@@ -9243,21 +9351,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 50,
+        "originalPrice": 50,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 100,
+        "originalPrice": 100,
         "inStock": true
       }
     ],
@@ -9417,21 +9525,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 37.5,
+        "originalPrice": 37.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       }
     ],
@@ -9533,21 +9641,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2200,
+        "originalPrice": 2200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 550,
+        "originalPrice": 550,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1100,
+        "originalPrice": 1100,
         "inStock": true
       }
     ],
@@ -9591,21 +9699,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 490,
+        "originalPrice": 490,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 122.5,
+        "originalPrice": 122.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 245,
+        "originalPrice": 245,
         "inStock": true
       }
     ],
@@ -9649,21 +9757,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1100,
+        "originalPrice": 1100,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 275,
+        "originalPrice": 275,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 550,
+        "originalPrice": 550,
         "inStock": true
       }
     ],
@@ -9708,21 +9816,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
-        "inStock": true
-      },
-      {
-        "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "weight": "Default Title",
+        "price": 250,
+        "originalPrice": 250,
         "inStock": true
       }
     ],
@@ -9766,21 +9862,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1840,
+        "originalPrice": 1840,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 460,
+        "originalPrice": 460,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 920,
+        "originalPrice": 920,
         "inStock": true
       }
     ],
@@ -9824,21 +9920,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1960,
+        "originalPrice": 1960,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 490,
+        "originalPrice": 490,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 980,
+        "originalPrice": 980,
         "inStock": true
       }
     ],
@@ -9882,21 +9978,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 52.5,
+        "originalPrice": 52.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 105,
+        "originalPrice": 105,
         "inStock": true
       }
     ],
@@ -9940,21 +10036,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 145,
+        "originalPrice": 145,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 290,
+        "originalPrice": 290,
         "inStock": true
       }
     ],
@@ -9998,21 +10094,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 540,
+        "originalPrice": 540,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 135,
+        "originalPrice": 135,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 270,
+        "originalPrice": 270,
         "inStock": true
       }
     ],
@@ -10056,21 +10152,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2050,
+        "originalPrice": 2050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 512.5,
+        "originalPrice": 512.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1025,
+        "originalPrice": 1025,
         "inStock": true
       }
     ],
@@ -10114,21 +10216,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 224,
+        "originalPrice": 224,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2240,
+        "originalPrice": 2240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1120,
+        "originalPrice": 1120,
         "inStock": true
       }
     ],
@@ -10172,21 +10280,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 101,
+        "originalPrice": 101,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1010,
+        "originalPrice": 1010,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 252.5,
+        "originalPrice": 252.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 505,
+        "originalPrice": 505,
         "inStock": true
       }
     ],
@@ -10230,21 +10344,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      },
+      {
+        "weight": "250gm",
+        "price": 145,
+        "originalPrice": 145,
+        "inStock": true
+      },
+      {
+        "weight": "500gm",
+        "price": 290,
+        "originalPrice": 290,
         "inStock": true
       }
     ],
@@ -10288,21 +10402,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 102.5,
+        "originalPrice": 102.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       }
     ],
@@ -10347,21 +10461,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
+        "weight": "250gm",
+        "price": 187.5,
+        "originalPrice": 187.5,
+        "inStock": true
+      },
+      {
+        "weight": "500gm",
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       }
     ],
@@ -10405,21 +10519,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 870,
+        "originalPrice": 870,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 217.5,
+        "originalPrice": 217.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 435,
+        "originalPrice": 435,
         "inStock": true
       }
     ],
@@ -10466,21 +10580,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "460 g",
+        "price": 335,
+        "originalPrice": 335,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
-        "inStock": true
-      },
-      {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "910 g",
+        "price": 630,
+        "originalPrice": 630,
         "inStock": true
       }
     ],
@@ -10524,21 +10632,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 55,
+        "originalPrice": 55,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 110,
+        "originalPrice": 110,
         "inStock": true
       }
     ],
@@ -10582,21 +10690,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 350,
+        "originalPrice": 350,
         "inStock": true
       }
     ],
@@ -10640,21 +10748,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 146,
+        "originalPrice": 146,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 36.5,
+        "originalPrice": 36.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 73,
+        "originalPrice": 73,
         "inStock": true
       }
     ],
@@ -10698,15 +10806,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 110,
+        "originalPrice": 110,
         "inStock": true
       }
     ],
@@ -10750,15 +10852,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 125,
+        "originalPrice": 125,
         "inStock": true
       }
     ],
@@ -10802,21 +10898,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 145,
+        "originalPrice": 145,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 362.5,
+        "originalPrice": 362.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 725,
+        "originalPrice": 725,
         "inStock": true
       }
     ],
@@ -10860,15 +10962,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 350,
+        "originalPrice": 350,
         "inStock": true
       }
     ],
@@ -10912,15 +11008,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       }
     ],
@@ -10964,15 +11054,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       }
     ],
@@ -11016,21 +11100,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 650,
+        "originalPrice": 650,
         "inStock": true
       }
     ],
@@ -11074,21 +11158,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 4000,
+        "originalPrice": 4000,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 1000,
+        "originalPrice": 1000,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 2000,
+        "originalPrice": 2000,
         "inStock": true
       }
     ],
@@ -11132,21 +11216,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 3700,
+        "originalPrice": 3700,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 925,
+        "originalPrice": 925,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 1850,
+        "originalPrice": 1850,
         "inStock": true
       }
     ],
@@ -11190,21 +11274,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 199,
+        "originalPrice": 199,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1990,
+        "originalPrice": 1990,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 497.5,
+        "originalPrice": 497.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 995,
+        "originalPrice": 995,
         "inStock": true
       }
     ],
@@ -11248,21 +11338,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 700,
+        "originalPrice": 700,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 350,
+        "originalPrice": 350,
         "inStock": true
       }
     ],
@@ -11307,21 +11397,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 262.5,
+        "originalPrice": 262.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 525,
+        "originalPrice": 525,
         "inStock": true
       }
     ],
@@ -11365,21 +11455,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 330,
+        "originalPrice": 330,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 107.5,
+        "originalPrice": 107.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 165,
+        "originalPrice": 165,
         "inStock": true
       }
     ],
@@ -11423,21 +11513,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 222.5,
+        "originalPrice": 222.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 445,
+        "originalPrice": 445,
         "inStock": true
       }
     ],
@@ -11481,21 +11571,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 810,
+        "originalPrice": 810,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 202.5,
+        "originalPrice": 202.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 405,
+        "originalPrice": 405,
         "inStock": true
       }
     ],
@@ -11539,21 +11629,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 590,
+        "originalPrice": 590,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 147.5,
+        "originalPrice": 147.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 295,
+        "originalPrice": 295,
         "inStock": true
       }
     ],
@@ -11597,21 +11687,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 460,
+        "originalPrice": 460,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 115,
+        "originalPrice": 115,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 230,
+        "originalPrice": 230,
         "inStock": true
       }
     ],
@@ -11655,21 +11745,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "weight": "250g / Honey",
+        "price": 220,
+        "originalPrice": 220,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
+        "weight": "250g / Jaggery",
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "weight": "250g / Unsweetened",
+        "price": 190,
+        "originalPrice": 190,
         "inStock": true
       }
     ],
@@ -11713,21 +11803,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 130,
+        "originalPrice": 130,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 260,
+        "originalPrice": 260,
         "inStock": true
       }
     ],
@@ -11771,21 +11861,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 23.75,
+        "originalPrice": 23.75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 47.5,
+        "originalPrice": 47.5,
         "inStock": true
       }
     ],
@@ -11829,21 +11919,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2700,
+        "originalPrice": 2700,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 675,
+        "originalPrice": 675,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1350,
+        "originalPrice": 1350,
         "inStock": true
       }
     ],
@@ -11887,21 +11977,69 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "125g - Masala",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "175g - Masala",
+        "price": 245,
+        "originalPrice": 245,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1570,
+        "originalPrice": 1570,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 280,
+        "originalPrice": 280,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 392.5,
+        "originalPrice": 392.5,
+        "inStock": true
+      },
+      {
+        "weight": "25g - Masala",
+        "price": 35,
+        "originalPrice": 35,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 785,
+        "originalPrice": 785,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 70,
+        "originalPrice": 70,
+        "inStock": true
+      },
+      {
+        "weight": "75g - Masala",
+        "price": 105,
+        "originalPrice": 105,
         "inStock": true
       }
     ],
@@ -11945,21 +12083,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1150,
+        "originalPrice": 1150,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 287.5,
+        "originalPrice": 287.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 575,
+        "originalPrice": 575,
         "inStock": true
       }
     ],
@@ -12003,21 +12141,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1250,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 312.5,
+        "originalPrice": 312.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 625,
+        "originalPrice": 625,
         "inStock": true
       }
     ],
@@ -12061,21 +12199,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 37.5,
+        "originalPrice": 37.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 75,
+        "originalPrice": 75,
         "inStock": true
       }
     ],
@@ -12119,21 +12257,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2300,
+        "originalPrice": 2300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 575,
+        "originalPrice": 575,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1150,
+        "originalPrice": 1150,
         "inStock": true
       }
     ],
@@ -12177,21 +12315,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 3980,
+        "originalPrice": 3980,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 995,
+        "originalPrice": 995,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1990,
+        "originalPrice": 1990,
         "inStock": true
       }
     ],
@@ -12293,21 +12431,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 225,
+        "originalPrice": 225,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 450,
+        "originalPrice": 450,
         "inStock": true
       }
     ],
@@ -12410,20 +12548,14 @@ export const PRODUCTS: Product[] = [
     "variants": [
       {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 435,
+        "originalPrice": 435,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "400g",
+        "price": 670,
+        "originalPrice": 670,
         "inStock": true
       }
     ],
@@ -12467,21 +12599,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 3350,
+        "originalPrice": 3350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 837.5,
+        "originalPrice": 837.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1675,
+        "originalPrice": 1675,
         "inStock": true
       }
     ],
@@ -12525,21 +12657,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 530,
+        "originalPrice": 530,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 132.5,
+        "originalPrice": 132.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 265,
+        "originalPrice": 265,
         "inStock": true
       }
     ],
@@ -12583,21 +12715,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 650,
+        "originalPrice": 650,
         "inStock": true
       }
     ],
@@ -12641,21 +12773,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1290,
+        "originalPrice": 1290,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 322.5,
+        "originalPrice": 322.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 645,
+        "originalPrice": 645,
         "inStock": true
       }
     ],
@@ -12699,21 +12831,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2000,
+        "originalPrice": 2000,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 500,
+        "originalPrice": 500,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1000,
+        "originalPrice": 1000,
         "inStock": true
       }
     ],
@@ -12757,21 +12889,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 980,
+        "originalPrice": 980,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 245,
+        "originalPrice": 245,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 490,
+        "originalPrice": 490,
         "inStock": true
       }
     ],
@@ -12815,21 +12947,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 45,
+        "originalPrice": 45,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       }
     ],
@@ -12873,21 +13005,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 32.5,
+        "originalPrice": 32.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 65,
+        "originalPrice": 65,
         "inStock": true
       }
     ],
@@ -12931,21 +13063,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 32.5,
+        "originalPrice": 32.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 65,
+        "originalPrice": 65,
         "inStock": true
       }
     ],
@@ -12989,22 +13121,22 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
         "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": false
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
-        "inStock": true
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": false
       }
     ],
     "rating": 4.8,
@@ -13047,21 +13179,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 102.5,
+        "originalPrice": 102.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       }
     ],
@@ -13105,21 +13237,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 180,
+        "originalPrice": 180,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 900,
+        "originalPrice": 900,
         "inStock": true
       }
     ],
@@ -13163,21 +13301,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 23.75,
+        "originalPrice": 23.75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 47.5,
+        "originalPrice": 47.5,
         "inStock": true
       }
     ],
@@ -13221,21 +13359,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 50,
+        "originalPrice": 50,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 100,
+        "originalPrice": 100,
         "inStock": true
       }
     ],
@@ -13279,21 +13417,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 230,
+        "originalPrice": 230,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 57.5,
+        "originalPrice": 57.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 115,
+        "originalPrice": 115,
         "inStock": true
       }
     ],
@@ -13337,21 +13475,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 620,
+        "originalPrice": 620,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 155,
+        "originalPrice": 155,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 310,
+        "originalPrice": 310,
         "inStock": true
       }
     ],
@@ -13395,21 +13533,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1280,
+        "originalPrice": 1280,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 320,
+        "originalPrice": 320,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 640,
+        "originalPrice": 640,
         "inStock": true
       }
     ],
@@ -13570,21 +13708,63 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 59,
+        "originalPrice": 59,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 88.5,
+        "originalPrice": 88.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 590,
+        "originalPrice": 590,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 118,
+        "originalPrice": 118,
+        "inStock": true
+      },
+      {
+        "weight": "20g - Masala",
+        "price": 11.8,
+        "originalPrice": 11.8,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 147.5,
+        "originalPrice": 147.5,
+        "inStock": true
+      },
+      {
+        "weight": "40g - Masala",
+        "price": 23.6,
+        "originalPrice": 23.6,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 295,
+        "originalPrice": 295,
+        "inStock": true
+      },
+      {
+        "weight": "60g - Masala",
+        "price": 35.4,
+        "originalPrice": 35.4,
+        "inStock": true
+      },
+      {
+        "weight": "80g - Masala",
+        "price": 47.2,
+        "originalPrice": 47.2,
         "inStock": true
       }
     ],
@@ -13628,21 +13808,39 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1kg / Powder",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "1kg / Raw",
+        "price": 90,
+        "originalPrice": 90,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "3kg / Powder",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 450,
+        "originalPrice": 450,
         "inStock": true
       }
     ],
@@ -13686,21 +13884,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100G",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 4000,
+        "originalPrice": 4000,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 1000,
+        "originalPrice": 1000,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 2000,
+        "originalPrice": 2000,
         "inStock": true
       }
     ],
@@ -13744,21 +13948,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1350g",
+        "price": 930,
+        "originalPrice": 930,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "400g",
+        "price": 310,
+        "originalPrice": 310,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "950g",
+        "price": 680,
+        "originalPrice": 680,
         "inStock": true
       }
     ],
@@ -13802,15 +14006,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 45,
+        "originalPrice": 45,
         "inStock": true
       }
     ],
@@ -13854,21 +14052,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1050,
+        "originalPrice": 1050,
         "inStock": true
       },
       {
-        "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "weight": "25og",
+        "price": 262.5,
+        "originalPrice": 262.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 525,
+        "originalPrice": 525,
         "inStock": true
       }
     ],
@@ -13913,21 +14111,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 148,
+        "originalPrice": 148,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 222,
+        "originalPrice": 222,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1480,
+        "originalPrice": 1480,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 296,
+        "originalPrice": 296,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 370,
+        "originalPrice": 370,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 740,
+        "originalPrice": 740,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 74,
+        "originalPrice": 74,
         "inStock": true
       }
     ],
@@ -13971,21 +14199,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 53,
+        "originalPrice": 53,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 79.5,
+        "originalPrice": 79.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 530,
+        "originalPrice": 530,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 106,
+        "originalPrice": 106,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 132.5,
+        "originalPrice": 132.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 132.5,
+        "originalPrice": 132.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 265,
+        "originalPrice": 265,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 26.5,
+        "originalPrice": 26.5,
         "inStock": true
       }
     ],
@@ -14029,21 +14287,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 162.5,
+        "originalPrice": 162.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       }
     ],
@@ -14087,21 +14345,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 82,
+        "originalPrice": 82,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 123,
+        "originalPrice": 123,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 820,
+        "originalPrice": 820,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 164,
+        "originalPrice": 164,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       },
       {
         "weight": "500g",
         "price": 410,
-        "originalPrice": 500,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 41,
+        "originalPrice": 41,
         "inStock": true
       }
     ],
@@ -14145,21 +14433,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "1kg",
+        "price": 99,
+        "originalPrice": 99,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
+        "weight": "250g",
+        "price": 24.75,
+        "originalPrice": 24.75,
         "inStock": true
       },
       {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "500g",
+        "price": 49.5,
+        "originalPrice": 49.5,
         "inStock": true
       }
     ],
@@ -14203,21 +14491,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 65,
+        "originalPrice": 65,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 130,
+        "originalPrice": 130,
         "inStock": true
       }
     ],
@@ -14261,21 +14549,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 47.5,
+        "originalPrice": 47.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 95,
+        "originalPrice": 95,
         "inStock": true
       }
     ],
@@ -14319,21 +14607,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 205,
+        "originalPrice": 205,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2050,
+        "originalPrice": 2050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 512.5,
+        "originalPrice": 512.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1025,
+        "originalPrice": 1025,
         "inStock": true
       }
     ],
@@ -14377,21 +14671,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 87.5,
+        "originalPrice": 87.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 175,
+        "originalPrice": 175,
         "inStock": true
       }
     ],
@@ -14435,21 +14729,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1500,
+        "originalPrice": 1500,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 750,
+        "originalPrice": 750,
         "inStock": true
       }
     ],
@@ -14493,21 +14787,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1900,
+        "originalPrice": 1900,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 475,
+        "originalPrice": 475,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 950,
+        "originalPrice": 950,
         "inStock": true
       }
     ],
@@ -14551,21 +14845,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 337.5,
+        "originalPrice": 337.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 675,
+        "originalPrice": 675,
         "inStock": true
       }
     ],
@@ -14609,21 +14903,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 850,
+        "originalPrice": 850,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 212.5,
+        "originalPrice": 212.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 425,
+        "originalPrice": 425,
         "inStock": true
       }
     ],
@@ -14667,21 +14961,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1180,
+        "originalPrice": 1180,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 295,
+        "originalPrice": 295,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 590,
+        "originalPrice": 590,
         "inStock": true
       }
     ],
@@ -14725,21 +15019,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       }
     ],
@@ -14783,21 +15077,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 139,
+        "originalPrice": 139,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 34.75,
+        "originalPrice": 34.75,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 69.5,
+        "originalPrice": 69.5,
         "inStock": true
       }
     ],
@@ -14841,21 +15135,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1180,
+        "originalPrice": 1180,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 295,
+        "originalPrice": 295,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 590,
+        "originalPrice": 590,
         "inStock": true
       }
     ],
@@ -14899,21 +15193,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 130,
+        "originalPrice": 130,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 32.5,
+        "originalPrice": 32.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 65,
+        "originalPrice": 65,
         "inStock": true
       }
     ],
@@ -14957,21 +15251,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
-        "inStock": true
-      },
-      {
-        "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "weight": "150gm",
+        "price": 165,
+        "originalPrice": 165,
         "inStock": true
       }
     ],
@@ -15015,21 +15297,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100G",
+        "price": 260,
+        "originalPrice": 260,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2600,
+        "originalPrice": 2600,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1300,
+        "originalPrice": 1300,
         "inStock": true
       }
     ],
@@ -15076,21 +15364,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "460g",
+        "price": 360,
+        "originalPrice": 360,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
-        "inStock": true
-      },
-      {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "910g",
+        "price": 680,
+        "originalPrice": 680,
         "inStock": true
       }
     ],
@@ -15137,21 +15419,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "460g",
+        "price": 370,
+        "originalPrice": 370,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
-        "inStock": true
-      },
-      {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "910g",
+        "price": 700,
+        "originalPrice": 700,
         "inStock": true
       }
     ],
@@ -15195,21 +15471,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 552,
+        "originalPrice": 552,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 138,
+        "originalPrice": 138,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 276,
+        "originalPrice": 276,
         "inStock": true
       }
     ],
@@ -15253,21 +15529,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 105,
+        "originalPrice": 105,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       }
     ],
@@ -15311,21 +15587,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 187.5,
+        "originalPrice": 187.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 375,
+        "originalPrice": 375,
         "inStock": true
       }
     ],
@@ -15370,21 +15646,39 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "weight": "1kg / Powder",
+        "price": 95,
+        "originalPrice": 95,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "1kg / Raw",
+        "price": 95,
+        "originalPrice": 95,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "3kg / Powder",
+        "price": 285,
+        "originalPrice": 285,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 285,
+        "originalPrice": 285,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 475,
+        "originalPrice": 475,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 475,
+        "originalPrice": 475,
         "inStock": true
       }
     ],
@@ -15428,21 +15722,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1500,
+        "originalPrice": 1500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 750,
+        "originalPrice": 750,
         "inStock": true
       }
     ],
@@ -15486,21 +15786,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 86,
+        "originalPrice": 86,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 21.5,
+        "originalPrice": 21.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 43,
+        "originalPrice": 43,
         "inStock": true
       }
     ],
@@ -15544,15 +15844,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
-        "inStock": true
-      },
-      {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 190,
+        "originalPrice": 190,
         "inStock": true
       }
     ],
@@ -15596,21 +15890,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 50,
+        "originalPrice": 50,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 100,
+        "originalPrice": 100,
         "inStock": true
       }
     ],
@@ -15654,15 +15948,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "1 Unit",
-        "price": 120,
-        "originalPrice": 160,
+        "weight": "Default Title",
+        "price": 165,
+        "originalPrice": 165,
         "inStock": true
       },
       {
-        "weight": "Pack of 2",
-        "price": 220,
-        "originalPrice": 300,
+        "weight": "Default Title",
+        "price": 110,
+        "originalPrice": 110,
         "inStock": true
       }
     ],
@@ -15706,21 +16000,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
+        "weight": "1kg",
+        "price": 250,
         "originalPrice": 250,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
         "inStock": true
       }
     ],
@@ -15764,21 +16058,51 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "100g - Masala",
+        "price": 135,
+        "originalPrice": 135,
         "inStock": true
       },
       {
-        "weight": "250g",
-        "price": 220,
+        "weight": "150g - Masala",
+        "price": 202.5,
+        "originalPrice": 202.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 270,
         "originalPrice": 270,
         "inStock": true
       },
       {
+        "weight": "250g",
+        "price": 362.5,
+        "originalPrice": 362.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 337.5,
+        "originalPrice": 337.5,
+        "inStock": true
+      },
+      {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 725,
+        "originalPrice": 725,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 67.5,
+        "originalPrice": 67.5,
         "inStock": true
       }
     ],
@@ -15823,20 +16147,14 @@ export const PRODUCTS: Product[] = [
     "variants": [
       {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 890,
+        "originalPrice": 890,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "400g",
+        "price": 1410,
+        "originalPrice": 1410,
         "inStock": true
       }
     ],
@@ -15880,21 +16198,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 650,
+        "originalPrice": 650,
         "inStock": true
       }
     ],
@@ -15938,21 +16256,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 640,
+        "originalPrice": 640,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 160,
+        "originalPrice": 160,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 320,
+        "originalPrice": 320,
         "inStock": true
       }
     ],
@@ -15996,21 +16314,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 650,
+        "weight": "1kg",
+        "price": 760,
         "originalPrice": 760,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "weight": "250g",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 380,
+        "originalPrice": 380,
         "inStock": true
       }
     ],
@@ -16057,21 +16375,15 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "460g",
+        "price": 305,
+        "originalPrice": 305,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
-        "inStock": true
-      },
-      {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "910 g",
+        "price": 570,
+        "originalPrice": 570,
         "inStock": true
       }
     ],
@@ -16115,21 +16427,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 300,
+        "originalPrice": 300,
         "inStock": true
       }
     ],
@@ -16173,21 +16485,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 337.5,
+        "originalPrice": 337.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 675,
+        "originalPrice": 675,
         "inStock": true
       }
     ],
@@ -16232,21 +16544,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1900,
+        "originalPrice": 1900,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 475,
+        "originalPrice": 475,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 950,
+        "originalPrice": 950,
         "inStock": true
       }
     ],
@@ -16291,21 +16603,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1900,
+        "originalPrice": 1900,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 475,
+        "originalPrice": 475,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 950,
+        "originalPrice": 950,
         "inStock": true
       }
     ],
@@ -16349,21 +16661,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 4000,
+        "originalPrice": 4000,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 1000,
+        "originalPrice": 1000,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 2000,
+        "originalPrice": 2000,
         "inStock": true
       }
     ],
@@ -16407,21 +16719,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2200,
+        "originalPrice": 2200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 550,
+        "originalPrice": 550,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1100,
+        "originalPrice": 1100,
         "inStock": true
       }
     ],
@@ -16465,21 +16777,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 325,
+        "originalPrice": 325,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 650,
+        "originalPrice": 650,
         "inStock": true
       }
     ],
@@ -16523,21 +16835,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2800,
+        "originalPrice": 2800,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 700,
+        "originalPrice": 700,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1400,
+        "originalPrice": 1400,
         "inStock": true
       }
     ],
@@ -16582,21 +16894,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 740,
+        "originalPrice": 740,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 185,
+        "originalPrice": 185,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 370,
+        "originalPrice": 370,
         "inStock": true
       }
     ],
@@ -16640,21 +16952,9 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
-        "inStock": true
-      },
-      {
-        "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "weight": "Default Title",
+        "price": 0,
+        "originalPrice": 0,
         "inStock": true
       }
     ],
@@ -16698,21 +16998,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 47.5,
+        "originalPrice": 47.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 95,
+        "originalPrice": 95,
         "inStock": true
       }
     ],
@@ -16756,21 +17056,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       }
     ],
@@ -16814,21 +17114,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 137.5,
+        "originalPrice": 137.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 275,
+        "originalPrice": 275,
         "inStock": true
       }
     ],
@@ -16872,21 +17172,27 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
-        "inStock": true
-      },
-      {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "100g",
+        "price": 149,
+        "originalPrice": 149,
         "inStock": true
       },
       {
         "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 1490,
+        "originalPrice": 1490,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 372.5,
+        "originalPrice": 372.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 745,
+        "originalPrice": 745,
         "inStock": true
       }
     ],
@@ -16930,21 +17236,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 50,
+        "originalPrice": 50,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 100,
+        "originalPrice": 100,
         "inStock": true
       }
     ],
@@ -16988,21 +17294,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 250,
+        "originalPrice": 250,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 62.5,
+        "originalPrice": 62.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 125,
+        "originalPrice": 125,
         "inStock": true
       }
     ],
@@ -17046,21 +17352,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       }
     ],
@@ -17104,21 +17410,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "100g",
-        "price": 95,
-        "originalPrice": 120,
+        "weight": "1kg",
+        "price": 450,
+        "originalPrice": 450,
         "inStock": true
       },
       {
         "weight": "250g",
-        "price": 220,
-        "originalPrice": 270,
+        "price": 112.5,
+        "originalPrice": 112.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 410,
-        "originalPrice": 500,
+        "price": 225,
+        "originalPrice": 225,
         "inStock": true
       }
     ],
@@ -17167,21 +17473,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "500ml",
-        "price": 240,
-        "originalPrice": 280,
+        "weight": "160g",
+        "price": 340,
+        "originalPrice": 340,
         "inStock": true
       },
       {
-        "weight": "1 Litre",
-        "price": 450,
-        "originalPrice": 520,
+        "weight": "280g",
+        "price": 595,
+        "originalPrice": 595,
         "inStock": true
       },
       {
-        "weight": "5 Litres",
-        "price": 2100,
-        "originalPrice": 2450,
+        "weight": "600g",
+        "price": 1275,
+        "originalPrice": 1275,
         "inStock": true
       }
     ],
@@ -17226,21 +17532,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 2580,
+        "originalPrice": 2580,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 645,
+        "originalPrice": 645,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 1290,
+        "originalPrice": 1290,
         "inStock": true
       }
     ],
@@ -17284,21 +17590,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "weight": "250g / Honey",
+        "price": 597,
+        "originalPrice": 597,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
+        "weight": "250g / Jaggery",
+        "price": 587,
+        "originalPrice": 587,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "weight": "250g / Unsweetened",
+        "price": 567,
+        "originalPrice": 567,
         "inStock": true
       }
     ],
@@ -17343,21 +17649,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1970,
+        "originalPrice": 1970,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 492.5,
+        "originalPrice": 492.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 985,
+        "originalPrice": 985,
         "inStock": true
       }
     ],
@@ -17401,21 +17707,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 1150,
+        "originalPrice": 1150,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 287.5,
+        "originalPrice": 287.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 575,
+        "originalPrice": 575,
         "inStock": true
       }
     ],
@@ -17459,21 +17765,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 52.5,
+        "originalPrice": 52.5,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 150,
+        "originalPrice": 150,
         "inStock": true
       }
     ],
@@ -17517,21 +17823,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 60,
+        "originalPrice": 60,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 120,
+        "originalPrice": 120,
         "inStock": true
       }
     ],
@@ -17575,21 +17881,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
-        "weight": "250g",
-        "price": 110,
+        "weight": "1kg",
+        "price": 140,
         "originalPrice": 140,
         "inStock": true
       },
       {
-        "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
+        "weight": "250g",
+        "price": 35,
+        "originalPrice": 35,
         "inStock": true
       },
       {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "weight": "500g",
+        "price": 70,
+        "originalPrice": 70,
         "inStock": true
       }
     ],
@@ -17633,21 +17939,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 640,
+        "originalPrice": 640,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 110,
-        "originalPrice": 140,
+        "price": 160,
+        "originalPrice": 160,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 200,
-        "originalPrice": 250,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 380,
-        "originalPrice": 460,
+        "price": 320,
+        "originalPrice": 320,
         "inStock": true
       }
     ],
@@ -17691,21 +17997,21 @@ export const PRODUCTS: Product[] = [
     ],
     "variants": [
       {
+        "weight": "1kg",
+        "price": 840,
+        "originalPrice": 840,
+        "inStock": true
+      },
+      {
         "weight": "250g",
-        "price": 340,
-        "originalPrice": 400,
+        "price": 210,
+        "originalPrice": 210,
         "inStock": true
       },
       {
         "weight": "500g",
-        "price": 650,
-        "originalPrice": 760,
-        "inStock": true
-      },
-      {
-        "weight": "1kg",
-        "price": 1250,
-        "originalPrice": 1450,
+        "price": 420,
+        "originalPrice": 420,
         "inStock": true
       }
     ],

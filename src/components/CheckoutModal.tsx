@@ -11,17 +11,12 @@ import {
   ShieldCheck,
   ChevronRight,
   QrCode,
-  Sparkles,
   PackageCheck,
   ShoppingBag,
 } from 'lucide-react';
 import { DhaanyaLogo } from './DhaanyaLogo';
 
-interface CheckoutModalProps {
-  onShowUnboxing?: (order: Order) => void;
-}
-
-export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onShowUnboxing }) => {
+export const CheckoutModal: React.FC = () => {
   const {
     isCheckoutOpen,
     setIsCheckoutOpen,
@@ -355,20 +350,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({ onShowUnboxing }) 
                 >
                   CONTINUE SHOPPING
                 </button>
-
-                {onShowUnboxing && (
-                  <button
-                    onClick={() => {
-                      const currentOrder = completedOrder;
-                      handleCloseModal();
-                      if (currentOrder) onShowUnboxing(currentOrder);
-                    }}
-                    className="w-full sm:w-auto px-6 py-3.5 bg-[#C89211] text-[#2A2620] font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#A9542B] hover:text-white transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Sparkles className="w-4 h-4" />
-                    <span>View Unboxing Experience</span>
-                  </button>
-                )}
               </div>
             </div>
           )}

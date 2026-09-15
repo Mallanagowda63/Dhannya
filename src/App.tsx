@@ -4,10 +4,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HeroSlider } from './components/HeroSlider';
 import { CategoryGrid } from './components/CategoryGrid';
-import { WhatWentMissing } from './components/WhatWentMissing';
-import { OurBeliefSection } from './components/OurBeliefSection';
-import { DhaanyaRitualSection } from './components/DhaanyaRitualSection';
-import { WhoWereForSection } from './components/WhoWereForSection';
 import { WhyDhaanyaTrustSection } from './components/WhyDhaanyaTrustSection';
 import { BestSellersCarousel } from './components/BestSellersCarousel';
 import { RecommendedCarousel } from './components/RecommendedCarousel';
@@ -27,8 +23,7 @@ import { ServerConditionModal } from './components/ServerConditionModal';
 import { BottomNav } from './components/BottomNav';
 import { BrandSystemModal } from './components/BrandSystemModal';
 import { PackagingQRModal } from './components/PackagingQRModal';
-import { UnboxingExperienceModal } from './components/UnboxingExperienceModal';
-import { ProductCategory, Product, Order } from './types';
+import { ProductCategory, Product } from './types';
 
 const MainAppContent: React.FC = () => {
   const {
@@ -53,7 +48,6 @@ const MainAppContent: React.FC = () => {
   const [currentPageView, setCurrentPageView] = useState<'home' | 'category' | 'our-story' | 'fresh-milling'>('home');
   const [isBrandSystemOpen, setIsBrandSystemOpen] = useState(false);
   const [inspectingProduct, setInspectingProduct] = useState<Product | null>(null);
-  const [unboxingOrder, setUnboxingOrder] = useState<Order | null>(null);
 
   // Push history state entry whenever any modal overlay opens
   useEffect(() => {
@@ -66,8 +60,7 @@ const MainAppContent: React.FC = () => {
       isAdminMode ||
       isServerModalOpen ||
       isBrandSystemOpen ||
-      inspectingProduct ||
-      unboxingOrder
+      inspectingProduct
     ) {
       window.history.pushState({ modal: true }, '');
     }
@@ -81,17 +74,12 @@ const MainAppContent: React.FC = () => {
     isServerModalOpen,
     isBrandSystemOpen,
     inspectingProduct,
-    unboxingOrder,
   ]);
 
   // Handle Mobile Hardware / Browser Back Button (popstate event)
   useEffect(() => {
     const handlePopState = () => {
       // 1. Close open modals first
-      if (unboxingOrder) {
-        setUnboxingOrder(null);
-        return;
-      }
       if (inspectingProduct) {
         setInspectingProduct(null);
         return;
@@ -150,7 +138,6 @@ const MainAppContent: React.FC = () => {
     isServerModalOpen,
     isBrandSystemOpen,
     inspectingProduct,
-    unboxingOrder,
     currentPageView,
     setIsCartOpen,
     setIsCheckoutOpen,
@@ -246,12 +233,8 @@ const MainAppContent: React.FC = () => {
               onNavigateFreshMilling={handleNavigateFreshMilling}
             />
             <CategoryGrid onSelectCategory={handleNavigateCategoryPage} />
-            <WhatWentMissing />
-            <OurBeliefSection />
-            <DhaanyaRitualSection onNavigateCustomMasala={handleNavigateCustomMasala} />
             <CustomMasalaBuilder />
             <BestSellersCarousel />
-            <WhoWereForSection />
             <WhyDhaanyaTrustSection />
             <RecommendedCarousel />
           </main>
@@ -305,7 +288,7 @@ const MainAppContent: React.FC = () => {
 
       {/* Global Overlays */}
       <CartDrawer />
-      <CheckoutModal onShowUnboxing={(order) => setUnboxingOrder(order)} />
+      <CheckoutModal />
       <AuthModal />
       <UserProfileModal />
       <ProductQuickView />
@@ -325,12 +308,6 @@ const MainAppContent: React.FC = () => {
         onClose={() => setInspectingProduct(null)}
         onNavigateCustomMasala={handleNavigateCustomMasala}
       />
-      <UnboxingExperienceModal
-        order={unboxingOrder}
-        isOpen={!!unboxingOrder}
-        onClose={() => setUnboxingOrder(null)}
-      />
-
       <ToastContainer />
       <WhatsAppButton />
     </div>

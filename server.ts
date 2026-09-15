@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import dns from 'dns';
@@ -9,6 +10,32 @@ import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData
 import { Product, Order, Address } from './src/types';
 
 import crypto from 'crypto';
+
+// Dynamic image resolver: Automatically scans images/Dailywell_Products/<Name>/ for the latest image file
+const publicProductsBaseDir = path.join(process.cwd(), 'images', 'Dailywell_Products');
+
+function resolveProductImagePath(productName: string, fallbackImage?: string): string {
+  try {
+    const folderPath = path.join(publicProductsBaseDir, productName);
+    if (fs.existsSync(folderPath)) {
+      const files = fs.readdirSync(folderPath);
+      const imgFiles = files.filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
+      if (imgFiles.length > 0) {
+        // Priority: prefer 011.png / 011.jpg if exists, else 01.png / 01.jpg / 01*, else first file
+        const priorityImg =
+          imgFiles.find((f) => f.startsWith('011')) ||
+          imgFiles.find((f) => f.startsWith('01.')) ||
+          imgFiles.find((f) => f.startsWith('01')) ||
+          imgFiles[0];
+
+        return `/images/Dailywell_Products/${encodeURIComponent(productName)}/${encodeURIComponent(priorityImg)}`;
+      }
+    }
+  } catch (e) {
+    // Fall back quietly
+  }
+  return fallbackImage || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+}
 
 dotenv.config({ path: '.env.local' });
 dotenv.config();
@@ -783,27 +810,33 @@ app.get('/api/products', async (req, res) => {
 
     if (connected) {
       const dbProducts = await ProductModel.find().lean();
-      result = dbProducts.map((p: any) => ({
-        id: p.id,
-        name: p.name,
-        category: p.category,
-        concern: p.concern,
-        description: p.description,
-        ingredients: p.ingredients,
-        nutritionInfo: p.nutritionInfo,
-        benefits: p.benefits,
-        image: p.image,
-        gallery: p.gallery,
-        variants: p.variants,
-        rating: p.rating,
-        reviewCount: p.reviewCount,
-        isBestSeller: p.isBestSeller,
-        isRecommended: p.isRecommended,
-        stock: p.stock,
-        tags: p.tags,
-      }));
+      result = dbProducts.map((p: any) => {
+        const resolvedImage = resolveProductImagePath(p.name, p.image);
+        return {
+          id: p.id,
+          name: p.name,
+          category: p.category,
+          concern: p.concern,
+          description: p.description,
+          ingredients: p.ingredients,
+          nutritionInfo: p.nutritionInfo,
+          benefits: p.benefits,
+          image: resolvedImage,
+          gallery: p.gallery && p.gallery.length > 0 ? [resolvedImage, ...p.gallery.filter((g: string) => g !== resolvedImage)] : [resolvedImage],
+          variants: p.variants,
+          rating: p.rating,
+          reviewCount: p.reviewCount,
+          isBestSeller: p.isBestSeller,
+          isRecommended: p.isRecommended,
+          stock: p.stock,
+          tags: p.tags,
+        };
+      });
     } else if (allowMemoryDbInDev) {
-      result = [...liveProducts];
+      result = liveProducts.map((p) => {
+        const resolvedImage = resolveProductImagePath(p.name, p.image);
+        return { ...p, image: resolvedImage };
+      });
     } else {
       return res.status(503).json({ success: false, message: 'Database disconnected' });
     }
@@ -883,7 +916,15 @@ app.get('/api/products/:id', async (req, res) => {
     if (!prod) {
       return res.status(404).json({ success: false, message: 'Product not found' });
     }
-    res.json({ success: true, data: prod });
+
+    const resolvedImage = resolveProductImagePath(prod.name, prod.image);
+    const resolvedProd = {
+      ...prod,
+      image: resolvedImage,
+      gallery: prod.gallery && prod.gallery.length > 0 ? [resolvedImage, ...prod.gallery.filter((g: string) => g !== resolvedImage)] : [resolvedImage],
+    };
+
+    res.json({ success: true, data: resolvedProd });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -939,6 +980,31 @@ app.put('/api/admin/products/:id', async (req, res) => {
         liveProducts[index] = { ...liveProducts[index], ...req.body };
       }
       return res.json({ success: true, message: 'Product updated in memory' });
+    }
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/admin/products/sync-initial-data', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    if (connected) {
+      const ops: any[] = PRODUCTS.map((p) => ({
+        updateOne: {
+          filter: { id: p.id },
+          update: { $set: p },
+          upsert: true,
+        },
+      }));
+      await ProductModel.bulkWrite(ops);
+      return res.json({
+        success: true,
+        message: `Successfully synced ${PRODUCTS.length} products with initial data in MongoDB!`,
+      });
+    } else if (allowMemoryDbInDev) {
+      liveProducts = [...PRODUCTS];
+      return res.json({ success: true, message: 'Synced in-memory products' });
     }
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -2121,7 +2187,30 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
       if (targetOrder) targetOrder.status = status;
     }
 
-    res.json({ success: true, message: `Order ${id} status updated to ${status}!` });
+    const emailDetails = buildOrderStatusEmail(status, targetOrder);
+
+    // Asynchronously dispatch order status update email if transporter is available
+    if (emailDetails.toEmail && mailTransporter) {
+      const dupKey = `status-update-${id}-${status}`;
+      if (shouldSendEmail(dupKey)) {
+        mailTransporter
+          .sendMail({
+            from: `"Dhannya Organic" <${cleanUser}>`,
+            to: emailDetails.toEmail,
+            subject: emailDetails.subject,
+            text: emailDetails.body,
+          })
+          .catch((mailErr: any) => {
+            console.error('[STATUS MAIL ERROR] Order status update email failed:', mailErr.message);
+          });
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Order ${id} status updated to ${status}!`,
+      emailNotification: emailDetails,
+    });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }

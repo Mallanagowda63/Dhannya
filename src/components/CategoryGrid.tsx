@@ -1,4 +1,5 @@
 import React from 'react';
+import { Sparkles } from 'lucide-react';
 import { CATEGORIES } from '../data/initialData';
 import { ProductCategory } from '../types';
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
-import { Heart, ShoppingBag, Eye, Star, QrCode } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -117,19 +117,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {/* Product Content Details */}
       <div className="product-content">
         <div>
-          {/* Category + Rating Row */}
-          <div className="product-meta-row">
-            <span className="uppercase tracking-widest font-bold text-[#A9542B] text-xs truncate max-w-[70%]">
+          {/* Category Row */}
+          <div className="product-meta-row mb-1">
+            <span className="uppercase tracking-widest font-bold text-[#A9542B] text-xs truncate max-w-full">
               {product.category}
             </span>
-            {product.rating > 0 ? (
-              <div className="flex items-center gap-1 text-[#C89211] font-bold text-xs shrink-0">
-                <Star className="w-3.5 h-3.5 fill-[#C89211]" />
-                <span>{product.rating.toFixed(1)}</span>
-              </div>
-            ) : (
-              <div className="h-4" />
-            )}
           </div>
 
           {/* Product Title Slot (Fixed 2-Line Height) */}

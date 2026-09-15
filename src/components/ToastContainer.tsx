@@ -1,13 +1,15 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useApp } from '../context/AppContext';
-import { CheckCircle2, AlertCircle, Info, Sparkles } from 'lucide-react';
+import { useApp, TOAST_DURATION_MS } from '../context/AppContext';
+import { Check, X, Info, Sparkles } from 'lucide-react';
+
+const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const ToastContainer: React.FC = () => {
-  const { toasts } = useApp();
+  const { toasts, dismissToast, setIsCartOpen } = useApp();
 
   return (
-    <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3 max-w-lg w-full pointer-events-none px-4">
+    <div className="fixed z-50 pointer-events-none top-28 sm:top-32 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-sm md:left-auto md:right-6 md:translate-x-0 md:w-full flex flex-col items-center md:items-end gap-3">
       <AnimatePresence mode="sync">
         {toasts.map((toast) => {
           const isCelebratory =
@@ -15,105 +17,111 @@ export const ToastContainer: React.FC = () => {
             toast.message.includes('Saved') ||
             toast.message.includes('Coupon') ||
             toast.message.includes('🎉') ||
-            toast.message.includes('applied') ||
-            toast.message.includes('added');
+            toast.message.includes('applied');
+
+          const isCartToast = toast.title === 'Added to cart';
+
+          const accent =
+            toast.type === 'success' ? '#3E4B32' : toast.type === 'error' ? '#7C2A1E' : '#C89211';
 
           return (
             <motion.div
               key={toast.id}
-              initial={{ opacity: 0, y: -45, scale: 0.7, rotateX: -25, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -25, scale: 0.8, filter: 'blur(4px)' }}
-              transition={{ type: 'spring', stiffness: 480, damping: 24, mass: 0.8 }}
-              className={`pointer-events-auto relative overflow-hidden flex items-center justify-center gap-3 px-6 py-4 rounded-2xl shadow-2xl border backdrop-blur-xl transition-all ${
-                toast.type === 'success'
-                  ? isCelebratory
-                    ? 'bg-stone-900/95 text-white border-2 border-amber-400/90 shadow-amber-500/20 ring-4 ring-amber-400/20'
-                    : 'bg-stone-900/95 text-white border border-stone-700 shadow-xl'
-                  : toast.type === 'error'
-                  ? 'bg-stone-900/95 text-white border-2 border-rose-500/90 shadow-rose-500/20'
-                  : 'bg-stone-900/95 text-white border border-stone-700 shadow-xl'
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -14 }}
+              transition={{ duration: 0.28, ease: EASE_OUT }}
+              className={`pointer-events-auto relative w-full overflow-hidden flex items-center gap-3.5 p-5 sm:p-6 rounded-2xl bg-[#FBF7EC] border shadow-[0_16px_40px_-12px_rgba(42,38,32,0.35)] ${
+                isCelebratory ? 'border-[#C89211]/50 ring-2 ring-[#C89211]/15' : 'border-[#2A2620]/10'
               }`}
             >
-              {/* Confetti & Sparkles Pop Burst for Celebratory Center Toasts */}
+              {/* Confetti Sparkles for Celebratory Toasts */}
               {isCelebratory && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 pointer-events-none flex gap-6">
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 pointer-events-none flex gap-6">
                   <motion.span
-                    initial={{ y: 10, opacity: 0, scale: 0.3 }}
-                    animate={{ y: [-20, -35], x: [-15, -30], opacity: [0, 1, 0], scale: [0.3, 1.4, 0.8], rotate: [-10, -40] }}
-                    transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 0.8 }}
-                    className="text-lg"
-                  >
-                    🎉
-                  </motion.span>
-                  <motion.span
-                    initial={{ y: 10, opacity: 0, scale: 0.3 }}
-                    animate={{ y: [-25, -42], opacity: [0, 1, 0], scale: [0.3, 1.6, 0.9] }}
-                    transition={{ duration: 1.2, delay: 0.1, repeat: Infinity, repeatDelay: 0.8 }}
-                    className="text-lg"
+                    initial={{ y: 6, opacity: 0, scale: 0.3 }}
+                    animate={{ y: [-14, -26], opacity: [0, 1, 0], scale: [0.3, 1.2, 0.7], rotate: [-10, -30] }}
+                    transition={{ duration: 1.3, repeat: Infinity, repeatDelay: 0.9 }}
+                    className="text-base"
                   >
                     ✨
                   </motion.span>
                   <motion.span
-                    initial={{ y: 10, opacity: 0, scale: 0.3 }}
-                    animate={{ y: [-20, -35], x: [15, 30], opacity: [0, 1, 0], scale: [0.3, 1.4, 0.8], rotate: [10, 40] }}
-                    transition={{ duration: 1.4, delay: 0.2, repeat: Infinity, repeatDelay: 0.8 }}
-                    className="text-lg"
+                    initial={{ y: 6, opacity: 0, scale: 0.3 }}
+                    animate={{ y: [-18, -30], opacity: [0, 1, 0], scale: [0.3, 1.3, 0.8] }}
+                    transition={{ duration: 1.1, delay: 0.15, repeat: Infinity, repeatDelay: 0.9 }}
+                    className="text-base"
                   >
-                    🥳
+                    🎉
                   </motion.span>
                 </div>
               )}
 
-              {/* Icon with Dynamic 3D Spring Pop */}
-              <motion.div
-                initial={{ scale: 0, rotate: -90 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ type: 'spring', stiffness: 550, damping: 18 }}
-                className="shrink-0 flex items-center justify-center"
-              >
-                {toast.type === 'success' && (
-                  <div className="relative flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-400/50">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 z-10" />
-                    </div>
-                    {isCelebratory && (
-                      <span className="absolute w-10 h-10 rounded-full bg-emerald-400/40 animate-ping" />
-                    )}
+              {/* Thumbnail (product image + success badge) or plain type icon */}
+              {toast.image ? (
+                <div className="relative shrink-0">
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm bg-white">
+                    <img src={toast.image} alt="" className="w-full h-full object-cover" />
                   </div>
-                )}
-                {toast.type === 'error' && (
-                  <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center border border-rose-400/50">
-                    <AlertCircle className="w-5 h-5 text-rose-400 shrink-0" />
-                  </div>
-                )}
-                {toast.type === 'info' && (
-                  <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center border border-amber-400/50">
-                    <Info className="w-5 h-5 text-amber-300 shrink-0" />
-                  </div>
-                )}
-              </motion.div>
+                  <span
+                    className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center border-[3px] border-white shadow-sm"
+                    style={{ backgroundColor: accent }}
+                  >
+                    <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                  </span>
+                </div>
+              ) : (
+                <div
+                  className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-[inset_0_1px_2px_rgba(255,255,255,0.35)]"
+                  style={{ backgroundColor: accent }}
+                >
+                  {toast.type === 'success' && <Check className="w-5 h-5 text-white" strokeWidth={3} />}
+                  {toast.type === 'error' && <X className="w-5 h-5 text-white" strokeWidth={3} />}
+                  {toast.type === 'info' && <Info className="w-5 h-5 text-white" strokeWidth={2.5} />}
+                </div>
+              )}
 
-              {/* Toast Message Text */}
-              <div className="flex flex-col">
+              {/* Text */}
+              <div className="flex-1 min-w-0 flex flex-col">
                 {isCelebratory && (
-                  <span className="text-[10px] uppercase tracking-widest font-extrabold text-amber-300 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-300 animate-spin" /> Special Offer Unlocked
+                  <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#A9542B] flex items-center gap-1 mb-0.5">
+                    <Sparkles className="w-3 h-3 text-[#C89211]" /> Special Offer Unlocked
                   </span>
                 )}
-                <span className="text-xs sm:text-sm font-bold leading-snug text-white tracking-wide">
+                {toast.title && (
+                  <span className="text-[11px] font-medium text-[#2A2620]/55 leading-none mb-0.5">
+                    {toast.title}
+                  </span>
+                )}
+                <span
+                  className={`text-sm leading-snug truncate ${
+                    toast.title ? 'font-serif font-bold text-[#2A2620]' : 'font-semibold text-[#2A2620]'
+                  }`}
+                >
                   {toast.message}
                 </span>
               </div>
 
-              {/* Animated Progress Line at Bottom */}
+              {/* View Cart quick action */}
+              {isCartToast && (
+                <button
+                  onClick={() => {
+                    setIsCartOpen(true);
+                    dismissToast(toast.id);
+                  }}
+                  className="shrink-0 text-[11px] font-bold uppercase tracking-wide text-[#A9542B] hover:text-[#7C2A1E] transition-colors cursor-pointer"
+                >
+                  View Cart
+                </button>
+              )}
+
+              {/* Auto-dismiss progress bar, synced to TOAST_DURATION_MS */}
               <motion.div
                 initial={{ scaleX: 1 }}
                 animate={{ scaleX: 0 }}
-                transition={{ duration: 3.2, ease: 'linear' }}
-                className={`absolute bottom-0 left-0 right-0 h-1 origin-left ${
-                  toast.type === 'success' ? 'bg-amber-400' : toast.type === 'error' ? 'bg-rose-500' : 'bg-amber-300'
-                }`}
+                transition={{ duration: TOAST_DURATION_MS / 1000, ease: 'linear' }}
+                className="absolute bottom-0 left-0 right-0 h-[3px] origin-left"
+                style={{ backgroundColor: accent, opacity: 0.55 }}
               />
             </motion.div>
           );
