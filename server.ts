@@ -107,6 +107,13 @@ try {
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    // Render's container network can't route the IPv6 address Node's default
+    // DNS resolution returns for smtp.gmail.com (confirmed via a live
+    // "connect ENETUNREACH 2607:..." failure) -- force IPv4 to match what
+    // actually has egress. `family` is a real passthrough socket option
+    // nodemailer forwards to Node's net/tls connect, just not declared in
+    // its TS types, hence the cast.
+    family: 4,
     connectionTimeout: 5000,
     greetingTimeout: 5000,
     socketTimeout: 5000,
@@ -114,7 +121,7 @@ try {
       user: cleanUser,
       pass: cleanPass,
     },
-  });
+  } as any);
 
   // Verify and warm up persistent connection pool asynchronously on startup
   mailTransporter.verify((err: any) => {
