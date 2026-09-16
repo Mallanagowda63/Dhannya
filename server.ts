@@ -187,8 +187,8 @@ const ProductSchema = new mongoose.Schema(
 const OrderSchema = new mongoose.Schema(
   {
     id: { type: String, required: true, unique: true },
-    userId: { type: String, default: 'usr-101' },
-    userEmail: { type: String, default: null },
+    userId: { type: String, default: 'usr-101', index: true },
+    userEmail: { type: String, default: null, index: true },
     items: [mongoose.Schema.Types.Mixed],
     shippingAddress: mongoose.Schema.Types.Mixed,
     deliverySlot: String,
@@ -209,8 +209,8 @@ const OrderSchema = new mongoose.Schema(
 
 const CustomRecipeSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
-  userId: { type: String, default: null },
-  userEmail: { type: String, default: null },
+  userId: { type: String, default: null, index: true },
+  userEmail: { type: String, default: null, index: true },
   orderId: { type: String, default: null },
   recipeName: String,
   items: [mongoose.Schema.Types.Mixed],
@@ -226,7 +226,7 @@ const CustomRecipeSchema = new mongoose.Schema({
 const AddressSchema = new mongoose.Schema(
   {
     id: { type: String, required: true, unique: true },
-    userId: { type: String, default: 'usr-101' },
+    userId: { type: String, default: 'usr-101', index: true },
     fullName: { type: String, required: true },
     mobile: { type: String, required: true },
     street: { type: String, required: true },
