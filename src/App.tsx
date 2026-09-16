@@ -11,6 +11,8 @@ import { CustomMasalaBuilder } from './components/CustomMasalaBuilder';
 import { CategoryPageView } from './components/CategoryPageView';
 import { OurStoryPage } from './components/OurStoryPage';
 import { FreshMillingPage } from './components/FreshMillingPage';
+import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
+import { RefundPolicyPage } from './components/RefundPolicyPage';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { AuthModal } from './components/AuthModal';
@@ -45,7 +47,9 @@ const MainAppContent: React.FC = () => {
     setActiveCategory,
   } = useApp();
 
-  const [currentPageView, setCurrentPageView] = useState<'home' | 'category' | 'our-story' | 'fresh-milling'>('home');
+  const [currentPageView, setCurrentPageView] = useState<
+    'home' | 'category' | 'our-story' | 'fresh-milling' | 'privacy-policy' | 'refund-policy'
+  >('home');
   const [isBrandSystemOpen, setIsBrandSystemOpen] = useState(false);
   const [inspectingProduct, setInspectingProduct] = useState<Product | null>(null);
 
@@ -196,6 +200,22 @@ const MainAppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigatePrivacyPolicy = () => {
+    if (currentPageView !== 'privacy-policy') {
+      window.history.pushState({ view: 'privacy-policy' }, '');
+    }
+    setCurrentPageView('privacy-policy');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateRefundPolicy = () => {
+    if (currentPageView !== 'refund-policy') {
+      window.history.pushState({ view: 'refund-policy' }, '');
+    }
+    setCurrentPageView('refund-policy');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   if (isAdminMode && user?.role === 'admin') {
     return (
       <div className="min-h-screen bg-[#2A2620] font-sans antialiased text-[#F4ECD8] selection:bg-[#C89211] selection:text-[#2A2620]">
@@ -214,7 +234,7 @@ const MainAppContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F4ECD8] font-sans antialiased text-[#2A2620] selection:bg-[#3E4B32] selection:text-[#F4ECD8] flex flex-col justify-between pb-16 lg:pb-0">
+    <div className="min-h-screen bg-[#F4ECD8] font-sans antialiased text-[#2A2620] selection:bg-[#3E4B32] selection:text-[#F4ECD8] flex flex-col justify-between pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
       <div>
         <Header
           onNavigateHome={handleNavigateHome}
@@ -268,6 +288,18 @@ const MainAppContent: React.FC = () => {
             />
           </main>
         )}
+
+        {currentPageView === 'privacy-policy' && (
+          <main>
+            <PrivacyPolicyPage onNavigateHome={handleNavigateHome} />
+          </main>
+        )}
+
+        {currentPageView === 'refund-policy' && (
+          <main>
+            <RefundPolicyPage onNavigateHome={handleNavigateHome} />
+          </main>
+        )}
       </div>
 
       <Footer
@@ -275,6 +307,8 @@ const MainAppContent: React.FC = () => {
         onNavigateCustomMasala={handleNavigateCustomMasala}
         onNavigateOurStory={handleNavigateOurStory}
         onNavigateFreshMilling={handleNavigateFreshMilling}
+        onNavigatePrivacyPolicy={handleNavigatePrivacyPolicy}
+        onNavigateRefundPolicy={handleNavigateRefundPolicy}
         onOpenBrandSystem={() => setIsBrandSystemOpen(true)}
       />
 

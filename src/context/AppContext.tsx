@@ -75,7 +75,7 @@ interface AppContextType {
   saveAddress: (address: Address) => Promise<Address>;
   deleteAddress: (addressId: string) => Promise<boolean>;
   saveCustomRecipe: (recipe: CustomRecipe) => void;
-  login: (email: string, name?: string, role?: 'admin' | 'user') => void;
+  login: (email: string, name?: string, role?: 'admin' | 'user', id?: string) => void;
   logout: () => void;
   showToast: (message: string, type?: 'success' | 'error' | 'info', options?: { title?: string; image?: string }) => void;
   dismissToast: (id: string) => void;
@@ -95,7 +95,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return saved ? JSON.parse(saved) : [];
   });
 
-  const [coupons, setCoupons] = useState<Coupon[]>([]);
+  const [coupons, setCoupons] = useState<Coupon[]>(COUPONS);
 
   const refreshProducts = async () => {
     try {
@@ -140,7 +140,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const res = await fetch(getApiUrl('/api/coupons'));
       if (res.ok) {
         const data = await res.json();
-        if (data.success && Array.isArray(data.data)) {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
           setCoupons(data.data);
         }
       }
@@ -256,6 +256,27 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       })
       .catch(() => {});
   }, [user?.id]);
+
+  // Load this customer's saved custom masala blends from the server so they
+  // survive a fresh login / new browser session, not just a page refresh
+  // (localStorage alone doesn't follow the customer across devices/sessions).
+  useEffect(() => {
+    if (!user) return;
+    const uEmail = encodeURIComponent(user.email || '');
+    fetch(getApiUrl(`/api/recipes?userId=${user.id}&email=${uEmail}`))
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data)) {
+          setSavedRecipes((prev) => {
+            const serverRecipes: CustomRecipe[] = data.data;
+            const serverIds = new Set(serverRecipes.map((r) => r.id));
+            const localOnly = prev.filter((r) => !serverIds.has(r.id) && !r.userId);
+            return [...serverRecipes, ...localOnly];
+          });
+        }
+      })
+      .catch(() => {});
+  }, [user?.id, user?.email]);
 
   const showToast = (
     message: string,
@@ -562,25 +583,32 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const saveCustomRecipe = async (recipe: CustomRecipe) => {
+    const recipeWithOwner: CustomRecipe = {
+      ...recipe,
+      userId: user?.id || null,
+      userEmail: user?.email || null,
+    };
     try {
       await fetch(getApiUrl('/api/recipes'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(recipe),
+        body: JSON.stringify(recipeWithOwner),
       });
     } catch (e) {
       console.warn('API error saving recipe:', e);
     }
-    setSavedRecipes((prev) => [recipe, ...prev]);
+    setSavedRecipes((prev) => [recipeWithOwner, ...prev]);
     showToast(`Saved recipe "${recipe.name}" to your profile!`, 'success');
   };
 
-  const login = (email: string, name: string = 'Dhaanya Customer', role?: 'admin' | 'user') => {
+  const login = (email: string, name: string = 'Dhaanya Customer', role?: 'admin' | 'user', id?: string) => {
     const cleanEmail = email.trim().toLowerCase();
     const isAdmin = role === 'admin' || cleanEmail === 'dhaanyaorganic1@gmail.com';
 
     const newUser: User = {
-      id: isAdmin ? 'usr-admin-1' : `usr-${Date.now()}`,
+      // Prefer the stable id the backend already tracks for this customer;
+      // only mint a new one as a last-resort fallback if the API didn't return one.
+      id: id || (isAdmin ? 'usr-admin-1' : `usr-${Date.now()}`),
       name: isAdmin ? 'Dhaanya Administrator' : name,
       email,
       mobile: '+91 98765 00000',

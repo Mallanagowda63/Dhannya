@@ -8,7 +8,8 @@
     "build": "node node_modules/vite/bin/vite.js build && node node_modules/esbuild/bin/esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.js",
-    "lint": "node node_modules/typescript/bin/tsc --noEmit"
+    "lint": "node node_modules/typescript/bin/tsc --noEmit",
+    "seed:dev": "node --import tsx scripts/seed-dev-db.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

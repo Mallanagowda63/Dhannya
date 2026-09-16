@@ -12,8 +12,17 @@ export const Footer: React.FC<{
   onNavigateCustomMasala: () => void;
   onNavigateOurStory?: () => void;
   onNavigateFreshMilling?: () => void;
+  onNavigatePrivacyPolicy?: () => void;
+  onNavigateRefundPolicy?: () => void;
   onOpenBrandSystem?: () => void;
-}> = ({ onNavigateHome, onNavigateCustomMasala, onNavigateOurStory, onNavigateFreshMilling }) => {
+}> = ({
+  onNavigateHome,
+  onNavigateCustomMasala,
+  onNavigateOurStory,
+  onNavigateFreshMilling,
+  onNavigatePrivacyPolicy,
+  onNavigateRefundPolicy,
+}) => {
   const { setActiveCategory } = useApp();
 
   return (
@@ -119,12 +128,18 @@ export const Footer: React.FC<{
             >
               Contact
             </button>
-            <span className="hover:text-[#E8B93E] transition cursor-pointer">
+            <button
+              onClick={onNavigatePrivacyPolicy}
+              className="hover:text-[#E8B93E] transition cursor-pointer"
+            >
               Privacy policy
-            </span>
-            <span className="hover:text-[#E8B93E] transition cursor-pointer">
+            </button>
+            <button
+              onClick={onNavigateRefundPolicy}
+              className="hover:text-[#E8B93E] transition cursor-pointer"
+            >
               Refund Policy
-            </span>
+            </button>
           </div>
         </div>
       </div>

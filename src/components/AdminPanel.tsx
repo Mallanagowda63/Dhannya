@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { getApiUrl } from '../utils/apiConfig';
 import { Product, Order, ProductCategory } from '../types';
@@ -90,6 +90,19 @@ export const AdminPanel: React.FC = () => {
   >('dashboard');
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const adminHeaderRef = useRef<HTMLElement>(null);
+  const [adminHeaderHeight, setAdminHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const headerEl = adminHeaderRef.current;
+    if (!headerEl) return;
+    const updateHeight = () => setAdminHeaderHeight(headerEl.offsetHeight);
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(headerEl);
+    return () => observer.disconnect();
+  }, []);
 
   // Email Notification Modal State
   const [activeEmailModal, setActiveEmailModal] = useState<{
@@ -801,7 +814,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   return (
     <div className="min-h-screen bg-[#faf8f4] text-earth flex flex-col font-sans">
       {/* Top Admin Navigation Header */}
-      <header className="bg-stone-900 text-white border-b border-stone-800 sticky top-0 z-40 px-4 sm:px-6 py-3.5 flex items-center justify-between shadow-md">
+      <header
+        ref={adminHeaderRef}
+        className="bg-stone-900 text-white border-b border-stone-800 sticky top-0 z-50 px-4 sm:px-6 py-3.5 flex items-center justify-between shadow-md"
+      >
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -866,9 +882,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
         {/* Admin Sidebar */}
         <aside
-          className={`bg-white border-r border-stone-200/90 w-64 shrink-0 transition-all duration-300 z-40 flex flex-col justify-between fixed md:static inset-y-0 left-0 top-[57px] md:top-0 ${
+          className={`bg-white border-r border-stone-200/90 w-64 shrink-0 transition-all duration-300 z-40 flex flex-col justify-between fixed md:static inset-y-0 left-0 md:top-0 ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:hidden'
           }`}
+          style={{ top: adminHeaderHeight || undefined }}
         >
           <div className="p-4 space-y-1">
             <div className="px-3 py-2 text-[11px] font-extrabold text-stone-600 uppercase tracking-widest">

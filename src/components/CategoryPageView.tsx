@@ -23,7 +23,6 @@ export const CategoryPageView: React.FC<{
 
   const [sortOption, setSortOption] = useState<SortOption>('featured');
   const [selectedConcern, setSelectedConcern] = useState<HealthConcern | 'All'>('All');
-  const [priceRange, setPriceRange] = useState<number>(2000);
   const [onlyInStock, setOnlyInStock] = useState<boolean>(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
 
@@ -58,12 +57,6 @@ export const CategoryPageView: React.FC<{
       const hasStock = p.variants?.some((v) => v.inStock && (p.stock === undefined || p.stock > 0));
       if (!hasStock) return false;
     }
-
-    // Price filter
-    const minPrice = p.variants?.length
-      ? Math.min(...p.variants.map((v) => v.price))
-      : 0;
-    if (minPrice > priceRange) return false;
 
     // Search query match
     if (searchQuery.trim()) {

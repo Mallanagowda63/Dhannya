@@ -7,7 +7,7 @@ export const WhatsAppButton: React.FC = () => {
       href="https://wa.me/919008625716?text=Hi%20Dhaanya%20Organic,%20I%20have%20a%20question%20about%20your%20products!"
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-6 left-6 z-40 bg-olive hover:bg-[#4a4a34] text-white p-3.5 rounded-full shadow-lg flex items-center gap-2 group transition duration-300 transform hover:scale-105 active:scale-95 border border-soft"
+      className="fixed right-4 sm:right-5 bottom-[calc(4rem+env(safe-area-inset-bottom)+16px)] lg:bottom-5 z-50 bg-olive hover:bg-[#4a4a34] text-white p-3.5 rounded-full shadow-lg flex items-center gap-2 group transition duration-300 transform hover:scale-105 active:scale-95 border border-soft"
       title="Chat on WhatsApp"
       aria-label="WhatsApp Support"
     >

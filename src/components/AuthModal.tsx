@@ -137,6 +137,7 @@ export const AuthModal: React.FC = () => {
     setIsVerifyingOtp(true);
     let isVerifiedByServer = false;
     let userNameToUse = name.trim();
+    let userIdFromServer: string | undefined;
 
     try {
       const res = await fetch(getApiUrl('/api/auth/verify-otp'), {
@@ -154,6 +155,7 @@ export const AuthModal: React.FC = () => {
         if (data.success && data.user) {
           isVerifiedByServer = true;
           if (data.user.name) userNameToUse = data.user.name;
+          if (data.user.id) userIdFromServer = data.user.id;
         }
       }
     } catch {
@@ -168,7 +170,7 @@ export const AuthModal: React.FC = () => {
 
     if (isVerifiedByServer || isLocalMatch) {
       const finalName = userNameToUse || email.split('@')[0];
-      login(email.trim(), finalName, 'user');
+      login(email.trim(), finalName, 'user', userIdFromServer);
       showToast(`Welcome back, ${finalName}!`, 'success');
       setIsAuthModalOpen(false);
       resetState();
@@ -209,7 +211,7 @@ export const AuthModal: React.FC = () => {
       const data = await res.json();
 
       if (res.ok && data.success && data.user) {
-        login(data.user.email, data.user.name, 'admin');
+        login(data.user.email, data.user.name, 'admin', data.user.id);
         setIsAdminMode(true);
         setIsAuthModalOpen(false);
         resetState();

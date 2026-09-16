@@ -18250,34 +18250,40 @@ export const MASALA_INGREDIENTS: MasalaIngredient[] = [
 
 export const COUPONS: Coupon[] = [
   {
-    "code": "FESTIVE25",
-    "discountPercent": 25,
-    "minOrderAmount": 499,
-    "description": "Get 25% OFF on all organic products & spices orders above ₹499"
-  },
-  {
     "code": "DHAANYA10",
     "discountPercent": 10,
     "minOrderAmount": 299,
-    "description": "Get 10% OFF on all organic orders above ₹299"
+    "description": "Get 10% OFF on all organic orders above ₹299",
+    "isActive": true,
+    "isFeatured": true
+  },
+  {
+    "code": "FESTIVE25",
+    "discountPercent": 25,
+    "minOrderAmount": 499,
+    "description": "Get 25% OFF on all organic products & spices orders above ₹499",
+    "isActive": true
   },
   {
     "code": "ORGANIC10",
     "discountPercent": 10,
     "minOrderAmount": 499,
-    "description": "Get 10% OFF on all organic orders above ₹499"
+    "description": "Get 10% OFF on all organic orders above ₹499",
+    "isActive": true
   },
   {
     "code": "WELLNESS20",
     "discountPercent": 20,
     "minOrderAmount": 999,
-    "description": "Get 20% OFF on health foods & dry fruits orders above ₹999"
+    "description": "Get 20% OFF on health foods & dry fruits orders above ₹999",
+    "isActive": true
   },
   {
     "code": "CUSTOMMASALA",
     "discountPercent": 15,
     "minOrderAmount": 299,
-    "description": "Get 15% OFF on your custom created masala blend"
+    "description": "Get 15% OFF on your custom created masala blend",
+    "isActive": true
   }
 ];
 

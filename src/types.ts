@@ -85,6 +85,9 @@ export interface SelectedMasalaIngredient {
 
 export interface CustomRecipe {
   id: string;
+  userId?: string | null;
+  userEmail?: string | null;
+  orderId?: string | null;
   name: string;
   items: SelectedMasalaIngredient[];
   totalWeightGrams: number;

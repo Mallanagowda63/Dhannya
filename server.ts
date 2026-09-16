@@ -43,6 +43,35 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === 'production';
 const allowMemoryDbInDev = !isProduction && process.env.USE_MEMORY_DB === 'true';
 
+// Guard against a misconfigured/dev environment ever booting against the
+// production database. Set the *_MONGODB_HOST env vars once dev and prod use
+// separate clusters (see scripts/seed-dev-db.ts for the seeding-side half of this).
+const PRODUCTION_MONGODB_HOST = (process.env.PRODUCTION_MONGODB_HOST || '').trim();
+if (isProduction && PRODUCTION_MONGODB_HOST) {
+  const configuredHost = (() => {
+    try {
+      return new URL((process.env.MONGODB_URI || '').replace('mongodb+srv://', 'https://')).host;
+    } catch {
+      return '';
+    }
+  })();
+  if (configuredHost && configuredHost !== PRODUCTION_MONGODB_HOST && process.env.ALLOW_PROD !== 'true') {
+    console.error(
+      `[BOOT FATAL] NODE_ENV=production but MONGODB_URI host "${configuredHost}" does not match ` +
+        `PRODUCTION_MONGODB_HOST "${PRODUCTION_MONGODB_HOST}". Set ALLOW_PROD=true to override intentionally.`
+    );
+    process.exit(1);
+  }
+}
+
+// Traceable write logging: every seed/destructive DB write should tag which
+// route or script triggered it, so an incident like an empty collection at
+// startup can be traced back to a specific call instead of guessed at.
+function logDbWrite(source: string, action: string, details?: Record<string, unknown>) {
+  const detailStr = details ? ' ' + JSON.stringify(details) : '';
+  console.log(`[DB WRITE] source=${source} action=${action}${detailStr}`);
+}
+
 const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
 
 // SHA-256 Hashed Admin Password Comparison (No Plaintext Secrets Stored)
@@ -159,6 +188,7 @@ const OrderSchema = new mongoose.Schema(
   {
     id: { type: String, required: true, unique: true },
     userId: { type: String, default: 'usr-101' },
+    userEmail: { type: String, default: null },
     items: [mongoose.Schema.Types.Mixed],
     shippingAddress: mongoose.Schema.Types.Mixed,
     deliverySlot: String,
@@ -179,6 +209,9 @@ const OrderSchema = new mongoose.Schema(
 
 const CustomRecipeSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
+  userId: { type: String, default: null },
+  userEmail: { type: String, default: null },
+  orderId: { type: String, default: null },
   recipeName: String,
   items: [mongoose.Schema.Types.Mixed],
   totalWeightGrams: Number,
@@ -375,7 +408,15 @@ export async function ensureDbConnected(): Promise<boolean> {
   }
 }
 
-// Connect to MongoDB and seed initial data ONLY IF collection is completely empty
+// Connect to MongoDB and report collection health. This is READ-ONLY --
+// it must never write to the database. Seeding is a separate, explicit,
+// manually-confirmed operation: see scripts/seed-dev-db.ts.
+//
+// (Incident note: this function used to insertMany() hardcoded sample data
+// into any collection it found empty on every server boot. That is almost
+// certainly how real Orders/Customers/CustomRecipe documents got replaced
+// with fake placeholder rows after an unrelated wipe emptied those
+// collections. Never reintroduce a write here.)
 export async function initDatabase() {
   const connected = await ensureDbConnected();
 
@@ -394,102 +435,37 @@ export async function initDatabase() {
   }
 
   try {
-    // 1. Seed Products if empty
-    const productCount = await ProductModel.countDocuments();
-    if (productCount === 0) {
-      console.log(`[DB SEED] Seeding ${PRODUCTS.length} initial products...`);
-      await ProductModel.insertMany(PRODUCTS);
-      console.log(`[DB SEED] ✅ Products seeded successfully.`);
-    } else {
-      console.log(`[DB] Products collection has ${productCount} documents; skipping seed.`);
-    }
+    const counts = {
+      products: await ProductModel.countDocuments(),
+      orders: await OrderModel.countDocuments(),
+      addresses: await AddressModel.countDocuments(),
+      customers: await CustomerModel.countDocuments(),
+      categories: await CategoryModel.countDocuments(),
+      coupons: await CouponModel.countDocuments(),
+      reviews: await ReviewModel.countDocuments(),
+      customRecipes: await CustomRecipeModel.countDocuments(),
+    };
 
-    // 2. Seed Orders if empty
-    const orderCount = await OrderModel.countDocuments();
-    if (orderCount === 0) {
-      console.log(`[DB SEED] Seeding initial sample order...`);
-      await OrderModel.insertMany(liveOrders);
-      console.log(`[DB SEED] ✅ Orders seeded successfully.`);
-    } else {
-      console.log(`[DB] Orders collection has ${orderCount} documents; skipping seed.`);
-    }
+    console.log(
+      `[DB] Collection counts -> products=${counts.products} orders=${counts.orders} ` +
+        `addresses=${counts.addresses} customers=${counts.customers} categories=${counts.categories} ` +
+        `coupons=${counts.coupons} reviews=${counts.reviews} customRecipes=${counts.customRecipes}`
+    );
 
-    // 3. Seed Addresses if empty
-    const addressCount = await AddressModel.countDocuments();
-    if (addressCount === 0) {
-      console.log(`[DB SEED] Seeding initial sample addresses...`);
-      await AddressModel.insertMany(liveAddresses);
-      console.log(`[DB SEED] ✅ Addresses seeded successfully.`);
-    } else {
-      console.log(`[DB] Addresses collection has ${addressCount} documents; skipping seed.`);
-    }
+    const unexpectedlyEmpty = Object.entries(counts)
+      .filter(([, count]) => count === 0)
+      .map(([name]) => name);
 
-    // 4. Seed Customers if empty
-    const customerCount = await CustomerModel.countDocuments();
-    if (customerCount === 0) {
-      console.log(`[DB SEED] Seeding initial customers...`);
-      await CustomerModel.insertMany(liveCustomers);
-      console.log(`[DB SEED] ✅ Customers seeded successfully.`);
-    } else {
-      console.log(`[DB] Customers collection has ${customerCount} documents; skipping seed.`);
-    }
-
-    // 5. Seed Categories if empty
-    const categoryCount = await CategoryModel.countDocuments();
-    if (categoryCount === 0) {
-      console.log(`[DB SEED] Seeding initial categories...`);
-      await CategoryModel.insertMany(CATEGORIES);
-      console.log(`[DB SEED] ✅ Categories seeded successfully.`);
-    } else {
-      console.log(`[DB] Categories collection has ${categoryCount} documents; skipping seed.`);
-    }
-
-    // 6. Seed / Sync Coupons
-    for (const c of liveCoupons) {
-      await CouponModel.updateOne({ code: c.code }, { $set: c }, { upsert: true });
-    }
-    console.log(`[DB SEED] ✅ Coupons synced to MongoDB successfully.`);
-
-    // 7. Seed Reviews if empty
-    const reviewCount = await ReviewModel.countDocuments();
-    if (reviewCount === 0) {
-      console.log(`[DB SEED] Seeding initial reviews...`);
-      await ReviewModel.insertMany(liveReviews);
-      console.log(`[DB SEED] ✅ Reviews seeded successfully.`);
-    } else {
-      console.log(`[DB] Reviews collection has ${reviewCount} documents; skipping seed.`);
-    }
-
-    // 8. Seed Custom Recipe sample if empty
-    const recipeCount = await CustomRecipeModel.countDocuments();
-    if (recipeCount === 0) {
-      console.log(`[DB SEED] Seeding sample custom recipe...`);
-      const sampleRecipe = {
-        id: 'rec-sample-1',
-        recipeName: 'My Signature Royal Kitchen Garam Masala',
-        items: [
-          { id: 'ing-1', name: 'Coriander Seeds (Dhaniya)', weightGrams: 200, cost: 50 },
-          { id: 'ing-2', name: 'Cumin Seeds (Jeera)', weightGrams: 150, cost: 60 },
-          { id: 'ing-3', name: 'Black Cardamom (Badi Elaichi)', weightGrams: 50, cost: 90 },
-        ],
-        totalWeightGrams: 400,
-        ingredientCost: 200,
-        roastingCharge: 30,
-        subtotal: 230,
-        discount: 0,
-        totalPrice: 230,
-        createdAt: new Date().toISOString(),
-      };
-      await CustomRecipeModel.create(sampleRecipe);
-      console.log(`[DB SEED] ✅ Custom recipes seeded successfully.`);
-    } else {
-      console.log(`[DB] Custom recipes collection has ${recipeCount} documents; skipping seed.`);
+    if (unexpectedlyEmpty.length > 0) {
+      console.warn(
+        `[DB WARNING] The following collections are EMPTY: ${unexpectedlyEmpty.join(', ')}. ` +
+          'If this is unexpected (data existed before), STOP and investigate before doing anything else -- ' +
+          'do not run any seed script against this URI until you have confirmed this is not a data-loss ' +
+          'incident. See scripts/seed-dev-db.ts if you do intend to seed a fresh dev database.'
+      );
     }
   } catch (err: any) {
-    console.error('[DB SEED ERROR] Exception initializing database:', err.message);
-    if (isProduction) {
-      process.exit(1);
-    }
+    console.error('[DB ERROR] Exception while checking collection counts:', err.message);
   }
 }
 
@@ -553,36 +529,23 @@ app.get('/api/db-status', async (req, res) => {
 });
 
 // Force seed database endpoint (Admin reset)
-app.post('/api/seed', async (req, res) => {
-  try {
-    const connected = await ensureDbConnected();
-    if (!connected) {
-      return res.status(503).json({
-        success: false,
-        message: 'MongoDB is currently disconnected.',
-      });
-    }
-
-    await ProductModel.deleteMany({});
-    await ProductModel.insertMany(PRODUCTS);
-
-    await OrderModel.deleteMany({});
-    await OrderModel.insertMany(liveOrders);
-
-    await CategoryModel.deleteMany({});
-    await CategoryModel.insertMany(CATEGORIES);
-
-    await CouponModel.deleteMany({});
-    await CouponModel.insertMany(liveCoupons);
-
-    res.json({
-      success: true,
-      message: 'Successfully re-seeded database in MongoDB Atlas!',
-      productCount: PRODUCTS.length,
-    });
-  } catch (error: any) {
-    res.status(500).json({ success: false, message: error.message });
-  }
+// DISABLED (data-loss incident): this route used to unconditionally
+// deleteMany({}) Products/Orders/Categories/Coupons and reinsert hardcoded
+// data -- with NO authentication check and NO confirmation of any kind, and
+// with the Orders reseed source being a hardcoded EMPTY array, so any call
+// to this route permanently destroyed all real order data. This is the
+// prime suspect for how the live Orders/Customers/CustomRecipe collections
+// were found empty. Left as a stub that always refuses, on purpose --
+// re-seeding now only happens via scripts/seed-dev-db.ts, run manually,
+// which refuses to touch a production URI.
+app.post('/api/seed', async (_req, res) => {
+  console.error('[SECURITY] Blocked call to disabled destructive /api/seed endpoint.');
+  res.status(410).json({
+    success: false,
+    message:
+      'This endpoint has been permanently disabled after a data-loss incident. ' +
+      'Use scripts/seed-dev-db.ts (manual, --confirm required) to seed a dev database instead.',
+  });
 });
 
 // Send OTP Endpoint
@@ -704,20 +667,21 @@ app.post('/api/auth/verify-otp', async (req, res) => {
     }
 
     const customerName = name || (storedData && storedData.name) || cleanEmail.split('@')[0];
-    const userId = `usr-${Math.floor(100 + Math.random() * 900)}`;
-
-    const userObj = {
-      id: userId,
-      name: customerName,
-      email: cleanEmail,
-      mobile: '',
-    };
-
     const nowIso = new Date().toISOString();
+
+    // Reuse the existing customer's stable id across sessions instead of
+    // minting a new random one on every login -- a fresh id each time
+    // orphans that customer's past orders/addresses/recipes from a true FK lookup.
+    let userId = `usr-${Math.floor(100 + Math.random() * 900)}`;
 
     const connected = await ensureDbConnected();
     if (connected) {
       try {
+        const existingCustomer = await CustomerModel.findOne({ email: cleanEmail }).lean();
+        if (existingCustomer && (existingCustomer as any).id) {
+          userId = (existingCustomer as any).id;
+        }
+
         await CustomerModel.updateOne(
           { email: cleanEmail },
           {
@@ -731,10 +695,18 @@ app.post('/api/auth/verify-otp', async (req, res) => {
           },
           { upsert: true }
         );
+        logDbWrite('POST /api/auth/verify-otp', 'customer upsert', { email: cleanEmail, userId });
       } catch (e) {
         console.error('[AUTH ERROR] Error saving customer to DB:', e);
       }
     }
+
+    const userObj = {
+      id: userId,
+      name: customerName,
+      email: cleanEmail,
+      mobile: '',
+    };
 
     return res.json({
       success: true,
@@ -937,9 +909,9 @@ app.post('/api/admin/products', async (req, res) => {
     const p = req.body;
     const newProduct: Product = {
       id: p.id || `prod-${Date.now()}`,
-      name: p.name,
+      name: String(p.name || '').trim(),
       category: p.category,
-      description: p.description || '',
+      description: String(p.description || '').trim(),
       image: p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80',
       gallery: p.gallery || [p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80'],
       variants: p.variants || [{ weight: '500g', price: p.price || 299, originalPrice: p.price ? p.price + 50 : 350, inStock: true }],
@@ -1493,9 +1465,18 @@ app.delete('/api/admin/custom-masalas/:id', async (req, res) => {
 
 app.get('/api/recipes', async (req, res) => {
   try {
+    const { userId, email } = req.query;
+    let query: any = {};
+    if (userId || email) {
+      const conditions: any[] = [];
+      if (userId) conditions.push({ userId: String(userId) });
+      if (email) conditions.push({ userEmail: String(email).trim().toLowerCase() });
+      query = { $or: conditions };
+    }
+
     const connected = await ensureDbConnected();
     if (connected) {
-      const dbRecipes = await CustomRecipeModel.find().sort({ createdAt: -1 }).lean();
+      const dbRecipes = await CustomRecipeModel.find(query).sort({ createdAt: -1 }).lean();
       return res.json({ success: true, count: dbRecipes.length, data: dbRecipes });
     } else if (allowMemoryDbInDev) {
       return res.json({ success: true, count: 0, data: [] });
@@ -1512,6 +1493,9 @@ app.post('/api/recipes', async (req, res) => {
     const recipeData = req.body;
     const newRecipe = {
       id: recipeData.id || `rec-${Date.now()}`,
+      userId: recipeData.userId || null,
+      userEmail: recipeData.userEmail ? String(recipeData.userEmail).trim().toLowerCase() : null,
+      orderId: recipeData.orderId || null,
       recipeName: recipeData.name || recipeData.recipeName || 'Custom Masala Blend',
       items: recipeData.items || [],
       totalWeightGrams: recipeData.totalWeightGrams || 250,
@@ -1525,6 +1509,7 @@ app.post('/api/recipes', async (req, res) => {
 
     if (connected) {
       await CustomRecipeModel.updateOne({ id: newRecipe.id }, { $set: newRecipe }, { upsert: true });
+      logDbWrite('POST /api/recipes', 'recipe upsert', { id: newRecipe.id, userId: newRecipe.userId });
     }
 
     res.json({ success: true, message: 'Custom recipe saved to MongoDB!', data: newRecipe });
@@ -1665,6 +1650,7 @@ app.post('/api/orders', async (req, res) => {
     const newOrder = {
       id: orderId,
       userId: userId || 'usr-101',
+      userEmail: userEmail ? String(userEmail).trim().toLowerCase() : (cleanAddress?.email || '').trim().toLowerCase(),
       items: cleanItems,
       shippingAddress: cleanAddress,
       deliverySlot: deliverySlot || 'Standard Delivery',
@@ -1683,6 +1669,7 @@ app.post('/api/orders', async (req, res) => {
 
     if (connected) {
       await OrderModel.create(newOrder as any);
+      logDbWrite('POST /api/orders', 'order create', { orderId, userId: newOrder.userId });
 
       if (shippingAddress) {
         try {
@@ -1708,6 +1695,7 @@ app.post('/api/orders', async (req, res) => {
             },
             { upsert: true }
           );
+          logDbWrite('POST /api/orders', 'address upsert', { addrId, userId });
         } catch (e: any) {
           console.error('[ORDER ERROR] Error saving address to MongoDB:', e.message);
         }
@@ -1734,6 +1722,7 @@ app.post('/api/orders', async (req, res) => {
             },
             { upsert: true }
           );
+          logDbWrite('POST /api/orders', 'customer upsert', { email: custEmail, userId });
         } catch (custErr: any) {
           console.error('[ORDER ERROR] Error updating customer in MongoDB:', custErr.message);
         }
