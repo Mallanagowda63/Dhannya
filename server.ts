@@ -89,6 +89,14 @@ let mailTransporter: any = null;
 const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
 const cleanPass = (process.env.SMTP_PASS || 'ydxgavhwwfetjiuv').trim().replace(/\s+/g, '');
 
+// Exposed via /api/health so SMTP delivery can be confirmed with one curl
+// after a deploy, instead of digging through log output by hand.
+let smtpStatus: { state: 'pending' | 'verified' | 'failed'; user: string; error: string | null } = {
+  state: 'pending',
+  user: cleanUser,
+  error: null,
+};
+
 try {
   mailTransporter = nodemailer.createTransport({
     pool: true, // Reuse persistent SMTP socket connections across requests
@@ -112,12 +120,15 @@ try {
   mailTransporter.verify((err: any) => {
     if (err) {
       console.warn('[SMTP WARN] Connection pool verification warning:', err.message);
+      smtpStatus = { state: 'failed', user: cleanUser, error: err.message };
     } else {
       console.log(`[SMTP] ✅ Persistent SMTP connection pool verified & warmed up for ${cleanUser}`);
+      smtpStatus = { state: 'verified', user: cleanUser, error: null };
     }
   });
 } catch (e: any) {
   console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
+  smtpStatus = { state: 'failed', user: cleanUser, error: e.message };
 }
 // In-memory duplicate email protection cache (cleared after 60 seconds)
 const recentEmailCache = new Set<string>();
@@ -507,12 +518,14 @@ app.get('/api/health', async (req, res) => {
       status: 'unhealthy',
       database: 'disconnected',
       dbConnected: false,
+      smtp: smtpStatus,
     });
   }
   return res.json({
     status: 'healthy',
     database: connected ? 'connected' : 'in-memory-dev',
     dbConnected: connected,
+    smtp: smtpStatus,
   });
 });
 
