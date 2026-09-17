@@ -97,46 +97,79 @@ let smtpStatus: { state: 'pending' | 'verified' | 'failed'; user: string; error:
   error: null,
 };
 
-try {
-  mailTransporter = nodemailer.createTransport({
-    pool: true, // Reuse persistent SMTP socket connections across requests
-    maxConnections: 5,
-    maxMessages: 100,
-    rateDelta: 1000,
-    rateLimit: 5,
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    // Render's container network can't route the IPv6 address Node's default
-    // DNS resolution returns for smtp.gmail.com (confirmed via a live
-    // "connect ENETUNREACH 2607:..." failure) -- force IPv4 to match what
-    // actually has egress. `family` is a real passthrough socket option
-    // nodemailer forwards to Node's net/tls connect, just not declared in
-    // its TS types, hence the cast.
-    family: 4,
-    connectionTimeout: 5000,
-    greetingTimeout: 5000,
-    socketTimeout: 5000,
-    auth: {
-      user: cleanUser,
-      pass: cleanPass,
-    },
-  } as any);
+const SMTP_HOSTNAME = 'smtp.gmail.com';
 
-  // Verify and warm up persistent connection pool asynchronously on startup
-  mailTransporter.verify((err: any) => {
-    if (err) {
-      console.warn('[SMTP WARN] Connection pool verification warning:', err.message);
-      smtpStatus = { state: 'failed', user: cleanUser, error: err.message };
-    } else {
-      console.log(`[SMTP] ✅ Persistent SMTP connection pool verified & warmed up for ${cleanUser}`);
-      smtpStatus = { state: 'verified', user: cleanUser, error: null };
+async function initMailTransporter() {
+  // Render's container network can't route the IPv6 address that Gmail's
+  // SMTP host also resolves to (confirmed via a live "connect ENETUNREACH
+  // 2607:..." failure). nodemailer has no `family` option -- its own DNS
+  // helper (lib/shared/index.js) resolves BOTH A and AAAA records and picks
+  // one at random each time (`addresses[Math.floor(Math.random() * ...)]`),
+  // so it intermittently landed on the unreachable IPv6 address. That
+  // resolution logic is skipped entirely when `host` is already a literal
+  // IP (`net.isIP(options.host)`), so we resolve the A record ourselves and
+  // connect to that IP directly, with `servername` set so TLS SNI and
+  // certificate hostname validation still target the real hostname.
+  let connectHost: string = SMTP_HOSTNAME;
+  try {
+    let addresses: string[];
+    try {
+      addresses = await dns.promises.resolve4(SMTP_HOSTNAME);
+    } catch {
+      // Same restricted-DNS-environment fallback used for the MongoDB
+      // connection below -- some networks (including this local dev
+      // machine) can't reach the default resolver for certain lookups.
+      dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
+      addresses = await dns.promises.resolve4(SMTP_HOSTNAME);
     }
-  });
-} catch (e: any) {
-  console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
-  smtpStatus = { state: 'failed', user: cleanUser, error: e.message };
+    if (addresses.length > 0) {
+      connectHost = addresses[Math.floor(Math.random() * addresses.length)];
+    }
+  } catch (e: any) {
+    console.warn('[SMTP WARN] Could not pre-resolve IPv4 address for smtp.gmail.com, falling back to hostname:', e.message);
+  }
+
+  try {
+    mailTransporter = nodemailer.createTransport({
+      pool: true, // Reuse persistent SMTP socket connections across requests
+      maxConnections: 5,
+      maxMessages: 100,
+      rateDelta: 1000,
+      rateLimit: 5,
+      host: connectHost,
+      // `servername` is honored by nodemailer's connection/TLS logic (see
+      // lib/shared/index.js resolveHostname) but only declared on its
+      // internal ResolveHostnameOptions type, not the public SMTPTransport
+      // options -- hence the cast below.
+      servername: SMTP_HOSTNAME,
+      port: 465,
+      secure: true,
+      connectionTimeout: 5000,
+      greetingTimeout: 5000,
+      socketTimeout: 5000,
+      auth: {
+        user: cleanUser,
+        pass: cleanPass,
+      },
+    } as any);
+
+    // Verify and warm up persistent connection pool asynchronously on startup
+    mailTransporter.verify((err: any) => {
+      if (err) {
+        console.warn('[SMTP WARN] Connection pool verification warning:', err.message);
+        smtpStatus = { state: 'failed', user: cleanUser, error: err.message };
+      } else {
+        console.log(`[SMTP] ✅ Persistent SMTP connection pool verified & warmed up for ${cleanUser}`);
+        smtpStatus = { state: 'verified', user: cleanUser, error: null };
+      }
+    });
+  } catch (e: any) {
+    console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
+    smtpStatus = { state: 'failed', user: cleanUser, error: e.message };
+  }
 }
+
+initMailTransporter();
 // In-memory duplicate email protection cache (cleared after 60 seconds)
 const recentEmailCache = new Set<string>();
 
