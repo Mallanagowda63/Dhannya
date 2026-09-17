@@ -129,8 +129,8 @@ async function initMailTransporter() {
     console.warn('[SMTP WARN] Could not pre-resolve IPv4 address for smtp.gmail.com, falling back to hostname:', e.message);
   }
 
-  try {
-    mailTransporter = nodemailer.createTransport({
+  const buildTransport = (port: number, secure: boolean) =>
+    nodemailer.createTransport({
       pool: true, // Reuse persistent SMTP socket connections across requests
       maxConnections: 5,
       maxMessages: 100,
@@ -142,30 +142,47 @@ async function initMailTransporter() {
       // internal ResolveHostnameOptions type, not the public SMTPTransport
       // options -- hence the cast below.
       servername: SMTP_HOSTNAME,
-      port: 465,
-      secure: true,
-      connectionTimeout: 5000,
-      greetingTimeout: 5000,
-      socketTimeout: 5000,
+      port,
+      secure,
+      requireTLS: !secure,
+      connectionTimeout: 8000,
+      greetingTimeout: 8000,
+      socketTimeout: 8000,
       auth: {
         user: cleanUser,
         pass: cleanPass,
       },
     } as any);
 
-    // Verify and warm up persistent connection pool asynchronously on startup
-    mailTransporter.verify((err: any) => {
-      if (err) {
-        console.warn('[SMTP WARN] Connection pool verification warning:', err.message);
-        smtpStatus = { state: 'failed', user: cleanUser, error: err.message };
-      } else {
-        console.log(`[SMTP] ✅ Persistent SMTP connection pool verified & warmed up for ${cleanUser}`);
-        smtpStatus = { state: 'verified', user: cleanUser, error: null };
-      }
+  const verify = (transport: any) =>
+    new Promise<void>((resolve, reject) => {
+      transport.verify((err: any) => (err ? reject(err) : resolve()));
     });
-  } catch (e: any) {
-    console.error('[SMTP ERROR] Failed to initialize nodemailer:', e.message);
-    smtpStatus = { state: 'failed', user: cleanUser, error: e.message };
+
+  // Try port 465 (SMTPS) first; some cloud hosts throttle/block it outbound
+  // even when the IPv4 route itself is fine, so fall back to 587 (STARTTLS)
+  // on failure rather than leaving mail dead for the whole session.
+  try {
+    const transport465 = buildTransport(465, true);
+    await verify(transport465);
+    mailTransporter = transport465;
+    console.log(`[SMTP] ✅ Verified via port 465 for ${cleanUser}`);
+    smtpStatus = { state: 'verified', user: cleanUser, error: null };
+    return;
+  } catch (err465: any) {
+    console.warn('[SMTP WARN] Port 465 failed, trying port 587 (STARTTLS):', err465.message);
+  }
+
+  try {
+    const transport587 = buildTransport(587, false);
+    await verify(transport587);
+    mailTransporter = transport587;
+    console.log(`[SMTP] ✅ Verified via port 587 (STARTTLS fallback) for ${cleanUser}`);
+    smtpStatus = { state: 'verified', user: cleanUser, error: null };
+  } catch (err587: any) {
+    console.error('[SMTP ERROR] Both port 465 and 587 failed:', err587.message);
+    smtpStatus = { state: 'failed', user: cleanUser, error: `port 465 and 587 both failed: ${err587.message}` };
+    mailTransporter = null;
   }
 }
 
