@@ -177,6 +177,226 @@ async function sendResendEmail(params: {
   }
 }
 
+// ==================== Branded transactional order email template ====================
+// Single reusable template for every stage of the order lifecycle (placed,
+// confirmed, dispatched, delivered, cancelled) so all customer-facing emails
+// share one consistent, on-brand design instead of each stage having its own
+// ad-hoc plain-text or HTML snippet.
+
+function escapeHtml(input: unknown): string {
+  return String(input ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+type OrderEmailStatusKey = 'placed' | 'confirmed' | 'dispatched' | 'delivered' | 'cancelled' | 'generic';
+
+const ORDER_EMAIL_STATUS_CONFIG: Record<
+  OrderEmailStatusKey,
+  { heading: string; badgeIcon: string; badgeBg: string; accentColor: string; intro: string }
+> = {
+  placed: {
+    heading: 'Order Confirmed!',
+    badgeIcon: '&#10003;',
+    badgeBg: '#3E4B32',
+    accentColor: '#3E4B32',
+    intro: "Thank you for shopping with Dhaanya! We've received your order and it's being prepared with care.",
+  },
+  confirmed: {
+    heading: 'Order Confirmed!',
+    badgeIcon: '&#10003;',
+    badgeBg: '#3E4B32',
+    accentColor: '#3E4B32',
+    intro: 'Great news — your order has been confirmed and is being prepared.',
+  },
+  dispatched: {
+    heading: 'Order On Its Way!',
+    badgeIcon: '&#10148;',
+    badgeBg: '#A9542B',
+    accentColor: '#A9542B',
+    intro: 'Your order has been dispatched and is on its way to you.',
+  },
+  delivered: {
+    heading: 'Order Delivered!',
+    badgeIcon: '&#10003;',
+    badgeBg: '#C89211',
+    accentColor: '#C89211',
+    intro: 'Your order has been delivered. We hope you enjoy your Dhaanya products!',
+  },
+  cancelled: {
+    heading: 'Order Cancelled',
+    badgeIcon: '&#10005;',
+    badgeBg: '#78716c',
+    accentColor: '#78716c',
+    intro: 'Your order has been cancelled as requested.',
+  },
+  generic: {
+    heading: 'Order Status Updated',
+    badgeIcon: '&#8505;',
+    badgeBg: '#3E4B32',
+    accentColor: '#3E4B32',
+    intro: "There's an update on your order status.",
+  },
+};
+
+interface OrderEmailParams {
+  statusKey: OrderEmailStatusKey;
+  customerName: string;
+  orderId: string;
+  total: number;
+  paymentMethod?: string;
+  items?: { name: string; variantWeight?: string; quantity: number; price: number }[];
+  deliveryAddressLines?: string[];
+  estimatedDelivery?: string;
+}
+
+function renderOrderStatusEmailHtml(params: OrderEmailParams): string {
+  const cfg = ORDER_EMAIL_STATUS_CONFIG[params.statusKey];
+
+  const itemsRows = (params.items || [])
+    .map(
+      (it) => `
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid #ECE6D6;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#2A2620;">
+            ${escapeHtml(it.name)}${it.variantWeight ? ` <span style="color:#8a8272;">(${escapeHtml(it.variantWeight)})</span>` : ''}
+            <br /><span style="color:#8a8272;font-size:12px;">Qty: ${it.quantity}</span>
+          </td>
+          <td style="padding:10px 0;border-bottom:1px solid #ECE6D6;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#2A2620;text-align:right;white-space:nowrap;">
+            &#8377;${it.price * it.quantity}
+          </td>
+        </tr>`
+    )
+    .join('');
+
+  const detailRows: [string, string][] = [
+    ['Order ID', `#${params.orderId}`],
+    ['Total Amount', `₹${params.total}`],
+    ...(params.paymentMethod ? ([['Payment Method', params.paymentMethod]] as [string, string][]) : []),
+    ...(params.estimatedDelivery ? ([['Estimated Delivery', params.estimatedDelivery]] as [string, string][]) : []),
+  ];
+
+  const detailRowsHtml = detailRows
+    .map(
+      ([label, value]) => `
+        <tr>
+          <td style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#6b6355;">${escapeHtml(label)}</td>
+          <td style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#2A2620;font-weight:bold;text-align:right;">${escapeHtml(value)}</td>
+        </tr>`
+    )
+    .join('');
+
+  const addressHtml = params.deliveryAddressLines?.length
+    ? `<p style="margin:4px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#2A2620;line-height:1.5;">${params.deliveryAddressLines
+        .map(escapeHtml)
+        .join('<br/>')}</p>`
+    : '';
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>${escapeHtml(cfg.heading)}</title>
+</head>
+<body style="margin:0;padding:0;background-color:#FAF6ED;">
+  <div style="display:none;max-height:0;overflow:hidden;">${escapeHtml(cfg.intro)}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAF6ED;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #E5DFC9;">
+          <tr>
+            <td style="background-color:${cfg.accentColor};padding:24px 32px;text-align:center;">
+              <span style="font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:bold;color:#F4ECD8;letter-spacing:1px;">DHAANYA</span>
+              <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#F4ECD8;opacity:0.85;margin-top:2px;letter-spacing:2px;text-transform:uppercase;">Organic &amp; Natural Foods</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 32px 8px;text-align:center;">
+              <div style="width:56px;height:56px;line-height:56px;border-radius:50%;background-color:${cfg.badgeBg};color:#ffffff;font-size:26px;font-weight:bold;margin:0 auto 16px;">${cfg.badgeIcon}</div>
+              <h1 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:24px;color:#2A2620;">${escapeHtml(cfg.heading)}</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 32px 24px;">
+              <p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#2A2620;line-height:1.6;">
+                Hi <strong>${escapeHtml(params.customerName)}</strong>,
+              </p>
+              <p style="margin:0 0 24px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#2A2620;line-height:1.6;">
+                ${escapeHtml(cfg.intro)}
+              </p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAF8F4;border:1px solid #ECE6D6;border-radius:12px;">
+                <tr><td style="padding:16px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                    ${detailRowsHtml}
+                  </table>
+                </td></tr>
+                ${
+                  itemsRows
+                    ? `<tr><td style="padding:0 16px;">
+                  <div style="border-top:1px solid #ECE6D6;margin:0 0 4px;"></div>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                    ${itemsRows}
+                  </table>
+                </td></tr>`
+                    : ''
+                }
+                ${
+                  addressHtml
+                    ? `<tr><td style="padding:12px 16px 16px;">
+                  <div style="border-top:1px solid #ECE6D6;margin:0 0 12px;"></div>
+                  <p style="margin:0 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#6b6355;text-transform:uppercase;letter-spacing:0.5px;">Delivery Address</p>
+                  ${addressHtml}
+                </td></tr>`
+                    : ''
+                }
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#F4ECD8;padding:24px 32px;text-align:center;border-top:1px solid #E5DFC9;">
+              <p style="margin:0 0 6px;font-family:Georgia,'Times New Roman',serif;font-size:15px;font-weight:bold;color:#2A2620;">Dhaanya</p>
+              <p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6b6355;">Doddakallasandra, Bengaluru - 560062</p>
+              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6b6355;line-height:1.6;">
+                Questions? Reply to this email or WhatsApp us at <a href="https://wa.me/918792889647" style="color:#3E4B32;text-decoration:none;font-weight:bold;">+91 8792889647</a>.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+function renderOrderStatusEmailText(params: OrderEmailParams): string {
+  const cfg = ORDER_EMAIL_STATUS_CONFIG[params.statusKey];
+  const lines: string[] = [
+    `Hi ${params.customerName},`,
+    '',
+    cfg.intro,
+    '',
+    `Order ID: #${params.orderId}`,
+    `Total Amount: ₹${params.total}`,
+  ];
+  if (params.paymentMethod) lines.push(`Payment Method: ${params.paymentMethod}`);
+  if (params.estimatedDelivery) lines.push(`Estimated Delivery: ${params.estimatedDelivery}`);
+  if (params.items?.length) {
+    lines.push('', 'Items:');
+    for (const it of params.items) {
+      lines.push(`  - ${it.name}${it.variantWeight ? ` (${it.variantWeight})` : ''} x${it.quantity} - ₹${it.price * it.quantity}`);
+    }
+  }
+  if (params.deliveryAddressLines?.length) {
+    lines.push('', 'Delivery Address:', ...params.deliveryAddressLines);
+  }
+  lines.push('', 'Questions? Reply to this email or WhatsApp us at +91 8792889647.', '', 'Warm regards,', 'Team Dhaanya');
+  return lines.join('\n');
+}
+
 // In-memory duplicate email protection cache (cleared after 60 seconds)
 const recentEmailCache = new Set<string>();
 
@@ -1828,26 +2048,28 @@ app.post('/api/orders', async (req, res) => {
       const dupKey = `order-confirm-${orderId}-${targetEmail}`;
       if (shouldSendEmail(dupKey)) {
         const t0_mail_start = Date.now();
+        const emailParams: OrderEmailParams = {
+          statusKey: 'placed',
+          customerName: shippingAddress?.fullName || 'Valued Customer',
+          orderId,
+          total: Number(total) || 0,
+          paymentMethod: paymentMethod || 'COD',
+          items: (cleanItems || []).map((it: any) => ({
+            name: it.name || 'Item',
+            variantWeight: it.variantWeight,
+            quantity: Number(it.quantity) || 1,
+            price: Number(it.price) || 0,
+          })),
+          deliveryAddressLines: cleanAddress
+            ? [cleanAddress.fullName, cleanAddress.street, `${cleanAddress.city}, ${cleanAddress.state} - ${cleanAddress.pincode}`].filter(Boolean)
+            : undefined,
+          estimatedDelivery: newOrder.estimatedDelivery,
+        };
         sendResendEmail({
           to: targetEmail,
-          subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
-          text: `Hello ${shippingAddress?.fullName || 'Valued Customer'},\n\nThank you for shopping with Dhannya Organic! Your order #${orderId} has been confirmed.\n\nTotal: ₹${total}\nPayment Method: ${paymentMethod || 'COD'}\n\nWarm regards,\nTeam Dhannya`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; border: 1px solid #e2ded4; border-radius: 16px; background-color: #ffffff; color: #2d2b26;">
-              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic & Custom Masala</h2>
-              <p style="margin-top: 16px;">Hello <strong>${shippingAddress?.fullName || 'Valued Customer'}</strong>,</p>
-              <p>Thank you for shopping with Dhannya! Your order <strong>#${orderId}</strong> has been placed.</p>
-              <div style="background-color: #faf8f4; border: 1px solid #e7e5e4; padding: 16px; border-radius: 12px; margin: 20px 0;">
-                <p><strong>Order ID:</strong> #${orderId}</p>
-                <p><strong>Total Amount:</strong> ₹${total}</p>
-                <p><strong>Payment Method:</strong> ${paymentMethod || 'COD'}</p>
-              </div>
-            </div>
-          `,
-          headers: {
-            'X-Priority': '1',
-            'Importance': 'high',
-          },
+          subject: `🎉 Order Confirmed #${orderId} - Dhaanya`,
+          text: renderOrderStatusEmailText(emailParams),
+          html: renderOrderStatusEmailHtml(emailParams),
         }).then((result) => {
           const mailDuration = Date.now() - t0_mail_start;
           if (result.success) {
@@ -2226,28 +2448,60 @@ app.get('/api/admin/analytics', async (req, res) => {
 function buildOrderStatusEmail(status: string, order: any) {
   const customerName = order?.shippingAddress?.fullName || 'Valued Customer';
   const orderId = order?.id || 'ORD-10001';
-  const totalAmount = order?.total || 0;
-  const deliveryAddress = order?.shippingAddress
-    ? `${order.shippingAddress.fullName}\n${order.shippingAddress.street}, ${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.pincode}`
-    : 'Registered Address';
+  const totalAmount = Number(order?.total) || 0;
+  const deliveryAddressLines = order?.shippingAddress
+    ? [
+        order.shippingAddress.fullName,
+        order.shippingAddress.street,
+        `${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.pincode}`,
+      ].filter(Boolean)
+    : undefined;
 
   const recipientEmail = (order?.shippingAddress?.email || order?.userEmail || order?.customerEmail || order?.email || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
 
-  let subject = `Order Status Update - #${orderId} | Dhannya Organic`;
-  let body = `Hi ${customerName},\n\nYour Dhannya order #${orderId} status has been updated to ${status}.\n\nTotal Amount: ₹${totalAmount}\n\nWarm regards,\nTeam Dhannya`;
+  const statusKeyMap: Record<string, OrderEmailStatusKey> = {
+    Confirmed: 'confirmed',
+    Dispatched: 'dispatched',
+    Shipped: 'dispatched',
+    Delivered: 'delivered',
+    Cancelled: 'cancelled',
+  };
+  const statusKey: OrderEmailStatusKey = statusKeyMap[status] || 'generic';
+  const subjectPrefixMap: Record<OrderEmailStatusKey, string> = {
+    placed: '🎉',
+    confirmed: '🎉',
+    dispatched: '🚚',
+    delivered: '🎉',
+    cancelled: '',
+    generic: '',
+  };
 
-  if (status === 'Confirmed') {
-    subject = `🎉 Order Confirmed - #${orderId} | Dhannya Organic`;
-    body = `Hi ${customerName},\n\nYour order #${orderId} has been confirmed.\n\nTotal: ₹${totalAmount}\n\nWarm regards,\nTeam Dhannya`;
-  } else if (status === 'Dispatched' || status === 'Shipped') {
-    subject = `🚚 Order Dispatched - #${orderId} | Dhannya Organic`;
-    body = `Hi ${customerName},\n\nYour order #${orderId} is on its way! 🚚\n\nDelivery Address:\n${deliveryAddress}\n\nWarm regards,\nTeam Dhannya`;
-  } else if (status === 'Delivered') {
-    subject = `🎉 Order Delivered - #${orderId} | Dhannya Organic`;
-    body = `Hi ${customerName},\n\nYour order #${orderId} has been delivered successfully! 🎉\n\nThank you for choosing Dhannya Organic.\n\nWarm regards,\nTeam Dhannya`;
-  }
+  const cfg = ORDER_EMAIL_STATUS_CONFIG[statusKey];
+  const subject = `${subjectPrefixMap[statusKey] ? subjectPrefixMap[statusKey] + ' ' : ''}${cfg.heading} - #${orderId} | Dhaanya`;
 
-  return { toEmail: recipientEmail, subject, body };
+  const emailParams: OrderEmailParams = {
+    statusKey,
+    customerName,
+    orderId,
+    total: totalAmount,
+    items: Array.isArray(order?.items)
+      ? order.items.map((it: any) => ({
+          name: it.name || 'Item',
+          variantWeight: it.variantWeight,
+          quantity: Number(it.quantity) || 1,
+          price: Number(it.price) || 0,
+        }))
+      : undefined,
+    deliveryAddressLines: statusKey === 'dispatched' ? deliveryAddressLines : undefined,
+    estimatedDelivery: order?.estimatedDelivery,
+  };
+
+  return {
+    toEmail: recipientEmail,
+    subject,
+    body: renderOrderStatusEmailText(emailParams),
+    html: renderOrderStatusEmailHtml(emailParams),
+  };
 }
 
 // Admin Update Order Status API
@@ -2279,6 +2533,7 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
           to: emailDetails.toEmail,
           subject: emailDetails.subject,
           text: emailDetails.body,
+          html: emailDetails.html,
         }).then((result) => {
           if (!result.success) {
             console.error('[STATUS MAIL ERROR] Order status update email failed:', result.error);

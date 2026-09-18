@@ -2974,7 +2974,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                     </span>
                   </h3>
                   <div className="text-xs text-stone-500 space-y-0.5 mt-0.5">
-                    <p>From: <strong className="text-olive font-mono">Dhannya Organic &lt;dhaanyaorganic1@gmail.com&gt;</strong></p>
+                    <p>From: <strong className="text-olive font-mono">Dhaanya &lt;info@dhaanyafoods.com&gt;</strong></p>
                     <p>Recipient: <strong className="text-earth font-mono">{activeEmailModal.toEmail}</strong></p>
                   </div>
                 </div>
