@@ -233,7 +233,7 @@ export const ServerConditionModal: React.FC<ServerConditionModalProps> = ({ isOp
             </div>
             <div className="flex justify-between text-stone-600">
               <span>OTP Email Service:</span>
-              <span className="font-bold text-olive">Nodemailer (dhaanyaorganic1@gmail.com)</span>
+              <span className="font-bold text-olive">Resend API (info@dhaanyafoods.com)</span>
             </div>
           </div>
 
