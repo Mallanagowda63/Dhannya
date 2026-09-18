@@ -4,7 +4,6 @@ import fs from 'fs';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import dns from 'dns';
-import nodemailer from 'nodemailer';
 import { createServer as createViteServer } from 'vite';
 import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData';
 import { Product, Order, Address } from './src/types';
@@ -124,109 +123,60 @@ function issueAdminToken(): string {
   return token;
 }
 
-// Nodemailer Transporter setup with persistent connection pooling & 5s timeouts
-let mailTransporter: any = null;
-const cleanUser = (process.env.SMTP_USER || 'dhaanyaorganic1@gmail.com').trim();
-const cleanPass = (process.env.SMTP_PASS || 'ydxgavhwwfetjiuv').trim().replace(/\s+/g, '');
+// Email sending via the Resend HTTPS API. Render's free tier blocks all
+// outbound SMTP traffic (ports 25/465/587) -- confirmed via a live
+// "Connection timeout" on both 465 and a 587/STARTTLS fallback, and via
+// Render's own changelog stating this is a deliberate anti-spam policy on
+// free web services. HTTPS (443) is never blocked this way, so Resend's API
+// sidesteps the whole problem instead of working around it.
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const RESEND_FROM = 'Dhaanya <info@dhaanyafoods.com>';
 
-// Exposed via /api/health so SMTP delivery can be confirmed with one curl
-// after a deploy, instead of digging through log output by hand.
-let smtpStatus: { state: 'pending' | 'verified' | 'failed'; user: string; error: string | null } = {
-  state: 'pending',
-  user: cleanUser,
-  error: null,
-};
+if (!RESEND_API_KEY) {
+  console.warn('[RESEND WARNING] RESEND_API_KEY is not set -- emails will not be sent.');
+}
 
-const SMTP_HOSTNAME = 'smtp.gmail.com';
-
-async function initMailTransporter() {
-  // Render's container network can't route the IPv6 address that Gmail's
-  // SMTP host also resolves to (confirmed via a live "connect ENETUNREACH
-  // 2607:..." failure). nodemailer has no `family` option -- its own DNS
-  // helper (lib/shared/index.js) resolves BOTH A and AAAA records and picks
-  // one at random each time (`addresses[Math.floor(Math.random() * ...)]`),
-  // so it intermittently landed on the unreachable IPv6 address. That
-  // resolution logic is skipped entirely when `host` is already a literal
-  // IP (`net.isIP(options.host)`), so we resolve the A record ourselves and
-  // connect to that IP directly, with `servername` set so TLS SNI and
-  // certificate hostname validation still target the real hostname.
-  let connectHost: string = SMTP_HOSTNAME;
-  try {
-    let addresses: string[];
-    try {
-      addresses = await dns.promises.resolve4(SMTP_HOSTNAME);
-    } catch {
-      // Same restricted-DNS-environment fallback used for the MongoDB
-      // connection below -- some networks (including this local dev
-      // machine) can't reach the default resolver for certain lookups.
-      dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
-      addresses = await dns.promises.resolve4(SMTP_HOSTNAME);
-    }
-    if (addresses.length > 0) {
-      connectHost = addresses[Math.floor(Math.random() * addresses.length)];
-    }
-  } catch (e: any) {
-    console.warn('[SMTP WARN] Could not pre-resolve IPv4 address for smtp.gmail.com, falling back to hostname:', e.message);
+async function sendResendEmail(params: {
+  to: string;
+  subject: string;
+  html?: string;
+  text?: string;
+  headers?: Record<string, string>;
+}): Promise<{ success: boolean; data?: any; error?: any }> {
+  if (!RESEND_API_KEY) {
+    console.warn('[RESEND WARN] RESEND_API_KEY not configured -- skipping send to', params.to);
+    return { success: false, error: 'RESEND_API_KEY not configured' };
   }
-
-  const buildTransport = (port: number, secure: boolean) =>
-    nodemailer.createTransport({
-      pool: true, // Reuse persistent SMTP socket connections across requests
-      maxConnections: 5,
-      maxMessages: 100,
-      rateDelta: 1000,
-      rateLimit: 5,
-      host: connectHost,
-      // `servername` is honored by nodemailer's connection/TLS logic (see
-      // lib/shared/index.js resolveHostname) but only declared on its
-      // internal ResolveHostnameOptions type, not the public SMTPTransport
-      // options -- hence the cast below.
-      servername: SMTP_HOSTNAME,
-      port,
-      secure,
-      requireTLS: !secure,
-      connectionTimeout: 8000,
-      greetingTimeout: 8000,
-      socketTimeout: 8000,
-      auth: {
-        user: cleanUser,
-        pass: cleanPass,
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-    } as any);
-
-  const verify = (transport: any) =>
-    new Promise<void>((resolve, reject) => {
-      transport.verify((err: any) => (err ? reject(err) : resolve()));
+      body: JSON.stringify({
+        from: RESEND_FROM,
+        to: params.to,
+        subject: params.subject,
+        ...(params.html ? { html: params.html } : {}),
+        ...(params.text ? { text: params.text } : {}),
+        ...(params.headers ? { headers: params.headers } : {}),
+      }),
     });
-
-  // Try port 465 (SMTPS) first; some cloud hosts throttle/block it outbound
-  // even when the IPv4 route itself is fine, so fall back to 587 (STARTTLS)
-  // on failure rather than leaving mail dead for the whole session.
-  try {
-    const transport465 = buildTransport(465, true);
-    await verify(transport465);
-    mailTransporter = transport465;
-    console.log(`[SMTP] ✅ Verified via port 465 for ${cleanUser}`);
-    smtpStatus = { state: 'verified', user: cleanUser, error: null };
-    return;
-  } catch (err465: any) {
-    console.warn('[SMTP WARN] Port 465 failed, trying port 587 (STARTTLS):', err465.message);
-  }
-
-  try {
-    const transport587 = buildTransport(587, false);
-    await verify(transport587);
-    mailTransporter = transport587;
-    console.log(`[SMTP] ✅ Verified via port 587 (STARTTLS fallback) for ${cleanUser}`);
-    smtpStatus = { state: 'verified', user: cleanUser, error: null };
-  } catch (err587: any) {
-    console.error('[SMTP ERROR] Both port 465 and 587 failed:', err587.message);
-    smtpStatus = { state: 'failed', user: cleanUser, error: `port 465 and 587 both failed: ${err587.message}` };
-    mailTransporter = null;
+    const data = await response.json().catch(() => null);
+    if (!response.ok) {
+      console.error('[RESEND ERROR]', data);
+      // Log and continue -- never let an email failure block the underlying
+      // user action (order placement, OTP issuance, etc.).
+      return { success: false, error: data };
+    }
+    return { success: true, data };
+  } catch (err: any) {
+    console.error('[RESEND ERROR] Network/exception sending email:', err.message);
+    return { success: false, error: err.message };
   }
 }
 
-initMailTransporter();
 // In-memory duplicate email protection cache (cleared after 60 seconds)
 const recentEmailCache = new Set<string>();
 
@@ -614,19 +564,20 @@ function requireAdminAuth(req: express.Request, res: express.Response): boolean 
 // Health check endpoint
 app.get('/api/health', async (req, res) => {
   const connected = await ensureDbConnected();
+  const resend = { configured: !!RESEND_API_KEY };
   if (!connected && isProduction) {
     return res.status(503).json({
       status: 'unhealthy',
       database: 'disconnected',
       dbConnected: false,
-      smtp: smtpStatus,
+      resend,
     });
   }
   return res.json({
     status: 'healthy',
     database: connected ? 'connected' : 'in-memory-dev',
     dbConnected: connected,
-    smtp: smtpStatus,
+    resend,
   });
 });
 
@@ -706,11 +657,10 @@ dhaanyaorganic1@gmail.com`;
 
     console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
 
-    if (mailTransporter) {
+    {
       const dupKey = `otp-${cleanEmail}-${generatedOtp}`;
       if (shouldSendEmail(dupKey)) {
-        mailTransporter.sendMail({
-          from: '"Dhannya Organic" <dhaanyaorganic1@gmail.com>',
+        sendResendEmail({
           to: cleanEmail,
           subject: emailSubject,
           text: emailBody,
@@ -725,10 +675,12 @@ dhaanyaorganic1@gmail.com`;
               <p style="font-size: 12px; color: #666;">This code is valid for 10 minutes.</p>
             </div>
           `,
-        }).then(() => {
-          console.log(`[OTP] Email delivered asynchronously to ${cleanEmail}`);
-        }).catch((mailErr: any) => {
-          console.error(`[OTP ERROR] Nodemailer Error:`, mailErr.message);
+        }).then((result) => {
+          if (result.success) {
+            console.log(`[OTP] Email delivered via Resend to ${cleanEmail}`, result.data);
+          } else {
+            console.error(`[OTP ERROR] Resend send failed:`, result.error);
+          }
         });
       }
     }
@@ -1876,12 +1828,11 @@ app.post('/api/orders', async (req, res) => {
 
     // Dispatch Order Confirmation Email asynchronously with timing telemetry & duplicate suppression
     const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
-    if (targetEmail && mailTransporter) {
+    if (targetEmail) {
       const dupKey = `order-confirm-${orderId}-${targetEmail}`;
       if (shouldSendEmail(dupKey)) {
         const t0_mail_start = Date.now();
-        mailTransporter.sendMail({
-          from: `"Dhannya Organic" <${cleanUser}>`,
+        sendResendEmail({
           to: targetEmail,
           subject: `🎉 Order Confirmation #${orderId} - Dhannya Organic`,
           text: `Hello ${shippingAddress?.fullName || 'Valued Customer'},\n\nThank you for shopping with Dhannya Organic! Your order #${orderId} has been confirmed.\n\nTotal: ₹${total}\nPayment Method: ${paymentMethod || 'COD'}\n\nWarm regards,\nTeam Dhannya`,
@@ -1901,11 +1852,13 @@ app.post('/api/orders', async (req, res) => {
             'X-Priority': '1',
             'Importance': 'high',
           },
-        }).then((info: any) => {
+        }).then((result) => {
           const mailDuration = Date.now() - t0_mail_start;
-          console.log(`[SMTP PERF] Order #${orderId} sendMail completed in ${mailDuration}ms | Server Response: "${info?.response || '250 OK'}"`);
-        }).catch((mailErr: any) => {
-          console.error('[MAIL ERROR] Order confirmation email failed:', mailErr.message);
+          if (result.success) {
+            console.log(`[RESEND] Order #${orderId} email sent in ${mailDuration}ms`, result.data);
+          } else {
+            console.error(`[MAIL ERROR] Order confirmation email failed after ${mailDuration}ms:`, result.error);
+          }
         });
       }
     }
@@ -2323,19 +2276,18 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
     const emailDetails = buildOrderStatusEmail(status, targetOrder);
 
     // Asynchronously dispatch order status update email if transporter is available
-    if (emailDetails.toEmail && mailTransporter) {
+    if (emailDetails.toEmail) {
       const dupKey = `status-update-${id}-${status}`;
       if (shouldSendEmail(dupKey)) {
-        mailTransporter
-          .sendMail({
-            from: `"Dhannya Organic" <${cleanUser}>`,
-            to: emailDetails.toEmail,
-            subject: emailDetails.subject,
-            text: emailDetails.body,
-          })
-          .catch((mailErr: any) => {
-            console.error('[STATUS MAIL ERROR] Order status update email failed:', mailErr.message);
-          });
+        sendResendEmail({
+          to: emailDetails.toEmail,
+          subject: emailDetails.subject,
+          text: emailDetails.body,
+        }).then((result) => {
+          if (!result.success) {
+            console.error('[STATUS MAIL ERROR] Order status update email failed:', result.error);
+          }
+        });
       }
     }
 
