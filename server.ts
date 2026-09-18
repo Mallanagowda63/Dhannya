@@ -689,7 +689,6 @@ dhaanyaorganic1@gmail.com`;
       success: true,
       message: `Verification code generated and sent to ${cleanEmail}`,
       email: cleanEmail,
-      otpCode: generatedOtp,
     });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
@@ -704,16 +703,15 @@ app.post('/api/auth/verify-otp', async (req, res) => {
     const cleanOtp = String(otp || '').trim();
 
     const storedData = otpStoreMap[cleanEmail];
-    const isMasterOtp = cleanOtp === '123456' || cleanOtp === '682914';
 
-    if (!storedData && !isMasterOtp) {
+    if (!storedData) {
       return res.status(400).json({
         success: false,
         message: 'No active OTP found for this email. Please request a new code.',
       });
     }
 
-    if (storedData && Date.now() > storedData.expiresAt && !isMasterOtp) {
+    if (Date.now() > storedData.expiresAt) {
       delete otpStoreMap[cleanEmail];
       return res.status(400).json({
         success: false,
@@ -721,16 +719,14 @@ app.post('/api/auth/verify-otp', async (req, res) => {
       });
     }
 
-    if (storedData && storedData.otp !== cleanOtp && !isMasterOtp) {
+    if (storedData.otp !== cleanOtp) {
       return res.status(400).json({
         success: false,
         message: 'Incorrect OTP code. Please enter the 6-digit code.',
       });
     }
 
-    if (storedData) {
-      delete otpStoreMap[cleanEmail];
-    }
+    delete otpStoreMap[cleanEmail];
 
     const customerName = name || (storedData && storedData.name) || cleanEmail.split('@')[0];
     const nowIso = new Date().toISOString();

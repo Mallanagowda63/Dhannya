@@ -24,7 +24,6 @@ export const AuthModal: React.FC = () => {
   const [otp, setOtp] = useState('');
   const [adminPassword, setAdminPassword] = useState('');
 
-  const [receivedOtpCode, setReceivedOtpCode] = useState<string | null>(null);
   const [isSendingOtp, setIsSendingOtp] = useState(false);
   const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
   const [isLoggingInAdmin, setIsLoggingInAdmin] = useState(false);
@@ -84,8 +83,6 @@ export const AuthModal: React.FC = () => {
     }
 
     setIsSendingOtp(true);
-    let otpGenerated = Math.floor(100000 + Math.random() * 900000).toString();
-    let isServerSuccess = false;
 
     try {
       const res = await fetch(getApiUrl('/api/auth/send-otp'), {
@@ -94,33 +91,25 @@ export const AuthModal: React.FC = () => {
         body: JSON.stringify({ email: cleanEmail, name: name.trim() }),
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        if (data.isAdmin) {
-          setIsSendingOtp(false);
-          setMode('admin');
-          return;
-        }
-        if (data.success) {
-          isServerSuccess = true;
-          if (data.otpCode) {
-            otpGenerated = data.otpCode;
-          }
-        }
+      const data = await res.json().catch(() => null);
+
+      if (data?.isAdmin) {
+        setIsSendingOtp(false);
+        setMode('admin');
+        return;
+      }
+
+      if (res.ok && data?.success) {
+        setMode('otp');
+        setResendTimer(60);
+        showToast(`Verification code sent to ${cleanEmail}`, 'success');
+      } else {
+        setErrorMessage(data?.message || 'Could not send verification code. Please try again.');
       }
     } catch {
-      console.warn('Backend API connection warning, using resilient fallback OTP');
+      setErrorMessage('Could not reach the server. Please check your connection and try again.');
     }
 
-    setReceivedOtpCode(otpGenerated);
-    setMode('otp');
-    setResendTimer(60);
-    showToast(
-      isServerSuccess
-        ? `Verification OTP sent to ${cleanEmail}`
-        : `Verification code generated for ${cleanEmail}`,
-      'success'
-    );
     setIsSendingOtp(false);
   };
 
@@ -135,9 +124,6 @@ export const AuthModal: React.FC = () => {
     }
 
     setIsVerifyingOtp(true);
-    let isVerifiedByServer = false;
-    let userNameToUse = name.trim();
-    let userIdFromServer: string | undefined;
 
     try {
       const res = await fetch(getApiUrl('/api/auth/verify-otp'), {
@@ -150,33 +136,21 @@ export const AuthModal: React.FC = () => {
         }),
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        if (data.success && data.user) {
-          isVerifiedByServer = true;
-          if (data.user.name) userNameToUse = data.user.name;
-          if (data.user.id) userIdFromServer = data.user.id;
-        }
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.success && data?.user) {
+        const finalName = data.user.name || name.trim() || email.split('@')[0];
+        login(email.trim(), finalName, 'user', data.user.id);
+        showToast(`Welcome back, ${finalName}!`, 'success');
+        setIsAuthModalOpen(false);
+        resetState();
+      } else {
+        setErrorMessage(data?.message || 'Incorrect OTP code. Please enter the 6-digit code.');
       }
     } catch {
-      console.warn('Backend API verification warning, using fallback verification');
+      setErrorMessage('Could not reach the server. Please check your connection and try again.');
     }
 
-    const isLocalMatch =
-      cleanOtp === receivedOtpCode ||
-      cleanOtp === '123456' ||
-      cleanOtp === '682914' ||
-      cleanOtp.length === 6;
-
-    if (isVerifiedByServer || isLocalMatch) {
-      const finalName = userNameToUse || email.split('@')[0];
-      login(email.trim(), finalName, 'user', userIdFromServer);
-      showToast(`Welcome back, ${finalName}!`, 'success');
-      setIsAuthModalOpen(false);
-      resetState();
-    } else {
-      setErrorMessage('Incorrect OTP code. Please enter the 6-digit code.');
-    }
     setIsVerifyingOtp(false);
   };
 
@@ -237,7 +211,6 @@ export const AuthModal: React.FC = () => {
     setName('');
     setOtp('');
     setAdminPassword('');
-    setReceivedOtpCode(null);
     setErrorMessage(null);
   };
 
@@ -294,16 +267,9 @@ export const AuthModal: React.FC = () => {
         {/* OTP Sent Success Banner for Customers */}
         {mode === 'otp' && (
           <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs p-3.5 rounded-2xl space-y-1.5">
-            <div className="flex items-center justify-between font-bold">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Verification Code Sent</span>
-              </div>
-              {receivedOtpCode && (
-                <span className="bg-emerald-200 text-emerald-950 px-2 py-0.5 rounded font-mono font-bold tracking-widest text-xs shadow-xs">
-                  OTP: {receivedOtpCode}
-                </span>
-              )}
+            <div className="flex items-center gap-2 font-bold">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Verification Code Sent</span>
             </div>
             <p className="text-[11px] text-emerald-800 font-medium">
               We have dispatched a 6-digit verification code to <strong className="font-mono">{email}</strong>. Check your inbox or enter the code above!
@@ -442,7 +408,7 @@ export const AuthModal: React.FC = () => {
                   maxLength={6}
                   value={otp}
                   onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
-                  placeholder="682914"
+                  placeholder="000000"
                   className="w-full bg-[#faf8f4] border border-stone-300 text-base font-mono font-black text-earth tracking-widest text-center rounded-xl py-3 focus:outline-none focus:border-olive shadow-inner"
                 />
               </div>
