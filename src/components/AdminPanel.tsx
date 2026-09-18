@@ -44,6 +44,8 @@ import {
   Wallet,
   QrCode,
   Banknote,
+  MessageCircle,
+  Reply,
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
@@ -101,6 +103,7 @@ export const AdminPanel: React.FC = () => {
     | 'custom_masala'
     | 'reviews'
     | 'coupons'
+    | 'messages'
     | 'analytics'
     | 'settings'
   >('dashboard');
@@ -235,6 +238,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const [customersList, setCustomersList] = useState<any[]>([]);
   const [reviewsList, setReviewsList] = useState<any[]>([]);
   const [customMasalasList, setCustomMasalasList] = useState<any[]>([]);
+  const [messagesList, setMessagesList] = useState<any[]>([]);
+  const [selectedMessage, setSelectedMessage] = useState<any | null>(null);
+  const [replyText, setReplyText] = useState('');
+  const [isSendingReply, setIsSendingReply] = useState(false);
 
   const [selectedOrderDetails, setSelectedOrderDetails] = useState<Order | null>(null);
 
@@ -360,6 +367,17 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) setCustomMasalasList(json.data);
+      }
+    } catch (e) {}
+
+    // Customer Messages (contact form + order-email replies)
+    try {
+      const res = await fetch(getApiUrl('/api/admin/messages'), {
+        headers: { 'x-admin-token': adminToken || '' },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) setMessagesList(json.data);
       }
     } catch (e) {}
 
@@ -683,6 +701,59 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     }
   };
 
+  const handleOpenMessage = async (message: any) => {
+    setSelectedMessage(message);
+    setReplyText('');
+    if (message.status === 'unread') {
+      setMessagesList((prev) =>
+        prev.map((m) => (m.id === message.id ? { ...m, status: 'read' } : m))
+      );
+      try {
+        const res = await fetch(getApiUrl(`/api/admin/messages/${message.id}/read`), {
+          method: 'PUT',
+          headers: { 'x-admin-token': adminToken || '' },
+        });
+        const data = await res.json();
+        if (!data.success && (res.status === 401 || res.status === 403)) {
+          handleAdminSessionExpired(data.message);
+        }
+      } catch {
+        // Non-critical -- read status will re-sync on next dashboard refresh
+      }
+    }
+  };
+
+  const handleSendMessageReply = async () => {
+    if (!selectedMessage || !replyText.trim()) return;
+    setIsSendingReply(true);
+    try {
+      const res = await fetch(getApiUrl(`/api/admin/messages/${selectedMessage.id}/reply`), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
+        body: JSON.stringify({ replyText }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast(`Reply sent to ${selectedMessage.email}!`, 'success');
+        setMessagesList((prev) =>
+          prev.map((m) =>
+            m.id === selectedMessage.id ? { ...m, status: 'replied', adminReply: replyText } : m
+          )
+        );
+        setSelectedMessage((prev: any) => prev && { ...prev, status: 'replied', adminReply: replyText });
+        setReplyText('');
+      } else if (res.status === 401 || res.status === 403) {
+        handleAdminSessionExpired(data.message);
+      } else {
+        showToast(data.message || 'Failed to send reply', 'error');
+      }
+    } catch {
+      showToast('Failed to send reply', 'error');
+    } finally {
+      setIsSendingReply(false);
+    }
+  };
+
   const handleUpdateStock = async (prodId: string, newStock: number) => {
     try {
       const res = await fetch(getApiUrl(`/api/admin/inventory/${prodId}`), {
@@ -950,6 +1021,12 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
               { id: 'custom_masala', label: 'Custom Masala', icon: ChefHat },
               { id: 'reviews', label: 'Reviews', icon: Star },
               { id: 'coupons', label: 'Coupons', icon: Ticket },
+              {
+                id: 'messages',
+                label: 'Customer Replies',
+                icon: MessageCircle,
+                badge: messagesList.filter((m) => m.status === 'unread').length,
+              },
               { id: 'analytics', label: 'Analytics', icon: TrendingUp },
               { id: 'settings', label: 'Settings', icon: Settings },
             ].map((item) => {
@@ -1011,6 +1088,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                 {activeTab === 'custom_masala' && 'Custom Masala Analytics'}
                 {activeTab === 'reviews' && 'Product Reviews'}
                 {activeTab === 'coupons' && 'Discount Coupons'}
+                {activeTab === 'messages' && 'Customer Replies'}
                 {activeTab === 'analytics' && 'Advanced Store Analytics'}
                 {activeTab === 'settings' && 'Store Settings'}
               </h2>
@@ -2589,6 +2667,129 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          )}
+
+          {/* CUSTOMER REPLIES / MESSAGES TAB VIEW */}
+          {activeTab === 'messages' && (
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+              {/* Message List */}
+              <div className="lg:col-span-2 bg-white rounded-3xl border border-stone-200/80 shadow-xs overflow-hidden flex flex-col max-h-[75vh]">
+                <div className="p-4 border-b border-stone-200/80 flex items-center justify-between">
+                  <h3 className="font-bold font-serif text-earth">
+                    Inbox ({messagesList.length})
+                  </h3>
+                  <span className="text-[10px] font-bold text-stone-500">
+                    {messagesList.filter((m) => m.status === 'unread').length} unread
+                  </span>
+                </div>
+                <div className="overflow-y-auto divide-y divide-stone-100">
+                  {messagesList.length === 0 && (
+                    <p className="text-xs text-stone-500 p-6 text-center">
+                      No customer messages yet. Contact form submissions and replies to order
+                      emails will appear here.
+                    </p>
+                  )}
+                  {messagesList.map((msg) => (
+                    <button
+                      key={msg.id}
+                      onClick={() => handleOpenMessage(msg)}
+                      className={`w-full text-left p-4 transition hover:bg-[#faf8f4] cursor-pointer ${
+                        selectedMessage?.id === msg.id ? 'bg-[#faf8f4]' : ''
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span
+                          className={`text-sm truncate ${
+                            msg.status === 'unread' ? 'font-extrabold text-earth' : 'font-bold text-stone-600'
+                          }`}
+                        >
+                          {msg.name || msg.email}
+                        </span>
+                        {msg.status === 'unread' && (
+                          <span className="w-2 h-2 rounded-full bg-[#A9542B] shrink-0" />
+                        )}
+                        {msg.status === 'replied' && (
+                          <Reply className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-xs text-stone-500 truncate mt-0.5">{msg.subject}</p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <span
+                          className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full ${
+                            msg.source === 'email_reply'
+                              ? 'bg-amber-100 text-amber-700'
+                              : 'bg-emerald-100 text-emerald-700'
+                          }`}
+                        >
+                          {msg.source === 'email_reply' ? 'Email Reply' : 'Contact Form'}
+                        </span>
+                        {msg.orderId && (
+                          <span className="text-[9px] font-mono font-bold text-stone-500">
+                            #{msg.orderId}
+                          </span>
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Message Detail + Reply */}
+              <div className="lg:col-span-3 bg-white rounded-3xl border border-stone-200/80 shadow-xs p-6 flex flex-col">
+                {!selectedMessage ? (
+                  <div className="flex-1 flex items-center justify-center text-stone-400 text-sm">
+                    Select a message to view details and reply.
+                  </div>
+                ) : (
+                  <div className="flex-1 flex flex-col space-y-4">
+                    <div>
+                      <h3 className="text-lg font-bold font-serif text-earth">
+                        {selectedMessage.subject}
+                      </h3>
+                      <p className="text-xs text-stone-500 mt-1">
+                        From <strong className="text-earth">{selectedMessage.name || 'Customer'}</strong>{' '}
+                        (<span className="font-mono">{selectedMessage.email}</span>)
+                        {selectedMessage.orderId && (
+                          <> &middot; Order <strong className="font-mono">#{selectedMessage.orderId}</strong></>
+                        )}
+                      </p>
+                    </div>
+
+                    <div className="bg-[#faf8f4] rounded-2xl p-4 text-sm text-stone-700 whitespace-pre-wrap flex-1 overflow-y-auto">
+                      {selectedMessage.message}
+                    </div>
+
+                    {selectedMessage.status === 'replied' && selectedMessage.adminReply && (
+                      <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-sm text-emerald-900 whitespace-pre-wrap">
+                        <p className="text-[10px] font-bold uppercase text-emerald-600 mb-1">Your Reply</p>
+                        {selectedMessage.adminReply}
+                      </div>
+                    )}
+
+                    <div className="space-y-2 pt-2 border-t border-stone-200/80">
+                      <label className="text-xs font-bold uppercase tracking-wider text-stone-600">
+                        {selectedMessage.status === 'replied' ? 'Send Another Reply' : 'Reply'}
+                      </label>
+                      <textarea
+                        rows={4}
+                        value={replyText}
+                        onChange={(e) => setReplyText(e.target.value)}
+                        placeholder={`Reply to ${selectedMessage.email}...`}
+                        className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl p-3 text-sm text-earth focus:outline-none focus:border-olive resize-none"
+                      />
+                      <button
+                        onClick={handleSendMessageReply}
+                        disabled={isSendingReply || !replyText.trim()}
+                        className="flex items-center gap-2 bg-[#3E4B32] hover:bg-[#2A2620] text-white font-bold text-xs px-5 py-3 rounded-xl transition disabled:opacity-50 cursor-pointer"
+                      >
+                        <Reply className="w-3.5 h-3.5" />
+                        {isSendingReply ? 'Sending...' : 'Send Reply'}
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}

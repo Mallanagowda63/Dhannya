@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Facebook,
   Instagram,
   Youtube,
   Linkedin,
+  Send,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { getApiUrl } from '../utils/apiConfig';
 
 export const Footer: React.FC<{
   onNavigateHome?: () => void;
@@ -23,7 +25,36 @@ export const Footer: React.FC<{
   onNavigatePrivacyPolicy,
   onNavigateRefundPolicy,
 }) => {
-  const { setActiveCategory } = useApp();
+  const { setActiveCategory, user, showToast } = useApp();
+
+  const [contactName, setContactName] = useState(user?.name || '');
+  const [contactEmail, setContactEmail] = useState(user?.email || '');
+  const [contactMessage, setContactMessage] = useState('');
+  const [isSendingContact, setIsSendingContact] = useState(false);
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactEmail.trim() || !contactMessage.trim()) return;
+    setIsSendingContact(true);
+    try {
+      const res = await fetch(getApiUrl('/api/contact'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: contactName, email: contactEmail, message: contactMessage }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('Message sent! We will get back to you soon.', 'success');
+        setContactMessage('');
+      } else {
+        showToast(data.message || 'Failed to send message. Please try again.', 'error');
+      }
+    } catch {
+      showToast('Failed to send message. Please try again.', 'error');
+    } finally {
+      setIsSendingContact(false);
+    }
+  };
 
   return (
     <footer className="w-full relative bg-[#0D5B3A] text-white font-sans overflow-hidden border-t border-[#C89211]/40">
@@ -74,6 +105,42 @@ export const Footer: React.FC<{
                 +91 8792889647
               </a>
             </p>
+
+            {/* Quick Contact Form */}
+            <form onSubmit={handleContactSubmit} className="pt-3 space-y-2 max-w-xs">
+              <input
+                type="text"
+                required
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                placeholder="Your Name"
+                className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 text-xs text-white placeholder-stone-300 focus:outline-none focus:border-[#E8B93E]"
+              />
+              <input
+                type="email"
+                required
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                placeholder="Your Email"
+                className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 text-xs text-white placeholder-stone-300 focus:outline-none focus:border-[#E8B93E]"
+              />
+              <textarea
+                required
+                rows={2}
+                value={contactMessage}
+                onChange={(e) => setContactMessage(e.target.value)}
+                placeholder="Send us a message..."
+                className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 text-xs text-white placeholder-stone-300 focus:outline-none focus:border-[#E8B93E] resize-none"
+              />
+              <button
+                type="submit"
+                disabled={isSendingContact}
+                className="flex items-center gap-1.5 bg-[#E8B93E] hover:bg-[#C89211] text-[#0D5B3A] font-bold text-xs px-4 py-2 rounded-md transition disabled:opacity-50 cursor-pointer"
+              >
+                <Send className="w-3 h-3" />
+                {isSendingContact ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2 text-white">

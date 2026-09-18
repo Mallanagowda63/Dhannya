@@ -9,6 +9,7 @@ import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData
 import { Product, Order, Address } from './src/types';
 
 import crypto from 'crypto';
+import { Webhook } from 'svix';
 
 // Dynamic image resolver: Automatically scans images/dhannya_Products_final/<Name>/ for the latest image file
 const publicProductsBaseDir = path.join(process.cwd(), 'images', 'dhannya_Products_final');
@@ -424,7 +425,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({
+  limit: '50mb',
+  verify: (req: any, _res, buf) => { req.rawBody = buf; },
+}));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use('/images', express.static(path.join(process.cwd(), 'images')));
 
@@ -571,9 +575,28 @@ const CustomerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Customer Replies inbox: contact-form submissions and inbound replies to order-status emails
+const CustomerMessageSchema = new mongoose.Schema(
+  {
+    id: { type: String, required: true, unique: true },
+    source: { type: String, enum: ['contact_form', 'email_reply'], required: true },
+    name: String,
+    email: { type: String, required: true },
+    subject: String,
+    message: { type: String, required: true },
+    orderId: String,
+    status: { type: String, enum: ['unread', 'read', 'replied'], default: 'unread' },
+    adminReply: String,
+    repliedAt: String,
+    createdAt: { type: String, default: () => new Date().toISOString() },
+  },
+  { timestamps: true }
+);
+
 export const ProductModel = mongoose.model('Product', ProductSchema);
 export const OrderModel = mongoose.model('Order', OrderSchema);
 export const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
+export const CustomerMessageModel = mongoose.model('CustomerMessage', CustomerMessageSchema);
 export const AddressModel = mongoose.model('Address', AddressSchema);
 export const CouponModel = mongoose.model('Coupon', CouponSchema);
 export const CategoryModel = mongoose.model('Category', CategorySchema);
@@ -1705,6 +1728,180 @@ app.delete('/api/admin/reviews/:id', async (req, res) => {
       liveReviews = liveReviews.filter((r) => r.id !== id);
     }
     res.json({ success: true, message: `Review ${id} deleted from MongoDB!` });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// ==================== Customer Replies Inbox ====================
+// Two sources feed the same inbox: the site's Contact Us form, and inbound replies
+// customers send to order-status emails (requires Resend's Inbound feature + a webhook
+// configured against /api/webhooks/resend-inbound, see the route below for setup notes).
+
+function extractOrderIdFromText(text: string): string | undefined {
+  const match = String(text || '').match(/ORD-\d+/i);
+  return match ? match[0].toUpperCase() : undefined;
+}
+
+// Public: Contact Us form submission
+app.post('/api/contact', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    if (res.headersSent) return;
+
+    const { name, email, subject, message } = req.body;
+    const cleanEmail = String(email || '').trim().toLowerCase();
+    const cleanMessage = String(message || '').trim();
+    if (!cleanEmail || !cleanMessage) {
+      return res.status(400).json({ success: false, message: 'Email and message are required.' });
+    }
+
+    const newMessage = {
+      id: `MSG-${Math.floor(10000 + Math.random() * 90000)}`,
+      source: 'contact_form',
+      name: String(name || 'Website Visitor').trim(),
+      email: cleanEmail,
+      subject: String(subject || 'New Contact Form Message').trim(),
+      message: cleanMessage,
+      status: 'unread',
+      createdAt: new Date().toISOString(),
+    };
+    if (connected) {
+      await CustomerMessageModel.create(newMessage as any);
+    }
+    res.json({ success: true, message: 'Thanks for reaching out! We will get back to you soon.', data: newMessage });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Public webhook: Resend inbound email (replies to order-status emails land here).
+// Setup required on your side before this receives anything:
+//   1. Enable "Inbound" for dhaanyafoods.com in the Resend dashboard (adds MX records).
+//   2. Create a webhook pointed at POST https://<your-domain>/api/webhooks/resend-inbound
+//      subscribed to the inbound-email event.
+//   3. Copy that webhook's signing secret into RESEND_WEBHOOK_SECRET on Render.
+// Without RESEND_WEBHOOK_SECRET set, requests are accepted unverified (logged as a warning)
+// so this can still be exercised manually before the Resend side is configured.
+app.post('/api/webhooks/resend-inbound', async (req: any, res) => {
+  try {
+    const secret = process.env.RESEND_WEBHOOK_SECRET;
+    let payload: any = req.body;
+
+    if (secret) {
+      try {
+        const wh = new Webhook(secret);
+        payload = wh.verify(req.rawBody, {
+          'svix-id': req.headers['svix-id'],
+          'svix-timestamp': req.headers['svix-timestamp'],
+          'svix-signature': req.headers['svix-signature'],
+        });
+      } catch (verifyErr: any) {
+        console.error('[RESEND WEBHOOK] Signature verification failed:', verifyErr.message);
+        return res.status(401).json({ success: false, message: 'Invalid webhook signature' });
+      }
+    } else {
+      console.warn('[RESEND WEBHOOK] RESEND_WEBHOOK_SECRET not set - accepting inbound email unverified');
+    }
+
+    const data = payload?.data || payload;
+    const fromEmail = String(data?.from || data?.sender || '').trim().toLowerCase();
+    const subject = String(data?.subject || '').trim();
+    const bodyText = String(data?.text || data?.html || '').trim();
+
+    if (!fromEmail || !bodyText) {
+      return res.status(200).json({ success: true, message: 'Ignored (no sender/body)' });
+    }
+
+    const connected = await requireDb(res);
+    if (res.headersSent) return;
+
+    const newMessage = {
+      id: `MSG-${Math.floor(10000 + Math.random() * 90000)}`,
+      source: 'email_reply',
+      name: fromEmail.split('@')[0],
+      email: fromEmail,
+      subject: subject || 'Reply to order email',
+      message: bodyText,
+      orderId: extractOrderIdFromText(subject) || extractOrderIdFromText(bodyText),
+      status: 'unread',
+      createdAt: new Date().toISOString(),
+    };
+    if (connected) {
+      await CustomerMessageModel.create(newMessage as any);
+    }
+    res.json({ success: true });
+  } catch (err: any) {
+    console.error('[RESEND WEBHOOK ERROR]', err.message);
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Admin: list all customer messages (contact form + email replies)
+app.get('/api/admin/messages', async (req, res) => {
+  try {
+    if (!requireAdminAuth(req, res)) return;
+    const connected = await requireDb(res);
+    if (res.headersSent) return;
+    const messages = connected ? await CustomerMessageModel.find().sort({ createdAt: -1 }).lean() : [];
+    res.json({ success: true, data: messages });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Admin: mark a message as read
+app.put('/api/admin/messages/:id/read', async (req, res) => {
+  try {
+    if (!requireAdminAuth(req, res)) return;
+    const connected = await requireDb(res);
+    if (res.headersSent) return;
+    const { id } = req.params;
+    if (connected) {
+      await CustomerMessageModel.updateOne({ id, status: 'unread' }, { $set: { status: 'read' } });
+    }
+    res.json({ success: true });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Admin: send a reply to a customer message via Resend
+app.post('/api/admin/messages/:id/reply', async (req, res) => {
+  try {
+    if (!requireAdminAuth(req, res)) return;
+    const connected = await requireDb(res);
+    if (res.headersSent) return;
+
+    const { id } = req.params;
+    const replyText = String(req.body?.replyText || '').trim();
+    if (!replyText) {
+      return res.status(400).json({ success: false, message: 'Reply text is required.' });
+    }
+
+    const targetMessage: any = connected ? await CustomerMessageModel.findOne({ id }).lean() : null;
+    if (!targetMessage) {
+      return res.status(404).json({ success: false, message: 'Message not found' });
+    }
+
+    const replySubject = targetMessage.subject?.toLowerCase().startsWith('re:')
+      ? targetMessage.subject
+      : `Re: ${targetMessage.subject || 'Your message to Dhaanya'}`;
+
+    const result = await sendResendEmail({
+      to: targetMessage.email,
+      subject: replySubject,
+      text: `${replyText}\n\n---\nYour message:\n${targetMessage.message}`,
+    });
+
+    if (!result.success) {
+      return res.status(502).json({ success: false, message: 'Failed to send reply email', error: result.error });
+    }
+
+    const repliedAt = new Date().toISOString();
+    await CustomerMessageModel.updateOne({ id }, { $set: { status: 'replied', adminReply: replyText, repliedAt } });
+
+    res.json({ success: true, message: `Reply sent to ${targetMessage.email}` });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }
