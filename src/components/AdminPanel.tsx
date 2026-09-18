@@ -47,31 +47,47 @@ import {
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
-  const { setIsAdminMode, showToast, refreshProducts, refreshCoupons, adminToken } = useApp();
-
-  // Admin Portal Auth Gate
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
-    return sessionStorage.getItem('dhannya_admin_authed') === 'true';
-  });
-  const [adminEmailInput, setAdminEmailInput] = useState('dhaanyaorganic1@gmail.com');
-  const [adminPassInput, setAdminPassInput] = useState('');
-
-  const handleAdminLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (adminEmailInput.trim().toLowerCase() === 'dhaanyaorganic1@gmail.com' && adminPassInput === 'Dhaanya@123') {
-      sessionStorage.setItem('dhannya_admin_authed', 'true');
-      setIsAdminAuthenticated(true);
-      showToast('Admin Portal Authenticated Successfully!', 'success');
-    } else {
-      showToast('Invalid Admin Email or Password!', 'error');
-    }
-  };
+  const { setIsAdminMode, showToast, refreshProducts, refreshCoupons, adminToken, setAdminToken } = useApp();
 
   const handleAdminLogout = () => {
-    sessionStorage.removeItem('dhannya_admin_authed');
-    setIsAdminAuthenticated(false);
+    setAdminToken(null);
     setIsAdminMode(false);
     showToast('Logged out from Admin Portal', 'info');
+  };
+
+  // Called when a protected admin API call comes back with an expired/invalid session
+  // (e.g. the server restarted and the in-memory session was cleared). Clearing the
+  // token re-shows the sign-in form below instead of failing silently.
+  const handleAdminSessionExpired = (message?: string) => {
+    showToast(message || 'Your admin session has expired. Please log in again.', 'error');
+    setAdminToken(null);
+  };
+
+  const [adminEmailInput, setAdminEmailInput] = useState('dhaanyaorganic1@gmail.com');
+  const [adminPassInput, setAdminPassInput] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoggingIn(true);
+    try {
+      const res = await fetch(getApiUrl('/api/auth/admin-login'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: adminEmailInput.trim(), password: adminPassInput }),
+      });
+      const data = await res.json();
+      if (data.success && data.adminToken) {
+        setAdminToken(data.adminToken);
+        showToast('Admin Portal Authenticated Successfully!', 'success');
+      } else {
+        showToast(data.message || 'Invalid admin credentials.', 'error');
+      }
+    } catch {
+      showToast('Could not reach the server. Please try again.', 'error');
+    } finally {
+      setIsLoggingIn(false);
+    }
   };
 
   const [activeTab, setActiveTab] = useState<
@@ -625,6 +641,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
           });
         }
         fetchDashboardData();
+      } else if (res.status === 401 || res.status === 403) {
+        handleAdminSessionExpired(data.message);
+      } else {
+        showToast(data.message || 'Failed to update status', 'error');
       }
     } catch {
       showToast('Failed to update status', 'error');
@@ -653,6 +673,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
           newPaymentStatus === 'Paid' ? 'success' : 'info'
         );
         fetchDashboardData();
+      } else if (res.status === 401 || res.status === 403) {
+        handleAdminSessionExpired(data.message);
+      } else {
+        showToast(data.message || 'Failed to update payment status', 'error');
       }
     } catch {
       showToast('Failed to update payment status', 'error');
@@ -775,7 +799,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     [salesOverview]
   );
 
-  if (!isAdminAuthenticated) {
+  if (!adminToken) {
     return (
       <div className="fixed inset-0 bg-[#faf8f4] z-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-3xl p-8 max-w-md w-full border border-stone-200 shadow-2xl space-y-6">
@@ -822,9 +846,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
               </button>
               <button
                 type="submit"
-                className="flex-1 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-300 font-serif font-bold text-sm shadow-md transition cursor-pointer"
+                disabled={isLoggingIn}
+                className="flex-1 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-300 font-serif font-bold text-sm shadow-md transition cursor-pointer disabled:opacity-50"
               >
-                Sign In to Admin
+                {isLoggingIn ? 'Signing In...' : 'Sign In to Admin'}
               </button>
             </div>
           </form>
