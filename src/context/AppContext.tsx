@@ -29,6 +29,8 @@ interface AppContextType {
   cart: CartItem[];
   wishlist: string[]; // Product IDs
   user: User | null;
+  adminToken: string | null;
+  setAdminToken: (token: string | null) => void;
   orders: Order[];
   savedRecipes: CustomRecipe[];
   activeCategory: ProductCategory | null;
@@ -164,6 +166,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return saved ? JSON.parse(saved) : null;
   });
 
+  const [adminToken, setAdminToken] = useState<string | null>(() => localStorage.getItem('dhaanya_admin_token'));
+
   const [orders, setOrders] = useState<Order[]>([]);
   const [savedRecipes, setSavedRecipes] = useState<CustomRecipe[]>(() => {
     const saved = localStorage.getItem('dhaanya_recipes');
@@ -220,6 +224,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (user) localStorage.setItem('dhaanya_user', JSON.stringify(user));
     else localStorage.removeItem('dhaanya_user');
   }, [user]);
+
+  useEffect(() => {
+    if (adminToken) localStorage.setItem('dhaanya_admin_token', adminToken);
+    else localStorage.removeItem('dhaanya_admin_token');
+  }, [adminToken]);
 
   useEffect(() => {
     localStorage.setItem('dhaanya_recipes', JSON.stringify(savedRecipes));
@@ -628,6 +637,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const logout = () => {
     setUser(null);
+    setAdminToken(null);
     setIsAdminMode(false);
     setOrders([]);
     setCart([]);
@@ -648,6 +658,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         cart,
         wishlist,
         user,
+        adminToken,
+        setAdminToken,
         orders,
         savedRecipes,
         activeCategory,

@@ -79,10 +79,43 @@ function hashPassword(password: string): string {
   return crypto.createHash('sha256').update(password).digest('hex');
 }
 
-const EXPECTED_ADMIN_HASH = process.env.ADMIN_PASSWORD_HASH || hashPassword(process.env.ADMIN_PASSWORD || 'Dhaanya@123');
+// This repository is public on GitHub -- a hardcoded fallback password here
+// would be readable by anyone. If ADMIN_PASSWORD_HASH/ADMIN_PASSWORD aren't
+// set, generate a random one-time password per boot and print it once so
+// the site owner can retrieve it from server logs, instead of ever having
+// a known, guessable default admin password.
+let EXPECTED_ADMIN_HASH: string;
+if (process.env.ADMIN_PASSWORD_HASH) {
+  EXPECTED_ADMIN_HASH = process.env.ADMIN_PASSWORD_HASH;
+} else if (process.env.ADMIN_PASSWORD) {
+  EXPECTED_ADMIN_HASH = hashPassword(process.env.ADMIN_PASSWORD);
+} else {
+  const generatedPassword = crypto.randomBytes(9).toString('base64url');
+  EXPECTED_ADMIN_HASH = hashPassword(generatedPassword);
+  console.warn(
+    `[ADMIN SECURITY WARNING] No ADMIN_PASSWORD_HASH or ADMIN_PASSWORD env var set. ` +
+      `Generated a random one-time admin password for this server instance: "${generatedPassword}" ` +
+      `(email: ${ADMIN_EMAIL}). This password changes on every restart -- set ADMIN_PASSWORD_HASH ` +
+      `in your environment for a stable password.`
+  );
+}
 
 // Rate Limiter for Admin Login
 const failedAdminAttempts: Record<string, { count: number; lockUntil: number }> = {};
+
+// Real admin session tokens -- issued only after a verified password check,
+// never a hardcoded/guessable value baked into the client bundle. Replaces
+// the old requireAdminAuth check which accepted the literal string "admin"
+// as a header value, a "check" anyone could read directly out of the public
+// client bundle and pass without ever logging in.
+const ADMIN_SESSION_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
+const adminSessions = new Map<string, number>(); // token -> expiresAt
+
+function issueAdminToken(): string {
+  const token = crypto.randomBytes(32).toString('hex');
+  adminSessions.set(token, Date.now() + ADMIN_SESSION_TTL_MS);
+  return token;
+}
 
 // Nodemailer Transporter setup with persistent connection pooling & 5s timeouts
 let mailTransporter: any = null;
@@ -553,12 +586,16 @@ async function requireDb(res: express.Response): Promise<boolean> {
 
 // Helper to check Admin Authorization
 function requireAdminAuth(req: express.Request, res: express.Response): boolean {
-  const authHeader = req.headers['authorization'] || req.headers['x-admin-role'];
-  const isAdminHeader = authHeader === 'admin' || authHeader === 'Bearer admin-token' || req.headers['x-admin-role'] === 'admin';
-  if (!isAdminHeader) {
+  const token = req.headers['x-admin-token'];
+  const expiresAt = typeof token === 'string' ? adminSessions.get(token) : undefined;
+
+  if (!expiresAt || expiresAt < Date.now()) {
+    if (typeof token === 'string' && expiresAt) {
+      adminSessions.delete(token); // clean up expired session
+    }
     res.status(403).json({
       success: false,
-      message: 'Access Denied: Admin authorization header (x-admin-role) required.',
+      message: 'Access Denied: valid admin session required. Please log in again.',
     });
     return false;
   }
@@ -829,9 +866,12 @@ app.post('/api/auth/admin-login', (req, res) => {
 
     delete failedAdminAttempts[clientIp];
 
+    const adminToken = issueAdminToken();
+
     return res.json({
       success: true,
       message: 'Admin authenticated successfully',
+      adminToken,
       user: {
         id: 'admin-1',
         name: 'Dhannya Store Administrator',
@@ -975,6 +1015,7 @@ app.get('/api/products/:id', async (req, res) => {
 // Admin Product APIs
 app.post('/api/admin/products', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const p = req.body;
     const newProduct: Product = {
@@ -1007,6 +1048,7 @@ app.post('/api/admin/products', async (req, res) => {
 
 app.put('/api/admin/products/:id', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const productId = req.params.id;
 
@@ -1030,6 +1072,7 @@ app.put('/api/admin/products/:id', async (req, res) => {
 
 app.post('/api/admin/products/sync-initial-data', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     if (connected) {
       const ops: any[] = PRODUCTS.map((p) => ({
@@ -1055,6 +1098,7 @@ app.post('/api/admin/products/sync-initial-data', async (req, res) => {
 
 app.delete('/api/admin/products/:id', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const productId = req.params.id;
 
@@ -1088,6 +1132,7 @@ app.get('/api/categories', async (req, res) => {
 
 app.post('/api/admin/categories', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { name, description, image } = req.body;
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -1116,6 +1161,7 @@ app.post('/api/admin/categories', async (req, res) => {
 
 app.delete('/api/admin/categories/:slug', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { slug } = req.params;
     if (connected) {
@@ -1281,6 +1327,7 @@ app.get('/api/coupons', async (req, res) => {
 
 app.post('/api/admin/coupons', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { code, discountPercent, minOrderValue, maxDiscount, description, expiryDate, isActive, isFeatured } = req.body;
     const upperCode = String(code).trim().toUpperCase();
@@ -1322,6 +1369,7 @@ app.post('/api/admin/coupons', async (req, res) => {
 // Delete Single Coupon or Delete All Coupons
 app.delete('/api/admin/coupons/:code', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const code = req.params.code.toUpperCase();
 
@@ -1347,6 +1395,7 @@ app.delete('/api/admin/coupons/:code', async (req, res) => {
 // Toggle Active / Deactive Status
 app.put('/api/admin/coupons/:code/toggle', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const code = req.params.code.toUpperCase();
     const { isActive } = req.body;
@@ -1371,6 +1420,7 @@ app.put('/api/admin/coupons/:code/toggle', async (req, res) => {
 // Set Featured Top-Bar Banner Coupon
 app.put('/api/admin/coupons/:code/feature', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const code = req.params.code.toUpperCase();
 
@@ -1397,6 +1447,7 @@ app.put('/api/admin/coupons/:code/feature', async (req, res) => {
 // Admin Customers API
 app.get('/api/admin/customers', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await ensureDbConnected();
     if (connected) {
       const dbCust = await CustomerModel.find().sort({ createdAt: -1 }).lean();
@@ -1412,6 +1463,7 @@ app.get('/api/admin/customers', async (req, res) => {
 
 app.delete('/api/admin/customers/:id', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { id } = req.params;
     if (connected) {
@@ -1469,6 +1521,7 @@ app.post('/api/reviews', async (req, res) => {
 
 app.delete('/api/admin/reviews/:id', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { id } = req.params;
     if (connected) {
@@ -1485,6 +1538,7 @@ app.delete('/api/admin/reviews/:id', async (req, res) => {
 // Recipes API
 app.get('/api/admin/custom-masalas', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await ensureDbConnected();
     if (connected) {
       const dbMasalas = await CustomRecipeModel.find().sort({ createdAt: -1 }).lean();
@@ -1522,6 +1576,7 @@ app.get('/api/admin/custom-masalas', async (req, res) => {
 
 app.delete('/api/admin/custom-masalas/:id', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { id } = req.params;
     if (connected) {
@@ -1653,7 +1708,13 @@ app.post('/api/payment/verify', async (req, res) => {
       .update(body)
       .digest('hex');
 
-    const isValid = expectedSignature === razorpaySignature || razorpaySignature === 'test_valid_signature';
+    // No test/bypass signature values -- this repo is public, and a hardcoded
+    // bypass string here would let anyone mark any order "Paid" without ever
+    // paying. Timing-safe comparison since this guards real payment status.
+    const expectedBuf = Buffer.from(expectedSignature);
+    const providedBuf = Buffer.from(String(razorpaySignature || ''));
+    const isValid =
+      expectedBuf.length === providedBuf.length && crypto.timingSafeEqual(expectedBuf, providedBuf);
 
     if (!isValid) {
       return res.status(400).json({
@@ -1692,7 +1753,12 @@ app.post('/api/payment/webhook', async (req, res) => {
     hmac.update(JSON.stringify(req.body));
     const digest = hmac.digest('hex');
 
-    if (digest !== signature) {
+    const digestBuf = Buffer.from(digest);
+    const signatureBuf = Buffer.from(signature);
+    const signatureValid =
+      digestBuf.length === signatureBuf.length && crypto.timingSafeEqual(digestBuf, signatureBuf);
+
+    if (!signatureValid) {
       return res.status(400).json({ success: false, message: 'Invalid webhook signature' });
     }
 
@@ -2231,6 +2297,7 @@ function buildOrderStatusEmail(status: string, order: any) {
 // Admin Update Order Status API
 app.put('/api/admin/orders/:id/status', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { id } = req.params;
     const { status } = req.body;
@@ -2278,6 +2345,7 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
 // Admin Update Order Payment Status API (e.g. Mark COD as Paid)
 app.put('/api/admin/orders/:id/payment-status', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { id } = req.params;
     const { paymentStatus } = req.body;
@@ -2299,6 +2367,7 @@ app.put('/api/admin/orders/:id/payment-status', async (req, res) => {
 // Admin Update Inventory Stock API
 app.put('/api/admin/inventory/:id', async (req, res) => {
   try {
+    if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const { id } = req.params;
     const { stock } = req.body;

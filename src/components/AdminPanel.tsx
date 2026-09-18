@@ -47,7 +47,7 @@ import {
 } from 'lucide-react';
 
 export const AdminPanel: React.FC = () => {
-  const { setIsAdminMode, showToast, refreshProducts, refreshCoupons } = useApp();
+  const { setIsAdminMode, showToast, refreshProducts, refreshCoupons, adminToken } = useApp();
 
   // Admin Portal Auth Gate
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
@@ -290,7 +290,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     // Analytics
     try {
       const res = await fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`), {
-        headers: { 'x-admin-role': 'admin' },
+        headers: { 'x-admin-token': adminToken || '' },
       });
       if (res.ok) {
         const json = await res.json();
@@ -319,7 +319,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     // Customers
     try {
       const res = await fetch(getApiUrl('/api/admin/customers'), {
-        headers: { 'x-admin-role': 'admin' },
+        headers: { 'x-admin-token': adminToken || '' },
       });
       if (res.ok) {
         const json = await res.json();
@@ -339,7 +339,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     // Custom Masalas
     try {
       const res = await fetch(getApiUrl('/api/admin/custom-masalas'), {
-        headers: { 'x-admin-role': 'admin' },
+        headers: { 'x-admin-token': adminToken || '' },
       });
       if (res.ok) {
         const json = await res.json();
@@ -360,7 +360,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl('/api/admin/products'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({
           name: newProdName,
           category: newProdCategory,
@@ -403,7 +403,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl('/api/admin/coupons'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({
           code: newCouponCode,
           discountPercent: newCouponPercent,
@@ -435,7 +435,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const handleDeleteCoupon = async (code: string) => {
     if (!confirm(`Delete coupon code ${code}?`)) return;
     try {
-      const res = await fetch(getApiUrl(`/api/admin/coupons/${code}`), { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/coupons/${code}`), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setCouponsList((prev) => prev.filter((c) => c.code !== code));
@@ -450,7 +453,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const handleDeleteAllCoupons = async () => {
     if (!confirm('⚠️ Are you sure you want to DELETE ALL COUPONS from MongoDB?')) return;
     try {
-      const res = await fetch(getApiUrl('/api/admin/coupons/all'), { method: 'DELETE' });
+      const res = await fetch(getApiUrl('/api/admin/coupons/all'), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setCouponsList([]);
@@ -467,7 +473,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl(`/api/admin/coupons/${code}/toggle`), {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({ isActive: newStatus }),
       });
       const data = await res.json();
@@ -487,6 +493,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl(`/api/admin/coupons/${code}/feature`), {
         method: 'PUT',
+        headers: { 'x-admin-token': adminToken || '' },
       });
       const data = await res.json();
       if (data.success) {
@@ -511,7 +518,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl('/api/admin/categories'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({ name: newCatName, description: newCatDesc }),
       });
       const data = await res.json();
@@ -530,7 +537,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const handleDeleteCategory = async (slug: string) => {
     if (!confirm(`Delete category ${slug}?`)) return;
     try {
-      const res = await fetch(getApiUrl(`/api/admin/categories/${slug}`), { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/categories/${slug}`), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setCategoriesList((prev) => prev.filter((c) => c.slug !== slug));
@@ -544,7 +554,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const handleDeleteCustomer = async (id: string) => {
     if (!confirm('Delete customer record?')) return;
     try {
-      const res = await fetch(getApiUrl(`/api/admin/customers/${id}`), { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/customers/${id}`), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setCustomersList((prev) => prev.filter((c) => c.id !== id));
@@ -558,7 +571,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const handleDeleteReview = async (id: string) => {
     if (!confirm('Delete product review?')) return;
     try {
-      const res = await fetch(getApiUrl(`/api/admin/reviews/${id}`), { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/reviews/${id}`), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setReviewsList((prev) => prev.filter((r) => r.id !== id));
@@ -572,7 +588,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const handleDeleteCustomMasala = async (id: string) => {
     if (!confirm('Delete custom recipe record?')) return;
     try {
-      const res = await fetch(getApiUrl(`/api/admin/custom-masalas/${id}`), { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/custom-masalas/${id}`), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setCustomMasalasList((prev) => prev.filter((m) => m.id !== id));
@@ -587,7 +606,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl(`/api/admin/orders/${orderId}/status`), {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({ status: newStatus }),
       });
       const data = await res.json();
@@ -616,7 +635,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl(`/api/admin/orders/${orderId}/payment-status`), {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({ paymentStatus: newPaymentStatus }),
       });
       const data = await res.json();
@@ -644,7 +663,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl(`/api/admin/inventory/${prodId}`), {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({ stock: newStock }),
       });
       const data = await res.json();
@@ -667,7 +686,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     try {
       const res = await fetch(getApiUrl('/api/admin/products'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({
           name: newProdName,
           category: newProdCategory,
@@ -692,7 +711,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
   const handleDeleteProduct = async (id: string) => {
     try {
-      const res = await fetch(getApiUrl(`/api/admin/products/${id}`), { method: 'DELETE' });
+      const res = await fetch(getApiUrl(`/api/admin/products/${id}`), {
+        method: 'DELETE',
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       const data = await res.json();
       if (data.success) {
         setProductsList((prev) => prev.filter((p) => p.id !== id));

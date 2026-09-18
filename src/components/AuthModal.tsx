@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export const AuthModal: React.FC = () => {
-  const { isAuthModalOpen, setIsAuthModalOpen, login, setIsAdminMode, showToast } = useApp();
+  const { isAuthModalOpen, setIsAuthModalOpen, login, setIsAdminMode, setAdminToken, showToast } = useApp();
 
   const [mode, setMode] = useState<'login' | 'signup' | 'otp' | 'admin'>('login');
   const [email, setEmail] = useState('');
@@ -212,6 +212,7 @@ export const AuthModal: React.FC = () => {
 
       if (res.ok && data.success && data.user) {
         login(data.user.email, data.user.name, 'admin', data.user.id);
+        setAdminToken(data.adminToken || null);
         setIsAdminMode(true);
         setIsAuthModalOpen(false);
         resetState();
