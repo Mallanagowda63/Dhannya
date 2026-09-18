@@ -2459,8 +2459,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Brahmi%20Honey/01.jpg",
+    "image": "/images/Dailywell_Products/Brahmi%20Honey/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Brahmi%20Honey/dhaanya%2001.png",
       "/images/Dailywell_Products/Brahmi%20Honey/01.jpg"
     ],
     "variants": [
@@ -2892,8 +2893,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Cashew%20Nut%20Butter/01.jpg",
+    "image": "/images/Dailywell_Products/Cashew%20Nut%20Butter/Dhaanya.png",
     "gallery": [
+      "/images/Dailywell_Products/Cashew%20Nut%20Butter/Dhaanya.png",
       "/images/Dailywell_Products/Cashew%20Nut%20Butter/01.jpg"
     ],
     "variants": [
@@ -3473,8 +3475,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Chicken%20Masala/01.jpg",
+    "image": "/images/Dailywell_Products/Chicken%20Masala/Dhaanya.png",
     "gallery": [
+      "/images/Dailywell_Products/Chicken%20Masala/Dhaanya.png",
       "/images/Dailywell_Products/Chicken%20Masala/01.jpg"
     ],
     "variants": [
@@ -3975,8 +3978,11 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Coconut%20Oil/01.jpg",
+    "image": "/images/Dailywell_Products/Coconut%20Oil/Dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Coconut%20Oil/Dhaanya%2001.png",
+      "/images/Dailywell_Products/Coconut%20Oil/Dhaanya%2002.png",
+      "/images/Dailywell_Products/Coconut%20Oil/Dhaanya%2003.png",
       "/images/Dailywell_Products/Coconut%20Oil/01.jpg",
       "/images/Dailywell_Products/Coconut%20Oil/02.jpg",
       "/images/Dailywell_Products/Coconut%20Oil/03.jpg",
@@ -4329,8 +4335,12 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Cow%20Ghee/01.jpg",
+    "image": "/images/Dailywell_Products/Cow%20Ghee/Dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Cow%20Ghee/Dhaanya%2001.png",
+      "/images/Dailywell_Products/Cow%20Ghee/Dhaanya%2002.png",
+      "/images/Dailywell_Products/Cow%20Ghee/dhaanya%2003.png",
+      "/images/Dailywell_Products/Cow%20Ghee/dhaanya%2004.png",
       "/images/Dailywell_Products/Cow%20Ghee/01.jpg",
       "/images/Dailywell_Products/Cow%20Ghee/02.jpg",
       "/images/Dailywell_Products/Cow%20Ghee/03.jpg",
@@ -6009,8 +6019,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Fish%20Curry%20Masala/01.jpg",
+    "image": "/images/Dailywell_Products/Fish%20Curry%20Masala/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Fish%20Curry%20Masala/dhaanya%2001.png",
       "/images/Dailywell_Products/Fish%20Curry%20Masala/01.jpg"
     ],
     "variants": [
@@ -6125,8 +6136,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/01.jpg",
+    "image": "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/Dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/Dhaanya%2001.png",
+      "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/dhaanya%2002.png",
       "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/01.jpg",
       "/images/Dailywell_Products/Forest%20Honey%20(Kattuthen)/02.jpg"
     ],
@@ -6514,8 +6527,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Garam%20Masala/01.jpg",
+    "image": "/images/Dailywell_Products/Garam%20Masala/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Garam%20Masala/dhaanya%2001.png",
       "/images/Dailywell_Products/Garam%20Masala/01.jpg"
     ],
     "variants": [
@@ -6560,8 +6574,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Garlic%20pickle/01.png",
+    "image": "/images/Dailywell_Products/Garlic%20pickle/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Garlic%20pickle/dhaanya%2001.png",
       "/images/Dailywell_Products/Garlic%20pickle/01.png"
     ],
     "variants": [
@@ -6664,8 +6679,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Ginger%20Honey/01.jpg",
+    "image": "/images/Dailywell_Products/Ginger%20Honey/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Ginger%20Honey/dhaanya%2001.png",
       "/images/Dailywell_Products/Ginger%20Honey/01.jpg"
     ],
     "variants": [
@@ -6716,8 +6732,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Gooseberry%20Pickle/01.jpg",
+    "image": "/images/Dailywell_Products/Gooseberry%20Pickle/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Gooseberry%20Pickle/dhaanya%2001.png",
       "/images/Dailywell_Products/Gooseberry%20Pickle/01.jpg"
     ],
     "variants": [
@@ -6936,8 +6953,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Groundnut%20Oil/01.jpg",
+    "image": "/images/Dailywell_Products/Groundnut%20Oil/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Groundnut%20Oil/dhaanya%2001.png",
+      "/images/Dailywell_Products/Groundnut%20Oil/dhaanya%2002.png",
       "/images/Dailywell_Products/Groundnut%20Oil/01.jpg",
       "/images/Dailywell_Products/Groundnut%20Oil/02.jpg"
     ],
@@ -7047,8 +7066,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Hazelnut%20Nut%20Butter/01.jpg",
+    "image": "/images/Dailywell_Products/Hazelnut%20Nut%20Butter/dhaanya.png",
     "gallery": [
+      "/images/Dailywell_Products/Hazelnut%20Nut%20Butter/dhaanya.png",
       "/images/Dailywell_Products/Hazelnut%20Nut%20Butter/01.jpg"
     ],
     "variants": [
@@ -8579,8 +8599,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Lemon%20pickle/01.jpg",
+    "image": "/images/Dailywell_Products/Lemon%20pickle/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Lemon%20pickle/dhaanya%2001.png",
       "/images/Dailywell_Products/Lemon%20pickle/01.jpg"
     ],
     "variants": [
@@ -9577,8 +9598,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Meat%20Masala/01.jpg",
+    "image": "/images/Dailywell_Products/Meat%20Masala/dhaanya.png",
     "gallery": [
+      "/images/Dailywell_Products/Meat%20Masala/dhaanya.png",
       "/images/Dailywell_Products/Meat%20Masala/01.jpg"
     ],
     "variants": [
@@ -10571,8 +10593,11 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/01.jpg",
+    "image": "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/dhaanya%2001.png",
+      "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/dhaanya%2002.png",
+      "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/dhaanya%2003.png",
       "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/01.jpg",
       "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/02.jpg",
       "/images/Dailywell_Products/Mustard%20Oil%20(Black%20Seed)/03.jpg",
@@ -12541,9 +12566,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Pomegranate%20Honey/01.jpg",
+    "image": "/images/Dailywell_Products/Pomegranate%20Honey/01.png",
     "gallery": [
-      "/images/Dailywell_Products/Pomegranate%20Honey/01.jpg"
+      "/images/Dailywell_Products/Pomegranate%20Honey/01.png"
     ],
     "variants": [
       {
@@ -13942,9 +13967,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Raw%20Honey/01.jpg",
+    "image": "/images/Dailywell_Products/Raw%20Honey/01.png",
     "gallery": [
-      "/images/Dailywell_Products/Raw%20Honey/01.jpg"
+      "/images/Dailywell_Products/Raw%20Honey/01.png"
     ],
     "variants": [
       {
@@ -15355,8 +15380,11 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/01.jpg",
+    "image": "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2001.png",
+      "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2002.png",
+      "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2003.png",
       "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/01.jpg",
       "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/02.jpg",
       "/images/Dailywell_Products/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/03.jpg",
@@ -15410,8 +15438,11 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/01.jpg",
+    "image": "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2001.png",
+      "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2002.png",
+      "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2003.png",
       "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/01.jpg",
       "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/02.jpg",
       "/images/Dailywell_Products/Sesame%20Oil%20(White%20Gingelly%20Seed)/03.jpg",
@@ -16140,8 +16171,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Stingless%20Bee%20Honey%20(Cheruthen)/01.png",
+    "image": "/images/Dailywell_Products/Stingless%20Bee%20Honey%20(Cheruthen)/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Stingless%20Bee%20Honey%20(Cheruthen)/dhaanya%2001.png",
       "/images/Dailywell_Products/Stingless%20Bee%20Honey%20(Cheruthen)/01.png"
     ],
     "variants": [
@@ -16366,8 +16398,11 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Sunflower%20Oil/01.jpg",
+    "image": "/images/Dailywell_Products/Sunflower%20Oil/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Sunflower%20Oil/dhaanya%2001.png",
+      "/images/Dailywell_Products/Sunflower%20Oil/dhaanya%2002.png",
+      "/images/Dailywell_Products/Sunflower%20Oil/dhaanya%2003.png",
       "/images/Dailywell_Products/Sunflower%20Oil/01.jpg",
       "/images/Dailywell_Products/Sunflower%20Oil/02.jpg",
       "/images/Dailywell_Products/Sunflower%20Oil/03.jpg",
@@ -17463,8 +17498,12 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Virgin%20coconut%20Oil/01.jpg",
+    "image": "/images/Dailywell_Products/Virgin%20coconut%20Oil/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Virgin%20coconut%20Oil/dhaanya%2001.png",
+      "/images/Dailywell_Products/Virgin%20coconut%20Oil/dhaanya%2002.png",
+      "/images/Dailywell_Products/Virgin%20coconut%20Oil/dhaanya%2003.png",
+      "/images/Dailywell_Products/Virgin%20coconut%20Oil/dhaanya%2004.png",
       "/images/Dailywell_Products/Virgin%20coconut%20Oil/01.jpg",
       "/images/Dailywell_Products/Virgin%20coconut%20Oil/02.jpg",
       "/images/Dailywell_Products/Virgin%20coconut%20Oil/03.jpg",
@@ -17584,8 +17623,9 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/Dailywell_Products/Walnut%20Nut%20Butter/01.jpg",
+    "image": "/images/Dailywell_Products/Walnut%20Nut%20Butter/dhaanya%2001.png",
     "gallery": [
+      "/images/Dailywell_Products/Walnut%20Nut%20Butter/dhaanya%2001.png",
       "/images/Dailywell_Products/Walnut%20Nut%20Butter/01.jpg"
     ],
     "variants": [
