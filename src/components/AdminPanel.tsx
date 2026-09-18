@@ -131,7 +131,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
         id: 'ci-1',
         type: 'product',
         name: 'Wood Pressed Cold Pressed Mustard Oil',
-        image: '/images/Dailywell_Products/Mustard%20Oil/01.jpg',
+        image: '/images/dhannya_Products_final/Mustard%20Oil/01.jpg',
         variantWeight: '1 Litre',
         price: 399,
         quantity: 1,
@@ -140,7 +140,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
         id: 'ci-2',
         type: 'product',
         name: 'Organic Whole Ground Garam Masala',
-        image: '/images/Dailywell_Products/Garam%20Masala/01.jpg',
+        image: '/images/dhannya_Products_final/Garam%20Masala/01.jpg',
         variantWeight: '250g',
         price: 320,
         quantity: 1,
@@ -178,7 +178,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
         id: 'ci-3',
         type: 'product',
         name: 'Pure Organic Turmeric Powder (High Curcumin)',
-        image: '/images/Dailywell_Products/Turmeric%20Powder/01.jpg',
+        image: '/images/dhannya_Products_final/Turmeric%20Powder/01.jpg',
         variantWeight: '500g',
         price: 249,
         quantity: 2,
@@ -239,7 +239,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const [newProdPrice, setNewProdPrice] = useState(299);
   const [newProdStock, setNewProdStock] = useState(50);
   const [newProdDesc, setNewProdDesc] = useState('');
-  const [newProdImage, setNewProdImage] = useState('/images/Dailywell_Products/Garam%20Masala/01.jpg');
+  const [newProdImage, setNewProdImage] = useState('/images/dhannya_Products_final/Garam%20Masala/01.jpg');
 
   // Coupon Add Modal State
   const [isAddCouponOpen, setIsAddCouponOpen] = useState(false);
@@ -366,7 +366,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
           category: newProdCategory,
           price: Number(newProdPrice) || 299,
           stock: Number(newProdStock) || 50,
-          image: newProdImage || '/images/Dailywell_Products/Garam%20Masala/01.jpg',
+          image: newProdImage || '/images/dhannya_Products_final/Garam%20Masala/01.jpg',
           description: newProdDesc || '100% pure organic product.',
         }),
       });
@@ -387,7 +387,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
         setNewProdPrice(299);
         setNewProdStock(50);
         setNewProdDesc('');
-        setNewProdImage('/images/Dailywell_Products/Garam%20Masala/01.jpg');
+        setNewProdImage('/images/dhannya_Products_final/Garam%20Masala/01.jpg');
       } else {
         showToast(data.message || 'Failed to add product. Please check input values.', 'error');
       }
@@ -1537,11 +1537,11 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                             <div className="flex items-center gap-2.5">
                               {order.items && order.items.length > 0 && (
                                 <img
-                                  src={order.items[0]?.image || order.items[0]?.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg'}
+                                  src={order.items[0]?.image || order.items[0]?.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
                                   alt={order.id}
                                   className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
                                   onError={(e) => {
-                                    e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                    e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                                   }}
                                 />
                               )}
@@ -1562,12 +1562,12 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                               {order.items.slice(0, 3).map((it: any, idx: number) => (
                                 <img
                                   key={idx}
-                                  src={it.image || it.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg'}
+                                  src={it.image || it.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
                                   alt={it.name || it.product?.name || 'Item'}
                                   className="w-6 h-6 rounded-lg object-cover border border-stone-200"
                                   title={it.name || it.product?.name || 'Ordered Item'}
                                   onError={(e) => {
-                                    e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                    e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                                   }}
                                 />
                               ))}
@@ -1713,11 +1713,11 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                           <div className="flex items-center gap-2.5">
                             {order.items && order.items.length > 0 && (
                               <img
-                                src={order.items[0]?.image || order.items[0]?.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg'}
+                                src={order.items[0]?.image || order.items[0]?.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
                                 alt={order.id}
                                 className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
                                 onError={(e) => {
-                                  e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                  e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                                 }}
                               />
                             )}
@@ -2367,7 +2367,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                 {categoriesList.map((cat) => (
                   <div key={cat.slug} className="bg-[#faf8f4] p-4 rounded-2xl border border-stone-200 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <img src={cat.image || '/images/Dailywell_Products/Ajwain/01.png'} alt={cat.name} className="w-12 h-12 rounded-xl object-cover border border-stone-200" />
+                      <img src={cat.image || '/images/dhannya_Products_final/Ajwain/01.png'} alt={cat.name} className="w-12 h-12 rounded-xl object-cover border border-stone-200" />
                       <div>
                         <h4 className="font-bold font-serif text-earth text-sm">{cat.name}</h4>
                         <p className="text-xs text-stone-500 font-mono">/{cat.slug}</p>
@@ -3099,7 +3099,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                   {(selectedOrderDetails.items || []).map((item: any, idx: number) => {
                     const itemName = item.name || item.product?.name || 'Organic Product';
                     const itemWeight = item.variantWeight || item.selectedWeight || 'Standard';
-                    const itemImg = item.image || item.product?.image || '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                    const itemImg = item.image || item.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                     const itemPrice = item.price || item.unitPrice || 0;
                     const itemQty = item.quantity || 1;
 
@@ -3114,7 +3114,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                               alt={itemName}
                               className="w-12 h-12 rounded-xl object-cover border border-stone-200 shrink-0"
                               onError={(e) => {
-                                e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                                e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                               }}
                             />
                             <div>
@@ -3449,7 +3449,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                           alt={item.name}
                           className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
                           onError={(e) => {
-                            e.currentTarget.src = '/images/Dailywell_Products/Garam%20Masala/01.jpg';
+                            e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                           }}
                         />
                         <div className="min-w-0">

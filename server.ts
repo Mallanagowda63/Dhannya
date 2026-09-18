@@ -11,8 +11,8 @@ import { Product, Order, Address } from './src/types';
 
 import crypto from 'crypto';
 
-// Dynamic image resolver: Automatically scans images/Dailywell_Products/<Name>/ for the latest image file
-const publicProductsBaseDir = path.join(process.cwd(), 'images', 'Dailywell_Products');
+// Dynamic image resolver: Automatically scans images/dhannya_Products_final/<Name>/ for the latest image file
+const publicProductsBaseDir = path.join(process.cwd(), 'images', 'dhannya_Products_final');
 
 function resolveProductImagePath(productName: string, fallbackImage?: string): string {
   try {
@@ -21,14 +21,21 @@ function resolveProductImagePath(productName: string, fallbackImage?: string): s
       const files = fs.readdirSync(folderPath);
       const imgFiles = files.filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
       if (imgFiles.length > 0) {
-        // Priority: prefer 011.png / 011.jpg if exists, else 01.png / 01.jpg / 01*, else first file
+        // Priority: real branded product photos (filenames starting with
+        // "dhaanya"/"Dhaanya") always win over old numbered placeholders --
+        // these folders get manually curated over time (old placeholders
+        // deleted, new real photos added), so preferring the actual branded
+        // photo is more durable than depending on any specific old filename
+        // still existing. Falls back to the legacy 011/01.* convention, then
+        // just the first file, for products that don't have a branded photo yet.
         const priorityImg =
+          imgFiles.find((f) => /^dhaanya/i.test(f)) ||
           imgFiles.find((f) => f.startsWith('011')) ||
           imgFiles.find((f) => f.startsWith('01.')) ||
           imgFiles.find((f) => f.startsWith('01')) ||
           imgFiles[0];
 
-        return `/images/Dailywell_Products/${encodeURIComponent(productName)}/${encodeURIComponent(priorityImg)}`;
+        return `/images/dhannya_Products_final/${encodeURIComponent(productName)}/${encodeURIComponent(priorityImg)}`;
       }
     }
   } catch (e) {
@@ -1141,7 +1148,7 @@ app.post('/api/admin/categories', async (req, res) => {
       slug,
       iconName: 'Package',
       description: description || 'Organic premium quality category.',
-      image: image || '/images/Dailywell_Products/Ajwain/01.png',
+      image: image || '/images/dhannya_Products_final/Ajwain/01.png',
       productCount: 0,
     };
 
