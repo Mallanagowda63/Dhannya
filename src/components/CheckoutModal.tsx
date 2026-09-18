@@ -5,12 +5,10 @@ import {
   X,
   MapPin,
   Clock,
-  CreditCard,
   CheckCircle2,
   Truck,
   ShieldCheck,
   ChevronRight,
-  QrCode,
   PackageCheck,
   ShoppingBag,
 } from 'lucide-react';
@@ -50,7 +48,8 @@ export const CheckoutModal: React.FC = () => {
   );
 
   const [deliverySlot, setDeliverySlot] = useState('Morning (9:00 AM - 1:00 PM)');
-  const [paymentMethod, setPaymentMethod] = useState<'COD' | 'Razorpay' | 'UPI'>('UPI');
+  // Only COD is offered right now -- UPI/online payment options were removed.
+  const paymentMethod = 'COD' as const;
 
   if (!isCheckoutOpen) return null;
 
@@ -217,64 +216,12 @@ export const CheckoutModal: React.FC = () => {
                   Select Payment Option
                 </h3>
                 <div className="space-y-3">
-                  <label
-                    className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
-                      paymentMethod === 'UPI'
-                        ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]'
-                        : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <QrCode className="w-5 h-5 text-[#C89211]" />
-                      <span className="font-bold text-sm">UPI Instant Pay / GPay / PhonePe</span>
-                    </div>
-                    <input
-                      type="radio"
-                      name="payment"
-                      checked={paymentMethod === 'UPI'}
-                      onChange={() => setPaymentMethod('UPI')}
-                    />
-                  </label>
-
-                  <label
-                    className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
-                      paymentMethod === 'Razorpay'
-                        ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]'
-                        : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <CreditCard className="w-5 h-5 text-[#C89211]" />
-                      <div>
-                        <span className="font-bold text-sm block">Online Payment (Cards / NetBanking / Razorpay)</span>
-                        <span className="text-[11px] opacity-75">Server-side Razorpay Payment Gateway Test Mode</span>
-                      </div>
-                    </div>
-                    <input
-                      type="radio"
-                      name="payment"
-                      checked={paymentMethod === 'Razorpay'}
-                      onChange={() => setPaymentMethod('Razorpay')}
-                    />
-                  </label>
-
-                  <label
-                    className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
-                      paymentMethod === 'COD'
-                        ? 'bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]'
-                        : 'bg-[#F8F3E6] text-[#2A2620] border-[#2A2620]/20'
-                    }`}
-                  >
+                  <label className="p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all bg-[#3E4B32] text-[#F4ECD8] border-[#3E4B32]">
                     <div className="flex items-center gap-3">
                       <Truck className="w-5 h-5 text-[#C89211]" />
                       <span className="font-bold text-sm">Cash on Delivery (COD)</span>
                     </div>
-                    <input
-                      type="radio"
-                      name="payment"
-                      checked={paymentMethod === 'COD'}
-                      onChange={() => setPaymentMethod('COD')}
-                    />
+                    <input type="radio" name="payment" checked readOnly />
                   </label>
                 </div>
               </div>
