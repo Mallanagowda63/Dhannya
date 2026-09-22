@@ -878,7 +878,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
             <div className="w-16 h-16 rounded-2xl bg-stone-900 text-amber-300 font-serif font-black text-2xl mx-auto flex items-center justify-center shadow-md">
               Dh
             </div>
-            <h2 className="text-2xl font-bold font-serif text-earth">Dhannya Admin Portal</h2>
+            <h2 className="text-2xl font-bold font-serif text-earth">Dhaanya Admin Portal</h2>
             <p className="text-xs text-stone-500">Enter your store administrator credentials to sign in</p>
           </div>
 
@@ -949,7 +949,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
             </div>
             <div>
               <h1 className="text-lg font-bold font-serif tracking-tight text-white flex items-center gap-2">
-                <span>Dhannya Admin Dashboard</span>
+                <span>Dhaanya Admin Dashboard</span>
                 <span className="bg-emerald-800 text-emerald-200 text-[10px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full border border-emerald-700">
                   PRO
                 </span>
@@ -1079,7 +1079,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-stone-200/80 shadow-xs">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold font-serif text-earth tracking-tight">
-                {activeTab === 'dashboard' && 'Dhannya Store Dashboard'}
+                {activeTab === 'dashboard' && 'Dhaanya Store Dashboard'}
                 {activeTab === 'orders' && 'Orders Management'}
                 {activeTab === 'products' && 'Product Inventory Catalog'}
                 {activeTab === 'categories' && 'Store Categories'}
@@ -2829,7 +2829,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
               <form onSubmit={(e) => { e.preventDefault(); showToast('Settings saved successfully!'); }} className="space-y-4 text-xs font-bold">
                 <div>
                   <label className="block text-stone-700 uppercase mb-1">Store Name</label>
-                  <input type="text" defaultValue="Dhannya Organic & Custom Masala" className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
+                  <input type="text" defaultValue="Dhaanya Organic & Custom Masala" className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
                 </div>
                 <div>
                   <label className="block text-stone-700 uppercase mb-1">Support Email</label>

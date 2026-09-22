@@ -241,9 +241,9 @@ export const AuthModal: React.FC = () => {
             {mode === 'admin'
               ? 'Admin Login'
               : mode === 'login'
-              ? 'Welcome Back to Dhannya'
+              ? 'Welcome Back to Dhaanya'
               : mode === 'signup'
-              ? 'Create Your Dhannya Account'
+              ? 'Create Your Dhaanya Account'
               : 'Enter Verification OTP'}
           </h3>
 

@@ -68,7 +68,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "flour",
     "iconName": "Wheat",
     "description": "Stone-ground, unbleached organic flours & ancient grain blends.",
-    "image": "/images/dhannya_Products_final/Dailywell%20Multi%20Millet%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
     "productCount": 16
   },
   {
@@ -4604,14 +4604,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-74",
-    "name": "Dailywell Fibre Atta",
+    "name": "Dhaanya Fibre Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dailywell Fibre Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "100% Pure, authentic, and naturally processed Dhaanya Fibre Atta sourced carefully for daily health, wellness, and rich taste.",
     "ingredients": [
-      "100% Pure Natural Dailywell Fibre Atta"
+      "100% Pure Natural Dhaanya Fibre Atta"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4624,10 +4624,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/dhannya_Products_final/Dailywell%20Fibre%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Dailywell%20Fibre%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dailywell%20Fibre%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.jpg",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/02.jpg"
     ],
     "variants": [
       {
@@ -4663,14 +4663,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-75",
-    "name": "Dailywell Gluten Free Atta",
+    "name": "Dhaanya Gluten Free Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dailywell Gluten Free Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "100% Pure, authentic, and naturally processed Dhaanya Gluten Free Atta sourced carefully for daily health, wellness, and rich taste.",
     "ingredients": [
-      "100% Pure Natural Dailywell Gluten Free Atta"
+      "100% Pure Natural Dhaanya Gluten Free Atta"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4683,10 +4683,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/dhannya_Products_final/Dailywell%20Gluten%20Free%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Gluten%20Free%20Atta/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Dailywell%20Gluten%20Free%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dailywell%20Gluten%20Free%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Gluten%20Free%20Atta/01.jpg",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten%20Free%20Atta/02.jpg"
     ],
     "variants": [
       {
@@ -4722,14 +4722,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-76",
-    "name": "Dailywell Multi Millet Atta",
+    "name": "Dhaanya Multi Millet Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dailywell Multi Millet Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "100% Pure, authentic, and naturally processed Dhaanya Multi Millet Atta sourced carefully for daily health, wellness, and rich taste.",
     "ingredients": [
-      "100% Pure Natural Dailywell Multi Millet Atta"
+      "100% Pure Natural Dhaanya Multi Millet Atta"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4742,10 +4742,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/dhannya_Products_final/Dailywell%20Multi%20Millet%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Dailywell%20Multi%20Millet%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dailywell%20Multi%20Millet%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/02.jpg"
     ],
     "variants": [
       {
@@ -4781,14 +4781,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-77",
-    "name": "Dailywell Nuts & Seeds Atta",
+    "name": "Dhaanya Nuts & Seeds Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dailywell Nuts & Seeds Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "100% Pure, authentic, and naturally processed Dhaanya Nuts & Seeds Atta sourced carefully for daily health, wellness, and rich taste.",
     "ingredients": [
-      "100% Pure Natural Dailywell Nuts & Seeds Atta"
+      "100% Pure Natural Dhaanya Nuts & Seeds Atta"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4801,10 +4801,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/dhannya_Products_final/Dailywell%20Nuts%20%26%20Seeds%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Dailywell%20Nuts%20%26%20Seeds%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dailywell%20Nuts%20%26%20Seeds%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.jpg",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/02.jpg"
     ],
     "variants": [
       {
@@ -4840,14 +4840,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-78",
-    "name": "Dailywell Protein Atta",
+    "name": "Dhaanya Protein Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dailywell Protein Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "100% Pure, authentic, and naturally processed Dhaanya Protein Atta sourced carefully for daily health, wellness, and rich taste.",
     "ingredients": [
-      "100% Pure Natural Dailywell Protein Atta"
+      "100% Pure Natural Dhaanya Protein Atta"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4860,10 +4860,10 @@ export const PRODUCTS: Product[] = [
       "Unadulterated natural quality with zero preservatives",
       "Supports everyday immunity, digestion, and overall vitality"
     ],
-    "image": "/images/dhannya_Products_final/Dailywell%20Protein%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Protein%20Atta/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Dailywell%20Protein%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dailywell%20Protein%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Protein%20Atta/01.jpg",
+      "/images/dhannya_Products_final/Dhaanya%20Protein%20Atta/02.jpg"
     ],
     "variants": [
       {

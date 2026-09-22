@@ -885,17 +885,17 @@ app.post('/api/auth/send-otp', async (req, res) => {
     };
 
     const recipientName = name || cleanEmail.split('@')[0];
-    const emailSubject = `Verification Code: ${generatedOtp} - Dhannya Authentication`;
+    const emailSubject = `Verification Code: ${generatedOtp} - Dhaanya Authentication`;
     const emailBody = `Hi ${recipientName},
 
-Your 6-digit verification code to login to Dhannya is:
+Your 6-digit verification code to login to Dhaanya is:
 
 ${generatedOtp}
 
 This OTP code is valid for 10 minutes.
 
 Warm regards,
-Team Dhannya
+Team Dhaanya
 dhaanyaorganic1@gmail.com`;
 
     console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
@@ -909,9 +909,9 @@ dhaanyaorganic1@gmail.com`;
           text: emailBody,
           html: `
             <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
-              <h2 style="color: #455726; margin: 0; text-align: center;">Dhannya Organic</h2>
+              <h2 style="color: #455726; margin: 0; text-align: center;">Dhaanya Organic</h2>
               <p style="margin-top: 16px;">Hi <strong>${recipientName}</strong>,</p>
-              <p>Your 6-digit verification code to sign into your Dhannya account is:</p>
+              <p>Your 6-digit verification code to sign into your Dhaanya account is:</p>
               <div style="font-size: 32px; font-weight: 900; color: #455726; letter-spacing: 6px; background-color: #faf8f4; padding: 16px; text-align: center; border-radius: 10px; border: 2px dashed #455726; margin: 16px 0;">
                 ${generatedOtp}
               </div>
@@ -1072,7 +1072,7 @@ app.post('/api/auth/admin-login', (req, res) => {
       adminToken,
       user: {
         id: 'admin-1',
-        name: 'Dhannya Store Administrator',
+        name: 'Dhaanya Store Administrator',
         email: ADMIN_EMAIL,
         role: 'admin',
       },
@@ -1701,7 +1701,7 @@ app.post('/api/reviews', async (req, res) => {
       rating: Number(rating) || 5,
       date: new Date().toISOString(),
       comment: comment || '',
-      productName: productName || 'Dhannya Product',
+      productName: productName || 'Dhaanya Product',
       verifiedPurchase: true,
     };
 
@@ -2811,7 +2811,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Dhannya Production Server running on http://0.0.0.0:${PORT}`);
+    console.log(`🚀 Dhaanya Production Server running on http://0.0.0.0:${PORT}`);
   });
 }
 

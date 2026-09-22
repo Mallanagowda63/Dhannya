@@ -134,7 +134,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Description Slot (Fixed 2-Line Height) */}
           <div className="product-description-slot">
             <p className="text-xs text-[#2A2620]/70 line-clamp-2 leading-relaxed font-sans">
-              {product.description || 'Pure, authentic & traditional organic produce from Dhannya.'}
+              {product.description || 'Pure, authentic & traditional organic produce from Dhaanya.'}
             </p>
           </div>
 
