@@ -282,7 +282,7 @@ export const ProductQuickView: React.FC = () => {
 
           {/* Secondary CTA - gives the left column real content instead of dead space */}
           <a
-            href={`https://wa.me/919876543210?text=${encodeURIComponent(
+            href={`https://wa.me/919008625716?text=${encodeURIComponent(
               `Hi! I have a question about ${quickViewProduct.name}.`
             )}`}
             target="_blank"

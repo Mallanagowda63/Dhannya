@@ -361,7 +361,7 @@ function renderOrderStatusEmailHtml(params: OrderEmailParams): string {
               <p style="margin:0 0 6px;font-family:Georgia,'Times New Roman',serif;font-size:15px;font-weight:bold;color:#2A2620;">Dhaanya</p>
               <p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6b6355;">Doddakallasandra, Bengaluru - 560062</p>
               <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6b6355;line-height:1.6;">
-                Questions? Reply to this email or WhatsApp us at <a href="https://wa.me/918792889647" style="color:#3E4B32;text-decoration:none;font-weight:bold;">+91 8792889647</a>.
+                Questions? Reply to this email or WhatsApp us at <a href="https://wa.me/919008625716" style="color:#3E4B32;text-decoration:none;font-weight:bold;">+91 9008625716</a>.
               </p>
             </td>
           </tr>
@@ -394,7 +394,7 @@ function renderOrderStatusEmailText(params: OrderEmailParams): string {
   if (params.deliveryAddressLines?.length) {
     lines.push('', 'Delivery Address:', ...params.deliveryAddressLines);
   }
-  lines.push('', 'Questions? Reply to this email or WhatsApp us at +91 8792889647.', '', 'Warm regards,', 'Team Dhaanya');
+  lines.push('', 'Questions? Reply to this email or WhatsApp us at +91 9008625716.', '', 'Warm regards,', 'Team Dhaanya');
   return lines.join('\n');
 }
 
@@ -900,7 +900,7 @@ This OTP code is valid for 10 minutes.
 
 Warm regards,
 Team Dhaanya
-dhaanyaorganic1@gmail.com`;
+sales@dhaanyafoods.com`;
 
     console.log(`[OTP] Generated for ${cleanEmail}: [ ${generatedOtp} ]`);
 
@@ -1764,10 +1764,11 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Email and message are required.' });
     }
 
+    const cleanName = String(name || 'Website Visitor').trim();
     const newMessage = {
       id: `MSG-${Math.floor(10000 + Math.random() * 90000)}`,
       source: 'contact_form',
-      name: String(name || 'Website Visitor').trim(),
+      name: cleanName,
       email: cleanEmail,
       subject: String(subject || 'New Contact Form Message').trim(),
       message: cleanMessage,
@@ -1777,6 +1778,25 @@ app.post('/api/contact', async (req, res) => {
     if (connected) {
       await CustomerMessageModel.create(newMessage as any);
     }
+
+    sendResendEmail({
+      to: 'sales@dhaanyafoods.com',
+      subject: `New Contact Form Message from ${cleanName}`,
+      text: `New message from the Dhaanya contact form.\n\nName: ${cleanName}\nEmail: ${cleanEmail}\n\nMessage:\n${cleanMessage}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 24px; color: #2d2b26; max-width: 520px; border: 1px solid #e7e5e4; border-radius: 16px; background-color: #ffffff;">
+          <h2 style="color: #455726; margin: 0;">New Contact Form Message</h2>
+          <p style="margin-top: 16px;"><strong>Name:</strong> ${escapeHtml(cleanName)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(cleanEmail)}</p>
+          <p style="margin-top: 16px; white-space: pre-wrap; background-color: #faf8f4; padding: 16px; border-radius: 10px;">${escapeHtml(cleanMessage)}</p>
+        </div>
+      `,
+    }).then((result) => {
+      if (!result.success) {
+        console.error('[CONTACT FORM] Resend notification failed:', result.error);
+      }
+    });
+
     res.json({ success: true, message: 'Thanks for reaching out! We will get back to you soon.', data: newMessage });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -2662,7 +2682,7 @@ function buildOrderStatusEmail(status: string, order: any) {
       ].filter(Boolean)
     : undefined;
 
-  const recipientEmail = (order?.shippingAddress?.email || order?.userEmail || order?.customerEmail || order?.email || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
+  const recipientEmail = (order?.shippingAddress?.email || order?.userEmail || order?.customerEmail || order?.email || 'sales@dhaanyafoods.com').trim().toLowerCase();
 
   const statusKeyMap: Record<string, OrderEmailStatusKey> = {
     Confirmed: 'confirmed',

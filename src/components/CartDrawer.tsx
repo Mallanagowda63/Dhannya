@@ -242,7 +242,7 @@ export const CartDrawer: React.FC = () => {
               </button>
 
               <a
-                href={`https://wa.me/919876543210?text=${generateCartWhatsAppMessage()}`}
+                href={`https://wa.me/919008625716?text=${generateCartWhatsAppMessage()}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-2.5 bg-[#3E4B32]/10 hover:bg-[#3E4B32]/20 text-[#3E4B32] font-semibold text-xs uppercase tracking-wider rounded-md transition-colors flex items-center justify-center gap-2 border border-[#3E4B32]/30"

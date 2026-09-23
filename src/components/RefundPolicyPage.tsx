@@ -81,18 +81,18 @@ export const RefundPolicyPage: React.FC<RefundPolicyPageProps> = ({ onNavigateHo
                 <li>
                   WhatsApp:{' '}
                   <a
-                    href="https://wa.me/918792889647"
+                    href="https://wa.me/919008625716"
                     target="_blank"
                     rel="noreferrer"
                     className="text-[#A9542B] font-semibold hover:underline"
                   >
-                    +91 8792889647
+                    +91 9008625716
                   </a>
                 </li>
                 <li>
                   Email:{' '}
-                  <a href="mailto:dhaanyaorganic1@gmail.com" className="text-[#A9542B] font-semibold hover:underline">
-                    dhaanyaorganic1@gmail.com
+                  <a href="mailto:sales@dhaanyafoods.com" className="text-[#A9542B] font-semibold hover:underline">
+                    sales@dhaanyafoods.com
                   </a>
                 </li>
               </ul>
@@ -122,7 +122,7 @@ export const RefundPolicyPage: React.FC<RefundPolicyPageProps> = ({ onNavigateHo
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
               Orders can be cancelled free of charge before they are dispatched for delivery. Please
-              contact us as soon as possible via WhatsApp (+91 8792889647) or email with your Order ID.
+              contact us as soon as possible via WhatsApp (+91 9008625716) or email with your Order ID.
             </li>
             <li>
               Once an order has been dispatched/shipped, it cannot be cancelled — you may raise a
@@ -145,17 +145,17 @@ export const RefundPolicyPage: React.FC<RefundPolicyPageProps> = ({ onNavigateHo
             <br />
             WhatsApp:{' '}
             <a
-              href="https://wa.me/918792889647"
+              href="https://wa.me/919008625716"
               target="_blank"
               rel="noreferrer"
               className="text-[#A9542B] hover:underline"
             >
-              +91 8792889647
+              +91 9008625716
             </a>
             <br />
             Email:{' '}
-            <a href="mailto:dhaanyaorganic1@gmail.com" className="text-[#A9542B] hover:underline">
-              dhaanyaorganic1@gmail.com
+            <a href="mailto:sales@dhaanyafoods.com" className="text-[#A9542B] hover:underline">
+              sales@dhaanyafoods.com
             </a>
           </p>
         </Section>

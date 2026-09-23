@@ -114,8 +114,8 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
           </ul>
           <p>
             To exercise any of these rights, simply write to us at{' '}
-            <a href="mailto:dhaanyaorganic1@gmail.com" className="text-[#A9542B] font-semibold hover:underline">
-              dhaanyaorganic1@gmail.com
+            <a href="mailto:sales@dhaanyafoods.com" className="text-[#A9542B] font-semibold hover:underline">
+              sales@dhaanyafoods.com
             </a>
             , and we'll respond within a reasonable timeframe.
           </p>
@@ -149,8 +149,8 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
             Doddakallasandra, Bengaluru – 560062
             <br />
             Email:{' '}
-            <a href="mailto:dhaanyaorganic1@gmail.com" className="text-[#A9542B] hover:underline">
-              dhaanyaorganic1@gmail.com
+            <a href="mailto:sales@dhaanyafoods.com" className="text-[#A9542B] hover:underline">
+              sales@dhaanyafoods.com
             </a>
           </p>
         </Section>

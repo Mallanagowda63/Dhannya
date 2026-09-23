@@ -87,22 +87,22 @@ export const Footer: React.FC<{
             <p className="text-xs sm:text-sm text-stone-100">
               Feedbacks:{' '}
               <a
-                href="mailto:dhaanyaorganic1@gmail.com"
+                href="mailto:sales@dhaanyafoods.com"
                 className="hover:underline text-white font-medium"
               >
-                dhaanyaorganic1@gmail.com
+                sales@dhaanyafoods.com
               </a>
             </p>
 
             <p className="text-xs sm:text-sm text-stone-100">
               WhatsApp Orders :{' '}
               <a
-                href="https://wa.me/918792889647"
+                href="https://wa.me/919008625716"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline text-[#86EFAC] font-bold"
               >
-                +91 8792889647
+                +91 9008625716
               </a>
             </p>
 
