@@ -27,10 +27,7 @@ export const CompositionHoverCard: React.FC<CompositionHoverCardProps> = ({
   const [coords, setCoords] = useState<{ top: number; left: number; placeAbove: boolean } | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const composition = product.compositionBreakdown;
-
-  if (!composition || composition.length === 0) {
-    return <>{children}</>;
-  }
+  const hasComposition = !!composition && composition.length > 0;
 
   const computePosition = () => {
     const el = triggerRef.current;
@@ -47,18 +44,18 @@ export const CompositionHoverCard: React.FC<CompositionHoverCardProps> = ({
     typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches;
 
   const handleMouseEnter = () => {
-    if (isTouchDevice()) return;
+    if (!hasComposition || isTouchDevice()) return;
     computePosition();
     setOpen(true);
   };
 
   const handleMouseLeave = () => {
-    if (isTouchDevice()) return;
+    if (!hasComposition || isTouchDevice()) return;
     setOpen(false);
   };
 
   const handleClick = (e: React.MouseEvent) => {
-    if (!isTouchDevice()) return;
+    if (!hasComposition || !isTouchDevice()) return;
     e.stopPropagation();
     e.preventDefault();
     if (open) {
@@ -79,7 +76,7 @@ export const CompositionHoverCard: React.FC<CompositionHoverCardProps> = ({
     >
       {children}
 
-      {open && coords &&
+      {hasComposition && open && coords &&
         createPortal(
           <>
             <div
