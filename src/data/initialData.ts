@@ -4310,7 +4310,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-70",
     "name": "Cow Ghee",
-    "category": "Wood Pressed Oils",
+    "category": "Health Foods",
     "concern": [
       "Heart Health"
     ],
@@ -4362,7 +4362,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 42,
     "tags": [
-      "Wood Pressed Oils",
+      "Health Foods",
       "Organic",
       "Natural",
       "Dhaanya"
