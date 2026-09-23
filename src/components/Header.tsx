@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import {
   ShoppingBag,
@@ -56,6 +56,22 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Publish the sticky header's real rendered height as a CSS variable so other
+  // sticky elements (e.g. the category pills bar) can position themselves right
+  // below it without hardcoding a height that drifts across breakpoints.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => {
+      document.documentElement.style.setProperty('--site-header-height', `${el.offsetHeight}px`);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const cartCount = useMemo(() => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -88,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full transition-all duration-300">
+      <header ref={headerRef} className="sticky top-0 z-40 w-full transition-all duration-300">
         {/* Announcement Ticker Bar */}
         <div className="bg-[#3E4B32] text-[#F4ECD8] py-2 text-xs font-medium border-b border-[#C89211]/30">
           <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">

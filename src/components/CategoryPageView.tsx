@@ -122,8 +122,11 @@ export const CategoryPageView: React.FC<{
 
       {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
-        {/* Category Pills Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6 border-b border-[#2A2620]/10">
+        {/* Category Pills Bar -- sticks just below the site header on scroll */}
+        <div
+          className="sticky z-30 flex items-center gap-2 overflow-x-auto no-scrollbar py-4 mb-6 border-b border-[#2A2620]/10 bg-[#F4ECD8]"
+          style={{ top: 'var(--site-header-height, 0px)' }}
+        >
           <button
             onClick={() => setActiveCategory(null)}
             className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap transition-colors ${
