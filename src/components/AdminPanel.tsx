@@ -300,7 +300,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const res = await fetch(getApiUrl('/api/admin/orders'), {
         headers: { 'x-admin-token': adminToken || '' },
       });
-      if (res.ok) {
+      if (res.status === 403) {
+        handleAdminSessionExpired();
+      } else if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
           const mappedOrders = json.data.map((o: any) => ({
@@ -317,7 +319,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const res = await fetch(getApiUrl(`/api/admin/analytics?range=${dateRange}`), {
         headers: { 'x-admin-token': adminToken || '' },
       });
-      if (res.ok) {
+      if (res.status === 403) {
+        handleAdminSessionExpired();
+      } else if (res.ok) {
         const json = await res.json();
         if (json.success) setAnalyticsData(json.data);
       }
@@ -346,7 +350,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const res = await fetch(getApiUrl('/api/admin/customers'), {
         headers: { 'x-admin-token': adminToken || '' },
       });
-      if (res.ok) {
+      if (res.status === 403) {
+        handleAdminSessionExpired();
+      } else if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) setCustomersList(json.data);
       }
@@ -366,7 +372,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const res = await fetch(getApiUrl('/api/admin/custom-masalas'), {
         headers: { 'x-admin-token': adminToken || '' },
       });
-      if (res.ok) {
+      if (res.status === 403) {
+        handleAdminSessionExpired();
+      } else if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) setCustomMasalasList(json.data);
       }
@@ -377,7 +385,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       const res = await fetch(getApiUrl('/api/admin/messages'), {
         headers: { 'x-admin-token': adminToken || '' },
       });
-      if (res.ok) {
+      if (res.status === 403) {
+        handleAdminSessionExpired();
+      } else if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) setMessagesList(json.data);
       }
