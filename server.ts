@@ -169,18 +169,24 @@ function verifyAdminToken(token: string): boolean {
 // successful OTP verification; required on any route that reads or writes a
 // specific customer's orders/addresses, so a bare userId/email query param is
 // no longer sufficient to read or mutate someone else's data (IDOR fix).
+//
+// Self-verifying (HMAC-signed, payload embedded) rather than stored in an
+// in-memory Map -- a Map gets wiped on every server restart/redeploy, which
+// silently logs out every customer (e.g. "My Orders" showing empty even
+// though the orders are still in the database).
 const CUSTOMER_SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 interface CustomerSession {
   userId: string;
   email: string;
   expiresAt: number;
 }
-const customerSessions = new Map<string, CustomerSession>();
 
 function issueCustomerToken(userId: string, email: string): string {
-  const token = crypto.randomBytes(32).toString('hex');
-  customerSessions.set(token, { userId, email: email.toLowerCase(), expiresAt: Date.now() + CUSTOMER_SESSION_TTL_MS });
-  return token;
+  const expiresAt = Date.now() + CUSTOMER_SESSION_TTL_MS;
+  const payload = JSON.stringify({ userId, email: email.toLowerCase(), expiresAt });
+  const payloadB64 = Buffer.from(payload).toString('base64url');
+  const signature = signAdminPayload(payloadB64);
+  return `${payloadB64}.${signature}`;
 }
 
 // Validates the x-customer-token header and returns the session it belongs
@@ -190,12 +196,9 @@ function issueCustomerToken(userId: string, email: string): string {
 // function alone only proves *a* valid session, not that it's the *right* one.
 function requireCustomerAuth(req: express.Request, res: express.Response): CustomerSession | null {
   const token = req.headers['x-customer-token'];
-  const session = typeof token === 'string' ? customerSessions.get(token) : undefined;
+  const session = parseCustomerToken(typeof token === 'string' ? token : undefined);
 
-  if (!session || session.expiresAt < Date.now()) {
-    if (typeof token === 'string' && session) {
-      customerSessions.delete(token);
-    }
+  if (!session) {
     res.status(401).json({
       success: false,
       message: 'Session expired or invalid. Please log in again.',
@@ -203,6 +206,26 @@ function requireCustomerAuth(req: express.Request, res: express.Response): Custo
     return null;
   }
   return session;
+}
+
+function parseCustomerToken(token?: string): CustomerSession | null {
+  if (!token) return null;
+  try {
+    const [payloadB64, signature] = token.split('.');
+    if (!payloadB64 || !signature) return null;
+    const expectedSignature = signAdminPayload(payloadB64);
+    const sigBuf = Buffer.from(signature);
+    const expectedBuf = Buffer.from(expectedSignature);
+    if (sigBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(sigBuf, expectedBuf)) {
+      return null;
+    }
+    const parsed = JSON.parse(Buffer.from(payloadB64, 'base64url').toString('utf8'));
+    if (!parsed.userId || !parsed.email || !Number.isFinite(parsed.expiresAt)) return null;
+    if (parsed.expiresAt < Date.now()) return null;
+    return { userId: parsed.userId, email: parsed.email, expiresAt: parsed.expiresAt };
+  } catch {
+    return null;
+  }
 }
 
 // Rejects the request if a client-supplied userId/email doesn't match the
