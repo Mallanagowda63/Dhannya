@@ -82,7 +82,7 @@ export interface Product {
   description: string;
   ingredients?: string[];
   ingredientComposition?: string; // e.g. "70% Wheat • 30% Pulses & Legumes" highlight badge
-  compositionBreakdown?: CompositionIngredient[]; // per-ingredient % for the hover composition card; percents must sum to 100
+  compositionBreakdown?: CompositionIngredient[]; // per-ingredient % breakdown; percents must sum to 100
   allergens?: string[]; // short tags for the Ingredients tab, e.g. ["Wheat (Gluten)", "Soybean"]
   nutritionInfo?: Record<string, string>; // e.g. { Energy: '380 kcal', Protein: '12g' }
   benefits?: string[];

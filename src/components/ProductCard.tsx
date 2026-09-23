@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
-import { CompositionHoverCard } from './CompositionHoverCard';
 
 interface ProductCardProps {
   product: Product;
@@ -59,7 +58,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className={`h-1.5 w-full shrink-0 ${getCategoryStripe(product.category)}`} />
 
       {/* Product Image Section (Strict Aspect Ratio 1/1 Square Container) */}
-      <CompositionHoverCard product={product} className="product-image-section">
+      <div className="product-image-section">
         <img
           src={product.image}
           alt={product.name}
@@ -115,7 +114,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </button>
           )}
         </div>
-      </CompositionHoverCard>
+      </div>
 
       {/* Product Content Details */}
       <div className="product-content">
