@@ -408,7 +408,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchDashboardData();
-    }, 30000);
+    }, 5000);
 
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
