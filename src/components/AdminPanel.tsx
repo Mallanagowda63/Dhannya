@@ -55,12 +55,18 @@ export const AdminPanel: React.FC = () => {
     setAdminToken(null);
     setIsAdminMode(false);
     showToast('Logged out from Admin Portal', 'info');
+    sessionExpiredHandledRef.current = false;
   };
 
   // Called when a protected admin API call comes back with an expired/invalid session
   // (e.g. the server restarted and the in-memory session was cleared). Clearing the
   // token re-shows the sign-in form below instead of failing silently.
+  // fetchDashboardData fires several admin-gated requests in parallel, and they can
+  // all 403 together -- the ref guard keeps this from popping one toast per request.
+  const sessionExpiredHandledRef = useRef(false);
   const handleAdminSessionExpired = (message?: string) => {
+    if (sessionExpiredHandledRef.current) return;
+    sessionExpiredHandledRef.current = true;
     showToast(message || 'Your admin session has expired. Please log in again.', 'error');
     setAdminToken(null);
   };
@@ -81,6 +87,7 @@ export const AdminPanel: React.FC = () => {
       const data = await res.json();
       if (data.success && data.adminToken) {
         setAdminToken(data.adminToken);
+        sessionExpiredHandledRef.current = false;
         showToast('Admin Portal Authenticated Successfully!', 'success');
       } else {
         showToast(data.message || 'Invalid admin credentials.', 'error');
