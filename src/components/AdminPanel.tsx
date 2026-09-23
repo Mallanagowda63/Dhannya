@@ -297,7 +297,9 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
 
     // Orders
     try {
-      const res = await fetch(getApiUrl('/api/orders'));
+      const res = await fetch(getApiUrl('/api/admin/orders'), {
+        headers: { 'x-admin-token': adminToken || '' },
+      });
       if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {

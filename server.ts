@@ -2917,6 +2917,31 @@ function buildOrderStatusEmail(status: string, order: any) {
   };
 }
 
+// Admin: Read all orders across all customers
+app.get('/api/admin/orders', async (req, res) => {
+  try {
+    if (!requireAdminAuth(req, res)) return;
+    const connected = await ensureDbConnected();
+    if (connected) {
+      const rawOrders = await OrderModel.find({}).sort({ createdAt: -1 }).lean();
+      const dbOrders = rawOrders.map((o: any) => ({
+        ...o,
+        paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+      }));
+      return res.json({ success: true, data: dbOrders, dbConnected: true });
+    } else if (allowMemoryDbInDev) {
+      const mapped = liveOrders.map((o: any) => ({
+        ...o,
+        paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+      }));
+      return res.json({ success: true, data: mapped });
+    }
+    return res.status(503).json({ success: false, message: 'Database disconnected' });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 // Admin Update Order Status API
 app.put('/api/admin/orders/:id/status', async (req, res) => {
   try {
