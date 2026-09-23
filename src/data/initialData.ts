@@ -1303,7 +1303,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-19",
     "name": "Avalose Podi",
-    "category": "Masalas",
+    "category": "Flour",
     "concern": [
       "Gut Health"
     ],
@@ -1352,7 +1352,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 49,
     "tags": [
-      "Masalas",
+      "Flour",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -1731,7 +1731,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-27",
     "name": "Barnyard Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "concern": [
       "Weight Loss"
     ],
@@ -1780,7 +1780,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 73,
     "tags": [
-      "Millets",
+      "Quick Bites",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -4252,7 +4252,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-69",
     "name": "Corn Maize",
-    "category": "Spices",
+    "category": "Millets",
     "concern": [
       "Gut Health"
     ],
@@ -4301,7 +4301,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": true,
     "stock": 39,
     "tags": [
-      "Spices",
+      "Millets",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -8952,7 +8952,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-143",
     "name": "Kodo Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "concern": [
       "Weight Loss"
     ],
@@ -9001,7 +9001,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 61,
     "tags": [
-      "Millets",
+      "Quick Bites",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -9230,7 +9230,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-148",
     "name": "Little Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "concern": [
       "Weight Loss"
     ],
@@ -9279,7 +9279,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 36,
     "tags": [
-      "Millets",
+      "Quick Bites",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -10905,7 +10905,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-175",
     "name": "Multi Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "concern": [
       "Weight Loss"
     ],
@@ -10954,7 +10954,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 37,
     "tags": [
-      "Millets",
+      "Quick Bites",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -13160,7 +13160,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-214",
     "name": "Poppy (KhusKhus) White",
-    "category": "Health Foods",
+    "category": "Seeds",
     "concern": [
       "Heart Health"
     ],
@@ -13209,7 +13209,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 74,
     "tags": [
-      "Health Foods",
+      "Seeds",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -15678,7 +15678,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-256",
     "name": "Sago (Tapioca Pearls)",
-    "category": "Spices",
+    "category": "Rice",
     "concern": [
       "Gut Health"
     ],
@@ -15727,7 +15727,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 40,
     "tags": [
-      "Spices",
+      "Rice",
       "Organic",
       "Natural",
       "Dhaanya"

@@ -472,7 +472,7 @@
   },
   {
     "productName": "Avalose Podi",
-    "category": "Masalas",
+    "category": "Flour",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -652,7 +652,7 @@
   },
   {
     "productName": "Barnyard Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -1858,8 +1858,8 @@
   },
   {
     "productName": "Corn/ Maize",
-    "category": null,
-    "categorySource": "unresolved",
+    "category": "Millets",
+    "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
       {
@@ -4420,7 +4420,7 @@
   },
   {
     "productName": "Kodo Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -4543,7 +4543,7 @@
   },
   {
     "productName": "Little Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -5221,7 +5221,7 @@
   },
   {
     "productName": "Multi Millet Cookies",
-    "category": "Millets",
+    "category": "Quick Bites",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -6235,7 +6235,7 @@
   },
   {
     "productName": "Poppy (KhusKhus) White",
-    "category": "Health Foods",
+    "category": "Seeds",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -7426,7 +7426,7 @@
   },
   {
     "productName": "Sago (Tapioca Pearls)",
-    "category": "Spices",
+    "category": "Rice",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
