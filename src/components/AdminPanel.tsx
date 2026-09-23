@@ -413,6 +413,8 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   // order comes in). Poll periodically and also refresh whenever the admin
   // tab regains focus/visibility, so live numbers stay current.
   useEffect(() => {
+    if (!adminToken) return;
+
     const intervalId = setInterval(() => {
       fetchDashboardData();
     }, 5000);
@@ -429,7 +431,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
       document.removeEventListener('visibilitychange', handleVisibility);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [adminToken]);
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
