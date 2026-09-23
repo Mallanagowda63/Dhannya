@@ -4609,9 +4609,13 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dhaanya Fibre Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Fibre Atta combines wheat with barley, bajra, oats, and psyllium husk. It brings together a variety of fibre-contributing ingredients in a familiar wheat-based atta for everyday meals.",
     "ingredients": [
-      "100% Pure Natural Dhaanya Fibre Atta"
+      "Wheat",
+      "Barley",
+      "Bajra",
+      "Oats",
+      "Psyllium Husk"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4620,14 +4624,17 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Combines wheat with barley, bajra, oats, and psyllium husk.",
+      "Includes a variety of fibre-contributing ingredients.",
+      "Familiar wheat base with mild grain and earthy notes.",
+      "Suitable for everyday chapatis and rotis.",
+      "Freshly prepared through our Live Milling process."
     ],
-    "image": "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.png",
     "gallery": [
-      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/03.png"
     ],
     "variants": [
       {
@@ -4659,18 +4666,96 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "75% Wheat • 25% Fibre-Contributing Ingredients",
+    "allergens": [
+      "Wheat",
+      "Gluten",
+      "Barley",
+      "Oats"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 70–80 ml lukewarm water per 100 g flour and adjust as needed."
+        },
+        {
+          "title": "Knead well",
+          "text": "Knead for approximately 5–7 minutes until workable. Psyllium and fibre can affect dough consistency."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 25–35 minutes to allow hydration."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently and cook on a preheated tawa over medium heat. Avoid overcooking."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "70–80 ml water per 100 g flour. Start lower and add gradually depending on dough consistency.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Soft to moderately soft when adequately hydrated and not overcooked."
+            },
+            {
+              "title": "Flavour",
+              "text": "Wheat-forward with mild earthy and grain notes."
+            },
+            {
+              "title": "Handling",
+              "text": "May feel different from regular wheat atta due to added grains and psyllium husk."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, resting, rolling, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why barley and oats?",
+          "answer": "Contribute their own fibre and grain characteristics to the blend."
+        },
+        {
+          "question": "Why psyllium husk?",
+          "answer": "Adds fibre and influences dough moisture and texture."
+        },
+        {
+          "question": "Why rest the dough?",
+          "answer": "Allows hydration and can improve handling."
+        }
+      ],
+      "allergenNote": "Allergen note: Contains wheat and gluten. Barley and oats require particular attention for people following a strict gluten-free diet."
+    }
   },
   {
     "id": "prod-75",
-    "name": "Dhaanya Gluten Free Atta",
+    "name": "Dhaanya Gluten-Free Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dhaanya Gluten Free Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Gluten-Free Atta combines jowar, bajra, ragi, foxtail millet, soybean, amaranth, dried jackfruit, and psyllium husk. A distinctive millet and pulse blend designed as a wheat-free flour option.",
     "ingredients": [
-      "100% Pure Natural Dhaanya Gluten Free Atta"
+      "Jowar",
+      "Bajra",
+      "Ragi",
+      "Foxtail Millet",
+      "Soybean",
+      "Amaranth",
+      "Dried Jackfruit",
+      "Psyllium Husk"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4679,14 +4764,17 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Made without wheat ingredients.",
+      "Combines multiple millets, pulses, and amaranth.",
+      "Includes psyllium husk for fibre and binding support.",
+      "Distinctive earthy and mildly aromatic flavour.",
+      "A differentiated option for gluten-free meal planning."
     ],
-    "image": "/images/dhannya_Products_final/Dhaanya%20Gluten%20Free%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/01.png",
     "gallery": [
-      "/images/dhannya_Products_final/Dhaanya%20Gluten%20Free%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dhaanya%20Gluten%20Free%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/03.png"
     ],
     "variants": [
       {
@@ -4718,7 +4806,75 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "Millet + Pulse Blend • Gluten-Free Formulation",
+    "allergens": [
+      "Soybean"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store. Gluten-free suitability requires appropriate ingredient sourcing and cross-contact controls.",
+      "steps": [
+        {
+          "title": "Add warm water gradually",
+          "text": "Begin with approximately 75–90 ml water per 100 g flour and adjust carefully."
+        },
+        {
+          "title": "Mix gently",
+          "text": "Combine thoroughly until the flour is evenly hydrated. Gluten-free dough does not require wheat-style gluten development."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 10–20 minutes. Psyllium needs time to hydrate and develop binding."
+        },
+        {
+          "title": "Shape gently",
+          "text": "Pat or roll between sheets while the dough is workable. Avoid excessive dry flour."
+        },
+        {
+          "title": "Cook & serve",
+          "text": "Cook on a preheated tawa. Avoid prolonged cooking and keep covered after cooking."
+        }
+      ],
+      "hydrationGuide": "75–90 ml water per 100 g flour. The final ratio depends on millet particle size, psyllium characteristics, and dough binding.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Earthy, mildly dense, and potentially tender when freshly prepared."
+            },
+            {
+              "title": "Flavour",
+              "text": "Aromatic with a subtle natural sweetness and millet notes."
+            },
+            {
+              "title": "Handling",
+              "text": "More delicate than regular wheat roti; careful hydration and shaping help."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, binding, shaping, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why psyllium husk?",
+          "answer": "Contributes fibre and can help provide binding in gluten-free dough."
+        },
+        {
+          "question": "Why no prolonged kneading?",
+          "answer": "Gluten-free flour has no wheat gluten network to develop."
+        },
+        {
+          "question": "Why use multiple millets?",
+          "answer": "Each grain contributes its own flavour and nutritional characteristics."
+        }
+      ],
+      "allergenNote": "Important: Contains soybean. Gluten-free claims require appropriate sourcing and cross-contact controls."
+    }
   },
   {
     "id": "prod-76",
@@ -4727,9 +4883,17 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dhaanya Multi Millet Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Multi Millet Atta brings together wheat and a diverse selection of millets, including ragi, jowar, bajra, foxtail, little, kodo, barnyard, and browntop millet. Available in different wheat-to-millet proportions to suit varied taste and texture preferences.",
     "ingredients": [
-      "100% Pure Natural Dhaanya Multi Millet Atta"
+      "Wheat",
+      "Ragi",
+      "Jowar",
+      "Bajra",
+      "Foxtail Millet",
+      "Little Millet",
+      "Kodo Millet",
+      "Barnyard Millet",
+      "Browntop Millet"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4738,9 +4902,11 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "A diverse blend of traditional millets.",
+      "Available in 80%, 65%, and 50% wheat formulations.",
+      "Choose your preferred balance of wheat and millet ingredients.",
+      "Offers a range of earthy, nutty, and grain flavours.",
+      "Suitable for everyday rotis and traditional meals."
     ],
     "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
     "gallery": [
@@ -4777,7 +4943,92 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "Wheat Range: 80%–50% • Multi-Millet Blend",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 65–80 ml water per 100 g flour. Adjust according to the selected blend."
+        },
+        {
+          "title": "Knead according to wheat content",
+          "text": "Knead the 80% wheat blend for around 5–7 minutes. Mix and knead the higher-millet blends gently until workable."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 20–30 minutes. Higher-millet formulations may require individual testing for ideal hydration and handling."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently and cook on a preheated tawa. Higher millet proportions may need extra care during rolling."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "Begin around 65–80 ml water per 100 g flour. Adjust according to wheat percentage, flour characteristics, and dough consistency.",
+      "rotiExpectationGroups": [
+        {
+          "heading": "80% Wheat + 20% Millets",
+          "points": [
+            {
+              "title": "",
+              "text": "Softer and closer to regular wheat roti."
+            },
+            {
+              "title": "",
+              "text": "Mild millet flavour with good puffing potential when well prepared."
+            },
+            {
+              "title": "Starting dough rest",
+              "text": "20–30 minutes."
+            }
+          ]
+        },
+        {
+          "heading": "65% Wheat + 35% Millets",
+          "points": [
+            {
+              "title": "",
+              "text": "Soft to moderately soft, with a noticeable millet flavour."
+            },
+            {
+              "title": "",
+              "text": "Suitable for regular family meals when properly prepared."
+            },
+            {
+              "title": "Starting dough rest",
+              "text": "20–30 minutes."
+            }
+          ]
+        },
+        {
+          "heading": "50% Wheat + 50% Millets",
+          "points": [
+            {
+              "title": "",
+              "text": "Moderately soft and potentially slightly denser."
+            },
+            {
+              "title": "",
+              "text": "More pronounced earthy and nutty millet flavour."
+            },
+            {
+              "title": "Starting dough rest",
+              "text": "20–30 minutes, subject to testing."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Higher millet proportions change dough handling, texture, and puffing behaviour. Research on wheat–millet chapati supports the importance of optimizing the formulation and preparation conditions.",
+      "littleFacts": []
+    }
   },
   {
     "id": "prod-77",
@@ -4786,9 +5037,16 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dhaanya Nuts & Seeds Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Nuts & Seeds Atta combines wheat with almond, cashew, pumpkin seeds, sunflower seeds, flaxseed, sesame, and amaranth. A thoughtfully crafted blend bringing the natural variety of nuts and seeds into everyday meals.",
     "ingredients": [
-      "100% Pure Natural Dhaanya Nuts & Seeds Atta"
+      "Wheat",
+      "Almond",
+      "Cashew",
+      "Pumpkin Seeds",
+      "Sunflower Seeds",
+      "Flaxseed",
+      "Sesame",
+      "Amaranth"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4797,14 +5055,17 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Variety of nuts and seeds in one blend.",
+      "Contributes protein, fibre, and fats from its ingredients.",
+      "Mildly nutty and aromatic flavour.",
+      "Suitable for everyday rotis and traditional flatbreads.",
+      "Freshly prepared through our Live Milling process."
     ],
-    "image": "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.png",
     "gallery": [
-      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/03.png"
     ],
     "variants": [
       {
@@ -4836,18 +5097,93 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "85% Wheat • 15% Nuts & Seeds",
+    "allergens": [
+      "Wheat",
+      "Almond",
+      "Cashew",
+      "Sesame"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 65–75 ml lukewarm water per 100 g flour. Adjust as needed."
+        },
+        {
+          "title": "Knead gently",
+          "text": "Mix thoroughly and knead for around 4–6 minutes until workable. Avoid aggressive or prolonged kneading."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 25–35 minutes to allow hydration."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently with minimal dry flour. Cook on a preheated tawa over medium heat and avoid overcooking."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "65–75 ml water per 100 g flour. Nuts and seeds can alter dough texture and hydration needs, so adjust after testing.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Soft to moderately soft when properly hydrated; may have a slightly textured bite."
+            },
+            {
+              "title": "Flavour",
+              "text": "Mildly nutty, aromatic, and wheat-forward."
+            },
+            {
+              "title": "Handling",
+              "text": "Nuts and seeds may affect dough smoothness and rolling."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, resting, rolling, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why nuts and seeds?",
+          "answer": "They contribute different flavours, textures, and nutritional characteristics."
+        },
+        {
+          "question": "Why rest the dough?",
+          "answer": "Helps the flour absorb water and can improve handling."
+        },
+        {
+          "question": "Why can texture differ?",
+          "answer": "Nuts and seeds change the composition and dough behaviour compared with regular wheat atta."
+        }
+      ],
+      "allergenNote": "Allergen note: Contains wheat, almond, cashew, and sesame."
+    }
   },
   {
     "id": "prod-78",
-    "name": "Dhaanya Protein Atta",
+    "name": "Dhaanya High Protein Atta",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Dhaanya Protein Atta sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya High Protein Atta combines wheat with soybean, chickpea, moong, and masoor. A thoughtfully crafted blend that brings the familiar goodness of wheat together with plant-based protein ingredients for everyday meals.",
     "ingredients": [
-      "100% Pure Natural Dhaanya Protein Atta"
+      "Wheat",
+      "Soybean",
+      "Chickpea",
+      "Moong",
+      "Masoor"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -4856,14 +5192,17 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Plant-based protein ingredients from pulses and soybean.",
+      "Thoughtfully crafted blend for everyday meals.",
+      "Wheat-forward flavour with mild earthy and nutty notes.",
+      "Suitable for chapatis, rotis, and traditional flatbreads.",
+      "Freshly prepared through our Live Milling process."
     ],
-    "image": "/images/dhannya_Products_final/Dhaanya%20Protein%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/01.png",
     "gallery": [
-      "/images/dhannya_Products_final/Dhaanya%20Protein%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dhaanya%20Protein%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/03.png"
     ],
     "variants": [
       {
@@ -4895,7 +5234,76 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "70% Wheat • 30% Pulses & Legumes",
+    "allergens": [
+      "Wheat (Gluten)",
+      "Soybean"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 65–75 ml lukewarm water per 100 g flour. Adjust to dough consistency."
+        },
+        {
+          "title": "Knead",
+          "text": "Knead for approximately 5–7 minutes until smooth and workable. Avoid adding excessive dry flour."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 20–30 minutes."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently and cook on a preheated tawa over medium to medium-high heat. Avoid prolonged cooking."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "65–75 ml water per 100 g flour. Begin lower and increase gradually. Confirm the final ratio through kitchen testing.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Soft to moderately soft when properly hydrated and rested."
+            },
+            {
+              "title": "Flavour",
+              "text": "Wheat-forward with mild earthy and nutty notes."
+            },
+            {
+              "title": "Handling",
+              "text": "May feel different from regular wheat atta because of the pulse and soybean content."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, resting, rolling, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why soybean?",
+          "answer": "Contributes plant-based protein to the blend."
+        },
+        {
+          "question": "Why rest the dough?",
+          "answer": "Allows water to distribute through the flour and can improve handling."
+        },
+        {
+          "question": "Why can texture differ?",
+          "answer": "Pulse and soybean ingredients change dough behaviour compared with 100% wheat atta."
+        }
+      ],
+      "allergenNote": "Allergen note: Contains wheat (gluten) and soybean."
+    }
   },
   {
     "id": "prod-79",
@@ -5681,14 +6089,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-93",
-    "name": "Emmer Khapli Wheat",
+    "name": "Dhaanya Emmer Khapli Wheat",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Emmer Khapli Wheat sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Emmer Khapli Wheat is a traditional ancient wheat variety recognised for its characteristic elongated grains, earthy flavour and mildly nutty taste. It brings variety to everyday meals while connecting modern kitchens with heritage grains.",
     "ingredients": [
-      "100% Pure Natural Emmer Khapli Wheat"
+      "Emmer Khapli Wheat"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -5697,13 +6105,16 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Traditional ancient wheat variety.",
+      "Distinctive elongated grain structure.",
+      "Naturally earthy and mildly nutty flavour.",
+      "Provides dietary fibre, protein and other nutrients.",
+      "Suitable for rotis, porridge and traditional recipes.",
+      "Live-milled for freshness and transparency."
     ],
-    "image": "/images/dhannya_Products_final/Emmer%20Khapli%20Wheat/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Emmer%20Khapli%20Wheat/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Emmer%20Khapli%20Wheat/01.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Emmer%20Khapli%20Wheat/01.jpg"
     ],
     "variants": [
       {
@@ -5753,7 +6164,82 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "Traditional Ancient Wheat Variety",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Start with approximately 65–75 ml water per 100 g flour. Adjust according to the flour and desired dough consistency."
+        },
+        {
+          "title": "Knead gently",
+          "text": "Knead until the dough becomes cohesive and workable. Avoid adding too much flour while kneading."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for around 15–20 minutes. Adjust based on hydration and dough handling."
+        },
+        {
+          "title": "Roll carefully",
+          "text": "Roll gently using sufficient dry flour, without pressing excessively."
+        },
+        {
+          "title": "Cook properly",
+          "text": "Cook on a preheated tawa and avoid overcooking, which may make the roti firm."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to retain moisture."
+        }
+      ],
+      "hydrationGuide": "Approximately 65–75 ml water per 100 g flour. Actual requirements depend on milling, grain characteristics and flour absorption.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "",
+              "text": "Mildly nutty and earthy wheat flavour."
+            },
+            {
+              "title": "",
+              "text": "A slightly rustic texture compared with regular wheat roti."
+            },
+            {
+              "title": "",
+              "text": "Can be soft and pliable when prepared with suitable hydration and cooking."
+            },
+            {
+              "title": "",
+              "text": "May require some adjustment in rolling and handling."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Roti texture varies with the grain, milling fineness, hydration and cooking method.",
+      "littleFacts": [
+        {
+          "question": "Why is it called an ancient wheat?",
+          "answer": "Emmer is an old wheat type that has been cultivated for thousands of years."
+        },
+        {
+          "question": "What makes it different?",
+          "answer": "Its grain shape and flavour profile differ from common modern wheat varieties."
+        },
+        {
+          "question": "Is it gluten-free?",
+          "answer": "No. Emmer is a wheat variety and contains gluten."
+        },
+        {
+          "question": "Can I use it every day?",
+          "answer": "It can be used in regular meals if you tolerate wheat and enjoy its distinctive texture and flavour."
+        }
+      ]
+    }
   },
   {
     "id": "prod-94",
@@ -8837,14 +9323,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-150",
-    "name": "Lokwan Gund Wheat",
+    "name": "Dhaanya Rajwadi Lokwan Wheat",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Lokwan Gund Wheat sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Rajwadi Lokwan Wheat is a traditional wheat variety valued for its everyday versatility and familiar wheat flavour. Its kernels are generally more compact and less elongated than Emmer Khapli grains, making it visually distinct from some heritage wheat varieties.\n\nIt is a practical option for preparing everyday rotis, chapatis and traditional wheat-based meals.",
     "ingredients": [
-      "100% Pure Natural Lokwan Gund Wheat"
+      "Rajwadi Lokwan Wheat"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -8853,13 +9339,16 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Traditional wheat variety for everyday use.",
+      "Familiar wheat flavour and aroma.",
+      "Suitable for rotis, chapatis and parathas.",
+      "Provides energy, protein and dietary fibre.",
+      "Versatile for regular family meals.",
+      "Live-milled for freshness and transparency."
     ],
-    "image": "/images/dhannya_Products_final/Lokwan%20Gund%20Wheat/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Rajwadi%20Lokwan%20Wheat/01.jpg",
     "gallery": [
-      "/images/dhannya_Products_final/Lokwan%20Gund%20Wheat/01.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Rajwadi%20Lokwan%20Wheat/01.jpg"
     ],
     "variants": [
       {
@@ -8909,7 +9398,82 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "Traditional Everyday Wheat",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Start with approximately 60–70 ml water per 100 g flour. Adjust according to absorption."
+        },
+        {
+          "title": "Knead properly",
+          "text": "Knead for around 4–6 minutes until the dough becomes smooth and cohesive."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for approximately 15–20 minutes."
+        },
+        {
+          "title": "Roll gently",
+          "text": "Roll evenly using minimal dry flour to prevent the roti from becoming dry."
+        },
+        {
+          "title": "Cook on a preheated tawa",
+          "text": "Cook until done without keeping the roti on heat for too long."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store the cooked rotis in a covered container to retain moisture."
+        }
+      ],
+      "hydrationGuide": "Approximately 60–70 ml water per 100 g flour. Actual water requirements may vary with milling and flour characteristics.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "",
+              "text": "Familiar wheat flavour suitable for everyday meals."
+            },
+            {
+              "title": "",
+              "text": "Soft-to-pliable texture when properly prepared."
+            },
+            {
+              "title": "",
+              "text": "Generally suitable for regular chapatis and rotis."
+            },
+            {
+              "title": "",
+              "text": "A balanced option for those who prefer conventional wheat-based meals."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Roti softness depends on flour quality, hydration, kneading, resting and cooking technique.",
+      "littleFacts": [
+        {
+          "question": "What is Lokwan wheat?",
+          "answer": "Lokwan is a wheat variety commonly sold and used for flour and traditional Indian preparations."
+        },
+        {
+          "question": "How is it different from Khapli?",
+          "answer": "Lokwan and Emmer Khapli differ in grain characteristics, flavour and dough behaviour."
+        },
+        {
+          "question": "Is it gluten-free?",
+          "answer": "No. Lokwan is a wheat variety and contains gluten."
+        },
+        {
+          "question": "Can it be used daily?",
+          "answer": "Yes, it can be used as everyday wheat flour for people who tolerate wheat."
+        }
+      ]
+    }
   },
   {
     "id": "prod-151",
@@ -13780,83 +14344,7 @@ export const PRODUCTS: Product[] = [
       "Dhaanya"
     ]
   },
-  {
-    "id": "prod-234",
-    "name": "Rajwadi Wheat",
-    "category": "Flour",
-    "concern": [
-      "Weight Loss"
-    ],
-    "description": "100% Pure, authentic, and naturally processed Rajwadi Wheat sourced carefully for daily health, wellness, and rich taste.",
-    "ingredients": [
-      "100% Pure Natural Rajwadi Wheat"
-    ],
-    "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
-    },
-    "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
-    ],
-    "image": "/images/dhannya_Products_final/Rajwadi%20Wheat/01.jpg",
-    "gallery": [
-      "/images/dhannya_Products_final/Rajwadi%20Wheat/01.jpg"
-    ],
-    "variants": [
-      {
-        "weight": "1kg / Powder",
-        "price": 90,
-        "originalPrice": 90,
-        "inStock": true
-      },
-      {
-        "weight": "1kg / Raw",
-        "price": 90,
-        "originalPrice": 90,
-        "inStock": true
-      },
-      {
-        "weight": "3kg / Powder",
-        "price": 270,
-        "originalPrice": 270,
-        "inStock": true
-      },
-      {
-        "weight": "3kg / Raw",
-        "price": 270,
-        "originalPrice": 270,
-        "inStock": true
-      },
-      {
-        "weight": "5kg / Powder",
-        "price": 450,
-        "originalPrice": 450,
-        "inStock": true
-      },
-      {
-        "weight": "5kg / Raw",
-        "price": 450,
-        "originalPrice": 450,
-        "inStock": true
-      }
-    ],
-    "rating": 4.8,
-    "reviewCount": 31,
-    "isBestSeller": false,
-    "isRecommended": false,
-    "stock": 54,
-    "tags": [
-      "Flour",
-      "Organic",
-      "Natural",
-      "Dhaanya"
-    ]
-  },
-  {
+    {
     "id": "prod-235",
     "name": "Rakthachandana",
     "category": "Spices",
@@ -15619,14 +16107,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-264",
-    "name": "Sharbati Wheat (Rajnigandha)",
+    "name": "Dhaanya Sharbati Wheat (Rajni Gandha)",
     "category": "Flour",
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Sharbati Wheat (Rajnigandha) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Sharbati Wheat, also known as Rajni Gandha in some markets, is a traditional Indian wheat variety appreciated for its pleasant wheat flavour and mild natural sweetness. It is a versatile choice for everyday rotis, chapatis and other wheat-based preparations.",
     "ingredients": [
-      "100% Pure Natural Sharbati Wheat (Rajnigandha)"
+      "Sharbati Wheat (Rajni Gandha)"
     ],
     "nutritionInfo": {
       "Energy (per 100g)": "360 kcal",
@@ -15635,14 +16123,17 @@ export const PRODUCTS: Product[] = [
       "Dietary Fiber": "8g"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Traditional Indian wheat variety.",
+      "Pleasant flavour with mild natural sweetness.",
+      "Suitable for everyday rotis and chapatis.",
+      "Provides carbohydrates, protein and dietary fibre.",
+      "Versatile for parathas and traditional recipes.",
+      "Live-milled for freshness and transparency."
     ],
-    "image": "/images/dhannya_Products_final/Sharbati%20Wheat%20(Rajnigandha)/01.png",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Sharbati%20Wheat%20(Rajni%20Gandha)/01.png",
     "gallery": [
-      "/images/dhannya_Products_final/Sharbati%20Wheat%20(Rajnigandha)/01.png",
-      "/images/dhannya_Products_final/Sharbati%20Wheat%20(Rajnigandha)/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Sharbati%20Wheat%20(Rajni%20Gandha)/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Sharbati%20Wheat%20(Rajni%20Gandha)/02.jpg"
     ],
     "variants": [
       {
@@ -15692,7 +16183,82 @@ export const PRODUCTS: Product[] = [
       "Organic",
       "Natural",
       "Dhaanya"
-    ]
+    ],
+    "ingredientComposition": "Traditional Indian Wheat",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Start with approximately 60–70 ml water per 100 g flour. Increase gradually as required."
+        },
+        {
+          "title": "Knead well",
+          "text": "Knead for around 4–6 minutes until the dough becomes smooth and workable."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for approximately 15–20 minutes to allow the flour to hydrate."
+        },
+        {
+          "title": "Roll evenly",
+          "text": "Use moderate pressure and avoid using excessive dry flour."
+        },
+        {
+          "title": "Cook on a hot tawa",
+          "text": "Cook both sides properly and avoid prolonged cooking to help retain softness."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Place cooked rotis in a covered container or cloth."
+        }
+      ],
+      "hydrationGuide": "Approximately 60–70 ml water per 100 g flour. Adjust based on flour absorption and dough consistency.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "",
+              "text": "Familiar wheat flavour with a mild natural sweetness."
+            },
+            {
+              "title": "",
+              "text": "Soft and pliable texture when properly hydrated and cooked."
+            },
+            {
+              "title": "",
+              "text": "Suitable for everyday family meals."
+            },
+            {
+              "title": "",
+              "text": "Good versatility for chapatis, rotis and parathas."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Softness depends on grain quality, flour freshness, hydration, kneading and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why is it popular?",
+          "answer": "Sharbati wheat is appreciated in several parts of India for its flavour and everyday cooking qualities."
+        },
+        {
+          "question": "Does it taste sweet?",
+          "answer": "It may have a mild natural sweetness, but it is not a sweetened product."
+        },
+        {
+          "question": "Is it gluten-free?",
+          "answer": "No. Sharbati is a wheat variety and contains gluten."
+        },
+        {
+          "question": "What is it suitable for?",
+          "answer": "Everyday rotis, chapatis, parathas and other wheat-based dishes."
+        }
+      ]
+    }
   },
   {
     "id": "prod-265",

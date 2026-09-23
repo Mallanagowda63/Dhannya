@@ -32,7 +32,7 @@ export const ProductQuickView: React.FC = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'nutrition' | 'benefits'>('description');
+  const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'nutrition' | 'preparation' | 'benefits'>('description');
 
   if (!quickViewProduct) return null;
 
@@ -71,6 +71,29 @@ export const ProductQuickView: React.FC = () => {
     setQuantity(1);
     setActiveTab('description');
   };
+
+  const trustBadges = [
+    { icon: Sparkles, label: 'Freshly Milled' },
+    { icon: Leaf, label: 'Whole Ingredients' },
+    { icon: Mountain, label: 'Traditional Process' },
+    { icon: Heart, label: 'Made with Care' },
+  ];
+
+  const TrustBadgeBar = () => (
+    <div className="flex items-stretch rounded-2xl border border-[#2A2620]/12 bg-white/60 divide-x divide-[#2A2620]/10 overflow-hidden">
+      {trustBadges.map(({ icon: Icon, label }) => (
+        <div
+          key={label}
+          className="flex-1 min-w-0 flex flex-col items-center justify-center gap-1.5 px-1.5 py-3 text-center"
+        >
+          <Icon className="w-4 h-4 text-[#2A2620]/70 shrink-0" />
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#2A2620]/80 leading-tight">
+            {label}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#2A2620]/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
@@ -155,6 +178,10 @@ export const ProductQuickView: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#3E4B32] inline-block" />
                 In Stock · {selectedVariant.weight} pack
               </div>
+            </div>
+
+            <div className="mt-4">
+              <TrustBadgeBar />
             </div>
 
             <div className="mt-4">
@@ -257,7 +284,7 @@ export const ProductQuickView: React.FC = () => {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-3 rounded-xl border border-[#3E4B32]/20 bg-[#3E4B32]/5 hover:bg-[#3E4B32]/10 px-4 py-3.5 mb-8 transition-colors"
+            className="group flex items-center justify-between gap-3 rounded-xl border border-[#3E4B32]/20 bg-[#3E4B32]/5 hover:bg-[#3E4B32]/10 px-4 py-3.5 transition-colors"
           >
             <span className="flex items-center gap-2.5 text-sm font-semibold text-[#2A2620]">
               <MessageCircle className="w-4 h-4 text-[#3E4B32] shrink-0" />
@@ -265,19 +292,6 @@ export const ProductQuickView: React.FC = () => {
             </span>
             <ArrowRight className="w-4 h-4 text-[#3E4B32] shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </a>
-
-          {/* Why Dhaanya Promise Block */}
-          <div className="pt-6 border-t border-[#2A2620]/10 space-y-2.5 text-xs text-[#2A2620]/80">
-            <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider text-xs block">
-              Why Dhaanya?
-            </span>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-2">
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Freshly Milled</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Whole Ingredients</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Traditional Process</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" /> Made with Care</span>
-            </div>
-          </div>
         </div>
 
         {/* Right Column: Details & Actions */}
@@ -313,6 +327,11 @@ export const ProductQuickView: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#3E4B32] inline-block" />
                 In Stock · {selectedVariant.weight} pack
               </div>
+            </div>
+
+            {/* Trust Badges - sit right under the price, everywhere */}
+            <div className="hidden md:block">
+              <TrustBadgeBar />
             </div>
 
             {/* Weight Selection */}
@@ -373,10 +392,14 @@ export const ProductQuickView: React.FC = () => {
                   { key: 'description' as const, label: 'Description', show: true },
                   { key: 'ingredients' as const, label: 'Ingredients', show: !!quickViewProduct.ingredients },
                   { key: 'nutrition' as const, label: 'Nutrition', show: !!quickViewProduct.nutritionInfo },
+                  { key: 'preparation' as const, label: 'Preparation', show: !!quickViewProduct.preparationGuide },
                 ]).filter((t) => t.show).map((t) => (
                   <button
                     key={t.key}
-                    onClick={() => setActiveTab(t.key)}
+                    onClick={(e) => {
+                      setActiveTab(t.key);
+                      e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                    }}
                     className={`relative shrink-0 whitespace-nowrap pb-2.5 px-1 text-xs font-bold uppercase tracking-wide transition-colors cursor-pointer rounded-t-md ${
                       activeTab === t.key
                         ? 'text-[#A9542B]'
@@ -406,9 +429,19 @@ export const ProductQuickView: React.FC = () => {
                 >
                   {activeTab === 'description' && (
                     <div className="space-y-4">
-                      <p className="text-sm text-[#2A2620]/80 leading-relaxed">
+                      <p className="text-sm text-[#2A2620]/80 leading-relaxed whitespace-pre-line">
                         {quickViewProduct.description}
                       </p>
+                      {quickViewProduct.benefits && quickViewProduct.benefits.length > 0 && (
+                        <ul className="space-y-1.5">
+                          {quickViewProduct.benefits.map((b, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#3E4B32] shrink-0 mt-0.5" />
+                              <span>{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                       <div className="flex flex-wrap gap-2">
                         {[
                           { icon: Leaf, label: '100% Natural' },
@@ -428,17 +461,44 @@ export const ProductQuickView: React.FC = () => {
                   )}
 
                   {activeTab === 'ingredients' && quickViewProduct.ingredients && (
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {quickViewProduct.ingredients.map((ing, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-center gap-2 text-sm text-[#2A2620]/85 bg-white/50 border border-[#2A2620]/8 rounded-lg px-3 py-2"
-                        >
-                          <Leaf className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" />
-                          <span>{ing}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="space-y-4">
+                      {quickViewProduct.ingredientComposition && (
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#7C2A1E] bg-[#7C2A1E]/8 border border-[#7C2A1E]/20 px-3.5 py-2 rounded-full">
+                          {quickViewProduct.ingredientComposition}
+                        </span>
+                      )}
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {quickViewProduct.ingredients.map((ing, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-center gap-2 text-sm text-[#2A2620]/85 bg-white/50 border border-[#2A2620]/8 rounded-lg px-3 py-2"
+                          >
+                            <Leaf className="w-3.5 h-3.5 text-[#3E4B32] shrink-0" />
+                            <span>{ing}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {quickViewProduct.allergens && quickViewProduct.allergens.length > 0 && (
+                        <div className="flex items-start gap-2.5 bg-[#A9542B]/8 border border-[#A9542B]/25 rounded-xl px-3.5 py-3">
+                          <ShieldCheck className="w-4 h-4 text-[#A9542B] shrink-0 mt-0.5" />
+                          <div>
+                            <span className="text-xs font-bold uppercase tracking-wide text-[#A9542B] block mb-1">
+                              Allergen Notice
+                            </span>
+                            <div className="flex flex-wrap gap-1.5">
+                              {quickViewProduct.allergens.map((a) => (
+                                <span
+                                  key={a}
+                                  className="text-[11px] font-semibold text-[#7C2A1E] bg-white/70 border border-[#7C2A1E]/20 px-2 py-0.5 rounded-full"
+                                >
+                                  {a}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   )}
 
                   {activeTab === 'nutrition' && quickViewProduct.nutritionInfo && (
@@ -457,6 +517,106 @@ export const ProductQuickView: React.FC = () => {
                           </div>
                         );
                       })}
+                    </div>
+                  )}
+
+                  {activeTab === 'preparation' && quickViewProduct.preparationGuide && (
+                    <div className="space-y-7">
+                      {quickViewProduct.preparationGuide.liveMillingNote && (
+                        <p className="text-xs font-semibold text-[#3E4B32] bg-[#3E4B32]/8 border border-[#3E4B32]/15 rounded-xl px-3.5 py-2.5">
+                          {quickViewProduct.preparationGuide.liveMillingNote}
+                        </p>
+                      )}
+
+                      {quickViewProduct.preparationGuide.steps.length > 0 && (
+                        <div>
+                          <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider text-xs block mb-3">
+                            How to Prepare Your Roti
+                          </span>
+                          <ol className="space-y-2.5">
+                            {quickViewProduct.preparationGuide.steps.map((step, idx) => (
+                              <li key={idx} className="flex gap-3 text-sm text-[#2A2620]/85 leading-relaxed">
+                                <span className="shrink-0 w-5 h-5 rounded-full bg-[#3E4B32]/10 text-[#3E4B32] text-[11px] font-bold flex items-center justify-center mt-0.5">
+                                  {idx + 1}
+                                </span>
+                                <span>
+                                  <strong className="text-[#2A2620]">{step.title}:</strong> {step.text}
+                                </span>
+                              </li>
+                            ))}
+                          </ol>
+                          {quickViewProduct.preparationGuide.hydrationGuide && (
+                            <div className="mt-3.5 flex items-start gap-2.5 bg-[#C89211]/10 border border-[#C89211]/25 rounded-xl px-3.5 py-3">
+                              <span className="text-xs font-bold uppercase tracking-wide text-[#A9542B] shrink-0">
+                                Hydration Guide
+                              </span>
+                              <span className="text-xs text-[#2A2620]/80 leading-relaxed">
+                                {quickViewProduct.preparationGuide.hydrationGuide}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {quickViewProduct.preparationGuide.rotiExpectationGroups.length > 0 && (
+                        <div>
+                          <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider text-xs block mb-3">
+                            The Roti You Can Expect
+                          </span>
+                          <div className="space-y-4">
+                            {quickViewProduct.preparationGuide.rotiExpectationGroups.map((group, gIdx) => (
+                              <div key={gIdx}>
+                                {group.heading && (
+                                  <span className="text-xs font-bold text-[#2A2620] block mb-2">
+                                    {group.heading}
+                                  </span>
+                                )}
+                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                  {group.points.map((point, idx) => (
+                                    <li
+                                      key={idx}
+                                      className="text-sm text-[#2A2620]/85 bg-white/50 border border-[#2A2620]/8 rounded-lg px-3 py-2 leading-relaxed"
+                                    >
+                                      {point.title ? (
+                                        <><strong className="text-[#2A2620]">{point.title}:</strong> {point.text}</>
+                                      ) : (
+                                        point.text
+                                      )}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                          {quickViewProduct.preparationGuide.rotiExpectationNote && (
+                            <p className="text-xs text-[#2A2620]/60 italic mt-3">
+                              {quickViewProduct.preparationGuide.rotiExpectationNote}
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      {quickViewProduct.preparationGuide.littleFacts.length > 0 && (
+                        <div>
+                          <span className="font-serif font-bold text-[#A9542B] uppercase tracking-wider text-xs block mb-3">
+                            Little Facts
+                          </span>
+                          <div className="space-y-3">
+                            {quickViewProduct.preparationGuide.littleFacts.map((fact, idx) => (
+                              <div key={idx} className="text-sm leading-relaxed">
+                                <p className="font-bold text-[#2A2620]">{fact.question}</p>
+                                <p className="text-[#2A2620]/75 mt-0.5">{fact.answer}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {quickViewProduct.preparationGuide.allergenNote && (
+                        <p className="text-xs font-semibold text-[#7C2A1E] bg-[#7C2A1E]/8 border border-[#7C2A1E]/20 rounded-xl px-3.5 py-2.5">
+                          {quickViewProduct.preparationGuide.allergenNote}
+                        </p>
+                      )}
                     </div>
                   )}
                 </motion.div>

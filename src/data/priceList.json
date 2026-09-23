@@ -2661,7 +2661,7 @@
     "hasConflict": false
   },
   {
-    "productName": "Dhaanya Gluten Free Atta",
+    "productName": "Dhaanya Gluten-Free Atta",
     "category": "Flour",
     "categorySource": "site-data",
     "selectorType": "weight",
@@ -2742,7 +2742,7 @@
     "hasConflict": false
   },
   {
-    "productName": "Dhaanya Protein Atta",
+    "productName": "Dhaanya High Protein Atta",
     "category": "Flour",
     "categorySource": "site-data",
     "selectorType": "weight",
@@ -3117,7 +3117,7 @@
     "hasConflict": false
   },
   {
-    "productName": "Emmer Khapli Wheat",
+    "productName": "Dhaanya Emmer Khapli Wheat",
     "category": "Flour",
     "categorySource": "site-data",
     "selectorType": "flavor",
@@ -4596,7 +4596,7 @@
     "hasConflict": false
   },
   {
-    "productName": "Lokwan Gund Wheat",
+    "productName": "Dhaanya Rajwadi Lokwan Wheat",
     "category": "Flour",
     "categorySource": "site-data",
     "selectorType": "flavor",
@@ -6768,51 +6768,6 @@
     "hasConflict": false
   },
   {
-    "productName": "Rajwadi Wheat",
-    "category": "Flour",
-    "categorySource": "site-data",
-    "selectorType": "flavor",
-    "variants": [
-      {
-        "size": "1kg / Powder",
-        "price": 90,
-        "priceDisplay": "₹90",
-        "available": true
-      },
-      {
-        "size": "1kg / Raw",
-        "price": 90,
-        "priceDisplay": "₹90",
-        "available": true
-      },
-      {
-        "size": "3kg / Powder",
-        "price": 270,
-        "priceDisplay": "₹270",
-        "available": true
-      },
-      {
-        "size": "3kg / Raw",
-        "price": 270,
-        "priceDisplay": "₹270",
-        "available": true
-      },
-      {
-        "size": "5kg / Powder",
-        "price": 450,
-        "priceDisplay": "₹450",
-        "available": true
-      },
-      {
-        "size": "5kg / Raw",
-        "price": 450,
-        "priceDisplay": "₹450",
-        "available": true
-      }
-    ],
-    "hasConflict": false
-  },
-  {
     "productName": "Rakthachandana",
     "category": "Spices",
     "categorySource": "site-data",
@@ -7668,7 +7623,7 @@
     "hasConflict": false
   },
   {
-    "productName": "Sharbati Wheat (Rajnigandha)",
+    "productName": "Dhaanya Sharbati Wheat (Rajni Gandha)",
     "category": "Flour",
     "categorySource": "site-data",
     "selectorType": "flavor",

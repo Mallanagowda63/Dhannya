@@ -44,6 +44,31 @@ export interface Review {
   images?: string[];
 }
 
+export interface RotiPreparationStep {
+  title: string;
+  text: string;
+}
+
+export interface RotiExpectationGroup {
+  heading?: string; // e.g. "80% Wheat + 20% Millets" -- only used when a product has multiple profiles
+  points: RotiPreparationStep[];
+}
+
+export interface LittleFact {
+  question: string;
+  answer: string;
+}
+
+export interface RotiPreparationGuide {
+  liveMillingNote?: string;
+  steps: RotiPreparationStep[];
+  hydrationGuide?: string;
+  rotiExpectationGroups: RotiExpectationGroup[];
+  rotiExpectationNote?: string;
+  littleFacts: LittleFact[];
+  allergenNote?: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -51,8 +76,11 @@ export interface Product {
   concern?: HealthConcern[];
   description: string;
   ingredients?: string[];
+  ingredientComposition?: string; // e.g. "70% Wheat • 30% Pulses & Legumes" highlight badge
+  allergens?: string[]; // short tags for the Ingredients tab, e.g. ["Wheat (Gluten)", "Soybean"]
   nutritionInfo?: Record<string, string>; // e.g. { Energy: '380 kcal', Protein: '12g' }
   benefits?: string[];
+  preparationGuide?: RotiPreparationGuide;
   image: string;
   gallery: string[];
   variants: ProductVariant[];
