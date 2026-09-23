@@ -400,6 +400,30 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     fetchDashboardData();
   }, [dateRange]);
 
+  // Orders/payments placed from the storefront happen outside this panel, so
+  // without polling the dashboard only ever reflects data as of the last
+  // mount/dateRange change (e.g. "Today's Payments" going stale after a new
+  // order comes in). Poll periodically and also refresh whenever the admin
+  // tab regains focus/visibility, so live numbers stay current.
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetchDashboardData();
+    }, 30000);
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        fetchDashboardData();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      clearInterval(intervalId);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProdName.trim()) return;

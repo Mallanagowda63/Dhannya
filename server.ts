@@ -115,13 +115,54 @@ const failedAdminAttempts: Record<string, { count: number; lockUntil: number }> 
 // the old requireAdminAuth check which accepted the literal string "admin"
 // as a header value, a "check" anyone could read directly out of the public
 // client bundle and pass without ever logging in.
+//
+// Tokens are self-verifying (HMAC-signed, expiry embedded in the payload)
+// rather than looked up in an in-memory Map. A Map-based session store gets
+// wiped every time the server restarts/redeploys (Render redeploys on every
+// push), and doesn't work across multiple instances -- both silently log
+// admins out / 403 them even though their token "should" still be valid.
+// Signing the expiry into the token itself means any instance can verify it
+// with no shared state.
 const ADMIN_SESSION_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
-const adminSessions = new Map<string, number>(); // token -> expiresAt
+
+const SESSION_SECRET = (() => {
+  if (process.env.SESSION_SECRET) return process.env.SESSION_SECRET;
+  const generated = crypto.randomBytes(32).toString('hex');
+  console.warn(
+    '[ADMIN SECURITY WARNING] No SESSION_SECRET env var set. Generated a random one-time ' +
+      'secret for this server instance -- all admin sessions will be invalidated on every ' +
+      'restart/redeploy. Set SESSION_SECRET in your environment for stable admin sessions.'
+  );
+  return generated;
+})();
+
+function signAdminPayload(payload: string): string {
+  return crypto.createHmac('sha256', SESSION_SECRET).update(payload).digest('hex');
+}
 
 function issueAdminToken(): string {
-  const token = crypto.randomBytes(32).toString('hex');
-  adminSessions.set(token, Date.now() + ADMIN_SESSION_TTL_MS);
-  return token;
+  const expiresAt = Date.now() + ADMIN_SESSION_TTL_MS;
+  const payload = `${expiresAt}`;
+  const signature = signAdminPayload(payload);
+  return Buffer.from(`${payload}.${signature}`).toString('base64url');
+}
+
+function verifyAdminToken(token: string): boolean {
+  try {
+    const decoded = Buffer.from(token, 'base64url').toString('utf8');
+    const [payload, signature] = decoded.split('.');
+    if (!payload || !signature) return false;
+    const expectedSignature = signAdminPayload(payload);
+    const sigBuf = Buffer.from(signature);
+    const expectedBuf = Buffer.from(expectedSignature);
+    if (sigBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(sigBuf, expectedBuf)) {
+      return false;
+    }
+    const expiresAt = Number(payload);
+    return Number.isFinite(expiresAt) && expiresAt > Date.now();
+  } catch {
+    return false;
+  }
 }
 
 // Customer session tokens -- same pattern as admin sessions above. Issued on
@@ -867,12 +908,7 @@ async function requireDb(res: express.Response): Promise<boolean> {
 // Helper to check Admin Authorization
 function requireAdminAuth(req: express.Request, res: express.Response): boolean {
   const token = req.headers['x-admin-token'];
-  const expiresAt = typeof token === 'string' ? adminSessions.get(token) : undefined;
-
-  if (!expiresAt || expiresAt < Date.now()) {
-    if (typeof token === 'string' && expiresAt) {
-      adminSessions.delete(token); // clean up expired session
-    }
+  if (typeof token !== 'string' || !verifyAdminToken(token)) {
     res.status(403).json({
       success: false,
       message: 'Access Denied: valid admin session required. Please log in again.',
