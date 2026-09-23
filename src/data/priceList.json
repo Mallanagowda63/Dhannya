@@ -544,7 +544,7 @@
   },
   {
     "productName": "Banana Dried (Kannan Kaya)",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -598,7 +598,7 @@
   },
   {
     "productName": "Barnyard Millet (Oodalu)",
-    "category": "Pulses",
+    "category": "Millets",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -1363,7 +1363,7 @@
   },
   {
     "productName": "Cashew Peanut Chikki",
-    "category": "Dry Fruits",
+    "category": "Quick Bites",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -1540,7 +1540,7 @@
   },
   {
     "productName": "Cinnamon Roll (Churul Patta, Indonesia)",
-    "category": "Flour",
+    "category": "Spices",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -3010,7 +3010,7 @@
   },
   {
     "productName": "Dried Jackfruit",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -3064,7 +3064,7 @@
   },
   {
     "productName": "Dried Strawberry",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -3832,7 +3832,7 @@
   },
   {
     "productName": "Honey Dipper",
-    "category": "Natural Sweeteners",
+    "category": "Eco Friendly",
     "categorySource": "site-data",
     "selectorType": "single",
     "variants": [
@@ -3928,8 +3928,8 @@
   },
   {
     "productName": "Incha/ Acacia Wild",
-    "category": null,
-    "categorySource": "unresolved",
+    "category": "Hair Care",
+    "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
       {
@@ -3994,7 +3994,7 @@
   },
   {
     "productName": "Iratti Madhuram",
-    "category": "Spices",
+    "category": "Natural Sweeteners",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -4972,7 +4972,7 @@
   },
   {
     "productName": "Milky Bar",
-    "category": "Spices",
+    "category": "Quick Bites",
     "categorySource": "site-data",
     "selectorType": "single",
     "variants": [
@@ -6052,7 +6052,7 @@
   },
   {
     "productName": "Pineapple Ring Dried",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -7468,7 +7468,7 @@
   },
   {
     "productName": "Sandalwood Powder",
-    "category": "Pulses",
+    "category": "Skin Care",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -7924,7 +7924,7 @@
   },
   {
     "productName": "Sugar Free Muesli",
-    "category": "Natural Sweeteners",
+    "category": "Health Foods",
     "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
@@ -8311,8 +8311,8 @@
   },
   {
     "productName": "Travancore Tamarind/ Vaalan Puli",
-    "category": null,
-    "categorySource": "unresolved",
+    "category": "Spices",
+    "categorySource": "site-data",
     "selectorType": "weight",
     "variants": [
       {

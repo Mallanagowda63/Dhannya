@@ -1499,7 +1499,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-23",
     "name": "Banana Dried (Kannan Kaya)",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "concern": [
       "Gut Health"
     ],
@@ -1548,7 +1548,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 61,
     "tags": [
-      "Spices",
+      "Dry Fruits",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -1615,7 +1615,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-25",
     "name": "Barnyard Millet (Oodalu)",
-    "category": "Pulses",
+    "category": "Millets",
     "concern": [
       "Weight Loss"
     ],
@@ -1664,7 +1664,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": true,
     "stock": 67,
     "tags": [
-      "Pulses",
+      "Millets",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -1847,7 +1847,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-29",
     "name": "Bay Leaves Tej Patta",
-    "category": "Flour",
+    "category": "Spices",
     "concern": [
       "Weight Loss"
     ],
@@ -1896,7 +1896,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": true,
     "stock": 39,
     "tags": [
-      "Flour",
+      "Spices",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -2931,7 +2931,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-47",
     "name": "Cashew Peanut Chikki",
-    "category": "Dry Fruits",
+    "category": "Quick Bites",
     "concern": [
       "Skin & Hair"
     ],
@@ -2980,7 +2980,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 53,
     "tags": [
-      "Dry Fruits",
+      "Quick Bites",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -3616,7 +3616,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-59",
     "name": "Cinnamon Roll (Churul Patta, Indonesia)",
-    "category": "Flour",
+    "category": "Spices",
     "concern": [
       "Heart Health",
       "Weight Loss"
@@ -3696,7 +3696,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 49,
     "tags": [
-      "Flour",
+      "Spices",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -5880,7 +5880,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-89",
     "name": "Dried Jackfruit",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "concern": [
       "Gut Health"
     ],
@@ -5929,7 +5929,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": true,
     "stock": 59,
     "tags": [
-      "Spices",
+      "Dry Fruits",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -5996,7 +5996,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-91",
     "name": "Dried Strawberry",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "concern": [
       "Gut Health"
     ],
@@ -6045,7 +6045,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 65,
     "tags": [
-      "Spices",
+      "Dry Fruits",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -7786,7 +7786,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-122",
     "name": "Honey Dipper",
-    "category": "Natural Sweeteners",
+    "category": "Eco Friendly",
     "concern": [
       "Gut Health"
     ],
@@ -7823,7 +7823,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 38,
     "tags": [
-      "Natural Sweeteners",
+      "Eco Friendly",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -8006,7 +8006,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-126",
     "name": "Incha Acacia Wild",
-    "category": "Eco Friendly",
+    "category": "Hair Care",
     "concern": [
       "Gut Health"
     ],
@@ -8061,7 +8061,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 50,
     "tags": [
-      "Eco Friendly",
+      "Hair Care",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -8134,7 +8134,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-128",
     "name": "Iratti Madhuram",
-    "category": "Spices",
+    "category": "Natural Sweeteners",
     "concern": [
       "Gut Health"
     ],
@@ -8183,7 +8183,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 56,
     "tags": [
-      "Spices",
+      "Natural Sweeteners",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -10376,7 +10376,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-166",
     "name": "Milky Bar",
-    "category": "Spices",
+    "category": "Quick Bites",
     "concern": [
       "Gut Health"
     ],
@@ -10414,7 +10414,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 50,
     "tags": [
-      "Spices",
+      "Quick Bites",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -12702,7 +12702,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-206",
     "name": "Pineapple Ring Dried",
-    "category": "Spices",
+    "category": "Dry Fruits",
     "concern": [
       "Gut Health"
     ],
@@ -12751,7 +12751,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 50,
     "tags": [
-      "Spices",
+      "Dry Fruits",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -15782,7 +15782,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-258",
     "name": "Sandalwood Powder",
-    "category": "Pulses",
+    "category": "Skin Care",
     "concern": [
       "Weight Loss"
     ],
@@ -15837,7 +15837,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 46,
     "tags": [
-      "Pulses",
+      "Skin Care",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -16819,7 +16819,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-274",
     "name": "Sugar Free Muesli",
-    "category": "Natural Sweeteners",
+    "category": "Health Foods",
     "concern": [
       "Gut Health"
     ],
@@ -16868,7 +16868,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": false,
     "stock": 54,
     "tags": [
-      "Natural Sweeteners",
+      "Health Foods",
       "Organic",
       "Natural",
       "Dhaanya"
@@ -17677,7 +17677,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "prod-289",
     "name": "Travancore Tamarind Vaalan Puli",
-    "category": "Rava",
+    "category": "Spices",
     "concern": [
       "Weight Loss"
     ],
@@ -17726,7 +17726,7 @@ export const PRODUCTS: Product[] = [
     "isRecommended": true,
     "stock": 59,
     "tags": [
-      "Rava",
+      "Spices",
       "Organic",
       "Natural",
       "Dhaanya"
