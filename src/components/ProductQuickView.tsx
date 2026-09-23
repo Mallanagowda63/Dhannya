@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
+import { CompositionHoverCard } from './CompositionHoverCard';
 import {
   X,
   ShoppingBag,
@@ -120,7 +121,10 @@ export const ProductQuickView: React.FC = () => {
           }}
         >
           {/* Main Image - large, full-bleed within frame */}
-          <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white/60 border border-[#2A2620]/10 mb-6 flex items-center justify-center shadow-sm">
+          <CompositionHoverCard
+            product={quickViewProduct}
+            className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white/60 border border-[#2A2620]/10 mb-6 flex items-center justify-center shadow-sm"
+          >
             <img
               src={currentImage}
               alt={quickViewProduct.name}
@@ -136,7 +140,10 @@ export const ProductQuickView: React.FC = () => {
               </span>
             )}
             <button
-              onClick={() => toggleWishlist(quickViewProduct.id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleWishlist(quickViewProduct.id);
+              }}
               className={`absolute top-3 right-3 w-9 h-9 rounded-full border flex items-center justify-center transition shadow-sm cursor-pointer ${
                 isWishlisted
                   ? 'bg-[#7C2A1E] border-[#7C2A1E] text-white'
@@ -146,7 +153,7 @@ export const ProductQuickView: React.FC = () => {
             >
               <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-white' : ''}`} />
             </button>
-          </div>
+          </CompositionHoverCard>
 
           {/* Mobile Buy Block - name/price/weight/qty/CTA right after the image so
               they aren't buried below the chat CTA and trust badges on small screens */}

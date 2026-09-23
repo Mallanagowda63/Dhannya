@@ -4737,7 +4737,29 @@ export const PRODUCTS: Product[] = [
         }
       ],
       "allergenNote": "Allergen note: Contains wheat and gluten. Barley and oats require particular attention for people following a strict gluten-free diet."
-    }
+    },
+    "compositionBreakdown": [
+      {
+        "name": "Wheat",
+        "percent": 75
+      },
+      {
+        "name": "Barley",
+        "percent": 10
+      },
+      {
+        "name": "Bajra",
+        "percent": 10
+      },
+      {
+        "name": "Oats",
+        "percent": 3
+      },
+      {
+        "name": "Psyllium Husk (Isabgol)",
+        "percent": 2
+      }
+    ]
   },
   {
     "id": "prod-75",

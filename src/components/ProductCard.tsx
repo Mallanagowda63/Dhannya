@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
+import { CompositionHoverCard } from './CompositionHoverCard';
 
 interface ProductCardProps {
   product: Product;
@@ -58,7 +59,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className={`h-1.5 w-full shrink-0 ${getCategoryStripe(product.category)}`} />
 
       {/* Product Image Section (Strict Aspect Ratio 1/1 Square Container) */}
-      <div className="product-image-section">
+      <CompositionHoverCard product={product} className="product-image-section">
         <img
           src={product.image}
           alt={product.name}
@@ -86,8 +87,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-white' : ''}`} />
         </button>
 
-        {/* Quick View Hover Overlay */}
-        <div className="absolute inset-0 bg-[#2A2620]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
+        {/* Quick View Hover Overlay -- pointer-events stay off until actually
+            hovered, so it never intercepts touch taps on mobile (which have
+            no real :hover state) ahead of the card's own tap handling */}
+        <div className="absolute inset-0 bg-[#2A2620]/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 flex flex-col items-center justify-center gap-2">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -112,7 +115,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </button>
           )}
         </div>
-      </div>
+      </CompositionHoverCard>
 
       {/* Product Content Details */}
       <div className="product-content">
