@@ -31,6 +31,7 @@ interface AppContextType {
   user: User | null;
   adminToken: string | null;
   setAdminToken: (token: string | null) => void;
+  customerToken: string | null;
   orders: Order[];
   savedRecipes: CustomRecipe[];
   activeCategory: ProductCategory | null;
@@ -77,7 +78,7 @@ interface AppContextType {
   saveAddress: (address: Address) => Promise<Address>;
   deleteAddress: (addressId: string) => Promise<boolean>;
   saveCustomRecipe: (recipe: CustomRecipe) => void;
-  login: (email: string, name?: string, role?: 'admin' | 'user', id?: string) => void;
+  login: (email: string, name?: string, role?: 'admin' | 'user', id?: string, customerToken?: string) => void;
   logout: () => void;
   showToast: (message: string, type?: 'success' | 'error' | 'info', options?: { title?: string; image?: string }) => void;
   dismissToast: (id: string) => void;
@@ -167,6 +168,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [adminToken, setAdminToken] = useState<string | null>(() => localStorage.getItem('dhaanya_admin_token'));
+  const [customerToken, setCustomerToken] = useState<string | null>(() => localStorage.getItem('dhaanya_customer_token'));
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [savedRecipes, setSavedRecipes] = useState<CustomRecipe[]>(() => {
@@ -231,17 +233,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [adminToken]);
 
   useEffect(() => {
+    if (customerToken) localStorage.setItem('dhaanya_customer_token', customerToken);
+    else localStorage.removeItem('dhaanya_customer_token');
+  }, [customerToken]);
+
+  useEffect(() => {
     localStorage.setItem('dhaanya_recipes', JSON.stringify(savedRecipes));
   }, [savedRecipes]);
 
   // Load orders for current authenticated user from server
   useEffect(() => {
-    if (!user) {
+    if (!user || !customerToken) {
       setOrders([]);
       return;
     }
     const uEmail = encodeURIComponent(user.email || '');
-    fetch(getApiUrl(`/api/orders?userId=${user.id}&email=${uEmail}`))
+    fetch(getApiUrl(`/api/orders?userId=${user.id}&email=${uEmail}`), {
+      headers: { 'x-customer-token': customerToken },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.data)) {
@@ -251,12 +260,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         }
       })
       .catch(() => setOrders([]));
-  }, [user?.id, user?.email]);
+  }, [user?.id, user?.email, customerToken]);
 
   // Load addresses for current authenticated user from server
   useEffect(() => {
-    if (!user) return;
-    fetch(getApiUrl(`/api/addresses?userId=${user.id}`))
+    if (!user || !customerToken) return;
+    fetch(getApiUrl(`/api/addresses?userId=${user.id}`), {
+      headers: { 'x-customer-token': customerToken },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.data)) {
@@ -457,7 +468,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     const normalizedAddr: Address = {
       ...address,
-      id: address.id && address.id !== 'addr-new' ? address.id : `addr-${Date.now()}`,
+      id: address.id && address.id !== 'addr-new' ? address.id : `addr-${crypto.randomUUID()}`,
     };
 
     const updateLocalUserAddress = (addr: Address) => {
@@ -478,7 +489,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     try {
       const res = await fetch(getApiUrl('/api/orders'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(customerToken ? { 'x-customer-token': customerToken } : {}),
+        },
         body: JSON.stringify({
           userId: user?.id || `usr-${Date.now()}`,
           userEmail: user?.email || normalizedAddr.email || '',
@@ -542,13 +556,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const saveAddress = async (addressData: Address): Promise<Address> => {
     const addressToSave: Address = {
       ...addressData,
-      id: addressData.id && addressData.id !== 'addr-new' ? addressData.id : `addr-${Date.now()}`,
+      id: addressData.id && addressData.id !== 'addr-new' ? addressData.id : `addr-${crypto.randomUUID()}`,
     };
 
     try {
       await fetch(getApiUrl('/api/addresses'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(customerToken ? { 'x-customer-token': customerToken } : {}),
+        },
         body: JSON.stringify({
           ...addressToSave,
           userId: user?.id || 'usr-101',
@@ -575,7 +592,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const deleteAddress = async (addressId: string): Promise<boolean> => {
     try {
-      await fetch(getApiUrl(`/api/addresses/${addressId}`), { method: 'DELETE' });
+      await fetch(getApiUrl(`/api/addresses/${addressId}`), {
+        method: 'DELETE',
+        headers: customerToken ? { 'x-customer-token': customerToken } : undefined,
+      });
     } catch (err) {
       console.warn('API error deleting address:', err);
     }
@@ -610,7 +630,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast(`Saved recipe "${recipe.name}" to your profile!`, 'success');
   };
 
-  const login = (email: string, name: string = 'Dhaanya Customer', role?: 'admin' | 'user', id?: string) => {
+  const login = (email: string, name: string = 'Dhaanya Customer', role?: 'admin' | 'user', id?: string, customerTokenArg?: string) => {
     const cleanEmail = email.trim().toLowerCase();
     const isAdmin = role === 'admin' || cleanEmail === 'dhaanyaorganic1@gmail.com';
 
@@ -626,6 +646,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       savedRecipes,
     };
     setUser(newUser);
+    // The server issues this on successful OTP verification -- required on
+    // every orders/addresses request from here on so those routes can prove
+    // the caller actually owns the account they're asking about.
+    if (customerTokenArg) setCustomerToken(customerTokenArg);
     if (isAdmin) {
       setIsAdminMode(true);
       showToast('Logged in as Store Administrator 👑', 'success');
@@ -638,6 +662,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const logout = () => {
     setUser(null);
     setAdminToken(null);
+    setCustomerToken(null);
     setIsAdminMode(false);
     setOrders([]);
     setCart([]);
@@ -660,6 +685,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         user,
         adminToken,
         setAdminToken,
+        customerToken,
         orders,
         savedRecipes,
         activeCategory,

@@ -140,7 +140,7 @@ export const AuthModal: React.FC = () => {
 
       if (res.ok && data?.success && data?.user) {
         const finalName = data.user.name || name.trim() || email.split('@')[0];
-        login(email.trim(), finalName, 'user', data.user.id);
+        login(email.trim(), finalName, 'user', data.user.id, data.customerToken);
         showToast(`Welcome back, ${finalName}!`, 'success');
         setIsAuthModalOpen(false);
         resetState();

@@ -124,6 +124,66 @@ function issueAdminToken(): string {
   return token;
 }
 
+// Customer session tokens -- same pattern as admin sessions above. Issued on
+// successful OTP verification; required on any route that reads or writes a
+// specific customer's orders/addresses, so a bare userId/email query param is
+// no longer sufficient to read or mutate someone else's data (IDOR fix).
+const CUSTOMER_SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+interface CustomerSession {
+  userId: string;
+  email: string;
+  expiresAt: number;
+}
+const customerSessions = new Map<string, CustomerSession>();
+
+function issueCustomerToken(userId: string, email: string): string {
+  const token = crypto.randomBytes(32).toString('hex');
+  customerSessions.set(token, { userId, email: email.toLowerCase(), expiresAt: Date.now() + CUSTOMER_SESSION_TTL_MS });
+  return token;
+}
+
+// Validates the x-customer-token header and returns the session it belongs
+// to, or writes a 401 and returns null. Callers that also receive a
+// userId/email in the request body/query must additionally check it matches
+// the returned session (see requireMatchingCustomerIdentity below) -- this
+// function alone only proves *a* valid session, not that it's the *right* one.
+function requireCustomerAuth(req: express.Request, res: express.Response): CustomerSession | null {
+  const token = req.headers['x-customer-token'];
+  const session = typeof token === 'string' ? customerSessions.get(token) : undefined;
+
+  if (!session || session.expiresAt < Date.now()) {
+    if (typeof token === 'string' && session) {
+      customerSessions.delete(token);
+    }
+    res.status(401).json({
+      success: false,
+      message: 'Session expired or invalid. Please log in again.',
+    });
+    return null;
+  }
+  return session;
+}
+
+// Rejects the request if a client-supplied userId/email doesn't match the
+// authenticated session's own identity. Pass undefined for either to skip
+// that check (e.g. a route that only takes userId).
+function requireMatchingCustomerIdentity(
+  session: CustomerSession,
+  res: express.Response,
+  requestedUserId?: string,
+  requestedEmail?: string
+): boolean {
+  if (requestedUserId && requestedUserId !== session.userId) {
+    res.status(403).json({ success: false, message: 'Access denied: this account does not match your session.' });
+    return false;
+  }
+  if (requestedEmail && requestedEmail.trim().toLowerCase() !== session.email) {
+    res.status(403).json({ success: false, message: 'Access denied: this account does not match your session.' });
+    return false;
+  }
+  return true;
+}
+
 // Email sending via the Resend HTTPS API. Render's free tier blocks all
 // outbound SMTP traffic (ports 25/465/587) -- confirmed via a live
 // "Connection timeout" on both 465 and a 587/STARTTLS fallback, and via
@@ -597,8 +657,24 @@ const CustomerMessageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Tracks Razorpay payments that have passed signature verification, so
+// order creation can require proof of a real, unconsumed payment instead of
+// trusting a client-supplied paymentMethod string. consumedByOrderId is set
+// the first (and only) time a verified payment is attached to an order --
+// this prevents replaying the same razorpayPaymentId across multiple orders.
+const VerifiedPaymentSchema = new mongoose.Schema(
+  {
+    razorpayPaymentId: { type: String, required: true, unique: true },
+    razorpayOrderId: String,
+    verifiedAt: { type: String, default: () => new Date().toISOString() },
+    consumedByOrderId: { type: String, default: null },
+  },
+  { timestamps: true }
+);
+
 export const ProductModel = mongoose.model('Product', ProductSchema);
 export const OrderModel = mongoose.model('Order', OrderSchema);
+export const VerifiedPaymentModel = mongoose.model('VerifiedPayment', VerifiedPaymentSchema);
 export const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
 export const CustomerMessageModel = mongoose.model('CustomerMessage', CustomerMessageSchema);
 export const AddressModel = mongoose.model('Address', AddressSchema);
@@ -981,7 +1057,7 @@ app.post('/api/auth/verify-otp', async (req, res) => {
     // Reuse the existing customer's stable id across sessions instead of
     // minting a new random one on every login -- a fresh id each time
     // orphans that customer's past orders/addresses/recipes from a true FK lookup.
-    let userId = `usr-${Math.floor(100 + Math.random() * 900)}`;
+    let userId = `usr-${crypto.randomUUID()}`;
 
     const connected = await ensureDbConnected();
     if (connected) {
@@ -1017,10 +1093,13 @@ app.post('/api/auth/verify-otp', async (req, res) => {
       mobile: '',
     };
 
+    const customerToken = issueCustomerToken(userId, cleanEmail);
+
     return res.json({
       success: true,
       message: 'Logged in successfully!',
       user: userObj,
+      customerToken,
     });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
@@ -2124,16 +2203,33 @@ app.post('/api/payment/verify', async (req, res) => {
     }
 
     const connected = await ensureDbConnected();
-    if (connected && orderId) {
-      await OrderModel.updateOne(
-        { id: orderId },
-        { $set: { paymentStatus: 'Paid', paymentReference: razorpayPaymentId } }
+    if (connected) {
+      // Record this payment as verified-but-unconsumed. POST /api/orders
+      // requires this record (and that it hasn't already been attached to a
+      // different order) before it will mark an order Paid -- this is what
+      // actually links "a real payment happened" to "an order gets created",
+      // instead of trusting a client-supplied paymentMethod string.
+      await VerifiedPaymentModel.updateOne(
+        { razorpayPaymentId },
+        { $setOnInsert: { razorpayPaymentId, razorpayOrderId, verifiedAt: new Date().toISOString(), consumedByOrderId: null } },
+        { upsert: true }
       );
+
+      // Back-compat: if the caller already has an order and just wants its
+      // status flipped directly (not going through POST /api/orders' own
+      // verification check), still update it here too.
+      if (orderId) {
+        await OrderModel.updateOne(
+          { id: orderId },
+          { $set: { paymentStatus: 'Paid', paymentReference: razorpayPaymentId } }
+        );
+        await VerifiedPaymentModel.updateOne({ razorpayPaymentId }, { $set: { consumedByOrderId: orderId } });
+      }
     }
 
     return res.json({
       success: true,
-      message: 'Razorpay test payment signature verified successfully!',
+      message: 'Razorpay payment signature verified successfully!',
       paymentStatus: 'Paid',
       paymentReference: razorpayPaymentId,
     });
@@ -2172,7 +2268,7 @@ app.post('/api/payment/webhook', async (req, res) => {
 app.post('/api/orders', async (req, res) => {
   try {
     const connected = await requireDb(res);
-    const { items, shippingAddress, deliverySlot, paymentMethod, subtotal, discount, tax, shippingFee, total, userId, userEmail } =
+    const { items, shippingAddress, deliverySlot, paymentMethod, discount, userId, userEmail, razorpayPaymentId } =
       req.body;
 
     if (!items || items.length === 0) {
@@ -2180,8 +2276,54 @@ app.post('/api/orders', async (req, res) => {
     }
 
     const orderId = `ORD-${Math.floor(10000 + Math.random() * 90000)}`;
-    const cleanItems = JSON.parse(JSON.stringify(items));
+    const rawItems = JSON.parse(JSON.stringify(items));
     const cleanAddress = shippingAddress ? JSON.parse(JSON.stringify(shippingAddress)) : null;
+
+    // Recompute every catalog item's price and the order subtotal
+    // server-side from ProductModel -- a client-supplied item.price/subtotal
+    // is never trusted, since that would let anyone submit real products at
+    // an attacker-chosen price. Custom masala line items (customRecipeId,
+    // no fixed catalog price) keep their submitted price since there's no
+    // catalog record to check them against.
+    let subtotal = 0;
+    const cleanItems: any[] = [];
+    for (const item of rawItems) {
+      const quantity = Math.max(1, Number(item.quantity) || 1);
+      if (item.productId) {
+        const product: any = connected ? await ProductModel.findOne({ id: item.productId }).lean() : null;
+        const variant = product?.variants?.find((v: any) => v.weight === item.variantWeight) || product?.variants?.[0];
+        if (!product || !variant) {
+          return res.status(400).json({
+            success: false,
+            message: `Product no longer available: ${item.name || item.productId}`,
+          });
+        }
+        const realPrice = Number(variant.price) || 0;
+        cleanItems.push({ ...item, price: realPrice, quantity });
+        subtotal += realPrice * quantity;
+      } else {
+        const price = Number(item.price) || 0;
+        cleanItems.push({ ...item, quantity });
+        subtotal += price * quantity;
+      }
+    }
+
+    const cleanDiscount = Math.min(Math.max(0, Number(discount) || 0), subtotal);
+    const shippingFee = subtotal >= 499 || subtotal === 0 ? 0 : 49;
+    const tax = Math.round((subtotal - cleanDiscount) * 0.05);
+    const total = Math.max(0, subtotal - cleanDiscount + tax + shippingFee);
+
+    // Only mark an order Paid if a real Razorpay payment was independently
+    // verified (signature-checked in /api/payment/verify) and hasn't already
+    // been attached to a different order -- a client-supplied paymentMethod
+    // string of "Razorpay"/"UPI" is no longer sufficient by itself.
+    let paymentStatus: 'Paid' | 'Pending' = 'Pending';
+    if (razorpayPaymentId && connected) {
+      const verifiedPayment: any = await VerifiedPaymentModel.findOne({ razorpayPaymentId }).lean();
+      if (verifiedPayment && !verifiedPayment.consumedByOrderId) {
+        paymentStatus = 'Paid';
+      }
+    }
 
     const newOrder = {
       id: orderId,
@@ -2191,12 +2333,13 @@ app.post('/api/orders', async (req, res) => {
       shippingAddress: cleanAddress,
       deliverySlot: deliverySlot || 'Standard Delivery',
       paymentMethod: paymentMethod || 'COD',
-      paymentStatus: (paymentMethod === 'UPI' || paymentMethod === 'Razorpay' || paymentMethod === 'Online') ? 'Paid' : 'Pending',
-      subtotal: Number(subtotal) || 0,
-      discount: Number(discount) || 0,
-      tax: Number(tax) || 0,
-      shippingFee: Number(shippingFee) || 0,
-      total: Number(total) || 0,
+      paymentStatus,
+      paymentReference: paymentStatus === 'Paid' ? razorpayPaymentId : undefined,
+      subtotal,
+      discount: cleanDiscount,
+      tax,
+      shippingFee,
+      total,
       status: 'Processing',
       createdAt: new Date().toISOString(),
       estimatedDelivery: 'Within 2-3 Days',
@@ -2207,11 +2350,15 @@ app.post('/api/orders', async (req, res) => {
       await OrderModel.create(newOrder as any);
       logDbWrite('POST /api/orders', 'order create', { orderId, userId: newOrder.userId });
 
+      if (paymentStatus === 'Paid' && razorpayPaymentId) {
+        await VerifiedPaymentModel.updateOne({ razorpayPaymentId }, { $set: { consumedByOrderId: orderId } });
+      }
+
       if (shippingAddress) {
         try {
           const addrId = shippingAddress.id && shippingAddress.id !== 'addr-new'
             ? shippingAddress.id
-            : `addr-${Date.now()}`;
+            : `addr-${crypto.randomUUID()}`;
 
           await AddressModel.updateOne(
             { id: addrId },
@@ -2314,18 +2461,21 @@ app.post('/api/orders', async (req, res) => {
 
 app.get('/api/orders', async (req, res) => {
   try {
+    const session = requireCustomerAuth(req, res);
+    if (!session) return;
     const { userId, email } = req.query;
-    let query: any = {};
-    if (userId || email) {
-      const conditions: any[] = [];
-      if (userId) conditions.push({ userId: String(userId) });
-      if (email) {
-        const cleanE = String(email).trim().toLowerCase();
-        conditions.push({ userEmail: cleanE });
-        conditions.push({ 'shippingAddress.email': cleanE });
-      }
-      query = { $or: conditions };
+    if (!requireMatchingCustomerIdentity(session, res, userId ? String(userId) : undefined, email ? String(email) : undefined)) return;
+    // Always scope to the authenticated session's own identity -- ignore an
+    // absent/partial query and never fall back to "no filter" (which would
+    // return every customer's orders).
+    const effectiveUserId = userId ? String(userId) : session.userId;
+    const effectiveEmail = email ? String(email) : session.email;
+    const conditions: any[] = [{ userId: effectiveUserId }];
+    if (effectiveEmail) {
+      conditions.push({ userEmail: effectiveEmail });
+      conditions.push({ 'shippingAddress.email': effectiveEmail });
     }
+    const query: any = { $or: conditions };
 
     const connected = await ensureDbConnected();
     if (connected) {
@@ -2336,12 +2486,12 @@ app.get('/api/orders', async (req, res) => {
       }));
       return res.json({ success: true, data: dbOrders, dbConnected: true });
     } else if (allowMemoryDbInDev) {
-      const filtered = (userId || email
-        ? liveOrders.filter((o: any) =>
-            (userId && o.userId === String(userId)) ||
-            (email && (o.userEmail?.toLowerCase().trim() === String(email).toLowerCase().trim() || o.shippingAddress?.email?.toLowerCase().trim() === String(email).toLowerCase().trim()))
-          )
-        : liveOrders).map((o: any) => ({
+      const filtered = liveOrders
+        .filter((o: any) =>
+          o.userId === effectiveUserId ||
+          (effectiveEmail && (o.userEmail?.toLowerCase().trim() === effectiveEmail || o.shippingAddress?.email?.toLowerCase().trim() === effectiveEmail))
+        )
+        .map((o: any) => ({
           ...o,
           paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
         }));
@@ -2356,14 +2506,18 @@ app.get('/api/orders', async (req, res) => {
 // Addresses API
 app.get('/api/addresses', async (req, res) => {
   try {
+    const session = requireCustomerAuth(req, res);
+    if (!session) return;
     const { userId } = req.query;
+    if (!requireMatchingCustomerIdentity(session, res, userId ? String(userId) : undefined)) return;
+    const effectiveUserId = userId ? String(userId) : session.userId;
+
     const connected = await ensureDbConnected();
     if (connected) {
-      const query = userId ? { userId: String(userId) } : {};
-      const addresses = await AddressModel.find(query).sort({ createdAt: -1 }).lean();
+      const addresses = await AddressModel.find({ userId: effectiveUserId }).sort({ createdAt: -1 }).lean();
       return res.json({ success: true, data: addresses, dbConnected: true });
     } else if (allowMemoryDbInDev) {
-      const filtered = userId ? liveAddresses.filter((a) => a.userId === String(userId)) : liveAddresses;
+      const filtered = liveAddresses.filter((a) => a.userId === effectiveUserId);
       return res.json({ success: true, data: filtered });
     }
     return res.status(503).json({ success: false, message: 'Database disconnected' });
@@ -2374,12 +2528,31 @@ app.get('/api/addresses', async (req, res) => {
 
 app.post('/api/addresses', async (req, res) => {
   try {
+    const session = requireCustomerAuth(req, res);
+    if (!session) return;
+
     const connected = await requireDb(res);
-    const { id, userId, fullName, mobile, street, city, state, pincode, isDefault } = req.body;
-    const addressId = id && id !== 'addr-new' ? id : `addr-${Date.now()}`;
+    if (res.headersSent) return;
+    const { id, fullName, mobile, street, city, state, pincode, isDefault } = req.body;
+    const addressId = id && id !== 'addr-new' ? id : `addr-${crypto.randomUUID()}`;
+
+    // If this is an update to an existing address, it must already belong to
+    // the authenticated session -- otherwise a caller could pass any other
+    // customer's addr-<id> here and silently overwrite their saved address.
+    if (id && id !== 'addr-new') {
+      const existing: any = connected
+        ? await AddressModel.findOne({ id: addressId }).lean()
+        : liveAddresses.find((a) => a.id === addressId);
+      if (existing && existing.userId !== session.userId) {
+        return res.status(403).json({ success: false, message: 'Access denied: this address does not belong to your account.' });
+      }
+    }
+
     const addressData = {
       id: addressId,
-      userId: userId || 'usr-101',
+      // Always the caller's own session identity -- never a client-supplied
+      // userId, so a saved address can't be attributed to another account.
+      userId: session.userId,
       fullName: fullName || 'Valued Customer',
       mobile: mobile || '+91 98765 00000',
       street: street || '',
@@ -2408,8 +2581,23 @@ app.post('/api/addresses', async (req, res) => {
 
 app.delete('/api/addresses/:id', async (req, res) => {
   try {
+    const session = requireCustomerAuth(req, res);
+    if (!session) return;
+
     const connected = await requireDb(res);
+    if (res.headersSent) return;
     const { id } = req.params;
+
+    const existing: any = connected
+      ? await AddressModel.findOne({ id }).lean()
+      : liveAddresses.find((a) => a.id === id);
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Address not found' });
+    }
+    if (existing.userId !== session.userId) {
+      return res.status(403).json({ success: false, message: 'Access denied: this address does not belong to your account.' });
+    }
+
     if (connected) {
       await AddressModel.deleteOne({ id });
     } else if (allowMemoryDbInDev) {
