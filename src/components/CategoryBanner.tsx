@@ -7,29 +7,6 @@ interface CategoryBannerProps {
 }
 
 export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory }) => {
-  // Map category names to banner images
-  const getCategoryBannerImage = (categoryName: string): string => {
-    const bannerMap: Record<string, string> = {
-      'Wood Pressed Oils': '/images/banner/MAIN OIL TN.png',
-      'Flour': '/images/banner/MAIN FLOUR TN.png',
-      'Dry Fruits': '/images/banner/MAIN SPICES TN.png',
-      'Seeds': '/images/banner/MAIN SPICES TN.png',
-      'Millets': '/images/banner/RAVA.png',
-      'Spices': '/images/banner/MAIN SPICES TN.png',
-      'Masalas': '/images/banner/MAIN SPICES TN.png',
-      'Health Foods': '/images/banner/HEALTH FOODS.png',
-      'Natural Sweeteners': '/images/banner/NATURAL SWEETNERS.png',
-      'Nut Butters': '/images/banner/NUT BUTTERS.png',
-      'Coffee & Tea': '/images/banner/COFFEE AND TEA.png',
-      'Quick Bites': '/images/banner/QUICK BITES.png',
-      'Pasta & Noodles': '/images/banner/PASTA AND NOODLES.png',
-      'Rice': '/images/banner/RICE.png',
-      'Poha': '/images/banner/POHA.png',
-      'Skin & Hair Care': '/images/banner/SKIN AND HAIR CARE.png',
-    };
-    return bannerMap[categoryName] || '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
-  };
-
   return (
     <section className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 bg-[#FAF8F4] text-[#2A2620] border-t border-[#2A2620]/10">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
@@ -46,7 +23,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
 
         {/* Category Cards Grid with Category Accent Top Borders */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
-          {CATEGORIES.map((cat) => {
+          {CATEGORIES.map((cat, index) => {
             const isFlour = cat.name === 'Flour';
             const isSpice = cat.name === 'Spices' || cat.name === 'Masalas';
             const isOil = cat.name === 'Wood Pressed Oils';
@@ -74,7 +51,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
                 {/* Category Image Card Container with Banner Image */}
                 <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] border border-[#2A2620]/15 ${accentBorder} p-3 shadow-xs group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
                   <img
-                    src={getCategoryBannerImage(cat.name)}
+                    src={cat.image || (index > 0 && CATEGORIES[index - 1].image) || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
                     alt={cat.name}
                     className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
