@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
 import { CATEGORIES } from '../data/initialData';
 import { ProductCategory } from '../types';
 
@@ -8,35 +7,6 @@ interface CategoryBannerProps {
 }
 
 export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
-
-  useEffect(() => {
-    checkScroll();
-    window.addEventListener('resize', checkScroll);
-    return () => window.removeEventListener('resize', checkScroll);
-  }, []);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 400;
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
-      setTimeout(checkScroll, 300);
-    }
-  };
-
   // Map category names to banner images
   const getCategoryBannerImage = (categoryName: string): string => {
     const bannerMap: Record<string, string> = {
@@ -62,9 +32,10 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
 
   return (
     <section className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 bg-[#FAF8F4] text-[#2A2620] border-t border-[#2A2620]/10">
-      <div className="max-w-full px-4 sm:px-6 lg:px-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
+
         {/* Section Header */}
-        <div className="mb-8 text-center sm:text-left space-y-1 max-w-[1440px] mx-auto">
+        <div className="mb-6 text-center sm:text-left space-y-1">
           <span className="text-xs font-bold uppercase tracking-widest text-[#3E4B32] block">
             OUR ESSENTIAL PANTRY
           </span>
@@ -73,84 +44,63 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
           </h2>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Scroll Buttons */}
-          {canScrollLeft && (
-            <button
-              onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#2A2620] hover:bg-[#2A2620]/90 text-[#F4ECD8] p-2 rounded-full shadow-lg transition-all duration-200"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={24} />
-            </button>
-          )}
+        {/* Category Cards Grid with Category Accent Top Borders */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+          {CATEGORIES.map((cat) => {
+            const isFlour = cat.name === 'Flour';
+            const isSpice = cat.name === 'Spices' || cat.name === 'Masalas';
+            const isOil = cat.name === 'Wood Pressed Oils';
 
-          {canScrollRight && (
-            <button
-              onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#2A2620] hover:bg-[#2A2620]/90 text-[#F4ECD8] p-2 rounded-full shadow-lg transition-all duration-200"
-              aria-label="Scroll right"
-            >
-              <ChevronRight size={24} />
-            </button>
-          )}
+            let accentBorder = 'border-t-4 border-[#C89211]';
+            let badgeColor = 'text-[#C89211]';
 
-          {/* Scrollable Categories Container */}
-          <div
-            ref={scrollContainerRef}
-            onScroll={checkScroll}
-            className="overflow-x-auto scrollbar-hide flex gap-6 lg:gap-8 pb-4"
-            style={{
-              scrollBehavior: 'smooth',
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-            }}
-          >
-            {CATEGORIES.map((cat) => (
+            if (isFlour) {
+              accentBorder = 'border-t-4 border-[#A9542B]';
+              badgeColor = 'text-[#A9542B]';
+            } else if (isSpice) {
+              accentBorder = 'border-t-4 border-[#7C2A1E]';
+              badgeColor = 'text-[#7C2A1E]';
+            } else if (isOil) {
+              accentBorder = 'border-t-4 border-[#3E4B32]';
+              badgeColor = 'text-[#3E4B32]';
+            }
+
+            return (
               <div
                 key={cat.slug}
                 onClick={() => onSelectCategory(cat.name)}
-                className="group cursor-pointer flex-shrink-0 w-80 sm:w-96 text-center space-y-3"
+                className="group cursor-pointer flex flex-col items-center text-center space-y-3"
               >
-                {/* Category Banner Card */}
-                <div className="relative aspect-[2/1] rounded-2xl overflow-hidden bg-[#FAF6ED] border-4 border-[#2A2620]/10 shadow-lg group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-105 flex items-center justify-center">
+                {/* Category Image Card Container with Banner Image */}
+                <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] border border-[#2A2620]/15 ${accentBorder} p-3 shadow-xs group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
                   <img
                     src={getCategoryBannerImage(cat.name)}
                     alt={cat.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                     }}
                   />
-
-                  {/* Overlay with Category Name */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2A2620]/80 via-[#2A2620]/40 to-transparent flex flex-col items-center justify-end p-4">
-                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#F4ECD8]">
-                      {cat.name}
-                    </h3>
-                    <span className="text-[13px] font-kannada text-[#F4ECD8]/90 block mt-1">
-                      {cat.name === 'Flour' ? 'ತಾಜಾ ಹಿಟ್ಟು' : cat.name === 'Spices' || cat.name === 'Masalas' ? 'ಮಸಾಲೆ' : cat.name === 'Wood Pressed Oils' ? 'ಮರದ ಗಾಣದ ಎಣ್ಣೆ' : 'ಶುದ್ಧ ಧಾನ್ಯ'}
-                    </span>
-                  </div>
-
-                  {/* Fresh Mill Badge */}
-                  <div className="absolute top-3 right-3 bg-[#2A2620]/90 backdrop-blur-sm text-[#F4ECD8] text-[11px] font-sans font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  <div className="absolute top-2 right-2 bg-[#2A2620]/80 backdrop-blur-xs text-[#F4ECD8] text-[9px] font-sans font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                     Fresh Mill
                   </div>
                 </div>
+
+                {/* Category Title */}
+                <div>
+                  <h3 className={`text-sm sm:text-base font-bold transition-colors leading-snug tracking-tight font-serif ${badgeColor}`}>
+                    {cat.name}
+                  </h3>
+                  <span className="text-[11px] font-kannada text-[#2A2620]/60 block mt-0.5">
+                    {isFlour ? 'ತಾಜಾ ಹಿಟ್ಟು' : isSpice ? 'ಮಸಾಲೆ' : isOil ? 'ಮರದ ಗಾಣದ ಎಣ್ಣೆ' : 'ಶುದ್ಧ ಧಾನ್ಯ'}
+                  </span>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
-
-      <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 };
