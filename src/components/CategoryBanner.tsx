@@ -7,6 +7,43 @@ interface CategoryBannerProps {
 }
 
 export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory }) => {
+  // Map category names to banner images
+  const getCategoryImage = (categoryName: string, index: number): string => {
+    const bannerMap: Record<string, string> = {
+      'Coffee & Tea': '/images/banner/COFFEE AND TEA.png',
+      'Health Foods': '/images/banner/HEALTH FOODS.png',
+      'Flour': '/images/banner/MAIN FLOUR TN.png',
+      'Wood Pressed Oils': '/images/banner/MAIN OIL TN.png',
+      'Spices': '/images/banner/MAIN SPICES TN.png',
+      'Natural Sweeteners': '/images/banner/NATURAL SWEETNERS.png',
+      'Nut Butters': '/images/banner/NUT BUTTERS.png',
+      'Pasta & Noodles': '/images/banner/PASTA AND NOODLES.png',
+      'Poha': '/images/banner/POHA.png',
+      'Quick Bites': '/images/banner/QUICK BITES.png',
+      'Rava': '/images/banner/RAVA.png',
+      'Rice': '/images/banner/RICE.png',
+      'Skin & Hair Care': '/images/banner/SKIN AND HAIR CARE.png',
+    };
+
+    // If category has a banner image, use it
+    if (bannerMap[categoryName]) {
+      return bannerMap[categoryName];
+    }
+
+    // Otherwise use category's original image
+    const cat = CATEGORIES[index];
+    if (cat.image) {
+      return cat.image;
+    }
+
+    // Fallback to previous category's image if current doesn't have one
+    if (index > 0 && CATEGORIES[index - 1].image) {
+      return CATEGORIES[index - 1].image;
+    }
+
+    return '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+  };
+
   return (
     <section className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 bg-[#FAF8F4] text-[#2A2620] border-t border-[#2A2620]/10">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
@@ -51,7 +88,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
                 {/* Category Image Card Container with Banner Image */}
                 <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] border border-[#2A2620]/15 ${accentBorder} p-3 shadow-xs group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
                   <img
-                    src={cat.image || (index > 0 && CATEGORIES[index - 1].image) || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
+                    src={getCategoryImage(cat.name, index)}
                     alt={cat.name}
                     className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
