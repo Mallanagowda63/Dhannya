@@ -1619,20 +1619,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Barnyard Millet (Oodalu) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Barnyard Millet, known as Oodalu in Kannada, is a small traditional millet used in different grain-based preparations. It has a relatively mild flavour and can be cooked as a rice-style grain or incorporated into other recipes. Barnyard Millet contributes carbohydrates and plant-based nutrients and can be part of a varied, balanced diet.",
     "ingredients": [
       "100% Pure Natural Barnyard Millet (Oodalu)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Gluten": "Naturally gluten-free grain",
+      "Heritage": "Traditional alternative to commonly consumed cereals",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Cooking": "Suitable for different cooking styles"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain",
+      "A traditional alternative to commonly consumed cereals",
+      "Provides dietary fibre and plant-based nutrients",
+      "Suitable for different cooking styles",
+      "Useful for adding variety to everyday meals"
     ],
     "image": "/images/dhannya_Products_final/Barnyard%20Millet%20(Oodalu)/01.jpg",
     "gallery": [
@@ -2554,20 +2556,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Browntop Millet (Korale) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Browntop Millet, known as Korale in Kannada, is a traditional small millet valued for its distinctive grain characteristics and place in regional food traditions. It has a mild earthy flavour and can be used to add variety to grain-based meals. Browntop Millet provides dietary fibre and plant-based nutrients.",
     "ingredients": [
       "100% Pure Natural Browntop Millet (Korale)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Gluten": "Naturally gluten-free grain",
+      "Heritage": "Traditional millet variety with regional relevance",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Diversity": "Helps diversify everyday grain choices"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain",
+      "A traditional millet variety with regional relevance",
+      "Provides dietary fibre and plant-based nutrients",
+      "Helps diversify everyday grain choices",
+      "Suitable for experimenting with traditional and modern recipes"
     ],
     "image": "/images/dhannya_Products_final/Browntop%20Millet%20(Korale)/01.jpg",
     "gallery": [
@@ -6729,20 +6733,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Foxtail Millet (Navane) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Foxtail Millet, known as Navane in Kannada, is a small-seeded traditional millet with a mild, slightly nutty flavour. It is commonly used as a rice alternative in grain-based dishes and can be incorporated into a variety of everyday meals. Provides dietary fibre and plant-based nutrients, making it useful for diversifying grain consumption.",
     "ingredients": [
       "100% Pure Natural Foxtail Millet (Navane)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Gluten": "Naturally gluten-free grain",
+      "Flavour": "Mild flavour suitable for different preparations",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Versatility": "Works well in rice-style dishes"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain",
+      "Mild flavour suitable for different preparations",
+      "Provides dietary fibre and plant-based nutrients",
+      "Works well in rice-style dishes",
+      "A versatile option for everyday grain variety"
     ],
     "image": "/images/dhannya_Products_final/Foxtail%20Millet%20(Navane)/01.jpg",
     "gallery": [
@@ -8312,20 +8318,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Jowar (Sorghum Millet) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Jowar, also known as Sorghum, is a traditional cereal grain with a mild, earthy flavour and versatile culinary uses. It is consumed in several regions of India and can be enjoyed as whole grain or flour. Naturally gluten-free and provides carbohydrates, plant-based protein and dietary fibre.",
     "ingredients": [
       "100% Pure Natural Jowar (Sorghum Millet)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Gluten": "Naturally gluten-free grain",
+      "Flavour": "Mild flavour that works well in different recipes",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Versatility": "Useful alternative for increasing grain variety"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain",
+      "Mild flavour that works well in different recipes",
+      "Provides dietary fibre and plant-based nutrients",
+      "Useful alternative for increasing grain variety",
+      "Suitable for whole-grain and flour-based preparations"
     ],
     "image": "/images/dhannya_Products_final/Jowar%20(Sorghum%20Millet)/01.jpg",
     "gallery": [
@@ -9118,20 +9126,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Little Millet (Samai) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Little Millet, known as Samai, is a small traditional millet with a subtle flavour and versatile cooking applications. It can be prepared as a cooked grain or incorporated into flour-based recipes. Little Millet is useful for people seeking variety beyond commonly consumed rice and wheat, with a versatile texture and flavour suitable for both traditional and contemporary meals.",
     "ingredients": [
       "100% Pure Natural Little Millet (Samai)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Gluten": "Naturally gluten-free grain",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Flavour": "Mild flavour suitable for everyday cooking",
+      "Versatility": "Can be used in both sweet and savoury dishes"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain",
+      "Provides dietary fibre and plant-based nutrients",
+      "Mild flavour suitable for everyday cooking",
+      "Can be used in both sweet and savoury dishes",
+      "A versatile grain for expanding dietary variety"
     ],
     "image": "/images/dhannya_Products_final/Little%20Millet%20(Samai)/01.jpg",
     "gallery": [
@@ -12426,20 +12436,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Pearl Millet (Bajra) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Pearl Millet, commonly known as Bajra, is a traditional grain with a distinctive earthy flavour and hearty character. It has long been used in Indian diets, especially in regions where millet-based flatbreads form part of everyday food traditions. Bajra provides plant-based protein, minerals and dietary fibre.",
     "ingredients": [
       "100% Pure Natural Pearl Millet (Bajra)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Gluten": "Naturally gluten-free grain",
+      "Protein": "Provides plant-based protein and minerals",
+      "Flavour": "Distinctive earthy and nutty flavour",
+      "Nutrition": "Suitable for traditional grain-based meals"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain",
+      "Provides plant-based protein and minerals",
+      "Offers a distinctive earthy and nutty flavour",
+      "Suitable for traditional grain-based meals",
+      "Helps add variety to everyday cereal consumption"
     ],
     "image": "/images/dhannya_Products_final/Pearl%20Millet%20(Bajra)/01.jpg",
     "gallery": [
@@ -13866,20 +13878,22 @@ export const PRODUCTS: Product[] = [
     "concern": [
       "Weight Loss"
     ],
-    "description": "100% Pure, authentic, and naturally processed Ragi (Finger Millet) sourced carefully for daily health, wellness, and rich taste.",
+    "description": "Dhaanya Ragi, also known as Finger Millet, is a traditional Indian grain recognised for its earthy flavour and naturally high calcium content. It has been a part of South Indian food traditions for generations and is commonly enjoyed in both everyday meals and traditional preparations. Naturally gluten-free, provides dietary fibre and plant-based nutrients.",
     "ingredients": [
       "100% Pure Natural Ragi (Finger Millet)"
     ],
     "nutritionInfo": {
-      "Energy (per 100g)": "360 kcal",
-      "Proteins": "10g",
-      "Carbohydrates": "55g",
-      "Dietary Fiber": "8g"
+      "Calcium Content": "Notable dietary source of calcium",
+      "Gluten": "Naturally gluten-free grain",
+      "Fibre": "Contains dietary fibre and plant-based nutrients",
+      "Flavour": "Distinctive earthy flavour"
     },
     "benefits": [
-      "Rich in vital micronutrients and antioxidants",
-      "Unadulterated natural quality with zero preservatives",
-      "Supports everyday immunity, digestion, and overall vitality"
+      "Naturally gluten-free grain when handled without gluten cross-contact",
+      "A notable dietary source of calcium",
+      "Contains dietary fibre and plant-based nutrients",
+      "Offers a distinctive earthy flavour",
+      "Suitable for traditional and modern recipes"
     ],
     "image": "/images/dhannya_Products_final/Ragi%20(Finger%20Millet)/01.jpg",
     "gallery": [
@@ -18617,12 +18631,12 @@ export const PRODUCTS: Product[] = [
   },
   {
     "id": "prod-267",
-    "name": "Virgin Coconut Oil",
+    "name": "Dhaanya Virgin Coconut Oil",
     "category": "Skin Care",
     "concern": [
       "Skin & Hair"
     ],
-    "description": "Virgin coconut oil obtained from fresh coconut with naturally characteristic coconut aroma and smooth feel. Traditionally used for hair oiling, scalp massage, and body moisturising.",
+    "description": "Virgin coconut oil is obtained from fresh coconut and has a naturally characteristic coconut aroma and smooth feel. It is traditionally used for hair oiling, scalp massage, body moisturising and as an ingredient in homemade personal-care preparations.",
     "ingredients": [
       "100% Pure Natural Virgin Coconut Oil"
     ],
@@ -20266,6 +20280,142 @@ export const COUPONS: Coupon[] = [
     "isActive": true
   }
 ];
+
+// Product details with rich descriptions for UI display
+interface ProductDetail {
+  about: string;
+  why: string[];
+  facts: string[];
+  how?: string;
+  storage?: string;
+}
+
+const D = (about: string, why: string[], facts: string[], how?: string, storage?: string): ProductDetail =>
+  ({ about, why, facts, how, storage });
+
+export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
+  "Ragi (Finger Millet) Rava": D(
+    "Ragi Rava is made from finger millet, a traditional grain with a naturally earthy flavour and deep colour. Its fine, grainy texture suits quick breakfasts and everyday cooking such as upma, porridge and savoury dishes.",
+    ["Made from traditional finger millet.", "Naturally earthy and mildly nutty flavour.", "Rich in dietary fibre.", "Naturally provides calcium and iron.", "Versatile for breakfast and everyday cooking."],
+    ["Ragi is also known as finger millet.", "Traditionally important in South Indian cuisine.", "Notable for its naturally high calcium content.", "Can be used in both sweet and savoury preparations."],
+    undefined, "Store in an airtight container in a cool, dry place."),
+  "Jowar (Sorghum Millet) Rava": D(
+    "Jowar Rava is made from sorghum, a traditional grain with a mild, slightly nutty flavour. Its granular texture suits savoury breakfast preparations and everyday recipes.",
+    ["Made from traditional sorghum.", "Mild, naturally nutty flavour.", "Good source of dietary fibre.", "Naturally gluten-free.", "Suitable for upma and other savoury preparations."],
+    ["Jowar is also known as sorghum.", "Sorghum is cultivated widely across India and is an important traditional cereal.", "Its neutral flavour pairs easily with vegetables and spices."],
+    undefined, "Keep airtight and protected from moisture."),
+  "Peanut Plain Roasted Nut Butter": D(
+    "A creamy nut butter made from roasted peanuts, bringing out their naturally rich, nutty flavour. Versatile for breakfast, snacks, smoothies and everyday cooking.",
+    ["Rich roasted peanut flavour.", "Smooth and easy to spread.", "Naturally provides plant-based protein.", "Great on toast, rotis, oats and smoothies.", "Useful in both sweet and savoury recipes."],
+    ["Peanuts are legumes, not botanical nuts.", "Peanuts naturally provide protein, fibre and unsaturated fats.", "If natural oil separation occurs, simply stir before use."],
+    undefined, "Store in a cool, dry place and always use a clean, dry spoon."),
+  "Cashew Nut Butter": D(
+    "Cashew nut butter has a naturally creamy texture and delicate, mildly sweet flavour. A versatile spread for breakfast dishes, desserts and homemade sauces.",
+    ["Naturally creamy and rich.", "Mild, subtly sweet nutty flavour.", "Excellent spread for toast and crackers.", "Great addition to smoothies and desserts.", "Adds creaminess to homemade sauces."],
+    ["Cashews naturally contain unsaturated fats, protein, copper and magnesium.", "Can replace dairy-based creamy ingredients in some recipes.", "Natural oil separation can occur."],
+    undefined, "Keep tightly sealed in a cool, dry place. Stir if separation occurs."),
+  "Almond Nut Butter": D(
+    "Almond nut butter is made from almonds ground into a rich, creamy spread with the characteristic flavour of roasted almonds. Works in breakfast foods, smoothies and baking.",
+    ["Rich roasted almond flavour.", "Creamy and easy to spread.", "Naturally provides vitamin E, fibre and protein.", "Excellent with toast, oats and fruit.", "Useful in smoothies and homemade desserts."],
+    ["Almonds naturally contain vitamin E and magnesium.", "Roasting enhances the natural aroma of almonds.", "Natural separation of oils may occur in minimally processed nut butters."],
+    undefined, "Store sealed in a cool, dry place. Stir well if natural separation occurs."),
+  "Cashew 180": D(
+    "Cashew 180 is a premium large-kernel cashew grade, known for its plump appearance, creamy texture and mild sweetness. The number refers to the approximate kernel count per pound. Ideal for snacking, sweets, desserts, gravies and festive preparations.",
+    ["Large, premium-grade cashew kernels.", "Naturally creamy and mildly sweet.", "Excellent for snacking and cooking.", "Great for sweets, desserts and rich gravies.", "Provides protein, unsaturated fats, copper and magnesium."],
+    ["Cashews are seeds found inside the fruit of the cashew tree.", "In cashew grading, a lower count generally means larger kernels."],
+    undefined, "Store airtight in a cool, dry place."),
+  "Cashew 240": D(
+    "Cashew 240 is a popular whole-cashew grade offering a good balance of kernel size, texture and versatility, for both snacking and cooking.",
+    ["Good-sized whole cashew kernels.", "Naturally creamy and mildly sweet.", "Suitable for everyday snacking.", "Excellent for Indian sweets and desserts.", "Versatile for cooking and baking."],
+    ["The '240' indicates an approximate kernel count per pound.", "Roasting develops a deeper nutty aroma.", "Keep protected from moisture for best freshness."],
+    undefined, "Store airtight in a cool, dry place."),
+  "Pumpkin Seeds": D(
+    "Pumpkin seeds are flat, mildly nutty seeds with a satisfying crunch, easy to add to breakfast bowls, salads, baked foods and snack mixes.",
+    ["Naturally crunchy and nutty.", "Easy to incorporate into everyday foods.", "Good source of plant protein.", "Provides magnesium, zinc and unsaturated fats.", "Excellent for roasting or snacking."],
+    ["Also called pepitas when sold without the hard outer hull.", "Can be eaten raw, roasted or in recipes."],
+    undefined, "Store airtight to prevent moisture absorption."),
+  "Sunflower Seeds": D(
+    "Sunflower seeds have a mild, nutty flavour and satisfying crunch, easy to add to breakfast bowls, salads, breads and snack mixes.",
+    ["Mild, nutty flavour.", "Naturally rich in vitamin E.", "Provides unsaturated fats and plant protein.", "Excellent for salads and breakfast bowls.", "Can be eaten raw or roasted."],
+    ["Their oils are predominantly unsaturated fats."],
+    undefined, "Store in a cool, dry place."),
+  "Chia Seeds": D(
+    "Chia seeds are tiny, mild-flavoured seeds that absorb liquid and develop a gel-like texture, easy to include in everyday meals.",
+    ["Naturally high in dietary fibre.", "Provides plant-based ALA omega-3.", "Easy to add to oats, smoothies and yoghurt.", "Useful for puddings and soaked preparations.", "Mild flavour blends with other foods."],
+    ["Chia can absorb several times its weight in liquid.", "Its gel-like texture comes from soluble fibre."],
+    undefined, "Store in a cool, dry place."),
+  "Sesame Seeds (Til) Black": D(
+    "Black sesame seeds have a deeper, more pronounced nutty flavour than white sesame and are widely used in Indian and Asian cooking.",
+    ["Distinctive roasted, nutty flavour.", "Excellent for chutneys and spice mixes.", "Works beautifully in sweets.", "Can be sprinkled over breads and savoury dishes.", "Provides fibre, protein and unsaturated fats."],
+    ["Roasting intensifies its aroma.", "Sesame is one of the oldest cultivated oilseed crops."],
+    undefined, "Store airtight in a cool place."),
+  "Sesame Seeds (Til) White": D(
+    "White sesame seeds have a delicate nutty flavour and are widely used across Indian cooking, baking, sweets and traditional preparations.",
+    ["Mild nutty flavour.", "Excellent for sweets and laddoos.", "Great for seasoning and garnishing.", "Useful in chutneys and spice mixes.", "Provides calcium, fibre, protein and unsaturated fats."],
+    ["Sesame is an important traditional oilseed.", "Roasting creates a stronger nutty aroma."],
+    undefined, "Store in an airtight container away from moisture."),
+  "Makhana (Lotus Seeds)": D(
+    "Makhana, also called fox nuts or lotus seeds, are the popped seeds of Euryale ferox, with a light, crisp texture and mild flavour popular as a roasted snack.",
+    ["Light and crunchy when roasted.", "Mild flavour works with sweet or savoury seasoning.", "Convenient snack option.", "Great for homemade flavoured makhana.", "Traditionally used in Indian cooking."],
+    ["Makhana is not a botanical nut; it comes from an aquatic plant.", "Roasting gives it a crisp texture and deeper flavour."],
+    undefined, "Store airtight to protect its crunch."),
+  "Medjool Jumbo Dates": D(
+    "Medjool dates are large, naturally sweet dates known for their size, soft flesh and caramel-like sweetness. A premium variety for snacking, desserts and energy bars.",
+    ["Large dates with a soft, chewy texture.", "Naturally sweet with a caramel-like flavour.", "Convenient energy-rich snack.", "Suitable for smoothies, desserts and energy balls.", "Can be stuffed with nuts or nut butter."],
+    ["Often called the 'king of dates'.", "Their sweetness increases as they mature and soften."],
+    undefined, "Store airtight in a cool, dry place or refrigerate for longer freshness."),
+  "Ajwa Dates": D(
+    "Ajwa dates are a well-known variety traditionally associated with Al-Madinah, Saudi Arabia. Small to medium, dark, soft-to-chewy, with a distinctive fruity, mildly caramel-like flavour.",
+    ["Distinctive dark colour and traditional flavour.", "Convenient, naturally sweet snack.", "Suitable for direct consumption and gifting.", "Can be added to milkshakes, smoothies and desserts.", "Provides dietary fibre and minerals."],
+    ["Ajwa is particularly associated with the Madinah region.", "Dates contain natural sugars, so portion size matters."],
+    undefined, "Store away from moisture, heat and direct sunlight."),
+  "Black Seedless Raisins": D(
+    "Black seedless raisins are dried grapes, dark brown to black, sweet and fruity with a soft or chewy texture. Used in Indian cooking, baking, desserts and snacking.",
+    ["Naturally sweet taste.", "Seedless and easy to use in recipes.", "Suitable for baking, desserts and breakfast bowls.", "Can be soaked for traditional preparations.", "Provides fibre and plant compounds."],
+    ["Drying increases the concentration of natural sugars.", "Raisins can be soaked to improve softness."],
+    undefined, "Store in a cool, dry place and protect from moisture."),
+  "Fig (Big)": D(
+    "Dried figs are made by removing moisture from ripe fruit, giving a naturally sweet flavour and chewy texture with small edible seeds. Big figs suit snacking, desserts and breakfast bowls.",
+    ["Larger size suitable for direct snacking.", "Naturally sweet with a distinctive seed-filled texture.", "Provides dietary fibre and minerals.", "Can be soaked and added to milk or breakfast bowls.", "Useful in homemade energy snacks and desserts."],
+    ["The small seeds inside figs are edible.", "Soaking softens dried figs."],
+    undefined, "Store in a sealed container; refrigerate if moist or soft."),
+  "Red Chilli- Dabbi": D(
+    "Dabbi chilli is a traditional dried Indian chilli recognised for its deep red colour, wrinkled appearance and characteristic aroma. Heat level varies with variety, region and batch.",
+    ["Adds rich red colour to curries and masalas.", "Balanced combination of flavour and heat.", "Suitable for homemade chilli powder.", "Useful for South Indian cooking, pickles and chutneys."],
+    ["Chilli peppers originated in the Americas and reached India through trade routes.", "Their red colour comes mainly from carotenoids."],
+    "Use in curries, sambar, rasam, chutneys, pickles and spice powders. Remove seeds for a milder result.",
+    "Store in an airtight container away from moisture."),
+  "Coriander": D(
+    "Coriander seeds are the dried fruits of the coriander plant. Warm, mildly citrusy and earthy, they are the foundation of many curry powders and masalas.",
+    ["Adds depth and a gentle citrus-like aroma.", "Essential in many Indian masalas.", "Suitable for whole-spice cooking or grinding.", "Versatile in vegetarian and non-vegetarian dishes."],
+    ["Seeds and fresh leaves come from the same plant but taste different.", "India is one of the world's major coriander producers."],
+    "Use in sambar powder, rasam, curries, pickles and spice blends. Dry roast gently before grinding.",
+    "Store airtight away from sunlight."),
+  "Pepper": D(
+    "Black pepper is the dried fruit of Piper nigrum, native to South India's Western Ghats, especially Kerala. Known as the 'King of Spices', it gives a sharp, warm, aromatic flavour.",
+    ["Warm and pungent flavour.", "Suitable for everyday Indian cooking.", "Useful in rasam, soups, marinades and blends.", "Freshly ground pepper gives a stronger aroma."],
+    ["Peppercorns are berries from a climbing vine.", "Piperine is the main compound behind its pungency."],
+    "Use whole or freshly ground in rasam, curries, soups, salads and beverages.",
+    "Store in an airtight container."),
+  "Cardamom Bold": D(
+    "Green cardamom is the dried fruit pod of Elettaria cardamomum, native to South India's Western Ghats, with a sweet, floral, citrus-like fragrance.",
+    ["Sweet and fragrant flavour.", "Suitable for tea, desserts, biryani and sweets.", "Adds aroma without excessive heat.", "Useful in masala blends."],
+    ["Cardamom belongs to the ginger family.", "Its aroma comes from essential oils."],
+    "Crush the pods lightly or use the seeds in tea, rice, desserts and curries.",
+    "Store airtight to preserve fragrance."),
+  "Nutmeg": D(
+    "Nutmeg is the dried seed of Myristica fragrans, native to Indonesia's Banda Islands. The same fruit produces mace. Warm, sweet, woody aroma, used in small quantities.",
+    ["Adds warmth and depth to recipes.", "Suitable for sweets, beverages, curries and blends.", "Useful in traditional masala preparations.", "Only a small amount is needed."],
+    ["Nutmeg is a seed; mace is the covering around it.", "Excessive consumption is not recommended."],
+    "Grate a small quantity into desserts, milk drinks, curries and blends.",
+    "Store whole nutmeg in an airtight container."),
+  "Cloves": D(
+    "Cloves are the dried, unopened flower buds of the clove tree, native to Indonesia's Maluku Islands, with a powerful warm, sweet-spicy aroma used in small quantities.",
+    ["Adds fragrance and depth to recipes.", "Suitable for biryani, pulao, tea and masala blends.", "Works in sweet and savoury preparations.", "A small quantity gives a strong aroma."],
+    ["Cloves are flower buds, not seeds.", "Eugenol is a major aromatic compound."],
+    "Add whole cloves to rice dishes, curries, tea and spice blends.",
+    "Store away from heat and moisture.")
+};
 
 export const REVIEWS: Review[] = [
   {
