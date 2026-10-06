@@ -184,6 +184,25 @@ export const ProductQuickView: React.FC = () => {
               </div>
             </div>
 
+            {/* Primary Action Buttons - visible immediately on mobile */}
+            <div className="flex flex-col gap-2.5 mt-4">
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span>Add to Basket</span>
+              </button>
+
+              <button
+                onClick={handleBuyNow}
+                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <span>Buy Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
             <div className="mt-4">
               <TrustBadgeBar />
             </div>
@@ -235,24 +254,6 @@ export const ProductQuickView: React.FC = () => {
                   <Plus className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-3 mt-5">
-              <button
-                onClick={handleAddToCart}
-                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>Add to Basket</span>
-              </button>
-
-              <button
-                onClick={handleBuyNow}
-                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer"
-              >
-                <span>Buy Now</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
 
