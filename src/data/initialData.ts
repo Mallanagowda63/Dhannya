@@ -22106,6 +22106,18 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
     ["Many traditional Indian ingredient names vary by language and region.", "Confirming botanical identity especially important for herbal preparation ingredients."],
     "Use only according to verified product identity and established recipe.",
     "Store in clean, dry, airtight container."),
+  "Shelled Pistachios": D(
+    "Shelled pistachio kernels with their natural green colour, delicate crunch and mildly sweet flavour. With the shell removed, they are ready to use in cooking, baking and desserts.",
+    ["No shelling required.", "Convenient for recipes.", "Excellent for desserts and garnishing.", "Easy to chop or grind.", "Naturally rich in protein, fibre and unsaturated fats."],
+    ["Shelled pistachios save preparation time.", "They are widely used in ice creams, sweets, cakes and desserts.", "Keep airtight because shelled nuts are more exposed to air."],
+    "Use in baking, desserts, garnishing or enjoy directly as a snack.",
+    "Store in airtight container in a cool, dry place."),
+  "Pista Plain w o Shell": D(
+    "Shelled pistachio kernels with their natural green colour, delicate crunch and mildly sweet flavour. With the shell removed, they are ready to use in cooking, baking and desserts.",
+    ["No shelling required.", "Convenient for recipes.", "Excellent for desserts and garnishing.", "Easy to chop or grind.", "Naturally rich in protein, fibre and unsaturated fats."],
+    ["Shelled pistachios save preparation time.", "They are widely used in ice creams, sweets, cakes and desserts.", "Keep airtight because shelled nuts are more exposed to air."],
+    "Use in baking, desserts, garnishing or enjoy directly as a snack.",
+    "Store in airtight container in a cool, dry place.")
 };
 
 export const REVIEWS: Review[] = [
