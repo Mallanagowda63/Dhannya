@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
+import { PRODUCT_DETAILS } from '../data/initialData';
 import {
   X,
   ShoppingBag,
@@ -433,17 +434,33 @@ export const ProductQuickView: React.FC = () => {
                   {activeTab === 'description' && (
                     <div className="space-y-4">
                       <p className="text-sm text-[#2A2620]/80 leading-relaxed whitespace-pre-line">
-                        {quickViewProduct.description}
+                        {PRODUCT_DETAILS[quickViewProduct.name]?.about || quickViewProduct.description}
                       </p>
-                      {quickViewProduct.benefits && quickViewProduct.benefits.length > 0 && (
-                        <ul className="space-y-1.5">
-                          {quickViewProduct.benefits.map((b, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#3E4B32] shrink-0 mt-0.5" />
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
+                      {(PRODUCT_DETAILS[quickViewProduct.name]?.why || quickViewProduct.benefits) && (PRODUCT_DETAILS[quickViewProduct.name]?.why || quickViewProduct.benefits).length > 0 && (
+                        <>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block">Why Choose This Product?</span>
+                          <ul className="space-y-1.5">
+                            {(PRODUCT_DETAILS[quickViewProduct.name]?.why || quickViewProduct.benefits).map((b, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#3E4B32] shrink-0 mt-0.5" />
+                                <span>{b}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                      {PRODUCT_DETAILS[quickViewProduct.name]?.facts && PRODUCT_DETAILS[quickViewProduct.name].facts.length > 0 && (
+                        <>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">Interesting Facts</span>
+                          <ul className="space-y-1.5">
+                            {PRODUCT_DETAILS[quickViewProduct.name].facts.map((f, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
+                                <Sparkles className="w-3.5 h-3.5 text-[#C89211] shrink-0 mt-0.5" />
+                                <span>{f}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
                       )}
                       <div className="flex flex-wrap gap-2">
                         {[
