@@ -229,7 +229,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "iconName": "Smile",
     "description": "Cold-pressed coconut skin oil, organic ubtan body scrub, rose water.",
     "image": "/images/dhannya_Products_final/Multani%20Mitti/01.jpg",
-    "productCount": 5
+    "productCount": 18
   },
   {
     "name": "Hair Care",
@@ -237,7 +237,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "iconName": "Sparkle",
     "description": "Traditional Ayurvedic herbal hair oil with Bhringraj, Amla & Hibiscus.",
     "image": "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg",
-    "productCount": 4
+    "productCount": 10
   }
 ];
 
@@ -18610,6 +18610,1398 @@ export const PRODUCTS: Product[] = [
     "stock": 64,
     "tags": [
       "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-267",
+    "name": "Virgin Coconut Oil",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Virgin coconut oil obtained from fresh coconut with naturally characteristic coconut aroma and smooth feel. Traditionally used for hair oiling, scalp massage, and body moisturising.",
+    "ingredients": [
+      "100% Pure Natural Virgin Coconut Oil"
+    ],
+    "nutritionInfo": {
+      "Lauric Acid": "Rich saturated fatty acids",
+      "Physical State": "Solid at cool temperatures, melts in warmth",
+      "Storage": "Away from direct heat and moisture"
+    },
+    "benefits": [
+      "Naturally rich and smooth oil",
+      "Traditionally used for hair and scalp care",
+      "Useful as a body moisturiser",
+      "Suitable for homemade hair and skin preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Virgin%20Coconut%20Oil/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Virgin%20Coconut%20Oil/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "200ml",
+        "price": 299,
+        "originalPrice": 299,
+        "inStock": true
+      },
+      {
+        "weight": "500ml",
+        "price": 599,
+        "originalPrice": 599,
+        "inStock": true
+      },
+      {
+        "weight": "1L",
+        "price": 1099,
+        "originalPrice": 1099,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 52,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 45,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-268",
+    "name": "Beetroot Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Beetroot powder made from dried beetroot with naturally deep red-purple colour. Can be used in homemade face packs, body-care preparations and DIY cosmetic blends.",
+    "ingredients": [
+      "100% Pure Natural Beetroot Powder"
+    ],
+    "nutritionInfo": {
+      "Betalain Pigments": "Naturally occurring colour compounds",
+      "Staining": "Can temporarily stain skin, fabrics and surfaces",
+      "Patch Test": "Always perform before applying"
+    },
+    "benefits": [
+      "Naturally vibrant colour",
+      "Easy to use in homemade face and body packs",
+      "Mild earthy character",
+      "Can be combined with other traditional powders"
+    ],
+    "image": "/images/dhannya_Products_final/Beetroot%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Beetroot%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 40,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-269",
+    "name": "Bhringraj Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Bhringraj is a traditional Ayurvedic herb commonly used in hair-care practices. The dried herb is powdered for convenient use in homemade hair masks, scalp packs and hair-oil preparations.",
+    "ingredients": [
+      "100% Pure Natural Bhringraj Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Eclipta prostrata",
+      "Traditional Use": "Ayurvedic hair-care ingredient",
+      "Characteristics": "Herbal powders can vary naturally in colour and aroma"
+    },
+    "benefits": [
+      "Traditional Ayurvedic hair-care ingredient",
+      "Suitable for homemade hair masks",
+      "Can be blended with oils or other herbal powders",
+      "Easy to incorporate into DIY hair-care routines"
+    ],
+    "image": "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 45,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 38,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-270",
+    "name": "Manjishta Root Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Manjishta is a traditional Ayurvedic herb obtained from the roots of Rubia cordifolia. Its powdered form is commonly used in traditional skin-care preparations and herbal face packs.",
+    "ingredients": [
+      "100% Pure Natural Manjishta Root Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Rubia cordifolia",
+      "Plant Part": "Roots",
+      "Traditional Use": "Ayurvedic skin-care formulations"
+    },
+    "benefits": [
+      "Traditional Indian skin-care ingredient",
+      "Suitable for homemade face packs",
+      "Naturally earthy herbal character",
+      "Can be blended with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Manjishta%20Root%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Manjishta%20Root%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 320,
+        "originalPrice": 320,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 35,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 36,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-271",
+    "name": "Multani Mitti",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Multani Mitti, commonly known as Fuller's Earth, is a naturally occurring clay traditionally used in Indian skin-care routines. Particularly popular in face packs and cleansing preparations.",
+    "ingredients": [
+      "100% Pure Natural Multani Mitti Clay"
+    ],
+    "nutritionInfo": {
+      "Material Type": "Clay-like mineral material",
+      "Properties": "Oil-absorbing from skin surface",
+      "Caution": "May feel drying on already dry or sensitive skin"
+    },
+    "benefits": [
+      "Traditional clay-based skin-care ingredient",
+      "Useful for homemade face packs",
+      "Gives a naturally clean, fresh feel to the skin",
+      "Easy to blend with water, rose water or other ingredients"
+    ],
+    "image": "/images/dhannya_Products_final/Multani%20Mitti/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Multani%20Mitti/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 99,
+        "originalPrice": 99,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 199,
+        "originalPrice": 199,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 349,
+        "originalPrice": 349,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 62,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 50,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-272",
+    "name": "Kasturi Haldi Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Kasturi Haldi, traditionally known as wild turmeric, is used in Indian beauty and personal-care traditions. Its aromatic powdered form is commonly incorporated into homemade face and body packs.",
+    "ingredients": [
+      "100% Pure Natural Kasturi Haldi Powder"
+    ],
+    "nutritionInfo": {
+      "Type": "Wild turmeric",
+      "Aroma": "Distinctive natural turmeric aroma",
+      "Distinction": "Traditionally distinguished from cooking turmeric"
+    },
+    "benefits": [
+      "Traditional beauty-care ingredient",
+      "Distinctive natural turmeric aroma",
+      "Convenient for homemade face and body packs",
+      "Can be combined with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Kasturi%20Haldi%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kasturi%20Haldi%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 380,
+        "originalPrice": 380,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 42,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-273",
+    "name": "Orange Peel Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Orange peel powder is made from dried orange peel and has a naturally citrusy aroma. Commonly used in homemade face and body packs.",
+    "ingredients": [
+      "100% Pure Natural Orange Peel Powder"
+    ],
+    "nutritionInfo": {
+      "Aroma": "Naturally fresh citrus aroma",
+      "Oils": "Contains naturally occurring citrus oils and plant compounds",
+      "Texture": "Can be mildly abrasive depending on particle size"
+    },
+    "benefits": [
+      "Naturally fresh citrus aroma",
+      "Useful in DIY face and body packs",
+      "Easy to combine with clay and botanical powders",
+      "Convenient alternative to fresh orange peel"
+    ],
+    "image": "/images/dhannya_Products_final/Orange%20Peel%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Orange%20Peel%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 40,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 32,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-274",
+    "name": "Neem Leaf Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Neem leaf powder is made from dried neem leaves and is a traditional ingredient in Indian personal-care practices. Commonly incorporated into homemade face packs and scalp preparations.",
+    "ingredients": [
+      "100% Pure Natural Neem Leaf Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Azadirachta indica",
+      "Characteristics": "Naturally earthy and herbal",
+      "Caution": "Can be quite drying for some skin types"
+    },
+    "benefits": [
+      "Traditional botanical ingredient",
+      "Suitable for homemade face and scalp packs",
+      "Naturally earthy and herbal",
+      "Easy to combine with other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Leaf%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Leaf%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 48,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 44,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-275",
+    "name": "Moringa Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Moringa leaf powder is made from dried moringa leaves and is widely valued as a botanical ingredient. Can be incorporated into homemade face masks, hair masks and other DIY preparations.",
+    "ingredients": [
+      "100% Pure Natural Moringa Leaf Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Drumstick tree leaves",
+      "Colour": "Naturally rich green colour",
+      "Nutrients": "Naturally contain various vitamins, minerals and plant compounds"
+    },
+    "benefits": [
+      "Plant-based botanical ingredient",
+      "Suitable for homemade face and hair masks",
+      "Naturally rich green colour",
+      "Easy to blend with other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Moringa%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Moringa%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 36,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 34,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-276",
+    "name": "Sandalwood Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Sandalwood powder is a traditional Indian cosmetic ingredient known for its characteristic warm, woody aroma. Commonly used in homemade face packs and traditional beauty preparations.",
+    "ingredients": [
+      "100% Pure Natural Sandalwood Powder"
+    ],
+    "nutritionInfo": {
+      "Aroma": "Distinctive natural sandalwood aroma",
+      "Botanical Source": "Santalum species",
+      "Traditional Use": "Valued for centuries for its aroma"
+    },
+    "benefits": [
+      "Distinctive natural sandalwood aroma",
+      "Traditional beauty-care ingredient",
+      "Suitable for face-pack preparations",
+      "Can be blended with clay and other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Sandalwood%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sandalwood%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 800,
+        "originalPrice": 800,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 55,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 42,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-277",
+    "name": "Raktachandana (Red Sandalwood)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Raktachandana, or red sandalwood, is a traditional botanical ingredient used in Indian beauty and personal-care preparations. Its naturally reddish powder is commonly used in face packs.",
+    "ingredients": [
+      "100% Pure Natural Raktachandana Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Difference": "Different from aromatic white sandalwood",
+      "Colour": "Naturally distinctive red from plant compounds",
+      "Application": "Cosmetic use, patch test recommended"
+    },
+    "benefits": [
+      "Traditional Indian cosmetic ingredient",
+      "Naturally distinctive red colour",
+      "Suitable for homemade face packs",
+      "Can be blended with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Raktachandana/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raktachandana/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 43,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 37,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-278",
+    "name": "Reetha Powder (Soapnut)",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Reetha, also known as soapnut, has traditionally been used as a natural cleansing ingredient. Its powdered form can be used in homemade hair and scalp cleansing preparations.",
+    "ingredients": [
+      "100% Pure Natural Reetha Powder"
+    ],
+    "nutritionInfo": {
+      "Active Compound": "Naturally contains saponins",
+      "Traditional Use": "Plant-based cleansing material",
+      "Caution": "Avoid contact with the eyes"
+    },
+    "benefits": [
+      "Traditional plant-based cleansing ingredient",
+      "Commonly used in natural hair-care routines",
+      "Useful in homemade shampoo preparations",
+      "Can be combined with shikakai and amla"
+    ],
+    "image": "/images/dhannya_Products_final/Reetha%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Reetha%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 480,
+        "originalPrice": 480,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 39,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-279",
+    "name": "Indigo Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Indigo powder is derived from indigo-bearing plants and is traditionally used in natural hair-colouring practices, often alongside henna.",
+    "ingredients": [
+      "100% Pure Natural Indigo Powder"
+    ],
+    "nutritionInfo": {
+      "Pigment": "Naturally occurring blue pigment compounds",
+      "Application": "Traditional plant-based hair colouring",
+      "Results": "Depend on starting hair colour and application"
+    },
+    "benefits": [
+      "Traditional plant-based hair-colouring ingredient",
+      "Commonly paired with henna",
+      "Useful for DIY natural hair-colouring routines",
+      "Plant-derived alternative to synthetic colouring"
+    ],
+    "image": "/images/dhannya_Products_final/Indigo%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Indigo%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 310,
+        "originalPrice": 310,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 51,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-280",
+    "name": "Shikakai Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Shikakai is a traditional Ayurvedic hair-care ingredient made from the pods of Acacia concinna. It has traditionally been used as a gentle botanical cleansing ingredient for hair.",
+    "ingredients": [
+      "100% Pure Natural Shikakai Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Source": "Acacia concinna pods",
+      "Name Origin": "Literally relates to 'fruit for hair' in traditional usage",
+      "Properties": "Natural saponins create mild lather"
+    },
+    "benefits": [
+      "Traditional Indian hair-care ingredient",
+      "Naturally contains saponins",
+      "Commonly used in homemade hair cleansers",
+      "Often combined with reetha and amla"
+    ],
+    "image": "/images/dhannya_Products_final/Shikakai%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Shikakai%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 500,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 47,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 46,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-281",
+    "name": "Hibiscus Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Hibiscus powder is made from dried hibiscus plant material and is traditionally used in Indian hair-care and beauty preparations. Can be incorporated into hair masks and herbal blends.",
+    "ingredients": [
+      "100% Pure Natural Hibiscus Powder"
+    ],
+    "nutritionInfo": {
+      "Source": "Dried hibiscus plant material",
+      "Characteristics": "Naturally vibrant botanical character",
+      "Variation": "Different species and plant parts produce different colours"
+    },
+    "benefits": [
+      "Traditional botanical hair-care ingredient",
+      "Naturally vibrant botanical character",
+      "Suitable for homemade hair masks",
+      "Easy to blend with oils or other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Hibiscus%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Hibiscus%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 285,
+        "originalPrice": 285,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 530,
+        "originalPrice": 530,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 44,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 38,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-282",
+    "name": "Henna Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Henna powder is made from the dried leaves of the henna plant and is traditionally used for natural hair colouring and body art. Produces characteristic orange-red to reddish-brown tones.",
+    "ingredients": [
+      "100% Pure Natural Henna Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Source": "Lawsonia inermis",
+      "Colouring Molecule": "Lawsone",
+      "Caution": "Avoid 'black henna' with undisclosed synthetic dyes"
+    },
+    "benefits": [
+      "Traditional plant-based hair colour",
+      "Naturally derived colouring ingredient",
+      "Commonly used for conditioning-style hair packs",
+      "Can be combined with indigo for different colour outcomes"
+    ],
+    "image": "/images/dhannya_Products_final/Henna%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Henna%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 290,
+        "originalPrice": 290,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 540,
+        "originalPrice": 540,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 59,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 48,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-283",
+    "name": "Amla Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Amla, or Indian gooseberry, is a traditional Ayurvedic ingredient widely used in Indian hair-care practices. Its dried powdered form is commonly included in hair masks and herbal blends.",
+    "ingredients": [
+      "100% Pure Natural Amla Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Phyllanthus emblica",
+      "Character": "Naturally acidic botanical character",
+      "Nutrient Content": "Rich in vitamin C (though affected by processing and drying)"
+    },
+    "benefits": [
+      "Traditional Indian hair-care ingredient",
+      "Naturally acidic botanical character",
+      "Easy to combine with henna, shikakai and reetha",
+      "Suitable for homemade hair-care preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Amla%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Amla%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 470,
+        "originalPrice": 470,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 54,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 49,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-284",
+    "name": "Ashwagandha Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Ashwagandha is a traditional Ayurvedic herb made from the root of Withania somnifera. Its powdered form has long been used in traditional wellness practices and personal-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Ashwagandha Root Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Withania somnifera",
+      "Also Known As": "Indian ginseng (though botanically unrelated)",
+      "Plant Part": "Root"
+    },
+    "benefits": [
+      "Traditional Ayurvedic botanical",
+      "Plant-based powdered ingredient",
+      "Suitable for selected DIY skin and hair preparations",
+      "Easy to blend with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Ashwagandha/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ashwagandha/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 330,
+        "originalPrice": 330,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 620,
+        "originalPrice": 620,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 41,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 37,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-285",
+    "name": "Black Chickpea Powder (Kadala Podi)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Black chickpea powder is made from roasted or ground kala chana and has a naturally earthy, nutty character. Can be used in traditional food preparations as well as homemade body-care packs.",
+    "ingredients": [
+      "100% Pure Natural Black Chickpea Powder"
+    ],
+    "nutritionInfo": {
+      "Alternative Name": "Kala chana",
+      "Nutritional Content": "Natural plant protein and fibre",
+      "Texture": "Provides mildly grainy texture when used on skin"
+    },
+    "benefits": [
+      "Traditional Indian ingredient",
+      "Naturally earthy and nutty",
+      "Useful in homemade body-care preparations",
+      "Can be combined with other traditional powders"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Chickpea%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Chickpea%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 33,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 31,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-286",
+    "name": "Green Gram Powder (Cheruparuppu Podi)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Green gram powder, traditionally known in South Indian beauty routines as cheruparuppu podi, is a finely ground form of moong dal commonly used in homemade cleansing and body-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Green Gram (Moong Dal) Powder"
+    ],
+    "nutritionInfo": {
+      "Also Known As": "Moong bean",
+      "Type": "Legume",
+      "Content": "Natural protein and fibre"
+    },
+    "benefits": [
+      "Traditional Indian bathing and body-care ingredient",
+      "Mild, grain-based texture",
+      "Convenient for homemade body packs",
+      "Easy to blend with other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Green%20Gram%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Green%20Gram%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 380,
+        "originalPrice": 380,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 37,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 33,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-287",
+    "name": "Triphala Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "Triphala is a traditional Ayurvedic formulation made from three fruits: amla, haritaki and bibhitaki. The powdered blend is widely known in traditional Indian wellness practices.",
+    "ingredients": [
+      "100% Pure Natural Triphala Powder"
+    ],
+    "nutritionInfo": {
+      "Composition": "Three botanical fruits formulation",
+      "Fruits": "Amla, haritaki and bibhitaki",
+      "Name Origin": "Literally refers to three fruits"
+    },
+    "benefits": [
+      "Traditional Ayurvedic formulation",
+      "Made from three botanical fruits",
+      "Convenient powdered form",
+      "Can be used according to traditional preparation practices"
+    ],
+    "image": "/images/dhannya_Products_final/Triphala%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Triphala%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 310,
+        "originalPrice": 310,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 50,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-288",
+    "name": "Mulethi Root Powder (Liquorice)",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "Mulethi, commonly known as liquorice root, is a traditional botanical ingredient with a naturally sweet, distinctive flavour and aroma. Its powdered form is used in traditional wellness and personal-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Mulethi (Liquorice) Root Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Source": "Glycyrrhiza species",
+      "Sweetness": "Comes primarily from glycyrrhizin",
+      "Caution": "Excessive oral consumption can have significant health effects"
+    },
+    "benefits": [
+      "Traditional botanical ingredient",
+      "Naturally distinctive aroma",
+      "Convenient powdered form",
+      "Suitable for selected DIY preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Mulethi%20Root%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mulethi%20Root%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 34,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-289",
+    "name": "Incha / Acacia Wild",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Incha, associated with traditional acacia-based preparations, is a botanical ingredient used in regional personal-care traditions. Its powdered form can be incorporated into selected homemade herbal preparations.",
+    "ingredients": [
+      "100% Pure Natural Incha (Acacia) Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Group": "Large botanical group with many species",
+      "Variation": "Properties depend on species and plant part used",
+      "Verification": "Botanical identity should always be confirmed"
+    },
+    "benefits": [
+      "Traditional botanical ingredient",
+      "Suitable for DIY herbal preparations",
+      "Naturally plant-derived",
+      "Can be combined with other traditional botanical ingredients"
+    ],
+    "image": "/images/dhannya_Products_final/Incha%20Acacia/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Incha%20Acacia/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 135,
+        "originalPrice": 135,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 30,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 29,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-290",
+    "name": "Raamacham (Vetiver)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Raamacham, commonly known as vetiver, is a fragrant grass traditionally used in Indian bathing, cooling and personal-care practices. Its aromatic roots are valued for their earthy, refreshing fragrance.",
+    "ingredients": [
+      "100% Pure Natural Vetiver (Raamacham) Roots"
+    ],
+    "nutritionInfo": {
+      "Common Name": "Vetiver",
+      "Plant Type": "Fragrant grass",
+      "Application": "Traditional perfumery and cooling preparations"
+    },
+    "benefits": [
+      "Naturally aromatic botanical",
+      "Traditional Indian bathing ingredient",
+      "Distinctive earthy, cooling fragrance",
+      "Suitable for homemade bath and body preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Raamacham%20Vetiver/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raamacham%20Vetiver/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 340,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 630,
+        "originalPrice": 630,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 35,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 32,
+    "tags": [
+      "Skin Care",
       "Organic",
       "Natural",
       "Dhaanya"
