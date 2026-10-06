@@ -3,7 +3,7 @@ import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HeroSlider } from './components/HeroSlider';
-import { CategoryGrid } from './components/CategoryGrid';
+import { CategoryBanner } from './components/CategoryBanner';
 import { WhyDhaanyaTrustSection } from './components/WhyDhaanyaTrustSection';
 import { BestSellersCarousel } from './components/BestSellersCarousel';
 import { RecommendedCarousel } from './components/RecommendedCarousel';
@@ -252,7 +252,7 @@ const MainAppContent: React.FC = () => {
               onNavigateCategoryPage={handleNavigateCategoryPage}
               onNavigateFreshMilling={handleNavigateFreshMilling}
             />
-            <CategoryGrid onSelectCategory={handleNavigateCategoryPage} />
+            <CategoryBanner onSelectCategory={handleNavigateCategoryPage} />
             <CustomMasalaBuilder />
             <BestSellersCarousel />
             <WhyDhaanyaTrustSection />
