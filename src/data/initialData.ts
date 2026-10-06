@@ -22105,7 +22105,7 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
     ["Represents traditional ingredient diversity.", "Can be presented with accurate regional and botanical information.", "Supports customer awareness of heritage ingredients.", "Requires verified food-grade sourcing."],
     ["Many traditional Indian ingredient names vary by language and region.", "Confirming botanical identity especially important for herbal preparation ingredients."],
     "Use only according to verified product identity and established recipe.",
-    "Store in clean, dry, airtight container.")
+    "Store in clean, dry, airtight container."),
 };
 
 export const REVIEWS: Review[] = [
