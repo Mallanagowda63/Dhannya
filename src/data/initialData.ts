@@ -60,7 +60,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "wood-pressed-oils",
     "iconName": "Droplet",
     "description": "100% Cold-pressed traditional wooden ghani oils rich in natural nutrients.",
-    "image": "/images/dhannya_Products_final/Coconut%20Oil/Dhaanya%2001.png",
+    "image": "/images/dhannya_Products_final/Coconut Oil/Dhaanya 01.png",
     "productCount": 9
   },
   {
@@ -68,7 +68,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "flour",
     "iconName": "Wheat",
     "description": "Stone-ground, unbleached organic flours & ancient grain blends.",
-    "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya Multi Millet Atta/01.jpg",
     "productCount": 16
   },
   {
@@ -76,7 +76,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "dry-fruits",
     "iconName": "Nut",
     "description": "Premium handpicked almonds, walnuts, cashews, raisins, and dates.",
-    "image": "/images/dhannya_Products_final/Almonds%20Jumbo/01.jpg",
+    "image": "/images/dhannya_Products_final/Almonds Jumbo/01.jpg",
     "productCount": 45
   },
   {
@@ -84,7 +84,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "seeds",
     "iconName": "Sprout",
     "description": "Nutrient-dense raw and roasted chia, flax, pumpkin, and sunflower seeds.",
-    "image": "/images/dhannya_Products_final/Chia%20Seeds/01.png",
+    "image": "/images/dhannya_Products_final/Chia Seeds/01.png",
     "productCount": 14
   },
   {
@@ -92,7 +92,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "millets",
     "iconName": "Grain",
     "description": "Gluten-free super grains including Ragi, Foxtail, Bajra, and Jowar.",
-    "image": "/images/dhannya_Products_final/Foxtail%20Millet%20(Navane)/01.jpg",
+    "image": "/images/dhannya_Products_final/Foxtail Millet (Navane)/01.jpg",
     "productCount": 15
   },
   {
