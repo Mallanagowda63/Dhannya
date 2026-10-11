@@ -50,7 +50,6 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                     src={cat.image}
                     alt={cat.name}
                     className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
                     }}

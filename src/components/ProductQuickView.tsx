@@ -356,7 +356,6 @@ export const ProductQuickView: React.FC = () => {
                   <img
                     src={img}
                     alt={`${quickViewProduct.name} image ${idx + 2}`}
-                    loading="lazy"
                     className="w-full h-full object-contain p-5"
                     onError={(e) => {
                       e.currentTarget.parentElement!.style.display = 'none';

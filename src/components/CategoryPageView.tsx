@@ -163,7 +163,6 @@ export const CategoryPageView: React.FC<{
                     <img
                       src={tile.image}
                       alt={tile.label}
-                      loading="lazy"
                       className="w-full h-full object-cover bg-white/60"
                       onError={(e) => {
                         e.currentTarget.style.visibility = 'hidden';
@@ -172,7 +171,7 @@ export const CategoryPageView: React.FC<{
                   ) : (
                     <div className="w-full h-full grid grid-cols-2 grid-rows-2 gap-px bg-[#E8DFC8]">
                       {ALL_PRODUCTS_COLLAGE.map((src) => (
-                        <img key={src} src={src} alt="" loading="lazy" className="w-full h-full object-cover bg-white/60" />
+                        <img key={src} src={src} alt="" className="w-full h-full object-cover bg-white/60" />
                       ))}
                     </div>
                   )}
