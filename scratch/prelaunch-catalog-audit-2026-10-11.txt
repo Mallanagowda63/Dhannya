@@ -1,0 +1,205 @@
+DHAANYA PRE-LAUNCH CATALOGUE AUDIT (live DB vs src/data/priceList.json) - 2026-10-11
+
+== ZERO / missing price (customers can order for free) (1)
+  Thippili (Long Pepper): Default Title=Rs0
+
+== Duplicate variant labels (1)
+  Spoon: Default Title=Rs165, Default Title=Rs110
+
+== Non-whole-rupee prices (104)
+  Almonds Jumbo: 250g=Rs447.5
+  Almonds USA: 250g=Rs412.5
+  Alovi Seeds (Halim Seeds): 250g=Rs137.5
+  Amaranth (Rajgira): 250g=Rs87.5
+  Amaranth Noodles: 250g=Rs162.5
+  Amla Dry Candy: 250g=Rs102.5
+  Amla Powder: 250g=Rs502.5
+  Ashwagandha: 250g=Rs562.5
+  Barnyard Millet (Oodalu) Rava: 250g=Rs87.5
+  Basil Seeds (Sabja): 250g=Rs162.5
+  Beetroot Powder: 250g=Rs362.5
+  Bhringraj Powder: 250g=Rs247.5
+  Black Seedless Raisins: 250g=Rs222.5
+  Brazil Nuts: 250g=Rs1137.5
+  Cardamom Bold: 150g - Masala=Rs742.5, 250g=Rs1237.5, 250g - Masala=Rs1237.5, 50g - Masala=Rs247.5
+  Cashew 180: 250g=Rs437.5
+  Cashew 240: 250g=Rs397.5
+  Cashew Roasted And Salted: 250g=Rs422.5
+  Chia Seeds: 250g=Rs187.5
+  Chocolate Muesli: 250g=Rs187.5
+  Cinnamon Roll (Churul Patta, Indonesia): 250g=Rs316.25, 500g=Rs632.5
+  Cocoa Tea: 250g=Rs337.5
+  Coconut Sugar: 250g=Rs162.5
+  Coriander: 150g - Masala=Rs67.5, 250g=Rs112.5, 250g - Masala=Rs112.5, 50g - Masala=Rs22.5
+  Corn Maize: 250g=Rs27.5
+  Cucumber Seeds: 250g=Rs412.5
+  Cumin (Jeerakam): 125g - Masala=Rs86.25, 150g - Masala=Rs103.5, 175g - Masala=Rs120.75, 225g - Masala=Rs155.25, 250g=Rs192.5, 250g - Masala=Rs172.5, 25g - Masala=Rs19.25, 50g - Masala=Rs38.5, 75g - Masala=Rs57.75
+  Dried Cherry: 250g=Rs312.5
+  Dried Cranberries: 250g=Rs262.5
+  Dried Curry Leaves: 250g=Rs212.5
+  Dried Ginger Powder: 250g=Rs212.5
+  Dried Jackfruit: 250g=Rs312.5
+  Fenugreek (Uluva): 250g=Rs57.5
+  Flax Seeds: 250g=Rs87.5
+  Foxtail Millet (Navane): 250g=Rs42.5
+  Foxtail Millet (Navane) Rava: 250g=Rs62.5
+  Fruits Granola: 250g=Rs187.5
+  Henna Powder: 250g=Rs512.5
+  Idly Rice SR Orange: 250g=Rs21.25, 500g=Rs42.5
+  Jowar (Sorghum Millet): 250g=Rs28.75, 500g=Rs57.5
+  Jowar (Sorghum Millet) Rava: 250g=Rs52.5
+  Kabuli Chana White: 250g=Rs62.5
+  Karingali (Black Cutch): 250g=Rs157.5
+  Kiwi Green Dried: 250g=Rs222.5
+  Kodo Millet (Arka): 250g=Rs42.5
+  Kodo Millet (Arka) Rava: 250g=Rs67.5
+  Little Millet (Samai): 250g=Rs52.5
+  Lobia (Red Cowpeas): 250g=Rs47.5
+  Manjishta Root Powder: 250g=Rs487.5
+  Masoor Dal (Split): 250g=Rs37.5
+  Methi Leaves Dried: 250g=Rs122.5
+  Moong Dal: 250g=Rs52.5
+  Moringa Powder: 250g=Rs512.5
+  Multani Mitti: 250g=Rs252.5
+  Multi Millet Vermiceli: 250g=Rs102.5
+  Multigrain Chikki: 250gm=Rs187.5
+  Munakka Raisins: 250g=Rs217.5
+  Navara Rice: 250g=Rs36.5
+  Neem Leaf Powder: 250g=Rs362.5
+  Orange Peel Powder: 250g=Rs497.5
+  Palm Candy Crystal (Panam Kalkandam): 250g=Rs262.5
+  Palm Jaggery (Karupatti): 250g=Rs107.5
+  Papaya Dried: 250g=Rs222.5
+  Pathimukham: 250g=Rs202.5
+  Peanut Chikki: 250g=Rs147.5
+  Pearl Millet (Bajra): 250g=Rs23.75, 500g=Rs47.5
+  Pepper: 250g=Rs392.5
+  Pineapple Coin (Dried): 250g=Rs287.5
+  Pineapple Ring Dried: 250g=Rs312.5
+  Pink Salt Powder: 250g=Rs37.5
+  Poppy (KhusKhus) White: 250g=Rs837.5
+  Pot Tamarind (Kudampuli): 250g=Rs132.5
+  Prunes Dried: 250g=Rs322.5
+  Puttu Powder Roasted (Red): 250g=Rs32.5
+  Puttu Powder Roasted (White): 250g=Rs32.5
+  Quinoa: 250g=Rs47.5
+  Quinoa Vermicelli: 250g=Rs102.5
+  Ragi (Finger Millet): 250g=Rs23.75, 500g=Rs47.5
+  Ragi Flakes: 250g=Rs57.5
+  Rajapuri Turmeric: 150g - Masala=Rs88.5, 20g - Masala=Rs11.8, 250g=Rs147.5, 40g - Masala=Rs23.6, 60g - Masala=Rs35.4, 80g - Masala=Rs47.2
+  Red Chilli- Byadagi Kaddi: 250g=Rs262.5
+  Red Chilli- Guntur Long: 150g - Masala=Rs79.5, 250g=Rs132.5, 250g - Masala=Rs132.5, 50g - Masala=Rs26.5
+  Red Chilli- Guntur Small: 250g=Rs162.5
+  Red Matta Rice (Parboiled & Semi-Polished): 250g=Rs24.75, 500g=Rs49.5
+  Red Rice Flakes (Avalakki): 250g=Rs47.5
+  Reetha Powder: 250g=Rs512.5
+  Roasted Chana: 250g=Rs87.5
+  Robusta Coffee Powder (Idukki): 250g=Rs337.5
+  Rose Mary Dried: 250g=Rs212.5
+  Royal Rajamudi Rice Premium: 250g=Rs34.75, 500g=Rs69.5
+  Sago (Tapioca Pearls): 250g=Rs32.5
+  Shah Jeera (Caraway): 250g=Rs187.5
+  Sona Masoori Rice: 250g=Rs21.5
+  Sprouted Ragi: 250g=Rs62.5
+  Star Anise: 150g - Masala=Rs202.5, 250g=Rs362.5, 250g - Masala=Rs337.5, 50g - Masala=Rs67.5
+  Tarbuj Seeds: 250g=Rs337.5
+  Thooyamalli Rice: 250g=Rs47.5
+  Travancore Tamarind Vaalan Puli: 250g=Rs137.5
+  Triphala: 250g=Rs372.5
+  Urad Gola Fine-Ball: 250g=Rs62.5
+  Venga Dried: 250g=Rs112.5
+  Walnut Super White (Kashmiri): 250g=Rs492.5
+  Watermelon Seeds: 250g=Rs287.5
+  Wheat Flakes: 250g=Rs52.5
+
+== Price or size differs from priceList.json (55)
+  Amla Powder | 100g | site Rs201 | priceList Rs110
+  Amla Powder | 1kg | site Rs2010 | priceList: size missing
+  Amla Powder | 250g | site Rs502.5 | priceList Rs250
+  Amla Powder | 500g | site Rs1005 | priceList Rs470
+  Beetroot Powder | 100g | site Rs145 | priceList Rs120
+  Beetroot Powder | 1kg | site Rs1450 | priceList: size missing
+  Beetroot Powder | 250g | site Rs362.5 | priceList Rs250
+  Beetroot Powder | 500g | site Rs725 | priceList Rs450
+  Bhringraj Powder | 100G | site Rs99 | priceList Rs140
+  Bhringraj Powder | 1kg | site Rs990 | priceList: size missing
+  Bhringraj Powder | 250g | site Rs247.5 | priceList Rs300
+  Bhringraj Powder | 500g | site Rs495 | priceList Rs550
+  Black Chickpea Powder (Kadala Podi) | 1kg | site Rs360 | priceList: size missing
+  Black Chickpea Powder (Kadala Podi) | 250g | site Rs90 | priceList Rs220
+  Black Chickpea Powder (Kadala Podi) | 500g | site Rs180 | priceList Rs400
+  Custom Masala Blend | 100g | site Rs95 | priceList: size missing
+  Custom Masala Blend | 250g | site Rs220 | priceList: size missing
+  Custom Masala Blend | 500g | site Rs410 | priceList: size missing
+  Henna Powder | 100G | site Rs205 | priceList Rs130
+  Henna Powder | 1kg | site Rs2050 | priceList: size missing
+  Henna Powder | 250g | site Rs512.5 | priceList Rs290
+  Henna Powder | 500g | site Rs1025 | priceList Rs540
+  Hibiscus Powder | 100g | site Rs210 | priceList Rs125
+  Hibiscus Powder | 1kg | site Rs2100 | priceList: size missing
+  Hibiscus Powder | 250g | site Rs525 | priceList Rs285
+  Hibiscus Powder | 500g | site Rs1050 | priceList Rs530
+  Indigo Powder | 100g | site Rs210 | priceList Rs140
+  Indigo Powder | 1kg | site Rs2100 | priceList: size missing
+  Indigo Powder | 250g | site Rs525 | priceList Rs310
+  Indigo Powder | 500g | site Rs1050 | priceList Rs580
+  Manjishta Root Powder | 100g | site Rs195 | priceList Rs150
+  Manjishta Root Powder | 1kg | site Rs1950 | priceList: size missing
+  Manjishta Root Powder | 250g | site Rs487.5 | priceList Rs320
+  Manjishta Root Powder | 500g | site Rs975 | priceList Rs600
+  Moringa Powder | 100g | site Rs205 | priceList Rs160
+  Moringa Powder | 1kg | site Rs2050 | priceList: size missing
+  Moringa Powder | 250g | site Rs512.5 | priceList Rs350
+  Moringa Powder | 500g | site Rs1025 | priceList Rs650
+  Multani Mitti | 100g | site Rs101 | priceList Rs99
+  Multani Mitti | 1kg | site Rs1010 | priceList: size missing
+  Multani Mitti | 250g | site Rs252.5 | priceList Rs199
+  Multani Mitti | 500g | site Rs505 | priceList Rs349
+  Neem Leaf Powder | 100g | site Rs145 | priceList Rs130
+  Neem Leaf Powder | 1kg | site Rs1450 | priceList: size missing
+  Neem Leaf Powder | 250g | site Rs362.5 | priceList Rs280
+  Neem Leaf Powder | 500g | site Rs725 | priceList Rs520
+  Orange Peel Powder | 100g | site Rs199 | priceList Rs110
+  Orange Peel Powder | 1kg | site Rs1990 | priceList: size missing
+  Orange Peel Powder | 250g | site Rs497.5 | priceList Rs240
+  Orange Peel Powder | 500g | site Rs995 | priceList Rs420
+  Sandalwood Powder | 100G | site Rs260 | priceList Rs200
+  Sandalwood Powder | 1kg | site Rs2600 | priceList: size missing
+  Sandalwood Powder | 250g | site Rs650 | priceList Rs420
+  Sandalwood Powder | 500g | site Rs1300 | priceList Rs800
+  Spoon | Default Title | site Rs165 | priceList Rs110
+
+== Category differs from priceList.json (7)
+  Amla Powder: site=Health Foods | priceList=Hair Care
+  Beetroot Powder: site=Health Foods | priceList=Skin Care
+  Black Chickpea Powder (Kadala Podi): site=Pulses | priceList=Skin Care
+  Henna Powder: site=Skin Care | priceList=Hair Care
+  Hibiscus Powder: site=Health Foods | priceList=Hair Care
+  Moringa Powder: site=Health Foods | priceList=Skin Care
+  Neem Leaf Powder: site=Health Foods | priceList=Skin Care
+
+== Live products with no priceList.json entry (24)
+  Apricot Dried [Dry Fruits]
+  Bay Leaves Tej Patta [Spices]
+  Cashew Roasted And Salted [Dry Fruits]
+  Cashew Split [Dry Fruits]
+  Cashew- Broken PS [Dry Fruits]
+  Cashew- Chilli Garlic 240 [Dry Fruits]
+  Cashew- Pepper Garlic 240 [Dry Fruits]
+  Chicken Masala [Masalas]
+  Corn Maize [Millets]
+  Fig (Small) [Dry Fruits]
+  Fish Curry Masala [Masalas]
+  Incha Acacia Wild [Hair Care]
+  Macadamia Nuts [Dry Fruits]
+  Masala Grinding Charge [Masalas]
+  Masala Roasting Charge [Masalas]
+  Meat Masala [Masalas]
+  Mulethi Root Powder Irattimadhuram [Health Foods]
+  Pista Plain w o Shell [Dry Fruits]
+  Pista Salted & Roasted [Dry Fruits]
+  Plum Red Dried [Dry Fruits]
+  Raisins Long Yellow [Dry Fruits]
+  Raisins Seed Black [Dry Fruits]
+  Red Rajma Kidney Beans [Pulses]
+  Travancore Tamarind Vaalan Puli [Spices]
