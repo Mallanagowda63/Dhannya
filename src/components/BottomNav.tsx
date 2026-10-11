@@ -48,7 +48,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         {/* Home */}
         <button
           onClick={onNavigateHome}
-          className={`flex-1 flex flex-col items-center justify-center gap-1 transition-colors ${
+          className={`flex-1 min-w-0 flex flex-col items-center justify-center gap-1 transition-colors ${
             isHome ? ACTIVE_COLOR : INACTIVE_COLOR
           }`}
         >
@@ -61,7 +61,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         {/* Categories / Shop */}
         <button
           onClick={onNavigateCategoryPage}
-          className={`flex-1 flex flex-col items-center justify-center gap-1 transition-colors ${
+          className={`flex-1 min-w-0 flex flex-col items-center justify-center gap-1 transition-colors ${
             isCategory ? ACTIVE_COLOR : INACTIVE_COLOR
           }`}
         >
@@ -74,7 +74,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         {/* Custom Masala */}
         <button
           onClick={onNavigateCustomMasala}
-          className={`flex-1 flex flex-col items-center justify-center gap-1 transition-colors ${ACTIVE_COLOR}`}
+          className={`flex-1 min-w-0 flex flex-col items-center justify-center gap-1 transition-colors ${ACTIVE_COLOR}`}
         >
           <Sparkles className="w-6 h-6" />
           <span className="text-[11px] font-bold leading-none tracking-tight">Blend</span>
@@ -83,7 +83,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         {/* Cart */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className={`flex-1 flex flex-col items-center justify-center gap-1 transition-colors ${INACTIVE_COLOR}`}
+          className={`flex-1 min-w-0 flex flex-col items-center justify-center gap-1 transition-colors ${INACTIVE_COLOR}`}
         >
           <div className="relative">
             <ShoppingBag className="w-6 h-6" />
@@ -99,7 +99,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         {/* Profile / Account */}
         <button
           onClick={handleProfileClick}
-          className={`flex-1 flex flex-col items-center justify-center gap-1 transition-colors ${INACTIVE_COLOR}`}
+          className={`flex-1 min-w-0 flex flex-col items-center justify-center gap-1 transition-colors ${INACTIVE_COLOR}`}
         >
           {user ? (
             <div className="w-6 h-6 rounded-full bg-[#3E4B32] text-[#F4ECD8] flex items-center justify-center text-[10px] font-bold border border-[#E8B93E]/40">

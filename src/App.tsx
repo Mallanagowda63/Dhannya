@@ -175,6 +175,17 @@ const MainAppContent: React.FC = () => {
     }, 100);
   };
 
+  const handleNavigateOurProducts = () => {
+    setActiveCategory(null);
+    if (currentPageView !== 'home') {
+      window.history.pushState({ view: 'home' }, '');
+      setCurrentPageView('home');
+    }
+    setTimeout(() => {
+      document.getElementById('our-products')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const handleNavigateCategoryPage = (cat?: ProductCategory) => {
     if (cat) setActiveCategory(cat);
     if (currentPageView !== 'category') {
@@ -264,6 +275,7 @@ const MainAppContent: React.FC = () => {
           <main>
             <CategoryPageView
               onNavigateHome={handleNavigateHome}
+              onNavigateOurProducts={handleNavigateOurProducts}
               onSelectCategory={handleNavigateCategoryPage}
               onNavigateCustomMasala={handleNavigateCustomMasala}
             />

@@ -62,7 +62,7 @@ async function main() {
     ];
 
     // Try by ID instead
-    const millet = await ProductModel.findOne({ id: 'prod-226' }).lean();
+    const millet = (await ProductModel.findOne({ id: 'prod-226' }).lean()) as { name?: string } | null;
     if (millet) {
       console.log('Found by ID prod-226:', millet.name);
     } else {

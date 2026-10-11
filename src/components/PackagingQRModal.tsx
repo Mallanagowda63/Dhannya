@@ -169,7 +169,7 @@ export const PackagingQRModal: React.FC<PackagingQRModalProps> = ({
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-[#2A2620]/10 flex items-center justify-between text-[11px] text-[#2A2620]/60">
-                  <span>Customer Support: +91 98765 43210</span>
+                  <span>Customer Support: +91 90086 25716</span>
                   <span>fssai Lic. 12423000000000</span>
                 </div>
               </div>

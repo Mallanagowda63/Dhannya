@@ -1,7 +1,12 @@
 import React from 'react';
 import { PhoneCall } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
 export const WhatsAppButton: React.FC = () => {
+  const { quickViewProduct } = useApp();
+  // The product view has its own chat link; the floating button would cover Buy Now on mobile.
+  if (quickViewProduct) return null;
+
   return (
     <a
       href="https://wa.me/919008625716?text=Hi%20Dhaanya%20Organic,%20I%20have%20a%20question%20about%20your%20products!"

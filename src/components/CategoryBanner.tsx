@@ -45,7 +45,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
   };
 
   return (
-    <section className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 bg-[#FAF8F4] text-[#2A2620] border-t border-[#2A2620]/10">
+    <section id="our-products" style={{ scrollMarginTop: 'var(--site-header-height, 0px)' }} className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 bg-[#FAF8F4] text-[#2A2620] border-t border-[#2A2620]/10">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Section Header */}
@@ -64,18 +64,13 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
             const isFlour = cat.name === 'Flour';
             const isSpice = cat.name === 'Spices' || cat.name === 'Masalas';
             const isOil = cat.name === 'Wood Pressed Oils';
-
-            let accentBorder = 'border-t-4 border-[#C89211]';
             let badgeColor = 'text-[#C89211]';
 
             if (isFlour) {
-              accentBorder = 'border-t-4 border-[#A9542B]';
               badgeColor = 'text-[#A9542B]';
             } else if (isSpice) {
-              accentBorder = 'border-t-4 border-[#7C2A1E]';
               badgeColor = 'text-[#7C2A1E]';
             } else if (isOil) {
-              accentBorder = 'border-t-4 border-[#3E4B32]';
               badgeColor = 'text-[#3E4B32]';
             }
 
@@ -86,7 +81,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
                 className="group cursor-pointer flex flex-col items-center text-center space-y-3"
               >
                 {/* Category Image Card Container with Banner Image */}
-                <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] border border-[#2A2620]/15 ${accentBorder} p-3 shadow-xs group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
+                <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] p-3 shadow-sm group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
                   <img
                     src={getCategoryImage(cat.name, index)}
                     alt={cat.name}

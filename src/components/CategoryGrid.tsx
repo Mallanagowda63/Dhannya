@@ -28,18 +28,13 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
             const isFlour = cat.name === 'Flour';
             const isSpice = cat.name === 'Spices' || cat.name === 'Masalas';
             const isOil = cat.name === 'Wood Pressed Oils';
-            
-            let accentBorder = 'border-t-4 border-[#C89211]';
             let badgeColor = 'text-[#C89211]';
 
             if (isFlour) {
-              accentBorder = 'border-t-4 border-[#A9542B]';
               badgeColor = 'text-[#A9542B]';
             } else if (isSpice) {
-              accentBorder = 'border-t-4 border-[#7C2A1E]';
               badgeColor = 'text-[#7C2A1E]';
             } else if (isOil) {
-              accentBorder = 'border-t-4 border-[#3E4B32]';
               badgeColor = 'text-[#3E4B32]';
             }
 
@@ -50,7 +45,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                 className="group cursor-pointer flex flex-col items-center text-center space-y-3"
               >
                 {/* Category Image Card Container */}
-                <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] border border-[#2A2620]/15 ${accentBorder} p-3 shadow-xs group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
+                <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF6ED] p-3 shadow-sm group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1.5 flex items-center justify-center`}>
                   <img
                     src={cat.image}
                     alt={cat.name}

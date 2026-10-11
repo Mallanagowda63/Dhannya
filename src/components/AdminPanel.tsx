@@ -148,94 +148,6 @@ export const AdminPanel: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-const INITIAL_SAMPLE_ORDERS: Order[] = [
-  {
-    id: 'ORD-98231',
-    userId: 'usr-101',
-    items: [
-      {
-        id: 'ci-1',
-        type: 'product',
-        name: 'Wood Pressed Cold Pressed Mustard Oil',
-        image: '/images/dhannya_Products_final/Mustard%20Oil/01.jpg',
-        variantWeight: '1 Litre',
-        price: 399,
-        quantity: 1,
-      },
-      {
-        id: 'ci-2',
-        type: 'product',
-        name: 'Organic Whole Ground Garam Masala',
-        image: '/images/dhannya_Products_final/Garam%20Masala/01.jpg',
-        variantWeight: '250g',
-        price: 320,
-        quantity: 1,
-      },
-    ],
-    shippingAddress: {
-      id: 'addr-1',
-      fullName: 'Anita Kulkarni',
-      email: 'dhaanyaorganic1@gmail.com',
-      mobile: '+91 98765 43210',
-      street: '402 Sunrise Heights, MG Road',
-      city: 'Mumbai',
-      state: 'Maharashtra',
-      pincode: '400001',
-      isDefault: true,
-    },
-    deliverySlot: 'Morning (9:00 AM - 1:00 PM)',
-    paymentMethod: 'UPI',
-    paymentStatus: 'Paid',
-    subtotal: 719,
-    discount: 50,
-    tax: 36,
-    shippingFee: 0,
-    total: 705,
-    status: 'Shipped',
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    estimatedDelivery: 'Tomorrow, by 2 PM',
-    trackingNumber: 'DW-TRK-7892341',
-  },
-  {
-    id: 'ORD-78923',
-    userId: 'usr-102',
-    items: [
-      {
-        id: 'ci-3',
-        type: 'product',
-        name: 'Pure Organic Turmeric Powder (High Curcumin)',
-        image: '/images/dhannya_Products_final/Turmeric%20Powder/01.jpg',
-        variantWeight: '500g',
-        price: 249,
-        quantity: 2,
-      },
-    ],
-    shippingAddress: {
-      id: 'addr-2',
-      fullName: 'Rahul Sharma',
-      email: 'rahul.sharma@example.com',
-      mobile: '+91 98123 45678',
-      street: 'Flat 12, Green Park Society',
-      city: 'Pune',
-      state: 'Maharashtra',
-      pincode: '411001',
-      isDefault: true,
-    },
-    deliverySlot: 'Evening (4:00 PM - 8:00 PM)',
-    paymentMethod: 'COD',
-    paymentStatus: 'Pending',
-    subtotal: 498,
-    discount: 0,
-    tax: 25,
-    shippingFee: 40,
-    total: 563,
-    status: 'Processing',
-    createdAt: new Date().toISOString(),
-    estimatedDelivery: 'Within 2-3 Days',
-    trackingNumber: 'DW-TRK-9812344',
-  },
-];
-
   // Data States
   const [analyticsData, setAnalyticsData] = useState<any>(null);
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS);
@@ -867,15 +779,16 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   };
 
   // Extract analytics values
+  // Until live analytics load, show zeros -- never demo numbers.
   const kpis = analyticsData?.kpis || {
-    totalRevenue: 376860,
-    totalRevenueChange: 18.4,
-    totalOrders: 1248,
-    pendingDispatch: 68,
-    activeCatalogProducts: productsList.length || 302,
-    activeCategories: 23,
-    registeredCustomers: 5131,
-    retentionRate: '92%',
+    totalRevenue: 0,
+    totalRevenueChange: 0,
+    totalOrders: 0,
+    pendingDispatch: 0,
+    activeCatalogProducts: productsList.length,
+    activeCategories: 0,
+    registeredCustomers: 0,
+    retentionRate: '0%',
   };
 
   const salesOverview = analyticsData?.salesOverview || [];
@@ -883,7 +796,7 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
   const salesByCategory = analyticsData?.salesByCategory || [];
   const topSellingProducts = analyticsData?.topSellingProducts || [];
   const customerGrowth = analyticsData?.customerGrowth || [];
-  const inventoryOverview = analyticsData?.inventoryOverview || { inStock: 240, lowStock: 35, criticalStock: 18, outOfStock: 9 };
+  const inventoryOverview = analyticsData?.inventoryOverview || { inStock: 0, lowStock: 0, criticalStock: 0, outOfStock: 0 };
   const lowStockAlerts = analyticsData?.lowStockAlerts || [];
 
   const lowStockItems = useMemo(() => {
@@ -896,10 +809,10 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
     }
   }, [activeTab, lowStockItems.length, isLowStockModalDismissed]);
   const customMasalaAnalytics = analyticsData?.customMasalaAnalytics || {
-    totalOrders: 326,
-    totalRevenue: 128450,
-    avgWeightGrams: 245,
-    avgPrice: 395,
+    totalOrders: 0,
+    totalRevenue: 0,
+    avgWeightGrams: 0,
+    avgPrice: 0,
     ordersOverTime: [],
     mostSelectedIngredients: [],
     roastingPreference: [],
@@ -1182,9 +1095,16 @@ const INITIAL_SAMPLE_ORDERS: Order[] = [
                     <h3 className="text-3xl font-extrabold font-serif text-earth">
                       ₹{kpis.totalRevenue.toLocaleString()}
                     </h3>
-                    <p className="text-xs font-bold text-emerald-700 flex items-center gap-1 mt-2">
-                      <TrendingUp className="w-3.5 h-3.5" />
-                      <span>↑ {kpis.totalRevenueChange}% from previous period</span>
+                    <p
+                      className={`text-xs font-bold flex items-center gap-1 mt-2 ${
+                        kpis.totalRevenueChange > 0 ? 'text-emerald-700' : kpis.totalRevenueChange < 0 ? 'text-red-700' : 'text-stone-500'
+                      }`}
+                    >
+                      {kpis.totalRevenueChange > 0 && <TrendingUp className="w-3.5 h-3.5" />}
+                      <span>
+                        {kpis.totalRevenueChange > 0 ? '↑ ' : kpis.totalRevenueChange < 0 ? '↓ ' : ''}
+                        {Math.abs(kpis.totalRevenueChange)}% from previous period
+                      </span>
                     </p>
                   </div>
                 </div>

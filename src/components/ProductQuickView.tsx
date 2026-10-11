@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 import { PRODUCT_DETAILS } from '../data/initialData';
 import {
-  X,
   ShoppingBag,
   Heart,
   CheckCircle2,
@@ -13,9 +12,15 @@ import {
   Minus,
   Sparkles,
   ArrowRight,
+  ArrowLeft,
   Leaf,
   Mountain,
   MessageCircle,
+  Sprout,
+  Factory,
+  ScanEye,
+  HeartHandshake,
+  Utensils,
 } from 'lucide-react';
 
 export const ProductQuickView: React.FC = () => {
@@ -34,6 +39,28 @@ export const ProductQuickView: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'nutrition' | 'preparation' | 'benefits'>('description');
+
+  // Keep the view pinned exactly under the site header, and stop the page behind from
+  // scrolling / rubber-banding (touchpad overscroll) while the product is open.
+  const [headerBottom, setHeaderBottom] = useState<number | null>(null);
+  useEffect(() => {
+    if (!quickViewProduct) return;
+    const html = document.documentElement;
+    const prevOverscroll = html.style.overscrollBehavior;
+    html.style.overscrollBehavior = 'none';
+    const measure = () => {
+      const hdr = document.querySelector('header');
+      setHeaderBottom(hdr ? Math.max(0, Math.round(hdr.getBoundingClientRect().bottom)) : null);
+    };
+    measure();
+    window.addEventListener('scroll', measure, { passive: true });
+    window.addEventListener('resize', measure);
+    return () => {
+      html.style.overscrollBehavior = prevOverscroll;
+      window.removeEventListener('scroll', measure);
+      window.removeEventListener('resize', measure);
+    };
+  }, [quickViewProduct]);
 
   if (!quickViewProduct) return null;
 
@@ -73,22 +100,36 @@ export const ProductQuickView: React.FC = () => {
     setActiveTab('description');
   };
 
+  const detail = PRODUCT_DETAILS[quickViewProduct.name];
+
+  // "Label: text" -> bold label followed by the text
+  const renderLabelled = (text: string, sep: string, suffix = ':') => {
+    const k = text.indexOf(sep);
+    if (k <= 0 || k > 60) return text;
+    return (
+      <>
+        <strong className="font-bold text-[#2A2620]">{text.slice(0, k)}{suffix}</strong> {text.slice(k + sep.length)}
+      </>
+    );
+  };
+
   const trustBadges = [
-    { icon: Sparkles, label: 'Freshly Milled' },
-    { icon: Leaf, label: 'Whole Ingredients' },
-    { icon: Mountain, label: 'Traditional Process' },
-    { icon: Heart, label: 'Made with Care' },
+    { icon: Sprout, label: 'Traditional Roots' },
+    { icon: Factory, label: 'Freshness First' },
+    { icon: ScanEye, label: 'Honest Food' },
+    { icon: HeartHandshake, label: 'Local Roots' },
+    { icon: Utensils, label: 'Everyday Nourishment' },
   ];
 
   const TrustBadgeBar = () => (
-    <div className="flex items-stretch rounded-2xl border border-[#2A2620]/12 bg-white/60 divide-x divide-[#2A2620]/10 overflow-hidden">
+    <div className="flex sm:grid sm:grid-cols-5 overflow-x-auto no-scrollbar snap-x rounded-2xl bg-white/70 shadow-sm px-1 py-3.5">
       {trustBadges.map(({ icon: Icon, label }) => (
         <div
           key={label}
-          className="flex-1 min-w-0 flex flex-col items-center justify-center gap-1.5 px-1.5 py-3 text-center"
+          className="shrink-0 w-[76px] sm:w-auto sm:min-w-0 snap-start flex flex-col items-center justify-start gap-1.5 px-1 text-center"
         >
-          <Icon className="w-4 h-4 text-[#2A2620]/70 shrink-0" />
-          <span className="text-[10px] sm:text-[11px] font-semibold text-[#2A2620]/80 leading-tight">
+          <Icon className="w-5 h-5 text-[#2A2620]/75 shrink-0" strokeWidth={1.75} />
+          <span className="text-[10px] sm:text-[11px] font-semibold text-[#2A2620] leading-tight">
             {label}
           </span>
         </div>
@@ -97,31 +138,61 @@ export const ProductQuickView: React.FC = () => {
   );
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#2A2620]/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-      <div
-        className="relative bg-[#F4ECD8] text-[#2A2620] w-full max-w-4xl rounded-2xl shadow-2xl border border-[#2A2620]/15 overflow-hidden animate-fade-in my-4 sm:my-8 max-h-[92vh] flex flex-col md:flex-row"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close Button */}
+    <div
+      className="fixed inset-x-0 bottom-0 z-[45] overflow-y-auto md:overflow-hidden overscroll-contain bg-[#F4ECD8] animate-fade-in"
+      style={{ top: headerBottom !== null ? `${headerBottom}px` : 'var(--site-header-height, 0px)' }}
+    >
+      {/* Black back button, pinned top-left while the view scrolls */}
+      <div className="sticky top-0 z-30 h-0 max-w-[1440px] mx-auto">
         <button
           onClick={() => setQuickViewProduct(null)}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#F4ECD8]/90 border border-[#2A2620]/10 text-[#2A2620] hover:bg-[#2A2620] hover:text-[#F4ECD8] transition-colors cursor-pointer"
-          aria-label="Close"
+          className="group absolute top-3 left-3 sm:top-4 sm:left-4 flex items-center gap-1.5 pl-3 pr-4 py-2 rounded-full bg-[#2A2620] text-[#F4ECD8] text-sm font-bold shadow-lg hover:bg-black transition-colors cursor-pointer"
+          aria-label="Back"
         >
-          <X className="w-5 h-5" />
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+          <span>Back</span>
         </button>
-
+      </div>
+      <div
+        className="relative text-[#2A2620] w-full max-w-[1440px] mx-auto flex flex-col md:flex-row md:h-full"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Left Column: Product Gallery */}
         <div
-          className="md:w-1/2 p-6 md:p-8 border-b md:border-b-0 md:border-r border-[#2A2620]/10 flex flex-col"
+          className="md:w-1/2 p-4 pt-16 sm:p-6 sm:pt-[4.5rem] md:p-8 md:pt-[4.5rem] flex flex-col md:overflow-y-auto no-scrollbar"
           style={{
             backgroundColor: '#F8F3E6',
             backgroundImage: 'radial-gradient(rgba(42,38,32,0.05) 1px, transparent 0)',
             backgroundSize: '18px 18px',
           }}
         >
+          {/* Gallery: main image; thumbnail row below it on mobile only (desktop shows sub-images stacked further down) */}
+          <div className="flex flex-col-reverse gap-3 mb-6">
+          {images.length > 1 && (
+            <div className="flex md:hidden gap-3 overflow-x-auto no-scrollbar shrink-0">
+              {images.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className={`w-[72px] h-[72px] rounded-xl overflow-hidden border-2 shrink-0 transition cursor-pointer ${
+                    selectedImageIndex === idx ? 'border-[#C89211] shadow-sm' : 'border-transparent opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt="thumbnail"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+                    }}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
           {/* Main Image - large, full-bleed within frame */}
-          <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white/60 border border-[#2A2620]/10 mb-6 flex items-center justify-center shadow-sm">
+          <div className="relative aspect-square w-full md:max-h-[min(70vh,640px)] rounded-2xl overflow-hidden bg-white/60 flex items-center justify-center shadow-sm">
             <img
               src={currentImage}
               alt={quickViewProduct.name}
@@ -150,6 +221,7 @@ export const ProductQuickView: React.FC = () => {
             >
               <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-white' : ''}`} />
             </button>
+          </div>
           </div>
 
           {/* Mobile Buy Block - name/price/weight/qty/CTA right after the image so
@@ -257,31 +329,6 @@ export const ProductQuickView: React.FC = () => {
             </div>
           </div>
 
-          {/* Thumbnail Strip - enlarged, primary navigation for the main preview */}
-          {images.length > 1 && (
-            <div className="flex gap-3 overflow-x-auto no-scrollbar mb-8">
-              {images.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedImageIndex(idx)}
-                  className={`w-[72px] h-[72px] rounded-xl overflow-hidden border-2 shrink-0 transition cursor-pointer ${
-                    selectedImageIndex === idx ? 'border-[#C89211] shadow-sm' : 'border-[#2A2620]/10 opacity-70 hover:opacity-100'
-                  }`}
-                >
-                  <img
-                    src={img}
-                    alt="thumbnail"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src =
-                        'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
-                    }}
-                  />
-                </button>
-              ))}
-            </div>
-          )}
-
           {/* Secondary CTA - gives the left column real content instead of dead space */}
           <a
             href={`https://wa.me/919008625716?text=${encodeURIComponent(
@@ -297,10 +344,32 @@ export const ProductQuickView: React.FC = () => {
             </span>
             <ArrowRight className="w-4 h-4 text-[#3E4B32] shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </a>
+
+          {/* Desktop: sub-images shown full size, one below another */}
+          {images.length > 1 && (
+            <div className="hidden md:flex flex-col gap-6 mt-6">
+              {images.slice(1).map((img, idx) => (
+                <div
+                  key={idx}
+                  className="w-full aspect-square rounded-2xl overflow-hidden bg-white/60 shadow-sm flex items-center justify-center"
+                >
+                  <img
+                    src={img}
+                    alt={`${quickViewProduct.name} image ${idx + 2}`}
+                    loading="lazy"
+                    className="w-full h-full object-contain p-5"
+                    onError={(e) => {
+                      e.currentTarget.parentElement!.style.display = 'none';
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right Column: Details & Actions */}
-        <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto no-scrollbar">
+        <div className="md:w-1/2 p-4 sm:p-6 md:p-8 flex flex-col justify-between md:overflow-y-auto no-scrollbar">
           <div className="space-y-6">
             <div className="hidden md:block">
               <span className="text-xs font-bold uppercase tracking-widest text-[#A9542B]">
@@ -390,13 +459,11 @@ export const ProductQuickView: React.FC = () => {
               </div>
             </div>
 
-            {/* Tabs: Description / Ingredients / Nutrition */}
+            {/* Tabs: Description / Preparation */}
             <div className="pt-1 border-t border-[#2A2620]/10">
               <div className="relative flex gap-6 overflow-x-auto no-scrollbar border-b border-[#2A2620]/10 pt-3">
                 {([
                   { key: 'description' as const, label: 'Description', show: true },
-                  { key: 'ingredients' as const, label: 'Ingredients', show: !!quickViewProduct.ingredients },
-                  { key: 'nutrition' as const, label: 'Nutrition', show: !!quickViewProduct.nutritionInfo },
                   { key: 'preparation' as const, label: 'Preparation', show: !!quickViewProduct.preparationGuide },
                 ]).filter((t) => t.show).map((t) => (
                   <button
@@ -434,34 +501,135 @@ export const ProductQuickView: React.FC = () => {
                 >
                   {activeTab === 'description' && (
                     <div className="space-y-4">
+                      {detail?.tagline && (
+                        <span className="inline-flex items-center text-[11px] font-bold uppercase tracking-wider text-[#7C2A1E] bg-[#7C2A1E]/8 px-3 py-1.5 rounded-full">
+                          {detail.tagline}
+                        </span>
+                      )}
+                      {detail?.steps && (
+                        <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block">About This Blend</span>
+                      )}
                       <p className="text-sm text-[#2A2620]/80 leading-relaxed whitespace-pre-line">
-                        {PRODUCT_DETAILS[quickViewProduct.name]?.about || quickViewProduct.description}
+                        {detail?.about || quickViewProduct.description}
                       </p>
-                      {(PRODUCT_DETAILS[quickViewProduct.name]?.why || quickViewProduct.benefits) && (PRODUCT_DETAILS[quickViewProduct.name]?.why || quickViewProduct.benefits).length > 0 && (
+                      {detail?.notes?.map((n, idx) => (
+                        <p key={idx} className="flex items-start gap-2 text-xs text-[#3E4B32] font-medium">
+                          <Leaf className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                          <span>{renderLabelled(n, ': ')}</span>
+                        </p>
+                      ))}
+                      {(detail?.why || quickViewProduct.benefits) && (detail?.why || quickViewProduct.benefits).length > 0 && (
                         <>
-                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block">Why Choose This Product?</span>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">
+                            {detail?.whyTitle || (detail?.steps ? `Why Choose ${quickViewProduct.name}?` : 'Why Choose This Product?')}
+                          </span>
                           <ul className="space-y-1.5">
-                            {(PRODUCT_DETAILS[quickViewProduct.name]?.why || quickViewProduct.benefits).map((b, idx) => (
+                            {(detail?.why || quickViewProduct.benefits).map((b, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-[#3E4B32] shrink-0 mt-0.5" />
-                                <span>{b}</span>
+                                <span>{detail?.whyTitle ? renderLabelled(b, ": ") : b}</span>
                               </li>
                             ))}
                           </ul>
                         </>
                       )}
-                      {PRODUCT_DETAILS[quickViewProduct.name]?.facts && PRODUCT_DETAILS[quickViewProduct.name].facts.length > 0 && (
+                      {detail?.usage && (
                         <>
-                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">Interesting Facts</span>
-                          <ul className="space-y-1.5">
-                            {PRODUCT_DETAILS[quickViewProduct.name].facts.map((f, idx) => (
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">How to Use</span>
+                          <p className="text-sm text-[#2A2620]/85 leading-relaxed">{detail.usage}</p>
+                        </>
+                      )}
+                      {detail?.uses && detail.uses.length > 0 && (
+                        <>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">
+                            {detail.usesTitle || 'Where Is It Used?'}
+                          </span>
+                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5">
+                            {detail.uses.map((u, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
-                                <Sparkles className="w-3.5 h-3.5 text-[#C89211] shrink-0 mt-0.5" />
-                                <span>{f}</span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#A9542B] shrink-0 mt-2" />
+                                <span>{u}</span>
                               </li>
                             ))}
                           </ul>
                         </>
+                      )}
+                      {detail?.steps && detail.steps.length > 0 && (
+                        <>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">How to Prepare Your Roti</span>
+                          <ol className="space-y-2">
+                            {detail.steps.map((st, idx) => (
+                              <li key={idx} className="flex items-start gap-2.5 text-sm text-[#2A2620]/85">
+                                <span className="w-5 h-5 rounded-full bg-[#3E4B32] text-[#F4ECD8] text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                                  {idx + 1}
+                                </span>
+                                <span>{renderLabelled(st, ': ')}</span>
+                              </li>
+                            ))}
+                          </ol>
+                        </>
+                      )}
+                      {detail?.hydration && (
+                        <div className="bg-[#C89211]/10 rounded-xl px-3.5 py-3">
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#8A6410] block mb-1">Starting Hydration Guide</span>
+                          <p className="text-sm text-[#2A2620]/85">{detail.hydration}</p>
+                        </div>
+                      )}
+                      {(detail?.expect || detail?.expectGroups) && (
+                        <>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">The Roti You Can Expect</span>
+                          {detail.expect && (
+                            <ul className="space-y-1.5">
+                              {detail.expect.map((e, idx) => (
+                                <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-[#A9542B] shrink-0 mt-2" />
+                                  <span>{renderLabelled(e, ': ')}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          {detail.expectGroups && (
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                              {detail.expectGroups.map((g) => (
+                                <div key={g.title} className="bg-white/60 rounded-xl p-3 shadow-sm">
+                                  <span className="text-xs font-bold text-[#3E4B32] block mb-1.5">{g.title}</span>
+                                  <ul className="space-y-1">
+                                    {g.points.map((pt, idx) => (
+                                      <li key={idx} className="text-xs text-[#2A2620]/80 leading-snug">{pt}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {detail.expectNote && (
+                            <p className="text-xs italic text-[#2A2620]/60">{detail.expectNote}</p>
+                          )}
+                        </>
+                      )}
+                      {detail?.facts && detail.facts.length > 0 && (
+                        <>
+                          <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">
+                            {detail.steps ? 'Little Facts' : 'Interesting Facts'}
+                          </span>
+                          <ul className="space-y-1.5">
+                            {detail.facts.map((f, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
+                                <Sparkles className="w-3.5 h-3.5 text-[#C89211] shrink-0 mt-0.5" />
+                                <span>{renderLabelled(f, '? ', '?')}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                      {detail?.allergen && (
+                        <div className="flex items-start gap-2.5 bg-[#A9542B]/8 rounded-xl px-3.5 py-3">
+                          <ShieldCheck className="w-4 h-4 text-[#A9542B] shrink-0 mt-0.5" />
+                          <p className="text-sm text-[#2A2620]/85">
+                            <strong className="text-[#A9542B]">Allergen note: </strong>
+                            {detail.allergen}
+                          </p>
+                        </div>
                       )}
                       <div className="flex flex-wrap gap-2">
                         {[
@@ -661,7 +829,7 @@ export const ProductQuickView: React.FC = () => {
                         onClick={() => handleSwitchProduct(p)}
                         className="w-[100px] shrink-0 snap-start text-left group cursor-pointer"
                       >
-                        <div className="w-[100px] h-[100px] rounded-xl overflow-hidden bg-white/60 border border-[#2A2620]/10 group-hover:border-[#C89211] transition-colors">
+                        <div className="w-[100px] h-[100px] rounded-xl overflow-hidden bg-white/60 shadow-sm group-hover:shadow-md transition-shadow">
                           <img
                             src={p.image}
                             alt={p.name}

@@ -51,7 +51,18 @@ export const Header: React.FC<HeaderProps> = ({
     setIsAdminMode,
     setIsServerModalOpen,
     showToast,
+    quickViewProduct,
+    setQuickViewProduct,
   } = useApp();
+
+  // The product view sits below this header; navigating from the header should leave it,
+  // while search / account / cart open on top of it.
+  const handleHeaderClickCapture = (e: React.MouseEvent) => {
+    if (!quickViewProduct) return;
+    const target = e.target as HTMLElement;
+    if (target.closest('[data-keep-product-open]')) return;
+    if (target.closest('a, button, [role="button"]') || target.closest('.cursor-pointer')) setQuickViewProduct(null);
+  };
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -104,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header ref={headerRef} className="sticky top-0 z-40 w-full transition-all duration-300">
+      <header ref={headerRef} onClickCapture={handleHeaderClickCapture} className="sticky top-0 z-40 w-full transition-all duration-300">
         {/* Announcement Ticker Bar */}
         <div className="bg-[#3E4B32] text-[#F4ECD8] py-2 text-xs font-medium border-b border-[#C89211]/30">
           <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
@@ -142,12 +153,12 @@ export const Header: React.FC<HeaderProps> = ({
               : 'bg-[#F4ECD8] border-b border-[#2A2620]/10'
           }`}
         >
-          <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-2 sm:gap-4 overflow-x-hidden">
+          <div className="max-w-[1500px] w-full mx-auto px-3 min-[360px]:px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-1 min-[360px]:gap-2 sm:gap-4 overflow-x-hidden">
             {/* LEFT: Logo & Mobile Hamburger Trigger */}
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-1.5 min-[360px]:gap-3 shrink-0">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 text-[#2A2620] hover:text-[#3E4B32] transition-colors xl:hidden cursor-pointer"
+                className="p-1.5 min-[360px]:p-2 text-[#2A2620] hover:text-[#3E4B32] transition-colors xl:hidden cursor-pointer"
                 aria-label="Open Mobile Menu"
               >
                 <Menu className="w-6 h-6" />
@@ -156,6 +167,7 @@ export const Header: React.FC<HeaderProps> = ({
               <DhaanyaLogo
                 variant="compact"
                 size="md"
+                className="max-[413px]:gap-2 max-[413px]:[&_span:first-child]:text-base max-[413px]:[&_span:first-child]:tracking-[0.12em] max-[359px]:[&_span:first-child]:text-sm max-[369px]:[&_span:first-child]:tracking-[0.08em]"
                 onClick={() => {
                   onNavigateHome();
                   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -226,10 +238,11 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* RIGHT: Utility Action Group */}
-            <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 ml-auto">
+            <div className="flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-2.5 shrink-0 ml-auto">
               {/* Search Trigger */}
               <button
                 onClick={() => setIsSearchOpen(true)}
+                data-keep-product-open
                 className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full text-[#2A2620] hover:text-[#3E4B32] hover:bg-[#2A2620]/8 flex items-center justify-center transition-colors cursor-pointer shrink-0"
                 title="Search Dhaanya Pantry"
                 aria-label="Search"
@@ -257,6 +270,7 @@ export const Header: React.FC<HeaderProps> = ({
               {user ? (
                 <button
                   onClick={() => setIsProfileOpen(true)}
+                  data-keep-product-open
                   className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-[#3E4B32] text-[#F4ECD8] flex items-center justify-center font-bold text-xs uppercase shadow-2xs hover:scale-105 transition-transform cursor-pointer shrink-0"
                   title={user.name}
                 >
@@ -265,6 +279,7 @@ export const Header: React.FC<HeaderProps> = ({
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
+                  data-keep-product-open
                   className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-[#2A2620]/5 hover:bg-[#2A2620]/10 text-[#2A2620] flex items-center justify-center transition-colors cursor-pointer shrink-0"
                   title="Sign In / Register"
                 >
@@ -275,6 +290,7 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Cart Drawer Trigger */}
               <button
                 onClick={() => setIsCartOpen(true)}
+                data-keep-product-open
                 className="relative w-8.5 h-8.5 sm:w-10 sm:h-10 bg-[#3E4B32] hover:bg-[#2A2620] text-[#F4ECD8] rounded-full flex items-center justify-center transition-all shadow-2xs cursor-pointer shrink-0"
                 aria-label="View Cart"
               >

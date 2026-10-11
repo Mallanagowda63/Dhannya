@@ -1,3 +1,8 @@
+import { ATTA_DETAILS, ProductDetailExtra } from './attaDetails';
+import { MILLET_DETAILS } from './milletDetails';
+import { PULSE_DETAILS } from './pulseDetails';
+import { SPICE_DETAILS } from './spiceDetails';
+import { DRY_FRUIT_DETAILS } from './dryFruitDetails';
 import { Product, ProductCategory, MasalaIngredient, Coupon, Review } from '../types';
 
 export interface CategoryInfo {
@@ -68,7 +73,7 @@ export const CATEGORIES: CategoryInfo[] = [
     "slug": "flour",
     "iconName": "Wheat",
     "description": "Stone-ground, unbleached organic flours & ancient grain blends.",
-    "image": "/images/dhannya_Products_final/Dhaanya Multi Millet Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya Multi Millet Atta/01.png",
     "productCount": 16
   },
   {
@@ -4638,7 +4643,8 @@ export const PRODUCTS: Product[] = [
     "gallery": [
       "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.png",
       "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/02.png",
-      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/03.png"
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/04.png"
     ],
     "variants": [
       {
@@ -4800,7 +4806,8 @@ export const PRODUCTS: Product[] = [
     "gallery": [
       "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/01.png",
       "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/02.png",
-      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/03.png"
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/04.png"
     ],
     "variants": [
       {
@@ -4934,10 +4941,12 @@ export const PRODUCTS: Product[] = [
       "Offers a range of earthy, nutty, and grain flavours.",
       "Suitable for everyday rotis and traditional meals."
     ],
-    "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
+    "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.png",
     "gallery": [
-      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.jpg",
-      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/02.jpg"
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/04.png"
     ],
     "variants": [
       {
@@ -5091,7 +5100,8 @@ export const PRODUCTS: Product[] = [
     "gallery": [
       "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.png",
       "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/02.png",
-      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/03.png"
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/04.png"
     ],
     "variants": [
       {
@@ -5228,7 +5238,8 @@ export const PRODUCTS: Product[] = [
     "gallery": [
       "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/01.png",
       "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/02.png",
-      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/03.png"
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/04.png"
     ],
     "variants": [
       {
@@ -14582,7 +14593,7 @@ export const PRODUCTS: Product[] = [
         "inStock": true
       },
       {
-        "weight": "25og",
+        "weight": "250g",
         "price": 262.5,
         "originalPrice": 262.5,
         "inStock": true
@@ -21714,7 +21725,7 @@ interface ProductDetail {
 const D = (about: string, why: string[], facts: string[], how?: string, storage?: string): ProductDetail =>
   ({ about, why, facts, how, storage });
 
-export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
+const BASE_PRODUCT_DETAILS: Record<string, ProductDetail> = {
   "Ragi (Finger Millet) Rava": D(
     "Ragi Rava is made from finger millet, a traditional grain with naturally earthy flavour and deep colour. Fine, grainy texture makes it suitable for quick breakfast and everyday preparations.",
     ["Made from traditional finger millet", "Naturally earthy and mildly nutty flavour", "Rich in dietary fibre", "Naturally provides calcium and iron", "Versatile for breakfast and everyday cooking"],
@@ -24046,6 +24057,15 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
   ["Quality ingredients support better nutrition","Traditional methods preserve natural properties","Natural sourcing ensures authenticity"],
   "Use according to product type and preference in your favourite recipes.",
   "Store in an airtight container in a cool, dry place away from moisture.")};
+
+export const PRODUCT_DETAILS: Record<string, ProductDetailExtra> = {
+  ...BASE_PRODUCT_DETAILS,
+  ...ATTA_DETAILS,
+  ...MILLET_DETAILS,
+  ...PULSE_DETAILS,
+  ...SPICE_DETAILS,
+  ...DRY_FRUIT_DETAILS,
+};
 
 export const REVIEWS: Review[] = [
   {

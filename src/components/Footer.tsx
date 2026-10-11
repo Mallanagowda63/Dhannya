@@ -5,6 +5,7 @@ import {
   Youtube,
   Linkedin,
   Send,
+  MapPin,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { getApiUrl } from '../utils/apiConfig';
@@ -80,9 +81,22 @@ export const Footer: React.FC<{
               </span>
             </h2>
 
-            <p className="text-xs sm:text-sm text-stone-100 font-medium">
-              Doddakallasandra, Bengaluru - 560062
-            </p>
+            <address className="not-italic text-xs sm:text-sm text-stone-100 leading-relaxed">
+              <span className="block font-bold text-white tracking-wide">DHAANYA BENGALURU</span>
+              730, 18th Main Road, Padmanabhanagar,
+              <br />
+              Bengaluru, Karnataka – 560070.
+            </address>
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=730%2C%2018th%20Main%20Rd%2C%20Padmanabhanagar%2C%20Bengaluru%2C%20Karnataka%20560070"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-xs font-bold text-[#E8B93E] transition-colors"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              Get Directions
+            </a>
 
             <p className="text-xs sm:text-sm text-stone-100">
               Feedbacks:{' '}

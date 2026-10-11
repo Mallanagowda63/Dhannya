@@ -19,8 +19,8 @@ export const BestSellersCarousel: React.FC = () => {
   return (
     <section className="py-14 sm:py-18 bg-paper text-earth border-t border-soft">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="flex items-end justify-between mb-8">
-          <div>
+        <div className="flex items-end justify-between gap-3 mb-8">
+          <div className="min-w-0">
             <div className="inline-flex items-center gap-1.5 text-terracotta text-xs font-bold uppercase tracking-wider mb-1">
               <Flame className="w-4 h-4 fill-terracotta" />
               <span>POPULAR DEMAND</span>
@@ -30,7 +30,7 @@ export const BestSellersCarousel: React.FC = () => {
             </h2>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => scroll('left')}
               className="w-10 h-10 rounded-full bg-white hover:bg-cream border border-soft flex items-center justify-center text-earth transition shadow-sm cursor-pointer hover:scale-105 active:scale-95"

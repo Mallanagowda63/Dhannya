@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local DB backups (contain customer PII) - never commit
+scratch/backup-*/

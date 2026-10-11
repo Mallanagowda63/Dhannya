@@ -31,14 +31,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const currentPrice = selectedVariant.price || 0;
 
   // Category Stripe Color
-  const getCategoryStripe = (cat: string) => {
-    const c = (cat || '').toLowerCase();
-    if (c.includes('flour')) return 'bg-[#A9542B]';
-    if (c.includes('spice') || c.includes('masala')) return 'bg-[#7C2A1E]';
-    if (c.includes('oil')) return 'bg-[#3E4B32]';
-    return 'bg-[#C89211]';
-  };
-
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToCart(product, selectedVariant.weight, 1);
@@ -52,11 +44,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={handleCardClick}
-      className="product-card group hover:border-[#C89211]/60 hover:shadow-md cursor-pointer"
+      className="product-card group hover:shadow-md cursor-pointer"
     >
-      {/* Category Accent Stripe */}
-      <div className={`h-1.5 w-full shrink-0 ${getCategoryStripe(product.category)}`} />
-
       {/* Product Image Section (Strict Aspect Ratio 1/1 Square Container) */}
       <div className="product-image-section">
         <img

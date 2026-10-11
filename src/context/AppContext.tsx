@@ -92,7 +92,12 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [products, setProducts] = useState<Product[]>(PRODUCTS);
+  // The bundled fallback list (shown until /api/products loads) has some reused ids;
+  // keep the first of each so React list keys stay unique.
+  const [products, setProducts] = useState<Product[]>(() => {
+    const seen = new Set<string>();
+    return PRODUCTS.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)));
+  });
   const [cart, setCart] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('dhaanya_cart');
     return saved ? JSON.parse(saved) : [];

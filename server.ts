@@ -2717,42 +2717,50 @@ app.get('/api/admin/analytics', async (req, res) => {
     const prevRevenue = prevOrders.reduce((acc, o) => acc + (Number(o.total) || 0), 0);
     const totalRevenueChange = prevRevenue > 0
       ? Number((((totalRevenue - prevRevenue) / prevRevenue) * 100).toFixed(1))
-      : 18.4;
+      : 0;
 
-    const kpis = {
-      totalRevenue: totalRevenue || 376860,
-      totalRevenueChange,
-      totalOrders: totalOrders || 1248,
-      pendingDispatch: pendingDispatch || 68,
-      activeCatalogProducts: products.length || 302,
-      activeCategories: new Set(products.map((p) => p.category)).size || 23,
-      registeredCustomers: Math.max(orders.length * 4, 5131),
-      retentionRate: '92%',
-    };
-
-    const salesOverview = [];
-    const stepCount = Math.min(days, 30);
-    for (let i = stepCount - 1; i >= 0; i--) {
-      const d = new Date(now - i * (cutoffMs / stepCount));
-      const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      
-      const dayOrders = periodOrders.filter((o) => {
-        if (!o.createdAt) return false;
-        return new Date(o.createdAt).toDateString() === d.toDateString();
-      });
-
-      const dayRevenue = dayOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
-      const dayCount = dayOrders.length;
-
-      const baseRev = Math.round(12000 + Math.sin(i * 0.8) * 4500 + (i % 3) * 3200);
-      const baseCount = Math.round(14 + Math.cos(i * 0.7) * 4);
-
-      salesOverview.push({
-        date: dateStr,
-        revenue: dayRevenue > 0 ? dayRevenue : baseRev,
-        orders: dayCount > 0 ? dayCount : baseCount,
+    // Every figure below is derived from live data only -- no demo/fallback numbers.
+    // The store admin account is not counted as a customer.
+    let registeredCustomers = 0;
+    if (connected) {
+      registeredCustomers = await CustomerModel.countDocuments({
+        id: { $ne: 'admin-1' },
+        email: { $ne: ADMIN_EMAIL },
+        role: { $ne: 'admin' },
       });
     }
+    const ordersPerUser: Record<string, number> = {};
+    orders.forEach((o: any) => {
+      if (o.userId) ordersPerUser[o.userId] = (ordersPerUser[o.userId] || 0) + 1;
+    });
+    const buyers = Object.values(ordersPerUser);
+    const repeatBuyers = buyers.filter((n) => n > 1).length;
+    const retentionRate = buyers.length > 0 ? `${Math.round((repeatBuyers / buyers.length) * 100)}%` : '0%';
+
+    const kpis = {
+      totalRevenue,
+      totalRevenueChange,
+      totalOrders,
+      pendingDispatch,
+      activeCatalogProducts: products.length,
+      activeCategories: new Set(products.map((p) => p.category)).size,
+      registeredCustomers,
+      retentionRate,
+    };
+
+    const stepCount = Math.min(days, 30);
+    const stepDay = (idx: number) => new Date(now - (stepCount - 1 - idx) * (cutoffMs / stepCount));
+    const sameDay = (o: any, d: Date) => !!o.createdAt && new Date(o.createdAt).toDateString() === d.toDateString();
+
+    const salesOverview = Array.from({ length: stepCount }, (_, idx) => {
+      const d = stepDay(idx);
+      const dayOrders = periodOrders.filter((o) => sameDay(o, d));
+      return {
+        date: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        revenue: dayOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0),
+        orders: dayOrders.length,
+      };
+    });
 
     const statusCounts: Record<string, number> = {
       Delivered: 0,
@@ -2762,13 +2770,11 @@ app.get('/api/admin/analytics', async (req, res) => {
       Pending: 0,
       Cancelled: 0,
     };
-
     orders.forEach((o) => {
       const s = o.status || 'Processing';
       statusCounts[s] = (statusCounts[s] || 0) + 1;
     });
-
-    const statusTotal = orders.length || 1;
+    const statusTotal = orders.length;
     const colorMap: Record<string, string> = {
       Delivered: '#2b3e2a',
       Dispatched: '#556b2f',
@@ -2777,81 +2783,72 @@ app.get('/api/admin/analytics', async (req, res) => {
       Pending: '#d97706',
       Cancelled: '#a8a29e',
     };
-
     const orderStatus = Object.keys(statusCounts).map((st) => ({
       status: st,
       count: statusCounts[st],
       color: colorMap[st] || '#78716c',
-      percentage: Math.round((statusCounts[st] / statusTotal) * 100) || 0,
+      percentage: statusTotal > 0 ? Math.round((statusCounts[st] / statusTotal) * 100) : 0,
     }));
+
+    const lineTotal = (item: any) => (Number(item.price) || 0) * (Number(item.quantity) || 1);
 
     const catMap: Record<string, { revenue: number; orders: number }> = {};
     periodOrders.forEach((o) => {
       (o.items || []).forEach((item: any) => {
-        const itemCat = item.category || 'Organic Essentials';
+        const itemCat = item.category || item.product?.category || (item.type === 'custom_masala' ? 'Custom Masala' : 'Other');
         if (!catMap[itemCat]) catMap[itemCat] = { revenue: 0, orders: 0 };
-        catMap[itemCat].revenue += (Number(item.price) || 299) * (Number(item.quantity) || 1);
+        catMap[itemCat].revenue += lineTotal(item);
         catMap[itemCat].orders += 1;
       });
     });
-
-    const defaultCategories = [
-      { category: 'Wood Pressed Oils', revenue: 98400, percentage: 26, orders: 312, color: '#556b2f' },
-      { category: 'Flour & Multigrain', revenue: 64200, percentage: 17, orders: 240, color: '#b0534c' },
-      { category: 'Dry Fruits & Dates', revenue: 58900, percentage: 16, orders: 195, color: '#d9a07a' },
-      { category: 'Millets', revenue: 42100, percentage: 11, orders: 158, color: '#2b3e2a' },
-      { category: 'Spices & Masalas', revenue: 41800, percentage: 11, orders: 162, color: '#d97706' },
-      { category: 'Seeds & Nut Butters', revenue: 38200, percentage: 10, orders: 120, color: '#854d0e' },
-      { category: 'Health Foods & Tea', revenue: 33260, percentage: 9, orders: 61, color: '#4d7c0f' },
-    ];
-
     const catColors = ['#556b2f', '#b0534c', '#d9a07a', '#2b3e2a', '#d97706', '#854d0e', '#4d7c0f'];
     const totalCatRevenue = Object.values(catMap).reduce((s, c) => s + c.revenue, 0);
-
-    const salesByCategory = totalCatRevenue > 0
-      ? Object.keys(catMap).map((catName, idx) => ({
-          category: catName,
-          revenue: catMap[catName].revenue,
-          orders: catMap[catName].orders,
-          percentage: Math.round((catMap[catName].revenue / totalCatRevenue) * 100),
-          color: catColors[idx % catColors.length],
-        })).sort((a, b) => b.revenue - a.revenue)
-      : defaultCategories;
+    const salesByCategory = Object.keys(catMap)
+      .map((catName, idx) => ({
+        category: catName,
+        revenue: catMap[catName].revenue,
+        orders: catMap[catName].orders,
+        percentage: totalCatRevenue > 0 ? Math.round((catMap[catName].revenue / totalCatRevenue) * 100) : 0,
+        color: catColors[idx % catColors.length],
+      }))
+      .sort((a, b) => b.revenue - a.revenue);
 
     const prodMap: Record<string, { id: string; name: string; category: string; revenue: number; unitsSold: number }> = {};
     periodOrders.forEach((o) => {
       (o.items || []).forEach((item: any) => {
-        const nameKey = item.name || 'Organic Product';
+        const nameKey = item.name || 'Unnamed item';
         if (!prodMap[nameKey]) {
           prodMap[nameKey] = {
-            id: item.productId || `p-${Math.random()}`,
+            id: item.productId || item.id || nameKey,
             name: nameKey,
-            category: item.category || 'Essentials',
+            category: item.category || item.product?.category || '',
             revenue: 0,
             unitsSold: 0,
           };
         }
-        prodMap[nameKey].revenue += (Number(item.price) || 299) * (Number(item.quantity) || 1);
+        prodMap[nameKey].revenue += lineTotal(item);
         prodMap[nameKey].unitsSold += Number(item.quantity) || 1;
       });
     });
+    const topSellingProducts = Object.values(prodMap).sort((a, b) => b.revenue - a.revenue);
 
-    const realTopProducts = Object.values(prodMap).sort((a, b) => b.revenue - a.revenue);
-    const topSellingProducts = realTopProducts.length > 0
-      ? realTopProducts
-      : products.slice(0, 10).map((p, idx) => ({
-          id: p.id,
-          name: p.name,
-          category: p.category,
-          revenue: Math.round(48000 - idx * 3400),
-          unitsSold: Math.round(181 - idx * 12),
-        }));
-
-    const customerGrowth = salesOverview.map((item) => ({
-      date: item.date,
-      newCustomers: Math.max(1, Math.round(item.orders * 0.4)),
-      returningCustomers: Math.max(0, Math.round(item.orders * 0.6)),
-    }));
+    // New vs returning buyers per day, based on each buyer's first-order date.
+    const firstOrderDay: Record<string, string> = {};
+    [...orders]
+      .filter((o: any) => o.userId && o.createdAt)
+      .sort((a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+      .forEach((o: any) => {
+        if (!firstOrderDay[o.userId]) firstOrderDay[o.userId] = new Date(o.createdAt).toDateString();
+      });
+    const customerGrowth = salesOverview.map((item, idx) => {
+      const d = stepDay(idx);
+      const dayBuyers = new Set(periodOrders.filter((o: any) => o.userId && sameDay(o, d)).map((o: any) => o.userId));
+      let newCustomers = 0;
+      dayBuyers.forEach((u) => {
+        if (firstOrderDay[u] === d.toDateString()) newCustomers += 1;
+      });
+      return { date: item.date, newCustomers, returningCustomers: dayBuyers.size - newCustomers };
+    });
 
     const lowStockAlerts = products
       .filter((p) => p.stock <= 25)
@@ -2865,30 +2862,48 @@ app.get('/api/admin/analytics', async (req, res) => {
         status: p.stock <= 5 ? 'Critical' : 'Low',
       }));
 
+    // Custom masala analytics from real custom_masala order lines.
+    const masalaLines: { order: any; item: any }[] = [];
+    periodOrders.forEach((o: any) =>
+      (o.items || []).forEach((item: any) => {
+        if (item.type === 'custom_masala') masalaLines.push({ order: o, item });
+      })
+    );
+    const masalaRevenue = masalaLines.reduce((s, l) => s + lineTotal(l.item), 0);
+    const masalaWeights = masalaLines.map((l) => Number(l.item.customDetails?.totalWeight) || 0).filter((w) => w > 0);
+    const ingredientCounts: Record<string, number> = {};
+    let roasted = 0;
+    let nonRoasted = 0;
+    masalaLines.forEach(({ item }) => {
+      (item.customDetails?.itemsList || []).forEach((ing: any) => {
+        if (!ing?.name) return;
+        ingredientCounts[ing.name] = (ingredientCounts[ing.name] || 0) + 1;
+        if (String(ing.roasting || '').toLowerCase().startsWith('non')) nonRoasted += 1;
+        else if (ing.roasting) roasted += 1;
+      });
+    });
+    const roastTotal = roasted + nonRoasted;
     const customMasalaAnalytics = {
-      totalOrders: 326,
-      totalRevenue: 128450,
-      avgWeightGrams: 245,
-      avgPrice: 395,
-      ordersOverTime: salesOverview.map((s, i) => ({
-        date: s.date,
-        orders: Math.round(8 + Math.sin(i * 0.9) * 4),
-        revenue: Math.round((8 + Math.sin(i * 0.9) * 4) * 395),
-      })),
-      mostSelectedIngredients: [
-        { name: 'Black Pepper', count: 284, percentage: 87 },
-        { name: 'Cumin Seeds', count: 265, percentage: 81 },
-        { name: 'Coriander Seeds', count: 242, percentage: 74 },
-        { name: 'Green Cardamom', count: 218, percentage: 67 },
-        { name: 'Cinnamon Sticks', count: 195, percentage: 60 },
-        { name: 'Kashmiri Chilli', count: 182, percentage: 56 },
-        { name: 'Cloves', count: 164, percentage: 50 },
-        { name: 'Fennel Seeds', count: 140, percentage: 43 },
-        { name: 'Dry Ginger', count: 125, percentage: 38 },
-      ],
+      totalOrders: new Set(masalaLines.map((l) => l.order.id)).size,
+      totalRevenue: masalaRevenue,
+      avgWeightGrams: masalaWeights.length ? Math.round(masalaWeights.reduce((a, b) => a + b, 0) / masalaWeights.length) : 0,
+      avgPrice: masalaLines.length ? Math.round(masalaRevenue / masalaLines.length) : 0,
+      ordersOverTime: salesOverview.map((s, idx) => {
+        const d = stepDay(idx);
+        const dayLines = masalaLines.filter((l) => sameDay(l.order, d));
+        return {
+          date: s.date,
+          orders: new Set(dayLines.map((l) => l.order.id)).size,
+          revenue: dayLines.reduce((t, l) => t + lineTotal(l.item), 0),
+        };
+      }),
+      mostSelectedIngredients: Object.entries(ingredientCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 9)
+        .map(([name, count]) => ({ name, count, percentage: masalaLines.length ? Math.round((count / masalaLines.length) * 100) : 0 })),
       roastingPreference: [
-        { type: 'Roasted', count: 241, percentage: 74, color: '#b0534c' },
-        { type: 'Non-Roasted', count: 85, percentage: 26, color: '#556b2f' },
+        { type: 'Roasted', count: roasted, percentage: roastTotal ? Math.round((roasted / roastTotal) * 100) : 0, color: '#b0534c' },
+        { type: 'Non-Roasted', count: nonRoasted, percentage: roastTotal ? Math.round((nonRoasted / roastTotal) * 100) : 0, color: '#556b2f' },
       ],
     };
 

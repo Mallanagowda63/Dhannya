@@ -14,11 +14,17 @@ import {
   ArrowUpDown,
 } from 'lucide-react';
 
+// Four category photos tiled together for the "All Products" tile.
+const ALL_PRODUCTS_COLLAGE = ['Wood Pressed Oils', 'Spices', 'Dry Fruits', 'Millets']
+  .map((name) => CATEGORIES.find((c) => c.name === name)?.image)
+  .filter((img): img is string => !!img);
+
 export const CategoryPageView: React.FC<{
   onNavigateHome?: () => void;
+  onNavigateOurProducts?: () => void;
   onSelectCategory: (cat?: ProductCategory) => void;
   onNavigateCustomMasala?: () => void;
-}> = ({ onNavigateHome, onSelectCategory, onNavigateCustomMasala }) => {
+}> = ({ onNavigateHome, onNavigateOurProducts, onSelectCategory, onNavigateCustomMasala }) => {
   const { products, activeCategory, setActiveCategory, searchQuery, setSearchQuery } = useApp();
 
   const [sortOption, setSortOption] = useState<SortOption>('featured');
@@ -122,34 +128,67 @@ export const CategoryPageView: React.FC<{
 
       {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
-        {/* Category Pills Bar -- sticks just below the site header on scroll */}
+        {/* Category Tiles Bar -- image tile with name below; sticks just below the site header on scroll */}
         <div
-          className="sticky z-30 flex items-center gap-2 overflow-x-auto no-scrollbar py-4 mb-6 border-b border-[#2A2620]/10 bg-[#F4ECD8]"
+          className="sticky z-30 -mx-4 sm:mx-0 flex items-start gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar snap-x snap-proximity px-4 sm:px-0 pt-3 pb-2 mb-6 border-b border-[#2A2620]/10 bg-[#F4ECD8]"
           style={{ top: 'var(--site-header-height, 0px)' }}
         >
-          <button
-            onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap transition-colors ${
-              activeCategory === null
-                ? 'bg-[#3E4B32] text-[#F4ECD8]'
-                : 'kraft-card text-[#2A2620] hover:border-[#3E4B32]'
-            }`}
-          >
-            All Products
-          </button>
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.name}
-              onClick={() => setActiveCategory(cat.name as ProductCategory)}
-              className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap transition-colors ${
-                activeCategory === cat.name
-                  ? 'bg-[#3E4B32] text-[#F4ECD8]'
-                  : 'kraft-card text-[#2A2620] hover:border-[#3E4B32]'
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
+          {[{ name: null as ProductCategory | null, label: 'All Products', image: '' }, ...CATEGORIES.map((c) => ({ name: c.name as ProductCategory, label: c.name, image: c.image }))].map((tile) => {
+            const selected = activeCategory === tile.name;
+            return (
+              <button
+                key={tile.label}
+                onClick={() => {
+                  if (tile.name === null) {
+                    // "All Products" goes to the "Our Products" section on the home page
+                    setSearchQuery('');
+                    setSelectedConcern('All');
+                    if (onNavigateOurProducts) onNavigateOurProducts();
+                    else setActiveCategory(null);
+                  } else {
+                    setActiveCategory(tile.name);
+                  }
+                }}
+                className="group shrink-0 w-[68px] sm:w-[80px] snap-start flex flex-col items-center gap-1.5 cursor-pointer"
+                aria-pressed={selected}
+              >
+                <div
+                  className={`w-full aspect-[4/3] rounded-[12px] overflow-hidden transition-all ${
+                    selected
+                      ? 'ring-2 ring-[#3E4B32] ring-offset-1 ring-offset-[#F4ECD8] shadow-md'
+                      : 'shadow-sm group-hover:shadow-md opacity-90 group-hover:opacity-100'
+                  }`}
+                >
+                  {tile.image ? (
+                    <img
+                      src={tile.image}
+                      alt={tile.label}
+                      loading="lazy"
+                      className="w-full h-full object-cover bg-white/60"
+                      onError={(e) => {
+                        e.currentTarget.style.visibility = 'hidden';
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full grid grid-cols-2 grid-rows-2 gap-px bg-[#E8DFC8]">
+                      {ALL_PRODUCTS_COLLAGE.map((src) => (
+                        <img key={src} src={src} alt="" loading="lazy" className="w-full h-full object-cover bg-white/60" />
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <span
+                  className={`text-[10px] sm:text-[11px] font-bold text-center leading-tight transition-colors ${
+                    selected
+                      ? 'text-[#3E4B32] underline underline-offset-4 decoration-2'
+                      : 'text-[#2A2620]/80 group-hover:text-[#2A2620]'
+                  }`}
+                >
+                  {tile.label}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Toolbar: Filters & Sort */}
