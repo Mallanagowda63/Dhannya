@@ -2384,6 +2384,18 @@ app.post('/api/orders', async (req, res) => {
       }
     }
 
+    // Only Cash on Delivery may be placed unpaid. Any online method (Razorpay/UPI/
+    // card...) must arrive with a payment already verified via /api/payment/verify;
+    // otherwise reject instead of storing an unpaid "Razorpay" order and emailing
+    // a confirmation for it.
+    const methodLabel = String(paymentMethod || 'COD').trim();
+    if (methodLabel.toUpperCase() !== 'COD' && paymentStatus !== 'Paid') {
+      return res.status(402).json({
+        success: false,
+        message: 'Payment not verified. Online orders are accepted only after a successful Razorpay payment.',
+      });
+    }
+
     const newOrder = {
       id: orderId,
       userId: userId || 'usr-101',
