@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -9,23 +9,25 @@ import { BestSellersCarousel } from './components/BestSellersCarousel';
 import { RecommendedCarousel } from './components/RecommendedCarousel';
 import { CustomMasalaBuilder } from './components/CustomMasalaBuilder';
 import { CategoryPageView } from './components/CategoryPageView';
-import { OurStoryPage } from './components/OurStoryPage';
-import { FreshMillingPage } from './components/FreshMillingPage';
-import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
-import { RefundPolicyPage } from './components/RefundPolicyPage';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { AuthModal } from './components/AuthModal';
 import { UserProfileModal } from './components/UserProfileModal';
-import { ProductQuickView } from './components/ProductQuickView';
 import { ToastContainer } from './components/ToastContainer';
 import { WhatsAppButton } from './components/WhatsAppButton';
-import { AdminPanel } from './components/AdminPanel';
 import { ServerConditionModal } from './components/ServerConditionModal';
 import { BottomNav } from './components/BottomNav';
-import { BrandSystemModal } from './components/BrandSystemModal';
-import { PackagingQRModal } from './components/PackagingQRModal';
 import { ProductCategory, Product } from './types';
+
+// Pages and overlays that are not needed for the first paint load as separate chunks.
+const OurStoryPage = lazy(() => import('./components/OurStoryPage').then((m) => ({ default: m.OurStoryPage })));
+const FreshMillingPage = lazy(() => import('./components/FreshMillingPage').then((m) => ({ default: m.FreshMillingPage })));
+const PrivacyPolicyPage = lazy(() => import('./components/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })));
+const RefundPolicyPage = lazy(() => import('./components/RefundPolicyPage').then((m) => ({ default: m.RefundPolicyPage })));
+const ProductQuickView = lazy(() => import('./components/ProductQuickView').then((m) => ({ default: m.ProductQuickView })));
+const AdminPanel = lazy(() => import('./components/AdminPanel').then((m) => ({ default: m.AdminPanel })));
+const BrandSystemModal = lazy(() => import('./components/BrandSystemModal').then((m) => ({ default: m.BrandSystemModal })));
+const PackagingQRModal = lazy(() => import('./components/PackagingQRModal').then((m) => ({ default: m.PackagingQRModal })));
 
 const MainAppContent: React.FC = () => {
   const {
@@ -230,16 +232,20 @@ const MainAppContent: React.FC = () => {
   if (isAdminMode && user?.role === 'admin') {
     return (
       <div className="min-h-screen bg-[#2A2620] font-sans antialiased text-[#F4ECD8] selection:bg-[#C89211] selection:text-[#2A2620]">
-        <AdminPanel />
+        <Suspense fallback={null}>
+          <AdminPanel />
+        </Suspense>
         <ToastContainer />
         <ServerConditionModal
           isOpen={isServerModalOpen}
           onClose={() => setIsServerModalOpen(false)}
         />
-        <BrandSystemModal
-          isOpen={isBrandSystemOpen}
-          onClose={() => setIsBrandSystemOpen(false)}
-        />
+        <Suspense fallback={null}>
+          <BrandSystemModal
+            isOpen={isBrandSystemOpen}
+            onClose={() => setIsBrandSystemOpen(false)}
+          />
+        </Suspense>
       </div>
     );
   }
@@ -256,6 +262,7 @@ const MainAppContent: React.FC = () => {
           onOpenBrandSystem={() => setIsBrandSystemOpen(true)}
         />
 
+        <Suspense fallback={<div className="min-h-[60vh]" />}>
         {currentPageView === 'home' && (
           <main>
             <HeroSlider
@@ -312,6 +319,7 @@ const MainAppContent: React.FC = () => {
             <RefundPolicyPage onNavigateHome={handleNavigateHome} />
           </main>
         )}
+        </Suspense>
       </div>
 
       <Footer
@@ -337,13 +345,16 @@ const MainAppContent: React.FC = () => {
       <CheckoutModal />
       <AuthModal />
       <UserProfileModal />
-      <ProductQuickView />
+      <Suspense fallback={null}>
+        <ProductQuickView />
+      </Suspense>
       <ServerConditionModal
         isOpen={isServerModalOpen}
         onClose={() => setIsServerModalOpen(false)}
       />
 
       {/* 360 Brand Experience Modals */}
+      <Suspense fallback={null}>
       <BrandSystemModal
         isOpen={isBrandSystemOpen}
         onClose={() => setIsBrandSystemOpen(false)}
@@ -354,6 +365,7 @@ const MainAppContent: React.FC = () => {
         onClose={() => setInspectingProduct(null)}
         onNavigateCustomMasala={handleNavigateCustomMasala}
       />
+      </Suspense>
       <ToastContainer />
       <WhatsAppButton />
     </div>

@@ -11,7 +11,7 @@ import {
   Address,
   Coupon,
 } from '../types';
-import { PRODUCTS, COUPONS } from '../data/initialData';
+import { COUPONS } from '../data/initialData';
 
 interface Toast {
   id: string;
@@ -92,12 +92,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // The bundled fallback list (shown until /api/products loads) has some reused ids;
-  // keep the first of each so React list keys stay unique.
-  const [products, setProducts] = useState<Product[]>(() => {
-    const seen = new Set<string>();
-    return PRODUCTS.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)));
-  });
+  const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('dhaanya_cart');
     return saved ? JSON.parse(saved) : [];
@@ -113,10 +108,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
           setProducts(data.data);
           if ((import.meta as any).env?.DEV) warnOnUnpricedProducts(data.data);
+          return;
         }
       }
     } catch (e) {
       console.warn('Error fetching live products from API:', e);
+    }
+    await loadFallbackProducts();
+  };
+
+  // The bundled fallback catalogue is large, so it's only fetched when the API
+  // is unavailable. It has some reused ids; keep the first of each so React
+  // list keys stay unique.
+  const loadFallbackProducts = async () => {
+    try {
+      const { PRODUCTS } = await import('../data/products');
+      const seen = new Set<string>();
+      setProducts((current) =>
+        current.length > 0
+          ? current
+          : PRODUCTS.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)))
+      );
+    } catch (e) {
+      console.warn('Error loading fallback products:', e);
     }
   };
 

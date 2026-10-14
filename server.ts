@@ -5,7 +5,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import dns from 'dns';
 import { createServer as createViteServer } from 'vite';
-import { PRODUCTS, CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData';
+import { CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData';
+import { PRODUCTS } from './src/data/products';
 import { Product, Order, Address } from './src/types';
 
 import crypto from 'crypto';

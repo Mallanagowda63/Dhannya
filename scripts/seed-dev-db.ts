@@ -21,7 +21,8 @@
  */
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { PRODUCTS, CATEGORIES, COUPONS, REVIEWS } from '../src/data/initialData';
+import { CATEGORIES, COUPONS, REVIEWS } from '../src/data/initialData';
+import { PRODUCTS } from '../src/data/products';
 
 dotenv.config({ path: '.env.local' });
 dotenv.config();

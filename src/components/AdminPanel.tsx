@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { getApiUrl } from '../utils/apiConfig';
 import { Product, Order, ProductCategory } from '../types';
-import { CATEGORIES, PRODUCTS } from '../data/initialData';
+import { CATEGORIES } from '../data/initialData';
+import { PRODUCTS } from '../data/products';
 import {
   LayoutDashboard,
   ShoppingBag,

@@ -1,0 +1,13 @@
+import mongoose from 'mongoose';
+import dns from 'dns';
+import dotenv from 'dotenv';
+import fs from 'fs';
+dotenv.config({ path: '.env.local' });
+dotenv.config();
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+const M = mongoose.model('Product', new mongoose.Schema({}, { strict: false }));
+await mongoose.connect(process.env.MONGODB_URI!, { dbName: 'ecomm' });
+const docs = await M.find({}).lean();
+fs.writeFileSync(process.argv[2], JSON.stringify(docs, null, 1));
+console.log('dumped', docs.length, 'db', mongoose.connection.name, 'host', mongoose.connection.host);
+await mongoose.disconnect();

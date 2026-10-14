@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
-import { PRODUCT_DETAILS } from '../data/initialData';
+import { PRODUCT_DETAILS } from '../data/productDetails';
 import {
   ShoppingBag,
   Heart,

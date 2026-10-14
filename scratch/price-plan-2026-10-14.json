@@ -1,0 +1,4719 @@
+{
+ "updates": [
+  {
+   "name": "Ajwa Dates",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1600.0,
+     "originalPrice": 1600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc97"
+    },
+    {
+     "weight": "250g",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc98"
+    },
+    {
+     "weight": "500g",
+     "price": 800.0,
+     "originalPrice": 800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc99"
+    }
+   ]
+  },
+  {
+   "name": "Amla Dry Candy",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccaf"
+    },
+    {
+     "weight": "250g",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccb0"
+    },
+    {
+     "weight": "500g",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccb1"
+    }
+   ]
+  },
+  {
+   "name": "Black Seedless Raisins",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 850.0,
+     "originalPrice": 850.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd01"
+    },
+    {
+     "weight": "250g",
+     "price": 212.5,
+     "originalPrice": 212.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd02"
+    },
+    {
+     "weight": "500g",
+     "price": 425.0,
+     "originalPrice": 425.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd03"
+    }
+   ]
+  },
+  {
+   "name": "Dates- Dry Black Fine (Oman Kaarakka)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 750.0,
+     "originalPrice": 750.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd96"
+    },
+    {
+     "weight": "250g",
+     "price": 187.5,
+     "originalPrice": 187.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd97"
+    },
+    {
+     "weight": "500g",
+     "price": 375.0,
+     "originalPrice": 375.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd98"
+    }
+   ]
+  },
+  {
+   "name": "Dried Cherry",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1200.0,
+     "originalPrice": 1200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd9c"
+    },
+    {
+     "weight": "250g",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd9d"
+    },
+    {
+     "weight": "500g",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd9e"
+    }
+   ]
+  },
+  {
+   "name": "Dried Strawberry",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1350.0,
+     "originalPrice": 1350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdb2"
+    },
+    {
+     "weight": "250g",
+     "price": 337.5,
+     "originalPrice": 337.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdb3"
+    },
+    {
+     "weight": "500g",
+     "price": 675.0,
+     "originalPrice": 675.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdb4"
+    }
+   ]
+  },
+  {
+   "name": "Fig (Small)",
+   "variants": [
+    {
+     "weight": "250g",
+     "price": 525.0,
+     "originalPrice": 525.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc7"
+    },
+    {
+     "weight": "500g",
+     "price": 1050.0,
+     "originalPrice": 1050.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc8"
+    },
+    {
+     "weight": "1kg",
+     "price": 2100.0,
+     "originalPrice": 2100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc9"
+    }
+   ]
+  },
+  {
+   "name": "Ginger Cube",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1100.0,
+     "originalPrice": 1100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cde4"
+    },
+    {
+     "weight": "250g",
+     "price": 275.0,
+     "originalPrice": 275.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cde5"
+    },
+    {
+     "weight": "500g",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cde6"
+    }
+   ]
+  },
+  {
+   "name": "Kiwi Green Dried",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 800.0,
+     "originalPrice": 800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce3b"
+    },
+    {
+     "weight": "250g",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce3c"
+    },
+    {
+     "weight": "500g",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce3d"
+    }
+   ]
+  },
+  {
+   "name": "Medjool Jumbo Dates",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2500.0,
+     "originalPrice": 2500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce82"
+    },
+    {
+     "weight": "250g",
+     "price": 625.0,
+     "originalPrice": 625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce83"
+    },
+    {
+     "weight": "500g",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce84"
+    }
+   ]
+  },
+  {
+   "name": "Munakka Raisins",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1100.0,
+     "originalPrice": 1100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceb0"
+    },
+    {
+     "weight": "250g",
+     "price": 275.0,
+     "originalPrice": 275.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceb1"
+    },
+    {
+     "weight": "500g",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceb2"
+    }
+   ]
+  },
+  {
+   "name": "Papaya Dried",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 950.0,
+     "originalPrice": 950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cedd"
+    },
+    {
+     "weight": "250g",
+     "price": 237.5,
+     "originalPrice": 237.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cede"
+    },
+    {
+     "weight": "500g",
+     "price": 475.0,
+     "originalPrice": 475.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cedf"
+    }
+   ]
+  },
+  {
+   "name": "Pineapple Coin (Dried)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 950.0,
+     "originalPrice": 950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf00"
+    },
+    {
+     "weight": "250g",
+     "price": 237.5,
+     "originalPrice": 237.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf01"
+    },
+    {
+     "weight": "500g",
+     "price": 475.0,
+     "originalPrice": 475.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf02"
+    }
+   ]
+  },
+  {
+   "name": "Pineapple Ring Dried",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1050.0,
+     "originalPrice": 1050.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf03"
+    },
+    {
+     "weight": "250g",
+     "price": 262.5,
+     "originalPrice": 262.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf04"
+    },
+    {
+     "weight": "500g",
+     "price": 525.0,
+     "originalPrice": 525.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf05"
+    }
+   ]
+  },
+  {
+   "name": "Raisin- Afghan Long",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1190.0,
+     "originalPrice": 1190.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf4b"
+    },
+    {
+     "weight": "250g",
+     "price": 297.5,
+     "originalPrice": 297.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf4c"
+    },
+    {
+     "weight": "500g",
+     "price": 595.0,
+     "originalPrice": 595.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf4d"
+    }
+   ]
+  },
+  {
+   "name": "Safawi Dates",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1090.0,
+     "originalPrice": 1090.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfaf"
+    },
+    {
+     "weight": "250g",
+     "price": 272.5,
+     "originalPrice": 272.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfb0"
+    },
+    {
+     "weight": "500g",
+     "price": 545.0,
+     "originalPrice": 545.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfb1"
+    }
+   ]
+  },
+  {
+   "name": "Yellow Ball Raisins",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 700.0,
+     "originalPrice": 700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d042"
+    },
+    {
+     "weight": "250g",
+     "price": 175.0,
+     "originalPrice": 175.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d043"
+    },
+    {
+     "weight": "500g",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d044"
+    }
+   ]
+  },
+  {
+   "name": "Almonds Jumbo",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2390.0,
+     "originalPrice": 2390.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca0"
+    },
+    {
+     "weight": "250g",
+     "price": 597.5,
+     "originalPrice": 597.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca1"
+    },
+    {
+     "weight": "500g",
+     "price": 1195.0,
+     "originalPrice": 1195.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca2"
+    }
+   ]
+  },
+  {
+   "name": "Almonds USA",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2090.0,
+     "originalPrice": 2090.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca3"
+    },
+    {
+     "weight": "250g",
+     "price": 522.5,
+     "originalPrice": 522.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca4"
+    },
+    {
+     "weight": "500g",
+     "price": 1045.0,
+     "originalPrice": 1045.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca5"
+    }
+   ]
+  },
+  {
+   "name": "Alovi Seeds (Halim Seeds)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca6"
+    },
+    {
+     "weight": "250g",
+     "price": 75.0,
+     "originalPrice": 75.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca7"
+    },
+    {
+     "weight": "500g",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca8"
+    }
+   ]
+  },
+  {
+   "name": "Basil Seeds (Sabja)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 490.0,
+     "originalPrice": 490.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce4"
+    },
+    {
+     "weight": "250g",
+     "price": 122.5,
+     "originalPrice": 122.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce5"
+    },
+    {
+     "weight": "500g",
+     "price": 245.0,
+     "originalPrice": 245.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce6"
+    }
+   ]
+  },
+  {
+   "name": "Brazil Nuts",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 4590.0,
+     "originalPrice": 4590.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd09"
+    },
+    {
+     "weight": "250g",
+     "price": 1147.5,
+     "originalPrice": 1147.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd0a"
+    },
+    {
+     "weight": "500g",
+     "price": 2295.0,
+     "originalPrice": 2295.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd0b"
+    }
+   ]
+  },
+  {
+   "name": "Cashew- Broken PS",
+   "variants": [
+    {
+     "weight": "250g",
+     "price": 322.5,
+     "originalPrice": 322.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd2c"
+    },
+    {
+     "weight": "500g",
+     "price": 645.0,
+     "originalPrice": 645.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd2d"
+    },
+    {
+     "weight": "1kg",
+     "price": 1290.0,
+     "originalPrice": 1290.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd2e"
+    }
+   ]
+  },
+  {
+   "name": "Cashew- Pepper Garlic 240",
+   "variants": [
+    {
+     "weight": "250g",
+     "price": 490.0,
+     "originalPrice": 490.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd32"
+    },
+    {
+     "weight": "500g",
+     "price": 980.0,
+     "originalPrice": 980.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd33"
+    },
+    {
+     "weight": "1kg",
+     "price": 1960.0,
+     "originalPrice": 1960.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd34"
+    }
+   ]
+  },
+  {
+   "name": "Cashew Roasted And Salted",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1960.0,
+     "originalPrice": 1960.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd26"
+    },
+    {
+     "weight": "250g",
+     "price": 490.0,
+     "originalPrice": 490.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd27"
+    },
+    {
+     "weight": "500g",
+     "price": 980.0,
+     "originalPrice": 980.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd28"
+    }
+   ]
+  },
+  {
+   "name": "Cashew 240",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1650.0,
+     "originalPrice": 1650.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd1d"
+    },
+    {
+     "weight": "250g",
+     "price": 412.5,
+     "originalPrice": 412.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd1e"
+    },
+    {
+     "weight": "500g",
+     "price": 825.0,
+     "originalPrice": 825.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd1f"
+    }
+   ]
+  },
+  {
+   "name": "Chia Seeds",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 650.0,
+     "originalPrice": 650.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd3b"
+    },
+    {
+     "weight": "250g",
+     "price": 162.5,
+     "originalPrice": 162.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd3c"
+    },
+    {
+     "weight": "500g",
+     "price": 325.0,
+     "originalPrice": 325.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd3d"
+    }
+   ]
+  },
+  {
+   "name": "Cucumber Seeds",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1750.0,
+     "originalPrice": 1750.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd71"
+    },
+    {
+     "weight": "250g",
+     "price": 437.5,
+     "originalPrice": 437.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd72"
+    },
+    {
+     "weight": "500g",
+     "price": 875.0,
+     "originalPrice": 875.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd73"
+    }
+   ]
+  },
+  {
+   "name": "Flax Seeds",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 260.0,
+     "originalPrice": 260.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdcd"
+    },
+    {
+     "weight": "250g",
+     "price": 65.0,
+     "originalPrice": 65.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdce"
+    },
+    {
+     "weight": "500g",
+     "price": 130.0,
+     "originalPrice": 130.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdcf"
+    }
+   ]
+  },
+  {
+   "name": "Macadamia Nuts",
+   "variants": [
+    {
+     "weight": "250g",
+     "price": 625.0,
+     "originalPrice": 625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce5d"
+    },
+    {
+     "weight": "500g",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce5e"
+    },
+    {
+     "weight": "1kg",
+     "price": 2500.0,
+     "originalPrice": 2500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce5f"
+    }
+   ]
+  },
+  {
+   "name": "Makhana (Lotus Seeds)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1900.0,
+     "originalPrice": 1900.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce60"
+    },
+    {
+     "weight": "250g",
+     "price": 475.0,
+     "originalPrice": 475.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce61"
+    },
+    {
+     "weight": "500g",
+     "price": 950.0,
+     "originalPrice": 950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce62"
+    }
+   ]
+  },
+  {
+   "name": "Mixed DryFruit & Seeds Roasted",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1600.0,
+     "originalPrice": 1600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce8c"
+    },
+    {
+     "weight": "250g",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce8d"
+    },
+    {
+     "weight": "500g",
+     "price": 800.0,
+     "originalPrice": 800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce8e"
+    }
+   ]
+  },
+  {
+   "name": "Peanut Salted",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 450.0,
+     "originalPrice": 450.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceec"
+    },
+    {
+     "weight": "250g",
+     "price": 112.5,
+     "originalPrice": 112.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceed"
+    },
+    {
+     "weight": "500g",
+     "price": 225.0,
+     "originalPrice": 225.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceee"
+    }
+   ]
+  },
+  {
+   "name": "Peanut Plain Roasted",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 450.0,
+     "originalPrice": 450.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cee6"
+    },
+    {
+     "weight": "250g",
+     "price": 112.5,
+     "originalPrice": 112.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cee7"
+    },
+    {
+     "weight": "500g",
+     "price": 225.0,
+     "originalPrice": 225.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cee8"
+    }
+   ]
+  },
+  {
+   "name": "Pecan Nuts",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2500.0,
+     "originalPrice": 2500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef2"
+    },
+    {
+     "weight": "250g",
+     "price": 625.0,
+     "originalPrice": 625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef3"
+    },
+    {
+     "weight": "500g",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef4"
+    }
+   ]
+  },
+  {
+   "name": "Pista California (AM)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2400.0,
+     "originalPrice": 2400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf09"
+    },
+    {
+     "weight": "250g",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf0a"
+    },
+    {
+     "weight": "500g",
+     "price": 1200.0,
+     "originalPrice": 1200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf0b"
+    }
+   ]
+  },
+  {
+   "name": "Pista Salted & Roasted",
+   "variants": [
+    {
+     "weight": "250g",
+     "price": 625.0,
+     "originalPrice": 625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf0f"
+    },
+    {
+     "weight": "500g",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf10"
+    },
+    {
+     "weight": "1kg",
+     "price": 2500.0,
+     "originalPrice": 2500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf11"
+    }
+   ]
+  },
+  {
+   "name": "Protein Beans",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf20"
+    },
+    {
+     "weight": "250g",
+     "price": 312.5,
+     "originalPrice": 312.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf21"
+    },
+    {
+     "weight": "500g",
+     "price": 625.0,
+     "originalPrice": 625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf22"
+    }
+   ]
+  },
+  {
+   "name": "Pumpkin Seeds",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1050.0,
+     "originalPrice": 1050.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf29"
+    },
+    {
+     "weight": "250g",
+     "price": 262.5,
+     "originalPrice": 262.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf2a"
+    },
+    {
+     "weight": "500g",
+     "price": 525.0,
+     "originalPrice": 525.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf2b"
+    }
+   ]
+  },
+  {
+   "name": "Sesame Seeds (Til) Black",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfbe"
+    },
+    {
+     "weight": "250g",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfbf"
+    },
+    {
+     "weight": "500g",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc0"
+    }
+   ]
+  },
+  {
+   "name": "Sesame Seeds (Til) White",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc1"
+    },
+    {
+     "weight": "250g",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc2"
+    },
+    {
+     "weight": "500g",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc3"
+    }
+   ]
+  },
+  {
+   "name": "Sunflower Seeds",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 500.0,
+     "originalPrice": 500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cff2"
+    },
+    {
+     "weight": "250g",
+     "price": 125.0,
+     "originalPrice": 125.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cff3"
+    },
+    {
+     "weight": "500g",
+     "price": 250.0,
+     "originalPrice": 250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cff4"
+    }
+   ]
+  },
+  {
+   "name": "Walnut Chile",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2520.0,
+     "originalPrice": 2520.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d02a"
+    },
+    {
+     "weight": "250g",
+     "price": 630.0,
+     "originalPrice": 630.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d02b"
+    },
+    {
+     "weight": "500g",
+     "price": 1260.0,
+     "originalPrice": 1260.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d02c"
+    }
+   ]
+  },
+  {
+   "name": "Walnut Super White (Kashmiri)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1920.0,
+     "originalPrice": 1920.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d030"
+    },
+    {
+     "weight": "250g",
+     "price": 480.0,
+     "originalPrice": 480.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d031"
+    },
+    {
+     "weight": "500g",
+     "price": 960.0,
+     "originalPrice": 960.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d032"
+    }
+   ]
+  },
+  {
+   "name": "Bengal Gram Dal (Besan)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 155.0,
+     "originalPrice": 155.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccee"
+    },
+    {
+     "weight": "250g",
+     "price": 38.75,
+     "originalPrice": 38.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccef"
+    },
+    {
+     "weight": "500g",
+     "price": 77.5,
+     "originalPrice": 77.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf0"
+    }
+   ]
+  },
+  {
+   "name": "Green Gram",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 230.0,
+     "originalPrice": 230.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdea"
+    },
+    {
+     "weight": "250g",
+     "price": 57.5,
+     "originalPrice": 57.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdeb"
+    },
+    {
+     "weight": "500g",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdec"
+    }
+   ]
+  },
+  {
+   "name": "Green Peas",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdf0"
+    },
+    {
+     "weight": "250g",
+     "price": 37.5,
+     "originalPrice": 37.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdf1"
+    },
+    {
+     "weight": "500g",
+     "price": 75.0,
+     "originalPrice": 75.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdf2"
+    }
+   ]
+  },
+  {
+   "name": "Horse Gram (Muthira)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 160.0,
+     "originalPrice": 160.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce08"
+    },
+    {
+     "weight": "250g",
+     "price": 40.0,
+     "originalPrice": 40.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce09"
+    },
+    {
+     "weight": "500g",
+     "price": 80.0,
+     "originalPrice": 80.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce0a"
+    }
+   ]
+  },
+  {
+   "name": "Kabuli Chana White",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 235.0,
+     "originalPrice": 235.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce2e"
+    },
+    {
+     "weight": "250g",
+     "price": 58.75,
+     "originalPrice": 58.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce2f"
+    },
+    {
+     "weight": "500g",
+     "price": 117.5,
+     "originalPrice": 117.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce30"
+    }
+   ]
+  },
+  {
+   "name": "Moong Dal",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 190.0,
+     "originalPrice": 190.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce92"
+    },
+    {
+     "weight": "250g",
+     "price": 47.5,
+     "originalPrice": 47.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce93"
+    },
+    {
+     "weight": "500g",
+     "price": 95.0,
+     "originalPrice": 95.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce94"
+    }
+   ]
+  },
+  {
+   "name": "Putana (Parched Gram) Fine",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 170.0,
+     "originalPrice": 170.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf2c"
+    },
+    {
+     "weight": "250g",
+     "price": 42.5,
+     "originalPrice": 42.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf2d"
+    },
+    {
+     "weight": "500g",
+     "price": 85.0,
+     "originalPrice": 85.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf2e"
+    }
+   ]
+  },
+  {
+   "name": "Red Rajma Kidney Beans",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 250.0,
+     "originalPrice": 250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf8d"
+    },
+    {
+     "weight": "250g",
+     "price": 62.5,
+     "originalPrice": 62.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf8e"
+    },
+    {
+     "weight": "500g",
+     "price": 125.0,
+     "originalPrice": 125.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf8f"
+    }
+   ]
+  },
+  {
+   "name": "Toor Dal Fine (Yellow)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 230.0,
+     "originalPrice": 230.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d011"
+    },
+    {
+     "weight": "250g",
+     "price": 57.5,
+     "originalPrice": 57.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d012"
+    },
+    {
+     "weight": "500g",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d013"
+    }
+   ]
+  },
+  {
+   "name": "Urad Dal Black Split",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 210.0,
+     "originalPrice": 210.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d01b"
+    },
+    {
+     "weight": "250g",
+     "price": 52.5,
+     "originalPrice": 52.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d01c"
+    },
+    {
+     "weight": "500g",
+     "price": 105.0,
+     "originalPrice": 105.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d01d"
+    }
+   ]
+  },
+  {
+   "name": "Urad Gola Fine-Ball",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 240.0,
+     "originalPrice": 240.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d01e"
+    },
+    {
+     "weight": "250g",
+     "price": 60.0,
+     "originalPrice": 60.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d01f"
+    },
+    {
+     "weight": "500g",
+     "price": 120.0,
+     "originalPrice": 120.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d020"
+    }
+   ]
+  },
+  {
+   "name": "Urad White Chilka (Split)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 235.0,
+     "originalPrice": 235.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d021"
+    },
+    {
+     "weight": "250g",
+     "price": 58.75,
+     "originalPrice": 58.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d022"
+    },
+    {
+     "weight": "500g",
+     "price": 117.5,
+     "originalPrice": 117.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d023"
+    }
+   ]
+  },
+  {
+   "name": "White Rajma (Pinto Beans)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 230.0,
+     "originalPrice": 230.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d039"
+    },
+    {
+     "weight": "250g",
+     "price": 57.5,
+     "originalPrice": 57.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d03a"
+    },
+    {
+     "weight": "500g",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d03b"
+    }
+   ]
+  },
+  {
+   "name": "Ajwain (Ayamodakam)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 520.0,
+     "originalPrice": 520.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc9a"
+    },
+    {
+     "weight": "250g",
+     "price": 130.0,
+     "originalPrice": 130.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc9b"
+    },
+    {
+     "weight": "500g",
+     "price": 260.0,
+     "originalPrice": 260.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc9c"
+    }
+   ]
+  },
+  {
+   "name": "Bay Leaves Tej Patta",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 950.0,
+     "originalPrice": 950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce7"
+    },
+    {
+     "weight": "250g",
+     "price": 237.5,
+     "originalPrice": 237.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce8"
+    },
+    {
+     "weight": "500g",
+     "price": 475.0,
+     "originalPrice": 475.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce9"
+    }
+   ]
+  },
+  {
+   "name": "Black Cardamom (Black Elaichi)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 3200.0,
+     "originalPrice": 3200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf5"
+    },
+    {
+     "weight": "250g",
+     "price": 800.0,
+     "originalPrice": 800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf6"
+    },
+    {
+     "weight": "500g",
+     "price": 1600.0,
+     "originalPrice": 1600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf7"
+    }
+   ]
+  },
+  {
+   "name": "Black Salt",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccfe"
+    },
+    {
+     "weight": "250g",
+     "price": 50.0,
+     "originalPrice": 50.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccff"
+    },
+    {
+     "weight": "500g",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd00"
+    }
+   ]
+  },
+  {
+   "name": "Cardamom Bold",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 500.0,
+     "originalPrice": 500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd0f"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 750.0,
+     "originalPrice": 750.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd10"
+    },
+    {
+     "weight": "1kg",
+     "price": 5000.0,
+     "originalPrice": 5000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd11"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd12"
+    },
+    {
+     "weight": "250g",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd13"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd14"
+    },
+    {
+     "weight": "500g",
+     "price": 2500.0,
+     "originalPrice": 2500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd15"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 250.0,
+     "originalPrice": 250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd16"
+    }
+   ]
+  },
+  {
+   "name": "Cinnamon Roll (Churul Patta, Indonesia)",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd45"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 172.5,
+     "originalPrice": 172.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd46"
+    },
+    {
+     "weight": "1kg",
+     "price": 1150.0,
+     "originalPrice": 1150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd47"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 230.0,
+     "originalPrice": 230.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd48"
+    },
+    {
+     "weight": "250g",
+     "price": 287.5,
+     "originalPrice": 287.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd49"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 287.5,
+     "originalPrice": 287.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd4a"
+    },
+    {
+     "weight": "500g",
+     "price": 575.0,
+     "originalPrice": 575.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd4b"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 57.5,
+     "originalPrice": 57.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd4c"
+    }
+   ]
+  },
+  {
+   "name": "Cassia Cinnamon",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd35"
+    },
+    {
+     "weight": "250g",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd36"
+    },
+    {
+     "weight": "500g",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd37"
+    }
+   ]
+  },
+  {
+   "name": "Cloves",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 170.0,
+     "originalPrice": 170.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd4e"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 255.0,
+     "originalPrice": 255.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd4f"
+    },
+    {
+     "weight": "1kg",
+     "price": 1700.0,
+     "originalPrice": 1700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd50"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 340.0,
+     "originalPrice": 340.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd51"
+    },
+    {
+     "weight": "250g",
+     "price": 425.0,
+     "originalPrice": 425.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd52"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 425.0,
+     "originalPrice": 425.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd53"
+    },
+    {
+     "weight": "500g",
+     "price": 850.0,
+     "originalPrice": 850.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd54"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 85.0,
+     "originalPrice": 85.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd55"
+    }
+   ]
+  },
+  {
+   "name": "Cumin (Jeerakam)",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 60.0,
+     "originalPrice": 60.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd74"
+    },
+    {
+     "weight": "125g - Masala",
+     "price": 75.0,
+     "originalPrice": 75.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd75"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 90.0,
+     "originalPrice": 90.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd76"
+    },
+    {
+     "weight": "175g - Masala",
+     "price": 105.0,
+     "originalPrice": 105.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd77"
+    },
+    {
+     "weight": "1kg",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd78"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 120.0,
+     "originalPrice": 120.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd79"
+    },
+    {
+     "weight": "225g - Masala",
+     "price": 135.0,
+     "originalPrice": 135.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd7a"
+    },
+    {
+     "weight": "250g",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd7b"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd7c"
+    },
+    {
+     "weight": "25g - Masala",
+     "price": 15.0,
+     "originalPrice": 15.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd7d"
+    },
+    {
+     "weight": "500g",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd7e"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 30.0,
+     "originalPrice": 30.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd7f"
+    },
+    {
+     "weight": "75g - Masala",
+     "price": 45.0,
+     "originalPrice": 45.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd80"
+    }
+   ]
+  },
+  {
+   "name": "Dried Ginger",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 800.0,
+     "originalPrice": 800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cda6"
+    },
+    {
+     "weight": "250g",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cda7"
+    },
+    {
+     "weight": "500g",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cda8"
+    }
+   ]
+  },
+  {
+   "name": "Fennel (Perumjeerakam)",
+   "variants": [
+    {
+     "weight": "1KG",
+     "price": 580.0,
+     "originalPrice": 580.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdbe"
+    },
+    {
+     "weight": "250G",
+     "price": 145.0,
+     "originalPrice": 145.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdbf"
+    },
+    {
+     "weight": "500G",
+     "price": 290.0,
+     "originalPrice": 290.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc0"
+    }
+   ]
+  },
+  {
+   "name": "Fenugreek (Uluva)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 215.0,
+     "originalPrice": 215.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc1"
+    },
+    {
+     "weight": "250g",
+     "price": 53.75,
+     "originalPrice": 53.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc2"
+    },
+    {
+     "weight": "500g",
+     "price": 107.5,
+     "originalPrice": 107.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdc3"
+    }
+   ]
+  },
+  {
+   "name": "Hing (Asafoetida)",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce03"
+    },
+    {
+     "weight": "1kg",
+     "price": 2000.0,
+     "originalPrice": 2000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce04"
+    },
+    {
+     "weight": "250g",
+     "price": 500.0,
+     "originalPrice": 500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce05"
+    },
+    {
+     "weight": "500g",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce06"
+    }
+   ]
+  },
+  {
+   "name": "Marathi Moggu",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1150.0,
+     "originalPrice": 1150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce6a"
+    },
+    {
+     "weight": "250g",
+     "price": 287.5,
+     "originalPrice": 287.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce6b"
+    },
+    {
+     "weight": "500g",
+     "price": 575.0,
+     "originalPrice": 575.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce6c"
+    }
+   ]
+  },
+  {
+   "name": "Nutmeg Mace (Red Flower)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 3900.0,
+     "originalPrice": 3900.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceca"
+    },
+    {
+     "weight": "250g",
+     "price": 975.0,
+     "originalPrice": 975.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cecb"
+    },
+    {
+     "weight": "500g",
+     "price": 1950.0,
+     "originalPrice": 1950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cecc"
+    }
+   ]
+  },
+  {
+   "name": "Nutmeg Mace (Yellow Flower)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 3900.0,
+     "originalPrice": 3900.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cecd"
+    },
+    {
+     "weight": "250g",
+     "price": 975.0,
+     "originalPrice": 975.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cece"
+    },
+    {
+     "weight": "500g",
+     "price": 1950.0,
+     "originalPrice": 1950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cecf"
+    }
+   ]
+  },
+  {
+   "name": "Pepper",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 152.0,
+     "originalPrice": 152.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef5"
+    },
+    {
+     "weight": "125g - Masala",
+     "price": 190.0,
+     "originalPrice": 190.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef6"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 228.0,
+     "originalPrice": 228.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef7"
+    },
+    {
+     "weight": "175g - Masala",
+     "price": 266.0,
+     "originalPrice": 266.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef8"
+    },
+    {
+     "weight": "1kg",
+     "price": 1520.0,
+     "originalPrice": 1520.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef9"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 304.0,
+     "originalPrice": 304.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cefa"
+    },
+    {
+     "weight": "250g",
+     "price": 380.0,
+     "originalPrice": 380.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cefb"
+    },
+    {
+     "weight": "25g - Masala",
+     "price": 38.0,
+     "originalPrice": 38.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cefc"
+    },
+    {
+     "weight": "500g",
+     "price": 760.0,
+     "originalPrice": 760.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cefd"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 76.0,
+     "originalPrice": 76.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cefe"
+    },
+    {
+     "weight": "75g - Masala",
+     "price": 114.0,
+     "originalPrice": 114.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceff"
+    }
+   ]
+  },
+  {
+   "name": "Pink Salt Powder",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 200.0,
+     "originalPrice": 200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf06"
+    },
+    {
+     "weight": "250g",
+     "price": 50.0,
+     "originalPrice": 50.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf07"
+    },
+    {
+     "weight": "500g",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf08"
+    }
+   ]
+  },
+  {
+   "name": "Poppy (KhusKhus) White",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 3250.0,
+     "originalPrice": 3250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf1a"
+    },
+    {
+     "weight": "250g",
+     "price": 812.5,
+     "originalPrice": 812.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf1b"
+    },
+    {
+     "weight": "500g",
+     "price": 1625.0,
+     "originalPrice": 1625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf1c"
+    }
+   ]
+  },
+  {
+   "name": "Rajapuri Turmeric",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 55.0,
+     "originalPrice": 55.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf54"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 82.5,
+     "originalPrice": 82.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf55"
+    },
+    {
+     "weight": "1kg",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf56"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 110.0,
+     "originalPrice": 110.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf57"
+    },
+    {
+     "weight": "20g - Masala",
+     "price": 11.0,
+     "originalPrice": 11.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf58"
+    },
+    {
+     "weight": "250g",
+     "price": 137.5,
+     "originalPrice": 137.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf59"
+    },
+    {
+     "weight": "40g - Masala",
+     "price": 22.0,
+     "originalPrice": 22.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf5a"
+    },
+    {
+     "weight": "500g",
+     "price": 275.0,
+     "originalPrice": 275.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf5b"
+    },
+    {
+     "weight": "60g - Masala",
+     "price": 33.0,
+     "originalPrice": 33.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf5c"
+    },
+    {
+     "weight": "80g - Masala",
+     "price": 44.0,
+     "originalPrice": 44.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf5d"
+    }
+   ]
+  },
+  {
+   "name": "Shah Jeera (Caraway)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1400.0,
+     "originalPrice": 1400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc4"
+    },
+    {
+     "weight": "250g",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc5"
+    },
+    {
+     "weight": "500g",
+     "price": 700.0,
+     "originalPrice": 700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc6"
+    }
+   ]
+  },
+  {
+   "name": "Star Anise",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 140.0,
+     "originalPrice": 140.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfdd"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 210.0,
+     "originalPrice": 210.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfde"
+    },
+    {
+     "weight": "1kg",
+     "price": 1400.0,
+     "originalPrice": 1400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfdf"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 280.0,
+     "originalPrice": 280.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe0"
+    },
+    {
+     "weight": "250g",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe1"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe2"
+    },
+    {
+     "weight": "500g",
+     "price": 700.0,
+     "originalPrice": 700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe3"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 70.0,
+     "originalPrice": 70.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe4"
+    }
+   ]
+  },
+  {
+   "name": "Stone Flower",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1200.0,
+     "originalPrice": 1200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe7"
+    },
+    {
+     "weight": "250g",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe8"
+    },
+    {
+     "weight": "500g",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfe9"
+    }
+   ]
+  },
+  {
+   "name": "Red Chilli- Byadagi Kaddi",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 990.0,
+     "originalPrice": 990.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf6c"
+    },
+    {
+     "weight": "250g",
+     "price": 247.5,
+     "originalPrice": 247.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf6d"
+    },
+    {
+     "weight": "500g",
+     "price": 495.0,
+     "originalPrice": 495.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf6e"
+    }
+   ]
+  },
+  {
+   "name": "Red Chilli- Dabbi",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 149.0,
+     "originalPrice": 149.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf6f"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 223.5,
+     "originalPrice": 223.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf70"
+    },
+    {
+     "weight": "1kg",
+     "price": 1490.0,
+     "originalPrice": 1490.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf71"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 298.0,
+     "originalPrice": 298.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf72"
+    },
+    {
+     "weight": "250g",
+     "price": 372.5,
+     "originalPrice": 372.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf73"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 372.5,
+     "originalPrice": 372.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf74"
+    },
+    {
+     "weight": "500g",
+     "price": 745.0,
+     "originalPrice": 745.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf75"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 74.5,
+     "originalPrice": 74.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf76"
+    }
+   ]
+  },
+  {
+   "name": "Red Chilli- Guntur Long",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 65.0,
+     "originalPrice": 65.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf77"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 97.5,
+     "originalPrice": 97.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf78"
+    },
+    {
+     "weight": "1kg",
+     "price": 650.0,
+     "originalPrice": 650.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf79"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 130.0,
+     "originalPrice": 130.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf7a"
+    },
+    {
+     "weight": "250g",
+     "price": 162.5,
+     "originalPrice": 162.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf7b"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 162.5,
+     "originalPrice": 162.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf7c"
+    },
+    {
+     "weight": "500g",
+     "price": 325.0,
+     "originalPrice": 325.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf7d"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 32.5,
+     "originalPrice": 32.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf7e"
+    }
+   ]
+  },
+  {
+   "name": "Red Chilli- Guntur Small",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 640.0,
+     "originalPrice": 640.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf7f"
+    },
+    {
+     "weight": "250g",
+     "price": 160.0,
+     "originalPrice": 160.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf80"
+    },
+    {
+     "weight": "500g",
+     "price": 320.0,
+     "originalPrice": 320.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf81"
+    }
+   ]
+  },
+  {
+   "name": "Red Chilli- Salem Ball",
+   "variants": [
+    {
+     "weight": "100g - Masala",
+     "price": 79.0,
+     "originalPrice": 79.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf82"
+    },
+    {
+     "weight": "150g - Masala",
+     "price": 118.5,
+     "originalPrice": 118.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf83"
+    },
+    {
+     "weight": "1kg",
+     "price": 790.0,
+     "originalPrice": 790.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf84"
+    },
+    {
+     "weight": "200g - Masala",
+     "price": 158.0,
+     "originalPrice": 158.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf85"
+    },
+    {
+     "weight": "250g",
+     "price": 197.5,
+     "originalPrice": 197.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf86"
+    },
+    {
+     "weight": "250g - Masala",
+     "price": 197.5,
+     "originalPrice": 197.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf87"
+    },
+    {
+     "weight": "500g",
+     "price": 395.0,
+     "originalPrice": 395.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf88"
+    },
+    {
+     "weight": "50g - Masala",
+     "price": 39.5,
+     "originalPrice": 39.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf89"
+    }
+   ]
+  },
+  {
+   "name": "Rose Mary Dried",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 990.0,
+     "originalPrice": 990.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfa3"
+    },
+    {
+     "weight": "250g",
+     "price": 247.5,
+     "originalPrice": 247.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfa4"
+    },
+    {
+     "weight": "500g",
+     "price": 495.0,
+     "originalPrice": 495.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfa5"
+    }
+   ]
+  },
+  {
+   "name": "Rose Petals",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1100.0,
+     "originalPrice": 1100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfa6"
+    },
+    {
+     "weight": "250g",
+     "price": 275.0,
+     "originalPrice": 275.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfa7"
+    },
+    {
+     "weight": "500g",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfa8"
+    }
+   ]
+  },
+  {
+   "name": "Barnyard Millet (Oodalu) Rava",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 340.0,
+     "originalPrice": 340.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccde"
+    },
+    {
+     "weight": "250g",
+     "price": 85.0,
+     "originalPrice": 85.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccdf"
+    },
+    {
+     "weight": "500g",
+     "price": 170.0,
+     "originalPrice": 170.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cce0"
+    }
+   ]
+  },
+  {
+   "name": "Kodo Millet (Arka) Rava",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 250.0,
+     "originalPrice": 250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce41"
+    },
+    {
+     "weight": "250g",
+     "price": 62.5,
+     "originalPrice": 62.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce42"
+    },
+    {
+     "weight": "500g",
+     "price": 125.0,
+     "originalPrice": 125.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce43"
+    }
+   ]
+  },
+  {
+   "name": "Little Millet (Samai) Rava",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 340.0,
+     "originalPrice": 340.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce4e"
+    },
+    {
+     "weight": "250g",
+     "price": 85.0,
+     "originalPrice": 85.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce4f"
+    },
+    {
+     "weight": "500g",
+     "price": 170.0,
+     "originalPrice": 170.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce50"
+    }
+   ]
+  },
+  {
+   "name": "Ragi (Finger Millet) Rava",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 195.0,
+     "originalPrice": 195.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf42"
+    },
+    {
+     "weight": "250g",
+     "price": 48.75,
+     "originalPrice": 48.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf43"
+    },
+    {
+     "weight": "500g",
+     "price": 97.5,
+     "originalPrice": 97.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf44"
+    }
+   ]
+  },
+  {
+   "name": "Chocolate Muesli",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 700.0,
+     "originalPrice": 700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd42"
+    },
+    {
+     "weight": "250g",
+     "price": 175.0,
+     "originalPrice": 175.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd43"
+    },
+    {
+     "weight": "500g",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd44"
+    }
+   ]
+  },
+  {
+   "name": "Fruits & Nuts Muesli",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 675.0,
+     "originalPrice": 675.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cddc"
+    },
+    {
+     "weight": "250g",
+     "price": 168.75,
+     "originalPrice": 168.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cddd"
+    },
+    {
+     "weight": "500g",
+     "price": 337.5,
+     "originalPrice": 337.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdde"
+    }
+   ]
+  },
+  {
+   "name": "Sugar Free Muesli",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfea"
+    },
+    {
+     "weight": "250g",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfeb"
+    },
+    {
+     "weight": "500g",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfec"
+    }
+   ]
+  },
+  {
+   "name": "Fruits Granola",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 700.0,
+     "originalPrice": 700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cddf"
+    },
+    {
+     "weight": "250g",
+     "price": 175.0,
+     "originalPrice": 175.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cde0"
+    },
+    {
+     "weight": "500g",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cde1"
+    }
+   ]
+  },
+  {
+   "name": "Jowar Flakes",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 230.0,
+     "originalPrice": 230.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce28"
+    },
+    {
+     "weight": "250g",
+     "price": 57.5,
+     "originalPrice": 57.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce29"
+    },
+    {
+     "weight": "500g",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce2a"
+    }
+   ]
+  },
+  {
+   "name": "Beetroot Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 140.0,
+     "originalPrice": 140.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccea"
+    },
+    {
+     "weight": "1kg",
+     "price": 1400.0,
+     "originalPrice": 1400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cceb"
+    },
+    {
+     "weight": "250g",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccec"
+    },
+    {
+     "weight": "500g",
+     "price": 700.0,
+     "originalPrice": 700.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cced"
+    }
+   ]
+  },
+  {
+   "name": "Bhringraj Powder",
+   "variants": [
+    {
+     "weight": "100G",
+     "price": 90.0,
+     "originalPrice": 90.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf1"
+    },
+    {
+     "weight": "1kg",
+     "price": 900.0,
+     "originalPrice": 900.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf2"
+    },
+    {
+     "weight": "250g",
+     "price": 225.0,
+     "originalPrice": 225.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf3"
+    },
+    {
+     "weight": "500g",
+     "price": 450.0,
+     "originalPrice": 450.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccf4"
+    }
+   ]
+  },
+  {
+   "name": "Manjishta Root Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 160.0,
+     "originalPrice": 160.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce66"
+    },
+    {
+     "weight": "1kg",
+     "price": 1600.0,
+     "originalPrice": 1600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce67"
+    },
+    {
+     "weight": "250g",
+     "price": 400.0,
+     "originalPrice": 400.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce68"
+    },
+    {
+     "weight": "500g",
+     "price": 800.0,
+     "originalPrice": 800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce69"
+    }
+   ]
+  },
+  {
+   "name": "Multani Mitti",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea3"
+    },
+    {
+     "weight": "1kg",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea4"
+    },
+    {
+     "weight": "250g",
+     "price": 250.0,
+     "originalPrice": 250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea5"
+    },
+    {
+     "weight": "500g",
+     "price": 500.0,
+     "originalPrice": 500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea6"
+    }
+   ]
+  },
+  {
+   "name": "Orange Peel Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 175.0,
+     "originalPrice": 175.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ced0"
+    },
+    {
+     "weight": "1kg",
+     "price": 1750.0,
+     "originalPrice": 1750.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ced1"
+    },
+    {
+     "weight": "250g",
+     "price": 437.5,
+     "originalPrice": 437.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ced2"
+    },
+    {
+     "weight": "500g",
+     "price": 875.0,
+     "originalPrice": 875.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ced3"
+    }
+   ]
+  },
+  {
+   "name": "Neem Leaf Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 135.0,
+     "originalPrice": 135.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cec0"
+    },
+    {
+     "weight": "1kg",
+     "price": 1350.0,
+     "originalPrice": 1350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cec1"
+    },
+    {
+     "weight": "250g",
+     "price": 337.5,
+     "originalPrice": 337.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cec2"
+    },
+    {
+     "weight": "500g",
+     "price": 675.0,
+     "originalPrice": 675.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cec3"
+    }
+   ]
+  },
+  {
+   "name": "Moringa Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 185.0,
+     "originalPrice": 185.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce9b"
+    },
+    {
+     "weight": "1kg",
+     "price": 1850.0,
+     "originalPrice": 1850.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce9c"
+    },
+    {
+     "weight": "250g",
+     "price": 462.5,
+     "originalPrice": 462.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce9d"
+    },
+    {
+     "weight": "500g",
+     "price": 925.0,
+     "originalPrice": 925.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce9e"
+    }
+   ]
+  },
+  {
+   "name": "Sandalwood Powder",
+   "variants": [
+    {
+     "weight": "100G",
+     "price": 235.0,
+     "originalPrice": 235.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfb6"
+    },
+    {
+     "weight": "1kg",
+     "price": 2350.0,
+     "originalPrice": 2350.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfb7"
+    },
+    {
+     "weight": "250g",
+     "price": 587.5,
+     "originalPrice": 587.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfb8"
+    },
+    {
+     "weight": "500g",
+     "price": 1175.0,
+     "originalPrice": 1175.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfb9"
+    }
+   ]
+  },
+  {
+   "name": "Reetha Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 185.0,
+     "originalPrice": 185.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf93"
+    },
+    {
+     "weight": "1kg",
+     "price": 1850.0,
+     "originalPrice": 1850.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf94"
+    },
+    {
+     "weight": "250g",
+     "price": 462.5,
+     "originalPrice": 462.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf95"
+    },
+    {
+     "weight": "500g",
+     "price": 925.0,
+     "originalPrice": 925.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf96"
+    }
+   ]
+  },
+  {
+   "name": "Rakthachandana",
+   "variants": [
+    {
+     "weight": "100G",
+     "price": 365.0,
+     "originalPrice": 365.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf64"
+    },
+    {
+     "weight": "1kg",
+     "price": 3650.0,
+     "originalPrice": 3650.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf65"
+    },
+    {
+     "weight": "250g",
+     "price": 912.5,
+     "originalPrice": 912.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf66"
+    },
+    {
+     "weight": "500g",
+     "price": 1825.0,
+     "originalPrice": 1825.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf67"
+    }
+   ]
+  },
+  {
+   "name": "Indigo Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 180.0,
+     "originalPrice": 180.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce15"
+    },
+    {
+     "weight": "1kg",
+     "price": 1800.0,
+     "originalPrice": 1800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce16"
+    },
+    {
+     "weight": "250g",
+     "price": 450.0,
+     "originalPrice": 450.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce17"
+    },
+    {
+     "weight": "500g",
+     "price": 900.0,
+     "originalPrice": 900.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce18"
+    }
+   ]
+  },
+  {
+   "name": "Shikha Kai Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 125.0,
+     "originalPrice": 125.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfcd"
+    },
+    {
+     "weight": "1kg",
+     "price": 1250.0,
+     "originalPrice": 1250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfce"
+    },
+    {
+     "weight": "250g",
+     "price": 312.5,
+     "originalPrice": 312.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfcf"
+    },
+    {
+     "weight": "500g",
+     "price": 625.0,
+     "originalPrice": 625.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfd0"
+    }
+   ]
+  },
+  {
+   "name": "Hibiscus Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 155.0,
+     "originalPrice": 155.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdff"
+    },
+    {
+     "weight": "1kg",
+     "price": 1550.0,
+     "originalPrice": 1550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce00"
+    },
+    {
+     "weight": "250g",
+     "price": 387.5,
+     "originalPrice": 387.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce01"
+    },
+    {
+     "weight": "500g",
+     "price": 775.0,
+     "originalPrice": 775.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce02"
+    }
+   ]
+  },
+  {
+   "name": "Henna Powder",
+   "variants": [
+    {
+     "weight": "100G",
+     "price": 185.0,
+     "originalPrice": 185.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdfb"
+    },
+    {
+     "weight": "1kg",
+     "price": 1850.0,
+     "originalPrice": 1850.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdfc"
+    },
+    {
+     "weight": "250g",
+     "price": 462.5,
+     "originalPrice": 462.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdfd"
+    },
+    {
+     "weight": "500g",
+     "price": 925.0,
+     "originalPrice": 925.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdfe"
+    }
+   ]
+  },
+  {
+   "name": "Amla Powder",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 165.0,
+     "originalPrice": 165.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccb2"
+    },
+    {
+     "weight": "1kg",
+     "price": 1650.0,
+     "originalPrice": 1650.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccb3"
+    },
+    {
+     "weight": "250g",
+     "price": 412.5,
+     "originalPrice": 412.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccb4"
+    },
+    {
+     "weight": "500g",
+     "price": 825.0,
+     "originalPrice": 825.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccb5"
+    }
+   ]
+  },
+  {
+   "name": "Ashwagandha",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 180.0,
+     "originalPrice": 180.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccc8"
+    },
+    {
+     "weight": "1kg",
+     "price": 1800.0,
+     "originalPrice": 1800.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccc9"
+    },
+    {
+     "weight": "250g",
+     "price": 450.0,
+     "originalPrice": 450.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccca"
+    },
+    {
+     "weight": "500g",
+     "price": 900.0,
+     "originalPrice": 900.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cccb"
+    }
+   ]
+  },
+  {
+   "name": "Triphala",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d017"
+    },
+    {
+     "weight": "1kg",
+     "price": 1150.0,
+     "originalPrice": 1150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d018"
+    },
+    {
+     "weight": "250g",
+     "price": 287.5,
+     "originalPrice": 287.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d019"
+    },
+    {
+     "weight": "500g",
+     "price": 575.0,
+     "originalPrice": 575.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d01a"
+    }
+   ]
+  },
+  {
+   "name": "Mulethi Root Powder Irattimadhuram",
+   "variants": [
+    {
+     "weight": "100g",
+     "price": 185.0,
+     "originalPrice": 185.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce9f"
+    },
+    {
+     "weight": "1kg",
+     "price": 1850.0,
+     "originalPrice": 1850.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea0"
+    },
+    {
+     "weight": "250g",
+     "price": 462.5,
+     "originalPrice": 462.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea1"
+    },
+    {
+     "weight": "500g",
+     "price": 925.0,
+     "originalPrice": 925.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cea2"
+    }
+   ]
+  },
+  {
+   "name": "Marayoor Jaggery Whole",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 600.0,
+     "originalPrice": 600.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce73"
+    },
+    {
+     "weight": "250g",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce74"
+    },
+    {
+     "weight": "500g",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce75"
+    }
+   ]
+  },
+  {
+   "name": "Amaranth (Rajgira)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cca9"
+    },
+    {
+     "weight": "250g",
+     "price": 75.0,
+     "originalPrice": 75.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccaa"
+    },
+    {
+     "weight": "500g",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccab"
+    }
+   ]
+  },
+  {
+   "name": "Dried Jackfruit",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 2150.0,
+     "originalPrice": 2150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdac"
+    },
+    {
+     "weight": "250g",
+     "price": 537.5,
+     "originalPrice": 537.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdad"
+    },
+    {
+     "weight": "500g",
+     "price": 1075.0,
+     "originalPrice": 1075.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdae"
+    }
+   ]
+  },
+  {
+   "name": "Psyllium Husk (Isabgol Busi)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1550.0,
+     "originalPrice": 1550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf26"
+    },
+    {
+     "weight": "250g",
+     "price": 387.5,
+     "originalPrice": 387.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf27"
+    },
+    {
+     "weight": "500g",
+     "price": 775.0,
+     "originalPrice": 775.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf28"
+    }
+   ]
+  },
+  {
+   "name": "Quinoa",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 175.0,
+     "originalPrice": 175.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf35"
+    },
+    {
+     "weight": "250g",
+     "price": 43.75,
+     "originalPrice": 43.75,
+     "inStock": false,
+     "_id": "6aacfca4ff6e46459526cf36"
+    },
+    {
+     "weight": "500g",
+     "price": 87.5,
+     "originalPrice": 87.5,
+     "inStock": false,
+     "_id": "6aacfca4ff6e46459526cf37"
+    }
+   ]
+  },
+  {
+   "name": "Moringa Pasta",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce98"
+    },
+    {
+     "weight": "250g",
+     "price": 250.0,
+     "originalPrice": 250.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce99"
+    },
+    {
+     "weight": "500g",
+     "price": 500.0,
+     "originalPrice": 500.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce9a"
+    }
+   ]
+  },
+  {
+   "name": "Royal Rajamudi Rice Premium",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 150.0,
+     "originalPrice": 150.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfac"
+    },
+    {
+     "weight": "250g",
+     "price": 37.5,
+     "originalPrice": 37.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfad"
+    },
+    {
+     "weight": "500g",
+     "price": 75.0,
+     "originalPrice": 75.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfae"
+    }
+   ]
+  },
+  {
+   "name": "Red Matta Rice (Parboiled & Semi-Polished)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf8a"
+    },
+    {
+     "weight": "250g",
+     "price": 25.0,
+     "originalPrice": 25.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf8b"
+    },
+    {
+     "weight": "500g",
+     "price": 50.0,
+     "originalPrice": 50.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf8c"
+    }
+   ]
+  },
+  {
+   "name": "Lapsi Daliya (Broken Wheat)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 95.0,
+     "originalPrice": 95.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce47"
+    },
+    {
+     "weight": "250g",
+     "price": 23.75,
+     "originalPrice": 23.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce48"
+    },
+    {
+     "weight": "500g",
+     "price": 47.5,
+     "originalPrice": 47.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce49"
+    }
+   ]
+  },
+  {
+   "name": "Pearl Millet (Bajra)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 90.0,
+     "originalPrice": 90.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceef"
+    },
+    {
+     "weight": "250g",
+     "price": 22.5,
+     "originalPrice": 22.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef0"
+    },
+    {
+     "weight": "500g",
+     "price": 45.0,
+     "originalPrice": 45.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cef1"
+    }
+   ]
+  },
+  {
+   "name": "Ragi (Finger Millet)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 90.0,
+     "originalPrice": 90.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf3f"
+    },
+    {
+     "weight": "250g",
+     "price": 22.5,
+     "originalPrice": 22.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf40"
+    },
+    {
+     "weight": "500g",
+     "price": 45.0,
+     "originalPrice": 45.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cf41"
+    }
+   ]
+  },
+  {
+   "name": "Little Millet (Samai)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 220.0,
+     "originalPrice": 220.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce4b"
+    },
+    {
+     "weight": "250g",
+     "price": 55.0,
+     "originalPrice": 55.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce4c"
+    },
+    {
+     "weight": "500g",
+     "price": 110.0,
+     "originalPrice": 110.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce4d"
+    }
+   ]
+  },
+  {
+   "name": "Corn Maize",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 95.0,
+     "originalPrice": 95.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd6b"
+    },
+    {
+     "weight": "250g",
+     "price": 23.75,
+     "originalPrice": 23.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd6c"
+    },
+    {
+     "weight": "500g",
+     "price": 47.5,
+     "originalPrice": 47.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd6d"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Sharbati Wheat (Rajni Gandha)",
+   "variants": [
+    {
+     "weight": "1kg / Powder",
+     "price": 88.0,
+     "originalPrice": 88.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc7"
+    },
+    {
+     "weight": "1kg / Raw",
+     "price": 88.0,
+     "originalPrice": 88.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc8"
+    },
+    {
+     "weight": "3kg / Powder",
+     "price": 264.0,
+     "originalPrice": 264.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfc9"
+    },
+    {
+     "weight": "3kg / Raw",
+     "price": 264.0,
+     "originalPrice": 264.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfca"
+    },
+    {
+     "weight": "5kg / Powder",
+     "price": 440.0,
+     "originalPrice": 440.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfcb"
+    },
+    {
+     "weight": "5kg / Raw",
+     "price": 440.0,
+     "originalPrice": 440.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfcc"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Rajwadi Lokwan Wheat",
+   "variants": [
+    {
+     "weight": "1kg / Powder",
+     "price": 78.0,
+     "originalPrice": 78.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce57"
+    },
+    {
+     "weight": "1kg / Raw",
+     "price": 78.0,
+     "originalPrice": 78.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce58"
+    },
+    {
+     "weight": "3kg / Powder",
+     "price": 234.0,
+     "originalPrice": 234.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce59"
+    },
+    {
+     "weight": "3kg / Raw",
+     "price": 234.0,
+     "originalPrice": 234.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce5a"
+    },
+    {
+     "weight": "5kg / Powder",
+     "price": 390.0,
+     "originalPrice": 390.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce5b"
+    },
+    {
+     "weight": "5kg / Raw",
+     "price": 390.0,
+     "originalPrice": 390.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce5c"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Emmer Khapli Wheat",
+   "variants": [
+    {
+     "weight": "1kg / Powder",
+     "price": 190.0,
+     "originalPrice": 190.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdb8"
+    },
+    {
+     "weight": "1kg / Raw",
+     "price": 190.0,
+     "originalPrice": 190.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdb9"
+    },
+    {
+     "weight": "3kg / Powder",
+     "price": 570.0,
+     "originalPrice": 570.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdba"
+    },
+    {
+     "weight": "3kg / Raw",
+     "price": 570.0,
+     "originalPrice": 570.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdbb"
+    },
+    {
+     "weight": "5kg / Powder",
+     "price": 950.0,
+     "originalPrice": 950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdbc"
+    },
+    {
+     "weight": "5kg / Raw",
+     "price": 950.0,
+     "originalPrice": 950.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdbd"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya High Protein Atta",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 107.0,
+     "originalPrice": 107.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd90"
+    },
+    {
+     "weight": "3kg",
+     "price": 321.0,
+     "originalPrice": 321.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd91"
+    },
+    {
+     "weight": "5kg",
+     "price": 535.0,
+     "originalPrice": 535.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd92"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Nuts & Seeds Atta",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 284.0,
+     "originalPrice": 284.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd8d"
+    },
+    {
+     "weight": "3kg",
+     "price": 852.0,
+     "originalPrice": 852.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd8e"
+    },
+    {
+     "weight": "5kg",
+     "price": 1420.0,
+     "originalPrice": 1420.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd8f"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Gluten-Free Atta",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 186.0,
+     "originalPrice": 186.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd87"
+    },
+    {
+     "weight": "3kg",
+     "price": 558.0,
+     "originalPrice": 558.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd88"
+    },
+    {
+     "weight": "5kg",
+     "price": 930.0,
+     "originalPrice": 930.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd89"
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Fibre Atta",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 131.0,
+     "originalPrice": 131.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd84"
+    },
+    {
+     "weight": "3kg",
+     "price": 393.0,
+     "originalPrice": 393.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd85"
+    },
+    {
+     "weight": "5kg",
+     "price": 655.0,
+     "originalPrice": 655.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd86"
+    }
+   ]
+  },
+  {
+   "name": "Kodo Millet (Arka)",
+   "variants": [
+    {
+     "weight": "1 kg",
+     "price": 165.0,
+     "originalPrice": 165.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce3e"
+    },
+    {
+     "weight": "250g",
+     "price": 41.25,
+     "originalPrice": 41.25,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce3f"
+    },
+    {
+     "weight": "500g",
+     "price": 82.5,
+     "originalPrice": 82.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce40"
+    }
+   ]
+  },
+  {
+   "name": "Barnyard Millet (Oodalu)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 230.0,
+     "originalPrice": 230.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccdb"
+    },
+    {
+     "weight": "250g",
+     "price": 57.5,
+     "originalPrice": 57.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccdc"
+    },
+    {
+     "weight": "500g",
+     "price": 115.0,
+     "originalPrice": 115.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ccdd"
+    }
+   ]
+  },
+  {
+   "name": "Foxtail Millet (Navane)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 155.0,
+     "originalPrice": 155.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdd5"
+    },
+    {
+     "weight": "250g",
+     "price": 38.75,
+     "originalPrice": 38.75,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdd6"
+    },
+    {
+     "weight": "500g",
+     "price": 77.5,
+     "originalPrice": 77.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdd7"
+    }
+   ]
+  },
+  {
+   "name": "Browntop Millet (Korale)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 290.0,
+     "originalPrice": 290.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd0c"
+    },
+    {
+     "weight": "250g",
+     "price": 72.5,
+     "originalPrice": 72.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd0d"
+    },
+    {
+     "weight": "500g",
+     "price": 145.0,
+     "originalPrice": 145.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd0e"
+    }
+   ]
+  },
+  {
+   "name": "Jowar (Sorghum Millet)",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 110.0,
+     "originalPrice": 110.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce22"
+    },
+    {
+     "weight": "250g",
+     "price": 27.5,
+     "originalPrice": 27.5,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce23"
+    },
+    {
+     "weight": "500g",
+     "price": 55.0,
+     "originalPrice": 55.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ce24"
+    }
+   ]
+  },
+  {
+   "name": "Multi Millet Vermiceli",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 972.0,
+     "originalPrice": 972.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceaa"
+    },
+    {
+     "weight": "250g",
+     "price": 243.0,
+     "originalPrice": 243.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceab"
+    },
+    {
+     "weight": "500g",
+     "price": 486.0,
+     "originalPrice": 486.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceac"
+    }
+   ]
+  },
+  {
+   "name": "Cocoa Tea",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 1500.0,
+     "originalPrice": 1500.0,
+     "inStock": false,
+     "_id": "6aacfca4ff6e46459526cd59"
+    },
+    {
+     "weight": "250g",
+     "price": 375.0,
+     "originalPrice": 375.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd5a"
+    },
+    {
+     "weight": "500g",
+     "price": 750.0,
+     "originalPrice": 750.0,
+     "inStock": false,
+     "_id": "6aacfca4ff6e46459526cd5b"
+    }
+   ]
+  },
+  {
+   "name": "Tea - Green Leaf Idukki",
+   "variants": [
+    {
+     "weight": "1kg",
+     "price": 4200.0,
+     "originalPrice": 4200.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cffe"
+    },
+    {
+     "weight": "250g",
+     "price": 1050.0,
+     "originalPrice": 1050.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cfff"
+    },
+    {
+     "weight": "500g",
+     "price": 2100.0,
+     "originalPrice": 2100.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526d000"
+    }
+   ]
+  },
+  {
+   "name": "Peanut Plain Roasted Nut Butter",
+   "variants": [
+    {
+     "weight": "250g / Honey",
+     "price": 180.0,
+     "originalPrice": 180.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cee9"
+    },
+    {
+     "weight": "250g / Jaggery",
+     "price": 180.0,
+     "originalPrice": 180.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceea"
+    },
+    {
+     "weight": "250g / Unsweetened",
+     "price": 180.0,
+     "originalPrice": 180.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526ceeb"
+    }
+   ]
+  },
+  {
+   "name": "Almond Nut Butter",
+   "variants": [
+    {
+     "weight": "250g / Honey",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc9d"
+    },
+    {
+     "weight": "250g / Jaggery",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc9e"
+    },
+    {
+     "weight": "250g / Unsweetened",
+     "price": 550.0,
+     "originalPrice": 550.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cc9f"
+    }
+   ]
+  },
+  {
+   "name": "Cashew Nut Butter",
+   "variants": [
+    {
+     "weight": "250g / Honey",
+     "price": 375.0,
+     "originalPrice": 375.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd20"
+    },
+    {
+     "weight": "250g / Jaggery",
+     "price": 375.0,
+     "originalPrice": 375.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd21"
+    },
+    {
+     "weight": "250g / Unsweetened",
+     "price": 375.0,
+     "originalPrice": 375.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cd22"
+    }
+   ]
+  },
+  {
+   "name": "Hazelnut Nut Butter",
+   "variants": [
+    {
+     "weight": "250g / Honey",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdf8"
+    },
+    {
+     "weight": "250g / Jaggery",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdf9"
+    },
+    {
+     "weight": "250g / Unsweetened",
+     "price": 1000.0,
+     "originalPrice": 1000.0,
+     "inStock": true,
+     "_id": "6aacfca4ff6e46459526cdfa"
+    }
+   ]
+  },
+  {
+   "name": "Groundnut Oil",
+   "variants": [
+    {
+     "weight": "1L (Bottle)",
+     "price": 395.0,
+     "originalPrice": 395.0,
+     "inStock": true
+    },
+    {
+     "weight": "1L (Without Bottle)",
+     "price": 350.0,
+     "originalPrice": 350.0,
+     "inStock": true
+    },
+    {
+     "weight": "500ml (Bottle)",
+     "price": 198.0,
+     "originalPrice": 198.0,
+     "inStock": true
+    },
+    {
+     "weight": "500ml (Without Bottle)",
+     "price": 175.0,
+     "originalPrice": 175.0,
+     "inStock": true
+    }
+   ]
+  },
+  {
+   "name": "Coconut Oil",
+   "variants": [
+    {
+     "weight": "1L (Bottle)",
+     "price": 610.0,
+     "originalPrice": 610.0,
+     "inStock": true
+    },
+    {
+     "weight": "1L (Without Bottle)",
+     "price": 565.0,
+     "originalPrice": 565.0,
+     "inStock": true
+    },
+    {
+     "weight": "500ml (Bottle)",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true
+    },
+    {
+     "weight": "500ml (Without Bottle)",
+     "price": 278.0,
+     "originalPrice": 278.0,
+     "inStock": true
+    }
+   ]
+  },
+  {
+   "name": "Sunflower Oil",
+   "variants": [
+    {
+     "weight": "1L (Bottle)",
+     "price": 480.0,
+     "originalPrice": 480.0,
+     "inStock": true
+    },
+    {
+     "weight": "1L (Without Bottle)",
+     "price": 440.0,
+     "originalPrice": 440.0,
+     "inStock": true
+    },
+    {
+     "weight": "500ml (Bottle)",
+     "price": 240.0,
+     "originalPrice": 240.0,
+     "inStock": true
+    },
+    {
+     "weight": "500ml (Without Bottle)",
+     "price": 218.0,
+     "originalPrice": 218.0,
+     "inStock": true
+    }
+   ]
+  },
+  {
+   "name": "Dhaanya Multi Millet Atta",
+   "variants": [
+    {
+     "weight": "1 kg / 80:20",
+     "price": 100.0,
+     "originalPrice": 100.0,
+     "inStock": true
+    },
+    {
+     "weight": "3 kg / 80:20",
+     "price": 300.0,
+     "originalPrice": 300.0,
+     "inStock": true
+    },
+    {
+     "weight": "5 kg / 80:20",
+     "price": 500.0,
+     "originalPrice": 500.0,
+     "inStock": true
+    },
+    {
+     "weight": "1 kg / 65:35",
+     "price": 108.0,
+     "originalPrice": 108.0,
+     "inStock": true
+    },
+    {
+     "weight": "3 kg / 65:35",
+     "price": 324.0,
+     "originalPrice": 324.0,
+     "inStock": true
+    },
+    {
+     "weight": "5 kg / 65:35",
+     "price": 540.0,
+     "originalPrice": 540.0,
+     "inStock": true
+    },
+    {
+     "weight": "1 kg / 50:50",
+     "price": 122.0,
+     "originalPrice": 122.0,
+     "inStock": true
+    },
+    {
+     "weight": "3 kg / 50:50",
+     "price": 366.0,
+     "originalPrice": 366.0,
+     "inStock": true
+    },
+    {
+     "weight": "5 kg / 50:50",
+     "price": 610.0,
+     "originalPrice": 610.0,
+     "inStock": true
+    },
+    {
+     "weight": "1 kg / Lokwan 80:20",
+     "price": 90.0,
+     "originalPrice": 90.0,
+     "inStock": true
+    },
+    {
+     "weight": "3 kg / Lokwan 80:20",
+     "price": 270.0,
+     "originalPrice": 270.0,
+     "inStock": true
+    },
+    {
+     "weight": "5 kg / Lokwan 80:20",
+     "price": 450.0,
+     "originalPrice": 450.0,
+     "inStock": true
+    }
+   ]
+  },
+  {
+   "name": "Pot Tamarind (Kudampuli)",
+   "variants": [
+    {
+     "weight": "45g",
+     "price": 195.0,
+     "originalPrice": 195.0,
+     "inStock": true
+    },
+    {
+     "weight": "250g",
+     "price": 495.0,
+     "originalPrice": 495.0,
+     "inStock": true
+    }
+   ]
+  }
+ ],
+ "deletes": [
+  "Amaranth Noodles",
+  "Appam Idiyappam Podi",
+  "Apricot Dried",
+  "Apricot Soft",
+  "Arabica Coffee Bean",
+  "Arabica Coffee Beans (organic)",
+  "Arabica Coffee Powder",
+  "Assam Tea",
+  "Avalose Podi",
+  "Baby Fork",
+  "Baby Spoon",
+  "Bamboo Toothbrush",
+  "Banana Dried (Kannan Kaya)",
+  "Barnyard Millet Cookies",
+  "Black Chana",
+  "Black Chickpea Powder (Kadala Podi)",
+  "Black Sesame Chikki",
+  "Brahmi Honey",
+  "Cardamom Bulk",
+  "Cashew 180",
+  "Cashew Peanut Chikki",
+  "Cashew- Chilli Garlic 240",
+  "Chammanthi Podi",
+  "Chicken Masala",
+  "Chilli Chocolate",
+  "Cloth Loofah",
+  "Cocoa Powder",
+  "Coconut Sugar",
+  "Coffee Chocolate",
+  "Copper Tongue Cleaner",
+  "Cow Ghee",
+  "Dark Chocolate 55%",
+  "Dark Chocolate 80%",
+  "Dark Milk Chocolate",
+  "Dried Curry Leaves",
+  "Dried Ginger Powder",
+  "Dried Lemon",
+  "Ekanayakam",
+  "Fish Curry Masala",
+  "Forest Honey (Kattuthen)",
+  "Fork",
+  "Fruit & Nut Chocolate",
+  "Garam Masala",
+  "Garlic pickle",
+  "Ginger Honey",
+  "Gooseberry Pickle",
+  "Green Gram Powder (Cherupayar Podi)",
+  "Honey Dipper",
+  "Idli Powder",
+  "Idly Rice SR Orange",
+  "Incha Acacia Wild",
+  "Iratti Madhuram",
+  "Jackfruit Pasta",
+  "Jaggery Mix Dry Fruit",
+  "Jowar Millet Pasta",
+  "Kadukka (Haritaki)",
+  "Karingali (Black Cutch)",
+  "Kasthuri Haldi Powder",
+  "Kodo Millet Cookies",
+  "Lemon pickle",
+  "Little Millet Cookies",
+  "Marathi Moggu Long (Kapok Buds)",
+  "Marayoor Jaggery Powder",
+  "Meat Masala",
+  "Mexican Bites",
+  "Milky Bar",
+  "Mixed Vegetables (Air Fried)",
+  "Moringa Noodles",
+  "Multi Millet Cookies",
+  "Multigrain Chikki",
+  "Mustard Oil (Black Seed)",
+  "Mustard Seeds Black",
+  "Nannari Root",
+  "Navara Rice",
+  "Neem Comb",
+  "Neem Ladle",
+  "Neem Massage Comb",
+  "Neem Spatula",
+  "Neem Tongue Cleaner",
+  "Palm Candy Crystal (Panam Kalkandam)",
+  "Palm Jaggery (Karupatti)",
+  "Pathimukham",
+  "Peanut Chikki",
+  "Plum Red Dried",
+  "Pomegranate Honey",
+  "Puttu Powder Roasted (Red)",
+  "Puttu Powder Roasted (White)",
+  "Quinoa Vermicelli",
+  "Raamacham",
+  "Ragi Noodles",
+  "Raisins Long Yellow",
+  "Raisins Seed Black",
+  "Raw Honey",
+  "Rectangle Loofah",
+  "Red Rice Flakes (Avalakki)",
+  "Roasted Chana",
+  "Robusta Coffee Beans",
+  "Robusta Coffee Beans (organic)",
+  "Robusta Coffee Powder (Idukki)",
+  "Royal Prime Kimia Dates",
+  "Sambar Masala",
+  "Sesame Oil (Brown Gingelly Seed)",
+  "Sesame Oil (White Gingelly Seed)",
+  "Sona Masoori Rice",
+  "Soup Spoon",
+  "Spoon",
+  "Sprouted Ragi",
+  "Stingless Bee Honey (Cheruthen)",
+  "Sukkari Wet Dates",
+  "Tea - Orthodox Black Idukki (Organic)",
+  "Tea - Orthodox Black Leaf Idukki (Organic)",
+  "Tenseed Chikki",
+  "Thooyamalli Rice",
+  "Travancore Tamarind Vaalan Puli",
+  "Venga Dried",
+  "Virgin coconut Oil",
+  "Walnut Nut Butter",
+  "Wheat Flakes",
+  "White Rice Flakes (Avalakki)",
+  "White Sesame Chikki"
+ ]
+}

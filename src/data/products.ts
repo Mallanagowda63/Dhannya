@@ -1,0 +1,21212 @@
+// Bundled fallback catalogue. Kept out of initialData so the storefront bundle
+// only pulls it in on demand (live data comes from /api/products).
+import { Product } from "../types";
+
+export const PRODUCTS: Product[] = [
+  {
+    "id": "prod-1",
+    "name": "Ajwa Dates",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ajwa Dates sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ajwa Dates"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ajwa%20Dates/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ajwa%20Dates/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1780,
+        "originalPrice": 1780,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 445,
+        "originalPrice": 445,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 20,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-2",
+    "name": "Ajwain (Ayamodakam)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ajwain (Ayamodakam) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ajwain (Ayamodakam)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ajwain%20(Ayamodakam)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ajwain%20(Ayamodakam)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 27,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-3",
+    "name": "Almond Nut Butter",
+    "category": "Nut Butters",
+    "concern": [
+      "Heart Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Almond Nut Butter sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Almond Nut Butter"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Almond%20Nut%20Butter/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Almond%20Nut%20Butter/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g / Honey",
+        "price": 517,
+        "originalPrice": 517,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Jaggery",
+        "price": 507,
+        "originalPrice": 507,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Unsweetened",
+        "price": 487,
+        "originalPrice": 487,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 34,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Nut Butters",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-4",
+    "name": "Almonds Jumbo",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Almonds Jumbo sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Almonds Jumbo"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Almonds%20Jumbo/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Almonds%20Jumbo/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1790,
+        "originalPrice": 1790,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 447.5,
+        "originalPrice": 447.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 895,
+        "originalPrice": 895,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 41,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-5",
+    "name": "Almonds USA",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Almonds USA sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Almonds USA"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Almonds%20USA/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Almonds%20USA/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1650,
+        "originalPrice": 1650,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 412.5,
+        "originalPrice": 412.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 825,
+        "originalPrice": 825,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 48,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-6",
+    "name": "Alovi Seeds (Halim Seeds)",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Alovi Seeds (Halim Seeds) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Alovi Seeds (Halim Seeds)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Alovi%20Seeds%20(Halim%20Seeds)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Alovi%20Seeds%20(Halim%20Seeds)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 137.5,
+        "originalPrice": 137.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 275,
+        "originalPrice": 275,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 55,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-7",
+    "name": "Amaranth (Rajgira)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Amaranth (Rajgira) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Amaranth (Rajgira)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Amaranth%20(Rajgira)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Amaranth%20(Rajgira)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 87.5,
+        "originalPrice": 87.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 62,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-8",
+    "name": "Amaranth Noodles",
+    "category": "Noodles",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Amaranth Noodles sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Amaranth Noodles"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Amaranth%20Noodles/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Amaranth%20Noodles/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 162.5,
+        "originalPrice": 162.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 69,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Noodles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-9",
+    "name": "Amla Dry Candy",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Amla Dry Candy sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Amla Dry Candy"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Amla%20Dry%20Candy/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Amla%20Dry%20Candy/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 102.5,
+        "originalPrice": 102.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 76,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-10",
+    "name": "Amla Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Amla Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Amla Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Amla%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Amla%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 201,
+        "originalPrice": 201,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2010,
+        "originalPrice": 2010,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 502.5,
+        "originalPrice": 502.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1005,
+        "originalPrice": 1005,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 83,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-11",
+    "name": "Appam Idiyappam Podi",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Appam Idiyappam Podi sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Appam Idiyappam Podi"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Appam%20Idiyappam%20Podi/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Appam%20Idiyappam%20Podi/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 35,
+        "originalPrice": 35,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 70,
+        "originalPrice": 70,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 90,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-12",
+    "name": "Apricot Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Apricot Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Apricot Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Apricot%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Apricot%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 97,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-13",
+    "name": "Apricot Soft",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Apricot Soft sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Apricot Soft"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Apricot%20Soft/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Apricot%20Soft/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1988,
+        "originalPrice": 1988,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 497,
+        "originalPrice": 497,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 994,
+        "originalPrice": 994,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 104,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-14",
+    "name": "Arabica Coffee Bean",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Arabica Coffee Bean sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Arabica Coffee Bean"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Arabica%20Coffee%20Bean/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Arabica%20Coffee%20Bean/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 111,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-15",
+    "name": "Arabica Coffee Beans (organic)",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Arabica Coffee Beans (organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Arabica Coffee Beans (organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Arabica%20Coffee%20Beans%20(organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Arabica%20Coffee%20Beans%20(organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2100,
+        "originalPrice": 2100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 118,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-16",
+    "name": "Arabica Coffee Powder",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Arabica Coffee Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Arabica Coffee Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Arabica%20Coffee%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Arabica%20Coffee%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 125,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-17",
+    "name": "Ashwagandha",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ashwagandha sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ashwagandha"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ashwagandha/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ashwagandha/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2250,
+        "originalPrice": 2250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 562.5,
+        "originalPrice": 562.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1125,
+        "originalPrice": 1125,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 132,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-18",
+    "name": "Assam Tea",
+    "category": "Tea",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Assam Tea sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Assam Tea"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Assam%20Tea/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Assam%20Tea/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 139,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-19",
+    "name": "Avalose Podi",
+    "category": "Flour",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Avalose Podi sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Avalose Podi"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Avalose%20Podi/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Avalose%20Podi/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 480,
+        "originalPrice": 480,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 146,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-20",
+    "name": "Baby Fork",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Baby Fork sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Baby Fork"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Baby%20Fork/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Baby%20Fork/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 153,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-21",
+    "name": "Baby Spoon",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Baby Spoon sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Baby Spoon"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Baby%20Spoon/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Baby%20Spoon/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 160,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-22",
+    "name": "Bamboo Toothbrush",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Bamboo Toothbrush sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Bamboo Toothbrush"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Bamboo%20Toothbrush/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Bamboo%20Toothbrush/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 55,
+        "originalPrice": 55,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 167,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-23",
+    "name": "Banana Dried (Kannan Kaya)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Banana Dried (Kannan Kaya) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Banana Dried (Kannan Kaya)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Banana%20Dried%20(Kannan%20Kaya)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Banana%20Dried%20(Kannan%20Kaya)/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1000,
+        "originalPrice": 1000,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 500,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 174,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-24",
+    "name": "Barley",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Barley sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Barley"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Barley/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Barley/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 40,
+        "originalPrice": 40,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 80,
+        "originalPrice": 80,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 181,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-25",
+    "name": "Barnyard Millet (Oodalu)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Barnyard Millet, known as Oodalu in Kannada, is a small traditional millet used in different grain-based preparations. It has a relatively mild flavour and can be cooked as a rice-style grain or incorporated into other recipes. Barnyard Millet contributes carbohydrates and plant-based nutrients and can be part of a varied, balanced diet.",
+    "ingredients": [
+      "100% Pure Natural Barnyard Millet (Oodalu)"
+    ],
+    "nutritionInfo": {
+      "Gluten": "Naturally gluten-free grain",
+      "Heritage": "Traditional alternative to commonly consumed cereals",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Cooking": "Suitable for different cooking styles"
+    },
+    "benefits": [
+      "Naturally gluten-free grain",
+      "A traditional alternative to commonly consumed cereals",
+      "Provides dietary fibre and plant-based nutrients",
+      "Suitable for different cooking styles",
+      "Useful for adding variety to everyday meals"
+    ],
+    "image": "/images/dhannya_Products_final/Barnyard%20Millet%20(Oodalu)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Barnyard%20Millet%20(Oodalu)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 188,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-26",
+    "name": "Barnyard Millet (Oodalu) Rava",
+    "category": "Rava",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Barnyard Millet (Oodalu) Rava sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Barnyard Millet (Oodalu) Rava"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Barnyard%20Millet%20(Oodalu)%20Rava/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Barnyard%20Millet%20(Oodalu)%20Rava/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 87.5,
+        "originalPrice": 87.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 195,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Rava",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-27",
+    "name": "Barnyard Millet Cookies",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Barnyard Millet Cookies sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Barnyard Millet Cookies"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Barnyard%20Millet%20Cookies/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Barnyard%20Millet%20Cookies/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 22,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-28",
+    "name": "Basil Seeds (Sabja)",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Basil Seeds (Sabja) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Basil Seeds (Sabja)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Basil%20Seeds%20(Sabja)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Basil%20Seeds%20(Sabja)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 162.5,
+        "originalPrice": 162.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 29,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-29",
+    "name": "Bay Leaves Tej Patta",
+    "category": "Spices",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Bay Leaves Tej Patta sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Bay Leaves Tej Patta"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Bay%20Leaves%20_%20Tej%20Patta/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Bay%20Leaves%20_%20Tej%20Patta/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 36,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-30",
+    "name": "Beetroot Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Beetroot Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Beetroot Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Beetroot%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Beetroot%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 145,
+        "originalPrice": 145,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 362.5,
+        "originalPrice": 362.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 725,
+        "originalPrice": 725,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 43,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-31",
+    "name": "Bengal Gram Dal (Besan)",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Bengal Gram Dal (Besan) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Bengal Gram Dal (Besan)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Bengal%20Gram%20Dal%20(Besan)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Bengal%20Gram%20Dal%20(Besan)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 40,
+        "originalPrice": 40,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 80,
+        "originalPrice": 80,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 50,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-32",
+    "name": "Bhringraj Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Bhringraj Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Bhringraj Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100G",
+        "price": 99,
+        "originalPrice": 99,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 990,
+        "originalPrice": 990,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 247.5,
+        "originalPrice": 247.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 495,
+        "originalPrice": 495,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 57,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-33",
+    "name": "Black Cardamom (Black Elaichi)",
+    "category": "Spices",
+    "concern": [
+      "Heart Health",
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Black Cardamom (Black Elaichi) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Black Cardamom (Black Elaichi)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Cardamom%20(Black%20Elaichi)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Cardamom%20(Black%20Elaichi)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 3380,
+        "originalPrice": 3380,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 845,
+        "originalPrice": 845,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1690,
+        "originalPrice": 1690,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 64,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-34",
+    "name": "Black Chana",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Black Chana sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Black Chana"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Chana/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Chana/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 40,
+        "originalPrice": 40,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 80,
+        "originalPrice": 80,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 71,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 54,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-35",
+    "name": "Black Chickpea Powder (Kadala Podi)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Black Chickpea Powder (Kadala Podi) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Black Chickpea Powder (Kadala Podi)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Chickpea%20Powder%20(Kadala%20Podi)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Chickpea%20Powder%20(Kadala%20Podi)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 78,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-36",
+    "name": "Black Salt",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Black Salt sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Black Salt"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Salt/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Salt/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 25,
+        "originalPrice": 25,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 50,
+        "originalPrice": 50,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 85,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-37",
+    "name": "Black Seedless Raisins",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Black Seedless Raisins sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Black Seedless Raisins"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Seedless%20Raisins/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Seedless%20Raisins/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 222.5,
+        "originalPrice": 222.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 445,
+        "originalPrice": 445,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 92,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-38",
+    "name": "Black Sesame Chikki",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Black Sesame Chikki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Black Sesame Chikki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Sesame%20Chikki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Sesame%20Chikki/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 680,
+        "originalPrice": 680,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 340,
+        "originalPrice": 340,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 99,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-39",
+    "name": "Brahmi Honey",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Brahmi Honey sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Brahmi Honey"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Brahmi%20Honey/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Brahmi%20Honey/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 435,
+        "originalPrice": 435,
+        "inStock": true
+      },
+      {
+        "weight": "400g",
+        "price": 670,
+        "originalPrice": 670,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 106,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-40",
+    "name": "Brazil Nuts",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Brazil Nuts sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Brazil Nuts"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Brazil%20Nuts/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Brazil%20Nuts/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 4550,
+        "originalPrice": 4550,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 1137.5,
+        "originalPrice": 1137.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 2275,
+        "originalPrice": 2275,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 113,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-41",
+    "name": "Browntop Millet (Korale)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Browntop Millet, known as Korale in Kannada, is a traditional small millet valued for its distinctive grain characteristics and place in regional food traditions. It has a mild earthy flavour and can be used to add variety to grain-based meals. Browntop Millet provides dietary fibre and plant-based nutrients.",
+    "ingredients": [
+      "100% Pure Natural Browntop Millet (Korale)"
+    ],
+    "nutritionInfo": {
+      "Gluten": "Naturally gluten-free grain",
+      "Heritage": "Traditional millet variety with regional relevance",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Diversity": "Helps diversify everyday grain choices"
+    },
+    "benefits": [
+      "Naturally gluten-free grain",
+      "A traditional millet variety with regional relevance",
+      "Provides dietary fibre and plant-based nutrients",
+      "Helps diversify everyday grain choices",
+      "Suitable for experimenting with traditional and modern recipes"
+    ],
+    "image": "/images/dhannya_Products_final/Browntop%20Millet%20(Korale)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Browntop%20Millet%20(Korale)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 120,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-42",
+    "name": "Cardamom Bold",
+    "category": "Spices",
+    "concern": [
+      "Heart Health",
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cardamom Bold sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cardamom Bold"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cardamom%20Bold/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cardamom%20Bold/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 495,
+        "originalPrice": 495,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 742.5,
+        "originalPrice": 742.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 4950,
+        "originalPrice": 4950,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 990,
+        "originalPrice": 990,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 1237.5,
+        "originalPrice": 1237.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 1237.5,
+        "originalPrice": 1237.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 2475,
+        "originalPrice": 2475,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 247.5,
+        "originalPrice": 247.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 127,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-43",
+    "name": "Cardamom Bulk",
+    "category": "Spices",
+    "concern": [
+      "Heart Health",
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cardamom Bulk sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cardamom Bulk"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cardamom%20Bulk/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cardamom%20Bulk/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2900,
+        "originalPrice": 2900,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 725,
+        "originalPrice": 725,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 134,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-44",
+    "name": "Cashew 180",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew 180 sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew 180"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew%20180/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew%20180/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1750,
+        "originalPrice": 1750,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 437.5,
+        "originalPrice": 437.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 875,
+        "originalPrice": 875,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 141,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-45",
+    "name": "Cashew 240",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew 240 sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew 240"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew%20240/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew%20240/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1590,
+        "originalPrice": 1590,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 397.5,
+        "originalPrice": 397.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 795,
+        "originalPrice": 795,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 148,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-46",
+    "name": "Cashew Nut Butter",
+    "category": "Nut Butters",
+    "concern": [
+      "Heart Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew Nut Butter sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew Nut Butter"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew%20Nut%20Butter/Dhaanya.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew%20Nut%20Butter/Dhaanya.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g / Honey",
+        "price": 470,
+        "originalPrice": 470,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Jaggery",
+        "price": 460,
+        "originalPrice": 460,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Unsweetened",
+        "price": 440,
+        "originalPrice": 440,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 155,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Nut Butters",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-47",
+    "name": "Cashew Peanut Chikki",
+    "category": "Quick Bites",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew Peanut Chikki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew Peanut Chikki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew%20Peanut%20Chikki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew%20Peanut%20Chikki/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 162,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-48",
+    "name": "Cashew Roasted And Salted",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew Roasted And Salted sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew Roasted And Salted"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew%20Roasted%20And%20Salted/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew%20Roasted%20And%20Salted/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1690,
+        "originalPrice": 1690,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 422.5,
+        "originalPrice": 422.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 845,
+        "originalPrice": 845,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 169,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-49",
+    "name": "Cashew Split",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew Split sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew Split"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew%20Split/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew%20Split/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1460,
+        "originalPrice": 1460,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 365,
+        "originalPrice": 365,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 730,
+        "originalPrice": 730,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 176,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-50",
+    "name": "Cashew- Broken PS",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew- Broken PS sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew- Broken PS"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew-%20Broken%20PS/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew-%20Broken%20PS/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 183,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-51",
+    "name": "Cashew- Chilli Garlic 240",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew- Chilli Garlic 240 sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew- Chilli Garlic 240"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew-%20Chilli%20Garlic%20240/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew-%20Chilli%20Garlic%20240/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 190,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-52",
+    "name": "Cashew- Pepper Garlic 240",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cashew- Pepper Garlic 240 sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cashew- Pepper Garlic 240"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cashew-%20Pepper%20Garlic%20240/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cashew-%20Pepper%20Garlic%20240/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 197,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-53",
+    "name": "Cassia Cinnamon",
+    "category": "Spices",
+    "concern": [
+      "Heart Health",
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cassia Cinnamon sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cassia Cinnamon"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cassia%20Cinnamon/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cassia%20Cinnamon/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 145,
+        "originalPrice": 145,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 290,
+        "originalPrice": 290,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 24,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-54",
+    "name": "Chammanthi Podi",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Chammanthi Podi sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Chammanthi Podi"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Chammanthi%20Podi/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Chammanthi%20Podi/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 31,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-55",
+    "name": "Chia Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Chia Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Chia Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Chia%20Seeds/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Chia%20Seeds/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 187.5,
+        "originalPrice": 187.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-56",
+    "name": "Chicken Masala",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Chicken Masala sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Chicken Masala"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Chicken%20Masala/Dhaanya.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Chicken%20Masala/Dhaanya.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 45,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-57",
+    "name": "Chilli Chocolate",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Chilli Chocolate sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Chilli Chocolate"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Chilli%20Chocolate/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Chilli%20Chocolate/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 230,
+        "originalPrice": 230,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 52,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-58",
+    "name": "Chocolate Muesli",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Chocolate Muesli sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Chocolate Muesli"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Chocolate%20Muesli/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Chocolate%20Muesli/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 187.5,
+        "originalPrice": 187.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 59,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-59",
+    "name": "Cinnamon Roll (Churul Patta, Indonesia)",
+    "category": "Spices",
+    "concern": [
+      "Heart Health",
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cinnamon Roll (Churul Patta, Indonesia) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cinnamon Roll (Churul Patta, Indonesia)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cinnamon%20Roll%20(Churul%20Patta%2C%20Indonesia)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cinnamon%20Roll%20(Churul%20Patta%2C%20Indonesia)/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1265,
+        "originalPrice": 1265,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 316.25,
+        "originalPrice": 316.25,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 632.5,
+        "originalPrice": 632.5,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 66,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-60",
+    "name": "Cloth Loofah",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cloth Loofah sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cloth Loofah"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cloth%20Loofah/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cloth%20Loofah/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 35,
+        "originalPrice": 35,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 73,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-61",
+    "name": "Cloves",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cloves sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cloves"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cloves/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cloves/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 255,
+        "originalPrice": 255,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 340,
+        "originalPrice": 340,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 425,
+        "originalPrice": 425,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 80,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-62",
+    "name": "Cocoa Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cocoa Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cocoa Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cocoa%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cocoa%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2400,
+        "originalPrice": 2400,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 87,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-63",
+    "name": "Cocoa Tea",
+    "category": "Tea",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cocoa Tea sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cocoa Tea"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cocoa%20Tea/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Cocoa%20Tea/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": false
+      },
+      {
+        "weight": "250g",
+        "price": 337.5,
+        "originalPrice": 337.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 675,
+        "originalPrice": 675,
+        "inStock": false
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 94,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-64",
+    "name": "Coconut Oil",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Coconut Oil sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Coconut Oil"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Coconut%20Oil/Dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Coconut%20Oil/Dhaanya%2001.png",
+      "/images/dhannya_Products_final/Coconut%20Oil/Dhaanya%2002.png",
+      "/images/dhannya_Products_final/Coconut%20Oil/Dhaanya%2003.png",
+      "/images/dhannya_Products_final/Coconut%20Oil/04.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "460g",
+        "price": 380,
+        "originalPrice": 380,
+        "inStock": true
+      },
+      {
+        "weight": "910g",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 101,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-65",
+    "name": "Coconut Sugar",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Coconut Sugar sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Coconut Sugar"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Coconut%20Sugar/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Coconut%20Sugar/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 162.5,
+        "originalPrice": 162.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 108,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-66",
+    "name": "Coffee Chocolate",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Coffee Chocolate sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Coffee Chocolate"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Coffee%20Chocolate/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Coffee%20Chocolate/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 235,
+        "originalPrice": 235,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 115,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-67",
+    "name": "Copper Tongue Cleaner",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Copper Tongue Cleaner sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Copper Tongue Cleaner"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Copper%20Tongue%20Cleaner/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Copper%20Tongue%20Cleaner/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 122,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-68",
+    "name": "Coriander",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Coriander sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Coriander"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Coriander/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Coriander/01.jpg",
+      "/images/dhannya_Products_final/Coriander/02.jpg",
+      "/images/dhannya_Products_final/Coriander/03.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 45,
+        "originalPrice": 45,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 67.5,
+        "originalPrice": 67.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 112.5,
+        "originalPrice": 112.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 112.5,
+        "originalPrice": 112.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 22.5,
+        "originalPrice": 22.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 129,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-69",
+    "name": "Corn Maize",
+    "category": "Millets",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Corn Maize sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Corn Maize"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Corn_%20Maize/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Corn_%20Maize/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 27.5,
+        "originalPrice": 27.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 55,
+        "originalPrice": 55,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 136,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-70",
+    "name": "Cow Ghee",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cow Ghee sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cow Ghee"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cow%20Ghee/Dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cow%20Ghee/Dhaanya%2001.png",
+      "/images/dhannya_Products_final/Cow%20Ghee/Dhaanya%2002.png",
+      "/images/dhannya_Products_final/Cow%20Ghee/dhaanya%2003.png",
+      "/images/dhannya_Products_final/Cow%20Ghee/dhaanya%2004.png"
+    ],
+    "variants": [
+      {
+        "weight": "280g",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
+        "weight": "600g",
+        "price": 795,
+        "originalPrice": 795,
+        "inStock": true
+      },
+      {
+        "weight": "900g",
+        "price": 1170,
+        "originalPrice": 1170,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 143,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-71",
+    "name": "Cucumber Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cucumber Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cucumber Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cucumber%20Seeds/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cucumber%20Seeds/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1650,
+        "originalPrice": 1650,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 412.5,
+        "originalPrice": 412.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 825,
+        "originalPrice": 825,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 150,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-72",
+    "name": "Cumin (Jeerakam)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Cumin (Jeerakam) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Cumin (Jeerakam)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Cumin%20(Jeerakam)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Cumin%20(Jeerakam)/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 69,
+        "originalPrice": 69,
+        "inStock": true
+      },
+      {
+        "weight": "125g - Masala",
+        "price": 86.25,
+        "originalPrice": 86.25,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 103.5,
+        "originalPrice": 103.5,
+        "inStock": true
+      },
+      {
+        "weight": "175g - Masala",
+        "price": 120.75,
+        "originalPrice": 120.75,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 770,
+        "originalPrice": 770,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 138,
+        "originalPrice": 138,
+        "inStock": true
+      },
+      {
+        "weight": "225g - Masala",
+        "price": 155.25,
+        "originalPrice": 155.25,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 192.5,
+        "originalPrice": 192.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 172.5,
+        "originalPrice": 172.5,
+        "inStock": true
+      },
+      {
+        "weight": "25g - Masala",
+        "price": 19.25,
+        "originalPrice": 19.25,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 385,
+        "originalPrice": 385,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 38.5,
+        "originalPrice": 38.5,
+        "inStock": true
+      },
+      {
+        "weight": "75g - Masala",
+        "price": 57.75,
+        "originalPrice": 57.75,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 157,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-73",
+    "name": "Custom Masala Blend",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Custom Masala Blend sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Custom Masala Blend"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Custom%20Masala%20Blend/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Custom%20Masala%20Blend/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 164,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-74",
+    "name": "Dhaanya Fibre Atta",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Fibre Atta combines wheat with barley, bajra, oats, and psyllium husk. It brings together a variety of fibre-contributing ingredients in a familiar wheat-based atta for everyday meals.",
+    "ingredients": [
+      "Wheat",
+      "Barley",
+      "Bajra",
+      "Oats",
+      "Psyllium Husk"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Combines wheat with barley, bajra, oats, and psyllium husk.",
+      "Includes a variety of fibre-contributing ingredients.",
+      "Familiar wheat base with mild grain and earthy notes.",
+      "Suitable for everyday chapatis and rotis.",
+      "Freshly prepared through our Live Milling process."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Fibre%20Atta/04.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 102,
+        "originalPrice": 102,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 306,
+        "originalPrice": 306,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 510,
+        "originalPrice": 510,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 171,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 54,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "75% Wheat • 25% Fibre-Contributing Ingredients",
+    "allergens": [
+      "Wheat",
+      "Gluten",
+      "Barley",
+      "Oats"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 70–80 ml lukewarm water per 100 g flour and adjust as needed."
+        },
+        {
+          "title": "Knead well",
+          "text": "Knead for approximately 5–7 minutes until workable. Psyllium and fibre can affect dough consistency."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 25–35 minutes to allow hydration."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently and cook on a preheated tawa over medium heat. Avoid overcooking."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "70–80 ml water per 100 g flour. Start lower and add gradually depending on dough consistency.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Soft to moderately soft when adequately hydrated and not overcooked."
+            },
+            {
+              "title": "Flavour",
+              "text": "Wheat-forward with mild earthy and grain notes."
+            },
+            {
+              "title": "Handling",
+              "text": "May feel different from regular wheat atta due to added grains and psyllium husk."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, resting, rolling, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why barley and oats?",
+          "answer": "Contribute their own fibre and grain characteristics to the blend."
+        },
+        {
+          "question": "Why psyllium husk?",
+          "answer": "Adds fibre and influences dough moisture and texture."
+        },
+        {
+          "question": "Why rest the dough?",
+          "answer": "Allows hydration and can improve handling."
+        }
+      ],
+      "allergenNote": "Allergen note: Contains wheat and gluten. Barley and oats require particular attention for people following a strict gluten-free diet."
+    },
+    "compositionBreakdown": [
+      {
+        "name": "Wheat",
+        "percent": 75
+      },
+      {
+        "name": "Barley",
+        "percent": 10
+      },
+      {
+        "name": "Bajra",
+        "percent": 10
+      },
+      {
+        "name": "Oats",
+        "percent": 3
+      },
+      {
+        "name": "Psyllium Husk (Isabgol)",
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": "prod-75",
+    "name": "Dhaanya Gluten-Free Atta",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Gluten-Free Atta combines jowar, bajra, ragi, foxtail millet, soybean, amaranth, dried jackfruit, and psyllium husk. A distinctive millet and pulse blend designed as a wheat-free flour option.",
+    "ingredients": [
+      "Jowar",
+      "Bajra",
+      "Ragi",
+      "Foxtail Millet",
+      "Soybean",
+      "Amaranth",
+      "Dried Jackfruit",
+      "Psyllium Husk"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Made without wheat ingredients.",
+      "Combines multiple millets, pulses, and amaranth.",
+      "Includes psyllium husk for fibre and binding support.",
+      "Distinctive earthy and mildly aromatic flavour.",
+      "A differentiated option for gluten-free meal planning."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Gluten-Free%20Atta/04.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 222,
+        "originalPrice": 222,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 666,
+        "originalPrice": 666,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 1110,
+        "originalPrice": 1110,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 178,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "Millet + Pulse Blend • Gluten-Free Formulation",
+    "allergens": [
+      "Soybean"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store. Gluten-free suitability requires appropriate ingredient sourcing and cross-contact controls.",
+      "steps": [
+        {
+          "title": "Add warm water gradually",
+          "text": "Begin with approximately 75–90 ml water per 100 g flour and adjust carefully."
+        },
+        {
+          "title": "Mix gently",
+          "text": "Combine thoroughly until the flour is evenly hydrated. Gluten-free dough does not require wheat-style gluten development."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 10–20 minutes. Psyllium needs time to hydrate and develop binding."
+        },
+        {
+          "title": "Shape gently",
+          "text": "Pat or roll between sheets while the dough is workable. Avoid excessive dry flour."
+        },
+        {
+          "title": "Cook & serve",
+          "text": "Cook on a preheated tawa. Avoid prolonged cooking and keep covered after cooking."
+        }
+      ],
+      "hydrationGuide": "75–90 ml water per 100 g flour. The final ratio depends on millet particle size, psyllium characteristics, and dough binding.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Earthy, mildly dense, and potentially tender when freshly prepared."
+            },
+            {
+              "title": "Flavour",
+              "text": "Aromatic with a subtle natural sweetness and millet notes."
+            },
+            {
+              "title": "Handling",
+              "text": "More delicate than regular wheat roti; careful hydration and shaping help."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, binding, shaping, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why psyllium husk?",
+          "answer": "Contributes fibre and can help provide binding in gluten-free dough."
+        },
+        {
+          "question": "Why no prolonged kneading?",
+          "answer": "Gluten-free flour has no wheat gluten network to develop."
+        },
+        {
+          "question": "Why use multiple millets?",
+          "answer": "Each grain contributes its own flavour and nutritional characteristics."
+        }
+      ],
+      "allergenNote": "Important: Contains soybean. Gluten-free claims require appropriate sourcing and cross-contact controls."
+    }
+  },
+  {
+    "id": "prod-76",
+    "name": "Dhaanya Multi Millet Atta",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Multi Millet Atta brings together wheat and a diverse selection of millets, including ragi, jowar, bajra, foxtail, little, kodo, barnyard, and browntop millet. Available in different wheat-to-millet proportions to suit varied taste and texture preferences.",
+    "ingredients": [
+      "Wheat",
+      "Ragi",
+      "Jowar",
+      "Bajra",
+      "Foxtail Millet",
+      "Little Millet",
+      "Kodo Millet",
+      "Barnyard Millet",
+      "Browntop Millet"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "A diverse blend of traditional millets.",
+      "Available in 80%, 65%, and 50% wheat formulations.",
+      "Choose your preferred balance of wheat and millet ingredients.",
+      "Offers a range of earthy, nutty, and grain flavours.",
+      "Suitable for everyday rotis and traditional meals."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Multi%20Millet%20Atta/04.png"
+    ],
+    "variants": [
+      {
+        "weight": "1 kg",
+        "price": 109,
+        "originalPrice": 109,
+        "inStock": true
+      },
+      {
+        "weight": "3 kg",
+        "price": 327,
+        "originalPrice": 327,
+        "inStock": true
+      },
+      {
+        "weight": "5 kg",
+        "price": 545,
+        "originalPrice": 545,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 185,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "Wheat Range: 80%–50% • Multi-Millet Blend",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 65–80 ml water per 100 g flour. Adjust according to the selected blend."
+        },
+        {
+          "title": "Knead according to wheat content",
+          "text": "Knead the 80% wheat blend for around 5–7 minutes. Mix and knead the higher-millet blends gently until workable."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 20–30 minutes. Higher-millet formulations may require individual testing for ideal hydration and handling."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently and cook on a preheated tawa. Higher millet proportions may need extra care during rolling."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "Begin around 65–80 ml water per 100 g flour. Adjust according to wheat percentage, flour characteristics, and dough consistency.",
+      "rotiExpectationGroups": [
+        {
+          "heading": "80% Wheat + 20% Millets",
+          "points": [
+            {
+              "title": "",
+              "text": "Softer and closer to regular wheat roti."
+            },
+            {
+              "title": "",
+              "text": "Mild millet flavour with good puffing potential when well prepared."
+            },
+            {
+              "title": "Starting dough rest",
+              "text": "20–30 minutes."
+            }
+          ]
+        },
+        {
+          "heading": "65% Wheat + 35% Millets",
+          "points": [
+            {
+              "title": "",
+              "text": "Soft to moderately soft, with a noticeable millet flavour."
+            },
+            {
+              "title": "",
+              "text": "Suitable for regular family meals when properly prepared."
+            },
+            {
+              "title": "Starting dough rest",
+              "text": "20–30 minutes."
+            }
+          ]
+        },
+        {
+          "heading": "50% Wheat + 50% Millets",
+          "points": [
+            {
+              "title": "",
+              "text": "Moderately soft and potentially slightly denser."
+            },
+            {
+              "title": "",
+              "text": "More pronounced earthy and nutty millet flavour."
+            },
+            {
+              "title": "Starting dough rest",
+              "text": "20–30 minutes, subject to testing."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Higher millet proportions change dough handling, texture, and puffing behaviour. Research on wheat–millet chapati supports the importance of optimizing the formulation and preparation conditions.",
+      "littleFacts": []
+    }
+  },
+  {
+    "id": "prod-77",
+    "name": "Dhaanya Nuts & Seeds Atta",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Nuts & Seeds Atta combines wheat with almond, cashew, pumpkin seeds, sunflower seeds, flaxseed, sesame, and amaranth. A thoughtfully crafted blend bringing the natural variety of nuts and seeds into everyday meals.",
+    "ingredients": [
+      "Wheat",
+      "Almond",
+      "Cashew",
+      "Pumpkin Seeds",
+      "Sunflower Seeds",
+      "Flaxseed",
+      "Sesame",
+      "Amaranth"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Variety of nuts and seeds in one blend.",
+      "Contributes protein, fibre, and fats from its ingredients.",
+      "Mildly nutty and aromatic flavour.",
+      "Suitable for everyday rotis and traditional flatbreads.",
+      "Freshly prepared through our Live Milling process."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20Nuts%20%26%20Seeds%20Atta/04.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 283,
+        "originalPrice": 283,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 849,
+        "originalPrice": 849,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 1415,
+        "originalPrice": 1415,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 192,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "85% Wheat • 15% Nuts & Seeds",
+    "allergens": [
+      "Wheat",
+      "Almond",
+      "Cashew",
+      "Sesame"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 65–75 ml lukewarm water per 100 g flour. Adjust as needed."
+        },
+        {
+          "title": "Knead gently",
+          "text": "Mix thoroughly and knead for around 4–6 minutes until workable. Avoid aggressive or prolonged kneading."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 25–35 minutes to allow hydration."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently with minimal dry flour. Cook on a preheated tawa over medium heat and avoid overcooking."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "65–75 ml water per 100 g flour. Nuts and seeds can alter dough texture and hydration needs, so adjust after testing.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Soft to moderately soft when properly hydrated; may have a slightly textured bite."
+            },
+            {
+              "title": "Flavour",
+              "text": "Mildly nutty, aromatic, and wheat-forward."
+            },
+            {
+              "title": "Handling",
+              "text": "Nuts and seeds may affect dough smoothness and rolling."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, resting, rolling, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why nuts and seeds?",
+          "answer": "They contribute different flavours, textures, and nutritional characteristics."
+        },
+        {
+          "question": "Why rest the dough?",
+          "answer": "Helps the flour absorb water and can improve handling."
+        },
+        {
+          "question": "Why can texture differ?",
+          "answer": "Nuts and seeds change the composition and dough behaviour compared with regular wheat atta."
+        }
+      ],
+      "allergenNote": "Allergen note: Contains wheat, almond, cashew, and sesame."
+    }
+  },
+  {
+    "id": "prod-78",
+    "name": "Dhaanya High Protein Atta",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya High Protein Atta combines wheat with soybean, chickpea, moong, and masoor. A thoughtfully crafted blend that brings the familiar goodness of wheat together with plant-based protein ingredients for everyday meals.",
+    "ingredients": [
+      "Wheat",
+      "Soybean",
+      "Chickpea",
+      "Moong",
+      "Masoor"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Plant-based protein ingredients from pulses and soybean.",
+      "Thoughtfully crafted blend for everyday meals.",
+      "Wheat-forward flavour with mild earthy and nutty notes.",
+      "Suitable for chapatis, rotis, and traditional flatbreads.",
+      "Freshly prepared through our Live Milling process."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/02.png",
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/03.png",
+      "/images/dhannya_Products_final/Dhaanya%20High%20Protein%20Atta/04.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 127,
+        "originalPrice": 127,
+        "inStock": true
+      },
+      {
+        "weight": "3kg",
+        "price": 381,
+        "originalPrice": 381,
+        "inStock": true
+      },
+      {
+        "weight": "5kg",
+        "price": 635,
+        "originalPrice": 635,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 199,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "70% Wheat • 30% Pulses & Legumes",
+    "allergens": [
+      "Wheat (Gluten)",
+      "Soybean"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Begin with approximately 65–75 ml lukewarm water per 100 g flour. Adjust to dough consistency."
+        },
+        {
+          "title": "Knead",
+          "text": "Knead for approximately 5–7 minutes until smooth and workable. Avoid adding excessive dry flour."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for 20–30 minutes."
+        },
+        {
+          "title": "Roll & cook",
+          "text": "Roll gently and cook on a preheated tawa over medium to medium-high heat. Avoid prolonged cooking."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to help retain moisture."
+        }
+      ],
+      "hydrationGuide": "65–75 ml water per 100 g flour. Begin lower and increase gradually. Confirm the final ratio through kitchen testing.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "Texture",
+              "text": "Soft to moderately soft when properly hydrated and rested."
+            },
+            {
+              "title": "Flavour",
+              "text": "Wheat-forward with mild earthy and nutty notes."
+            },
+            {
+              "title": "Handling",
+              "text": "May feel different from regular wheat atta because of the pulse and soybean content."
+            },
+            {
+              "title": "Best enjoyed",
+              "text": "Fresh and warm with curries, vegetables, or dal."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Texture depends on hydration, resting, rolling, and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why soybean?",
+          "answer": "Contributes plant-based protein to the blend."
+        },
+        {
+          "question": "Why rest the dough?",
+          "answer": "Allows water to distribute through the flour and can improve handling."
+        },
+        {
+          "question": "Why can texture differ?",
+          "answer": "Pulse and soybean ingredients change dough behaviour compared with 100% wheat atta."
+        }
+      ],
+      "allergenNote": "Allergen note: Contains wheat (gluten) and soybean."
+    }
+  },
+  {
+    "id": "prod-79",
+    "name": "Dark Chocolate 55%",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dark Chocolate 55% sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dark Chocolate 55%"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dark%20Chocolate%2055%25/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dark%20Chocolate%2055%25/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 26,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-80",
+    "name": "Dark Chocolate 80%",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dark Chocolate 80% sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dark Chocolate 80%"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dark%20Chocolate%2080%25/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dark%20Chocolate%2080%25/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 33,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-81",
+    "name": "Dark Milk Chocolate",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dark Milk Chocolate sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dark Milk Chocolate"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dark%20Milk%20Chocolate/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dark%20Milk%20Chocolate/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 40,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-82",
+    "name": "Dates- Dry Black Fine (Oman Kaarakka)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dates- Dry Black Fine (Oman Kaarakka) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dates- Dry Black Fine (Oman Kaarakka)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dates-%20Dry%20Black%20Fine%20(Oman%20Kaarakka)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dates-%20Dry%20Black%20Fine%20(Oman%20Kaarakka)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 47,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-83",
+    "name": "Dried Blueberries",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Blueberries sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Blueberries"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Blueberries/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Blueberries/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2400,
+        "originalPrice": 2400,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 54,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-84",
+    "name": "Dried Cherry",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Cherry sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Cherry"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Cherry/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Cherry/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 312.5,
+        "originalPrice": 312.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 625,
+        "originalPrice": 625,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 61,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-85",
+    "name": "Dried Cranberries",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Cranberries sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Cranberries"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Cranberries/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Cranberries/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 262.5,
+        "originalPrice": 262.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 68,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-86",
+    "name": "Dried Curry Leaves",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Curry Leaves sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Curry Leaves"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Curry%20Leaves/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Curry%20Leaves/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 850,
+        "originalPrice": 850,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 212.5,
+        "originalPrice": 212.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 425,
+        "originalPrice": 425,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 75,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-87",
+    "name": "Dried Ginger",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Ginger sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Ginger"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Ginger/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Ginger/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 820,
+        "originalPrice": 820,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 82,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-88",
+    "name": "Dried Ginger Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Ginger Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Ginger Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Ginger%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Ginger%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 850,
+        "originalPrice": 850,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 212.5,
+        "originalPrice": 212.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 425,
+        "originalPrice": 425,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 89,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-89",
+    "name": "Dried Jackfruit",
+    "category": "Dry Fruits",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Jackfruit sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Jackfruit"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Jackfruit/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Jackfruit/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 312.5,
+        "originalPrice": 312.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 625,
+        "originalPrice": 625,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 96,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-90",
+    "name": "Dried Lemon",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Lemon sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Lemon"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Lemon/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Lemon/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 500,
+        "originalPrice": 500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 103,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-91",
+    "name": "Dried Strawberry",
+    "category": "Dry Fruits",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Dried Strawberry sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Dried Strawberry"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Dried%20Strawberry/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dried%20Strawberry/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1340,
+        "originalPrice": 1340,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 335,
+        "originalPrice": 335,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 670,
+        "originalPrice": 670,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 110,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-92",
+    "name": "Ekanayakam",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ekanayakam sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ekanayakam"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ekanayakam/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ekanayakam/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 117,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-93",
+    "name": "Dhaanya Emmer Khapli Wheat",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Emmer Khapli Wheat is a traditional ancient wheat variety recognised for its characteristic elongated grains, earthy flavour and mildly nutty taste. It brings variety to everyday meals while connecting modern kitchens with heritage grains.",
+    "ingredients": [
+      "Emmer Khapli Wheat"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Traditional ancient wheat variety.",
+      "Distinctive elongated grain structure.",
+      "Naturally earthy and mildly nutty flavour.",
+      "Provides dietary fibre, protein and other nutrients.",
+      "Suitable for rotis, porridge and traditional recipes.",
+      "Live-milled for freshness and transparency."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Emmer%20Khapli%20Wheat/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Emmer%20Khapli%20Wheat/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg / Powder",
+        "price": 195,
+        "originalPrice": 195,
+        "inStock": true
+      },
+      {
+        "weight": "1kg / Raw",
+        "price": 195,
+        "originalPrice": 195,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Powder",
+        "price": 585,
+        "originalPrice": 585,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 585,
+        "originalPrice": 585,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 975,
+        "originalPrice": 975,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 975,
+        "originalPrice": 975,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 124,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "Traditional Ancient Wheat Variety",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Start with approximately 65–75 ml water per 100 g flour. Adjust according to the flour and desired dough consistency."
+        },
+        {
+          "title": "Knead gently",
+          "text": "Knead until the dough becomes cohesive and workable. Avoid adding too much flour while kneading."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for around 15–20 minutes. Adjust based on hydration and dough handling."
+        },
+        {
+          "title": "Roll carefully",
+          "text": "Roll gently using sufficient dry flour, without pressing excessively."
+        },
+        {
+          "title": "Cook properly",
+          "text": "Cook on a preheated tawa and avoid overcooking, which may make the roti firm."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store cooked rotis in a covered container to retain moisture."
+        }
+      ],
+      "hydrationGuide": "Approximately 65–75 ml water per 100 g flour. Actual requirements depend on milling, grain characteristics and flour absorption.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "",
+              "text": "Mildly nutty and earthy wheat flavour."
+            },
+            {
+              "title": "",
+              "text": "A slightly rustic texture compared with regular wheat roti."
+            },
+            {
+              "title": "",
+              "text": "Can be soft and pliable when prepared with suitable hydration and cooking."
+            },
+            {
+              "title": "",
+              "text": "May require some adjustment in rolling and handling."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Roti texture varies with the grain, milling fineness, hydration and cooking method.",
+      "littleFacts": [
+        {
+          "question": "Why is it called an ancient wheat?",
+          "answer": "Emmer is an old wheat type that has been cultivated for thousands of years."
+        },
+        {
+          "question": "What makes it different?",
+          "answer": "Its grain shape and flavour profile differ from common modern wheat varieties."
+        },
+        {
+          "question": "Is it gluten-free?",
+          "answer": "No. Emmer is a wheat variety and contains gluten."
+        },
+        {
+          "question": "Can I use it every day?",
+          "answer": "It can be used in regular meals if you tolerate wheat and enjoy its distinctive texture and flavour."
+        }
+      ]
+    }
+  },
+  {
+    "id": "prod-94",
+    "name": "Fennel (Perumjeerakam)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fennel (Perumjeerakam) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fennel (Perumjeerakam)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fennel%20(Perumjeerakam)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fennel%20(Perumjeerakam)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1KG",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
+        "weight": "250G",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "500G",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 131,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-95",
+    "name": "Fenugreek (Uluva)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fenugreek (Uluva) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fenugreek (Uluva)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fenugreek%20(Uluva)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fenugreek%20(Uluva)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 230,
+        "originalPrice": 230,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 57.5,
+        "originalPrice": 57.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 138,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-96",
+    "name": "Fig (Big)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fig (Big) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fig (Big)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fig%20(Big)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fig%20(Big)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2800,
+        "originalPrice": 2800,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1400,
+        "originalPrice": 1400,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 145,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-97",
+    "name": "Fig (Small)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fig (Small) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fig (Small)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fig%20(Small)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fig%20(Small)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 152,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-98",
+    "name": "Fish Curry Masala",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fish Curry Masala sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fish Curry Masala"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fish%20Curry%20Masala/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Fish%20Curry%20Masala/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 159,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-99",
+    "name": "Flax Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Flax Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Flax Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Flax%20Seeds/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Flax%20Seeds/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 87.5,
+        "originalPrice": 87.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 166,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-100",
+    "name": "Forest Honey (Kattuthen)",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Forest Honey (Kattuthen) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Forest Honey (Kattuthen)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Forest%20Honey%20(Kattuthen)/Dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Forest%20Honey%20(Kattuthen)/Dhaanya%2001.png",
+      "/images/dhannya_Products_final/Forest%20Honey%20(Kattuthen)/dhaanya%2002.png"
+    ],
+    "variants": [
+      {
+        "weight": "1350g",
+        "price": 1325,
+        "originalPrice": 1325,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      },
+      {
+        "weight": "400g",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "950g",
+        "price": 1240,
+        "originalPrice": 1240,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 173,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-101",
+    "name": "Fork",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fork sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fork"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fork/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fork/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 180,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-102",
+    "name": "Foxtail Millet (Navane)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Foxtail Millet, known as Navane in Kannada, is a small-seeded traditional millet with a mild, slightly nutty flavour. It is commonly used as a rice alternative in grain-based dishes and can be incorporated into a variety of everyday meals. Provides dietary fibre and plant-based nutrients, making it useful for diversifying grain consumption.",
+    "ingredients": [
+      "100% Pure Natural Foxtail Millet (Navane)"
+    ],
+    "nutritionInfo": {
+      "Gluten": "Naturally gluten-free grain",
+      "Flavour": "Mild flavour suitable for different preparations",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Versatility": "Works well in rice-style dishes"
+    },
+    "benefits": [
+      "Naturally gluten-free grain",
+      "Mild flavour suitable for different preparations",
+      "Provides dietary fibre and plant-based nutrients",
+      "Works well in rice-style dishes",
+      "A versatile option for everyday grain variety"
+    ],
+    "image": "/images/dhannya_Products_final/Foxtail%20Millet%20(Navane)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Foxtail%20Millet%20(Navane)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 42.5,
+        "originalPrice": 42.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 187,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-103",
+    "name": "Foxtail Millet (Navane) Rava",
+    "category": "Rava",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Foxtail Millet (Navane) Rava sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Foxtail Millet (Navane) Rava"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Foxtail%20Millet%20(Navane)%20Rava/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Foxtail%20Millet%20(Navane)%20Rava/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 194,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Rava",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-104",
+    "name": "Fruit & Nut Chocolate",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fruit & Nut Chocolate sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fruit & Nut Chocolate"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fruit%20%26%20Nut%20Chocolate/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Fruit%20%26%20Nut%20Chocolate/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 21,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-105",
+    "name": "Fruits & Nuts Muesli",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fruits & Nuts Muesli sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fruits & Nuts Muesli"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fruits%20%26%20Nuts%20Muesli/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fruits%20%26%20Nuts%20Muesli/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 720,
+        "originalPrice": 720,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 28,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-106",
+    "name": "Fruits Granola",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Fruits Granola sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Fruits Granola"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Fruits%20Granola/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Fruits%20Granola/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 187.5,
+        "originalPrice": 187.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 35,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-107",
+    "name": "Garam Masala",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Garam Masala sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Garam Masala"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "150gm",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 42,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-108",
+    "name": "Garlic pickle",
+    "category": "Pickles",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Garlic pickle sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Garlic pickle"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Garlic%20pickle/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Garlic%20pickle/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "280g",
+        "price": 295,
+        "originalPrice": 295,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 49,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Pickles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-109",
+    "name": "Ginger Cube",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ginger Cube sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ginger Cube"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ginger%20Cube/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ginger%20Cube/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1040,
+        "originalPrice": 1040,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 56,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-110",
+    "name": "Ginger Honey",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ginger Honey sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ginger Honey"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ginger%20Honey/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Ginger%20Honey/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 435,
+        "originalPrice": 435,
+        "inStock": true
+      },
+      {
+        "weight": "400g",
+        "price": 670,
+        "originalPrice": 670,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 63,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-111",
+    "name": "Gooseberry Pickle",
+    "category": "Pickles",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Gooseberry Pickle sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Gooseberry Pickle"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Gooseberry%20Pickle/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Gooseberry%20Pickle/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "280g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 70,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Pickles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-112",
+    "name": "Green Gram",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Green Gram sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Green Gram"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Green%20Gram/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Green%20Gram/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 77,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-113",
+    "name": "Green Gram Powder (Cherupayar Podi)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Green Gram Powder (Cherupayar Podi) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Green Gram Powder (Cherupayar Podi)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Green%20Gram%20Powder%20(Cherupayar%20Podi)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Green%20Gram%20Powder%20(Cherupayar%20Podi)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 460,
+        "originalPrice": 460,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 230,
+        "originalPrice": 230,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 84,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-114",
+    "name": "Green Peas",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Green Peas sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Green Peas"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Green%20Peas/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Green%20Peas/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 40,
+        "originalPrice": 40,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 80,
+        "originalPrice": 80,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 91,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 54,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-115",
+    "name": "Groundnut Oil",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Groundnut Oil sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Groundnut Oil"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Groundnut%20Oil/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Groundnut%20Oil/dhaanya%2001.png",
+      "/images/dhannya_Products_final/Groundnut%20Oil/dhaanya%2002.png"
+    ],
+    "variants": [
+      {
+        "weight": "460gm",
+        "price": 255,
+        "originalPrice": 255,
+        "inStock": true
+      },
+      {
+        "weight": "910 gm",
+        "price": 470,
+        "originalPrice": 470,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 98,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-116",
+    "name": "Hazel Nuts",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Hazel Nuts sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Hazel Nuts"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Hazel%20Nuts/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Hazel%20Nuts/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 3700,
+        "originalPrice": 3700,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 925,
+        "originalPrice": 925,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1850,
+        "originalPrice": 1850,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 105,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-117",
+    "name": "Hazelnut Nut Butter",
+    "category": "Nut Butters",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Hazelnut Nut Butter sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Hazelnut Nut Butter"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Hazelnut%20Nut%20Butter/dhaanya.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Hazelnut%20Nut%20Butter/dhaanya.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g / Honey",
+        "price": 1030,
+        "originalPrice": 1030,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Jaggery",
+        "price": 1020,
+        "originalPrice": 1020,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Unsweetened",
+        "price": 1000,
+        "originalPrice": 1000,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 112,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Nut Butters",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-118",
+    "name": "Henna Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Henna Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Henna Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Henna%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Henna%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100G",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2050,
+        "originalPrice": 2050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 512.5,
+        "originalPrice": 512.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1025,
+        "originalPrice": 1025,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 119,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-119",
+    "name": "Hibiscus Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Hibiscus Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Hibiscus Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Hibiscus%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Hibiscus%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2100,
+        "originalPrice": 2100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 126,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-120",
+    "name": "Hing (Asafoetida)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Hing (Asafoetida) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Hing (Asafoetida)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Hing%20(Asafoetida)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Hing%20(Asafoetida)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 3500,
+        "originalPrice": 3500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 875,
+        "originalPrice": 875,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1750,
+        "originalPrice": 1750,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 133,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-122",
+    "name": "Honey Dipper",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Honey Dipper sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Honey Dipper"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Honey%20Dipper/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Honey%20Dipper/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 147,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-123",
+    "name": "Horse Gram (Muthira)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Horse Gram (Muthira) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Horse Gram (Muthira)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Horse%20Gram%20(Muthira)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Horse%20Gram%20(Muthira)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 45,
+        "originalPrice": 45,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 154,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-124",
+    "name": "Idli Powder",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Idli Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Idli Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Idli%20Powder/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Idli%20Powder/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 840,
+        "originalPrice": 840,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 161,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-125",
+    "name": "Idly Rice SR Orange",
+    "category": "Rice",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Idly Rice SR Orange sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Idly Rice SR Orange"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Idly%20Rice%20SR%20Orange/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Idly%20Rice%20SR%20Orange/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 21.25,
+        "originalPrice": 21.25,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 42.5,
+        "originalPrice": 42.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 168,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Rice",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-126",
+    "name": "Incha Acacia Wild",
+    "category": "Hair Care",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Incha Acacia Wild sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Incha Acacia Wild"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Incha_%20Acacia%20Wild/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Incha_%20Acacia%20Wild/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2500,
+        "originalPrice": 2500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 625,
+        "originalPrice": 625,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1250,
+        "originalPrice": 1250,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 175,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-127",
+    "name": "Indigo Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Indigo Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Indigo Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Indigo%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Indigo%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2100,
+        "originalPrice": 2100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 182,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-128",
+    "name": "Iratti Madhuram",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Iratti Madhuram sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Iratti Madhuram"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Iratti%20Madhuram/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Iratti%20Madhuram/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 189,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-129",
+    "name": "Jackfruit Pasta",
+    "category": "Pasta",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Jackfruit Pasta sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Jackfruit Pasta"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Jackfruit%20Pasta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Jackfruit%20Pasta/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 196,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Pasta",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-131",
+    "name": "Jaggery Mix Dry Fruit",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Jaggery Mix Dry Fruit sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Jaggery Mix Dry Fruit"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Jaggery%20Mix%20Dry%20Fruit/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Jaggery%20Mix%20Dry%20Fruit/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1600,
+        "originalPrice": 1600,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 800,
+        "originalPrice": 800,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 30,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-132",
+    "name": "Jowar (Sorghum Millet)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Jowar, also known as Sorghum, is a traditional cereal grain with a mild, earthy flavour and versatile culinary uses. It is consumed in several regions of India and can be enjoyed as whole grain or flour. Naturally gluten-free and provides carbohydrates, plant-based protein and dietary fibre.",
+    "ingredients": [
+      "100% Pure Natural Jowar (Sorghum Millet)"
+    ],
+    "nutritionInfo": {
+      "Gluten": "Naturally gluten-free grain",
+      "Flavour": "Mild flavour that works well in different recipes",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Versatility": "Useful alternative for increasing grain variety"
+    },
+    "benefits": [
+      "Naturally gluten-free grain",
+      "Mild flavour that works well in different recipes",
+      "Provides dietary fibre and plant-based nutrients",
+      "Useful alternative for increasing grain variety",
+      "Suitable for whole-grain and flour-based preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Jowar%20(Sorghum%20Millet)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Jowar%20(Sorghum%20Millet)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 28.75,
+        "originalPrice": 28.75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 57.5,
+        "originalPrice": 57.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 37,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-133",
+    "name": "Jowar (Sorghum Millet) Rava",
+    "category": "Rava",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Jowar (Sorghum Millet) Rava sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Jowar (Sorghum Millet) Rava"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Jowar%20(Sorghum%20Millet)%20Rava/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Jowar%20(Sorghum%20Millet)%20Rava/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 52.5,
+        "originalPrice": 52.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 105,
+        "originalPrice": 105,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 44,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Rava",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-134",
+    "name": "Jowar Flakes",
+    "category": "Poha",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Jowar Flakes sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Jowar Flakes"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Jowar%20Flakes/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Jowar%20Flakes/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 55,
+        "originalPrice": 55,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 51,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Poha",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-135",
+    "name": "Jowar Millet Pasta",
+    "category": "Pasta",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Jowar Millet Pasta sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Jowar Millet Pasta"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Jowar%20Millet%20Pasta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Jowar%20Millet%20Pasta/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 58,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Pasta",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-136",
+    "name": "Kabuli Chana White",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kabuli Chana White sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kabuli Chana White"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kabuli%20Chana%20White/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Kabuli%20Chana%20White/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 65,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-137",
+    "name": "Kadukka (Haritaki)",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kadukka (Haritaki) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kadukka (Haritaki)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kadukka%20(Haritaki)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kadukka%20(Haritaki)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 72,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-138",
+    "name": "Karingali (Black Cutch)",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Karingali (Black Cutch) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Karingali (Black Cutch)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Karingali%20(Black%20Cutch)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Karingali%20(Black%20Cutch)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 630,
+        "originalPrice": 630,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 157.5,
+        "originalPrice": 157.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 315,
+        "originalPrice": 315,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 79,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-139",
+    "name": "Kasthuri Haldi Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kasthuri Haldi Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kasthuri Haldi Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kasthuri%20Haldi%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kasthuri%20Haldi%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "1KG",
+        "price": 1500,
+        "originalPrice": 1500,
+        "inStock": true
+      },
+      {
+        "weight": "250G",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "500G",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 86,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-140",
+    "name": "Kiwi Green Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kiwi Green Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kiwi Green Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kiwi%20Green%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kiwi%20Green%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 222.5,
+        "originalPrice": 222.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 445,
+        "originalPrice": 445,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 93,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-141",
+    "name": "Kodo Millet (Arka)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kodo Millet (Arka) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kodo Millet (Arka)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kodo%20Millet%20(Arka)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kodo%20Millet%20(Arka)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1 kg",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 42.5,
+        "originalPrice": 42.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 85,
+        "originalPrice": 85,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 100,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-142",
+    "name": "Kodo Millet (Arka) Rava",
+    "category": "Rava",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kodo Millet (Arka) Rava sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kodo Millet (Arka) Rava"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kodo%20Millet%20(Arka)%20Rava/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kodo%20Millet%20(Arka)%20Rava/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 67.5,
+        "originalPrice": 67.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 135,
+        "originalPrice": 135,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 107,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Rava",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-143",
+    "name": "Kodo Millet Cookies",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Kodo Millet Cookies sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Kodo Millet Cookies"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Kodo%20Millet%20Cookies/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kodo%20Millet%20Cookies/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 114,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-144",
+    "name": "Lapsi Daliya (Broken Wheat)",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Lapsi Daliya (Broken Wheat) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Lapsi Daliya (Broken Wheat)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Lapsi%20Daliya%20(Broken%20Wheat)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Lapsi%20Daliya%20(Broken%20Wheat)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 30,
+        "originalPrice": 30,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 121,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-145",
+    "name": "Lemon pickle",
+    "category": "Pickles",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Lemon pickle sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Lemon pickle"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Lemon%20pickle/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Lemon%20pickle/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "280g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 128,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Pickles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-146",
+    "name": "Little Millet (Samai)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Little Millet, known as Samai, is a small traditional millet with a subtle flavour and versatile cooking applications. It can be prepared as a cooked grain or incorporated into flour-based recipes. Little Millet is useful for people seeking variety beyond commonly consumed rice and wheat, with a versatile texture and flavour suitable for both traditional and contemporary meals.",
+    "ingredients": [
+      "100% Pure Natural Little Millet (Samai)"
+    ],
+    "nutritionInfo": {
+      "Gluten": "Naturally gluten-free grain",
+      "Nutrients": "Provides dietary fibre and plant-based nutrients",
+      "Flavour": "Mild flavour suitable for everyday cooking",
+      "Versatility": "Can be used in both sweet and savoury dishes"
+    },
+    "benefits": [
+      "Naturally gluten-free grain",
+      "Provides dietary fibre and plant-based nutrients",
+      "Mild flavour suitable for everyday cooking",
+      "Can be used in both sweet and savoury dishes",
+      "A versatile grain for expanding dietary variety"
+    ],
+    "image": "/images/dhannya_Products_final/Little%20Millet%20(Samai)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Little%20Millet%20(Samai)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 52.5,
+        "originalPrice": 52.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 105,
+        "originalPrice": 105,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 135,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-147",
+    "name": "Little Millet (Samai) Rava",
+    "category": "Rava",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Little Millet (Samai) Rava sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Little Millet (Samai) Rava"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Little%20Millet%20(Samai)%20Rava/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Little%20Millet%20(Samai)%20Rava/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 142,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Rava",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-148",
+    "name": "Little Millet Cookies",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Little Millet Cookies sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Little Millet Cookies"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Little%20Millet%20Cookies/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Little%20Millet%20Cookies/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "250gm",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "500gm",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 149,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-149",
+    "name": "Lobia (Red Cowpeas)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Lobia (Red Cowpeas) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Lobia (Red Cowpeas)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Lobia%20(Red%20Cowpeas)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Lobia%20(Red%20Cowpeas)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 156,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-150",
+    "name": "Dhaanya Rajwadi Lokwan Wheat",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Rajwadi Lokwan Wheat is a traditional wheat variety valued for its everyday versatility and familiar wheat flavour. Its kernels are generally more compact and less elongated than Emmer Khapli grains, making it visually distinct from some heritage wheat varieties.\n\nIt is a practical option for preparing everyday rotis, chapatis and traditional wheat-based meals.",
+    "ingredients": [
+      "Rajwadi Lokwan Wheat"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Traditional wheat variety for everyday use.",
+      "Familiar wheat flavour and aroma.",
+      "Suitable for rotis, chapatis and parathas.",
+      "Provides energy, protein and dietary fibre.",
+      "Versatile for regular family meals.",
+      "Live-milled for freshness and transparency."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Rajwadi%20Lokwan%20Wheat/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Rajwadi%20Lokwan%20Wheat/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg / Powder",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      },
+      {
+        "weight": "1kg / Raw",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Powder",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 163,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "Traditional Everyday Wheat",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Start with approximately 60–70 ml water per 100 g flour. Adjust according to absorption."
+        },
+        {
+          "title": "Knead properly",
+          "text": "Knead for around 4–6 minutes until the dough becomes smooth and cohesive."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for approximately 15–20 minutes."
+        },
+        {
+          "title": "Roll gently",
+          "text": "Roll evenly using minimal dry flour to prevent the roti from becoming dry."
+        },
+        {
+          "title": "Cook on a preheated tawa",
+          "text": "Cook until done without keeping the roti on heat for too long."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Store the cooked rotis in a covered container to retain moisture."
+        }
+      ],
+      "hydrationGuide": "Approximately 60–70 ml water per 100 g flour. Actual water requirements may vary with milling and flour characteristics.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "",
+              "text": "Familiar wheat flavour suitable for everyday meals."
+            },
+            {
+              "title": "",
+              "text": "Soft-to-pliable texture when properly prepared."
+            },
+            {
+              "title": "",
+              "text": "Generally suitable for regular chapatis and rotis."
+            },
+            {
+              "title": "",
+              "text": "A balanced option for those who prefer conventional wheat-based meals."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Roti softness depends on flour quality, hydration, kneading, resting and cooking technique.",
+      "littleFacts": [
+        {
+          "question": "What is Lokwan wheat?",
+          "answer": "Lokwan is a wheat variety commonly sold and used for flour and traditional Indian preparations."
+        },
+        {
+          "question": "How is it different from Khapli?",
+          "answer": "Lokwan and Emmer Khapli differ in grain characteristics, flavour and dough behaviour."
+        },
+        {
+          "question": "Is it gluten-free?",
+          "answer": "No. Lokwan is a wheat variety and contains gluten."
+        },
+        {
+          "question": "Can it be used daily?",
+          "answer": "Yes, it can be used as everyday wheat flour for people who tolerate wheat."
+        }
+      ]
+    }
+  },
+  {
+    "id": "prod-151",
+    "name": "Macadamia Nuts",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Macadamia Nuts sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Macadamia Nuts"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Macadamia%20Nuts/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Macadamia%20Nuts/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 170,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-152",
+    "name": "Makhana (Lotus Seeds)",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Makhana (Lotus Seeds) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Makhana (Lotus Seeds)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Makhana%20(Lotus%20Seeds)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Makhana%20(Lotus%20Seeds)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1980,
+        "originalPrice": 1980,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 495,
+        "originalPrice": 495,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 990,
+        "originalPrice": 990,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 177,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-153",
+    "name": "Mango Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mango Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mango Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mango%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mango%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 184,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-154",
+    "name": "Manjishta Root Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Manjishta Root Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Manjishta Root Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Manjishta%20Root%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Manjishta%20Root%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 195,
+        "originalPrice": 195,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1950,
+        "originalPrice": 1950,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 487.5,
+        "originalPrice": 487.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 975,
+        "originalPrice": 975,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 191,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 54,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-155",
+    "name": "Marathi Moggu",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Marathi Moggu sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Marathi Moggu"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Marathi%20Moggu/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Marathi%20Moggu/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 198,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-156",
+    "name": "Marathi Moggu Long (Kapok Buds)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Marathi Moggu Long (Kapok Buds) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Marathi Moggu Long (Kapok Buds)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Marathi%20Moggu%20Long%20(Kapok%20Buds)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Marathi%20Moggu%20Long%20(Kapok%20Buds)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1200,
+        "originalPrice": 1200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 25,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-157",
+    "name": "Marayoor Jaggery Powder",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Marayoor Jaggery Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Marayoor Jaggery Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Marayoor%20Jaggery%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Marayoor%20Jaggery%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 70,
+        "originalPrice": 70,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 32,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-158",
+    "name": "Marayoor Jaggery Whole",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Marayoor Jaggery Whole sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Marayoor Jaggery Whole"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Marayoor%20Jaggery%20Whole/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Marayoor%20Jaggery%20Whole/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 50,
+        "originalPrice": 50,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 39,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-159",
+    "name": "Masala Grinding Charge",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Masala Grinding Charge sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Masala Grinding Charge"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Masala%20Grinding%20Charge/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Masala%20Grinding%20Charge/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 46,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-160",
+    "name": "Masala Roasting Charge",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Masala Roasting Charge sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Masala Roasting Charge"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Masala%20Roasting%20Charge/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Masala%20Roasting%20Charge/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 53,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-161",
+    "name": "Masoor Dal (Split)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Masoor Dal (Split) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Masoor Dal (Split)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Masoor%20Dal%20(Split)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Masoor%20Dal%20(Split)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 37.5,
+        "originalPrice": 37.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 60,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-162",
+    "name": "Meat Masala",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Meat Masala sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Meat Masala"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Meat%20Masala/dhaanya.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Meat%20Masala/dhaanya.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 67,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-163",
+    "name": "Medjool Jumbo Dates",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Medjool Jumbo Dates sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Medjool Jumbo Dates"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Medjool%20Jumbo%20Dates/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Medjool%20Jumbo%20Dates/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2200,
+        "originalPrice": 2200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1100,
+        "originalPrice": 1100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 74,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-164",
+    "name": "Methi Leaves Dried",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Methi Leaves Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Methi Leaves Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Methi%20Leaves%20Dried/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Methi%20Leaves%20Dried/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 490,
+        "originalPrice": 490,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 122.5,
+        "originalPrice": 122.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 245,
+        "originalPrice": 245,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 81,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-165",
+    "name": "Mexican Bites",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mexican Bites sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mexican Bites"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mexican%20Bites/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mexican%20Bites/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1100,
+        "originalPrice": 1100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 275,
+        "originalPrice": 275,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 88,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-166",
+    "name": "Milky Bar",
+    "category": "Quick Bites",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Milky Bar sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Milky Bar"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Milky%20Bar/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Milky%20Bar/01.jpg",
+      "/images/dhannya_Products_final/Milky%20Bar/02.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 95,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-167",
+    "name": "Mixed DryFruit & Seeds Roasted",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mixed DryFruit & Seeds Roasted sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mixed DryFruit & Seeds Roasted"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mixed%20DryFruit%20%26%20Seeds%20Roasted/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mixed%20DryFruit%20%26%20Seeds%20Roasted/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1840,
+        "originalPrice": 1840,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 460,
+        "originalPrice": 460,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 920,
+        "originalPrice": 920,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 102,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-168",
+    "name": "Mixed Vegetables (Air Fried)",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mixed Vegetables (Air Fried) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mixed Vegetables (Air Fried)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mixed%20Vegetables%20(Air%20Fried)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mixed%20Vegetables%20(Air%20Fried)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1960,
+        "originalPrice": 1960,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 490,
+        "originalPrice": 490,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 980,
+        "originalPrice": 980,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 109,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-169",
+    "name": "Moong Dal",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Moong Dal sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Moong Dal"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Moong%20Dal/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Moong%20Dal/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 52.5,
+        "originalPrice": 52.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 105,
+        "originalPrice": 105,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 116,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-170",
+    "name": "Moringa Noodles",
+    "category": "Noodles",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Moringa Noodles sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Moringa Noodles"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Moringa%20Noodles/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Moringa%20Noodles/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 145,
+        "originalPrice": 145,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 290,
+        "originalPrice": 290,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 123,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Noodles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-171",
+    "name": "Moringa Pasta",
+    "category": "Pasta",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Moringa Pasta sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Moringa Pasta"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Moringa%20Pasta/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Moringa%20Pasta/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 540,
+        "originalPrice": 540,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 135,
+        "originalPrice": 135,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 130,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Pasta",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-172",
+    "name": "Moringa Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Moringa Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Moringa Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Moringa%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Moringa%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2050,
+        "originalPrice": 2050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 512.5,
+        "originalPrice": 512.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1025,
+        "originalPrice": 1025,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 137,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-173",
+    "name": "Mulethi Root Powder Irattimadhuram",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mulethi Root Powder Irattimadhuram sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mulethi Root Powder Irattimadhuram"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mulethi%20Root%20Powder_%20Irattimadhuram/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mulethi%20Root%20Powder_%20Irattimadhuram/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 224,
+        "originalPrice": 224,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2240,
+        "originalPrice": 2240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1120,
+        "originalPrice": 1120,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 144,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-174",
+    "name": "Multani Mitti",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Multani Mitti sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Multani Mitti"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Multani%20Mitti/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Multani%20Mitti/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 101,
+        "originalPrice": 101,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1010,
+        "originalPrice": 1010,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 252.5,
+        "originalPrice": 252.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 505,
+        "originalPrice": 505,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 151,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-175",
+    "name": "Multi Millet Cookies",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Multi Millet Cookies sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Multi Millet Cookies"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Multi%20Millet%20Cookies/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Multi%20Millet%20Cookies/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      },
+      {
+        "weight": "250gm",
+        "price": 145,
+        "originalPrice": 145,
+        "inStock": true
+      },
+      {
+        "weight": "500gm",
+        "price": 290,
+        "originalPrice": 290,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 158,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-176",
+    "name": "Multi Millet Vermiceli",
+    "category": "Noodles",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Multi Millet Vermiceli sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Multi Millet Vermiceli"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Multi%20Millet%20Vermiceli/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Multi%20Millet%20Vermiceli/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 102.5,
+        "originalPrice": 102.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 165,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Noodles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-177",
+    "name": "Multigrain Chikki",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Multigrain Chikki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Multigrain Chikki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Multigrain%20Chikki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Multigrain%20Chikki/01.jpg",
+      "/images/dhannya_Products_final/Multigrain%20Chikki/02.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
+        "weight": "250gm",
+        "price": 187.5,
+        "originalPrice": 187.5,
+        "inStock": true
+      },
+      {
+        "weight": "500gm",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 172,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-178",
+    "name": "Munakka Raisins",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Munakka Raisins sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Munakka Raisins"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Munakka%20Raisins/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Munakka%20Raisins/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 870,
+        "originalPrice": 870,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 217.5,
+        "originalPrice": 217.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 435,
+        "originalPrice": 435,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 179,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-179",
+    "name": "Mustard Oil (Black Seed)",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mustard Oil (Black Seed) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mustard Oil (Black Seed)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mustard%20Oil%20(Black%20Seed)/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Mustard%20Oil%20(Black%20Seed)/dhaanya%2001.png",
+      "/images/dhannya_Products_final/Mustard%20Oil%20(Black%20Seed)/dhaanya%2002.png",
+      "/images/dhannya_Products_final/Mustard%20Oil%20(Black%20Seed)/dhaanya%2003.png",
+      "/images/dhannya_Products_final/Mustard%20Oil%20(Black%20Seed)/04.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "460 g",
+        "price": 335,
+        "originalPrice": 335,
+        "inStock": true
+      },
+      {
+        "weight": "910 g",
+        "price": 630,
+        "originalPrice": 630,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 186,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-180",
+    "name": "Mustard Seeds Black",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Mustard Seeds Black sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Mustard Seeds Black"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Mustard%20Seeds%20Black/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mustard%20Seeds%20Black/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 55,
+        "originalPrice": 55,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 193,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-181",
+    "name": "Nannari Root",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Nannari Root sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Nannari Root"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Nannari%20Root/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Nannari%20Root/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 20,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-182",
+    "name": "Navara Rice",
+    "category": "Rice",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Navara Rice sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Navara Rice"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Navara%20Rice/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Navara%20Rice/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 146,
+        "originalPrice": 146,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 36.5,
+        "originalPrice": 36.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 73,
+        "originalPrice": 73,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 27,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Rice",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-183",
+    "name": "Neem Comb",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Neem Comb sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Neem Comb"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Comb/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Comb/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 34,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-184",
+    "name": "Neem Ladle",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Neem Ladle sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Neem Ladle"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Ladle/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Ladle/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 41,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-185",
+    "name": "Neem Leaf Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Neem Leaf Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Neem Leaf Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Leaf%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Leaf%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 145,
+        "originalPrice": 145,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 362.5,
+        "originalPrice": 362.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 725,
+        "originalPrice": 725,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 48,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-186",
+    "name": "Neem Massage Comb",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Neem Massage Comb sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Neem Massage Comb"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Massage%20Comb/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Massage%20Comb/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 55,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-187",
+    "name": "Neem Spatula",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Neem Spatula sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Neem Spatula"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Spatula/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Spatula/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 62,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-188",
+    "name": "Neem Tongue Cleaner",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Neem Tongue Cleaner sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Neem Tongue Cleaner"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Tongue%20Cleaner/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Tongue%20Cleaner/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 69,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-189",
+    "name": "Nutmeg",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Nutmeg sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Nutmeg"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Nutmeg/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Nutmeg/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 76,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-190",
+    "name": "Nutmeg Mace (Red Flower)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Nutmeg Mace (Red Flower) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Nutmeg Mace (Red Flower)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Nutmeg%20Mace%20(Red%20Flower)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Nutmeg%20Mace%20(Red%20Flower)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 4000,
+        "originalPrice": 4000,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 1000,
+        "originalPrice": 1000,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 2000,
+        "originalPrice": 2000,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 83,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-191",
+    "name": "Nutmeg Mace (Yellow Flower)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Nutmeg Mace (Yellow Flower) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Nutmeg Mace (Yellow Flower)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Nutmeg%20Mace%20(Yellow%20Flower)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Nutmeg%20Mace%20(Yellow%20Flower)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 3700,
+        "originalPrice": 3700,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 925,
+        "originalPrice": 925,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1850,
+        "originalPrice": 1850,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 90,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-192",
+    "name": "Orange Peel Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Orange Peel Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Orange Peel Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Orange%20Peel%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Orange%20Peel%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 199,
+        "originalPrice": 199,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1990,
+        "originalPrice": 1990,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 497.5,
+        "originalPrice": 497.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 995,
+        "originalPrice": 995,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 97,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-193",
+    "name": "Oregano",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Oregano sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Oregano"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Oregano/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Oregano/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 104,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-194",
+    "name": "Palm Candy Crystal (Panam Kalkandam)",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Palm Candy Crystal (Panam Kalkandam) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Palm Candy Crystal (Panam Kalkandam)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Palm%20Candy%20Crystal%20(Panam%20Kalkandam)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Palm%20Candy%20Crystal%20(Panam%20Kalkandam)/01.png",
+      "/images/dhannya_Products_final/Palm%20Candy%20Crystal%20(Panam%20Kalkandam)/02.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 262.5,
+        "originalPrice": 262.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 111,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 54,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-195",
+    "name": "Palm Jaggery (Karupatti)",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Palm Jaggery (Karupatti) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Palm Jaggery (Karupatti)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Palm%20Jaggery%20(Karupatti)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Palm%20Jaggery%20(Karupatti)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 330,
+        "originalPrice": 330,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 107.5,
+        "originalPrice": 107.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 165,
+        "originalPrice": 165,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 118,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-196",
+    "name": "Papaya Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Papaya Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Papaya Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Papaya%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Papaya%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 222.5,
+        "originalPrice": 222.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 445,
+        "originalPrice": 445,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 125,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-197",
+    "name": "Pathimukham",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pathimukham sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pathimukham"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pathimukham/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Pathimukham/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 810,
+        "originalPrice": 810,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 202.5,
+        "originalPrice": 202.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 405,
+        "originalPrice": 405,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 132,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-198",
+    "name": "Peanut Chikki",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Peanut Chikki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Peanut Chikki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Peanut%20Chikki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Peanut%20Chikki/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 590,
+        "originalPrice": 590,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 147.5,
+        "originalPrice": 147.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 295,
+        "originalPrice": 295,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 139,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-199",
+    "name": "Peanut Plain Roasted",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Peanut Plain Roasted sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Peanut Plain Roasted"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Peanut%20Plain%20Roasted/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Peanut%20Plain%20Roasted/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 460,
+        "originalPrice": 460,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 230,
+        "originalPrice": 230,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 146,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-200",
+    "name": "Peanut Plain Roasted Nut Butter",
+    "category": "Nut Butters",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Peanut Plain Roasted Nut Butter sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Peanut Plain Roasted Nut Butter"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Peanut%20Plain%20Roasted%20Nut%20Butter/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Peanut%20Plain%20Roasted%20Nut%20Butter/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g / Honey",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Jaggery",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Unsweetened",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 153,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Nut Butters",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-201",
+    "name": "Peanut Salted",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Peanut Salted sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Peanut Salted"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Peanut%20Salted/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Peanut%20Salted/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 160,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-202",
+    "name": "Pearl Millet (Bajra)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Pearl Millet, commonly known as Bajra, is a traditional grain with a distinctive earthy flavour and hearty character. It has long been used in Indian diets, especially in regions where millet-based flatbreads form part of everyday food traditions. Bajra provides plant-based protein, minerals and dietary fibre.",
+    "ingredients": [
+      "100% Pure Natural Pearl Millet (Bajra)"
+    ],
+    "nutritionInfo": {
+      "Gluten": "Naturally gluten-free grain",
+      "Protein": "Provides plant-based protein and minerals",
+      "Flavour": "Distinctive earthy and nutty flavour",
+      "Nutrition": "Suitable for traditional grain-based meals"
+    },
+    "benefits": [
+      "Naturally gluten-free grain",
+      "Provides plant-based protein and minerals",
+      "Offers a distinctive earthy and nutty flavour",
+      "Suitable for traditional grain-based meals",
+      "Helps add variety to everyday cereal consumption"
+    ],
+    "image": "/images/dhannya_Products_final/Pearl%20Millet%20(Bajra)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pearl%20Millet%20(Bajra)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 23.75,
+        "originalPrice": 23.75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 167,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-203",
+    "name": "Pecan Nuts",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pecan Nuts sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pecan Nuts"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pecan%20Nuts/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Pecan%20Nuts/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2700,
+        "originalPrice": 2700,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 675,
+        "originalPrice": 675,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 174,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-204",
+    "name": "Pepper",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pepper sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pepper"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pepper/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Pepper/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "125g - Masala",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "175g - Masala",
+        "price": 245,
+        "originalPrice": 245,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1570,
+        "originalPrice": 1570,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 392.5,
+        "originalPrice": 392.5,
+        "inStock": true
+      },
+      {
+        "weight": "25g - Masala",
+        "price": 35,
+        "originalPrice": 35,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 785,
+        "originalPrice": 785,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 70,
+        "originalPrice": 70,
+        "inStock": true
+      },
+      {
+        "weight": "75g - Masala",
+        "price": 105,
+        "originalPrice": 105,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 181,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-205",
+    "name": "Pineapple Coin (Dried)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pineapple Coin (Dried) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pineapple Coin (Dried)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pineapple%20Coin%20(Dried)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pineapple%20Coin%20(Dried)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1150,
+        "originalPrice": 1150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 287.5,
+        "originalPrice": 287.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 575,
+        "originalPrice": 575,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 188,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-206",
+    "name": "Pineapple Ring Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pineapple Ring Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pineapple Ring Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pineapple%20Ring%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pineapple%20Ring%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 312.5,
+        "originalPrice": 312.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 625,
+        "originalPrice": 625,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 195,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-207",
+    "name": "Pink Salt Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pink Salt Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pink Salt Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pink%20Salt%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pink%20Salt%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 37.5,
+        "originalPrice": 37.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 75,
+        "originalPrice": 75,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 22,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-208",
+    "name": "Pista California (AM)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pista California (AM) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pista California (AM)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pista%20California%20(AM)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pista%20California%20(AM)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2300,
+        "originalPrice": 2300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 575,
+        "originalPrice": 575,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1150,
+        "originalPrice": 1150,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 29,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-209",
+    "name": "Pista Plain w o Shell",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pista Plain w o Shell sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pista Plain w o Shell"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pista%20Plain%20w_o%20Shell/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pista%20Plain%20w_o%20Shell/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 3980,
+        "originalPrice": 3980,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 995,
+        "originalPrice": 995,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1990,
+        "originalPrice": 1990,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 36,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-210",
+    "name": "Pista Salted & Roasted",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pista Salted & Roasted sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pista Salted & Roasted"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pista%20Salted%20%26%20Roasted/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pista%20Salted%20%26%20Roasted/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 43,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-211",
+    "name": "Plum Black Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Plum Black Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Plum Black Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Plum%20Black%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Plum%20Black%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 50,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-212",
+    "name": "Plum Red Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Plum Red Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Plum Red Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Plum%20Red%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Plum%20Red%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 57,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-213",
+    "name": "Pomegranate Honey",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pomegranate Honey sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pomegranate Honey"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pomegranate%20Honey/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Pomegranate%20Honey/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 435,
+        "originalPrice": 435,
+        "inStock": true
+      },
+      {
+        "weight": "400g",
+        "price": 670,
+        "originalPrice": 670,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 64,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-214",
+    "name": "Poppy (KhusKhus) White",
+    "category": "Seeds",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Poppy (KhusKhus) White sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Poppy (KhusKhus) White"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Poppy%20(KhusKhus)%20White/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Poppy%20(KhusKhus)%20White/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 3350,
+        "originalPrice": 3350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 837.5,
+        "originalPrice": 837.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1675,
+        "originalPrice": 1675,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 71,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-215",
+    "name": "Pot Tamarind (Kudampuli)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pot Tamarind (Kudampuli) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pot Tamarind (Kudampuli)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pot%20Tamarind%20(Kudampuli)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Pot%20Tamarind%20(Kudampuli)/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 530,
+        "originalPrice": 530,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 132.5,
+        "originalPrice": 132.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 265,
+        "originalPrice": 265,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 78,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-216",
+    "name": "Protein Beans",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Protein Beans sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Protein Beans"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Protein%20Beans/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Protein%20Beans/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 85,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-217",
+    "name": "Prunes Dried",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Prunes Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Prunes Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Prunes%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Prunes%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1290,
+        "originalPrice": 1290,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 322.5,
+        "originalPrice": 322.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 645,
+        "originalPrice": 645,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 92,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-218",
+    "name": "Psyllium Husk (Isabgol Busi)",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Psyllium Husk (Isabgol Busi) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Psyllium Husk (Isabgol Busi)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Psyllium%20Husk%20(Isabgol%20Busi)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Psyllium%20Husk%20(Isabgol%20Busi)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2000,
+        "originalPrice": 2000,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 500,
+        "originalPrice": 500,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1000,
+        "originalPrice": 1000,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 99,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-219",
+    "name": "Pumpkin Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Pumpkin Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Pumpkin Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Pumpkin%20Seeds/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Pumpkin%20Seeds/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 980,
+        "originalPrice": 980,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 245,
+        "originalPrice": 245,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 490,
+        "originalPrice": 490,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 106,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-220",
+    "name": "Putana (Parched Gram) Fine",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Putana (Parched Gram) Fine sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Putana (Parched Gram) Fine"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Putana%20(Parched%20Gram)%20Fine/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Putana%20(Parched%20Gram)%20Fine/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 45,
+        "originalPrice": 45,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 90,
+        "originalPrice": 90,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 113,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-221",
+    "name": "Puttu Powder Roasted (Red)",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Puttu Powder Roasted (Red) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Puttu Powder Roasted (Red)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Puttu%20Powder%20Roasted%20(Red)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Puttu%20Powder%20Roasted%20(Red)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 32.5,
+        "originalPrice": 32.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 65,
+        "originalPrice": 65,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 120,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-222",
+    "name": "Puttu Powder Roasted (White)",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Puttu Powder Roasted (White) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Puttu Powder Roasted (White)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Puttu%20Powder%20Roasted%20(White)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Puttu%20Powder%20Roasted%20(White)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 32.5,
+        "originalPrice": 32.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 65,
+        "originalPrice": 65,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 127,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-223",
+    "name": "Quinoa",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Quinoa sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Quinoa"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Quinoa/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Quinoa/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": false
+      },
+      {
+        "weight": "500g",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": false
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 134,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-224",
+    "name": "Quinoa Vermicelli",
+    "category": "Noodles",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Quinoa Vermicelli sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Quinoa Vermicelli"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Quinoa%20Vermicelli/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Quinoa%20Vermicelli/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 102.5,
+        "originalPrice": 102.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 141,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Noodles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-225",
+    "name": "Raamacham",
+    "category": "Health Foods",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Raamacham sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Raamacham"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Raamacham/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raamacham/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1800,
+        "originalPrice": 1800,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 900,
+        "originalPrice": 900,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 148,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-226",
+    "name": "Ragi (Finger Millet)",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Ragi, also known as Finger Millet, is a traditional Indian grain recognised for its earthy flavour and naturally high calcium content. It has been a part of South Indian food traditions for generations and is commonly enjoyed in both everyday meals and traditional preparations. Naturally gluten-free, provides dietary fibre and plant-based nutrients.",
+    "ingredients": [
+      "100% Pure Natural Ragi (Finger Millet)"
+    ],
+    "nutritionInfo": {
+      "Calcium Content": "Notable dietary source of calcium",
+      "Gluten": "Naturally gluten-free grain",
+      "Fibre": "Contains dietary fibre and plant-based nutrients",
+      "Flavour": "Distinctive earthy flavour"
+    },
+    "benefits": [
+      "Naturally gluten-free grain when handled without gluten cross-contact",
+      "A notable dietary source of calcium",
+      "Contains dietary fibre and plant-based nutrients",
+      "Offers a distinctive earthy flavour",
+      "Suitable for traditional and modern recipes"
+    ],
+    "image": "/images/dhannya_Products_final/Ragi%20(Finger%20Millet)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ragi%20(Finger%20Millet)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 23.75,
+        "originalPrice": 23.75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 155,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-227",
+    "name": "Ragi (Finger Millet) Rava",
+    "category": "Rava",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ragi (Finger Millet) Rava sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ragi (Finger Millet) Rava"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ragi%20(Finger%20Millet)%20Rava/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ragi%20(Finger%20Millet)%20Rava/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 50,
+        "originalPrice": 50,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 162,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Rava",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-228",
+    "name": "Ragi Flakes",
+    "category": "Poha",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ragi Flakes sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ragi Flakes"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ragi%20Flakes/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ragi%20Flakes/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 230,
+        "originalPrice": 230,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 57.5,
+        "originalPrice": 57.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 169,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Poha",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-229",
+    "name": "Ragi Noodles",
+    "category": "Noodles",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Ragi Noodles sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Ragi Noodles"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Ragi%20Noodles/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Ragi%20Noodles/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 620,
+        "originalPrice": 620,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 155,
+        "originalPrice": 155,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 310,
+        "originalPrice": 310,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 176,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Noodles",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-230",
+    "name": "Raisin- Afghan Long",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Raisin- Afghan Long sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Raisin- Afghan Long"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Raisin-%20Afghan%20Long/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raisin-%20Afghan%20Long/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1280,
+        "originalPrice": 1280,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 320,
+        "originalPrice": 320,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 640,
+        "originalPrice": 640,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 183,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-231",
+    "name": "Raisins Long Yellow",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Raisins Long Yellow sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Raisins Long Yellow"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Raisins%20Long%20Yellow/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raisins%20Long%20Yellow/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 190,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-232",
+    "name": "Raisins Seed Black",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Raisins Seed Black sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Raisins Seed Black"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Raisins%20Seed%20Black/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raisins%20Seed%20Black/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1250,
+        "originalPrice": 1450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 197,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-233",
+    "name": "Rajapuri Turmeric",
+    "category": "Spices",
+    "concern": [
+      "Gut Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Rajapuri Turmeric sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Rajapuri Turmeric"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Rajapuri%20Turmeric/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Rajapuri%20Turmeric/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 59,
+        "originalPrice": 59,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 88.5,
+        "originalPrice": 88.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 590,
+        "originalPrice": 590,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 118,
+        "originalPrice": 118,
+        "inStock": true
+      },
+      {
+        "weight": "20g - Masala",
+        "price": 11.8,
+        "originalPrice": 11.8,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 147.5,
+        "originalPrice": 147.5,
+        "inStock": true
+      },
+      {
+        "weight": "40g - Masala",
+        "price": 23.6,
+        "originalPrice": 23.6,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 295,
+        "originalPrice": 295,
+        "inStock": true
+      },
+      {
+        "weight": "60g - Masala",
+        "price": 35.4,
+        "originalPrice": 35.4,
+        "inStock": true
+      },
+      {
+        "weight": "80g - Masala",
+        "price": 47.2,
+        "originalPrice": 47.2,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 24,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+    {
+    "id": "prod-235",
+    "name": "Rakthachandana",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Rakthachandana sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Rakthachandana"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Rakthachandana/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Rakthachandana/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100G",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 4000,
+        "originalPrice": 4000,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 1000,
+        "originalPrice": 1000,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 2000,
+        "originalPrice": 2000,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-236",
+    "name": "Raw Honey",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Raw Honey sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Raw Honey"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Raw%20Honey/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Raw%20Honey/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1350g",
+        "price": 930,
+        "originalPrice": 930,
+        "inStock": true
+      },
+      {
+        "weight": "400g",
+        "price": 310,
+        "originalPrice": 310,
+        "inStock": true
+      },
+      {
+        "weight": "950g",
+        "price": 680,
+        "originalPrice": 680,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 45,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-237",
+    "name": "Rectangle Loofah",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Rectangle Loofah sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Rectangle Loofah"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Rectangle%20Loofah/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Rectangle%20Loofah/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 45,
+        "originalPrice": 45,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 52,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-238",
+    "name": "Red Chilli- Byadagi Kaddi",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Chilli- Byadagi Kaddi sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Chilli- Byadagi Kaddi"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Chilli-%20Byadagi%20Kaddi/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Chilli-%20Byadagi%20Kaddi/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1050,
+        "originalPrice": 1050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 262.5,
+        "originalPrice": 262.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 525,
+        "originalPrice": 525,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 59,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-239",
+    "name": "Red Chilli- Dabbi",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Chilli- Dabbi sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Chilli- Dabbi"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Chilli-%20Dabbi/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Chilli-%20Dabbi/01.jpg",
+      "/images/dhannya_Products_final/Red%20Chilli-%20Dabbi/02.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 148,
+        "originalPrice": 148,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 222,
+        "originalPrice": 222,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1480,
+        "originalPrice": 1480,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 296,
+        "originalPrice": 296,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 740,
+        "originalPrice": 740,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 74,
+        "originalPrice": 74,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 66,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-240",
+    "name": "Red Chilli- Guntur Long",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Chilli- Guntur Long sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Chilli- Guntur Long"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Chilli-%20Guntur%20Long/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Chilli-%20Guntur%20Long/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 53,
+        "originalPrice": 53,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 79.5,
+        "originalPrice": 79.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 530,
+        "originalPrice": 530,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 106,
+        "originalPrice": 106,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 132.5,
+        "originalPrice": 132.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 132.5,
+        "originalPrice": 132.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 265,
+        "originalPrice": 265,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 26.5,
+        "originalPrice": 26.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 73,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-241",
+    "name": "Red Chilli- Guntur Small",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Chilli- Guntur Small sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Chilli- Guntur Small"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Chilli-%20Guntur%20Small/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Chilli-%20Guntur%20Small/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 162.5,
+        "originalPrice": 162.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 80,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-242",
+    "name": "Red Chilli- Salem Ball",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Chilli- Salem Ball sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Chilli- Salem Ball"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Chilli-%20Salem%20Ball/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Chilli-%20Salem%20Ball/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 82,
+        "originalPrice": 82,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 123,
+        "originalPrice": 123,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 820,
+        "originalPrice": 820,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 164,
+        "originalPrice": 164,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 410,
+        "originalPrice": 410,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 41,
+        "originalPrice": 41,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 87,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-243",
+    "name": "Red Matta Rice (Parboiled & Semi-Polished)",
+    "category": "Rice",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Matta Rice (Parboiled & Semi-Polished) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Matta Rice (Parboiled & Semi-Polished)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Matta%20Rice%20(Parboiled%20%26%20Semi-Polished)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Matta%20Rice%20(Parboiled%20%26%20Semi-Polished)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 99,
+        "originalPrice": 99,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 24.75,
+        "originalPrice": 24.75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 49.5,
+        "originalPrice": 49.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 94,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-244",
+    "name": "Red Rajma Kidney Beans",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Rajma Kidney Beans sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Rajma Kidney Beans"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Rajma_%20Kidney%20Beans/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Rajma_%20Kidney%20Beans/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 65,
+        "originalPrice": 65,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 101,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-245",
+    "name": "Red Rice Flakes (Avalakki)",
+    "category": "Poha",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Red Rice Flakes (Avalakki) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Red Rice Flakes (Avalakki)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Red%20Rice%20Flakes%20(Avalakki)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Red%20Rice%20Flakes%20(Avalakki)/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 108,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Poha",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-246",
+    "name": "Reetha Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Reetha Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Reetha Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Reetha%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Reetha%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 205,
+        "originalPrice": 205,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2050,
+        "originalPrice": 2050,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 512.5,
+        "originalPrice": 512.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1025,
+        "originalPrice": 1025,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 115,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-247",
+    "name": "Roasted Chana",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Roasted Chana sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Roasted Chana"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Roasted%20Chana/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Roasted%20Chana/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 87.5,
+        "originalPrice": 87.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 175,
+        "originalPrice": 175,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 122,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-248",
+    "name": "Robusta Coffee Beans",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Robusta Coffee Beans sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Robusta Coffee Beans"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Robusta%20Coffee%20Beans/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Robusta%20Coffee%20Beans/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1500,
+        "originalPrice": 1500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 129,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-249",
+    "name": "Robusta Coffee Beans (organic)",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Robusta Coffee Beans (organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Robusta Coffee Beans (organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Robusta%20Coffee%20Beans%20(organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Robusta%20Coffee%20Beans%20(organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1900,
+        "originalPrice": 1900,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 475,
+        "originalPrice": 475,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 950,
+        "originalPrice": 950,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 136,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-250",
+    "name": "Robusta Coffee Powder (Idukki)",
+    "category": "Coffee",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Robusta Coffee Powder (Idukki) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Robusta Coffee Powder (Idukki)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Robusta%20Coffee%20Powder%20(Idukki)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Robusta%20Coffee%20Powder%20(Idukki)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 337.5,
+        "originalPrice": 337.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 675,
+        "originalPrice": 675,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 143,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Coffee",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-251",
+    "name": "Rose Mary Dried",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Rose Mary Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Rose Mary Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Rose%20Mary%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Rose%20Mary%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 850,
+        "originalPrice": 850,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 212.5,
+        "originalPrice": 212.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 425,
+        "originalPrice": 425,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 150,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-252",
+    "name": "Rose Petals",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Rose Petals sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Rose Petals"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Rose%20Petals/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Rose%20Petals/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1180,
+        "originalPrice": 1180,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 295,
+        "originalPrice": 295,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 590,
+        "originalPrice": 590,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 157,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-253",
+    "name": "Royal Prime Kimia Dates",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Royal Prime Kimia Dates sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Royal Prime Kimia Dates"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Royal%20Prime%20Kimia%20Dates/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Royal%20Prime%20Kimia%20Dates/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 164,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-254",
+    "name": "Royal Rajamudi Rice Premium",
+    "category": "Rice",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Royal Rajamudi Rice Premium sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Royal Rajamudi Rice Premium"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Royal%20Rajamudi%20Rice%20Premium/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Royal%20Rajamudi%20Rice%20Premium/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 139,
+        "originalPrice": 139,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 34.75,
+        "originalPrice": 34.75,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 69.5,
+        "originalPrice": 69.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 171,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Rice",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-255",
+    "name": "Safawi Dates",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Safawi Dates sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Safawi Dates"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Safawi%20Dates/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Safawi%20Dates/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1180,
+        "originalPrice": 1180,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 295,
+        "originalPrice": 295,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 590,
+        "originalPrice": 590,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 178,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-256",
+    "name": "Sago (Tapioca Pearls)",
+    "category": "Rice",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sago (Tapioca Pearls) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sago (Tapioca Pearls)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sago%20(Tapioca%20Pearls)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sago%20(Tapioca%20Pearls)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 32.5,
+        "originalPrice": 32.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 65,
+        "originalPrice": 65,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 185,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Rice",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-257",
+    "name": "Sambar Masala",
+    "category": "Masalas",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sambar Masala sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sambar Masala"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sambar%20Masala/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sambar%20Masala/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "150gm",
+        "price": 165,
+        "originalPrice": 165,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 192,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Masalas",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-258",
+    "name": "Sandalwood Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sandalwood Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sandalwood Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sandalwood%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sandalwood%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100G",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 2600,
+        "originalPrice": 2600,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 199,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-259",
+    "name": "Sesame Oil (Brown Gingelly Seed)",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sesame Oil (Brown Gingelly Seed) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sesame Oil (Brown Gingelly Seed)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2001.png",
+      "/images/dhannya_Products_final/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2002.png",
+      "/images/dhannya_Products_final/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/dhaanya%2003.png",
+      "/images/dhannya_Products_final/Sesame%20Oil%20(Brown%20Gingelly%20Seed)/04.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "460g",
+        "price": 360,
+        "originalPrice": 360,
+        "inStock": true
+      },
+      {
+        "weight": "910g",
+        "price": 680,
+        "originalPrice": 680,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 26,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-260",
+    "name": "Sesame Oil (White Gingelly Seed)",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sesame Oil (White Gingelly Seed) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sesame Oil (White Gingelly Seed)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2001.png",
+      "/images/dhannya_Products_final/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2002.png",
+      "/images/dhannya_Products_final/Sesame%20Oil%20(White%20Gingelly%20Seed)/dhaanya%2003.png",
+      "/images/dhannya_Products_final/Sesame%20Oil%20(White%20Gingelly%20Seed)/04.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "460g",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      },
+      {
+        "weight": "910g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 33,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-261",
+    "name": "Sesame Seeds (Til) Black",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sesame Seeds (Til) Black sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sesame Seeds (Til) Black"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sesame%20Seeds%20(Til)%20Black/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sesame%20Seeds%20(Til)%20Black/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 552,
+        "originalPrice": 552,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 138,
+        "originalPrice": 138,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 276,
+        "originalPrice": 276,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 40,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-262",
+    "name": "Sesame Seeds (Til) White",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sesame Seeds (Til) White sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sesame Seeds (Til) White"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sesame%20Seeds%20(Til)%20White/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Sesame%20Seeds%20(Til)%20White/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 105,
+        "originalPrice": 105,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 47,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-263",
+    "name": "Shah Jeera (Caraway)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Shah Jeera (Caraway) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Shah Jeera (Caraway)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Shah%20Jeera%20(Caraway)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Shah%20Jeera%20(Caraway)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 187.5,
+        "originalPrice": 187.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 54,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-264",
+    "name": "Dhaanya Sharbati Wheat (Rajni Gandha)",
+    "category": "Flour",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "Dhaanya Sharbati Wheat, also known as Rajni Gandha in some markets, is a traditional Indian wheat variety appreciated for its pleasant wheat flavour and mild natural sweetness. It is a versatile choice for everyday rotis, chapatis and other wheat-based preparations.",
+    "ingredients": [
+      "Sharbati Wheat (Rajni Gandha)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Traditional Indian wheat variety.",
+      "Pleasant flavour with mild natural sweetness.",
+      "Suitable for everyday rotis and chapatis.",
+      "Provides carbohydrates, protein and dietary fibre.",
+      "Versatile for parathas and traditional recipes.",
+      "Live-milled for freshness and transparency."
+    ],
+    "image": "/images/dhannya_Products_final/Dhaanya%20Sharbati%20Wheat%20(Rajni%20Gandha)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Dhaanya%20Sharbati%20Wheat%20(Rajni%20Gandha)/01.png",
+      "/images/dhannya_Products_final/Dhaanya%20Sharbati%20Wheat%20(Rajni%20Gandha)/02.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg / Powder",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
+        "weight": "1kg / Raw",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Powder",
+        "price": 285,
+        "originalPrice": 285,
+        "inStock": true
+      },
+      {
+        "weight": "3kg / Raw",
+        "price": 285,
+        "originalPrice": 285,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Powder",
+        "price": 475,
+        "originalPrice": 475,
+        "inStock": true
+      },
+      {
+        "weight": "5kg / Raw",
+        "price": 475,
+        "originalPrice": 475,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 61,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Flour",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ],
+    "ingredientComposition": "Traditional Indian Wheat",
+    "allergens": [
+      "Wheat (Gluten)"
+    ],
+    "preparationGuide": {
+      "liveMillingNote": "Live Milling: Milled after your order or live at our store.",
+      "steps": [
+        {
+          "title": "Add water gradually",
+          "text": "Start with approximately 60–70 ml water per 100 g flour. Increase gradually as required."
+        },
+        {
+          "title": "Knead well",
+          "text": "Knead for around 4–6 minutes until the dough becomes smooth and workable."
+        },
+        {
+          "title": "Rest",
+          "text": "Cover and rest for approximately 15–20 minutes to allow the flour to hydrate."
+        },
+        {
+          "title": "Roll evenly",
+          "text": "Use moderate pressure and avoid using excessive dry flour."
+        },
+        {
+          "title": "Cook on a hot tawa",
+          "text": "Cook both sides properly and avoid prolonged cooking to help retain softness."
+        },
+        {
+          "title": "Keep covered",
+          "text": "Place cooked rotis in a covered container or cloth."
+        }
+      ],
+      "hydrationGuide": "Approximately 60–70 ml water per 100 g flour. Adjust based on flour absorption and dough consistency.",
+      "rotiExpectationGroups": [
+        {
+          "points": [
+            {
+              "title": "",
+              "text": "Familiar wheat flavour with a mild natural sweetness."
+            },
+            {
+              "title": "",
+              "text": "Soft and pliable texture when properly hydrated and cooked."
+            },
+            {
+              "title": "",
+              "text": "Suitable for everyday family meals."
+            },
+            {
+              "title": "",
+              "text": "Good versatility for chapatis, rotis and parathas."
+            }
+          ]
+        }
+      ],
+      "rotiExpectationNote": "Softness depends on grain quality, flour freshness, hydration, kneading and cooking time.",
+      "littleFacts": [
+        {
+          "question": "Why is it popular?",
+          "answer": "Sharbati wheat is appreciated in several parts of India for its flavour and everyday cooking qualities."
+        },
+        {
+          "question": "Does it taste sweet?",
+          "answer": "It may have a mild natural sweetness, but it is not a sweetened product."
+        },
+        {
+          "question": "Is it gluten-free?",
+          "answer": "No. Sharbati is a wheat variety and contains gluten."
+        },
+        {
+          "question": "What is it suitable for?",
+          "answer": "Everyday rotis, chapatis, parathas and other wheat-based dishes."
+        }
+      ]
+    }
+  },
+  {
+    "id": "prod-265",
+    "name": "Shikha Kai Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Shikha Kai Powder sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Shikha Kai Powder"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Shikha%20Kai%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Shikha%20Kai%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1500,
+        "originalPrice": 1500,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 375,
+        "originalPrice": 375,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 68,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 67,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-266",
+    "name": "Sona Masoori Rice",
+    "category": "Rice",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sona Masoori Rice sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sona Masoori Rice"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sona%20Masoori%20Rice/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Sona%20Masoori%20Rice/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 86,
+        "originalPrice": 86,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 21.5,
+        "originalPrice": 21.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 43,
+        "originalPrice": 43,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 75,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 70,
+    "tags": [
+      "Rice",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-267",
+    "name": "Soup Spoon",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Soup Spoon sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Soup Spoon"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Soup%20Spoon/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Soup%20Spoon/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 82,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 73,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-268",
+    "name": "Soya Bean",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Soya Bean sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Soya Bean"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Soya%20Bean/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Soya%20Bean/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 50,
+        "originalPrice": 50,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 89,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 36,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-269",
+    "name": "Spoon",
+    "category": "Eco Friendly",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Spoon sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Spoon"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Spoon/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Spoon/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 165,
+        "originalPrice": 165,
+        "inStock": true
+      },
+      {
+        "weight": "Default Title",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 96,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Eco Friendly",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-270",
+    "name": "Sprouted Ragi",
+    "category": "Millets",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sprouted Ragi sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sprouted Ragi"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sprouted%20Ragi/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sprouted%20Ragi/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 103,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": [
+      "Millets",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-271",
+    "name": "Star Anise",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Star Anise sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Star Anise"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Star%20Anise/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Star%20Anise/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "100g - Masala",
+        "price": 135,
+        "originalPrice": 135,
+        "inStock": true
+      },
+      {
+        "weight": "150g - Masala",
+        "price": 202.5,
+        "originalPrice": 202.5,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1450,
+        "originalPrice": 1450,
+        "inStock": true
+      },
+      {
+        "weight": "200g - Masala",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 362.5,
+        "originalPrice": 362.5,
+        "inStock": true
+      },
+      {
+        "weight": "250g - Masala",
+        "price": 337.5,
+        "originalPrice": 337.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 725,
+        "originalPrice": 725,
+        "inStock": true
+      },
+      {
+        "weight": "50g - Masala",
+        "price": 67.5,
+        "originalPrice": 67.5,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 110,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-272",
+    "name": "Stingless Bee Honey (Cheruthen)",
+    "category": "Natural Sweeteners",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Stingless Bee Honey (Cheruthen) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Stingless Bee Honey (Cheruthen)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Stingless%20Bee%20Honey%20(Cheruthen)/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Stingless%20Bee%20Honey%20(Cheruthen)/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g",
+        "price": 890,
+        "originalPrice": 890,
+        "inStock": true
+      },
+      {
+        "weight": "400g",
+        "price": 1410,
+        "originalPrice": 1410,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 117,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 48,
+    "tags": [
+      "Natural Sweeteners",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-273",
+    "name": "Stone Flower",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Stone Flower sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Stone Flower"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Stone%20Flower/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Stone%20Flower/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 124,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 51,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-274",
+    "name": "Sugar Free Muesli",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sugar Free Muesli sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sugar Free Muesli"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sugar%20Free%20Muesli/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sugar%20Free%20Muesli/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 640,
+        "originalPrice": 640,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 320,
+        "originalPrice": 320,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 131,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 54,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-275",
+    "name": "Sukkari Wet Dates",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sukkari Wet Dates sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sukkari Wet Dates"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sukkari%20Wet%20Dates/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sukkari%20Wet%20Dates/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 760,
+        "originalPrice": 760,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 380,
+        "originalPrice": 380,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 138,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 57,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-276",
+    "name": "Sunflower Oil",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sunflower Oil sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sunflower Oil"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sunflower%20Oil/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Sunflower%20Oil/dhaanya%2001.png",
+      "/images/dhannya_Products_final/Sunflower%20Oil/dhaanya%2002.png",
+      "/images/dhannya_Products_final/Sunflower%20Oil/dhaanya%2003.png",
+      "/images/dhannya_Products_final/Sunflower%20Oil/04.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "460g",
+        "price": 305,
+        "originalPrice": 305,
+        "inStock": true
+      },
+      {
+        "weight": "910 g",
+        "price": 570,
+        "originalPrice": 570,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 145,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 60,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-277",
+    "name": "Sunflower Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Sunflower Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Sunflower Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Sunflower%20Seeds/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Sunflower%20Seeds/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 152,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 63,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-278",
+    "name": "Tarbuj Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tarbuj Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tarbuj Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tarbuj%20Seeds/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tarbuj%20Seeds/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1350,
+        "originalPrice": 1350,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 337.5,
+        "originalPrice": 337.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 675,
+        "originalPrice": 675,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 159,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 66,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-279",
+    "name": "Tea - Cardamom Idukki (Organic)",
+    "category": "Tea",
+    "concern": [
+      "Heart Health",
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tea - Cardamom Idukki (Organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tea - Cardamom Idukki (Organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tea%20-%20Cardamom%20Idukki%20(Organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tea%20-%20Cardamom%20Idukki%20(Organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1900,
+        "originalPrice": 1900,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 475,
+        "originalPrice": 475,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 950,
+        "originalPrice": 950,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 166,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 69,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-280",
+    "name": "Tea - Ginger Idukki (Organic)",
+    "category": "Tea",
+    "concern": [
+      "Gut Health",
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tea - Ginger Idukki (Organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tea - Ginger Idukki (Organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tea%20-%20Ginger%20Idukki%20(Organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tea%20-%20Ginger%20Idukki%20(Organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1900,
+        "originalPrice": 1900,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 475,
+        "originalPrice": 475,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 950,
+        "originalPrice": 950,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 173,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 72,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-281",
+    "name": "Tea - Green Leaf Idukki",
+    "category": "Tea",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tea - Green Leaf Idukki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tea - Green Leaf Idukki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tea%20-%20Green%20Leaf%20Idukki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tea%20-%20Green%20Leaf%20Idukki/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 4000,
+        "originalPrice": 4000,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 1000,
+        "originalPrice": 1000,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 2000,
+        "originalPrice": 2000,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 180,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-282",
+    "name": "Tea - Masala Idukki (Organic)",
+    "category": "Tea",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tea - Masala Idukki (Organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tea - Masala Idukki (Organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tea%20-%20Masala%20Idukki%20(Organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tea%20-%20Masala%20Idukki%20(Organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2200,
+        "originalPrice": 2200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1100,
+        "originalPrice": 1100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 187,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-283",
+    "name": "Tea - Orthodox Black Idukki (Organic)",
+    "category": "Tea",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tea - Orthodox Black Idukki (Organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tea - Orthodox Black Idukki (Organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tea%20-%20Orthodox%20Black%20Idukki%20(Organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tea%20-%20Orthodox%20Black%20Idukki%20(Organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1300,
+        "originalPrice": 1300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 325,
+        "originalPrice": 325,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 194,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-284",
+    "name": "Tea - Orthodox Black Leaf Idukki (Organic)",
+    "category": "Tea",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tea - Orthodox Black Leaf Idukki (Organic) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tea - Orthodox Black Leaf Idukki (Organic)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tea%20-%20Orthodox%20Black%20Leaf%20Idukki%20(Organic)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tea%20-%20Orthodox%20Black%20Leaf%20Idukki%20(Organic)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2800,
+        "originalPrice": 2800,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1400,
+        "originalPrice": 1400,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 21,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 44,
+    "tags": [
+      "Tea",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-285",
+    "name": "Tenseed Chikki",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Tenseed Chikki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Tenseed Chikki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Tenseed%20Chikki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Tenseed%20Chikki/01.jpg",
+      "/images/dhannya_Products_final/Tenseed%20Chikki/02.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 740,
+        "originalPrice": 740,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 185,
+        "originalPrice": 185,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 28,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 47,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-286",
+    "name": "Thippili (Long Pepper)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Thippili (Long Pepper) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Thippili (Long Pepper)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Thippili%20(Long%20Pepper)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Thippili%20(Long%20Pepper)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "Default Title",
+        "price": 0,
+        "originalPrice": 0,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 35,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 50,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-287",
+    "name": "Thooyamalli Rice",
+    "category": "Rice",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Thooyamalli Rice sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Thooyamalli Rice"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Thooyamalli%20Rice/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Thooyamalli%20Rice/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 47.5,
+        "originalPrice": 47.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 42,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 53,
+    "tags": [
+      "Rice",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-288",
+    "name": "Toor Dal Fine (Yellow)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Toor Dal Fine (Yellow) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Toor Dal Fine (Yellow)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Toor%20Dal%20Fine%20(Yellow)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Toor%20Dal%20Fine%20(Yellow)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 49,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 56,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-289",
+    "name": "Travancore Tamarind Vaalan Puli",
+    "category": "Spices",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Travancore Tamarind Vaalan Puli sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Travancore Tamarind Vaalan Puli"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Travancore%20Tamarind_%20Vaalan%20Puli/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Travancore%20Tamarind_%20Vaalan%20Puli/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 137.5,
+        "originalPrice": 137.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 275,
+        "originalPrice": 275,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 56,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 59,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-290",
+    "name": "Triphala",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Triphala sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Triphala"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Triphala/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Triphala/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 149,
+        "originalPrice": 149,
+        "inStock": true
+      },
+      {
+        "weight": "1kg",
+        "price": 1490,
+        "originalPrice": 1490,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 372.5,
+        "originalPrice": 372.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 745,
+        "originalPrice": 745,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 63,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 62,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-291",
+    "name": "Urad Dal Black Split",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Urad Dal Black Split sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Urad Dal Black Split"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Urad%20Dal%20Black%20Split/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Urad%20Dal%20Black%20Split/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 50,
+        "originalPrice": 50,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 70,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 65,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-292",
+    "name": "Urad Gola Fine-Ball",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Urad Gola Fine-Ball sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Urad Gola Fine-Ball"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Urad%20Gola%20Fine-Ball/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Urad%20Gola%20Fine-Ball/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 62.5,
+        "originalPrice": 62.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 77,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 68,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-293",
+    "name": "Urad White Chilka (Split)",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Urad White Chilka (Split) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Urad White Chilka (Split)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Urad%20White%20Chilka%20(Split)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Urad%20White%20Chilka%20(Split)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 84,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 71,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-294",
+    "name": "Venga Dried",
+    "category": "Spices",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Venga Dried sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Venga Dried"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Venga%20Dried/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Venga%20Dried/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 112.5,
+        "originalPrice": 112.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 225,
+        "originalPrice": 225,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 91,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 74,
+    "tags": [
+      "Spices",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-312",
+    "name": "Red Chilli – Dabbi",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Dabbi chilli is a traditional dried Indian chilli variety recognised for its deep red colour, wrinkled appearance, and characteristic chilli aroma. It is used in Indian kitchens where both colour and flavour are important.",
+    "ingredients": ["100% Pure Natural Red Chilli – Dabbi"],
+    "nutritionInfo": {"Energy (per 100g)": "320 kcal", "Proteins": "12g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Adds rich red colour to curries and masalas", "Offers a balanced combination of flavour and heat", "Suitable for homemade chilli powder and traditional recipes", "Useful for South Indian cooking, pickles, and chutneys"],
+    "image": "/images/dhannya_Products_final/Red%20Chilli%20Dabbi/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Red%20Chilli%20Dabbi/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 180, "originalPrice": 180, "inStock": true},
+      {"weight": "100g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "500g", "price": 400, "originalPrice": 400, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 48,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-313",
+    "name": "Byadagi Kaddi Chilli",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Byadagi Kaddi chilli is associated with the Byadagi region of Karnataka and is known for its elongated, wrinkled appearance and strong red colour. It is traditionally used in Karnataka's spice preparations.",
+    "ingredients": ["100% Pure Natural Byadagi Kaddi Chilli"],
+    "nutritionInfo": {"Energy (per 100g)": "320 kcal", "Proteins": "12g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Known for its rich red colour", "Suitable for masala powders and gravies", "Provides a traditional chilli aroma", "Useful for South Indian cooking"],
+    "image": "/images/dhannya_Products_final/Byadagi%20Kaddi%20Chilli/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Byadagi%20Kaddi%20Chilli/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 200, "originalPrice": 200, "inStock": true},
+      {"weight": "100g", "price": 110, "originalPrice": 110, "inStock": true},
+      {"weight": "500g", "price": 450, "originalPrice": 450, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 52,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 60,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-314",
+    "name": "Guntur Long Chilli",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Guntur Long chilli is a dried chilli variety associated with the Guntur region of Andhra Pradesh, valued for its noticeable heat and traditional chilli flavour.",
+    "ingredients": ["100% Pure Natural Guntur Long Chilli"],
+    "nutritionInfo": {"Energy (per 100g)": "320 kcal", "Proteins": "12g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Adds noticeable heat to recipes", "Suitable for Andhra-style and South Indian cooking", "Useful in pickles, chutneys, and spice blends", "Can be used whole or ground"],
+    "image": "/images/dhannya_Products_final/Guntur%20Long%20Chilli/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Guntur%20Long%20Chilli/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 220, "originalPrice": 220, "inStock": true},
+      {"weight": "100g", "price": 120, "originalPrice": 120, "inStock": true},
+      {"weight": "500g", "price": 500, "originalPrice": 500, "inStock": true}
+    ],
+    "rating": 4.8,
+    "reviewCount": 65,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 70,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-315",
+    "name": "Guntur Small Chilli",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Guntur Small chilli is a compact dried chilli variety with concentrated flavour, useful in traditional preparations where a stronger chilli character is desired.",
+    "ingredients": ["100% Pure Natural Guntur Small Chilli"],
+    "nutritionInfo": {"Energy (per 100g)": "320 kcal", "Proteins": "12g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Suitable for recipes requiring stronger chilli flavour", "Useful for chutneys, pickles, and podis", "Adds traditional dried chilli aroma", "Convenient for grinding into spice powders"],
+    "image": "/images/dhannya_Products_final/Guntur%20Small%20Chilli/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Guntur%20Small%20Chilli/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 240, "originalPrice": 240, "inStock": true},
+      {"weight": "100g", "price": 130, "originalPrice": 130, "inStock": true},
+      {"weight": "500g", "price": 550, "originalPrice": 550, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 40,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 45,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-316",
+    "name": "Salem Ball Chilli",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Salem Ball chilli is a rounded dried chilli variety associated with the Salem region of Tamil Nadu, used in traditional cooking for its chilli flavour, colour, and varying levels of heat.",
+    "ingredients": ["100% Pure Natural Salem Ball Chilli"],
+    "nutritionInfo": {"Energy (per 100g)": "320 kcal", "Proteins": "12g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Suitable for traditional South Indian recipes", "Adds flavour and colour to masalas", "Useful in pickles, chutneys, and gravies", "Can be used whole or powdered"],
+    "image": "/images/dhannya_Products_final/Salem%20Ball%20Chilli/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Salem%20Ball%20Chilli/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 190, "originalPrice": 190, "inStock": true},
+      {"weight": "100g", "price": 105, "originalPrice": 105, "inStock": true},
+      {"weight": "500g", "price": 430, "originalPrice": 430, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 44,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 50,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-317",
+    "name": "Coriander Seeds",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Coriander seeds are the dried fruits of the coriander plant, an aromatic herb with a warm, mildly citrusy, and earthy aroma. They form the foundation of many curry powders and masalas.",
+    "ingredients": ["100% Pure Natural Coriander Seeds"],
+    "nutritionInfo": {"Energy (per 100g)": "298 kcal", "Proteins": "12g", "Carbohydrates": "55g", "Dietary Fiber": "41g"},
+    "benefits": ["Adds depth and a gentle citrus-like aroma", "Essential ingredient in many Indian masalas", "Suitable for whole-spice cooking or grinding", "Versatile in both vegetarian and non-vegetarian dishes"],
+    "image": "/images/dhannya_Products_final/Coriander%20Seeds/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Coriander%20Seeds/01.jpg"],
+    "variants": [
+      {"weight": "250g", "price": 120, "originalPrice": 120, "inStock": true},
+      {"weight": "100g", "price": 60, "originalPrice": 60, "inStock": true},
+      {"weight": "500g", "price": 220, "originalPrice": 220, "inStock": true}
+    ],
+    "rating": 4.8,
+    "reviewCount": 156,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 120,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-318",
+    "name": "Rajapuri Turmeric",
+    "category": "Spices",
+    "concern": ["Heart Health"],
+    "description": "Rajapuri turmeric is a traditional turmeric type associated with the Rajapur region of Maharashtra, valued for its earthy flavour, golden colour, and role in everyday cooking.",
+    "ingredients": ["100% Pure Natural Rajapuri Turmeric"],
+    "nutritionInfo": {"Energy (per 100g)": "354 kcal", "Proteins": "10g", "Carbohydrates": "65g", "Dietary Fiber": "21g"},
+    "benefits": ["Provides natural yellow-orange colour", "Adds earthy flavour to dishes", "Suitable for curries, dals, pickles, and spice blends", "Useful for preparing homemade turmeric powder"],
+    "image": "/images/dhannya_Products_final/Rajapuri%20Turmeric/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Rajapuri%20Turmeric/01.jpg"],
+    "variants": [
+      {"weight": "250g", "price": 150, "originalPrice": 150, "inStock": true},
+      {"weight": "100g", "price": 75, "originalPrice": 75, "inStock": true},
+      {"weight": "500g", "price": 280, "originalPrice": 280, "inStock": true}
+    ],
+    "rating": 4.9,
+    "reviewCount": 189,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 140,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-319",
+    "name": "Cloves",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Cloves are the dried, unopened flower buds of the clove tree with a powerful warm, sweet-spicy aroma. Historically traded across Asia, they became an important ingredient in Indian cuisines.",
+    "ingredients": ["100% Pure Natural Cloves"],
+    "nutritionInfo": {"Energy (per 100g)": "323 kcal", "Proteins": "6g", "Carbohydrates": "81g", "Dietary Fiber": "2g"},
+    "benefits": ["Adds fragrance and depth to recipes", "Suitable for biryani, pulao, tea, and masala blends", "Works in both sweet and savoury preparations", "A small quantity can provide a strong aroma"],
+    "image": "/images/dhannya_Products_final/Cloves/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Cloves/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 180, "originalPrice": 180, "inStock": true},
+      {"weight": "25g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "100g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.9,
+    "reviewCount": 127,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 95,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-320",
+    "name": "Black Pepper",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Black pepper is the dried fruit of the pepper plant, native to tropical regions of South India's Western Ghats. Known as the King of Spices, it provides a sharp, warm, and aromatic flavour.",
+    "ingredients": ["100% Pure Natural Black Pepper"],
+    "nutritionInfo": {"Energy (per 100g)": "251 kcal", "Proteins": "10g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Offers warm and pungent flavour", "Suitable for everyday Indian cooking", "Useful in rasam, soups, marinades, and spice blends", "Freshly ground pepper provides a stronger aroma"],
+    "image": "/images/dhannya_Products_final/Black%20Pepper/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Black%20Pepper/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "50g", "price": 50, "originalPrice": 50, "inStock": true},
+      {"weight": "250g", "price": 180, "originalPrice": 180, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 198,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 150,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-321",
+    "name": "Star Anise",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Star anise is the star-shaped dried fruit of Illicium verum with a distinctive shape and sweet, licorice-like aroma. It is popular in Asian cuisines and spice blends.",
+    "ingredients": ["100% Pure Natural Star Anise"],
+    "nutritionInfo": {"Energy (per 100g)": "337 kcal", "Proteins": "18g", "Carbohydrates": "50g", "Dietary Fiber": "15g"},
+    "benefits": ["Provides a sweet, aromatic flavour", "Useful in biryani, pulao, curries, and masala tea", "Adds complexity to spice blends", "Suitable for slow-cooked dishes"],
+    "image": "/images/dhannya_Products_final/Star%20Anise/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Star%20Anise/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 150, "originalPrice": 150, "inStock": true},
+      {"weight": "50g", "price": 85, "originalPrice": 85, "inStock": true},
+      {"weight": "250g", "price": 340, "originalPrice": 340, "inStock": true}
+    ],
+    "rating": 4.8,
+    "reviewCount": 95,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 78,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-322",
+    "name": "Cinnamon Roll – Indonesian",
+    "category": "Spices",
+    "concern": ["Heart Health"],
+    "description": "Cinnamon is the dried inner bark of trees belonging to the Cinnamomum genus. Indonesian cinnamon is widely used for its warm, woody, and sweet-spicy aroma.",
+    "ingredients": ["100% Pure Natural Indonesian Cinnamon"],
+    "nutritionInfo": {"Energy (per 100g)": "247 kcal", "Proteins": "4g", "Carbohydrates": "81g", "Dietary Fiber": "53g"},
+    "benefits": ["Offers a warm and aromatic flavour", "Suitable for tea, desserts, rice dishes, and curries", "Useful for infusing flavour into beverages", "Adds depth to homemade masala blends"],
+    "image": "/images/dhannya_Products_final/Cinnamon%20Indonesian/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Cinnamon%20Indonesian/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 120, "originalPrice": 120, "inStock": true},
+      {"weight": "25g", "price": 70, "originalPrice": 70, "inStock": true},
+      {"weight": "100g", "price": 220, "originalPrice": 220, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 82,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 65,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-323",
+    "name": "Cassia Cinnamon",
+    "category": "Spices",
+    "concern": ["Heart Health"],
+    "description": "Cassia cinnamon is obtained from the bark of several Cinnamomum species and commonly used in Indian cooking with a stronger, bolder, and more pungent woody flavour.",
+    "ingredients": ["100% Pure Natural Cassia Cinnamon"],
+    "nutritionInfo": {"Energy (per 100g)": "247 kcal", "Proteins": "4g", "Carbohydrates": "81g", "Dietary Fiber": "53g"},
+    "benefits": ["Provides a bold, warm aroma", "Suitable for biryani, pulao, curries, and masalas", "Useful in tea and dessert preparations", "Adds depth to spice blends"],
+    "image": "/images/dhannya_Products_final/Cassia%20Cinnamon/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Cassia%20Cinnamon/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 130, "originalPrice": 130, "inStock": true},
+      {"weight": "25g", "price": 75, "originalPrice": 75, "inStock": true},
+      {"weight": "100g", "price": 240, "originalPrice": 240, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 71,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 58,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-324",
+    "name": "Cardamom – Bold",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Green cardamom is the dried fruit pod of Elettaria cardamomum, valued for its sweet, floral, citrus-like fragrance and used in Indian cooking for generations.",
+    "ingredients": ["100% Pure Natural Green Cardamom Pods"],
+    "nutritionInfo": {"Energy (per 100g)": "311 kcal", "Proteins": "11g", "Carbohydrates": "68g", "Dietary Fiber": "28g"},
+    "benefits": ["Offers a sweet and fragrant flavour", "Suitable for tea, desserts, biryani, and sweets", "Adds aroma without excessive heat", "Useful in traditional masala blends"],
+    "image": "/images/dhannya_Products_final/Cardamom%20Bold/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Cardamom%20Bold/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 220, "originalPrice": 220, "inStock": true},
+      {"weight": "25g", "price": 120, "originalPrice": 120, "inStock": true},
+      {"weight": "100g", "price": 400, "originalPrice": 400, "inStock": true}
+    ],
+    "rating": 4.9,
+    "reviewCount": 143,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 110,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-325",
+    "name": "Cardamom – Bulk",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Green cardamom is an aromatic spice grown in tropical regions, particularly South India, consisting of small green pods containing fragrant seeds with sweet, floral notes.",
+    "ingredients": ["100% Pure Natural Green Cardamom Pods"],
+    "nutritionInfo": {"Energy (per 100g)": "311 kcal", "Proteins": "11g", "Carbohydrates": "68g", "Dietary Fiber": "28g"},
+    "benefits": ["Adds natural fragrance to food and beverages", "Suitable for tea, desserts, pulao, and biryani", "Useful in homemade spice powders", "A small quantity can provide noticeable aroma"],
+    "image": "/images/dhannya_Products_final/Cardamom%20Bulk/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Cardamom%20Bulk/01.jpg"],
+    "variants": [
+      {"weight": "250g", "price": 900, "originalPrice": 900, "inStock": true},
+      {"weight": "100g", "price": 380, "originalPrice": 380, "inStock": true},
+      {"weight": "500g", "price": 1700, "originalPrice": 1700, "inStock": true}
+    ],
+    "rating": 4.8,
+    "reviewCount": 112,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 85,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-326",
+    "name": "Black Cardamom",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Black cardamom is a large aromatic spice pod traditionally associated with the Himalayan region, dried using methods that give it a smoky, earthy, and slightly camphor-like aroma.",
+    "ingredients": ["100% Pure Natural Black Cardamom Pods"],
+    "nutritionInfo": {"Energy (per 100g)": "311 kcal", "Proteins": "11g", "Carbohydrates": "68g", "Dietary Fiber": "28g"},
+    "benefits": ["Adds smoky and earthy depth", "Suitable for biryani, rich gravies, and pulao", "Useful in garam masala and slow-cooked dishes", "Works well with other whole spices"],
+    "image": "/images/dhannya_Products_final/Black%20Cardamom/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Black%20Cardamom/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "25g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "100g", "price": 260, "originalPrice": 260, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 68,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 52,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-327",
+    "name": "Nutmeg",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Nutmeg is the dried seed of the fruit of the nutmeg tree, Myristica fragrans, native to the Banda Islands of Indonesia, with a warm, sweet, woody aroma.",
+    "ingredients": ["100% Pure Natural Nutmeg"],
+    "nutritionInfo": {"Energy (per 100g)": "525 kcal", "Proteins": "6g", "Carbohydrates": "49g", "Dietary Fiber": "21g"},
+    "benefits": ["Adds warmth and depth to recipes", "Suitable for sweets, beverages, curries, and spice blends", "Useful in traditional masala preparations", "Strong aroma means only a small amount is needed"],
+    "image": "/images/dhannya_Products_final/Nutmeg/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Nutmeg/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 200, "originalPrice": 200, "inStock": true},
+      {"weight": "25g", "price": 110, "originalPrice": 110, "inStock": true},
+      {"weight": "100g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 54,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 48,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-328",
+    "name": "Red Mace",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Mace is the dried, lacy covering surrounding the seed of the nutmeg fruit, with a warm, sweet, slightly peppery aroma traditionally used in Indian and Asian cooking.",
+    "ingredients": ["100% Pure Natural Red Mace"],
+    "nutritionInfo": {"Energy (per 100g)": "475 kcal", "Proteins": "7g", "Carbohydrates": "41g", "Dietary Fiber": "8g"},
+    "benefits": ["Adds a delicate warm fragrance", "Suitable for biryani, pulao, gravies, and spice blends", "Useful in festive and rich preparations", "Offers a different aroma from nutmeg"],
+    "image": "/images/dhannya_Products_final/Red%20Mace/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Red%20Mace/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 180, "originalPrice": 180, "inStock": true},
+      {"weight": "25g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "100g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 35,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-329",
+    "name": "Yellow Mace",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Yellow mace is the dried outer covering of the nutmeg seed with a warm, aromatic, and mildly sweet-spicy flavour used as a supporting spice in traditional masalas.",
+    "ingredients": ["100% Pure Natural Yellow Mace"],
+    "nutritionInfo": {"Energy (per 100g)": "475 kcal", "Proteins": "7g", "Carbohydrates": "41g", "Dietary Fiber": "8g"},
+    "benefits": ["Provides warm and complex aroma", "Suitable for biryani, pulao, and rich gravies", "Useful in homemade garam masala", "Adds depth when combined with other whole spices"],
+    "image": "/images/dhannya_Products_final/Yellow%20Mace/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Yellow%20Mace/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 170, "originalPrice": 170, "inStock": true},
+      {"weight": "25g", "price": 95, "originalPrice": 95, "inStock": true},
+      {"weight": "100g", "price": 300, "originalPrice": 300, "inStock": true}
+    ],
+    "rating": 4.4,
+    "reviewCount": 32,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 30,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-330",
+    "name": "Hing – Asafoetida",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Asafoetida, commonly known as hing, is an aromatic resin obtained from the underground parts of certain Ferula plants, becoming more savoury and onion-garlic-like when heated.",
+    "ingredients": ["100% Pure Natural Asafoetida (Hing)"],
+    "nutritionInfo": {"Energy (per 100g)": "172 kcal", "Proteins": "4g", "Carbohydrates": "30g", "Dietary Fiber": "1g"},
+    "benefits": ["Adds savoury depth to recipes", "Useful in dals, sambar, rasam, and curries", "A small quantity can significantly influence flavour", "Suitable for traditional tempering"],
+    "image": "/images/dhannya_Products_final/Hing%20Asafoetida/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Hing%20Asafoetida/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 200, "originalPrice": 200, "inStock": true},
+      {"weight": "25g", "price": 110, "originalPrice": 110, "inStock": true},
+      {"weight": "100g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 91,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 66,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-331",
+    "name": "Dried Curry Leaves",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Curry leaves are the aromatic leaves of the curry tree, native to the Indian subcontinent, an important part of South Indian cooking used in tempering and chutneys.",
+    "ingredients": ["100% Pure Natural Dried Curry Leaves"],
+    "nutritionInfo": {"Energy (per 100g)": "292 kcal", "Proteins": "16g", "Carbohydrates": "43g", "Dietary Fiber": "37g"},
+    "benefits": ["Convenient to use and store", "Suitable for tempering and spice powders", "Adds a familiar South Indian aroma", "Useful in chutneys, podis, and curries"],
+    "image": "/images/dhannya_Products_final/Dried%20Curry%20Leaves/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Dried%20Curry%20Leaves/01.jpg"],
+    "variants": [
+      {"weight": "25g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "10g", "price": 40, "originalPrice": 40, "inStock": true},
+      {"weight": "50g", "price": 140, "originalPrice": 140, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 46,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 58,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-332",
+    "name": "Travancore Tamarind – Vaalan Puli",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Tamarind is the pod of the tamarind tree, widely grown in tropical regions including India. Travancore-style tamarind has a naturally sour, fruity flavour important in South Indian cooking.",
+    "ingredients": ["100% Pure Natural Travancore Tamarind"],
+    "nutritionInfo": {"Energy (per 100g)": "239 kcal", "Proteins": "3g", "Carbohydrates": "62g", "Dietary Fiber": "6g"},
+    "benefits": ["Adds natural sourness to recipes", "Suitable for rasam, sambar, curries, and chutneys", "Useful in traditional Kerala and South Indian cooking", "Provides depth alongside spices and jaggery"],
+    "image": "/images/dhannya_Products_final/Travancore%20Tamarind/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Travancore%20Tamarind/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "100g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "500g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.8,
+    "reviewCount": 108,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 95,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-333",
+    "name": "Pot Tamarind – Kudampuli",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Kudampuli, also known as Malabar tamarind or fish tamarind, is the dried fruit of Garcinia species with a distinctive sour and smoky flavour, especially associated with Kerala cuisine.",
+    "ingredients": ["100% Pure Natural Kudampuli (Pot Tamarind)"],
+    "nutritionInfo": {"Energy (per 100g)": "215 kcal", "Proteins": "2g", "Carbohydrates": "56g", "Dietary Fiber": "5g"},
+    "benefits": ["Provides a distinctive regional sourness", "Commonly used in Kerala-style fish curries", "Suitable for traditional coastal recipes", "Adds depth without requiring conventional tamarind"],
+    "image": "/images/dhannya_Products_final/Kudampuli%20Pot%20Tamarind/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Kudampuli%20Pot%20Tamarind/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 160, "originalPrice": 160, "inStock": true},
+      {"weight": "50g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "250g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 63,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 52,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-334",
+    "name": "Fenugreek Seeds – Ulavu",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Fenugreek is an aromatic seed spice obtained from Trigonella foenum-graecum with a slightly bitter, earthy, and maple-like aroma used in South Asian food traditions.",
+    "ingredients": ["100% Pure Natural Fenugreek Seeds"],
+    "nutritionInfo": {"Energy (per 100g)": "323 kcal", "Proteins": "23g", "Carbohydrates": "58g", "Dietary Fiber": "25g"},
+    "benefits": ["Adds depth to spice preparations", "Useful in pickles, sambar powder, and curry blends", "Suitable for sprouting and selected traditional recipes", "Offers a distinctive bitter-sweet aroma"],
+    "image": "/images/dhannya_Products_final/Fenugreek%20Seeds/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Fenugreek%20Seeds/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 120, "originalPrice": 120, "inStock": true},
+      {"weight": "100g", "price": 70, "originalPrice": 70, "inStock": true},
+      {"weight": "500g", "price": 280, "originalPrice": 280, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 52,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 64,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-335",
+    "name": "Cumin – Jeerakam",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Cumin is the dried seed of Cuminum cyminum, an aromatic plant associated with Mediterranean and West Asian regions, providing warm, earthy, slightly nutty aroma.",
+    "ingredients": ["100% Pure Natural Cumin Seeds"],
+    "nutritionInfo": {"Energy (per 100g)": "375 kcal", "Proteins": "17g", "Carbohydrates": "44g", "Dietary Fiber": "11g"},
+    "benefits": ["Adds earthy depth to dishes", "Suitable for tempering, spice powders, and beverages", "Useful in curries, rice dishes, and buttermilk preparations", "Can be used whole or freshly ground"],
+    "image": "/images/dhannya_Products_final/Cumin%20Jeerakam/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Cumin%20Jeerakam/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 130, "originalPrice": 130, "inStock": true},
+      {"weight": "100g", "price": 75, "originalPrice": 75, "inStock": true},
+      {"weight": "500g", "price": 300, "originalPrice": 300, "inStock": true}
+    ],
+    "rating": 4.8,
+    "reviewCount": 174,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 135,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-336",
+    "name": "Fennel Seeds – Perumjeerakam",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Fennel is the dried fruit of Foeniculum vulgare with a sweet, mildly licorice-like flavour used in Indian, Mediterranean, and Middle Eastern cuisines.",
+    "ingredients": ["100% Pure Natural Fennel Seeds"],
+    "nutritionInfo": {"Energy (per 100g)": "345 kcal", "Proteins": "15g", "Carbohydrates": "52g", "Dietary Fiber": "40g"},
+    "benefits": ["Provides a sweet and refreshing aroma", "Suitable for spice blends, curries, and tea", "Useful in pickles and selected desserts", "Can be lightly roasted for enhanced flavour"],
+    "image": "/images/dhannya_Products_final/Fennel%20Seeds/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Fennel%20Seeds/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "100g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "500g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 89,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 72,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-337",
+    "name": "Shah Jeera – Caraway",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Shah jeera is a small aromatic seed spice commonly used in Indian cooking for rich rice dishes and spice blends, with a warm, earthy, slightly sweet flavour.",
+    "ingredients": ["100% Pure Natural Shah Jeera (Caraway)"],
+    "nutritionInfo": {"Energy (per 100g)": "333 kcal", "Proteins": "20g", "Carbohydrates": "50g", "Dietary Fiber": "38g"},
+    "benefits": ["Adds a distinctive aroma to rice dishes", "Suitable for biryani, pulao, and masala blends", "Useful in traditional bakery and savoury recipes", "Provides a more delicate flavour than regular cumin"],
+    "image": "/images/dhannya_Products_final/Shah%20Jeera/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Shah%20Jeera/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "50g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "250g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 55,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 48,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-338",
+    "name": "Dried Rosemary",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Rosemary is an aromatic herb native to the Mediterranean region, recognised for its needle-like leaves and strong woody, pine-like fragrance used in roasted and baked dishes.",
+    "ingredients": ["100% Pure Natural Dried Rosemary"],
+    "nutritionInfo": {"Energy (per 100g)": "331 kcal", "Proteins": "3g", "Carbohydrates": "64g", "Dietary Fiber": "42g"},
+    "benefits": ["Adds a woody and herbal aroma", "Suitable for roasted and baked dishes", "Useful in seasoning blends and marinades", "Convenient for storage and regular use"],
+    "image": "/images/dhannya_Products_final/Dried%20Rosemary/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Dried%20Rosemary/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 180, "originalPrice": 180, "inStock": true},
+      {"weight": "25g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "100g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 41,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 38,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-339",
+    "name": "Marathi Moggu – Long Kapok Buds",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Marathi moggu is a dried flower bud traditionally used in South Indian spice blends with a warm, aromatic, slightly clove-like character.",
+    "ingredients": ["100% Pure Natural Marathi Moggu (Kapok Buds)"],
+    "nutritionInfo": {"Energy (per 100g)": "315 kcal", "Proteins": "8g", "Carbohydrates": "62g", "Dietary Fiber": "18g"},
+    "benefits": ["Adds distinctive regional aroma", "Suitable for biryani and masala powders", "Useful in traditional Karnataka-style preparations", "Works well with other whole spices"],
+    "image": "/images/dhannya_Products_final/Marathi%20Moggu%20Long/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Marathi%20Moggu%20Long/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 150, "originalPrice": 150, "inStock": true},
+      {"weight": "25g", "price": 85, "originalPrice": 85, "inStock": true},
+      {"weight": "100g", "price": 270, "originalPrice": 270, "inStock": true}
+    ],
+    "rating": 4.4,
+    "reviewCount": 34,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 32,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-340",
+    "name": "Marathi Moggu",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Marathi moggu is a traditional dried aromatic flower bud used in Indian spice preparations with a warm, woody, and slightly pungent aroma.",
+    "ingredients": ["100% Pure Natural Marathi Moggu"],
+    "nutritionInfo": {"Energy (per 100g)": "315 kcal", "Proteins": "8g", "Carbohydrates": "62g", "Dietary Fiber": "18g"},
+    "benefits": ["Adds complexity to spice blends", "Suitable for biryani, pulao, and curries", "Useful in traditional masala preparations", "Strong aroma means it can be used in small quantities"],
+    "image": "/images/dhannya_Products_final/Marathi%20Moggu/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Marathi%20Moggu/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "25g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "100g", "price": 250, "originalPrice": 250, "inStock": true}
+    ],
+    "rating": 4.3,
+    "reviewCount": 29,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 28,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-341",
+    "name": "Stone Flower",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Stone flower, commonly known as kalpasi or dagad phool, is a dried lichen traditionally used in Indian cooking, especially in Chettinad and South Indian spice preparations.",
+    "ingredients": ["100% Pure Natural Stone Flower (Kalpasi)"],
+    "nutritionInfo": {"Energy (per 100g)": "285 kcal", "Proteins": "9g", "Carbohydrates": "58g", "Dietary Fiber": "22g"},
+    "benefits": ["Adds distinctive fragrance to masalas", "Suitable for biryani, gravies, and regional spice blends", "Useful in Chettinad-style cooking", "Enhances the complexity of whole-spice preparations"],
+    "image": "/images/dhannya_Products_final/Stone%20Flower/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Stone%20Flower/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 200, "originalPrice": 200, "inStock": true},
+      {"weight": "25g", "price": 110, "originalPrice": 110, "inStock": true},
+      {"weight": "100g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 45,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 44,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-342",
+    "name": "Oregano",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Oregano is an aromatic herb native to the Mediterranean and western Eurasia, widely used in Mediterranean and European cuisines with herbal, earthy, and slightly peppery notes.",
+    "ingredients": ["100% Pure Natural Dried Oregano"],
+    "nutritionInfo": {"Energy (per 100g)": "265 kcal", "Proteins": "9g", "Carbohydrates": "69g", "Dietary Fiber": "42g"},
+    "benefits": ["Adds a distinctive herbal flavour", "Suitable for pizza, pasta, soups, and salads", "Useful in seasoning blends and marinades", "Convenient for everyday international cooking"],
+    "image": "/images/dhannya_Products_final/Oregano/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Oregano/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 160, "originalPrice": 160, "inStock": true},
+      {"weight": "25g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "100g", "price": 280, "originalPrice": 280, "inStock": true}
+    ],
+    "rating": 4.4,
+    "reviewCount": 48,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 42,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-343",
+    "name": "Dried Methi Leaves",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Dried methi leaves, commonly called kasuri methi, are the dried leaves of the fenugreek plant with a distinctive earthy, slightly bitter, and aromatic flavour.",
+    "ingredients": ["100% Pure Natural Dried Methi (Fenugreek) Leaves"],
+    "nutritionInfo": {"Energy (per 100g)": "295 kcal", "Proteins": "25g", "Carbohydrates": "49g", "Dietary Fiber": "25g"},
+    "benefits": ["Adds a distinctive traditional aroma", "Suitable for curries, gravies, and paneer dishes", "Useful as a finishing ingredient", "A small quantity can enhance the flavour of a dish"],
+    "image": "/images/dhannya_Products_final/Dried%20Methi%20Leaves/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Dried%20Methi%20Leaves/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "25g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "100g", "price": 250, "originalPrice": 250, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 58,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 54,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-344",
+    "name": "Bay Leaves – Tej Patta",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Indian bay leaf, commonly called tej patta, is an aromatic leaf used in traditional Indian cooking with a warmer, cinnamon-like aroma than Mediterranean bay leaf.",
+    "ingredients": ["100% Pure Natural Bay Leaves (Tej Patta)"],
+    "nutritionInfo": {"Energy (per 100g)": "313 kcal", "Proteins": "7g", "Carbohydrates": "75g", "Dietary Fiber": "26g"},
+    "benefits": ["Adds fragrance to rice and gravies", "Suitable for biryani, pulao, curries, and masalas", "Useful in slow-cooked preparations", "Works well with cinnamon, cloves, and cardamom"],
+    "image": "/images/dhannya_Products_final/Bay%20Leaves/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Bay%20Leaves/01.jpg"],
+    "variants": [
+      {"weight": "25g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "10g", "price": 50, "originalPrice": 50, "inStock": true},
+      {"weight": "50g", "price": 160, "originalPrice": 160, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 62,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 68,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-345",
+    "name": "Dried Ginger",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Dried ginger is prepared from the rhizome of the ginger plant, producing a warmer, more concentrated flavour with a spicy, earthy, and slightly sweet aroma.",
+    "ingredients": ["100% Pure Natural Dried Ginger"],
+    "nutritionInfo": {"Energy (per 100g)": "335 kcal", "Proteins": "9g", "Carbohydrates": "71g", "Dietary Fiber": "14g"},
+    "benefits": ["Convenient alternative to fresh ginger", "Suitable for spice powders, teas, and traditional preparations", "Adds warmth and depth to recipes", "Useful for longer-term kitchen storage"],
+    "image": "/images/dhannya_Products_final/Dried%20Ginger/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Dried%20Ginger/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "50g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "250g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 103,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 85,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-346",
+    "name": "Dried Ginger Powder",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Ginger powder is made by drying ginger rhizomes and grinding them into a fine powder with a warm, pungent, and slightly sweet flavour.",
+    "ingredients": ["100% Pure Natural Ginger Powder"],
+    "nutritionInfo": {"Energy (per 100g)": "335 kcal", "Proteins": "9g", "Carbohydrates": "71g", "Dietary Fiber": "14g"},
+    "benefits": ["Easy to measure and mix", "Suitable for masalas, tea, baking, and curries", "Provides concentrated ginger flavour", "Convenient for regular kitchen use"],
+    "image": "/images/dhannya_Products_final/Ginger%20Powder/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Ginger%20Powder/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 120, "originalPrice": 120, "inStock": true},
+      {"weight": "50g", "price": 70, "originalPrice": 70, "inStock": true},
+      {"weight": "250g", "price": 280, "originalPrice": 280, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 87,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 76,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-347",
+    "name": "Dried Lemon",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Dried lemon is prepared by drying lemon fruit to preserve its sour flavour and extend its usability in several culinary traditions.",
+    "ingredients": ["100% Pure Natural Dried Lemon"],
+    "nutritionInfo": {"Energy (per 100g)": "160 kcal", "Proteins": "1g", "Carbohydrates": "51g", "Dietary Fiber": "11g"},
+    "benefits": ["Adds a unique sour and citrus-like note", "Suitable for spice blends, teas, and selected curries", "Convenient for storage", "Useful when fresh lemon is unavailable"],
+    "image": "/images/dhannya_Products_final/Dried%20Lemon/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Dried%20Lemon/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 180, "originalPrice": 180, "inStock": true},
+      {"weight": "50g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "250g", "price": 400, "originalPrice": 400, "inStock": true}
+    ],
+    "rating": 4.4,
+    "reviewCount": 35,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 32,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-348",
+    "name": "Ajwain – Omam",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Ajwain, also known as carom seed, is the dried fruit of Trachyspermum ammi, an aromatic seed spice with a strong thyme-like aroma and sharp flavour.",
+    "ingredients": ["100% Pure Natural Ajwain (Carom) Seeds"],
+    "nutritionInfo": {"Energy (per 100g)": "305 kcal", "Proteins": "20g", "Carbohydrates": "43g", "Dietary Fiber": "38g"},
+    "benefits": ["Adds distinctive flavour to doughs and savoury foods", "Suitable for parathas, pakoras, snacks, and spice blends", "Commonly used in traditional Indian recipes", "A small quantity provides strong aroma"],
+    "image": "/images/dhannya_Products_final/Ajwain%20Omam/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Ajwain%20Omam/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "100g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "500g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.7,
+    "reviewCount": 96,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 77,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-349",
+    "name": "Black Salt",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Black salt, commonly called kala namak, is a mineral salt traditionally used in South Asian cooking with a distinctive sulphurous aroma and savoury flavour.",
+    "ingredients": ["100% Pure Natural Black Salt (Kala Namak)"],
+    "nutritionInfo": {"Energy (per 100g)": "0 kcal", "Proteins": "0g", "Carbohydrates": "0g", "Dietary Fiber": "0g"},
+    "benefits": ["Provides a distinctive savoury flavour", "Suitable for chaats, chutneys, and seasoning blends", "Useful in plant-based recipes that benefit from an egg-like aroma", "Can be used in small quantities for finishing dishes"],
+    "image": "/images/dhannya_Products_final/Black%20Salt/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Black%20Salt/01.jpg"],
+    "variants": [
+      {"weight": "200g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "100g", "price": 55, "originalPrice": 55, "inStock": true},
+      {"weight": "500g", "price": 200, "originalPrice": 200, "inStock": true}
+    ],
+    "rating": 4.6,
+    "reviewCount": 71,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 98,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-350",
+    "name": "Pink Salt Powder",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Pink salt, commonly marketed as Himalayan pink salt, is a naturally coloured rock salt from the Salt Range of Punjab with a distinctive natural colour.",
+    "ingredients": ["100% Pure Natural Pink (Himalayan) Salt"],
+    "nutritionInfo": {"Energy (per 100g)": "0 kcal", "Proteins": "0g", "Carbohydrates": "0g", "Dietary Fiber": "0g"},
+    "benefits": ["Suitable for everyday seasoning", "Offers a distinctive natural colour", "Convenient fine powder for cooking and finishing", "Useful in spice blends and salads"],
+    "image": "/images/dhannya_Products_final/Pink%20Salt%20Powder/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Pink%20Salt%20Powder/01.jpg"],
+    "variants": [
+      {"weight": "250g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "100g", "price": 50, "originalPrice": 50, "inStock": true},
+      {"weight": "500g", "price": 180, "originalPrice": 180, "inStock": true}
+    ],
+    "rating": 4.3,
+    "reviewCount": 44,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 67,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-351",
+    "name": "Rose Petals",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Dried rose petals are prepared from rose flowers and used in South Asian, Middle Eastern, and Persian culinary traditions for their floral fragrance.",
+    "ingredients": ["100% Pure Natural Dried Rose Petals"],
+    "nutritionInfo": {"Energy (per 100g)": "190 kcal", "Proteins": "2g", "Carbohydrates": "50g", "Dietary Fiber": "3g"},
+    "benefits": ["Adds a delicate floral aroma", "Suitable for teas, desserts, and spice blends", "Useful in traditional sweets and garnishing", "Provides natural visual appeal"],
+    "image": "/images/dhannya_Products_final/Rose%20Petals/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Rose%20Petals/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 200, "originalPrice": 200, "inStock": true},
+      {"weight": "25g", "price": 110, "originalPrice": 110, "inStock": true},
+      {"weight": "100g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 42,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 38,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-352",
+    "name": "Kadukka – Haritaki",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Kadukka, also known as haritaki, is the dried fruit of Terminalia chebula with a firm, wrinkled appearance and astringent, bitter, and sour flavour.",
+    "ingredients": ["100% Pure Natural Kadukka (Haritaki)"],
+    "nutritionInfo": {"Energy (per 100g)": "235 kcal", "Proteins": "2g", "Carbohydrates": "62g", "Dietary Fiber": "32g"},
+    "benefits": ["Traditional ingredient with cultural importance", "Used in selected herbal and regional preparations", "Suitable for those familiar with its traditional applications", "Provides a distinctive naturally astringent flavour"],
+    "image": "/images/dhannya_Products_final/Kadukka%20Haritaki/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Kadukka%20Haritaki/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "50g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "250g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.2,
+    "reviewCount": 28,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 24,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-353",
+    "name": "White Poppy Seeds",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "White poppy seeds are small, pale seeds obtained from the poppy plant, offering a mild, nutty flavour and used as a thickening and flavouring ingredient.",
+    "ingredients": ["100% Pure Natural White Poppy Seeds"],
+    "nutritionInfo": {"Energy (per 100g)": "525 kcal", "Proteins": "20g", "Carbohydrates": "28g", "Dietary Fiber": "7g"},
+    "benefits": ["Adds mild nuttiness and texture", "Suitable for gravies and traditional sweets", "Useful as a thickening ingredient in selected recipes", "Can be ground into pastes"],
+    "image": "/images/dhannya_Products_final/White%20Poppy%20Seeds/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/White%20Poppy%20Seeds/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 160, "originalPrice": 160, "inStock": true},
+      {"weight": "50g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "250g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.4,
+    "reviewCount": 36,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 32,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-354",
+    "name": "Thippili – Long Pepper",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Thippili, or Indian long pepper, is the dried fruit of Piper longum with a warm, pungent, slightly sweet, and earthy flavour different from ordinary black pepper.",
+    "ingredients": ["100% Pure Natural Long Pepper (Thippili)"],
+    "nutritionInfo": {"Energy (per 100g)": "251 kcal", "Proteins": "10g", "Carbohydrates": "64g", "Dietary Fiber": "25g"},
+    "benefits": ["Adds distinctive traditional spice flavour", "Suitable for selected rasam and spice preparations", "Useful in regional masala blends", "Offers a different character from black pepper"],
+    "image": "/images/dhannya_Products_final/Thippili%20Long%20Pepper/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Thippili%20Long%20Pepper/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 200, "originalPrice": 200, "inStock": true},
+      {"weight": "25g", "price": 110, "originalPrice": 110, "inStock": true},
+      {"weight": "100g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.5,
+    "reviewCount": 39,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 40,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-355",
+    "name": "Pathimukham",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Pathimukham is a traditional colouring ingredient obtained from the heartwood of Biancaea sappan, traditionally used in Kerala to impart a reddish-pink colour.",
+    "ingredients": ["100% Pure Natural Pathimukham (Sappanwood)"],
+    "nutritionInfo": {"Energy (per 100g)": "180 kcal", "Proteins": "1g", "Carbohydrates": "48g", "Dietary Fiber": "6g"},
+    "benefits": ["Traditionally used for natural colouring", "Associated with Kerala's regional food culture", "Suitable for selected traditional preparations", "Offers a distinctive culinary heritage connection"],
+    "image": "/images/dhannya_Products_final/Pathimukham/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Pathimukham/01.jpg"],
+    "variants": [
+      {"weight": "50g", "price": 160, "originalPrice": 160, "inStock": true},
+      {"weight": "25g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "100g", "price": 280, "originalPrice": 280, "inStock": true}
+    ],
+    "rating": 4.2,
+    "reviewCount": 22,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 20,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-356",
+    "name": "Karinjali",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Karinjali is a traditional plant-derived ingredient used in certain South Indian and Ayurvedic preparations with verified food-grade sourcing.",
+    "ingredients": ["100% Pure Natural Karinjali"],
+    "nutritionInfo": {"Energy (per 100g)": "215 kcal", "Proteins": "3g", "Carbohydrates": "52g", "Dietary Fiber": "8g"},
+    "benefits": ["Represents regional traditional ingredient knowledge", "Suitable for specific traditional preparations when correctly identified", "Offers a connection to heritage ingredients", "Requires clear sourcing and food-grade verification"],
+    "image": "/images/dhannya_Products_final/Karinjali/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Karinjali/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 150, "originalPrice": 150, "inStock": true},
+      {"weight": "50g", "price": 85, "originalPrice": 85, "inStock": true},
+      {"weight": "250g", "price": 340, "originalPrice": 340, "inStock": true}
+    ],
+    "rating": 4.1,
+    "reviewCount": 18,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 16,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-357",
+    "name": "Iratti Madhuram – Licorice",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Iratti madhuram, commonly known as licorice, is the dried root of Glycyrrhiza glabra with a naturally sweet flavour used in beverages and traditional preparations.",
+    "ingredients": ["100% Pure Natural Licorice Root (Iratti Madhuram)"],
+    "nutritionInfo": {"Energy (per 100g)": "375 kcal", "Proteins": "6g", "Carbohydrates": "93g", "Dietary Fiber": "0g"},
+    "benefits": ["Offers natural sweetness and a distinctive flavour", "Suitable for selected traditional beverages", "Used in certain herbal preparations", "Provides a connection to traditional ingredient knowledge"],
+    "image": "/images/dhannya_Products_final/Licorice%20Root/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Licorice%20Root/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 180, "originalPrice": 180, "inStock": true},
+      {"weight": "50g", "price": 100, "originalPrice": 100, "inStock": true},
+      {"weight": "250g", "price": 400, "originalPrice": 400, "inStock": true}
+    ],
+    "rating": 4.3,
+    "reviewCount": 31,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 28,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-358",
+    "name": "Nannari Root",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Nannari is a traditional aromatic root commonly associated with Indian summer beverages, valued for its earthy, sweet, and fragrant character.",
+    "ingredients": ["100% Pure Natural Nannari Root"],
+    "nutritionInfo": {"Energy (per 100g)": "185 kcal", "Proteins": "2g", "Carbohydrates": "46g", "Dietary Fiber": "4g"},
+    "benefits": ["Suitable for traditional beverage preparation", "Offers a distinctive earthy aroma", "Associated with South Indian summer drink culture", "Useful for homemade syrups and infusions"],
+    "image": "/images/dhannya_Products_final/Nannari%20Root/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Nannari%20Root/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 160, "originalPrice": 160, "inStock": true},
+      {"weight": "50g", "price": 90, "originalPrice": 90, "inStock": true},
+      {"weight": "250g", "price": 360, "originalPrice": 360, "inStock": true}
+    ],
+    "rating": 4.4,
+    "reviewCount": 37,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 34,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-359",
+    "name": "Vanga Dried",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Vanga is a regional traditional ingredient with verified food-grade sourcing and clear culinary application for authentic preparation.",
+    "ingredients": ["100% Pure Natural Vanga"],
+    "nutritionInfo": {"Energy (per 100g)": "220 kcal", "Proteins": "3g", "Carbohydrates": "54g", "Dietary Fiber": "7g"},
+    "benefits": ["Represents traditional regional ingredient diversity", "Can be used according to its verified culinary application", "Supports the preservation of traditional food knowledge", "Requires clear identification and responsible labelling"],
+    "image": "/images/dhannya_Products_final/Vanga%20Dried/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Vanga%20Dried/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 140, "originalPrice": 140, "inStock": true},
+      {"weight": "50g", "price": 80, "originalPrice": 80, "inStock": true},
+      {"weight": "250g", "price": 320, "originalPrice": 320, "inStock": true}
+    ],
+    "rating": 4.1,
+    "reviewCount": 19,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 18,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-360",
+    "name": "Kapayavakam",
+    "category": "Spices",
+    "concern": ["Gut Health"],
+    "description": "Kapayavakam is a regional traditional ingredient with verified food-grade sourcing and clear identification for authentic preparation.",
+    "ingredients": ["100% Pure Natural Kapayavakam"],
+    "nutritionInfo": {"Energy (per 100g)": "210 kcal", "Proteins": "2g", "Carbohydrates": "53g", "Dietary Fiber": "6g"},
+    "benefits": ["Represents traditional ingredient diversity", "Can be presented with accurate regional and botanical information", "Supports customer awareness of heritage ingredients", "Requires verified food-grade sourcing"],
+    "image": "/images/dhannya_Products_final/Kapayavakam/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Kapayavakam/01.jpg"],
+    "variants": [
+      {"weight": "100g", "price": 130, "originalPrice": 130, "inStock": true},
+      {"weight": "50g", "price": 75, "originalPrice": 75, "inStock": true},
+      {"weight": "250g", "price": 300, "originalPrice": 300, "inStock": true}
+    ],
+    "rating": 4.0,
+    "reviewCount": 15,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 14,
+    "tags": ["Spices", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-295",
+    "name": "Virgin coconut Oil",
+    "category": "Wood Pressed Oils",
+    "concern": [
+      "Heart Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Virgin coconut Oil sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Virgin coconut Oil"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Virgin%20coconut%20Oil/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Virgin%20coconut%20Oil/dhaanya%2001.png",
+      "/images/dhannya_Products_final/Virgin%20coconut%20Oil/dhaanya%2002.png",
+      "/images/dhannya_Products_final/Virgin%20coconut%20Oil/dhaanya%2003.png",
+      "/images/dhannya_Products_final/Virgin%20coconut%20Oil/dhaanya%2004.png",
+      "/images/dhannya_Products_final/Virgin%20coconut%20Oil/05.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "160g",
+        "price": 340,
+        "originalPrice": 340,
+        "inStock": true
+      },
+      {
+        "weight": "280g",
+        "price": 595,
+        "originalPrice": 595,
+        "inStock": true
+      },
+      {
+        "weight": "600g",
+        "price": 1275,
+        "originalPrice": 1275,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 98,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 37,
+    "tags": [
+      "Wood Pressed Oils",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-296",
+    "name": "Walnut Chile",
+    "category": "Dry Fruits",
+    "concern": [
+      "Heart Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Walnut Chile sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Walnut Chile"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Walnut%20Chile/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Walnut%20Chile/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 2580,
+        "originalPrice": 2580,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 645,
+        "originalPrice": 645,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 1290,
+        "originalPrice": 1290,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 105,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 40,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-297",
+    "name": "Walnut Nut Butter",
+    "category": "Nut Butters",
+    "concern": [
+      "Heart Health"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Walnut Nut Butter sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Walnut Nut Butter"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Walnut%20Nut%20Butter/dhaanya%2001.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Walnut%20Nut%20Butter/dhaanya%2001.png"
+    ],
+    "variants": [
+      {
+        "weight": "250g / Honey",
+        "price": 597,
+        "originalPrice": 597,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Jaggery",
+        "price": 587,
+        "originalPrice": 587,
+        "inStock": true
+      },
+      {
+        "weight": "250g / Unsweetened",
+        "price": 567,
+        "originalPrice": 567,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 112,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Nut Butters",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-298",
+    "name": "Walnut Super White (Kashmiri)",
+    "category": "Dry Fruits",
+    "concern": [
+      "Heart Health",
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Walnut Super White (Kashmiri) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Walnut Super White (Kashmiri)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Walnut%20Super%20White%20(Kashmiri)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Walnut%20Super%20White%20(Kashmiri)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1970,
+        "originalPrice": 1970,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 492.5,
+        "originalPrice": 492.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 985,
+        "originalPrice": 985,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 119,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 46,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-299",
+    "name": "Watermelon Seeds",
+    "category": "Seeds",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Watermelon Seeds sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Watermelon Seeds"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Watermelon%20Seeds/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Watermelon%20Seeds/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 1150,
+        "originalPrice": 1150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 287.5,
+        "originalPrice": 287.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 575,
+        "originalPrice": 575,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 126,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 49,
+    "tags": [
+      "Seeds",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-300",
+    "name": "Wheat Flakes",
+    "category": "Poha",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Wheat Flakes sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Wheat Flakes"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Wheat%20Flakes/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/Wheat%20Flakes/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 52.5,
+        "originalPrice": 52.5,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 133,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 52,
+    "tags": [
+      "Poha",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-301",
+    "name": "White Rajma (Pinto Beans)",
+    "category": "Pulses",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed White Rajma (Pinto Beans) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural White Rajma (Pinto Beans)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/White%20Rajma%20(Pinto%20Beans)/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/White%20Rajma%20(Pinto%20Beans)/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 60,
+        "originalPrice": 60,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 140,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 55,
+    "tags": [
+      "Pulses",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-302",
+    "name": "White Rice Flakes (Avalakki)",
+    "category": "Poha",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed White Rice Flakes (Avalakki) sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural White Rice Flakes (Avalakki)"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/White%20Rice%20Flakes%20(Avalakki)/01.png",
+    "gallery": [
+      "/images/dhannya_Products_final/White%20Rice%20Flakes%20(Avalakki)/01.png"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 35,
+        "originalPrice": 35,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 70,
+        "originalPrice": 70,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 147,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 58,
+    "tags": [
+      "Poha",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-303",
+    "name": "White Sesame Chikki",
+    "category": "Quick Bites",
+    "concern": [
+      "Weight Loss"
+    ],
+    "description": "100% Pure, authentic, and naturally processed White Sesame Chikki sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural White Sesame Chikki"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/White%20Sesame%20Chikki/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/White%20Sesame%20Chikki/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 640,
+        "originalPrice": 640,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 320,
+        "originalPrice": 320,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 154,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 61,
+    "tags": [
+      "Quick Bites",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-304",
+    "name": "Yellow Ball Raisins",
+    "category": "Dry Fruits",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "100% Pure, authentic, and naturally processed Yellow Ball Raisins sourced carefully for daily health, wellness, and rich taste.",
+    "ingredients": [
+      "100% Pure Natural Yellow Ball Raisins"
+    ],
+    "nutritionInfo": {
+      "Energy (per 100g)": "360 kcal",
+      "Proteins": "10g",
+      "Carbohydrates": "55g",
+      "Dietary Fiber": "8g"
+    },
+    "benefits": [
+      "Rich in vital micronutrients and antioxidants",
+      "Unadulterated natural quality with zero preservatives",
+      "Supports everyday immunity, digestion, and overall vitality"
+    ],
+    "image": "/images/dhannya_Products_final/Yellow%20Ball%20Raisins/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Yellow%20Ball%20Raisins/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "1kg",
+        "price": 840,
+        "originalPrice": 840,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 161,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 64,
+    "tags": [
+      "Dry Fruits",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-267",
+    "name": "Dhaanya Virgin Coconut Oil",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Virgin coconut oil is obtained from fresh coconut and has a naturally characteristic coconut aroma and smooth feel. It is traditionally used for hair oiling, scalp massage, body moisturising and as an ingredient in homemade personal-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Virgin Coconut Oil"
+    ],
+    "nutritionInfo": {
+      "Lauric Acid": "Rich saturated fatty acids",
+      "Physical State": "Solid at cool temperatures, melts in warmth",
+      "Storage": "Away from direct heat and moisture"
+    },
+    "benefits": [
+      "Naturally rich and smooth oil",
+      "Traditionally used for hair and scalp care",
+      "Useful as a body moisturiser",
+      "Suitable for homemade hair and skin preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Virgin%20Coconut%20Oil/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Virgin%20Coconut%20Oil/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "200ml",
+        "price": 299,
+        "originalPrice": 299,
+        "inStock": true
+      },
+      {
+        "weight": "500ml",
+        "price": 599,
+        "originalPrice": 599,
+        "inStock": true
+      },
+      {
+        "weight": "1L",
+        "price": 1099,
+        "originalPrice": 1099,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 52,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 45,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-268",
+    "name": "Beetroot Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Beetroot powder made from dried beetroot with naturally deep red-purple colour. Can be used in homemade face packs, body-care preparations and DIY cosmetic blends.",
+    "ingredients": [
+      "100% Pure Natural Beetroot Powder"
+    ],
+    "nutritionInfo": {
+      "Betalain Pigments": "Naturally occurring colour compounds",
+      "Staining": "Can temporarily stain skin, fabrics and surfaces",
+      "Patch Test": "Always perform before applying"
+    },
+    "benefits": [
+      "Naturally vibrant colour",
+      "Easy to use in homemade face and body packs",
+      "Mild earthy character",
+      "Can be combined with other traditional powders"
+    ],
+    "image": "/images/dhannya_Products_final/Beetroot%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Beetroot%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 450,
+        "originalPrice": 450,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 40,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-269",
+    "name": "Bhringraj Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Bhringraj is a traditional Ayurvedic herb commonly used in hair-care practices. The dried herb is powdered for convenient use in homemade hair masks, scalp packs and hair-oil preparations.",
+    "ingredients": [
+      "100% Pure Natural Bhringraj Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Eclipta prostrata",
+      "Traditional Use": "Ayurvedic hair-care ingredient",
+      "Characteristics": "Herbal powders can vary naturally in colour and aroma"
+    },
+    "benefits": [
+      "Traditional Ayurvedic hair-care ingredient",
+      "Suitable for homemade hair masks",
+      "Can be blended with oils or other herbal powders",
+      "Easy to incorporate into DIY hair-care routines"
+    ],
+    "image": "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Bhringraj%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 550,
+        "originalPrice": 550,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 45,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 38,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-270",
+    "name": "Manjishta Root Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Manjishta is a traditional Ayurvedic herb obtained from the roots of Rubia cordifolia. Its powdered form is commonly used in traditional skin-care preparations and herbal face packs.",
+    "ingredients": [
+      "100% Pure Natural Manjishta Root Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Rubia cordifolia",
+      "Plant Part": "Roots",
+      "Traditional Use": "Ayurvedic skin-care formulations"
+    },
+    "benefits": [
+      "Traditional Indian skin-care ingredient",
+      "Suitable for homemade face packs",
+      "Naturally earthy herbal character",
+      "Can be blended with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Manjishta%20Root%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Manjishta%20Root%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 320,
+        "originalPrice": 320,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 600,
+        "originalPrice": 600,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 35,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 36,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-271",
+    "name": "Multani Mitti",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Multani Mitti, commonly known as Fuller's Earth, is a naturally occurring clay traditionally used in Indian skin-care routines. Particularly popular in face packs and cleansing preparations.",
+    "ingredients": [
+      "100% Pure Natural Multani Mitti Clay"
+    ],
+    "nutritionInfo": {
+      "Material Type": "Clay-like mineral material",
+      "Properties": "Oil-absorbing from skin surface",
+      "Caution": "May feel drying on already dry or sensitive skin"
+    },
+    "benefits": [
+      "Traditional clay-based skin-care ingredient",
+      "Useful for homemade face packs",
+      "Gives a naturally clean, fresh feel to the skin",
+      "Easy to blend with water, rose water or other ingredients"
+    ],
+    "image": "/images/dhannya_Products_final/Multani%20Mitti/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Multani%20Mitti/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 99,
+        "originalPrice": 99,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 199,
+        "originalPrice": 199,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 349,
+        "originalPrice": 349,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 62,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 50,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-272",
+    "name": "Kasturi Haldi Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Kasturi Haldi, traditionally known as wild turmeric, is used in Indian beauty and personal-care traditions. Its aromatic powdered form is commonly incorporated into homemade face and body packs.",
+    "ingredients": [
+      "100% Pure Natural Kasturi Haldi Powder"
+    ],
+    "nutritionInfo": {
+      "Type": "Wild turmeric",
+      "Aroma": "Distinctive natural turmeric aroma",
+      "Distinction": "Traditionally distinguished from cooking turmeric"
+    },
+    "benefits": [
+      "Traditional beauty-care ingredient",
+      "Distinctive natural turmeric aroma",
+      "Convenient for homemade face and body packs",
+      "Can be combined with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Kasturi%20Haldi%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Kasturi%20Haldi%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 180,
+        "originalPrice": 180,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 380,
+        "originalPrice": 380,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 42,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 35,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-273",
+    "name": "Orange Peel Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Orange peel powder is made from dried orange peel and has a naturally citrusy aroma. Commonly used in homemade face and body packs.",
+    "ingredients": [
+      "100% Pure Natural Orange Peel Powder"
+    ],
+    "nutritionInfo": {
+      "Aroma": "Naturally fresh citrus aroma",
+      "Oils": "Contains naturally occurring citrus oils and plant compounds",
+      "Texture": "Can be mildly abrasive depending on particle size"
+    },
+    "benefits": [
+      "Naturally fresh citrus aroma",
+      "Useful in DIY face and body packs",
+      "Easy to combine with clay and botanical powders",
+      "Convenient alternative to fresh orange peel"
+    ],
+    "image": "/images/dhannya_Products_final/Orange%20Peel%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Orange%20Peel%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 240,
+        "originalPrice": 240,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 40,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 32,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-274",
+    "name": "Neem Leaf Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Neem leaf powder is made from dried neem leaves and is a traditional ingredient in Indian personal-care practices. Commonly incorporated into homemade face packs and scalp preparations.",
+    "ingredients": [
+      "100% Pure Natural Neem Leaf Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Azadirachta indica",
+      "Characteristics": "Naturally earthy and herbal",
+      "Caution": "Can be quite drying for some skin types"
+    },
+    "benefits": [
+      "Traditional botanical ingredient",
+      "Suitable for homemade face and scalp packs",
+      "Naturally earthy and herbal",
+      "Easy to combine with other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Neem%20Leaf%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Neem%20Leaf%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 280,
+        "originalPrice": 280,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 520,
+        "originalPrice": 520,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 48,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 44,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-275",
+    "name": "Moringa Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Moringa leaf powder is made from dried moringa leaves and is widely valued as a botanical ingredient. Can be incorporated into homemade face masks, hair masks and other DIY preparations.",
+    "ingredients": [
+      "100% Pure Natural Moringa Leaf Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Drumstick tree leaves",
+      "Colour": "Naturally rich green colour",
+      "Nutrients": "Naturally contain various vitamins, minerals and plant compounds"
+    },
+    "benefits": [
+      "Plant-based botanical ingredient",
+      "Suitable for homemade face and hair masks",
+      "Naturally rich green colour",
+      "Easy to blend with other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Moringa%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Moringa%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 350,
+        "originalPrice": 350,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 650,
+        "originalPrice": 650,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 36,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 34,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-276",
+    "name": "Sandalwood Powder",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Sandalwood powder is a traditional Indian cosmetic ingredient known for its characteristic warm, woody aroma. Commonly used in homemade face packs and traditional beauty preparations.",
+    "ingredients": [
+      "100% Pure Natural Sandalwood Powder"
+    ],
+    "nutritionInfo": {
+      "Aroma": "Distinctive natural sandalwood aroma",
+      "Botanical Source": "Santalum species",
+      "Traditional Use": "Valued for centuries for its aroma"
+    },
+    "benefits": [
+      "Distinctive natural sandalwood aroma",
+      "Traditional beauty-care ingredient",
+      "Suitable for face-pack preparations",
+      "Can be blended with clay and other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Sandalwood%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Sandalwood%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 200,
+        "originalPrice": 200,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 420,
+        "originalPrice": 420,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 800,
+        "originalPrice": 800,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 55,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 42,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-277",
+    "name": "Raktachandana (Red Sandalwood)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Raktachandana, or red sandalwood, is a traditional botanical ingredient used in Indian beauty and personal-care preparations. Its naturally reddish powder is commonly used in face packs.",
+    "ingredients": [
+      "100% Pure Natural Raktachandana Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Difference": "Different from aromatic white sandalwood",
+      "Colour": "Naturally distinctive red from plant compounds",
+      "Application": "Cosmetic use, patch test recommended"
+    },
+    "benefits": [
+      "Traditional Indian cosmetic ingredient",
+      "Naturally distinctive red colour",
+      "Suitable for homemade face packs",
+      "Can be blended with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Raktachandana/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raktachandana/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 190,
+        "originalPrice": 190,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 750,
+        "originalPrice": 750,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 43,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 37,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-278",
+    "name": "Reetha Powder (Soapnut)",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Reetha, also known as soapnut, has traditionally been used as a natural cleansing ingredient. Its powdered form can be used in homemade hair and scalp cleansing preparations.",
+    "ingredients": [
+      "100% Pure Natural Reetha Powder"
+    ],
+    "nutritionInfo": {
+      "Active Compound": "Naturally contains saponins",
+      "Traditional Use": "Plant-based cleansing material",
+      "Caution": "Avoid contact with the eyes"
+    },
+    "benefits": [
+      "Traditional plant-based cleansing ingredient",
+      "Commonly used in natural hair-care routines",
+      "Useful in homemade shampoo preparations",
+      "Can be combined with shikakai and amla"
+    ],
+    "image": "/images/dhannya_Products_final/Reetha%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Reetha%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 115,
+        "originalPrice": 115,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 260,
+        "originalPrice": 260,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 480,
+        "originalPrice": 480,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 39,
+    "isBestSeller": true,
+    "isRecommended": false,
+    "stock": 41,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-279",
+    "name": "Indigo Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Indigo powder is derived from indigo-bearing plants and is traditionally used in natural hair-colouring practices, often alongside henna.",
+    "ingredients": [
+      "100% Pure Natural Indigo Powder"
+    ],
+    "nutritionInfo": {
+      "Pigment": "Naturally occurring blue pigment compounds",
+      "Application": "Traditional plant-based hair colouring",
+      "Results": "Depend on starting hair colour and application"
+    },
+    "benefits": [
+      "Traditional plant-based hair-colouring ingredient",
+      "Commonly paired with henna",
+      "Useful for DIY natural hair-colouring routines",
+      "Plant-derived alternative to synthetic colouring"
+    ],
+    "image": "/images/dhannya_Products_final/Indigo%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Indigo%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 310,
+        "originalPrice": 310,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 51,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 39,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-280",
+    "name": "Shikakai Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Shikakai is a traditional Ayurvedic hair-care ingredient made from the pods of Acacia concinna. It has traditionally been used as a gentle botanical cleansing ingredient for hair.",
+    "ingredients": [
+      "100% Pure Natural Shikakai Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Source": "Acacia concinna pods",
+      "Name Origin": "Literally relates to 'fruit for hair' in traditional usage",
+      "Properties": "Natural saponins create mild lather"
+    },
+    "benefits": [
+      "Traditional Indian hair-care ingredient",
+      "Naturally contains saponins",
+      "Commonly used in homemade hair cleansers",
+      "Often combined with reetha and amla"
+    ],
+    "image": "/images/dhannya_Products_final/Shikakai%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Shikakai%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 120,
+        "originalPrice": 120,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 270,
+        "originalPrice": 270,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 500,
+        "originalPrice": 500,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 47,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 46,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-281",
+    "name": "Hibiscus Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Hibiscus powder is made from dried hibiscus plant material and is traditionally used in Indian hair-care and beauty preparations. Can be incorporated into hair masks and herbal blends.",
+    "ingredients": [
+      "100% Pure Natural Hibiscus Powder"
+    ],
+    "nutritionInfo": {
+      "Source": "Dried hibiscus plant material",
+      "Characteristics": "Naturally vibrant botanical character",
+      "Variation": "Different species and plant parts produce different colours"
+    },
+    "benefits": [
+      "Traditional botanical hair-care ingredient",
+      "Naturally vibrant botanical character",
+      "Suitable for homemade hair masks",
+      "Easy to blend with oils or other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Hibiscus%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Hibiscus%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 125,
+        "originalPrice": 125,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 285,
+        "originalPrice": 285,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 530,
+        "originalPrice": 530,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 44,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 38,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-282",
+    "name": "Henna Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Henna powder is made from the dried leaves of the henna plant and is traditionally used for natural hair colouring and body art. Produces characteristic orange-red to reddish-brown tones.",
+    "ingredients": [
+      "100% Pure Natural Henna Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Source": "Lawsonia inermis",
+      "Colouring Molecule": "Lawsone",
+      "Caution": "Avoid 'black henna' with undisclosed synthetic dyes"
+    },
+    "benefits": [
+      "Traditional plant-based hair colour",
+      "Naturally derived colouring ingredient",
+      "Commonly used for conditioning-style hair packs",
+      "Can be combined with indigo for different colour outcomes"
+    ],
+    "image": "/images/dhannya_Products_final/Henna%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Henna%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 130,
+        "originalPrice": 130,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 290,
+        "originalPrice": 290,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 540,
+        "originalPrice": 540,
+        "inStock": true
+      }
+    ],
+    "rating": 4.9,
+    "reviewCount": 59,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 48,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-283",
+    "name": "Amla Powder",
+    "category": "Hair Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Amla, or Indian gooseberry, is a traditional Ayurvedic ingredient widely used in Indian hair-care practices. Its dried powdered form is commonly included in hair masks and herbal blends.",
+    "ingredients": [
+      "100% Pure Natural Amla Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Phyllanthus emblica",
+      "Character": "Naturally acidic botanical character",
+      "Nutrient Content": "Rich in vitamin C (though affected by processing and drying)"
+    },
+    "benefits": [
+      "Traditional Indian hair-care ingredient",
+      "Naturally acidic botanical character",
+      "Easy to combine with henna, shikakai and reetha",
+      "Suitable for homemade hair-care preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Amla%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Amla%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 110,
+        "originalPrice": 110,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 250,
+        "originalPrice": 250,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 470,
+        "originalPrice": 470,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 54,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 49,
+    "tags": [
+      "Hair Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-284",
+    "name": "Ashwagandha Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Ashwagandha is a traditional Ayurvedic herb made from the root of Withania somnifera. Its powdered form has long been used in traditional wellness practices and personal-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Ashwagandha Root Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Name": "Withania somnifera",
+      "Also Known As": "Indian ginseng (though botanically unrelated)",
+      "Plant Part": "Root"
+    },
+    "benefits": [
+      "Traditional Ayurvedic botanical",
+      "Plant-based powdered ingredient",
+      "Suitable for selected DIY skin and hair preparations",
+      "Easy to blend with other botanical powders"
+    ],
+    "image": "/images/dhannya_Products_final/Ashwagandha/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Ashwagandha/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 150,
+        "originalPrice": 150,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 330,
+        "originalPrice": 330,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 620,
+        "originalPrice": 620,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 41,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 37,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-285",
+    "name": "Black Chickpea Powder (Kadala Podi)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Black chickpea powder is made from roasted or ground kala chana and has a naturally earthy, nutty character. Can be used in traditional food preparations as well as homemade body-care packs.",
+    "ingredients": [
+      "100% Pure Natural Black Chickpea Powder"
+    ],
+    "nutritionInfo": {
+      "Alternative Name": "Kala chana",
+      "Nutritional Content": "Natural plant protein and fibre",
+      "Texture": "Provides mildly grainy texture when used on skin"
+    },
+    "benefits": [
+      "Traditional Indian ingredient",
+      "Naturally earthy and nutty",
+      "Useful in homemade body-care preparations",
+      "Can be combined with other traditional powders"
+    ],
+    "image": "/images/dhannya_Products_final/Black%20Chickpea%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Black%20Chickpea%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 100,
+        "originalPrice": 100,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 220,
+        "originalPrice": 220,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 400,
+        "originalPrice": 400,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 33,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 31,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-286",
+    "name": "Green Gram Powder (Cheruparuppu Podi)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Green gram powder, traditionally known in South Indian beauty routines as cheruparuppu podi, is a finely ground form of moong dal commonly used in homemade cleansing and body-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Green Gram (Moong Dal) Powder"
+    ],
+    "nutritionInfo": {
+      "Also Known As": "Moong bean",
+      "Type": "Legume",
+      "Content": "Natural protein and fibre"
+    },
+    "benefits": [
+      "Traditional Indian bathing and body-care ingredient",
+      "Mild, grain-based texture",
+      "Convenient for homemade body packs",
+      "Easy to blend with other powders"
+    ],
+    "image": "/images/dhannya_Products_final/Green%20Gram%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Green%20Gram%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 95,
+        "originalPrice": 95,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 210,
+        "originalPrice": 210,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 380,
+        "originalPrice": 380,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 37,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 33,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-287",
+    "name": "Triphala Powder",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "Triphala is a traditional Ayurvedic formulation made from three fruits: amla, haritaki and bibhitaki. The powdered blend is widely known in traditional Indian wellness practices.",
+    "ingredients": [
+      "100% Pure Natural Triphala Powder"
+    ],
+    "nutritionInfo": {
+      "Composition": "Three botanical fruits formulation",
+      "Fruits": "Amla, haritaki and bibhitaki",
+      "Name Origin": "Literally refers to three fruits"
+    },
+    "benefits": [
+      "Traditional Ayurvedic formulation",
+      "Made from three botanical fruits",
+      "Convenient powdered form",
+      "Can be used according to traditional preparation practices"
+    ],
+    "image": "/images/dhannya_Products_final/Triphala%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Triphala%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 140,
+        "originalPrice": 140,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 310,
+        "originalPrice": 310,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 580,
+        "originalPrice": 580,
+        "inStock": true
+      }
+    ],
+    "rating": 4.8,
+    "reviewCount": 50,
+    "isBestSeller": true,
+    "isRecommended": true,
+    "stock": 43,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-288",
+    "name": "Mulethi Root Powder (Liquorice)",
+    "category": "Health Foods",
+    "concern": [
+      "Gut Health"
+    ],
+    "description": "Mulethi, commonly known as liquorice root, is a traditional botanical ingredient with a naturally sweet, distinctive flavour and aroma. Its powdered form is used in traditional wellness and personal-care preparations.",
+    "ingredients": [
+      "100% Pure Natural Mulethi (Liquorice) Root Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Source": "Glycyrrhiza species",
+      "Sweetness": "Comes primarily from glycyrrhizin",
+      "Caution": "Excessive oral consumption can have significant health effects"
+    },
+    "benefits": [
+      "Traditional botanical ingredient",
+      "Naturally distinctive aroma",
+      "Convenient powdered form",
+      "Suitable for selected DIY preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Mulethi%20Root%20Powder/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Mulethi%20Root%20Powder/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 170,
+        "originalPrice": 170,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 370,
+        "originalPrice": 370,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 700,
+        "originalPrice": 700,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 38,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 34,
+    "tags": [
+      "Health Foods",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-289",
+    "name": "Incha / Acacia Wild",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Incha, associated with traditional acacia-based preparations, is a botanical ingredient used in regional personal-care traditions. Its powdered form can be incorporated into selected homemade herbal preparations.",
+    "ingredients": [
+      "100% Pure Natural Incha (Acacia) Powder"
+    ],
+    "nutritionInfo": {
+      "Botanical Group": "Large botanical group with many species",
+      "Variation": "Properties depend on species and plant part used",
+      "Verification": "Botanical identity should always be confirmed"
+    },
+    "benefits": [
+      "Traditional botanical ingredient",
+      "Suitable for DIY herbal preparations",
+      "Naturally plant-derived",
+      "Can be combined with other traditional botanical ingredients"
+    ],
+    "image": "/images/dhannya_Products_final/Incha%20Acacia/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Incha%20Acacia/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 135,
+        "originalPrice": 135,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 300,
+        "originalPrice": 300,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 560,
+        "originalPrice": 560,
+        "inStock": true
+      }
+    ],
+    "rating": 4.6,
+    "reviewCount": 30,
+    "isBestSeller": false,
+    "isRecommended": false,
+    "stock": 29,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-290",
+    "name": "Raamacham (Vetiver)",
+    "category": "Skin Care",
+    "concern": [
+      "Skin & Hair"
+    ],
+    "description": "Raamacham, commonly known as vetiver, is a fragrant grass traditionally used in Indian bathing, cooling and personal-care practices. Its aromatic roots are valued for their earthy, refreshing fragrance.",
+    "ingredients": [
+      "100% Pure Natural Vetiver (Raamacham) Roots"
+    ],
+    "nutritionInfo": {
+      "Common Name": "Vetiver",
+      "Plant Type": "Fragrant grass",
+      "Application": "Traditional perfumery and cooling preparations"
+    },
+    "benefits": [
+      "Naturally aromatic botanical",
+      "Traditional Indian bathing ingredient",
+      "Distinctive earthy, cooling fragrance",
+      "Suitable for homemade bath and body preparations"
+    ],
+    "image": "/images/dhannya_Products_final/Raamacham%20Vetiver/01.jpg",
+    "gallery": [
+      "/images/dhannya_Products_final/Raamacham%20Vetiver/01.jpg"
+    ],
+    "variants": [
+      {
+        "weight": "100g",
+        "price": 160,
+        "originalPrice": 160,
+        "inStock": true
+      },
+      {
+        "weight": "250g",
+        "price": 340,
+        "originalPrice": 340,
+        "inStock": true
+      },
+      {
+        "weight": "500g",
+        "price": 630,
+        "originalPrice": 630,
+        "inStock": true
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 35,
+    "isBestSeller": false,
+    "isRecommended": true,
+    "stock": 32,
+    "tags": [
+      "Skin Care",
+      "Organic",
+      "Natural",
+      "Dhaanya"
+    ]
+  },
+  {
+    "id": "prod-291",
+    "name": "White Rajma (Pinto Beans)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "White Rajma, also known as Pinto Beans, is a nutritious legume appreciated for its creamy texture, mild earthy flavour, and versatility in everyday cooking. When cooked properly, these beans develop a soft interior that absorbs spices and seasonings beautifully.",
+    "ingredients": ["100% Pure Natural White Rajma (Pinto Beans)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Texture": "Creamy when cooked"},
+    "benefits": ["Good source of plant-based protein and fibre", "Develops creamy texture when slow-cooked", "Absorbs spices and gravies effectively", "Useful for hearty, filling meals"],
+    "image": "/images/dhannya_Products_final/White%20Rajma/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/White%20Rajma/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 120, "originalPrice": 120, "inStock": true}, {"weight": "250g", "price": 30, "originalPrice": 30, "inStock": true}, {"weight": "500g", "price": 60, "originalPrice": 60, "inStock": true}],
+    "rating": 4.7, "reviewCount": 32, "isBestSeller": false, "isRecommended": true, "stock": 40, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-292",
+    "name": "Red Rajma (Kidney Beans)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Red Rajma, commonly known as Kidney Beans, is a popular Indian kitchen staple known for its rich colour, hearty texture, and ability to absorb robust spices. It is especially popular in North Indian cuisine, where it is traditionally cooked into a thick, flavourful curry.",
+    "ingredients": ["100% Pure Natural Red Rajma (Kidney Beans)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Folate": "Essential mineral"},
+    "benefits": ["Valuable source of plant-based protein and fibre", "Suitable for hearty and filling meals", "Works well with strong spices and thick gravies", "Useful in vegetarian and vegan meal planning"],
+    "image": "/images/dhannya_Products_final/Red%20Rajma/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Red%20Rajma/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 130, "originalPrice": 130, "inStock": true}, {"weight": "250g", "price": 32.5, "originalPrice": 32.5, "inStock": true}, {"weight": "500g", "price": 65, "originalPrice": 65, "inStock": true}],
+    "rating": 4.8, "reviewCount": 45, "isBestSeller": true, "isRecommended": true, "stock": 50, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-293",
+    "name": "Lobia (Red Cowpeas)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Lobia, also called Red Cowpeas, is a versatile pulse with a mild, earthy flavour and a soft yet slightly firm texture when cooked. It is widely used in Indian households for its ease of preparation and suitability for everyday meals.",
+    "ingredients": ["100% Pure Natural Lobia (Red Cowpeas)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Minerals": "Various micronutrients"},
+    "benefits": ["Provides protein and fibre in everyday meals", "Has a mild flavour that pairs well with Indian spices", "Suitable for curries, salads, and one-pot meals", "A practical alternative to commonly used beans"],
+    "image": "/images/dhannya_Products_final/Lobia/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Lobia/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 110, "originalPrice": 110, "inStock": true}, {"weight": "250g", "price": 27.5, "originalPrice": 27.5, "inStock": true}, {"weight": "500g", "price": 55, "originalPrice": 55, "inStock": true}],
+    "rating": 4.6, "reviewCount": 28, "isBestSeller": false, "isRecommended": true, "stock": 38, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-294",
+    "name": "Urad Gola Fine-Ball",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Urad Gola Fine-Ball is a whole black gram variety with a pale interior and a rounded grain shape. Urad is valued in Indian cooking for its creamy consistency, protein content, and important role in traditional fermented foods.",
+    "ingredients": ["100% Pure Natural Urad Gola (Black Gram)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Texture": "Creamy when cooked"},
+    "benefits": ["Source of plant-based protein and dietary fibre", "Provides creamy texture when cooked", "Important for traditional South Indian fermentation", "Suitable for both everyday and festive recipes"],
+    "image": "/images/dhannya_Products_final/Urad%20Gola/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Urad%20Gola/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 115, "originalPrice": 115, "inStock": true}, {"weight": "250g", "price": 28.75, "originalPrice": 28.75, "inStock": true}, {"weight": "500g", "price": 57.5, "originalPrice": 57.5, "inStock": true}],
+    "rating": 4.7, "reviewCount": 35, "isBestSeller": false, "isRecommended": true, "stock": 42, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-295",
+    "name": "Urad White Chilka (Split)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Urad White Chilka is split black gram with its dark outer skin removed or partially removed, leaving the pale inner portion. It cooks into a smooth and creamy consistency and is widely used in Indian dals and traditional batter preparations.",
+    "ingredients": ["100% Pure Natural Urad White Chilka (Split Black Gram)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Cooking": "Cooks quickly"},
+    "benefits": ["Cooks relatively quickly compared with many whole pulses", "Provides plant-based protein and fibre", "Creates smooth texture in dals and batters", "Useful for traditional Indian recipes"],
+    "image": "/images/dhannya_Products_final/Urad%20White%20Chilka/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Urad%20White%20Chilka/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 125, "originalPrice": 125, "inStock": true}, {"weight": "250g", "price": 31.25, "originalPrice": 31.25, "inStock": true}, {"weight": "500g", "price": 62.5, "originalPrice": 62.5, "inStock": true}],
+    "rating": 4.6, "reviewCount": 30, "isBestSeller": false, "isRecommended": true, "stock": 36, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-296",
+    "name": "Urad Dal Black Split",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Black Split Urad Dal is split black gram that retains its dark outer skin. It offers a distinctive appearance, earthy flavour, and a hearty texture when cooked.",
+    "ingredients": ["100% Pure Natural Urad Dal Black Split"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre with skin", "Flavor": "Earthy"},
+    "benefits": ["Retains the outer skin of the black gram", "Provides protein and dietary fibre", "Offers deeper, earthy flavour", "Works well in rustic and traditional preparations"],
+    "image": "/images/dhannya_Products_final/Urad%20Dal%20Black%20Split/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Urad%20Dal%20Black%20Split/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 120, "originalPrice": 120, "inStock": true}, {"weight": "250g", "price": 30, "originalPrice": 30, "inStock": true}, {"weight": "500g", "price": 60, "originalPrice": 60, "inStock": true}],
+    "rating": 4.7, "reviewCount": 33, "isBestSeller": false, "isRecommended": true, "stock": 39, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-297",
+    "name": "Sago (Tapioca Pearls)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Sago, commonly called Sabudana, consists of small translucent pearls made from tapioca starch. When soaked and cooked, the pearls become soft, slightly chewy, and translucent.",
+    "ingredients": ["100% Pure Natural Tapioca Starch (Sago)"],
+    "nutritionInfo": {"Carbs": "Carbohydrate-rich", "Texture": "Soft and chewy when soaked", "Gluten": "Naturally gluten-free"},
+    "benefits": ["Provides easily prepared carbohydrate-rich ingredient", "Develops soft and chewy texture when properly soaked", "Useful for quick snacks and traditional recipes", "Naturally free from gluten-containing grains"],
+    "image": "/images/dhannya_Products_final/Sago/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Sago/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 85, "originalPrice": 85, "inStock": true}, {"weight": "250g", "price": 21.25, "originalPrice": 21.25, "inStock": true}, {"weight": "500g", "price": 42.5, "originalPrice": 42.5, "inStock": true}],
+    "rating": 4.5, "reviewCount": 24, "isBestSeller": false, "isRecommended": false, "stock": 45, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-298",
+    "name": "Lapsi Daliya (Broken Wheat)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Lapsi Daliya is made from broken wheat grains and is valued for its hearty texture, mild nutty flavour, and versatility. Because the grain is broken rather than finely milled, it can provide a more textured eating experience.",
+    "ingredients": ["100% Pure Natural Broken Wheat (Lapsi Daliya)"],
+    "nutritionInfo": {"Carbs": "Carbohydrates", "Fiber": "Dietary fibre", "Flavor": "Mild nutty"},
+    "benefits": ["Offers wholesome alternative to refined cereal products", "Provides carbohydrates and dietary fibre", "Suitable for filling, everyday meals", "Easy to combine with vegetables, pulses, and spices"],
+    "image": "/images/dhannya_Products_final/Lapsi%20Daliya/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Lapsi%20Daliya/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 65, "originalPrice": 65, "inStock": true}, {"weight": "250g", "price": 16.25, "originalPrice": 16.25, "inStock": true}, {"weight": "500g", "price": 32.5, "originalPrice": 32.5, "inStock": true}],
+    "rating": 4.6, "reviewCount": 26, "isBestSeller": false, "isRecommended": true, "stock": 43, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-299",
+    "name": "Horse Gram (Muthira)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Horse Gram, traditionally known as Muthira, is a hardy legume with a distinct earthy flavour and firm texture. It has been used in Indian regional cuisines for generations, particularly in South India.",
+    "ingredients": ["100% Pure Natural Horse Gram (Muthira)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Minerals": "Several minerals"},
+    "benefits": ["Protein- and fibre-containing traditional pulse", "Offers strong, earthy flavour", "Suitable for hearty curries and soups", "Adds variety to regular pulse consumption"],
+    "image": "/images/dhannya_Products_final/Horse%20Gram/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Horse%20Gram/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 140, "originalPrice": 140, "inStock": true}, {"weight": "250g", "price": 35, "originalPrice": 35, "inStock": true}, {"weight": "500g", "price": 70, "originalPrice": 70, "inStock": true}],
+    "rating": 4.6, "reviewCount": 29, "isBestSeller": false, "isRecommended": true, "stock": 34, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-300",
+    "name": "Green Gram (Whole Moong)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Green Gram, also known as Whole Moong, is a small green legume with a mild flavour and firm outer skin. It is valued for its versatility, protein content, and ability to be used in both cooked and sprouted forms.",
+    "ingredients": ["100% Pure Natural Green Gram (Whole Moong)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Versatility": "Cooked or sprouted"},
+    "benefits": ["Provides plant-based protein and dietary fibre", "Suitable for sprouting and cooking", "Has mild flavour that works with many seasonings", "Useful for light meals and traditional recipes"],
+    "image": "/images/dhannya_Products_final/Green%20Gram/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Green%20Gram/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 95, "originalPrice": 95, "inStock": true}, {"weight": "250g", "price": 23.75, "originalPrice": 23.75, "inStock": true}, {"weight": "500g", "price": 47.5, "originalPrice": 47.5, "inStock": true}],
+    "rating": 4.7, "reviewCount": 40, "isBestSeller": true, "isRecommended": true, "stock": 48, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-301",
+    "name": "Green Peas",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Green Peas are small, naturally sweet legumes with a fresh flavour and tender texture when cooked. They are commonly used to add colour, sweetness, and nutritional variety to everyday meals.",
+    "ingredients": ["100% Pure Natural Green Peas"],
+    "nutritionInfo": {"Carbs": "Carbohydrates", "Protein": "Plant-based protein", "Sweetness": "Naturally sweet"},
+    "benefits": ["Adds natural sweetness and colour to dishes", "Provides fibre and plant-based protein", "Versatile in everyday cooking", "Suitable for curries, rice dishes, and snacks"],
+    "image": "/images/dhannya_Products_final/Green%20Peas/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Green%20Peas/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 105, "originalPrice": 105, "inStock": true}, {"weight": "250g", "price": 26.25, "originalPrice": 26.25, "inStock": true}, {"weight": "500g", "price": 52.5, "originalPrice": 52.5, "inStock": true}],
+    "rating": 4.6, "reviewCount": 31, "isBestSeller": false, "isRecommended": true, "stock": 37, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-302",
+    "name": "Corn (Maize)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Corn, also known as Maize, is a versatile cereal grain used across different food traditions. It has a naturally mild sweetness and can be consumed whole, ground, or processed into different food products.",
+    "ingredients": ["100% Pure Natural Corn (Maize)"],
+    "nutritionInfo": {"Carbs": "Carbohydrates", "Energy": "Energy-rich", "Sweetness": "Naturally mild sweet"},
+    "benefits": ["Versatile traditional cereal grain", "Provides energy through carbohydrates", "Useful in both savoury and sweet recipes", "Can be ground into flour or used as whole kernels"],
+    "image": "/images/dhannya_Products_final/Corn/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Corn/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 75, "originalPrice": 75, "inStock": true}, {"weight": "250g", "price": 18.75, "originalPrice": 18.75, "inStock": true}, {"weight": "500g", "price": 37.5, "originalPrice": 37.5, "inStock": true}],
+    "rating": 4.5, "reviewCount": 22, "isBestSeller": false, "isRecommended": false, "stock": 46, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-303",
+    "name": "Bengal Gram Dal (Besan)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Bengal Gram Dal, commonly associated with Chana Dal and Besan production, is a versatile pulse ingredient with a mild, nutty flavour. It is widely used in Indian cooking for its texture, flavour, and ability to work in both whole and ground forms.",
+    "ingredients": ["100% Pure Natural Bengal Gram Dal"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Flavor": "Mild nutty"},
+    "benefits": ["Provides plant-based protein and dietary fibre", "Has mild nutty flavour", "Useful in both traditional and modern recipes", "Naturally gluten-free when uncontaminated"],
+    "image": "/images/dhannya_Products_final/Bengal%20Gram%20Dal/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Bengal%20Gram%20Dal/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 100, "originalPrice": 100, "inStock": true}, {"weight": "250g", "price": 25, "originalPrice": 25, "inStock": true}, {"weight": "500g", "price": 50, "originalPrice": 50, "inStock": true}],
+    "rating": 4.7, "reviewCount": 38, "isBestSeller": true, "isRecommended": true, "stock": 49, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-304",
+    "name": "Masoor Dal (Split)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Masoor Dal is split red lentil known for its quick cooking time, mild earthy flavour, and soft texture. It is a convenient ingredient for everyday meals and is commonly used in Indian households.",
+    "ingredients": ["100% Pure Natural Masoor Dal (Split Red Lentil)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Cooking": "Quick cook"},
+    "benefits": ["Convenient and relatively quick to cook", "Provides plant-based protein and fibre", "Develops soft texture with minimal cooking", "Pairs well with variety of spices and vegetables"],
+    "image": "/images/dhannya_Products_final/Masoor%20Dal/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Masoor%20Dal/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 90, "originalPrice": 90, "inStock": true}, {"weight": "250g", "price": 22.5, "originalPrice": 22.5, "inStock": true}, {"weight": "500g", "price": 45, "originalPrice": 45, "inStock": true}],
+    "rating": 4.8, "reviewCount": 52, "isBestSeller": true, "isRecommended": true, "stock": 55, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-305",
+    "name": "Toor Dal Fine (Yellow)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Toor Dal Fine, also known as Arhar Dal, is a staple Indian pulse appreciated for its mild flavour, creamy texture, and compatibility with traditional tempering. It is widely used in everyday Indian cooking.",
+    "ingredients": ["100% Pure Natural Toor Dal (Arhar Dal)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Texture": "Creamy"},
+    "benefits": ["Familiar staple for everyday Indian cooking", "Provides protein and dietary fibre", "Works well with spices, vegetables, and tempering", "Develops smooth consistency when cooked properly"],
+    "image": "/images/dhannya_Products_final/Toor%20Dal/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Toor%20Dal/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 105, "originalPrice": 105, "inStock": true}, {"weight": "250g", "price": 26.25, "originalPrice": 26.25, "inStock": true}, {"weight": "500g", "price": 52.5, "originalPrice": 52.5, "inStock": true}],
+    "rating": 4.7, "reviewCount": 48, "isBestSeller": true, "isRecommended": true, "stock": 52, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-306",
+    "name": "Moong Dal",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Moong Dal is made from split and dehulled green gram. It is known for its mild flavour, soft texture, and relatively quick cooking time.",
+    "ingredients": ["100% Pure Natural Moong Dal"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Cooking": "Quick cook"},
+    "benefits": ["Relatively quick and convenient to prepare", "Has mild flavour suitable for simple meals", "Provides plant-based protein and fibre", "Works well in light and hearty recipes"],
+    "image": "/images/dhannya_Products_final/Moong%20Dal/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Moong%20Dal/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 95, "originalPrice": 95, "inStock": true}, {"weight": "250g", "price": 23.75, "originalPrice": 23.75, "inStock": true}, {"weight": "500g", "price": 47.5, "originalPrice": 47.5, "inStock": true}],
+    "rating": 4.7, "reviewCount": 44, "isBestSeller": true, "isRecommended": true, "stock": 50, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-307",
+    "name": "Putana (Parched Gram)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Putana, also called Roasted Gram or Dalia Gram, is made from roasted Bengal gram. It has a naturally nutty flavour, crunchy texture, and convenient shelf-stable form.",
+    "ingredients": ["100% Pure Natural Roasted Bengal Gram (Putana)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Texture": "Crunchy"},
+    "benefits": ["Ready-to-eat roasted ingredient", "Provides protein and fibre", "Offers crunchy texture and nutty flavour", "Convenient for snacks and traditional preparations"],
+    "image": "/images/dhannya_Products_final/Putana/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Putana/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 130, "originalPrice": 130, "inStock": true}, {"weight": "250g", "price": 32.5, "originalPrice": 32.5, "inStock": true}, {"weight": "500g", "price": 65, "originalPrice": 65, "inStock": true}],
+    "rating": 4.6, "reviewCount": 27, "isBestSeller": false, "isRecommended": true, "stock": 35, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-308",
+    "name": "Soybean",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Soybean is a protein-rich legume with a naturally firm texture and mild, nutty flavour. Soybeans are valued for their high-quality plant protein and their versatility in traditional and modern food preparations.",
+    "ingredients": ["100% Pure Natural Soybean"],
+    "nutritionInfo": {"Protein": "High plant-based protein", "Fiber": "Dietary fibre", "Fats": "Naturally occurring"},
+    "benefits": ["Concentrated source of plant-based protein", "Contains protein, fibre, and naturally occurring fats", "Useful for adding variety to vegetarian diets", "Can be incorporated into flour blends and cooked dishes"],
+    "image": "/images/dhannya_Products_final/Soybean/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Soybean/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 145, "originalPrice": 145, "inStock": true}, {"weight": "250g", "price": 36.25, "originalPrice": 36.25, "inStock": true}, {"weight": "500g", "price": 72.5, "originalPrice": 72.5, "inStock": true}],
+    "rating": 4.6, "reviewCount": 25, "isBestSeller": false, "isRecommended": true, "stock": 33, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-309",
+    "name": "Black Chana",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Black Chana, also known as Kala Chana, is a traditional legume with a firm texture, earthy flavour, and naturally dark outer skin. It is widely used in Indian cooking and is valued for its protein and fibre content.",
+    "ingredients": ["100% Pure Natural Black Chana (Kala Chana)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Texture": "Firm"},
+    "benefits": ["Provides plant-based protein and dietary fibre", "Offers hearty texture and earthy flavour", "Suitable for filling meals and snacks", "Works well in both dry and gravy-based recipes"],
+    "image": "/images/dhannya_Products_final/Black%20Chana/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Black%20Chana/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 135, "originalPrice": 135, "inStock": true}, {"weight": "250g", "price": 33.75, "originalPrice": 33.75, "inStock": true}, {"weight": "500g", "price": 67.5, "originalPrice": 67.5, "inStock": true}],
+    "rating": 4.7, "reviewCount": 36, "isBestSeller": true, "isRecommended": true, "stock": 47, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-310",
+    "name": "Roasted Chana",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Roasted Chana is made from chickpeas that have been roasted to develop a crisp texture and nutty flavour. It is a convenient traditional snack that can be enjoyed on its own or combined with other ingredients.",
+    "ingredients": ["100% Pure Natural Roasted Chickpeas"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Texture": "Crunchy"},
+    "benefits": ["Convenient, crunchy, and easy to carry", "Provides protein and dietary fibre", "Offers naturally nutty roasted flavour", "Suitable for snacks and homemade mixes"],
+    "image": "/images/dhannya_Products_final/Roasted%20Chana/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Roasted%20Chana/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 140, "originalPrice": 140, "inStock": true}, {"weight": "250g", "price": 35, "originalPrice": 35, "inStock": true}, {"weight": "500g", "price": 70, "originalPrice": 70, "inStock": true}],
+    "rating": 4.5, "reviewCount": 23, "isBestSeller": false, "isRecommended": false, "stock": 41, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  },
+  {
+    "id": "prod-311",
+    "name": "Kabuli Chana (White Chickpeas)",
+    "category": "Pulses",
+    "concern": ["Gut Health"],
+    "description": "Kabuli Chana, also known as White Chickpeas, is a popular legume recognised for its larger size, mild flavour, and creamy texture when cooked. It is widely used in Indian, Middle Eastern, and Mediterranean cuisines.",
+    "ingredients": ["100% Pure Natural Kabuli Chana (White Chickpeas)"],
+    "nutritionInfo": {"Protein": "Plant-based protein", "Fiber": "Dietary fibre", "Minerals": "Essential micronutrients"},
+    "benefits": ["Versatile source of plant-based protein and fibre", "Develops creamy interior when properly cooked", "Absorbs spices and sauces effectively", "Suitable for both traditional and international recipes"],
+    "image": "/images/dhannya_Products_final/Kabuli%20Chana/01.jpg",
+    "gallery": ["/images/dhannya_Products_final/Kabuli%20Chana/01.jpg"],
+    "variants": [{"weight": "1kg", "price": 130, "originalPrice": 130, "inStock": true}, {"weight": "250g", "price": 32.5, "originalPrice": 32.5, "inStock": true}, {"weight": "500g", "price": 65, "originalPrice": 65, "inStock": true}],
+    "rating": 4.8, "reviewCount": 58, "isBestSeller": true, "isRecommended": true, "stock": 56, "tags": ["Pulses", "Organic", "Natural", "Dhaanya"]
+  }
+];
