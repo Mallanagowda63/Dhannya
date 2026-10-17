@@ -182,7 +182,7 @@ export const AdminPanel: React.FC = () => {
   const [newProdPrice, setNewProdPrice] = useState(299);
   const [newProdStock, setNewProdStock] = useState(50);
   const [newProdDesc, setNewProdDesc] = useState('');
-  const [newProdImage, setNewProdImage] = useState('/images/dhannya_Products_final/Garam%20Masala/01.jpg');
+  const [newProdImage, setNewProdImage] = useState('/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png');
 
   // Coupon Add Modal State
   const [isAddCouponOpen, setIsAddCouponOpen] = useState(false);
@@ -358,7 +358,7 @@ export const AdminPanel: React.FC = () => {
           category: newProdCategory,
           price: Number(newProdPrice) || 299,
           stock: Number(newProdStock) || 50,
-          image: newProdImage || '/images/dhannya_Products_final/Garam%20Masala/01.jpg',
+          image: newProdImage || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png',
           description: newProdDesc || '100% pure organic product.',
         }),
       });
@@ -379,7 +379,7 @@ export const AdminPanel: React.FC = () => {
         setNewProdPrice(299);
         setNewProdStock(50);
         setNewProdDesc('');
-        setNewProdImage('/images/dhannya_Products_final/Garam%20Masala/01.jpg');
+        setNewProdImage('/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png');
       } else {
         showToast(data.message || 'Failed to add product. Please check input values.', 'error');
       }
@@ -1606,11 +1606,11 @@ export const AdminPanel: React.FC = () => {
                             <div className="flex items-center gap-2.5">
                               {order.items && order.items.length > 0 && (
                                 <img
-                                  src={order.items[0]?.image || order.items[0]?.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
+                                  src={order.items[0]?.image || order.items[0]?.product?.image || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png'}
                                   alt={order.id}
                                   className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
                                   onError={(e) => {
-                                    e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                                    e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                                   }}
                                 />
                               )}
@@ -1631,12 +1631,12 @@ export const AdminPanel: React.FC = () => {
                               {order.items.slice(0, 3).map((it: any, idx: number) => (
                                 <img
                                   key={idx}
-                                  src={it.image || it.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
+                                  src={it.image || it.product?.image || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png'}
                                   alt={it.name || it.product?.name || 'Item'}
                                   className="w-6 h-6 rounded-lg object-cover border border-stone-200"
                                   title={it.name || it.product?.name || 'Ordered Item'}
                                   onError={(e) => {
-                                    e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                                    e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                                   }}
                                 />
                               ))}
@@ -1782,11 +1782,11 @@ export const AdminPanel: React.FC = () => {
                           <div className="flex items-center gap-2.5">
                             {order.items && order.items.length > 0 && (
                               <img
-                                src={order.items[0]?.image || order.items[0]?.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg'}
+                                src={order.items[0]?.image || order.items[0]?.product?.image || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png'}
                                 alt={order.id}
                                 className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
                                 onError={(e) => {
-                                  e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                                  e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                                 }}
                               />
                             )}
@@ -2364,7 +2364,7 @@ export const AdminPanel: React.FC = () => {
                 {categoriesList.map((cat) => (
                   <div key={cat.slug} className="bg-[#faf8f4] p-4 rounded-2xl border border-stone-200 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <img src={cat.image || '/images/dhannya_Products_final/Ajwain/01.png'} alt={cat.name} className="w-12 h-12 rounded-xl object-cover border border-stone-200" />
+                      <img src={cat.image || '/images/dhannya_Products_final/Ajwain%20(Ayamodakam)/01.jpg'} alt={cat.name} className="w-12 h-12 rounded-xl object-cover border border-stone-200" />
                       <div>
                         <h4 className="font-bold font-serif text-earth text-sm">{cat.name}</h4>
                         <p className="text-xs text-stone-500 font-mono">/{cat.slug}</p>
@@ -3219,7 +3219,7 @@ export const AdminPanel: React.FC = () => {
                   {(selectedOrderDetails.items || []).map((item: any, idx: number) => {
                     const itemName = item.name || item.product?.name || 'Organic Product';
                     const itemWeight = item.variantWeight || item.selectedWeight || 'Standard';
-                    const itemImg = item.image || item.product?.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                    const itemImg = item.image || item.product?.image || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                     const itemPrice = item.price || item.unitPrice || 0;
                     const itemQty = item.quantity || 1;
 
@@ -3234,7 +3234,7 @@ export const AdminPanel: React.FC = () => {
                               alt={itemName}
                               className="w-12 h-12 rounded-xl object-cover border border-stone-200 shrink-0"
                               onError={(e) => {
-                                e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                                e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                               }}
                             />
                             <div>
@@ -3569,7 +3569,7 @@ export const AdminPanel: React.FC = () => {
                           alt={item.name}
                           className="w-10 h-10 rounded-xl object-cover border border-stone-200 shrink-0"
                           onError={(e) => {
-                            e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                            e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                           }}
                         />
                         <div className="min-w-0">

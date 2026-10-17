@@ -27,7 +27,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     "badge": "Crafted Fresh For You",
     "title": "Custom Masala Blends Ground To Perfection",
     "subtitle": "Select raw organic spices, choose your custom roast level, and let our master spice artisans grind your custom blend fresh!",
-    "bgImage": "/images/dhannya_Products_final/Garam%20Masala/01.jpg",
+    "bgImage": "/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png",
     "primaryCta": "Build Custom Masala",
     "secondaryCta": "Explore Whole Spices",
     "customMasalaTarget": true
@@ -37,7 +37,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     "badge": "100% Cold-Pressed Oils",
     "title": "Pure Traditional Wooden Ghani Oils",
     "subtitle": "Retaining natural omega fatty acids, pungency, and vital nutrient profile with zero chemicals or additives.",
-    "bgImage": "/images/dhannya_Products_final/Coconut%20Oil/01.jpg",
+    "bgImage": "/images/dhannya_Products_final/Coconut%20Oil/Dhaanya%2001.png",
     "primaryCta": "Shop Pressed Oils",
     "secondaryCta": "View Health Benefits",
     "categoryTarget": "Wood Pressed Oils"

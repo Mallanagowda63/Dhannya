@@ -41,7 +41,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
       return CATEGORIES[index - 1].image;
     }
 
-    return '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+    return '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
   };
 
   return (
@@ -87,7 +87,7 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
                     alt={cat.name}
                     className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+                      e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                     }}
                   />
                   <div className="absolute top-2 right-2 bg-[#2A2620]/80 backdrop-blur-xs text-[#F4ECD8] text-[9px] font-sans font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">

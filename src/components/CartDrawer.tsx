@@ -29,7 +29,7 @@ export const CartDrawer: React.FC = () => {
     const origin = window.location.origin;
     let text = `🌱 *Dhaanya (ಧಾನ್ಯ) - Fresh Milling Order Request* 🌱\n\n`;
     (cart || []).forEach((item, idx) => {
-      const itemImg = item.image || '/images/dhannya_Products_final/Garam%20Masala/01.jpg';
+      const itemImg = item.image || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
       const imgUrl = itemImg.startsWith('http') ? itemImg : `${origin}${itemImg}`;
       text += `${idx + 1}. *${item.name || 'Dhaanya Item'}* (${item.variantWeight || 'Standard'})\n`;
       text += `   - Qty: ${item.quantity} | Price: ₹${(item.price || 0) * item.quantity}\n`;

@@ -1470,7 +1470,7 @@ app.post('/api/admin/categories', async (req, res) => {
       slug,
       iconName: 'Package',
       description: description || 'Organic premium quality category.',
-      image: image || '/images/dhannya_Products_final/Ajwain/01.png',
+      image: image || '/images/dhannya_Products_final/Ajwain%20(Ayamodakam)/01.jpg',
       productCount: 0,
     };
 
