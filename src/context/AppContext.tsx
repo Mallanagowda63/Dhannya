@@ -11,7 +11,7 @@ import {
   Address,
   Coupon,
 } from '../types';
-import { COUPONS } from '../data/initialData';
+import { COUPONS, HIDDEN_STOREFRONT_CATEGORIES } from '../data/initialData';
 
 interface Toast {
   id: string;
@@ -73,7 +73,7 @@ interface AppContextType {
   placeOrder: (
     address: Address,
     slot: string,
-    paymentMethod: 'COD' | 'Razorpay' | 'UPI'
+    paymentMethod: 'COD'
   ) => Promise<Order | null>;
   saveAddress: (address: Address) => Promise<Address>;
   deleteAddress: (addressId: string) => Promise<boolean>;
@@ -106,7 +106,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-          setProducts(data.data);
+          setProducts(data.data.filter((p: Product) => !HIDDEN_STOREFRONT_CATEGORIES.includes(p.category)));
           if ((import.meta as any).env?.DEV) warnOnUnpricedProducts(data.data);
           return;
         }
@@ -127,7 +127,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setProducts((current) =>
         current.length > 0
           ? current
-          : PRODUCTS.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)))
+          : PRODUCTS.filter((p) => !HIDDEN_STOREFRONT_CATEGORIES.includes(p.category) && (seen.has(p.id) ? false : (seen.add(p.id), true)))
       );
     } catch (e) {
       console.warn('Error loading fallback products:', e);
@@ -337,6 +337,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const addQty = Number(quantity) > 0 ? Number(quantity) : 1;
     const selectedVariant =
       product.variants.find((v) => v.weight === variantWeight) || product.variants[0];
+    if (!selectedVariant?.inStock || product.stock === 0) {
+      showToast(`${product.name} is out of stock`, 'error');
+      return;
+    }
 
     setCart((prevCart) => {
       const existingIndex = prevCart.findIndex(
@@ -481,7 +485,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const placeOrder = async (
     address: Address,
     slot: string,
-    paymentMethod: 'COD' | 'Razorpay' | 'UPI'
+    paymentMethod: 'COD'
   ) => {
     if (cart.length === 0) return null;
 

@@ -69,6 +69,7 @@ export const ProductQuickView: React.FC = () => {
     ? quickViewProduct.gallery
     : [quickViewProduct.image];
   const currentImage = images[selectedImageIndex] || quickViewProduct.image;
+  const isOutOfStock = !selectedVariant.inStock || quickViewProduct.stock === 0;
   const isWishlisted = isInWishlist(quickViewProduct.id);
 
   const discountPercent = selectedVariant.originalPrice > selectedVariant.price
@@ -82,10 +83,12 @@ export const ProductQuickView: React.FC = () => {
   const recommendedProducts = (sameCategory.length > 0 ? sameCategory : fallback).slice(0, 6);
 
   const handleAddToCart = () => {
+    if (isOutOfStock) return;
     addToCart(quickViewProduct, selectedVariant.weight, quantity);
   };
 
   const handleBuyNow = () => {
+    if (isOutOfStock) return;
     addToCart(quickViewProduct, selectedVariant.weight, quantity);
     setQuickViewProduct(null);
     setIsCartOpen(false);
@@ -250,9 +253,9 @@ export const ProductQuickView: React.FC = () => {
                   </span>
                 )}
               </div>
-              <div className="flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#3E4B32]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#3E4B32] inline-block" />
-                In Stock · {selectedVariant.weight} pack
+              <div className={`flex items-center gap-1.5 mt-2 text-xs font-semibold ${isOutOfStock ? 'text-[#7C2A1E]' : 'text-[#3E4B32]'}`}>
+                <span className={`w-1.5 h-1.5 rounded-full inline-block ${isOutOfStock ? 'bg-[#7C2A1E]' : 'bg-[#3E4B32]'}`} />
+                {isOutOfStock ? 'Out of Stock' : 'In Stock'} · {selectedVariant.weight} pack
               </div>
             </div>
 
@@ -260,15 +263,17 @@ export const ProductQuickView: React.FC = () => {
             <div className="flex flex-col gap-2.5 mt-4">
               <button
                 onClick={handleAddToCart}
-                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
+                disabled={isOutOfStock}
+                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Add to Basket</span>
+                <span>{isOutOfStock ? 'Out of Stock' : 'Add to Basket'}</span>
               </button>
 
               <button
                 onClick={handleBuyNow}
-                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                disabled={isOutOfStock}
+                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
                 <span>Buy Now</span>
                 <ArrowRight className="w-4 h-4" />
@@ -396,9 +401,9 @@ export const ProductQuickView: React.FC = () => {
                   </span>
                 )}
               </div>
-              <div className="flex items-center gap-1.5 mt-2 text-xs font-semibold text-[#3E4B32]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#3E4B32] inline-block" />
-                In Stock · {selectedVariant.weight} pack
+              <div className={`flex items-center gap-1.5 mt-2 text-xs font-semibold ${isOutOfStock ? 'text-[#7C2A1E]' : 'text-[#3E4B32]'}`}>
+                <span className={`w-1.5 h-1.5 rounded-full inline-block ${isOutOfStock ? 'bg-[#7C2A1E]' : 'bg-[#3E4B32]'}`} />
+                {isOutOfStock ? 'Out of Stock' : 'In Stock'} · {selectedVariant.weight} pack
               </div>
             </div>
 
@@ -858,15 +863,17 @@ export const ProductQuickView: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAddToCart}
-                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
+                disabled={isOutOfStock}
+                className="flex-1 bg-[#2A2620] hover:bg-[#3E4B32] text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Add to Basket</span>
+                <span>{isOutOfStock ? 'Out of Stock' : 'Add to Basket'}</span>
               </button>
 
               <button
                 onClick={handleBuyNow}
-                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                disabled={isOutOfStock}
+                className="flex-1 bg-transparent hover:bg-[#7C2A1E] text-[#7C2A1E] hover:text-[#F4ECD8] font-bold py-3.5 px-5 rounded-xl text-xs uppercase tracking-wider border-2 border-[#7C2A1E] flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
               >
                 <span>Buy Now</span>
                 <ArrowRight className="w-4 h-4" />

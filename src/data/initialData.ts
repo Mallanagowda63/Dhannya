@@ -517,3 +517,7 @@ export const REVIEWS: Review[] = [
     "verifiedPurchase": true
   }
 ];
+
+// Categories kept in the admin inventory but hidden from the storefront.
+export const HIDDEN_STOREFRONT_CATEGORIES = ['Eco Friendly'];
+export const STOREFRONT_CATEGORIES = CATEGORIES.filter((c) => !HIDDEN_STOREFRONT_CATEGORIES.includes(c.name));

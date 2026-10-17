@@ -104,7 +104,7 @@ export const RefundPolicyPage: React.FC<RefundPolicyPageProps> = ({ onNavigateHo
 
         <Section number={5} title="Refund Method & Timeline">
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>Once your request is approved, refunds will be issued to your original payment method via Razorpay.</li>
+            <li>Once your request is approved, refunds will be issued by UPI or bank transfer to the account details you share with us.</li>
             <li>Please allow 5–7 business days for the refund to reflect in your account, depending on your bank/payment provider.</li>
             <li>If a replacement is preferred and available, we'll arrange for a fresh product to be shipped to you instead.</li>
           </ul>

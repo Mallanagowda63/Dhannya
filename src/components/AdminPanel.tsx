@@ -227,7 +227,7 @@ export const AdminPanel: React.FC = () => {
         if (json.success && Array.isArray(json.data)) {
           const mappedOrders = json.data.map((o: any) => ({
             ...o,
-            paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+            paymentStatus: o.paymentStatus || 'Pending'
           }));
           setOrdersList(mappedOrders);
         }
@@ -1940,14 +1940,6 @@ export const AdminPanel: React.FC = () => {
                 const todayTotalRevenue = todayOrders.reduce((s, o) => s + (o.total || 0), 0);
                 const todayPaidRevenue = todayOrders.filter(o => o.paymentStatus === 'Paid').reduce((s, o) => s + (o.total || 0), 0);
 
-                const upiOrders = ordersList.filter(o => o.paymentMethod === 'UPI');
-                const upiTotalRevenue = upiOrders.reduce((s, o) => s + (o.total || 0), 0);
-                const upiPaidCount = upiOrders.filter(o => o.paymentStatus === 'Paid').length;
-
-                const cardOrders = ordersList.filter(o => o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online');
-                const cardTotalRevenue = cardOrders.reduce((s, o) => s + (o.total || 0), 0);
-                const cardPaidCount = cardOrders.filter(o => o.paymentStatus === 'Paid').length;
-
                 const codOrders = ordersList.filter(o => o.paymentMethod === 'COD' || !o.paymentMethod);
                 const codPendingOrders = codOrders.filter(o => o.paymentStatus !== 'Paid');
                 const codPaidOrders = codOrders.filter(o => o.paymentStatus === 'Paid');
@@ -1957,7 +1949,7 @@ export const AdminPanel: React.FC = () => {
 
                 return (
                   <div className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {/* Today's Payments Card */}
                       <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
                         <div className="flex items-center justify-between">
@@ -1975,46 +1967,6 @@ export const AdminPanel: React.FC = () => {
                           <p className="text-[11px] font-bold text-emerald-700 mt-1 flex items-center gap-1">
                             <TrendingUp className="w-3.5 h-3.5" />
                             <span>{todayOrders.length} orders today • ₹{todayPaidRevenue.toLocaleString()} Paid</span>
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* UPI Payments Card */}
-                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-purple-900 font-serif">
-                            UPI Payments
-                          </span>
-                          <div className="w-9 h-9 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold">
-                            <QrCode className="w-5 h-5" />
-                          </div>
-                        </div>
-                        <div className="mt-4">
-                          <h4 className="text-2xl font-extrabold font-mono text-purple-950">
-                            ₹{upiTotalRevenue.toLocaleString()}
-                          </h4>
-                          <p className="text-[11px] font-bold text-purple-700 mt-1">
-                            {upiOrders.length} UPI Txns ({upiPaidCount} Verified Paid)
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Razorpay Online Card */}
-                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-blue-900 font-serif">
-                            Razorpay / Cards
-                          </span>
-                          <div className="w-9 h-9 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold">
-                            <CreditCard className="w-5 h-5" />
-                          </div>
-                        </div>
-                        <div className="mt-4">
-                          <h4 className="text-2xl font-extrabold font-mono text-blue-950">
-                            ₹{cardTotalRevenue.toLocaleString()}
-                          </h4>
-                          <p className="text-[11px] font-bold text-blue-700 mt-1">
-                            {cardOrders.length} Gateway Orders ({cardPaidCount} Paid)
                           </p>
                         </div>
                       </div>
@@ -2040,30 +1992,6 @@ export const AdminPanel: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Payment Mode Distribution Share */}
-                    <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 space-y-3">
-                      <div className="flex justify-between items-center text-xs font-bold text-earth">
-                        <span className="uppercase tracking-wider font-extrabold text-[11px] text-stone-600">Payment Modes Split Share</span>
-                        <span>Total Revenue: <strong className="text-olive font-mono text-sm">₹{ordersList.reduce((s, o) => s + (o.total || 0), 0).toLocaleString()}</strong></span>
-                      </div>
-                      <div className="w-full bg-stone-200 h-4 rounded-full overflow-hidden flex shadow-inner">
-                        {(() => {
-                          const grand = ordersList.reduce((s, o) => s + (o.total || 0), 0) || 1;
-                          return (
-                            <>
-                              <div style={{ width: `${(upiTotalRevenue / grand) * 100}%` }} className="bg-purple-600 h-full transition-all" title={`UPI: ${Math.round((upiTotalRevenue / grand) * 100)}%`} />
-                              <div style={{ width: `${(cardTotalRevenue / grand) * 100}%` }} className="bg-emerald-600 h-full transition-all" title={`Razorpay: ${Math.round((cardTotalRevenue / grand) * 100)}%`} />
-                              <div style={{ width: `${((codPendingAmount + codPaidAmount) / grand) * 100}%` }} className="bg-amber-500 h-full transition-all" title={`COD: ${Math.round(((codPendingAmount + codPaidAmount) / grand) * 100)}%`} />
-                            </>
-                          );
-                        })()}
-                      </div>
-                      <div className="flex flex-wrap gap-5 text-xs font-bold text-stone-700 pt-1">
-                        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-purple-600 inline-block" /> UPI Instant (₹{upiTotalRevenue.toLocaleString()})</span>
-                        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" /> Razorpay Online (₹{cardTotalRevenue.toLocaleString()})</span>
-                        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-amber-500 inline-block" /> Cash On Delivery (₹{(codPendingAmount + codPaidAmount).toLocaleString()})</span>
-                      </div>
-                    </div>
                   </div>
                 );
               })()}

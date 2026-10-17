@@ -1,5 +1,5 @@
 import React from 'react';
-import { CATEGORIES } from '../data/initialData';
+import { STOREFRONT_CATEGORIES as CATEGORIES } from '../data/initialData';
 import { ProductCategory } from '../types';
 
 interface CategoryBannerProps {

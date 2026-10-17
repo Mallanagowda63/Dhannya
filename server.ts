@@ -722,24 +722,8 @@ const CustomerMessageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Tracks Razorpay payments that have passed signature verification, so
-// order creation can require proof of a real, unconsumed payment instead of
-// trusting a client-supplied paymentMethod string. consumedByOrderId is set
-// the first (and only) time a verified payment is attached to an order --
-// this prevents replaying the same razorpayPaymentId across multiple orders.
-const VerifiedPaymentSchema = new mongoose.Schema(
-  {
-    razorpayPaymentId: { type: String, required: true, unique: true },
-    razorpayOrderId: String,
-    verifiedAt: { type: String, default: () => new Date().toISOString() },
-    consumedByOrderId: { type: String, default: null },
-  },
-  { timestamps: true }
-);
-
 export const ProductModel = mongoose.model('Product', ProductSchema);
 export const OrderModel = mongoose.model('Order', OrderSchema);
-export const VerifiedPaymentModel = mongoose.model('VerifiedPayment', VerifiedPaymentSchema);
 export const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
 export const CustomerMessageModel = mongoose.model('CustomerMessage', CustomerMessageSchema);
 export const AddressModel = mongoose.model('Address', AddressSchema);
@@ -2182,154 +2166,11 @@ app.post('/api/recipes', async (req, res) => {
   }
 });
 
-// Razorpay Payment Integration Endpoints (Server-Side Test Mode)
-const RAZORPAY_KEY_ID = (process.env.RAZORPAY_KEY_ID || '').trim();
-const RAZORPAY_KEY_SECRET = (process.env.RAZORPAY_KEY_SECRET || '').trim();
-const RAZORPAY_WEBHOOK_SECRET = (process.env.RAZORPAY_WEBHOOK_SECRET || '').trim();
-
-app.get('/api/payment/config', (req, res) => {
-  const isConfigured = !!(RAZORPAY_KEY_ID && RAZORPAY_KEY_SECRET);
-  res.json({
-    success: true,
-    isConfigured,
-    key: RAZORPAY_KEY_ID || null,
-    mode: isConfigured ? 'test' : 'unconfigured',
-  });
-});
-
-app.post('/api/payment/create-order', async (req, res) => {
-  try {
-    const { amount, currency = 'INR', receiptId } = req.body;
-    const cleanAmount = Number(amount) || 0;
-
-    if (cleanAmount <= 0) {
-      return res.status(400).json({ success: false, message: 'Invalid order total amount' });
-    }
-
-    if (!RAZORPAY_KEY_ID || !RAZORPAY_KEY_SECRET) {
-      return res.status(503).json({
-        success: false,
-        isConfigured: false,
-        message: 'RAZORPAY TEST CREDENTIALS NOT CONFIGURED. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in .env.',
-      });
-    }
-
-    const amountInPaise = Math.round(cleanAmount * 100);
-    const rzpOrderId = `rzp_order_test_${Date.now()}_${Math.floor(1000 + Math.random() * 9000)}`;
-
-    return res.json({
-      success: true,
-      key: RAZORPAY_KEY_ID,
-      razorpayOrderId: rzpOrderId,
-      amount: amountInPaise,
-      currency,
-      receipt: receiptId || `rcpt_${Date.now()}`,
-    });
-  } catch (err: any) {
-    return res.status(500).json({ success: false, message: err.message });
-  }
-});
-
-app.post('/api/payment/verify', async (req, res) => {
-  try {
-    const { razorpayOrderId, razorpayPaymentId, razorpaySignature, orderId } = req.body;
-
-    if (!RAZORPAY_KEY_SECRET) {
-      return res.status(503).json({
-        success: false,
-        message: 'RAZORPAY TEST CREDENTIALS NOT CONFIGURED. Cannot verify signature.',
-      });
-    }
-
-    const body = `${razorpayOrderId}|${razorpayPaymentId}`;
-    const expectedSignature = crypto
-      .createHmac('sha256', RAZORPAY_KEY_SECRET)
-      .update(body)
-      .digest('hex');
-
-    // No test/bypass signature values -- this repo is public, and a hardcoded
-    // bypass string here would let anyone mark any order "Paid" without ever
-    // paying. Timing-safe comparison since this guards real payment status.
-    const expectedBuf = Buffer.from(expectedSignature);
-    const providedBuf = Buffer.from(String(razorpaySignature || ''));
-    const isValid =
-      expectedBuf.length === providedBuf.length && crypto.timingSafeEqual(expectedBuf, providedBuf);
-
-    if (!isValid) {
-      return res.status(400).json({
-        success: false,
-        message: 'Razorpay payment signature verification failed. Untrusted payment payload.',
-      });
-    }
-
-    const connected = await ensureDbConnected();
-    if (connected) {
-      // Record this payment as verified-but-unconsumed. POST /api/orders
-      // requires this record (and that it hasn't already been attached to a
-      // different order) before it will mark an order Paid -- this is what
-      // actually links "a real payment happened" to "an order gets created",
-      // instead of trusting a client-supplied paymentMethod string.
-      await VerifiedPaymentModel.updateOne(
-        { razorpayPaymentId },
-        { $setOnInsert: { razorpayPaymentId, razorpayOrderId, verifiedAt: new Date().toISOString(), consumedByOrderId: null } },
-        { upsert: true }
-      );
-
-      // Back-compat: if the caller already has an order and just wants its
-      // status flipped directly (not going through POST /api/orders' own
-      // verification check), still update it here too.
-      if (orderId) {
-        await OrderModel.updateOne(
-          { id: orderId },
-          { $set: { paymentStatus: 'Paid', paymentReference: razorpayPaymentId } }
-        );
-        await VerifiedPaymentModel.updateOne({ razorpayPaymentId }, { $set: { consumedByOrderId: orderId } });
-      }
-    }
-
-    return res.json({
-      success: true,
-      message: 'Razorpay payment signature verified successfully!',
-      paymentStatus: 'Paid',
-      paymentReference: razorpayPaymentId,
-    });
-  } catch (err: any) {
-    return res.status(500).json({ success: false, message: err.message });
-  }
-});
-
-app.post('/api/payment/webhook', async (req, res) => {
-  try {
-    const signature = req.headers['x-razorpay-signature'] as string;
-    if (!RAZORPAY_WEBHOOK_SECRET || !signature) {
-      return res.status(400).json({ success: false, message: 'Webhook signature missing or unconfigured' });
-    }
-
-    const hmac = crypto.createHmac('sha256', RAZORPAY_WEBHOOK_SECRET);
-    hmac.update(JSON.stringify(req.body));
-    const digest = hmac.digest('hex');
-
-    const digestBuf = Buffer.from(digest);
-    const signatureBuf = Buffer.from(signature);
-    const signatureValid =
-      digestBuf.length === signatureBuf.length && crypto.timingSafeEqual(digestBuf, signatureBuf);
-
-    if (!signatureValid) {
-      return res.status(400).json({ success: false, message: 'Invalid webhook signature' });
-    }
-
-    return res.json({ success: true, message: 'Webhook received and verified idempotently' });
-  } catch (err: any) {
-    return res.status(500).json({ success: false, message: err.message });
-  }
-});
-
 // Orders API
 app.post('/api/orders', async (req, res) => {
   try {
     const connected = await requireDb(res);
-    const { items, shippingAddress, deliverySlot, paymentMethod, discount, userId, userEmail, razorpayPaymentId } =
-      req.body;
+    const { items, shippingAddress, deliverySlot, discount, userId, userEmail } = req.body;
 
     if (!items || items.length === 0) {
       return res.status(400).json({ success: false, message: 'Cart is empty' });
@@ -2373,30 +2214,6 @@ app.post('/api/orders', async (req, res) => {
     const tax = Math.round((subtotal - cleanDiscount) * 0.05);
     const total = Math.max(0, subtotal - cleanDiscount + tax + shippingFee);
 
-    // Only mark an order Paid if a real Razorpay payment was independently
-    // verified (signature-checked in /api/payment/verify) and hasn't already
-    // been attached to a different order -- a client-supplied paymentMethod
-    // string of "Razorpay"/"UPI" is no longer sufficient by itself.
-    let paymentStatus: 'Paid' | 'Pending' = 'Pending';
-    if (razorpayPaymentId && connected) {
-      const verifiedPayment: any = await VerifiedPaymentModel.findOne({ razorpayPaymentId }).lean();
-      if (verifiedPayment && !verifiedPayment.consumedByOrderId) {
-        paymentStatus = 'Paid';
-      }
-    }
-
-    // Only Cash on Delivery may be placed unpaid. Any online method (Razorpay/UPI/
-    // card...) must arrive with a payment already verified via /api/payment/verify;
-    // otherwise reject instead of storing an unpaid "Razorpay" order and emailing
-    // a confirmation for it.
-    const methodLabel = String(paymentMethod || 'COD').trim();
-    if (methodLabel.toUpperCase() !== 'COD' && paymentStatus !== 'Paid') {
-      return res.status(402).json({
-        success: false,
-        message: 'Payment not verified. Online orders are accepted only after a successful Razorpay payment.',
-      });
-    }
-
     const newOrder = {
       id: orderId,
       userId: userId || 'usr-101',
@@ -2404,9 +2221,9 @@ app.post('/api/orders', async (req, res) => {
       items: cleanItems,
       shippingAddress: cleanAddress,
       deliverySlot: deliverySlot || 'Standard Delivery',
-      paymentMethod: paymentMethod || 'COD',
-      paymentStatus,
-      paymentReference: paymentStatus === 'Paid' ? razorpayPaymentId : undefined,
+      // Cash on Delivery is the only payment method; payment is collected on delivery.
+      paymentMethod: 'COD',
+      paymentStatus: 'Pending',
       subtotal,
       discount: cleanDiscount,
       tax,
@@ -2421,10 +2238,6 @@ app.post('/api/orders', async (req, res) => {
     if (connected) {
       await OrderModel.create(newOrder as any);
       logDbWrite('POST /api/orders', 'order create', { orderId, userId: newOrder.userId });
-
-      if (paymentStatus === 'Paid' && razorpayPaymentId) {
-        await VerifiedPaymentModel.updateOne({ razorpayPaymentId }, { $set: { consumedByOrderId: orderId } });
-      }
 
       if (shippingAddress) {
         try {
@@ -2497,7 +2310,7 @@ app.post('/api/orders', async (req, res) => {
           customerName: shippingAddress?.fullName || 'Valued Customer',
           orderId,
           total: Number(total) || 0,
-          paymentMethod: paymentMethod || 'COD',
+          paymentMethod: 'COD',
           items: (cleanItems || []).map((it: any) => ({
             name: it.name || 'Item',
             variantWeight: it.variantWeight,
@@ -2554,7 +2367,7 @@ app.get('/api/orders', async (req, res) => {
       const rawOrders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
       const dbOrders = rawOrders.map((o: any) => ({
         ...o,
-        paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+        paymentStatus: o.paymentStatus || 'Pending'
       }));
       return res.json({ success: true, data: dbOrders, dbConnected: true });
     } else if (allowMemoryDbInDev) {
@@ -2565,7 +2378,7 @@ app.get('/api/orders', async (req, res) => {
         )
         .map((o: any) => ({
           ...o,
-          paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+          paymentStatus: o.paymentStatus || 'Pending'
         }));
       return res.json({ success: true, data: filtered });
     }
@@ -3013,13 +2826,13 @@ app.get('/api/admin/orders', async (req, res) => {
       const rawOrders = await OrderModel.find({}).sort({ createdAt: -1 }).lean();
       const dbOrders = rawOrders.map((o: any) => ({
         ...o,
-        paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+        paymentStatus: o.paymentStatus || 'Pending'
       }));
       return res.json({ success: true, data: dbOrders, dbConnected: true });
     } else if (allowMemoryDbInDev) {
       const mapped = liveOrders.map((o: any) => ({
         ...o,
-        paymentStatus: o.paymentStatus || (o.paymentMethod === 'UPI' || o.paymentMethod === 'Razorpay' || o.paymentMethod === 'Online' ? 'Paid' : 'Pending')
+        paymentStatus: o.paymentStatus || 'Pending'
       }));
       return res.json({ success: true, data: mapped });
     }

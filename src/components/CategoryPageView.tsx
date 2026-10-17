@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
-import { CATEGORIES } from '../data/initialData';
+import { STOREFRONT_CATEGORIES as CATEGORIES } from '../data/initialData';
 import { ProductCategory, HealthConcern, SortOption } from '../types';
 import { ProductCard } from './ProductCard';
 import {
