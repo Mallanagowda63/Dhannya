@@ -90,9 +90,6 @@ export const CategoryBanner: React.FC<CategoryBannerProps> = ({ onSelectCategory
                       e.currentTarget.src = '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png';
                     }}
                   />
-                  <div className="absolute top-2 right-2 bg-[#2A2620]/80 backdrop-blur-xs text-[#F4ECD8] text-[9px] font-sans font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                    Fresh Mill
-                  </div>
                 </div>
 
                 {/* Category Title */}
