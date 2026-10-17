@@ -9,13 +9,15 @@
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.js",
     "lint": "node node_modules/typescript/bin/tsc --noEmit",
-    "seed:dev": "node --import tsx scripts/seed-dev-db.ts"
+    "seed:dev": "node --import tsx scripts/seed-dev-db.ts",
+    "postinstall": "node scripts/postinstall-build.cjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
     "dotenv": "^17.2.3",
+    "esbuild": "^0.25.0",
     "express": "^4.21.2",
     "lucide-react": "^0.546.0",
     "mongoose": "^9.9.1",
@@ -23,6 +25,7 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "svix": "^2.5.0",
+    "tailwindcss": "^4.1.14",
     "vite": "^6.2.3"
   },
   "devDependencies": {
@@ -31,9 +34,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "autoprefixer": "^10.4.21",
-    "esbuild": "^0.25.0",
     "sharp": "^0.35.4",
-    "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.3"
