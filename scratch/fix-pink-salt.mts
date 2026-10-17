@@ -1,0 +1,10 @@
+import mongoose from 'mongoose'; import dns from 'dns'; import dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' }); dotenv.config(); dns.setServers(['8.8.8.8','1.1.1.1']);
+await mongoose.connect(process.env.MONGODB_URI!, { dbName: 'ecomm' });
+const c = mongoose.connection.db!.collection('products');
+const prices: Record<string, number> = { '1kg': 130, '500g': 65, '250g': 32.5 };
+const d = await c.findOne({ name: 'Pink Salt Powder' });
+const variants = d!.variants.map((v: any) => prices[v.weight] != null ? { ...v, price: prices[v.weight], originalPrice: prices[v.weight] } : v);
+const r = await c.updateOne({ _id: d!._id }, { $set: { variants } });
+console.log(variants.map((v: any) => `${v.weight}=${v.price}`).join(' ; '), 'modified', r.modifiedCount);
+await mongoose.disconnect();
