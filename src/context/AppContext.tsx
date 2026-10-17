@@ -11,7 +11,10 @@ import {
   Address,
   Coupon,
 } from '../types';
-import { COUPONS, HIDDEN_STOREFRONT_CATEGORIES } from '../data/initialData';
+import { COUPONS, HIDDEN_STOREFRONT_CATEGORIES, HIDDEN_STOREFRONT_PRODUCTS } from '../data/initialData';
+
+const isHiddenFromStorefront = (p: Product) =>
+  HIDDEN_STOREFRONT_CATEGORIES.includes(p.category) || HIDDEN_STOREFRONT_PRODUCTS.includes(p.name);
 
 interface Toast {
   id: string;
@@ -106,7 +109,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-          setProducts(data.data.filter((p: Product) => !HIDDEN_STOREFRONT_CATEGORIES.includes(p.category)));
+          setProducts(data.data.filter((p: Product) => !isHiddenFromStorefront(p)));
           if ((import.meta as any).env?.DEV) warnOnUnpricedProducts(data.data);
           return;
         }
@@ -127,7 +130,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setProducts((current) =>
         current.length > 0
           ? current
-          : PRODUCTS.filter((p) => !HIDDEN_STOREFRONT_CATEGORIES.includes(p.category) && (seen.has(p.id) ? false : (seen.add(p.id), true)))
+          : PRODUCTS.filter((p) => !isHiddenFromStorefront(p) && (seen.has(p.id) ? false : (seen.add(p.id), true)))
       );
     } catch (e) {
       console.warn('Error loading fallback products:', e);

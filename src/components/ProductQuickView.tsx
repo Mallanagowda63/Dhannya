@@ -22,6 +22,7 @@ import {
   HeartHandshake,
   Utensils,
 } from 'lucide-react';
+import { hasWeightLabel } from '../utils/variant';
 
 export const ProductQuickView: React.FC = () => {
   const {
@@ -70,6 +71,7 @@ export const ProductQuickView: React.FC = () => {
     : [quickViewProduct.image];
   const currentImage = images[selectedImageIndex] || quickViewProduct.image;
   const isOutOfStock = !selectedVariant.inStock || quickViewProduct.stock === 0;
+  const showWeightPicker = quickViewProduct.variants.some((v) => hasWeightLabel(v.weight));
   const isWishlisted = isInWishlist(quickViewProduct.id);
 
   const discountPercent = selectedVariant.originalPrice > selectedVariant.price
@@ -255,7 +257,7 @@ export const ProductQuickView: React.FC = () => {
               </div>
               <div className={`flex items-center gap-1.5 mt-2 text-xs font-semibold ${isOutOfStock ? 'text-[#7C2A1E]' : 'text-[#3E4B32]'}`}>
                 <span className={`w-1.5 h-1.5 rounded-full inline-block ${isOutOfStock ? 'bg-[#7C2A1E]' : 'bg-[#3E4B32]'}`} />
-                {isOutOfStock ? 'Out of Stock' : 'In Stock'} · {selectedVariant.weight} pack
+                {isOutOfStock ? 'Out of Stock' : 'In Stock'}{hasWeightLabel(selectedVariant.weight) && ` · ${selectedVariant.weight} pack`}
               </div>
             </div>
 
@@ -284,7 +286,7 @@ export const ProductQuickView: React.FC = () => {
               <TrustBadgeBar />
             </div>
 
-            <div className="mt-4">
+            <div className={showWeightPicker ? 'mt-4' : 'hidden'}>
               <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2.5">
                 Select Weight / Portion
               </label>
@@ -403,7 +405,7 @@ export const ProductQuickView: React.FC = () => {
               </div>
               <div className={`flex items-center gap-1.5 mt-2 text-xs font-semibold ${isOutOfStock ? 'text-[#7C2A1E]' : 'text-[#3E4B32]'}`}>
                 <span className={`w-1.5 h-1.5 rounded-full inline-block ${isOutOfStock ? 'bg-[#7C2A1E]' : 'bg-[#3E4B32]'}`} />
-                {isOutOfStock ? 'Out of Stock' : 'In Stock'} · {selectedVariant.weight} pack
+                {isOutOfStock ? 'Out of Stock' : 'In Stock'}{hasWeightLabel(selectedVariant.weight) && ` · ${selectedVariant.weight} pack`}
               </div>
             </div>
 
@@ -413,7 +415,7 @@ export const ProductQuickView: React.FC = () => {
             </div>
 
             {/* Weight Selection */}
-            <div className="hidden md:block">
+            <div className={showWeightPicker ? 'hidden md:block' : 'hidden'}>
               <label className="text-xs font-bold uppercase tracking-wider text-[#2A2620]/70 block mb-2.5">
                 Select Weight / Portion
               </label>

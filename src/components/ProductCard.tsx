@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
+import { hasWeightLabel } from '../utils/variant';
 
 interface ProductCardProps {
   product: Product;
@@ -147,7 +148,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   {v.weight}
                 </button>
               ))
-            ) : (
+            ) : hasWeightLabel(selectedVariant.weight) && (
               <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold border bg-[#3E4B32]/10 text-[#3E4B32] border-[#3E4B32]/20">
                 {selectedVariant.weight}
               </span>
@@ -168,9 +169,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 </span>
               )}
             </div>
-            <span className="text-[11px] text-[#2A2620]/60 block font-medium">
-              Weight: {selectedVariant.weight}
-            </span>
+            {hasWeightLabel(selectedVariant.weight) && (
+              <span className="text-[11px] text-[#2A2620]/60 block font-medium">
+                Weight: {selectedVariant.weight}
+              </span>
+            )}
           </div>
 
           <button

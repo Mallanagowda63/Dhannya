@@ -520,4 +520,6 @@ export const REVIEWS: Review[] = [
 
 // Categories kept in the admin inventory but hidden from the storefront.
 export const HIDDEN_STOREFRONT_CATEGORIES = ['Eco Friendly'];
+// Individual products kept in the admin inventory but hidden from the storefront.
+export const HIDDEN_STOREFRONT_PRODUCTS = ['Walnut Nut Butter'];
 export const STOREFRONT_CATEGORIES = CATEGORIES.filter((c) => !HIDDEN_STOREFRONT_CATEGORIES.includes(c.name));

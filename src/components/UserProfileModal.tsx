@@ -14,6 +14,7 @@ import {
   Trash2,
   ArrowRight,
 } from 'lucide-react';
+import { hasWeightLabel } from '../utils/variant';
 
 export const UserProfileModal: React.FC = () => {
   const {
@@ -226,7 +227,7 @@ export const UserProfileModal: React.FC = () => {
                               {item.name}
                             </span>
                             <span className="text-[10px] text-[#2A2620]/70">
-                              Qty: {item.quantity} | {item.variantWeight}
+                              Qty: {item.quantity}{hasWeightLabel(item.variantWeight) && ` | ${item.variantWeight}`}
                             </span>
                           </div>
                           <span className="font-bold text-[#2A2620]">₹{item.price * item.quantity}</span>

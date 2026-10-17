@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { X, Trash2, Plus, Minus, ShoppingBag, Tag, ArrowRight, Sparkles, Check, PhoneCall } from 'lucide-react';
 import { DhaanyaLogo } from './DhaanyaLogo';
+import { hasWeightLabel } from '../utils/variant';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -113,9 +114,11 @@ export const CartDrawer: React.FC = () => {
                   <h4 className="font-serif font-bold text-sm text-[#2A2620] truncate">
                     {item.name}
                   </h4>
-                  <span className="text-[11px] text-[#2A2620]/60 block">
-                    Weight: {item.variantWeight}
-                  </span>
+                  {hasWeightLabel(item.variantWeight) && (
+                    <span className="text-[11px] text-[#2A2620]/60 block">
+                      Weight: {item.variantWeight}
+                    </span>
+                  )}
                   <div className="flex items-center gap-2 mt-1">
                     <span className="font-serif font-bold text-sm text-[#2A2620]">
                       ₹{item.price * item.quantity}
