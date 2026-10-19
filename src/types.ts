@@ -89,6 +89,10 @@ export interface Product {
   preparationGuide?: RotiPreparationGuide;
   image: string;
   gallery: string[];
+  /** Set once an admin has chosen the photos; the server then uses image/gallery as stored. */
+  imageLocked?: boolean;
+  /** Set once an admin has edited the description/benefits; they then override the built-in write-up. */
+  contentEdited?: boolean;
   variants: ProductVariant[];
   rating: number;
   reviewCount: number;

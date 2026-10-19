@@ -4,6 +4,8 @@ import { getApiUrl } from '../utils/apiConfig';
 import { Product, Order, ProductCategory } from '../types';
 import { CATEGORIES } from '../data/initialData';
 import { PRODUCTS } from '../data/products';
+import { PRODUCT_DETAILS } from '../data/productDetails';
+import { ProductPhotoEditor } from './ProductPhotoEditor';
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -348,59 +350,101 @@ export const AdminPanel: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adminToken]);
 
-  // Downscale an uploaded photo to at most 1200px on its longest side as a JPEG data URL,
-  // so several photos fit comfortably in one request.
-  const resizeImageFile = (file: File): Promise<string> =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onerror = () => reject(reader.error);
-      reader.onloadend = () => {
-        const rawDataUrl = reader.result as string;
-        const img = new Image();
-        img.onload = () => {
-          const scale = Math.min(1, 1200 / Math.max(img.width, img.height));
-          const canvas = document.createElement('canvas');
-          canvas.width = Math.round(img.width * scale);
-          canvas.height = Math.round(img.height * scale);
-          const ctx = canvas.getContext('2d');
-          if (!ctx) return resolve(rawDataUrl);
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          resolve(canvas.toDataURL('image/jpeg', 0.85));
-        };
-        img.onerror = () => resolve(rawDataUrl);
-        img.src = rawDataUrl;
-      };
-      reader.readAsDataURL(file);
+  // Product being changed in the "Edit Product" modal (null while it is closed).
+  const [editingProd, setEditingProd] = useState<{
+    id: string;
+    name: string;
+    category: ProductCategory;
+    description: string;
+    benefits: string;
+    // What the form opened with, so only changed text is sent.
+    initialDescription: string;
+    initialBenefits: string;
+    stock: number;
+    images: string[];
+    variants: { weight: string; price: number; inStock: boolean }[];
+  } | null>(null);
+  const [isSavingEdit, setIsSavingEdit] = useState(false);
+
+  const openEditProduct = (prod: Product) => {
+    // Prefill with the text the product page currently shows.
+    const detail = prod.contentEdited ? undefined : PRODUCT_DETAILS[prod.name];
+    const description = detail?.about || prod.description || '';
+    const benefits = (detail?.why || prod.benefits || []).join('\n');
+    setEditingProd({
+      id: prod.id,
+      name: prod.name,
+      category: prod.category,
+      description,
+      benefits,
+      initialDescription: description,
+      initialBenefits: benefits,
+      stock: prod.stock ?? 0,
+      images: prod.gallery?.length ? prod.gallery : prod.image ? [prod.image] : [],
+      variants: (prod.variants || []).map((v) => ({ weight: v.weight, price: v.price, inStock: v.inStock !== false })),
     });
-
-  const MAX_PRODUCT_IMAGES = 10;
-
-  const handleAddProductImages = async (files: FileList | null) => {
-    if (!files || files.length === 0) return;
-    const room = MAX_PRODUCT_IMAGES - newProdImages.length;
-    if (room <= 0) {
-      showToast(`You can add up to ${MAX_PRODUCT_IMAGES} photos.`, 'error');
-      return;
-    }
-    const picked = Array.from(files).filter((f) => f.type.startsWith('image/')).slice(0, room);
-    try {
-      const resized = await Promise.all(picked.map(resizeImageFile));
-      setNewProdImages((prev) => [...prev, ...resized]);
-    } catch {
-      showToast('Could not read one of the selected photos.', 'error');
-    }
   };
 
-  const moveProductImage = (from: number, to: number) => {
-    setNewProdImages((prev) => {
-      if (to < 0 || to >= prev.length) return prev;
-      const next = [...prev];
-      const [img] = next.splice(from, 1);
-      next.splice(to, 0, img);
-      return next;
-    });
+  const updateEditVariant = (idx: number, patch: Partial<{ weight: string; price: number; inStock: boolean }>) => {
+    setEditingProd((prev) =>
+      prev && { ...prev, variants: prev.variants.map((v, i) => (i === idx ? { ...v, ...patch } : v)) }
+    );
+  };
+
+  const handleSaveEditProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingProd) return;
+    const variants = editingProd.variants
+      .map((v) => ({ weight: v.weight.trim(), price: Number(v.price), inStock: v.inStock }))
+      .filter((v) => v.weight);
+    if (editingProd.images.length === 0) {
+      showToast('Please keep at least one product photo.', 'error');
+      return;
+    }
+    if (variants.length === 0 || variants.some((v) => !(v.price > 0))) {
+      showToast('Every size option needs a name and a price above 0.', 'error');
+      return;
+    }
+    setIsSavingEdit(true);
+    try {
+      const res = await fetch(getApiUrl(`/api/admin/products/${editingProd.id}`), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
+        body: JSON.stringify({
+          name: editingProd.name.trim(),
+          category: editingProd.category,
+          ...(editingProd.description !== editingProd.initialDescription ||
+          editingProd.benefits !== editingProd.initialBenefits
+            ? {
+                description: editingProd.description.trim(),
+                benefits: editingProd.benefits.split('\n').map((b) => b.trim()).filter(Boolean),
+              }
+            : {}),
+          stock: Math.max(0, Math.floor(Number(editingProd.stock) || 0)),
+          images: editingProd.images,
+          variants: variants.map((v) => ({ ...v, originalPrice: v.price })),
+        }),
+      });
+      let data: any = {};
+      try {
+        data = await res.json();
+      } catch {
+        // handled below
+      }
+      if (res.ok && data.success) {
+        setProductsList((prev) => prev.map((p) => (p.id === editingProd.id ? { ...p, ...data.data } : p)));
+        refreshProducts();
+        fetchDashboardData();
+        showToast(`"${editingProd.name.trim()}" updated`, 'success');
+        setEditingProd(null);
+      } else {
+        showToast(data.message || 'Failed to update product', 'error');
+      }
+    } catch {
+      showToast('Failed to update product', 'error');
+    } finally {
+      setIsSavingEdit(false);
+    }
   };
 
   const handleAddProduct = async (e: React.FormEvent) => {
@@ -1802,7 +1846,14 @@ export const AdminPanel: React.FC = () => {
                             <span className="text-[10px] text-stone-500 font-bold">units</span>
                           </div>
                         </td>
-                        <td className="py-3 px-4 text-right space-x-2">
+                        <td className="py-3 px-4 text-right space-x-2 whitespace-nowrap">
+                          <button
+                            onClick={() => openEditProduct(prod)}
+                            className="p-2 rounded-xl bg-[#faf8f4] text-earth hover:bg-stone-200 border border-stone-200 transition cursor-pointer"
+                            title="Edit Product"
+                          >
+                            <Edit2 className="w-4 h-4" />
+                          </button>
                           <button
                             onClick={() => handleDeleteProduct(prod.id)}
                             className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition cursor-pointer"
@@ -2224,17 +2275,26 @@ export const AdminPanel: React.FC = () => {
                         <td className="py-3 px-4">
                           <span
                             className={`px-3 py-1 rounded-full text-xs font-extrabold ${
-                              prod.stock > 15
+                              prod.stock <= 0
+                                ? 'bg-stone-200 text-stone-700'
+                                : prod.stock > 15
                                 ? 'bg-emerald-100 text-emerald-800'
                                 : prod.stock > 5
                                 ? 'bg-amber-100 text-amber-800'
                                 : 'bg-red-100 text-red-800'
                             }`}
                           >
-                            {prod.stock > 15 ? 'In Stock' : prod.stock > 5 ? 'Low Stock' : 'Critical Stock'}
+                            {prod.stock <= 0 ? 'Out of Stock' : prod.stock > 15 ? 'In Stock' : prod.stock > 5 ? 'Low Stock' : 'Critical Stock'}
                           </span>
                         </td>
-                        <td className="py-3 px-4 text-right">
+                        <td className="py-3 px-4 text-right whitespace-nowrap space-x-2">
+                          <button
+                            onClick={() => handleUpdateStock(prod.id, 0)}
+                            disabled={prod.stock <= 0}
+                            className="bg-white border border-red-200 text-red-700 hover:bg-red-50 px-3 py-1 rounded-xl text-xs font-bold transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                          >
+                            Mark Out of Stock
+                          </button>
                           <button
                             onClick={() => handleUpdateStock(prod.id, prod.stock + 50)}
                             className="bg-olive hover:bg-[#455726] text-white px-3 py-1 rounded-xl text-xs font-bold transition cursor-pointer"
@@ -2876,90 +2936,11 @@ export const AdminPanel: React.FC = () => {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-stone-700 uppercase mb-1 flex items-center justify-between">
-                  <span>Product Photos ({newProdImages.length}/{MAX_PRODUCT_IMAGES})</span>
-                  <span className="text-[10px] text-olive font-extrabold lowercase">(JPG, PNG, WEBP)</span>
-                </label>
-                <label className="block bg-[#faf8f4] border border-dashed border-stone-300 hover:border-olive rounded-xl p-3.5 text-center cursor-pointer transition">
-                  <input
-                    type="file"
-                    accept="image/jpeg,image/png,image/webp"
-                    multiple
-                    className="hidden"
-                    onChange={(e) => {
-                      handleAddProductImages(e.target.files);
-                      e.target.value = '';
-                    }}
-                  />
-                  <div className="text-xs text-stone-600 font-medium">
-                    📁 <strong className="text-earth font-bold">Click here to select photos</strong> (you can pick several at once)
-                  </div>
-                  <div className="text-[11px] text-stone-500 mt-1">
-                    The 1st photo is the main banner image shown first on the shop and product page.
-                  </div>
-                </label>
-
-                {newProdImages.length > 0 && (
-                  <div className="grid grid-cols-4 gap-2 mt-3">
-                    {newProdImages.map((src, idx) => (
-                      <div
-                        key={idx}
-                        className={`relative rounded-xl overflow-hidden border-2 ${idx === 0 ? 'border-olive col-span-2 row-span-2' : 'border-stone-200'}`}
-                      >
-                        <img src={src} alt={`Product photo ${idx + 1}`} className="w-full h-full object-cover aspect-square" />
-                        <span className="absolute top-1 left-1 bg-black/60 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md">
-                          {idx === 0 ? 'Main banner' : idx + 1}
-                        </span>
-                        <div className="absolute bottom-1 inset-x-1 flex justify-between gap-1">
-                          {idx > 0 ? (
-                            <button
-                              type="button"
-                              title="Set as main banner"
-                              onClick={() => moveProductImage(idx, 0)}
-                              className="bg-white/90 hover:bg-white text-earth text-[10px] font-bold px-1.5 py-0.5 rounded-md cursor-pointer"
-                            >
-                              ★ Main
-                            </button>
-                          ) : (
-                            <span />
-                          )}
-                          <div className="flex gap-1">
-                            {idx > 0 && (
-                              <button
-                                type="button"
-                                title="Move left"
-                                onClick={() => moveProductImage(idx, idx - 1)}
-                                className="bg-white/90 hover:bg-white text-earth text-[10px] font-bold w-5 h-5 rounded-md cursor-pointer"
-                              >
-                                ‹
-                              </button>
-                            )}
-                            {idx < newProdImages.length - 1 && (
-                              <button
-                                type="button"
-                                title="Move right"
-                                onClick={() => moveProductImage(idx, idx + 1)}
-                                className="bg-white/90 hover:bg-white text-earth text-[10px] font-bold w-5 h-5 rounded-md cursor-pointer"
-                              >
-                                ›
-                              </button>
-                            )}
-                            <button
-                              type="button"
-                              title="Remove photo"
-                              onClick={() => setNewProdImages((prev) => prev.filter((_, i) => i !== idx))}
-                              className="bg-white/90 hover:bg-red-50 text-red-600 w-5 h-5 rounded-md flex items-center justify-center cursor-pointer"
-                            >
-                              <X className="w-3 h-3" />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <ProductPhotoEditor
+                images={newProdImages}
+                onChange={setNewProdImages}
+                onError={(m) => showToast(m, 'error')}
+              />
 
               <div>
                 <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description</label>
@@ -2999,6 +2980,163 @@ export const AdminPanel: React.FC = () => {
                   className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold shadow-sm cursor-pointer"
                 >
                   Create Product
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Product Modal */}
+      {editingProd && (
+        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[92vh] overflow-y-auto border border-stone-200 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
+              <h3 className="text-xl font-bold font-serif text-earth">Edit Product</h3>
+              <button onClick={() => setEditingProd(null)} className="text-stone-500 hover:text-earth cursor-pointer">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveEditProduct} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Product Name</label>
+                <input
+                  type="text"
+                  required
+                  value={editingProd.name}
+                  onChange={(e) => setEditingProd({ ...editingProd, name: e.target.value })}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Category</label>
+                  <select
+                    value={editingProd.category}
+                    onChange={(e) => setEditingProd({ ...editingProd, category: e.target.value as ProductCategory })}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                  >
+                    {!CATEGORIES.some((c) => c.name === editingProd.category) && (
+                      <option value={editingProd.category}>{editingProd.category}</option>
+                    )}
+                    {CATEGORIES.map((c) => (
+                      <option key={c.slug} value={c.name}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Stock Units</label>
+                  <input
+                    type="number"
+                    min={0}
+                    required
+                    value={editingProd.stock}
+                    onChange={(e) => setEditingProd({ ...editingProd, stock: Number(e.target.value) })}
+                    className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
+                  />
+                  <p className="text-[11px] text-stone-500 mt-1">0 = shown as Out of Stock on the site.</p>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Sizes &amp; Prices (₹)</label>
+                <div className="space-y-2">
+                  {editingProd.variants.map((v, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={v.weight}
+                        onChange={(e) => updateEditVariant(idx, { weight: e.target.value })}
+                        placeholder="e.g. 500g"
+                        className="flex-1 min-w-0 bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-earth focus:outline-none"
+                      />
+                      <input
+                        type="number"
+                        min={0}
+                        step="0.01"
+                        value={v.price}
+                        onChange={(e) => updateEditVariant(idx, { price: Number(e.target.value) })}
+                        className="w-24 bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-earth focus:outline-none"
+                      />
+                      <label className="flex items-center gap-1 text-[11px] font-bold text-stone-600 whitespace-nowrap cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={v.inStock}
+                          onChange={(e) => updateEditVariant(idx, { inStock: e.target.checked })}
+                        />
+                        In stock
+                      </label>
+                      <button
+                        type="button"
+                        title="Remove size"
+                        onClick={() =>
+                          setEditingProd({ ...editingProd, variants: editingProd.variants.filter((_, i) => i !== idx) })
+                        }
+                        className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 cursor-pointer"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setEditingProd({ ...editingProd, variants: [...editingProd.variants, { weight: '', price: 0, inStock: true }] })
+                  }
+                  className="mt-2 text-xs font-bold text-olive hover:underline cursor-pointer flex items-center gap-1"
+                >
+                  <Plus className="w-3.5 h-3.5" /> Add size option
+                </button>
+              </div>
+
+              <ProductPhotoEditor
+                images={editingProd.images}
+                onChange={(images) => setEditingProd((prev) => prev && { ...prev, images })}
+                onError={(m) => showToast(m, 'error')}
+              />
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description</label>
+                <textarea
+                  rows={4}
+                  value={editingProd.description}
+                  onChange={(e) => setEditingProd({ ...editingProd, description: e.target.value })}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
+                />
+                <p className="text-[11px] text-stone-500 mt-1">
+                  Shown in the Description tab on the product page.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Benefits (one per line)</label>
+                <textarea
+                  rows={4}
+                  value={editingProd.benefits}
+                  onChange={(e) => setEditingProd({ ...editingProd, benefits: e.target.value })}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-3">
+                <button
+                  type="button"
+                  onClick={() => setEditingProd(null)}
+                  className="px-5 py-2.5 rounded-xl border border-stone-200 text-xs font-bold text-stone-700 hover:bg-stone-50 cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSavingEdit}
+                  className="px-6 py-2.5 rounded-xl bg-olive hover:bg-[#455726] text-white text-xs font-bold shadow-sm cursor-pointer disabled:opacity-60"
+                >
+                  {isSavingEdit ? 'Saving...' : 'Save Changes'}
                 </button>
               </div>
             </form>

@@ -106,6 +106,11 @@ export const ProductQuickView: React.FC = () => {
   };
 
   const detail = PRODUCT_DETAILS[quickViewProduct.name];
+  // Text edited in the admin panel takes priority over the write-up built into the site.
+  const edited = !!quickViewProduct.contentEdited;
+  const aboutText = (edited && quickViewProduct.description) || detail?.about || quickViewProduct.description;
+  const whyList = (edited && quickViewProduct.benefits?.length ? quickViewProduct.benefits : detail?.why) || quickViewProduct.benefits;
+  const whyTitle = edited ? undefined : detail?.whyTitle;
 
   // "Label: text" -> bold label followed by the text
   const renderLabelled = (text: string, sep: string, suffix = ':') => {
@@ -516,7 +521,7 @@ export const ProductQuickView: React.FC = () => {
                         <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block">About This Blend</span>
                       )}
                       <p className="text-sm text-[#2A2620]/80 leading-relaxed whitespace-pre-line">
-                        {detail?.about || quickViewProduct.description}
+                        {aboutText}
                       </p>
                       {detail?.notes?.map((n, idx) => (
                         <p key={idx} className="flex items-start gap-2 text-xs text-[#3E4B32] font-medium">
@@ -524,16 +529,16 @@ export const ProductQuickView: React.FC = () => {
                           <span>{renderLabelled(n, ': ')}</span>
                         </p>
                       ))}
-                      {(detail?.why || quickViewProduct.benefits) && (detail?.why || quickViewProduct.benefits).length > 0 && (
+                      {whyList && whyList.length > 0 && (
                         <>
                           <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">
-                            {detail?.whyTitle || (detail?.steps ? `Why Choose ${quickViewProduct.name}?` : 'Why Choose This Product?')}
+                            {whyTitle || (detail?.steps ? `Why Choose ${quickViewProduct.name}?` : 'Why Choose This Product?')}
                           </span>
                           <ul className="space-y-1.5">
-                            {(detail?.why || quickViewProduct.benefits).map((b, idx) => (
+                            {whyList.map((b, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-[#3E4B32] shrink-0 mt-0.5" />
-                                <span>{detail?.whyTitle ? renderLabelled(b, ": ") : b}</span>
+                                <span>{whyTitle ? renderLabelled(b, ": ") : b}</span>
                               </li>
                             ))}
                           </ul>

@@ -15,6 +15,17 @@ import { Webhook } from 'svix';
 // Dynamic image resolver: Automatically scans images/dhannya_Products_final/<Name>/ for the latest image file
 const publicProductsBaseDir = path.join(process.cwd(), 'images', 'dhannya_Products_final');
 
+// Main image + gallery for a stored product. Photos chosen in the admin panel
+// (imageLocked) are used exactly as saved; otherwise the folder-based lookup below applies.
+function resolveProductImages(p: { name: string; image?: string; gallery?: string[]; imageLocked?: boolean }) {
+  if (p.imageLocked && p.image) {
+    return { image: p.image, gallery: p.gallery && p.gallery.length > 0 ? p.gallery : [p.image] };
+  }
+  const image = resolveProductImagePath(p.name, p.image);
+  const gallery = p.gallery && p.gallery.length > 0 ? [image, ...p.gallery.filter((g: string) => g !== image)] : [image];
+  return { image, gallery };
+}
+
 function resolveProductImagePath(productName: string, fallbackImage?: string): string {
   try {
     const folderPath = path.join(publicProductsBaseDir, productName);
@@ -577,6 +588,8 @@ const ProductSchema = new mongoose.Schema(
     preparationGuide: mongoose.Schema.Types.Mixed,
     image: String,
     gallery: [String],
+    imageLocked: { type: Boolean, default: false },
+    contentEdited: { type: Boolean, default: false },
     variants: [
       {
         weight: String,
@@ -1230,7 +1243,7 @@ app.get('/api/products', async (req, res) => {
     if (connected) {
       const dbProducts = await ProductModel.find().lean();
       result = dbProducts.map((p: any) => {
-        const resolvedImage = resolveProductImagePath(p.name, p.image);
+        const resolvedImages = resolveProductImages(p);
         return {
           id: p.id,
           name: p.name,
@@ -1243,9 +1256,10 @@ app.get('/api/products', async (req, res) => {
           allergens: p.allergens,
           nutritionInfo: p.nutritionInfo,
           benefits: p.benefits,
+          contentEdited: p.contentEdited,
           preparationGuide: p.preparationGuide,
-          image: resolvedImage,
-          gallery: p.gallery && p.gallery.length > 0 ? [resolvedImage, ...p.gallery.filter((g: string) => g !== resolvedImage)] : [resolvedImage],
+          image: resolvedImages.image,
+          gallery: resolvedImages.gallery,
           variants: p.variants,
           rating: p.rating,
           reviewCount: p.reviewCount,
@@ -1340,11 +1354,9 @@ app.get('/api/products/:id', async (req, res) => {
       return res.status(404).json({ success: false, message: 'Product not found' });
     }
 
-    const resolvedImage = resolveProductImagePath(prod.name, prod.image);
     const resolvedProd = {
       ...prod,
-      image: resolvedImage,
-      gallery: prod.gallery && prod.gallery.length > 0 ? [resolvedImage, ...prod.gallery.filter((g: string) => g !== resolvedImage)] : [resolvedImage],
+      ...resolveProductImages(prod as any),
     };
 
     res.json({ success: true, data: resolvedProd });
@@ -1354,6 +1366,33 @@ app.get('/api/products/:id', async (req, res) => {
 });
 
 // Admin Product APIs
+const PRODUCT_IMAGE_URL = /^\/api\/product-images\/([a-f0-9]{24})$/;
+
+// `images` is an ordered photo list from the admin forms: the first one is the
+// main/banner image, the rest form the gallery. Newly uploaded data URLs are stored
+// in ProductImageModel and replaced by their served URL; existing URLs pass through.
+async function storeProductImages(images: unknown[], connected: boolean): Promise<string[]> {
+  const urls: string[] = [];
+  for (const img of images.filter((i): i is string => typeof i === 'string' && !!i).slice(0, 10)) {
+    const match = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/.exec(img);
+    if (match && connected) {
+      const saved = await ProductImageModel.create({ contentType: match[1], data: Buffer.from(match[2], 'base64') });
+      urls.push(`/api/product-images/${saved._id}`);
+    } else {
+      urls.push(img);
+    }
+  }
+  return urls;
+}
+
+// Delete uploaded photos that are no longer referenced by a product.
+async function deleteProductImages(urls: unknown[]) {
+  const ids = urls
+    .map((u) => (typeof u === 'string' ? PRODUCT_IMAGE_URL.exec(u)?.[1] : undefined))
+    .filter(Boolean);
+  if (ids.length > 0) await ProductImageModel.deleteMany({ _id: { $in: ids } });
+}
+
 app.post('/api/admin/products', async (req, res) => {
   try {
     if (!requireAdminAuth(req, res)) return;
@@ -1361,22 +1400,7 @@ app.post('/api/admin/products', async (req, res) => {
     const p = req.body;
     const fallbackImage = 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
 
-    // `images` is the ordered photo list from the admin form: the first one is the
-    // main/banner image, the rest form the gallery. Uploaded data URLs are stored in
-    // ProductImageModel and replaced by their served URL.
-    const rawImages: string[] = (Array.isArray(p.images) ? p.images : p.image ? [p.image] : [])
-      .filter((img: unknown) => typeof img === 'string' && img)
-      .slice(0, 10);
-    const imageUrls: string[] = [];
-    for (const img of rawImages) {
-      const match = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/.exec(img);
-      if (match && connected) {
-        const saved = await ProductImageModel.create({ contentType: match[1], data: Buffer.from(match[2], 'base64') });
-        imageUrls.push(`/api/product-images/${saved._id}`);
-      } else {
-        imageUrls.push(img);
-      }
-    }
+    const imageUrls = await storeProductImages(Array.isArray(p.images) ? p.images : p.image ? [p.image] : [], connected);
 
     // A per-kg price becomes the standard 1kg / 500g / 250g options used across the catalogue.
     const pricePerKg = Number(p.pricePerKg);
@@ -1398,6 +1422,7 @@ app.post('/api/admin/products', async (req, res) => {
         : [],
       image: imageUrls[0] || fallbackImage,
       gallery: imageUrls.length > 0 ? imageUrls : [fallbackImage],
+      imageLocked: imageUrls.length > 0,
       variants,
       rating: p.rating || 0,
       reviewCount: p.reviewCount || 0,
@@ -1442,11 +1467,25 @@ app.put('/api/admin/products/:id', async (req, res) => {
     const productId = req.params.id;
 
     if (connected) {
-      const updated = await ProductModel.findOneAndUpdate({ id: productId }, { $set: req.body }, { new: true }).lean();
-      if (!updated) {
+      const { images, _id, id, createdAt, updatedAt, ...changes } = req.body || {};
+      const existing: any = await ProductModel.findOne({ id: productId }).lean();
+      if (!existing) {
         return res.status(404).json({ success: false, message: 'Product not found' });
       }
-      return res.json({ success: true, message: 'Product updated in MongoDB', data: updated });
+      if (Array.isArray(images) && images.length > 0) {
+        const urls = await storeProductImages(images, connected);
+        Object.assign(changes, { image: urls[0], gallery: urls, imageLocked: true });
+        const kept = new Set(urls);
+        await deleteProductImages([existing.image, ...(existing.gallery || [])].filter((u) => !kept.has(u)));
+      }
+      // The admin form only sends description/benefits when they were changed.
+      if ('description' in changes || 'benefits' in changes) changes.contentEdited = true;
+      const updated = await ProductModel.findOneAndUpdate({ id: productId }, { $set: changes }, { new: true }).lean();
+      return res.json({
+        success: true,
+        message: 'Product updated in MongoDB',
+        data: updated && { ...updated, ...resolveProductImages(updated as any) },
+      });
     } else if (allowMemoryDbInDev) {
       const index = liveProducts.findIndex((p) => p.id === productId);
       if (index !== -1) {
@@ -1494,10 +1533,7 @@ app.delete('/api/admin/products/:id', async (req, res) => {
     if (connected) {
       const deleted: any = await ProductModel.findOneAndDelete({ id: productId }).lean();
       // Remove any photos this product had uploaded through the admin form.
-      const imageIds = [deleted?.image, ...(deleted?.gallery || [])]
-        .map((u: unknown) => (typeof u === 'string' ? /^\/api\/product-images\/([a-f0-9]{24})$/.exec(u)?.[1] : undefined))
-        .filter(Boolean);
-      if (imageIds.length > 0) await ProductImageModel.deleteMany({ _id: { $in: imageIds } });
+      await deleteProductImages([deleted?.image, ...(deleted?.gallery || [])]);
       return res.json({ success: true, message: `Product ${productId} deleted from MongoDB!` });
     } else if (allowMemoryDbInDev) {
       liveProducts = liveProducts.filter((p) => p.id !== productId);
