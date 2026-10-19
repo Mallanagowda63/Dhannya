@@ -22,7 +22,7 @@ import {
   HeartHandshake,
   Utensils,
 } from 'lucide-react';
-import { hasWeightLabel } from '../utils/variant';
+import { defaultVariantIndex, hasWeightLabel, showsAllSizes } from '../utils/variant';
 
 export const ProductQuickView: React.FC = () => {
   const {
@@ -44,6 +44,11 @@ export const ProductQuickView: React.FC = () => {
   // Keep the view pinned exactly under the site header, and stop the page behind from
   // scrolling / rubber-banding (touchpad overscroll) while the product is open.
   const [headerBottom, setHeaderBottom] = useState<number | null>(null);
+  // Open each product on its default size (250g except for oils and flours).
+  useEffect(() => {
+    if (quickViewProduct) setSelectedVariantIndex(defaultVariantIndex(quickViewProduct));
+  }, [quickViewProduct?.id]);
+
   useEffect(() => {
     if (!quickViewProduct) return;
     const html = document.documentElement;
@@ -99,7 +104,7 @@ export const ProductQuickView: React.FC = () => {
 
   const handleSwitchProduct = (product: Product) => {
     setQuickViewProduct(product);
-    setSelectedVariantIndex(0);
+    setSelectedVariantIndex(defaultVariantIndex(product));
     setSelectedImageIndex(0);
     setQuantity(1);
     setActiveTab('description');
@@ -309,7 +314,7 @@ export const ProductQuickView: React.FC = () => {
                       }`}
                     >
                       {selected && <CheckCircle2 className="w-3.5 h-3.5 text-[#C89211]" />}
-                      <span>{v.weight} — ₹{v.price}</span>
+                      <span>{showsAllSizes(quickViewProduct.category) ? `${v.weight} — ₹${v.price}` : v.weight}</span>
                     </button>
                   );
                 })}
@@ -438,7 +443,7 @@ export const ProductQuickView: React.FC = () => {
                       }`}
                     >
                       {selected && <CheckCircle2 className="w-3.5 h-3.5 text-[#C89211]" />}
-                      <span>{v.weight} — ₹{v.price}</span>
+                      <span>{showsAllSizes(quickViewProduct.category) ? `${v.weight} — ₹${v.price}` : v.weight}</span>
                     </button>
                   );
                 })}

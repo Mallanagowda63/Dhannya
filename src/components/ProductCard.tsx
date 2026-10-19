@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
-import { hasWeightLabel } from '../utils/variant';
+import { hasWeightLabel, isQuarterKg, showsAllSizes } from '../utils/variant';
 
 interface ProductCardProps {
   product: Product;
@@ -20,10 +20,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   if (!product) return null;
 
-  const variants =
+  const allVariants =
     product.variants && product.variants.length > 0
       ? product.variants
       : [{ weight: '250g', price: 199, originalPrice: 249, inStock: true }];
+  const quarterKg = allVariants.filter((v) => isQuarterKg(v.weight));
+  const variants = showsAllSizes(product.category) || quarterKg.length === 0 ? allVariants : quarterKg;
 
   const selectedVariant = variants[selectedVariantIndex] || variants[0];
   const isWishlisted = product.id ? isInWishlist(product.id) : false;
