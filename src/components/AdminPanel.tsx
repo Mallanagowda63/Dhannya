@@ -181,7 +181,33 @@ export const AdminPanel: React.FC = () => {
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
   const [newProdName, setNewProdName] = useState('');
   const [newProdCategory, setNewProdCategory] = useState<ProductCategory>('Spices');
-  const [newProdPrice, setNewProdPrice] = useState(299);
+  // Sizes offered for a new product, each with its own price (kept as text so a box can be empty).
+  const DEFAULT_NEW_PROD_SIZES = [
+    { weight: '250g', price: '' },
+    { weight: '500g', price: '' },
+    { weight: '1kg', price: '' },
+  ];
+  const [newProdSizes, setNewProdSizes] = useState<{ weight: string; price: string }[]>(DEFAULT_NEW_PROD_SIZES);
+  const updateNewProdSize = (idx: number, patch: Partial<{ weight: string; price: string }>) =>
+    setNewProdSizes((prev) => prev.map((v, i) => (i === idx ? { ...v, ...patch } : v)));
+  // Fill 250g/500g from the 1kg price (or 1kg/500g from 250g) so only one price has to be typed.
+  const fillNewProdSizesFromOne = () => {
+    const kg = Number(newProdSizes.find((v) => /^1\s*kg$/i.test(v.weight.trim()))?.price);
+    const quarter = Number(newProdSizes.find((v) => /^250\s*g$/i.test(v.weight.trim()))?.price);
+    const perKg = kg > 0 ? kg : quarter > 0 ? quarter * 4 : 0;
+    if (!perKg) {
+      showToast('Enter the 1kg (or 250g) price first.', 'error');
+      return;
+    }
+    setNewProdSizes((prev) =>
+      prev.map((v) => {
+        const m = /^(\d+(?:\.\d+)?)\s*(kg|g)$/i.exec(v.weight.trim());
+        if (!m) return v;
+        const grams = Number(m[1]) * (m[2].toLowerCase() === 'kg' ? 1000 : 1);
+        return { ...v, price: String(Math.round(((perKg * grams) / 1000) * 100) / 100) };
+      })
+    );
+  };
   const [newProdStock, setNewProdStock] = useState(50);
   const [newProdDesc, setNewProdDesc] = useState('');
   // Ordered photo list for a new product: index 0 is the main/banner image.
@@ -454,6 +480,13 @@ export const AdminPanel: React.FC = () => {
       showToast('Please upload at least one product photo.', 'error');
       return;
     }
+    const sizes = newProdSizes
+      .map((v) => ({ weight: v.weight.trim(), price: Number(v.price) }))
+      .filter((v) => v.weight);
+    if (sizes.length === 0 || sizes.some((v) => !(v.price > 0))) {
+      showToast('Enter a price for every size (remove sizes you do not sell).', 'error');
+      return;
+    }
     try {
       const res = await fetch(getApiUrl('/api/admin/products'), {
         method: 'POST',
@@ -461,7 +494,7 @@ export const AdminPanel: React.FC = () => {
         body: JSON.stringify({
           name: newProdName.trim(),
           category: newProdCategory,
-          pricePerKg: Number(newProdPrice) || 299,
+          variants: sizes.map((v) => ({ ...v, originalPrice: v.price, inStock: true })),
           stock: Number(newProdStock) || 50,
           images: newProdImages,
           description: newProdDesc.trim(),
@@ -482,7 +515,7 @@ export const AdminPanel: React.FC = () => {
         showToast(`Product "${newProdName}" added successfully!`, 'success');
         setIsAddProductOpen(false);
         setNewProdName('');
-        setNewProdPrice(299);
+        setNewProdSizes(DEFAULT_NEW_PROD_SIZES);
         setNewProdStock(50);
         setNewProdDesc('');
         setNewProdBenefits('');
@@ -836,36 +869,6 @@ export const AdminPanel: React.FC = () => {
       }
     } catch {
       showToast('Failed to update stock', 'error');
-    }
-  };
-
-  const handleCreateProduct = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newProdName.trim()) return;
-
-    try {
-      const res = await fetch(getApiUrl('/api/admin/products'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
-        body: JSON.stringify({
-          name: newProdName,
-          category: newProdCategory,
-          price: Number(newProdPrice),
-          stock: Number(newProdStock),
-          description: newProdDesc || 'Organic certified premium store item',
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setProductsList((prev) => [data.data, ...prev]);
-        setIsAddProductOpen(false);
-        showToast('New product added to inventory!', 'success');
-        setNewProdName('');
-        setNewProdDesc('');
-        refreshProducts();
-      }
-    } catch {
-      showToast('Error creating product', 'error');
     }
   };
 
@@ -2914,26 +2917,69 @@ export const AdminPanel: React.FC = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Price per kg (₹)</label>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Stock Units</label>
                   <input
                     type="number"
                     required
-                    value={newProdPrice}
-                    onChange={(e) => setNewProdPrice(Number(e.target.value))}
+                    value={newProdStock}
+                    onChange={(e) => setNewProdStock(Number(e.target.value))}
                     className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Stock Units</label>
-                <input
-                  type="number"
-                  required
-                  value={newProdStock}
-                  onChange={(e) => setNewProdStock(Number(e.target.value))}
-                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-bold text-earth focus:outline-none"
-                />
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-xs font-bold text-stone-700 uppercase">Sizes &amp; Prices (₹)</label>
+                  <button
+                    type="button"
+                    onClick={fillNewProdSizesFromOne}
+                    className="text-[11px] font-bold text-olive hover:underline cursor-pointer"
+                  >
+                    Auto-fill from 1kg price
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  {newProdSizes.map((v, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={v.weight}
+                        onChange={(e) => updateNewProdSize(idx, { weight: e.target.value })}
+                        placeholder="e.g. 250g"
+                        className="flex-1 min-w-0 bg-[#faf8f4] border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-earth focus:outline-none"
+                      />
+                      <div className="relative w-32">
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-stone-500">₹</span>
+                        <input
+                          type="number"
+                          min={0}
+                          step="0.01"
+                          value={v.price}
+                          onChange={(e) => updateNewProdSize(idx, { price: e.target.value })}
+                          placeholder="Price"
+                          className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl pl-6 pr-3 py-2 text-xs font-bold text-earth focus:outline-none"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        title="Remove size"
+                        onClick={() => setNewProdSizes((prev) => prev.filter((_, i) => i !== idx))}
+                        className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 cursor-pointer"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setNewProdSizes((prev) => [...prev, { weight: '', price: '' }])}
+                  className="mt-2 text-xs font-bold text-olive hover:underline cursor-pointer flex items-center gap-1"
+                >
+                  <Plus className="w-3.5 h-3.5" /> Add size option
+                </button>
+                <p className="text-[11px] text-stone-500 mt-1">Remove any size you don't sell. Shop cards show the 250g price.</p>
               </div>
 
               <ProductPhotoEditor
