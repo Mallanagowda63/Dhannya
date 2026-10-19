@@ -723,6 +723,18 @@ const CustomerMessageSchema = new mongoose.Schema(
 );
 
 export const ProductModel = mongoose.model('Product', ProductSchema);
+
+// Photos uploaded from the admin "Add Product" form. Kept in their own collection
+// (not inline on the product) so /api/products stays small, and in MongoDB rather
+// than on disk so they survive redeploys on any host.
+const ProductImageSchema = new mongoose.Schema(
+  {
+    data: { type: Buffer, required: true },
+    contentType: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+export const ProductImageModel = mongoose.model('ProductImage', ProductImageSchema);
 export const OrderModel = mongoose.model('Order', OrderSchema);
 export const CustomRecipeModel = mongoose.model('CustomRecipe', CustomRecipeSchema);
 export const CustomerMessageModel = mongoose.model('CustomerMessage', CustomerMessageSchema);
@@ -1347,16 +1359,48 @@ app.post('/api/admin/products', async (req, res) => {
     if (!requireAdminAuth(req, res)) return;
     const connected = await requireDb(res);
     const p = req.body;
+    const fallbackImage = 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80';
+
+    // `images` is the ordered photo list from the admin form: the first one is the
+    // main/banner image, the rest form the gallery. Uploaded data URLs are stored in
+    // ProductImageModel and replaced by their served URL.
+    const rawImages: string[] = (Array.isArray(p.images) ? p.images : p.image ? [p.image] : [])
+      .filter((img: unknown) => typeof img === 'string' && img)
+      .slice(0, 10);
+    const imageUrls: string[] = [];
+    for (const img of rawImages) {
+      const match = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/.exec(img);
+      if (match && connected) {
+        const saved = await ProductImageModel.create({ contentType: match[1], data: Buffer.from(match[2], 'base64') });
+        imageUrls.push(`/api/product-images/${saved._id}`);
+      } else {
+        imageUrls.push(img);
+      }
+    }
+
+    // A per-kg price becomes the standard 1kg / 500g / 250g options used across the catalogue.
+    const pricePerKg = Number(p.pricePerKg);
+    const variants = p.variants || (pricePerKg > 0
+      ? [
+          { weight: '1kg', price: pricePerKg, originalPrice: pricePerKg, inStock: true },
+          { weight: '500g', price: pricePerKg / 2, originalPrice: pricePerKg / 2, inStock: true },
+          { weight: '250g', price: pricePerKg / 4, originalPrice: pricePerKg / 4, inStock: true },
+        ]
+      : [{ weight: '500g', price: p.price || 299, originalPrice: p.price || 299, inStock: true }]);
+
     const newProduct: Product = {
       id: p.id || `prod-${Date.now()}`,
       name: String(p.name || '').trim(),
       category: p.category,
       description: String(p.description || '').trim(),
-      image: p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80',
-      gallery: p.gallery || [p.image || 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&auto=format&fit=crop&q=80'],
-      variants: p.variants || [{ weight: '500g', price: p.price || 299, originalPrice: p.price ? p.price + 50 : 350, inStock: true }],
-      rating: p.rating || 5.0,
-      reviewCount: p.reviewCount || 1,
+      benefits: Array.isArray(p.benefits)
+        ? p.benefits.map((b: unknown) => String(b).trim()).filter(Boolean)
+        : [],
+      image: imageUrls[0] || fallbackImage,
+      gallery: imageUrls.length > 0 ? imageUrls : [fallbackImage],
+      variants,
+      rating: p.rating || 0,
+      reviewCount: p.reviewCount || 0,
       stock: p.stock || 50,
       isBestSeller: !!p.isBestSeller,
       isRecommended: !!p.isRecommended,
@@ -1372,6 +1416,22 @@ app.post('/api/admin/products', async (req, res) => {
     res.json({ success: true, message: 'Product created and saved to MongoDB!', data: newProduct });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+app.get('/api/product-images/:id', async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id) || !(await ensureDbConnected())) {
+      return res.status(404).end();
+    }
+    // Not lean(): a hydrated doc gives `data` back as a Node Buffer rather than a BSON Binary.
+    const img = await ProductImageModel.findById(req.params.id);
+    if (!img) return res.status(404).end();
+    res.set('Content-Type', img.contentType);
+    res.set('Cache-Control', 'public, max-age=31536000, immutable');
+    res.send(img.data);
+  } catch {
+    res.status(500).end();
   }
 });
 
@@ -1432,7 +1492,12 @@ app.delete('/api/admin/products/:id', async (req, res) => {
     const productId = req.params.id;
 
     if (connected) {
-      await ProductModel.findOneAndDelete({ id: productId });
+      const deleted: any = await ProductModel.findOneAndDelete({ id: productId }).lean();
+      // Remove any photos this product had uploaded through the admin form.
+      const imageIds = [deleted?.image, ...(deleted?.gallery || [])]
+        .map((u: unknown) => (typeof u === 'string' ? /^\/api\/product-images\/([a-f0-9]{24})$/.exec(u)?.[1] : undefined))
+        .filter(Boolean);
+      if (imageIds.length > 0) await ProductImageModel.deleteMany({ _id: { $in: imageIds } });
       return res.json({ success: true, message: `Product ${productId} deleted from MongoDB!` });
     } else if (allowMemoryDbInDev) {
       liveProducts = liveProducts.filter((p) => p.id !== productId);

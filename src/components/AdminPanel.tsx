@@ -182,7 +182,9 @@ export const AdminPanel: React.FC = () => {
   const [newProdPrice, setNewProdPrice] = useState(299);
   const [newProdStock, setNewProdStock] = useState(50);
   const [newProdDesc, setNewProdDesc] = useState('');
-  const [newProdImage, setNewProdImage] = useState('/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png');
+  // Ordered photo list for a new product: index 0 is the main/banner image.
+  const [newProdImages, setNewProdImages] = useState<string[]>([]);
+  const [newProdBenefits, setNewProdBenefits] = useState('');
 
   // Coupon Add Modal State
   const [isAddCouponOpen, setIsAddCouponOpen] = useState(false);
@@ -346,20 +348,80 @@ export const AdminPanel: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adminToken]);
 
+  // Downscale an uploaded photo to at most 1200px on its longest side as a JPEG data URL,
+  // so several photos fit comfortably in one request.
+  const resizeImageFile = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(reader.error);
+      reader.onloadend = () => {
+        const rawDataUrl = reader.result as string;
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.min(1, 1200 / Math.max(img.width, img.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return resolve(rawDataUrl);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL('image/jpeg', 0.85));
+        };
+        img.onerror = () => resolve(rawDataUrl);
+        img.src = rawDataUrl;
+      };
+      reader.readAsDataURL(file);
+    });
+
+  const MAX_PRODUCT_IMAGES = 10;
+
+  const handleAddProductImages = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    const room = MAX_PRODUCT_IMAGES - newProdImages.length;
+    if (room <= 0) {
+      showToast(`You can add up to ${MAX_PRODUCT_IMAGES} photos.`, 'error');
+      return;
+    }
+    const picked = Array.from(files).filter((f) => f.type.startsWith('image/')).slice(0, room);
+    try {
+      const resized = await Promise.all(picked.map(resizeImageFile));
+      setNewProdImages((prev) => [...prev, ...resized]);
+    } catch {
+      showToast('Could not read one of the selected photos.', 'error');
+    }
+  };
+
+  const moveProductImage = (from: number, to: number) => {
+    setNewProdImages((prev) => {
+      if (to < 0 || to >= prev.length) return prev;
+      const next = [...prev];
+      const [img] = next.splice(from, 1);
+      next.splice(to, 0, img);
+      return next;
+    });
+  };
+
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProdName.trim()) return;
+    if (newProdImages.length === 0) {
+      showToast('Please upload at least one product photo.', 'error');
+      return;
+    }
     try {
       const res = await fetch(getApiUrl('/api/admin/products'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken || '' },
         body: JSON.stringify({
-          name: newProdName,
+          name: newProdName.trim(),
           category: newProdCategory,
-          price: Number(newProdPrice) || 299,
+          pricePerKg: Number(newProdPrice) || 299,
           stock: Number(newProdStock) || 50,
-          image: newProdImage || '/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png',
-          description: newProdDesc || '100% pure organic product.',
+          images: newProdImages,
+          description: newProdDesc.trim(),
+          benefits: newProdBenefits.split('\n').map((b) => b.trim()).filter(Boolean),
         }),
       });
 
@@ -379,7 +441,8 @@ export const AdminPanel: React.FC = () => {
         setNewProdPrice(299);
         setNewProdStock(50);
         setNewProdDesc('');
-        setNewProdImage('/images/dhannya_Products_final/Garam%20Masala/dhaanya%2001.png');
+        setNewProdBenefits('');
+        setNewProdImages([]);
       } else {
         showToast(data.message || 'Failed to add product. Please check input values.', 'error');
       }
@@ -2754,7 +2817,7 @@ export const AdminPanel: React.FC = () => {
       {/* Add Product Modal */}
       {isAddProductOpen && (
         <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-stone-200 shadow-2xl space-y-5">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full max-h-[92vh] overflow-y-auto border border-stone-200 shadow-2xl space-y-5">
             <div className="flex items-center justify-between border-b border-stone-200 pb-3">
               <h3 className="text-xl font-bold font-serif text-earth">Add New Product to Catalog</h3>
               <button onClick={() => setIsAddProductOpen(false)} className="text-stone-500 hover:text-earth cursor-pointer">
@@ -2791,7 +2854,7 @@ export const AdminPanel: React.FC = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Price (₹)</label>
+                  <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Price per kg (₹)</label>
                   <input
                     type="number"
                     required
@@ -2815,82 +2878,112 @@ export const AdminPanel: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-bold text-stone-700 uppercase mb-1 flex items-center justify-between">
-                  <span>Upload Product Image File</span>
+                  <span>Product Photos ({newProdImages.length}/{MAX_PRODUCT_IMAGES})</span>
                   <span className="text-[10px] text-olive font-extrabold lowercase">(JPG, PNG, WEBP)</span>
                 </label>
-                <div className="flex items-center gap-3">
-                  <label className="flex-1 bg-[#faf8f4] border border-dashed border-stone-300 hover:border-olive rounded-xl p-3.5 text-center cursor-pointer transition">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          const reader = new FileReader();
-                          reader.onloadend = () => {
-                            const rawDataUrl = reader.result as string;
-                            const img = new Image();
-                            img.src = rawDataUrl;
-                            img.onload = () => {
-                              const canvas = document.createElement('canvas');
-                              const MAX_WIDTH = 800;
-                              const MAX_HEIGHT = 800;
-                              let width = img.width;
-                              let height = img.height;
-                              if (width > height) {
-                                if (width > MAX_WIDTH) {
-                                  height *= MAX_WIDTH / width;
-                                  width = MAX_WIDTH;
-                                }
-                              } else {
-                                if (height > MAX_HEIGHT) {
-                                  width *= MAX_HEIGHT / height;
-                                  height = MAX_HEIGHT;
-                                }
-                              }
-                              canvas.width = width;
-                              canvas.height = height;
-                              const ctx = canvas.getContext('2d');
-                              if (ctx) {
-                                ctx.drawImage(img, 0, 0, width, height);
-                                setNewProdImage(canvas.toDataURL('image/jpeg', 0.85));
-                              } else {
-                                setNewProdImage(rawDataUrl);
-                              }
-                            };
-                            img.onerror = () => {
-                              setNewProdImage(rawDataUrl);
-                            };
-                          };
-                          reader.readAsDataURL(file);
-                        }
-                      }}
-                    />
-                    <div className="text-xs text-stone-600 font-medium">
-                      📁 <strong className="text-earth font-bold">Click here to select & upload image file</strong>
-                    </div>
-                  </label>
-                  {newProdImage && (
-                    <img
-                      src={newProdImage}
-                      alt="Uploaded Preview"
-                      className="w-12 h-12 rounded-xl object-cover border-2 border-olive shrink-0 shadow-xs"
-                    />
-                  )}
-                </div>
+                <label className="block bg-[#faf8f4] border border-dashed border-stone-300 hover:border-olive rounded-xl p-3.5 text-center cursor-pointer transition">
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => {
+                      handleAddProductImages(e.target.files);
+                      e.target.value = '';
+                    }}
+                  />
+                  <div className="text-xs text-stone-600 font-medium">
+                    📁 <strong className="text-earth font-bold">Click here to select photos</strong> (you can pick several at once)
+                  </div>
+                  <div className="text-[11px] text-stone-500 mt-1">
+                    The 1st photo is the main banner image shown first on the shop and product page.
+                  </div>
+                </label>
+
+                {newProdImages.length > 0 && (
+                  <div className="grid grid-cols-4 gap-2 mt-3">
+                    {newProdImages.map((src, idx) => (
+                      <div
+                        key={idx}
+                        className={`relative rounded-xl overflow-hidden border-2 ${idx === 0 ? 'border-olive col-span-2 row-span-2' : 'border-stone-200'}`}
+                      >
+                        <img src={src} alt={`Product photo ${idx + 1}`} className="w-full h-full object-cover aspect-square" />
+                        <span className="absolute top-1 left-1 bg-black/60 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md">
+                          {idx === 0 ? 'Main banner' : idx + 1}
+                        </span>
+                        <div className="absolute bottom-1 inset-x-1 flex justify-between gap-1">
+                          {idx > 0 ? (
+                            <button
+                              type="button"
+                              title="Set as main banner"
+                              onClick={() => moveProductImage(idx, 0)}
+                              className="bg-white/90 hover:bg-white text-earth text-[10px] font-bold px-1.5 py-0.5 rounded-md cursor-pointer"
+                            >
+                              ★ Main
+                            </button>
+                          ) : (
+                            <span />
+                          )}
+                          <div className="flex gap-1">
+                            {idx > 0 && (
+                              <button
+                                type="button"
+                                title="Move left"
+                                onClick={() => moveProductImage(idx, idx - 1)}
+                                className="bg-white/90 hover:bg-white text-earth text-[10px] font-bold w-5 h-5 rounded-md cursor-pointer"
+                              >
+                                ‹
+                              </button>
+                            )}
+                            {idx < newProdImages.length - 1 && (
+                              <button
+                                type="button"
+                                title="Move right"
+                                onClick={() => moveProductImage(idx, idx + 1)}
+                                className="bg-white/90 hover:bg-white text-earth text-[10px] font-bold w-5 h-5 rounded-md cursor-pointer"
+                              >
+                                ›
+                              </button>
+                            )}
+                            <button
+                              type="button"
+                              title="Remove photo"
+                              onClick={() => setNewProdImages((prev) => prev.filter((_, i) => i !== idx))}
+                              className="bg-white/90 hover:bg-red-50 text-red-600 w-5 h-5 rounded-md flex items-center justify-center cursor-pointer"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Detailed Description</label>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Description</label>
                 <textarea
-                  rows={3}
+                  rows={4}
                   required
                   value={newProdDesc}
                   onChange={(e) => setNewProdDesc(e.target.value)}
-                  placeholder="100% natural, unadulterated product description with benefits and usage instructions..."
+                  placeholder="What the product is, where it comes from, taste/texture and how to use it..."
                   className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
                 />
+                <p className="text-[11px] text-stone-500 mt-1">Shown in the Description tab on the product page.</p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Benefits (one per line, optional)</label>
+                <textarea
+                  rows={4}
+                  value={newProdBenefits}
+                  onChange={(e) => setNewProdBenefits(e.target.value)}
+                  placeholder={'Rich in dietary fibre\nNaturally gluten-free\nNo added preservatives'}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
+                />
+                <p className="text-[11px] text-stone-500 mt-1">Shown as the "Why Choose This Product?" list.</p>
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-3">
