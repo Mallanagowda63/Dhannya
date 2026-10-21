@@ -585,6 +585,8 @@ const ProductSchema = new mongoose.Schema(
     allergens: [String],
     nutritionInfo: mongoose.Schema.Types.Mixed,
     benefits: [String],
+    // No default: an unset field means "use the built-in facts", an array (even empty) is an admin override.
+    interestingFacts: { type: [String], default: undefined },
     preparationGuide: mongoose.Schema.Types.Mixed,
     image: String,
     gallery: [String],
@@ -1257,6 +1259,7 @@ app.get('/api/products', async (req, res) => {
           nutritionInfo: p.nutritionInfo,
           benefits: p.benefits,
           contentEdited: p.contentEdited,
+          interestingFacts: p.interestingFacts,
           preparationGuide: p.preparationGuide,
           image: resolvedImages.image,
           gallery: resolvedImages.gallery,
@@ -1420,6 +1423,9 @@ app.post('/api/admin/products', async (req, res) => {
       benefits: Array.isArray(p.benefits)
         ? p.benefits.map((b: unknown) => String(b).trim()).filter(Boolean)
         : [],
+      ...(Array.isArray(p.interestingFacts) && p.interestingFacts.length > 0
+        ? { interestingFacts: p.interestingFacts.map((f: unknown) => String(f).trim()).filter(Boolean) }
+        : {}),
       image: imageUrls[0] || fallbackImage,
       gallery: imageUrls.length > 0 ? imageUrls : [fallbackImage],
       imageLocked: imageUrls.length > 0,

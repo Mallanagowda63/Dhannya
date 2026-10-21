@@ -213,6 +213,7 @@ export const AdminPanel: React.FC = () => {
   // Ordered photo list for a new product: index 0 is the main/banner image.
   const [newProdImages, setNewProdImages] = useState<string[]>([]);
   const [newProdBenefits, setNewProdBenefits] = useState('');
+  const [newProdFacts, setNewProdFacts] = useState('');
 
   // Coupon Add Modal State
   const [isAddCouponOpen, setIsAddCouponOpen] = useState(false);
@@ -386,6 +387,8 @@ export const AdminPanel: React.FC = () => {
     // What the form opened with, so only changed text is sent.
     initialDescription: string;
     initialBenefits: string;
+    facts: string;
+    initialFacts: string;
     stock: number;
     images: string[];
     variants: { weight: string; price: number; inStock: boolean }[];
@@ -397,6 +400,7 @@ export const AdminPanel: React.FC = () => {
     const detail = prod.contentEdited ? undefined : PRODUCT_DETAILS[prod.name];
     const description = detail?.about || prod.description || '';
     const benefits = (detail?.why || prod.benefits || []).join('\n');
+    const facts = (prod.interestingFacts ?? PRODUCT_DETAILS[prod.name]?.facts ?? []).join('\n');
     setEditingProd({
       id: prod.id,
       name: prod.name,
@@ -405,6 +409,8 @@ export const AdminPanel: React.FC = () => {
       benefits,
       initialDescription: description,
       initialBenefits: benefits,
+      facts,
+      initialFacts: facts,
       stock: prod.stock ?? 0,
       images: prod.gallery?.length ? prod.gallery : prod.image ? [prod.image] : [],
       variants: (prod.variants || []).map((v) => ({ weight: v.weight, price: v.price, inStock: v.inStock !== false })),
@@ -445,6 +451,9 @@ export const AdminPanel: React.FC = () => {
                 description: editingProd.description.trim(),
                 benefits: editingProd.benefits.split('\n').map((b) => b.trim()).filter(Boolean),
               }
+            : {}),
+          ...(editingProd.facts !== editingProd.initialFacts
+            ? { interestingFacts: editingProd.facts.split('\n').map((f) => f.trim()).filter(Boolean) }
             : {}),
           stock: Math.max(0, Math.floor(Number(editingProd.stock) || 0)),
           images: editingProd.images,
@@ -499,6 +508,7 @@ export const AdminPanel: React.FC = () => {
           images: newProdImages,
           description: newProdDesc.trim(),
           benefits: newProdBenefits.split('\n').map((b) => b.trim()).filter(Boolean),
+          interestingFacts: newProdFacts.split('\n').map((f) => f.trim()).filter(Boolean),
         }),
       });
 
@@ -519,6 +529,7 @@ export const AdminPanel: React.FC = () => {
         setNewProdStock(50);
         setNewProdDesc('');
         setNewProdBenefits('');
+        setNewProdFacts('');
         setNewProdImages([]);
       } else {
         showToast(data.message || 'Failed to add product. Please check input values.', 'error');
@@ -3013,6 +3024,18 @@ export const AdminPanel: React.FC = () => {
                 <p className="text-[11px] text-stone-500 mt-1">Shown as the "Why Choose This Product?" list.</p>
               </div>
 
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Interesting Facts (one per line, optional)</label>
+                <textarea
+                  rows={4}
+                  value={newProdFacts}
+                  onChange={(e) => setNewProdFacts(e.target.value)}
+                  placeholder={'Ragi has about 10x more calcium than rice\nMillets have been grown in India for over 4,000 years'}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
+                />
+                <p className="text-[11px] text-stone-500 mt-1">Shown in the "Interesting Facts" section on the product page.</p>
+              </div>
+
               <div className="flex items-center justify-end gap-3 pt-3">
                 <button
                   type="button"
@@ -3167,6 +3190,17 @@ export const AdminPanel: React.FC = () => {
                   onChange={(e) => setEditingProd({ ...editingProd, benefits: e.target.value })}
                   className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
                 />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-stone-700 uppercase mb-1">Interesting Facts (one per line)</label>
+                <textarea
+                  rows={4}
+                  value={editingProd.facts}
+                  onChange={(e) => setEditingProd({ ...editingProd, facts: e.target.value })}
+                  className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs text-earth focus:outline-none"
+                />
+                <p className="text-[11px] text-stone-500 mt-1">Leave empty to hide the section on the product page.</p>
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-3">

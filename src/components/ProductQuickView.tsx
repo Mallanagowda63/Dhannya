@@ -111,6 +111,7 @@ export const ProductQuickView: React.FC = () => {
   };
 
   const detail = PRODUCT_DETAILS[quickViewProduct.name];
+  const facts = quickViewProduct.interestingFacts ?? detail?.facts ?? [];
   // Text edited in the admin panel takes priority over the write-up built into the site.
   const edited = !!quickViewProduct.contentEdited;
   const aboutText = (edited && quickViewProduct.description) || detail?.about || quickViewProduct.description;
@@ -623,13 +624,13 @@ export const ProductQuickView: React.FC = () => {
                           )}
                         </>
                       )}
-                      {detail?.facts && detail.facts.length > 0 && (
+                      {facts.length > 0 && (
                         <>
                           <span className="text-xs font-bold uppercase tracking-wide text-[#2A2620]/70 block mt-4">
-                            {detail.steps ? 'Little Facts' : 'Interesting Facts'}
+                            {detail?.steps ? 'Little Facts' : 'Interesting Facts'}
                           </span>
                           <ul className="space-y-1.5">
-                            {detail.facts.map((f, idx) => (
+                            {facts.map((f, idx) => (
                               <li key={idx} className="flex items-start gap-2 text-sm text-[#2A2620]/85">
                                 <Sparkles className="w-3.5 h-3.5 text-[#C89211] shrink-0 mt-0.5" />
                                 <span>{renderLabelled(f, '? ', '?')}</span>

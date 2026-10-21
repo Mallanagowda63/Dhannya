@@ -87,6 +87,8 @@ export interface Product {
   nutritionInfo?: Record<string, string>; // e.g. { Energy: '380 kcal', Protein: '12g' }
   benefits?: string[];
   preparationGuide?: RotiPreparationGuide;
+  // Set from the admin panel; overrides the built-in facts in productDetails.ts when present.
+  interestingFacts?: string[];
   image: string;
   gallery: string[];
   /** Set once an admin has chosen the photos; the server then uses image/gallery as stored. */
