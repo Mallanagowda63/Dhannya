@@ -548,6 +548,10 @@ function shouldSendEmail(emailKey: string): boolean {
 }
 
 const app = express();
+// Hostinger (and Render) sit behind a reverse proxy; trust its X-Forwarded-For so
+// req.ip is the real visitor, not the proxy -- otherwise every visitor shares one
+// admin-login lockout bucket.
+app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT) || 3000;
 
 // CORS & Body Parser Middleware
@@ -1193,7 +1197,13 @@ app.post('/api/auth/admin-login', (req, res) => {
     const cleanPassword = String(password || '').trim();
 
     const clientIp = req.ip || req.socket.remoteAddress || 'unknown';
-    const attemptInfo = failedAdminAttempts[clientIp];
+    let attemptInfo = failedAdminAttempts[clientIp];
+    // A lock that has run out starts a fresh count, so one more typo after the
+    // wait doesn't immediately re-lock for another 15 minutes.
+    if (attemptInfo && attemptInfo.lockUntil && attemptInfo.lockUntil <= Date.now()) {
+      delete failedAdminAttempts[clientIp];
+      attemptInfo = undefined;
+    }
     if (attemptInfo && attemptInfo.lockUntil > Date.now()) {
       const waitMins = Math.ceil((attemptInfo.lockUntil - Date.now()) / 60000);
       return res.status(429).json({
