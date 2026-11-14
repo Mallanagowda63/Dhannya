@@ -17,6 +17,16 @@ import {
 import { DhaanyaLogo } from './DhaanyaLogo';
 import { deliveryQuote } from '../data/delivery';
 
+// Shown while the payment is confirmed; taken from the site's own Our Story copy.
+const ABOUT_DHAANYA = [
+  'Dhaanya (ಧಾನ್ಯ) means grain: nourishment rooted in tradition.',
+  'Freshly milled, before you and for you.',
+  '100% whole grain: we never separate the bran or germ.',
+  'Spices ground fresh, so their natural oils and aroma stay in.',
+  'Oils cold-pressed, never chemically refined.',
+  'Nothing hidden, nothing added.',
+];
+
 // Leaflet is only needed at checkout, so keep it out of the main bundle.
 const DeliveryLocationPicker = React.lazy(() =>
   import('./DeliveryLocationPicker').then((m) => ({ default: m.DeliveryLocationPicker }))
@@ -60,6 +70,13 @@ export const CheckoutModal: React.FC = () => {
 
   const [deliverySlot, setDeliverySlot] = useState('Morning (9:00 AM - 1:00 PM)');
   const [paymentMethod, setPaymentMethod] = useState<'COD' | 'Online'>('COD');
+  const [aboutIndex, setAboutIndex] = useState(0);
+
+  useEffect(() => {
+    if (step !== 'verifying') return;
+    const timer = setInterval(() => setAboutIndex((i) => (i + 1) % ABOUT_DHAANYA.length), 2500);
+    return () => clearInterval(timer);
+  }, [step]);
   const [onlinePayment, setOnlinePayment] = useState<{ enabled: boolean; mode: string }>({ enabled: false, mode: 'sandbox' });
 
   // Online payment is offered only when the server has Cashfree keys configured.
@@ -384,10 +401,21 @@ export const CheckoutModal: React.FC = () => {
           )}
 
           {step === 'verifying' && (
-            <div className="text-center py-12 space-y-3">
-              <ShieldCheck className="w-10 h-10 mx-auto text-[#3E4B32] animate-pulse" />
-              <p className="font-serif text-lg font-bold">Confirming your payment…</p>
-              <p className="text-xs text-[#2A2620]/70">Please don't close this page.</p>
+            <div className="text-center py-10 space-y-6">
+              <div className="relative w-fit mx-auto">
+                <div className="absolute -inset-3 rounded-full border-2 border-[#C89211]/30 border-t-[#C89211] animate-spin" />
+                <DhaanyaLogo variant="icon" size="xl" />
+              </div>
+              <div className="space-y-1">
+                <p className="font-serif text-lg font-bold">Confirming your payment…</p>
+                <p className="text-xs text-[#2A2620]/70">Please don't close this page.</p>
+              </div>
+              <p
+                key={aboutIndex}
+                className="max-w-sm mx-auto min-h-[3rem] font-serif text-base italic text-[#3E4B32] animate-pulse"
+              >
+                {ABOUT_DHAANYA[aboutIndex]}
+              </p>
             </div>
           )}
 
