@@ -12,6 +12,7 @@ import {
   Coupon,
 } from '../types';
 import { COUPONS, HIDDEN_STOREFRONT_CATEGORIES, HIDDEN_STOREFRONT_PRODUCTS } from '../data/initialData';
+import { HANDLING_FEE } from '../data/delivery';
 
 const isHiddenFromStorefront = (p: Product) =>
   HIDDEN_STOREFRONT_CATEGORIES.includes(p.category) || HIDDEN_STOREFRONT_PRODUCTS.includes(p.name);
@@ -78,6 +79,8 @@ interface AppContextType {
     slot: string,
     paymentMethod: 'COD'
   ) => Promise<Order | null>;
+  startOnlinePayment: (address: Address, slot: string) => Promise<boolean>;
+  reloadOrders: () => void;
   saveAddress: (address: Address) => Promise<Address>;
   deleteAddress: (addressId: string) => Promise<boolean>;
   saveCustomRecipe: (recipe: CustomRecipe) => void;
@@ -88,7 +91,7 @@ interface AppContextType {
   cartSubtotal: number;
   cartTotalDiscount: number;
   cartTax: number;
-  cartShippingFee: number;
+  cartHandlingFee: number;
   cartGrandTotal: number;
 }
 
@@ -205,6 +208,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     code: string;
     discountPercent: number;
     discountAmount: number;
+    maxDiscount?: number;
   } | null>(null);
 
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -216,17 +220,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  // Sync cart item images with live products catalog
+  // Sync cart item images and prices with live products catalog
   useEffect(() => {
     if (!products || products.length === 0 || cart.length === 0) return;
     setCart((prevCart) => {
       let updated = false;
       const newCart = prevCart.map((item) => {
         if (item.type === 'product') {
-          const liveProd = products.find((p) => p.id === item.id || p.name === item.name);
-          if (liveProd && liveProd.image && liveProd.image !== item.image) {
+          const liveProd = products.find((p) => p.id === item.productId || p.name === item.name);
+          const livePrice = liveProd?.variants?.find((v) => v.weight === item.variantWeight)?.price;
+          const image = liveProd?.image || item.image;
+          const price = livePrice ?? item.price;
+          if (image !== item.image || price !== item.price) {
             updated = true;
-            return { ...item, image: liveProd.image };
+            return { ...item, image, price };
           }
         }
         return item;
@@ -264,6 +271,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [savedRecipes]);
 
   // Load orders for current authenticated user from server
+  const [ordersVersion, setOrdersVersion] = useState(0);
   useEffect(() => {
     if (!user || !customerToken) {
       setOrders([]);
@@ -282,7 +290,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         }
       })
       .catch(() => setOrders([]));
-  }, [user?.id, user?.email, customerToken]);
+  }, [user?.id, user?.email, customerToken, ordersVersion]);
 
   // Load addresses for current authenticated user from server
   useEffect(() => {
@@ -449,10 +457,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Cart Calculations
   const cartSubtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-  const cartTotalDiscount = appliedCoupon ? appliedCoupon.discountAmount : 0;
+  // Recalculated as the cart changes, matching how the server prices the order.
+  const cartTotalDiscount = appliedCoupon
+    ? Math.min(
+        Math.round((cartSubtotal * appliedCoupon.discountPercent) / 100),
+        appliedCoupon.maxDiscount ?? appliedCoupon.discountAmount
+      )
+    : 0;
   const cartTax = Math.round((cartSubtotal - cartTotalDiscount) * 0.05); // 5% GST
-  const cartShippingFee = cartSubtotal >= 499 || cartSubtotal === 0 ? 0 : 49;
-  const cartGrandTotal = Math.max(0, cartSubtotal - cartTotalDiscount + cartTax + cartShippingFee);
+  // Delivery itself is free within 3 km or paid to the rider beyond it, so only handling is charged.
+  const cartHandlingFee = cartSubtotal === 0 ? 0 : HANDLING_FEE;
+  const cartGrandTotal = Math.max(0, cartSubtotal - cartTotalDiscount + cartTax + cartHandlingFee);
 
   const applyCouponCode = async (code: string) => {
     try {
@@ -467,6 +482,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           code: data.data.code,
           discountPercent: data.data.discountPercent,
           discountAmount: data.data.discountAmount,
+          maxDiscount: data.data.maxDiscount,
         });
         showToast(data.data.message, 'success');
         return true;
@@ -484,6 +500,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAppliedCoupon(null);
     showToast('Coupon removed', 'info');
   };
+
+  const buildOrderRequest = (address: Address, slot: string) => ({
+    userId: user?.id || `usr-${Date.now()}`,
+    userEmail: user?.email || address.email || '',
+    items: cart,
+    shippingAddress: address,
+    deliveryLocation: address.location,
+    deliverySlot: slot,
+    couponCode: appliedCoupon?.code,
+    // Compared by the server, so nobody is charged a total they weren't shown.
+    total: cartGrandTotal,
+  });
 
   const placeOrder = async (
     address: Address,
@@ -519,64 +547,59 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'Content-Type': 'application/json',
           ...(customerToken ? { 'x-customer-token': customerToken } : {}),
         },
-        body: JSON.stringify({
-          userId: user?.id || `usr-${Date.now()}`,
-          userEmail: user?.email || normalizedAddr.email || '',
-          items: cart,
-          shippingAddress: normalizedAddr,
-          deliverySlot: slot,
-          paymentMethod,
-          subtotal: cartSubtotal,
-          discount: cartTotalDiscount,
-          tax: cartTax,
-          shippingFee: cartShippingFee,
-          total: cartGrandTotal,
-        }),
+        body: JSON.stringify(buildOrderRequest(normalizedAddr, slot)),
       });
 
-      let data;
-      try {
-        data = await res.json();
-      } catch (e) {
-        console.warn('Could not parse order JSON response:', e);
-      }
+      const data = await res.json().catch(() => null);
 
-      if (data && data.success && data.data) {
+      if (res.ok && data?.success && data.data) {
         setOrders((prev) => [data.data, ...prev]);
         updateLocalUserAddress(normalizedAddr);
         clearCart();
         showToast('🎉 Order placed successfully! Order ID: ' + data.data.id, 'success');
         return data.data;
       }
+      if (res.status === 409) await refreshProducts();
+      showToast(data?.message || 'Could not place your order. Please try again.', 'error');
     } catch (err) {
-      console.warn('Order API call exception, using fallback order:', err);
+      console.warn('Order API call failed:', err);
+      showToast('Could not reach the server. Please check your connection and try again.', 'error');
     }
+    return null;
+  };
 
-    // Reliable fallback if API call fails or server returns an error
-    const localOrder: Order = {
-      id: `ORD-${Math.floor(10000 + Math.random() * 90000)}`,
-      userId: user?.id || `usr-${Date.now()}`,
-      userEmail: user?.email || normalizedAddr.email || '',
-      items: [...cart],
-      shippingAddress: normalizedAddr,
-      deliverySlot: slot || 'Standard Delivery',
-      paymentMethod: paymentMethod || 'COD',
-      subtotal: cartSubtotal,
-      discount: cartTotalDiscount,
-      tax: cartTax,
-      shippingFee: cartShippingFee,
-      total: cartGrandTotal,
-      status: 'Processing',
-      createdAt: new Date().toISOString(),
-      estimatedDelivery: 'Within 2-3 Days',
-      trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
+  // Creates the Cashfree order and sends the customer to Cashfree's payment page.
+  // The cart stays intact until the payment is confirmed on their return.
+  const startOnlinePayment = async (address: Address, slot: string): Promise<boolean> => {
+    if (cart.length === 0) return false;
+    const normalizedAddr: Address = {
+      ...address,
+      id: address.id && address.id !== 'addr-new' ? address.id : `addr-${crypto.randomUUID()}`,
     };
-
-    setOrders((prev) => [localOrder, ...prev]);
-    updateLocalUserAddress(normalizedAddr);
-    clearCart();
-    showToast('🎉 Order placed successfully! Order ID: ' + localOrder.id, 'success');
-    return localOrder;
+    try {
+      const res = await fetch(getApiUrl('/api/payment/cashfree/create-order'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(customerToken ? { 'x-customer-token': customerToken } : {}),
+        },
+        body: JSON.stringify(buildOrderRequest(normalizedAddr, slot)),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.success || !data.paymentSessionId) {
+        if (res.status === 409) await refreshProducts();
+        showToast(data?.message || 'Could not start the payment. Please try again.', 'error');
+        return false;
+      }
+      const { load } = await import('@cashfreepayments/cashfree-js');
+      const cashfree = await load({ mode: data.mode });
+      await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: '_self' });
+      return true;
+    } catch (err) {
+      console.warn('Online payment failed to start:', err);
+      showToast('Could not open the payment page. Please try again or choose Cash on Delivery.', 'error');
+      return false;
+    }
   };
 
   const saveAddress = async (addressData: Address): Promise<Address> => {
@@ -748,6 +771,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         applyCouponCode,
         removeCoupon,
         placeOrder,
+        startOnlinePayment,
+        reloadOrders: () => setOrdersVersion((v) => v + 1),
         saveAddress,
         deleteAddress,
         saveCustomRecipe,
@@ -758,7 +783,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         cartSubtotal,
         cartTotalDiscount,
         cartTax,
-        cartShippingFee,
+        cartHandlingFee,
         cartGrandTotal,
       }}
     >

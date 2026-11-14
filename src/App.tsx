@@ -24,6 +24,8 @@ const OurStoryPage = lazy(() => import('./components/OurStoryPage').then((m) => 
 const FreshMillingPage = lazy(() => import('./components/FreshMillingPage').then((m) => ({ default: m.FreshMillingPage })));
 const PrivacyPolicyPage = lazy(() => import('./components/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })));
 const RefundPolicyPage = lazy(() => import('./components/RefundPolicyPage').then((m) => ({ default: m.RefundPolicyPage })));
+const TermsPage = lazy(() => import('./components/TermsPage').then((m) => ({ default: m.TermsPage })));
+const ContactPage = lazy(() => import('./components/ContactPage').then((m) => ({ default: m.ContactPage })));
 const ProductQuickView = lazy(() => import('./components/ProductQuickView').then((m) => ({ default: m.ProductQuickView })));
 const AdminPanel = lazy(() => import('./components/AdminPanel').then((m) => ({ default: m.AdminPanel })));
 const BrandSystemModal = lazy(() => import('./components/BrandSystemModal').then((m) => ({ default: m.BrandSystemModal })));
@@ -50,7 +52,7 @@ const MainAppContent: React.FC = () => {
   } = useApp();
 
   const [currentPageView, setCurrentPageView] = useState<
-    'home' | 'category' | 'our-story' | 'fresh-milling' | 'privacy-policy' | 'refund-policy'
+    'home' | 'category' | 'our-story' | 'fresh-milling' | 'privacy-policy' | 'refund-policy' | 'terms' | 'contact'
   >('home');
   const [isBrandSystemOpen, setIsBrandSystemOpen] = useState(false);
   const [inspectingProduct, setInspectingProduct] = useState<Product | null>(null);
@@ -229,6 +231,14 @@ const MainAppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigatePage = (view: 'terms' | 'contact') => {
+    if (currentPageView !== view) {
+      window.history.pushState({ view }, '');
+    }
+    setCurrentPageView(view);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   if (isAdminMode && user?.role === 'admin') {
     return (
       <div className="min-h-screen bg-[#2A2620] font-sans antialiased text-[#F4ECD8] selection:bg-[#C89211] selection:text-[#2A2620]">
@@ -319,6 +329,18 @@ const MainAppContent: React.FC = () => {
             <RefundPolicyPage onNavigateHome={handleNavigateHome} />
           </main>
         )}
+
+        {currentPageView === 'terms' && (
+          <main>
+            <TermsPage onNavigateHome={handleNavigateHome} />
+          </main>
+        )}
+
+        {currentPageView === 'contact' && (
+          <main>
+            <ContactPage onNavigateHome={handleNavigateHome} />
+          </main>
+        )}
         </Suspense>
       </div>
 
@@ -329,6 +351,8 @@ const MainAppContent: React.FC = () => {
         onNavigateFreshMilling={handleNavigateFreshMilling}
         onNavigatePrivacyPolicy={handleNavigatePrivacyPolicy}
         onNavigateRefundPolicy={handleNavigateRefundPolicy}
+        onNavigateTerms={() => handleNavigatePage('terms')}
+        onNavigateContact={() => handleNavigatePage('contact')}
         onOpenBrandSystem={() => setIsBrandSystemOpen(true)}
       />
 

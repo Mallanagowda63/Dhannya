@@ -167,6 +167,8 @@ export interface Address {
   state: string;
   pincode: string;
   isDefault?: boolean;
+  // Map pin chosen at checkout, used to work out the delivery fee.
+  location?: { lat: number; lng: number };
 }
 
 export interface Order {
@@ -182,6 +184,10 @@ export interface Order {
   discount: number;
   tax: number;
   shippingFee: number;
+  handlingFee?: number;
+  deliveryLocation?: { lat: number; lng: number };
+  deliveryDistanceKm?: number;
+  deliveryFeePaidToRider?: boolean;
   total: number;
   status: 'Pending' | 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled' | 'Dispatched' | string;
   createdAt: string;

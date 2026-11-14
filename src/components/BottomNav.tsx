@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 interface BottomNavProps {
-  currentPageView: 'home' | 'category' | 'our-story' | 'fresh-milling' | 'privacy-policy' | 'refund-policy';
+  currentPageView: 'home' | 'category' | 'our-story' | 'fresh-milling' | 'privacy-policy' | 'refund-policy' | 'terms' | 'contact';
   onNavigateHome: () => void;
   onNavigateCategoryPage: () => void;
   onNavigateCustomMasala: () => void;

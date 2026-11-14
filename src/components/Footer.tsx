@@ -15,6 +15,8 @@ export const Footer: React.FC<{
   onNavigateFreshMilling?: () => void;
   onNavigatePrivacyPolicy?: () => void;
   onNavigateRefundPolicy?: () => void;
+  onNavigateTerms?: () => void;
+  onNavigateContact?: () => void;
   onOpenBrandSystem?: () => void;
 }> = ({
   onNavigateHome,
@@ -23,6 +25,8 @@ export const Footer: React.FC<{
   onNavigateFreshMilling,
   onNavigatePrivacyPolicy,
   onNavigateRefundPolicy,
+  onNavigateTerms,
+  onNavigateContact,
 }) => {
   const { setActiveCategory } = useApp();
 
@@ -153,6 +157,18 @@ export const Footer: React.FC<{
               className="hover:text-[#E8B93E] transition cursor-pointer"
             >
               Refund Policy
+            </button>
+            <button
+              onClick={onNavigateTerms}
+              className="hover:text-[#E8B93E] transition cursor-pointer"
+            >
+              Terms &amp; Conditions
+            </button>
+            <button
+              onClick={onNavigateContact}
+              className="hover:text-[#E8B93E] transition cursor-pointer"
+            >
+              Contact Us
             </button>
           </div>
         </div>

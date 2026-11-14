@@ -17,7 +17,7 @@ export const CartDrawer: React.FC = () => {
     cartSubtotal,
     cartTotalDiscount,
     cartTax,
-    cartShippingFee,
+    cartHandlingFee,
     cartGrandTotal,
     setIsCheckoutOpen,
   } = useApp();
@@ -36,7 +36,8 @@ export const CartDrawer: React.FC = () => {
       text += `   - Image: ${imgUrl}\n\n`;
     });
     text += `💰 *Subtotal:* ₹${cartSubtotal}\n`;
-    text += `🚚 *Delivery:* ₹${cartShippingFee === 0 ? 'FREE' : cartShippingFee}\n`;
+    text += `🧺 *Handling fee:* ₹${cartHandlingFee}\n`;
+    text += `🚚 *Delivery:* Free within 3 km; beyond that, Porter/Swiggy fee paid to the rider\n`;
     if (cartTax > 0) text += `🧾 *GST Tax (5%):* ₹${cartTax}\n`;
     text += `✨ *Grand Total:* ₹${cartGrandTotal}\n\n`;
     text += `Please confirm my fresh milling order!`;
@@ -214,11 +215,12 @@ export const CartDrawer: React.FC = () => {
                 </div>
               )}
               <div className="flex justify-between">
-                <span>Delivery:</span>
-                <span className="font-semibold">
-                  {cartShippingFee === 0 ? 'FREE' : `₹${cartShippingFee}`}
-                </span>
+                <span>Handling fee:</span>
+                <span className="font-semibold">₹{cartHandlingFee}</span>
               </div>
+              <p className="text-[11px] text-[#2A2620]/60">
+                Delivery is free within 3 km of our store. Beyond 3 km, the Porter/Swiggy fee is paid to the rider.
+              </p>
               {cartTax > 0 && (
                 <div className="flex justify-between">
                   <span>GST Tax (5%):</span>

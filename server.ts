@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import dns from 'dns';
 import { createServer as createViteServer } from 'vite';
 import { CATEGORIES, MASALA_INGREDIENTS } from './src/data/initialData';
+import { HANDLING_FEE, deliveryQuote, isValidLocation } from './src/data/delivery';
 import { PRODUCTS } from './src/data/products';
 import { Product, Order, Address } from './src/types';
 
@@ -741,7 +742,18 @@ const CustomerMessageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// An online order waiting for payment. The real Order is only created once
+// Cashfree confirms it was paid, so abandoned checkouts never reach the admin
+// order list, revenue totals or customer history. Expires after 7 days.
+const PendingPaymentSchema = new mongoose.Schema({
+  orderId: { type: String, required: true, unique: true },
+  draft: mongoose.Schema.Types.Mixed,
+  finalizedAt: { type: Date, default: null },
+  createdAt: { type: Date, default: Date.now, expires: 60 * 60 * 24 * 7 },
+});
+
 export const ProductModel = mongoose.model('Product', ProductSchema);
+export const PendingPaymentModel = mongoose.model('PendingPayment', PendingPaymentSchema);
 
 // Photos uploaded from the admin "Add Product" form. Kept in their own collection
 // (not inline on the product) so /api/products stays small, and in MongoDB rather
@@ -1701,46 +1713,49 @@ app.post('/api/masalas/calculate', async (req, res) => {
 });
 
 // Coupon APIs
+async function evaluateCoupon(reqCode: string, cartSubtotal: number) {
+  let coupon: any = null;
+  const connected = await ensureDbConnected();
+  if (connected) {
+    coupon = await CouponModel.findOne({ code: reqCode, isActive: true }).lean();
+  } else if (allowMemoryDbInDev) {
+    coupon = liveCoupons.find((c) => c.code.toUpperCase() === reqCode && c.isActive);
+  }
+
+  if (!coupon) {
+    return { status: 404, error: 'Invalid or inactive coupon code' };
+  }
+
+  if (coupon.expiryDate) {
+    const expTime = new Date(coupon.expiryDate).getTime();
+    if (!isNaN(expTime) && expTime < Date.now()) {
+      return {
+        status: 400,
+        error: `Coupon code "${coupon.code}" expired on ${new Date(coupon.expiryDate).toLocaleString()}`,
+      };
+    }
+  }
+
+  const minReq = coupon.minOrderValue || 0;
+  if (cartSubtotal < minReq) {
+    return { status: 400, error: `Minimum order value of ₹${minReq} required for ${coupon.code}` };
+  }
+
+  const maxDiscount = coupon.maxDiscount || 500;
+  const discountAmount = Math.min(Math.round((cartSubtotal * coupon.discountPercent) / 100), maxDiscount);
+  return { coupon, discountAmount, maxDiscount };
+}
+
 app.post('/api/coupons/validate', async (req, res) => {
   try {
     const { code, cartSubtotal } = req.body;
     const reqCode = String(code || '').trim().toUpperCase();
 
-    let coupon: any = null;
-    const connected = await ensureDbConnected();
-    if (connected) {
-      coupon = await CouponModel.findOne({ code: reqCode, isActive: true }).lean();
-    } else if (allowMemoryDbInDev) {
-      coupon = liveCoupons.find((c) => c.code.toUpperCase() === reqCode && c.isActive);
+    const result = await evaluateCoupon(reqCode, Number(cartSubtotal) || 0);
+    if ('error' in result) {
+      return res.status(result.status).json({ success: false, message: result.error });
     }
-
-    if (!coupon) {
-      return res.status(404).json({ success: false, message: 'Invalid or inactive coupon code' });
-    }
-
-    if (coupon.expiryDate) {
-      const expTime = new Date(coupon.expiryDate).getTime();
-      if (!isNaN(expTime) && expTime < Date.now()) {
-        return res.status(400).json({
-          success: false,
-          message: `Coupon code "${coupon.code}" expired on ${new Date(coupon.expiryDate).toLocaleString()}`,
-        });
-      }
-    }
-
-    const minReq = coupon.minOrderValue || 0;
-    if (cartSubtotal < minReq) {
-      return res.status(400).json({
-        success: false,
-        message: `Minimum order value of ₹${minReq} required for ${coupon.code}`,
-      });
-    }
-
-    const maxDisc = coupon.maxDiscount || 500;
-    const discountAmount = Math.min(
-      Math.round((cartSubtotal * coupon.discountPercent) / 100),
-      maxDisc
-    );
+    const { coupon, discountAmount, maxDiscount } = result;
 
     return res.json({
       success: true,
@@ -1748,6 +1763,7 @@ app.post('/api/coupons/validate', async (req, res) => {
         code: coupon.code,
         discountPercent: coupon.discountPercent,
         discountAmount,
+        maxDiscount,
         message: `🎉 ${coupon.discountPercent}% discount applied! Saved ₹${discountAmount}`,
       },
     });
@@ -2284,77 +2300,190 @@ app.post('/api/recipes', async (req, res) => {
 });
 
 // Orders API
-app.post('/api/orders', async (req, res) => {
-  try {
-    const connected = await requireDb(res);
-    const { items, shippingAddress, deliverySlot, discount, userId, userEmail } = req.body;
+// A request the customer can act on, reported with its message instead of a generic 500.
+class OrderRejected extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+  }
+}
 
-    if (!items || items.length === 0) {
-      return res.status(400).json({ success: false, message: 'Cart is empty' });
+const newOrderId = () => `ORD-${crypto.randomBytes(5).toString('hex').toUpperCase()}`;
+
+// Same formula as CustomMasalaBuilder; the browser's price is never trusted.
+function priceCustomMasala(item: any): number {
+  const list = item?.customDetails?.itemsList;
+  if (!Array.isArray(list) || list.length === 0) {
+    throw new OrderRejected(400, `Please remove "${item?.name || 'this item'}" from your cart and add it again.`);
+  }
+  let weight = 0;
+  let cost = 0;
+  for (const entry of list) {
+    const ing = MASALA_INGREDIENTS.find((i) => i.name === entry.name);
+    if (!ing) {
+      throw new OrderRejected(400, `"${entry.name}" is no longer available for custom masala.`);
     }
+    const grams = Number(entry.weight) || 0;
+    weight += grams;
+    cost += (grams / 100) * ing.pricePer100g;
+    if (entry.roasting === 'Roasted') cost += (grams / 100) * ing.roastingPricePer100g;
+  }
+  if (weight < 100 || weight > 5000) {
+    throw new OrderRejected(400, 'Custom masala batches must weigh between 100g and 5kg.');
+  }
+  const subtotal = Math.round(cost);
+  const discount = weight >= 500 ? Math.round(subtotal * 0.1) : 0;
+  return Math.max(1, subtotal - discount);
+}
 
-    const orderId = `ORD-${Math.floor(10000 + Math.random() * 90000)}`;
-    const rawItems = JSON.parse(JSON.stringify(items));
-    const cleanAddress = shippingAddress ? JSON.parse(JSON.stringify(shippingAddress)) : null;
+// Builds an order purely from server-side prices, stock and coupon rules. Nothing
+// the browser sends about money is used except `total`, which is compared so a
+// customer is never charged an amount different from what they were shown.
+async function buildOrder(body: any, connected: boolean, paymentMethod: 'COD' | 'Online') {
+  const { items, shippingAddress, deliverySlot, couponCode, userId, userEmail, deliveryLocation } = body;
 
-    // Recompute every catalog item's price and the order subtotal
-    // server-side from ProductModel -- a client-supplied item.price/subtotal
-    // is never trusted, since that would let anyone submit real products at
-    // an attacker-chosen price. Custom masala line items (customRecipeId,
-    // no fixed catalog price) keep their submitted price since there's no
-    // catalog record to check them against.
-    let subtotal = 0;
-    const cleanItems: any[] = [];
-    for (const item of rawItems) {
-      const quantity = Math.max(1, Number(item.quantity) || 1);
-      if (item.productId) {
-        const product: any = connected ? await ProductModel.findOne({ id: item.productId }).lean() : null;
-        const variant = product?.variants?.find((v: any) => v.weight === item.variantWeight) || product?.variants?.[0];
-        if (!product || !variant) {
-          return res.status(400).json({
-            success: false,
-            message: `Product no longer available: ${item.name || item.productId}`,
-          });
-        }
-        const realPrice = Number(variant.price) || 0;
-        cleanItems.push({ ...item, price: realPrice, quantity });
-        subtotal += realPrice * quantity;
-      } else {
-        const price = Number(item.price) || 0;
-        cleanItems.push({ ...item, quantity });
-        subtotal += price * quantity;
+  if (!Array.isArray(items) || items.length === 0) {
+    throw new OrderRejected(400, 'Cart is empty');
+  }
+
+  const rawItems = JSON.parse(JSON.stringify(items));
+  const cleanAddress = shippingAddress ? JSON.parse(JSON.stringify(shippingAddress)) : null;
+
+  let subtotal = 0;
+  const cleanItems: any[] = [];
+  for (const item of rawItems) {
+    const quantity = Math.max(1, Math.floor(Number(item.quantity)) || 1);
+    let price: number;
+    if (item.productId) {
+      const product: any = connected
+        ? await ProductModel.findOne({ id: item.productId }).lean()
+        : liveProducts.find((p) => p.id === item.productId);
+      if (!product) {
+        throw new OrderRejected(400, `Product no longer available: ${item.name || item.productId}`);
       }
+      const variant = product.variants?.find((v: any) => v.weight === item.variantWeight);
+      if (!variant) {
+        throw new OrderRejected(400, `Please remove "${item.name}" from your cart and add it again; its size has changed.`);
+      }
+      if (variant.inStock === false || product.stock === 0) {
+        throw new OrderRejected(400, `"${item.name}" is out of stock. Please remove it from your cart.`);
+      }
+      price = Number(variant.price) || 0;
+    } else {
+      price = priceCustomMasala(item);
     }
+    cleanItems.push({ ...item, price, quantity });
+    subtotal += price * quantity;
+  }
 
-    const cleanDiscount = Math.min(Math.max(0, Number(discount) || 0), subtotal);
-    const shippingFee = subtotal >= 499 || subtotal === 0 ? 0 : 49;
-    const tax = Math.round((subtotal - cleanDiscount) * 0.05);
-    const total = Math.max(0, subtotal - cleanDiscount + tax + shippingFee);
+  let discount = 0;
+  if (couponCode) {
+    const result = await evaluateCoupon(String(couponCode).trim().toUpperCase(), subtotal);
+    if ('error' in result) throw new OrderRejected(409, result.error);
+    discount = Math.min(result.discountAmount, subtotal);
+  }
 
-    const newOrder = {
-      id: orderId,
-      userId: userId || 'usr-101',
-      userEmail: userEmail ? String(userEmail).trim().toLowerCase() : (cleanAddress?.email || '').trim().toLowerCase(),
-      items: cleanItems,
-      shippingAddress: cleanAddress,
-      deliverySlot: deliverySlot || 'Standard Delivery',
-      // Cash on Delivery is the only payment method; payment is collected on delivery.
-      paymentMethod: 'COD',
-      paymentStatus: 'Pending',
-      subtotal,
-      discount: cleanDiscount,
-      tax,
-      shippingFee,
-      total,
-      status: 'Processing',
-      createdAt: new Date().toISOString(),
-      estimatedDelivery: 'Within 2-3 Days',
-      trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
-    };
+  if (!isValidLocation(deliveryLocation)) {
+    throw new OrderRejected(400, 'Please mark your delivery location on the map.');
+  }
+  const location = { lat: Number(deliveryLocation.lat), lng: Number(deliveryLocation.lng) };
+  const { distanceKm, freeDelivery } = deliveryQuote(location);
 
-    if (connected) {
-      await OrderModel.create(newOrder as any);
-      logDbWrite('POST /api/orders', 'order create', { orderId, userId: newOrder.userId });
+  // Delivery is free within the radius; beyond it the Porter/Swiggy fee is paid to
+  // the rider, so neither case adds a delivery charge here. Only handling is charged.
+  const shippingFee = 0;
+  const handlingFee = HANDLING_FEE;
+  const tax = Math.round((subtotal - discount) * 0.05);
+  const total = Math.max(0, subtotal - discount + tax + handlingFee);
+
+  if (body.total !== undefined && Math.abs(Number(body.total) - total) > 0.01) {
+    throw new OrderRejected(409, `Prices in your cart have changed. The new total is ₹${total}. Please check your cart and try again.`);
+  }
+
+  return {
+    id: newOrderId(),
+    userId: userId || 'usr-101',
+    userEmail: userEmail ? String(userEmail).trim().toLowerCase() : (cleanAddress?.email || '').trim().toLowerCase(),
+    items: cleanItems,
+    shippingAddress: cleanAddress,
+    deliverySlot: deliverySlot || 'Standard Delivery',
+    paymentMethod,
+    paymentStatus: 'Pending',
+    subtotal,
+    discount,
+    tax,
+    shippingFee,
+    handlingFee,
+    total,
+    deliveryLocation: location,
+    deliveryDistanceKm: distanceKm,
+    deliveryFeePaidToRider: !freeDelivery,
+    status: 'Processing',
+    createdAt: new Date().toISOString(),
+    estimatedDelivery: 'Within 2-3 Days',
+    trackingNumber: `DW-TRK-${Math.floor(1000000 + Math.random() * 9000000)}`,
+  };
+}
+
+// The shop owner hears about every order here, COD included (Cashfree alerts only cover online payments).
+const OWNER_ORDER_ALERT_EMAIL = (process.env.OWNER_ORDER_ALERT_EMAIL || 'info@dhaanyafoods.com').trim();
+
+function sendOwnerOrderAlert(order: any) {
+  if (!OWNER_ORDER_ALERT_EMAIL) return;
+  const a = order.shippingAddress || {};
+  const payment = order.paymentMethod === 'COD' ? 'Cash on Delivery (collect ₹' + order.total + ')' : 'Paid online (Cashfree)';
+  const delivery = order.deliveryFeePaidToRider
+    ? `Porter/Swiggy, customer pays rider (${order.deliveryDistanceKm} km)`
+    : `Free delivery (${order.deliveryDistanceKm ?? '?'} km)`;
+  const mapLink = order.deliveryLocation
+    ? `https://www.google.com/maps?q=${order.deliveryLocation.lat},${order.deliveryLocation.lng}`
+    : '';
+  const itemLines = (order.items || []).map(
+    (it: any) => `${it.quantity} x ${it.name}${it.variantWeight ? ` (${it.variantWeight})` : ''} = ₹${(Number(it.price) || 0) * (Number(it.quantity) || 1)}`
+  );
+  const rows: [string, string][] = [
+    ['Order', order.id],
+    ['Payment', payment],
+    ['Total', `₹${order.total}`],
+    ['Customer', `${a.fullName || ''} · ${a.mobile || ''}${order.userEmail ? ` · ${order.userEmail}` : ''}`],
+    ['Address', [a.street, a.city, a.state, a.pincode].filter(Boolean).join(', ')],
+    ['Delivery', delivery],
+    ['Slot', order.deliverySlot || ''],
+  ];
+  const text = [
+    ...rows.map(([k, v]) => `${k}: ${v}`),
+    ...(mapLink ? [`Map pin: ${mapLink}`] : []),
+    '',
+    'Items:',
+    ...itemLines,
+  ].join('\n');
+  const html =
+    `<h2 style="font-family:Arial,sans-serif;margin:0 0 12px">New order ${escapeHtml(order.id)}</h2>` +
+    `<table style="font-family:Arial,sans-serif;font-size:14px;border-collapse:collapse">` +
+    rows.map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#666">${escapeHtml(k)}</td><td style="padding:4px 0"><b>${escapeHtml(v)}</b></td></tr>`).join('') +
+    (mapLink ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Map pin</td><td><a href="${mapLink}">Open in Google Maps</a></td></tr>` : '') +
+    `</table><h3 style="font-family:Arial,sans-serif;margin:16px 0 6px">Items</h3>` +
+    `<ul style="font-family:Arial,sans-serif;font-size:14px;margin:0;padding-left:18px">` +
+    itemLines.map((l: string) => `<li>${escapeHtml(l)}</li>`).join('') +
+    `</ul>`;
+
+  sendResendEmail({
+    to: OWNER_ORDER_ALERT_EMAIL,
+    subject: `🛒 New order ${order.id} · ₹${order.total} · ${order.paymentMethod === 'COD' ? 'COD' : 'PAID ONLINE'}`,
+    text,
+    html,
+  }).then((result) => {
+    if (!result.success) console.error(`[MAIL ERROR] Owner alert for ${order.id} failed:`, result.error);
+  });
+}
+
+// Saves a placed order and its address and customer records, then emails the shop owner and the customer.
+async function recordPlacedOrder(newOrder: any, connected: boolean, source: string) {
+  const { shippingAddress, userId } = newOrder;
+  const userEmail = newOrder.userEmail;
+
+  if (connected) {
+    await OrderModel.create(newOrder);
+    logDbWrite(source, 'order create', { orderId: newOrder.id, userId: newOrder.userId });
 
       if (shippingAddress) {
         try {
@@ -2380,7 +2509,7 @@ app.post('/api/orders', async (req, res) => {
             },
             { upsert: true }
           );
-          logDbWrite('POST /api/orders', 'address upsert', { addrId, userId });
+          logDbWrite(source, 'address upsert', { addrId, userId });
         } catch (e: any) {
           console.error('[ORDER ERROR] Error saving address to MongoDB:', e.message);
         }
@@ -2402,52 +2531,61 @@ app.post('/api/orders', async (req, res) => {
               },
               $inc: {
                 ordersCount: 1,
-                totalSpent: Number(total) || 0,
+                totalSpent: Number(newOrder.total) || 0,
               },
             },
             { upsert: true }
           );
-          logDbWrite('POST /api/orders', 'customer upsert', { email: custEmail, userId });
+          logDbWrite(source, 'customer upsert', { email: custEmail, userId });
         } catch (custErr: any) {
           console.error('[ORDER ERROR] Error updating customer in MongoDB:', custErr.message);
         }
       }
-    } else if (allowMemoryDbInDev) {
-      liveOrders.unshift(newOrder as any);
-    }
+  } else if (allowMemoryDbInDev) {
+    liveOrders.unshift(newOrder);
+  }
+
+    sendOwnerOrderAlert(newOrder);
 
     // Dispatch Order Confirmation Email asynchronously with timing telemetry & duplicate suppression
-    const targetEmail = (userEmail || shippingAddress?.email || '').trim().toLowerCase();
+    const targetEmail = (newOrder.userEmail || shippingAddress?.email || '').trim().toLowerCase();
     if (targetEmail) {
-      const dupKey = `order-confirm-${orderId}-${targetEmail}`;
+      const dupKey = `order-confirm-${newOrder.id}-${targetEmail}`;
       if (shouldSendEmail(dupKey)) {
         const t0_mail_start = Date.now();
         const emailParams: OrderEmailParams = {
           statusKey: 'placed',
           customerName: shippingAddress?.fullName || 'Valued Customer',
-          orderId,
-          total: Number(total) || 0,
-          paymentMethod: 'COD',
-          items: (cleanItems || []).map((it: any) => ({
+          orderId: newOrder.id,
+          total: Number(newOrder.total) || 0,
+          paymentMethod: newOrder.paymentMethod === 'COD' ? 'Cash on Delivery' : 'Paid online',
+          items: (newOrder.items || []).map((it: any) => ({
             name: it.name || 'Item',
             variantWeight: it.variantWeight,
             quantity: Number(it.quantity) || 1,
             price: Number(it.price) || 0,
           })),
-          deliveryAddressLines: cleanAddress
-            ? [cleanAddress.fullName, cleanAddress.street, `${cleanAddress.city}, ${cleanAddress.state} - ${cleanAddress.pincode}`].filter(Boolean)
+          deliveryAddressLines: shippingAddress
+            ? [
+                shippingAddress.fullName,
+                shippingAddress.street,
+                `${shippingAddress.city}, ${shippingAddress.state} - ${shippingAddress.pincode}`,
+                newOrder.deliveryFeePaidToRider
+                  ? `Delivery fee (Porter/Swiggy) is paid to the rider on delivery (${newOrder.deliveryDistanceKm} km).`
+                  : 'Free delivery.',
+              ].filter(Boolean)
             : undefined,
           estimatedDelivery: newOrder.estimatedDelivery,
         };
         sendResendEmail({
           to: targetEmail,
-          subject: `🎉 Order Confirmed #${orderId} - Dhaanya`,
+          subject: `🎉 Order Confirmed #${newOrder.id} - Dhaanya`,
           text: renderOrderStatusEmailText(emailParams),
           html: renderOrderStatusEmailHtml(emailParams),
         }).then((result) => {
           const mailDuration = Date.now() - t0_mail_start;
           if (result.success) {
-            console.log(`[RESEND] Order #${orderId} email sent in ${mailDuration}ms`, result.data);
+            console.log(`[RESEND] Order #${newOrder.id} email sent in ${mailDuration}ms`, result.data);
           } else {
             console.error(`[MAIL ERROR] Order confirmation email failed after ${mailDuration}ms:`, result.error);
           }
@@ -2455,9 +2593,218 @@ app.post('/api/orders', async (req, res) => {
       }
     }
 
+}
+
+app.post('/api/orders', async (req, res) => {
+  try {
+    const connected = await requireDb(res);
+    if (!connected && !allowMemoryDbInDev) return;
+    const newOrder = await buildOrder(req.body, connected, 'COD');
+    await recordPlacedOrder(newOrder, connected, 'POST /api/orders');
     return res.json({ success: true, message: 'Order placed successfully and stored in MongoDB!', data: newOrder });
   } catch (err: any) {
+    if (err instanceof OrderRejected) {
+      return res.status(err.status).json({ success: false, message: err.message });
+    }
     return res.status(500).json({ success: false, message: err.message || 'Server error placing order' });
+  }
+});
+
+// Cashfree Payment Gateway
+const CASHFREE_APP_ID = (process.env.CASHFREE_APP_ID || '').trim();
+const CASHFREE_SECRET_KEY = (process.env.CASHFREE_SECRET_KEY || '').trim();
+const CASHFREE_MODE = process.env.CASHFREE_ENV === 'production' ? 'production' : 'sandbox';
+const CASHFREE_API_VERSION = '2026-01-01';
+const CASHFREE_BASE_URL =
+  (!isProduction && process.env.CASHFREE_API_BASE) ||
+  (CASHFREE_MODE === 'production' ? 'https://api.cashfree.com/pg' : 'https://sandbox.cashfree.com/pg');
+const isCashfreeConfigured = !!(CASHFREE_APP_ID && CASHFREE_SECRET_KEY);
+
+if (isProduction && isCashfreeConfigured && CASHFREE_MODE === 'sandbox') {
+  console.warn('[CASHFREE WARNING] Running in SANDBOX mode: test payments are being accepted as real orders.');
+}
+
+const memPendingPayments = new Map<string, any>();
+
+async function cashfreeRequest(method: 'GET' | 'POST', path: string, body?: unknown) {
+  const res = await fetch(`${CASHFREE_BASE_URL}${path}`, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'x-api-version': CASHFREE_API_VERSION,
+      'x-client-id': CASHFREE_APP_ID,
+      'x-client-secret': CASHFREE_SECRET_KEY,
+    },
+    body: body ? JSON.stringify(body) : undefined,
+    signal: AbortSignal.timeout(15000),
+  });
+  const data: any = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(`Cashfree ${method} ${path} failed (${res.status}): ${data?.message || 'no message'}`);
+  }
+  return data;
+}
+
+// Only what the confirmation screen needs; the order id appears in a URL, so no address or email.
+const publicOrderView = (o: any) => ({
+  id: o.id,
+  items: o.items,
+  total: o.total,
+  deliverySlot: o.deliverySlot,
+  paymentMethod: o.paymentMethod,
+  paymentStatus: o.paymentStatus,
+  status: o.status,
+  estimatedDelivery: o.estimatedDelivery,
+  trackingNumber: o.trackingNumber,
+});
+
+// Turns a pending payment into a real order, once, and only if Cashfree itself
+// says it is PAID for the right amount. Called from both the customer's return
+// and the webhook, whichever arrives first.
+async function finalizeCashfreeOrder(orderId: string): Promise<{ state: 'paid' | 'pending' | 'failed' | 'unknown'; order?: any }> {
+  const connected = await ensureDbConnected();
+  const findOrder = async () =>
+    connected ? OrderModel.findOne({ id: orderId }).lean() : liveOrders.find((o: any) => o.id === orderId);
+
+  const existing = await findOrder();
+  if (existing) return { state: 'paid', order: existing };
+
+  const pending: any = connected
+    ? await PendingPaymentModel.findOne({ orderId }).lean()
+    : memPendingPayments.get(orderId);
+  if (!pending) return { state: 'unknown' };
+
+  const cf = await cashfreeRequest('GET', `/orders/${encodeURIComponent(orderId)}`);
+  if (cf.order_status !== 'PAID') {
+    return { state: cf.order_status === 'ACTIVE' ? 'pending' : 'failed' };
+  }
+  if (Math.abs(Number(cf.order_amount) - Number(pending.draft.total)) > 0.01) {
+    console.error(`[CASHFREE ERROR] Order ${orderId} paid ${cf.order_amount} but expected ${pending.draft.total}. Needs manual review.`);
+    return { state: 'failed' };
+  }
+
+  // Claim it so the webhook and the customer's return can't both create the order.
+  let claimed: boolean;
+  if (connected) {
+    claimed = !!(await PendingPaymentModel.findOneAndUpdate(
+      { orderId, finalizedAt: null },
+      { $set: { finalizedAt: new Date() } }
+    ));
+  } else {
+    claimed = !pending.finalizedAt;
+    pending.finalizedAt = new Date();
+  }
+  if (!claimed) {
+    const order = await findOrder();
+    return order ? { state: 'paid', order } : { state: 'pending' };
+  }
+
+  const order = { ...pending.draft, paymentStatus: 'Paid', paymentReference: String(cf.cf_order_id ?? orderId) };
+  try {
+    await recordPlacedOrder(order, connected, 'finalizeCashfreeOrder');
+  } catch (err) {
+    // The customer has paid: release the claim so the webhook retry can save the order.
+    if (connected) await PendingPaymentModel.updateOne({ orderId }, { $set: { finalizedAt: null } });
+    else pending.finalizedAt = null;
+    throw err;
+  }
+  return { state: 'paid', order };
+}
+
+app.get('/api/payment/config', (_req, res) => {
+  res.json({ success: true, cashfreeEnabled: isCashfreeConfigured, mode: CASHFREE_MODE });
+});
+
+app.post('/api/payment/cashfree/create-order', async (req, res) => {
+  try {
+    if (!isCashfreeConfigured) {
+      return res.status(503).json({ success: false, message: 'Online payment is not available right now. Please choose Cash on Delivery.' });
+    }
+    const connected = await requireDb(res);
+    if (!connected && !allowMemoryDbInDev) return;
+
+    const draft = await buildOrder(req.body, connected, 'Online');
+    if (draft.total < 1) {
+      throw new OrderRejected(400, 'Order total is too low for online payment.');
+    }
+
+    const phone = String(draft.shippingAddress?.mobile || '').replace(/\D/g, '').slice(-10);
+    if (phone.length !== 10) {
+      throw new OrderRejected(400, 'Please enter a valid 10-digit mobile number.');
+    }
+
+    const siteUrl = (process.env.SITE_URL || `${req.protocol}://${req.get('host')}`).replace(/\/$/, '');
+    const email = draft.userEmail;
+
+    const cf = await cashfreeRequest('POST', '/orders', {
+      order_id: draft.id,
+      order_amount: Math.round(draft.total * 100) / 100,
+      order_currency: 'INR',
+      customer_details: {
+        // Alphanumeric only per Cashfree's rules, and stable for the same customer.
+        customer_id: crypto.createHash('sha256').update(email || phone).digest('hex').slice(0, 32),
+        customer_phone: phone,
+        customer_name: String(draft.shippingAddress?.fullName || 'Customer').slice(0, 100),
+        ...(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? { customer_email: email } : {}),
+      },
+      order_meta: {
+        return_url: `${siteUrl}/?payment_order_id=${draft.id}`,
+        ...(siteUrl.startsWith('https://') ? { notify_url: `${siteUrl}/api/payment/cashfree/webhook` } : {}),
+      },
+    });
+
+    if (connected) {
+      await PendingPaymentModel.create({ orderId: draft.id, draft });
+    } else {
+      memPendingPayments.set(draft.id, { orderId: draft.id, draft, finalizedAt: null });
+    }
+
+    return res.json({ success: true, orderId: draft.id, paymentSessionId: cf.payment_session_id, mode: CASHFREE_MODE });
+  } catch (err: any) {
+    if (err instanceof OrderRejected) {
+      return res.status(err.status).json({ success: false, message: err.message });
+    }
+    console.error('[CASHFREE ERROR] create-order:', err.message);
+    return res.status(502).json({ success: false, message: 'Could not start the payment. Please try again or choose Cash on Delivery.' });
+  }
+});
+
+app.get('/api/payment/cashfree/status/:orderId', async (req, res) => {
+  try {
+    if (!isCashfreeConfigured) return res.status(503).json({ success: false, state: 'unknown' });
+    const { state, order } = await finalizeCashfreeOrder(req.params.orderId);
+    return res.json({ success: true, state, ...(order ? { order: publicOrderView(order) } : {}) });
+  } catch (err: any) {
+    console.error('[CASHFREE ERROR] status:', err.message);
+    return res.status(502).json({ success: false, state: 'pending' });
+  }
+});
+
+// Cashfree signs timestamp + raw body with the secret key. Even a valid call only
+// triggers a re-check against Cashfree's API, so the payload itself is never trusted.
+app.post('/api/payment/cashfree/webhook', async (req: any, res) => {
+  try {
+    const signature = String(req.headers['x-webhook-signature'] || '');
+    const timestamp = String(req.headers['x-webhook-timestamp'] || '');
+    if (!CASHFREE_SECRET_KEY || !signature || !timestamp || !req.rawBody) {
+      return res.status(400).json({ success: false, message: 'Webhook signature missing or unconfigured' });
+    }
+    const expected = Buffer.from(
+      crypto.createHmac('sha256', CASHFREE_SECRET_KEY).update(timestamp + req.rawBody.toString('utf8')).digest('base64')
+    );
+    const provided = Buffer.from(signature);
+    if (expected.length !== provided.length || !crypto.timingSafeEqual(expected, provided)) {
+      return res.status(400).json({ success: false, message: 'Invalid webhook signature' });
+    }
+
+    const orderId = req.body?.data?.order?.order_id;
+    if (orderId) await finalizeCashfreeOrder(String(orderId));
+    return res.json({ success: true });
+  } catch (err: any) {
+    // A non-2xx makes Cashfree retry, which is what we want if saving the order failed.
+    console.error('[CASHFREE ERROR] webhook:', err.message);
+    return res.status(500).json({ success: false });
   }
 });
 

@@ -2068,6 +2068,9 @@ export const AdminPanel: React.FC = () => {
                 const todayTotalRevenue = todayOrders.reduce((s, o) => s + (o.total || 0), 0);
                 const todayPaidRevenue = todayOrders.filter(o => o.paymentStatus === 'Paid').reduce((s, o) => s + (o.total || 0), 0);
 
+                const onlineOrders = ordersList.filter(o => o.paymentMethod === 'Online');
+                const onlineRevenue = onlineOrders.filter(o => o.paymentStatus === 'Paid').reduce((s, o) => s + (o.total || 0), 0);
+
                 const codOrders = ordersList.filter(o => o.paymentMethod === 'COD' || !o.paymentMethod);
                 const codPendingOrders = codOrders.filter(o => o.paymentStatus !== 'Paid');
                 const codPaidOrders = codOrders.filter(o => o.paymentStatus === 'Paid');
@@ -2077,7 +2080,7 @@ export const AdminPanel: React.FC = () => {
 
                 return (
                   <div className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                       {/* Today's Payments Card */}
                       <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
                         <div className="flex items-center justify-between">
@@ -2095,6 +2098,26 @@ export const AdminPanel: React.FC = () => {
                           <p className="text-[11px] font-bold text-emerald-700 mt-1 flex items-center gap-1">
                             <TrendingUp className="w-3.5 h-3.5" />
                             <span>{todayOrders.length} orders today • ₹{todayPaidRevenue.toLocaleString()} Paid</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Online Payments Card */}
+                      <div className="bg-[#faf8f4] p-5 rounded-3xl border border-stone-200 flex flex-col justify-between shadow-2xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-900 font-serif">
+                            Online Payments (Cashfree)
+                          </span>
+                          <div className="w-9 h-9 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                            <CreditCard className="w-5 h-5" />
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <h4 className="text-2xl font-extrabold font-mono text-emerald-950">
+                            ₹{onlineRevenue.toLocaleString()}
+                          </h4>
+                          <p className="text-[11px] font-bold text-emerald-700 mt-1">
+                            {onlineOrders.length} paid online
                           </p>
                         </div>
                       </div>
@@ -3670,9 +3693,26 @@ export const AdminPanel: React.FC = () => {
                   <span className="font-bold text-earth">₹{selectedOrderDetails.tax || 0}</span>
                 </div>
                 <div className="flex justify-between border-b border-stone-200 pb-2">
-                  <span>Shipping Fee:</span>
+                  <span>Delivery:</span>
                   <span className="font-bold text-earth">
-                    {selectedOrderDetails.shippingFee === 0 ? <strong className="text-olive">FREE</strong> : `₹${selectedOrderDetails.shippingFee || 0}`}
+                    {selectedOrderDetails.handlingFee !== undefined
+                      ? <>
+                          ₹{selectedOrderDetails.handlingFee} handling ·{' '}
+                          {selectedOrderDetails.deliveryFeePaidToRider
+                            ? <strong className="text-amber-800">Porter/Swiggy, customer pays rider ({selectedOrderDetails.deliveryDistanceKm} km)</strong>
+                            : <strong className="text-olive">Free delivery ({selectedOrderDetails.deliveryDistanceKm} km)</strong>}
+                          {selectedOrderDetails.deliveryLocation && (
+                            <a
+                              href={`https://www.google.com/maps?q=${selectedOrderDetails.deliveryLocation.lat},${selectedOrderDetails.deliveryLocation.lng}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="ml-2 underline text-blue-700"
+                            >
+                              Open pin in Maps
+                            </a>
+                          )}
+                        </>
+                      : selectedOrderDetails.shippingFee === 0 ? <strong className="text-olive">FREE</strong> : `₹${selectedOrderDetails.shippingFee || 0}`}
                   </span>
                 </div>
                 <div className="flex justify-between items-baseline pt-1">

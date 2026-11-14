@@ -56,7 +56,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
             <li><span className="font-semibold">Contact details:</span> your name, phone number, and email address.</li>
             <li><span className="font-semibold">Delivery information:</span> your shipping/delivery address.</li>
             <li><span className="font-semibold">Order details:</span> items purchased, order history, preferences, and any custom masala blend requests.</li>
-            <li><span className="font-semibold">Payment information:</span> all orders are Cash on Delivery, paid when your order arrives. We do not collect or store any card, UPI, or bank details.</li>
+            <li><span className="font-semibold">Payment information:</span> online payments are processed securely by Cashfree Payments, or you can pay cash on delivery. We do not collect or store your card, UPI, or bank details ourselves.</li>
             <li><span className="font-semibold">WhatsApp chat data:</span> if you order or communicate with us via WhatsApp, we keep a record of that conversation (order details, address, queries) to process your order and assist you.</li>
             <li><span className="font-semibold">Website usage data:</span> basic technical information such as your browser type, device, and pages visited, mainly through cookies (see Section 4).</li>
           </ul>
@@ -89,6 +89,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
             marketing purposes. We only share your information with:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
+            <li><span className="font-semibold">Cashfree Payments</span>, our payment gateway partner, to securely process online payments.</li>
             <li><span className="font-semibold">Delivery and courier partners</span>, to fulfil and ship your order to you.</li>
             <li>Government or legal authorities, only where required by law.</li>
           </ul>
@@ -98,7 +99,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
         <Section number={6} title="Data Retention & Security">
           <ul className="list-disc pl-5 space-y-1.5">
             <li>We retain your personal data for as long as needed to fulfil orders, handle returns/refunds, meet legal/tax requirements, and improve our service — typically for the duration of your relationship with us plus a reasonable period afterward for record-keeping.</li>
-            <li><span className="font-semibold">No payment details are collected online.</span> All orders are paid in cash on delivery.</li>
+            <li><span className="font-semibold">Payment details are never stored on our systems.</span> Online payments are handled directly by Cashfree Payments on their secure, PCI-DSS compliant platform.</li>
             <li>We take reasonable technical and organisational measures to protect your personal data from unauthorised access, loss, or misuse.</li>
           </ul>
         </Section>
