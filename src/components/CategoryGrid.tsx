@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
-import { STOREFRONT_CATEGORIES as CATEGORIES } from '../data/initialData';
+import { CATEGORY_KANNADA, STOREFRONT_CATEGORIES as CATEGORIES } from '../data/initialData';
 import { ProductCategory } from '../types';
 
 interface CategoryGridProps {
@@ -61,9 +61,11 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                   <h3 className={`text-sm sm:text-base font-bold transition-colors leading-snug tracking-tight font-serif ${badgeColor}`}>
                     {cat.name}
                   </h3>
-                  <span className="text-[11px] font-kannada text-[#2A2620]/60 block mt-0.5">
-                    {isFlour ? 'ತಾಜಾ ಹಿಟ್ಟು' : isSpice ? 'ಮಸಾಲೆ' : isOil ? 'ಮರದ ಗಾಣದ ಎಣ್ಣೆ' : 'ಶುದ್ಧ ಧಾನ್ಯ'}
-                  </span>
+                  {CATEGORY_KANNADA[cat.name] && (
+                    <span className="text-[11px] font-kannada text-[#2A2620]/60 block mt-0.5">
+                      {CATEGORY_KANNADA[cat.name]}
+                    </span>
+                  )}
                 </div>
               </div>
             );

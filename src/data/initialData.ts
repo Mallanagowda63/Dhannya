@@ -518,6 +518,33 @@ export const REVIEWS: Review[] = [
   }
 ];
 
+// Kannada subtitle shown under each category tile.
+export const CATEGORY_KANNADA: Record<string, string> = {
+  'Wood Pressed Oils': 'ಮರದ ಗಾಣದ ಎಣ್ಣೆ',
+  Flour: 'ತಾಜಾ ಹಿಟ್ಟು',
+  'Dry Fruits': 'ಒಣ ಹಣ್ಣುಗಳು',
+  Seeds: 'ಬೀಜಗಳು',
+  Millets: 'ಸಿರಿಧಾನ್ಯಗಳು',
+  Spices: 'ಸಾಂಬಾರ ಪದಾರ್ಥಗಳು',
+  Masalas: 'ಮಸಾಲೆ',
+  'Health Foods': 'ಆರೋಗ್ಯಕರ ಆಹಾರ',
+  Coffee: 'ಕಾಫಿ',
+  Tea: 'ಚಹಾ',
+  Pickles: 'ಉಪ್ಪಿನಕಾಯಿ',
+  'Natural Sweeteners': 'ನೈಸರ್ಗಿಕ ಸಿಹಿ',
+  Pulses: 'ಬೇಳೆಕಾಳುಗಳು',
+  'Nut Butters': 'ನಟ್ ಬಟರ್',
+  Rice: 'ಅಕ್ಕಿ',
+  Rava: 'ರವೆ',
+  Poha: 'ಅವಲಕ್ಕಿ',
+  Pasta: 'ಪಾಸ್ತಾ',
+  Noodles: 'ನೂಡಲ್ಸ್',
+  'Eco Friendly': 'ಪರಿಸರ ಸ್ನೇಹಿ',
+  'Quick Bites': 'ತಿಂಡಿ ತಿನಿಸು',
+  'Skin Care': 'ಚರ್ಮದ ಆರೈಕೆ',
+  'Hair Care': 'ಕೂದಲಿನ ಆರೈಕೆ',
+};
+
 // Categories kept in the admin inventory but hidden from the storefront.
 export const HIDDEN_STOREFRONT_CATEGORIES = ['Eco Friendly'];
 // Individual products kept in the admin inventory but hidden from the storefront.
