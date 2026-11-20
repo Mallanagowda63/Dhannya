@@ -45,7 +45,7 @@ export const AuthModal: React.FC = () => {
     setEmail(val);
     setErrorMessage(null);
     const clean = val.trim().toLowerCase();
-    if (clean === 'dhaanyaorganic1@gmail.com') {
+    if (clean === 'info@dhaanyafoods.com') {
       setMode('admin');
     }
   };
@@ -76,7 +76,7 @@ export const AuthModal: React.FC = () => {
         }
       }
     } catch {
-      if (cleanEmail === 'dhaanyaorganic1@gmail.com') {
+      if (cleanEmail === 'info@dhaanyafoods.com') {
         setMode('admin');
         return;
       }

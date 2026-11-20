@@ -681,7 +681,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const login = (email: string, name: string = 'Dhaanya Customer', role?: 'admin' | 'user', id?: string, customerTokenArg?: string) => {
     const cleanEmail = email.trim().toLowerCase();
-    const isAdmin = role === 'admin' || cleanEmail === 'dhaanyaorganic1@gmail.com';
+    const isAdmin = role === 'admin' || cleanEmail === 'info@dhaanyafoods.com';
 
     const newUser: User = {
       // Prefer the stable id the backend already tracks for this customer;

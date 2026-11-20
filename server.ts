@@ -92,7 +92,7 @@ function logDbWrite(source: string, action: string, details?: Record<string, unk
   console.log(`[DB WRITE] source=${source} action=${action}${detailStr}`);
 }
 
-const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || 'dhaanyaorganic1@gmail.com').trim().toLowerCase();
+const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || 'info@dhaanyafoods.com').trim().toLowerCase();
 
 // SHA-256 Hashed Admin Password Comparison (No Plaintext Secrets Stored)
 function hashPassword(password: string): string {

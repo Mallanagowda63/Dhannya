@@ -74,7 +74,7 @@ export const AdminPanel: React.FC = () => {
     setAdminToken(null);
   };
 
-  const [adminEmailInput, setAdminEmailInput] = useState('dhaanyaorganic1@gmail.com');
+  const [adminEmailInput, setAdminEmailInput] = useState('info@dhaanyafoods.com');
   const [adminPassInput, setAdminPassInput] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
@@ -970,7 +970,7 @@ export const AdminPanel: React.FC = () => {
                 required
                 value={adminEmailInput}
                 onChange={(e) => setAdminEmailInput(e.target.value)}
-                placeholder="dhaanyaorganic1@gmail.com"
+                placeholder="info@dhaanyafoods.com"
                 className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-4 py-3 text-sm font-bold text-earth focus:outline-none focus:border-olive"
               />
             </div>
@@ -1147,7 +1147,7 @@ export const AdminPanel: React.FC = () => {
               </div>
               <div className="overflow-hidden">
                 <p className="text-xs font-bold text-earth truncate">Store Admin</p>
-                <p className="text-[10px] text-stone-600 truncate">dhaanyaorganic1@gmail.com</p>
+                <p className="text-[10px] text-stone-600 truncate">info@dhaanyafoods.com</p>
               </div>
             </div>
           </div>
@@ -2887,7 +2887,7 @@ export const AdminPanel: React.FC = () => {
                 </div>
                 <div>
                   <label className="block text-stone-700 uppercase mb-1">Support Email</label>
-                  <input type="email" defaultValue="dhaanyaorganic1@gmail.com" className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
+                  <input type="email" defaultValue="info@dhaanyafoods.com" className="w-full bg-[#faf8f4] border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-earth" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
